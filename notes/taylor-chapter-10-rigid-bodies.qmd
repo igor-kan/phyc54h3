@@ -1,0 +1,9 @@
+---
+title: "Taylor Chapter 10: Rotational Motion of Rigid Bodies"
+author: "Igor"
+date: "2026-11-10"
+categories: [classical-mechanics, notes]
+format: html
+---
+
+*(Content for this chapter to be written in Weeks 9-11 according to the syllabus.)*

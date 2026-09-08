@@ -1,0 +1,9 @@
+---
+title: "Taylor Chapter 16: Continuum Mechanics"
+author: "Igor"
+date: "2026-12-01"
+categories: [classical-mechanics, notes]
+format: html
+---
+
+*(Content for this chapter to be written in Week 12 according to the syllabus.)*

@@ -11,6 +11,8 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - href: syllabus.qmd
+        text: Syllabus
       - href: notes/index.qmd
         text: Lecture Notes
       - href: solutions/index.qmd

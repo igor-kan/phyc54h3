@@ -1,0 +1,9 @@
+---
+title: "Taylor Chapter 13: Hamiltonian Mechanics"
+author: "Igor"
+date: "2026-09-29"
+categories: [classical-mechanics, notes]
+format: html
+---
+
+*(Content for this chapter to be written in Weeks 4-5 according to the syllabus.)*
