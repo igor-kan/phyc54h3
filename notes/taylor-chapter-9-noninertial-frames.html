@@ -166,10 +166,6 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html"> 
-<span class="menu-text">Syllabus</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../notes/index.html"> 
 <span class="menu-text">Lecture Notes</span></a>
   </li>  
@@ -179,11 +175,7 @@ window.Quarto = {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../simulations/index.html"> 
-<span class="menu-text">Simulations &amp; Code</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../manim/index.html"> 
-<span class="menu-text">Manim Videos</span></a>
+<span class="menu-text">Code &amp; Simulations</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../reference/index.html"> 
@@ -200,8 +192,17 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview-syllabus-context" id="toc-overview-syllabus-context" class="nav-link active" data-scroll-target="#overview-syllabus-context">Overview &amp; Syllabus Context</a>
+  <ul class="collapse">
+  <li><a href="#core-topics" id="toc-core-topics" class="nav-link" data-scroll-target="#core-topics">Core Topics</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -209,8 +210,11 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Taylor Chapter 9: Mechanics in Noninertial Frames</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<p class="subtitle lead">Linearly accelerating frames, rotating coordinate systems, centrifugal force, Coriolis force, and the Foucault pendulum.</p>
   <div class="quarto-categories">
     <div class="quarto-category">classical-mechanics</div>
+    <div class="quarto-category">noninertial-frames</div>
+    <div class="quarto-category">coriolis</div>
     <div class="quarto-category">notes</div>
   </div>
   </div>
@@ -229,10 +233,16 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 13, 2026</p>
+      <p class="date">2026-10-13</p>
     </div>
   </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">2026-09-08</p>
+    </div>
+  </div>
     
   </div>
   
@@ -241,12 +251,35 @@ window.Quarto = {
 </header>
 
 
-<p><em>(Content for this chapter to be written in Weeks 6-8 according to the syllabus.)</em></p>
+<section id="overview-syllabus-context" class="level1">
+<h1>Overview &amp; Syllabus Context</h1>
+<p>According to the <a href="../notes/syllabus.html">PHY C54 Syllabus</a>, Noninertial Frames are studied in <strong>Weeks 06, 07, and 08</strong> (Taylor Ch 9: 1–10).</p>
+<section id="core-topics" class="level2">
+<h2 class="anchored" data-anchor-id="core-topics">Core Topics</h2>
+<ol type="1">
+<li><strong>Linearly Accelerating Frames:</strong> Inertial (fictitious) forces <span class="math inline">\(\mathbf{F}_{\text{inertial}} = -m\mathbf{A}_0\)</span> and Einstein’s Equivalence Principle.</li>
+<li><strong>Rotating Reference Frames:</strong> The time-derivative operator in a frame rotating with angular velocity <span class="math inline">\(\boldsymbol{\Omega}\)</span>: <span class="math display">\[ \left(\frac{d\mathbf{Q}}{dt}\right)_{\text{space}} = \left(\frac{d\mathbf{Q}}{dt}\right)_{\text{body}} + \boldsymbol{\Omega} \times \mathbf{Q} \]</span></li>
+<li><strong>Fictitious Forces:</strong>
+<ul>
+<li><strong>Centrifugal Force:</strong> <span class="math inline">\(\mathbf{F}_{\text{cf}} = m(\boldsymbol{\Omega} \times \mathbf{r}) \times \boldsymbol{\Omega} = -m\boldsymbol{\Omega} \times (\boldsymbol{\Omega} \times \mathbf{r})\)</span>.</li>
+<li><strong>Coriolis Force:</strong> <span class="math inline">\(\mathbf{F}_{\text{cor}} = 2m \mathbf{v}_{\text{rel}} \times \boldsymbol{\Omega}\)</span>.</li>
+<li><strong>Azimuthal (Euler) Force:</strong> <span class="math inline">\(\mathbf{F}_{\text{euler}} = -m \dot{\boldsymbol{\Omega}} \times \mathbf{r}\)</span>.</li>
+</ul></li>
+<li><strong>Physical Manifestations:</strong>
+<ul>
+<li>Free-fall deflection to the east.</li>
+<li>Atmospheric cyclonic motion.</li>
+<li>The Foucault Pendulum and precession of the oscillation plane.</li>
+</ul></li>
+</ol>
+<p><em>(Detailed analytical lecture derivations and worked examples will be added here during Weeks 6, 7 &amp; 8).</em></p>
 
 
 
 <!-- -->
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -702,13 +735,35 @@ window.Quarto = {
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Taylor Chapter 9: Mechanics in Noninertial Frames"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Igor"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-10-13"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [classical-mechanics, notes]</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>*(Content for this chapter to be written in Weeks 6-8 according to the syllabus.)*</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Linearly accelerating frames, rotating coordinate systems, centrifugal force, Coriolis force, and the Foucault pendulum."</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Igor"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-10-13"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">date-modified:</span><span class="co"> last-modified</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [classical-mechanics, noninertial-frames, coriolis, notes]</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">    math: true</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu"># Overview &amp; Syllabus Context</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>According to the <span class="co">[</span><span class="ot">PHY C54 Syllabus</span><span class="co">](syllabus.qmd)</span>, Noninertial Frames are studied in **Weeks 06, 07, and 08** (Taylor Ch 9: 1–10).</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Core Topics</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Linearly Accelerating Frames:** Inertial (fictitious) forces $\mathbf{F}_{\text{inertial}} = -m\mathbf{A}_0$ and Einstein's Equivalence Principle.</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Rotating Reference Frames:** The time-derivative operator in a frame rotating with angular velocity $\boldsymbol{\Omega}$:</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>   $$ \left(\frac{d\mathbf{Q}}{dt}\right)_{\text{space}} = \left(\frac{d\mathbf{Q}}{dt}\right)_{\text{body}} + \boldsymbol{\Omega} \times \mathbf{Q} $$</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Fictitious Forces:**</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>**Centrifugal Force:** $\mathbf{F}_{\text{cf}} = m(\boldsymbol{\Omega} \times \mathbf{r}) \times \boldsymbol{\Omega} = -m\boldsymbol{\Omega} \times (\boldsymbol{\Omega} \times \mathbf{r})$.</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>**Coriolis Force:** $\mathbf{F}_{\text{cor}} = 2m \mathbf{v}_{\text{rel}} \times \boldsymbol{\Omega}$.</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>**Azimuthal (Euler) Force:** $\mathbf{F}_{\text{euler}} = -m \dot{\boldsymbol{\Omega}} \times \mathbf{r}$.</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Physical Manifestations:**</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Free-fall deflection to the east.</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Atmospheric cyclonic motion.</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>The Foucault Pendulum and precession of the oscillation plane.</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>*(Detailed analytical lecture derivations and worked examples will be added here during Weeks 6, 7 &amp; 8).*</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

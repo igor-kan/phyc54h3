@@ -166,10 +166,6 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html"> 
-<span class="menu-text">Syllabus</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../notes/index.html"> 
 <span class="menu-text">Lecture Notes</span></a>
   </li>  
@@ -179,11 +175,7 @@ window.Quarto = {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../simulations/index.html"> 
-<span class="menu-text">Simulations &amp; Code</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../manim/index.html"> 
-<span class="menu-text">Manim Videos</span></a>
+<span class="menu-text">Code &amp; Simulations</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../reference/index.html"> 
@@ -205,7 +197,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#calculus-of-variations-problem-solutions" id="toc-calculus-of-variations-problem-solutions" class="nav-link active" data-scroll-target="#calculus-of-variations-problem-solutions">Calculus of Variations: Problem Solutions</a>
+  <li><a href="#lagranges-equations-problem-solutions" id="toc-lagranges-equations-problem-solutions" class="nav-link active" data-scroll-target="#lagranges-equations-problem-solutions">Lagrange’s Equations: Problem Solutions</a>
   <ul class="collapse">
   <li><a href="#section-7.1-lagranges-equations-for-unconstrained-motion" id="toc-section-7.1-lagranges-equations-for-unconstrained-motion" class="nav-link" data-scroll-target="#section-7.1-lagranges-equations-for-unconstrained-motion">Section 7.1: Lagrange’s Equations for Unconstrained Motion</a>
   <ul class="collapse">
@@ -254,6 +246,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Taylor Chapter 7 Problems: Lagrange’s Equations</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<p class="subtitle lead">Step-by-step analytical solutions to Chapter 7 exercises from John R. Taylor’s Classical Mechanics.</p>
   <div class="quarto-categories">
     <div class="quarto-category">classical-mechanics</div>
     <div class="quarto-category">math</div>
@@ -276,10 +269,16 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 8, 2026</p>
+      <p class="date">2026-09-08</p>
     </div>
   </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">2026-09-08</p>
+    </div>
+  </div>
     
   </div>
   
@@ -288,8 +287,8 @@ window.Quarto = {
 </header>
 
 
-<section id="calculus-of-variations-problem-solutions" class="level1">
-<h1>Calculus of Variations: Problem Solutions</h1>
+<section id="lagranges-equations-problem-solutions" class="level1">
+<h1>Lagrange’s Equations: Problem Solutions</h1>
 <p>This article contains problem statements and solution outlines for Chapter 7 of John R. Taylor’s <em>Classical Mechanics</em>. For a theoretical overview, see the <a href="../notes/taylor-chapter-7-lagrange-equations.html">Chapter 7 Lecture Notes</a>.</p>
 <section id="section-7.1-lagranges-equations-for-unconstrained-motion" class="level2">
 <h2 class="anchored" data-anchor-id="section-7.1-lagranges-equations-for-unconstrained-motion">Section 7.1: Lagrange’s Equations for Unconstrained Motion</h2>
@@ -855,135 +854,137 @@ window.Quarto = {
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Taylor Chapter 7 Problems: Lagrange's Equations"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Igor"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-09-08"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [classical-mechanics, math, taylor, solutions]</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">    math: true</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu"># Calculus of Variations: Problem Solutions</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Step-by-step analytical solutions to Chapter 7 exercises from John R. Taylor's Classical Mechanics."</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Igor"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-09-08"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">date-modified:</span><span class="co"> last-modified</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [classical-mechanics, math, taylor, solutions]</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">    math: true</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>This article contains problem statements and solution outlines for Chapter 7 of John R. Taylor's *Classical Mechanics*. For a theoretical overview, see the <span class="co">[</span><span class="ot">Chapter 7 Lecture Notes</span><span class="co">](../notes/taylor-chapter-7-lagrange-equations.qmd)</span>.</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu"># Lagrange's Equations: Problem Solutions</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Section 7.1: Lagrange's Equations for Unconstrained Motion</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>This article contains problem statements and solution outlines for Chapter 7 of John R. Taylor's *Classical Mechanics*. For a theoretical overview, see the <span class="co">[</span><span class="ot">Chapter 7 Lecture Notes</span><span class="co">](../notes/taylor-chapter-7-lagrange-equations.qmd)</span>.</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.1 *</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>**Statement:** Write down the Lagrangian for a projectile (subject to no air resistance) in terms of its Cartesian coordinates $(x, y, z)$, with $z$ measured vertically upward. Find the three Lagrange equations and show that they are exactly what you would expect.  </span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>*(See [Section 7.1 Notes](../notes/taylor-chapter-7-lagrange-equations.qmd#71-lagranges-equations-for-unconstrained-motion))*</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>$\mathcal{L} = \frac{1}{2}m(\dot{x}^2 + \dot{y}^2 + \dot{z}^2) - mgz$.</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>The equations are:</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$x$: $\frac{d}{dt}(m\dot{x}) = 0 \implies \ddot{x} = 0$</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$y$: $\frac{d}{dt}(m\dot{y}) = 0 \implies \ddot{y} = 0$</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$z$: $\frac{d}{dt}(m\dot{z}) = -mg \implies \ddot{z} = -g$</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>These are the standard equations of motion for a projectile.</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.2 *</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>**Statement:** Write down the Lagrangian for a one-dimensional particle moving along the $x$ axis and subject to a force $F = -kx$ (with $k$ positive). Find the Lagrange equation of motion and solve it.</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>$\mathcal{L} = \frac{1}{2}m\dot{x}^2 - \frac{1}{2}kx^2$.</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>Equation: $-kx = m\ddot{x} \implies \ddot{x} + \omega^2 x = 0$. Solution is simple harmonic motion $x(t) = A\cos(\omega t - \delta)$.</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.3 *</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>**Statement:** Consider a mass $m$ moving in two dimensions with potential energy $U(x, y) = \frac{1}{2}kr^2$, where $r^2 = x^2 + y^2$. Write down the Lagrangian and find the two Lagrange equations of motion. Describe their solutions.</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>$\mathcal{L} = \frac{1}{2}m(\dot{x}^2 + \dot{y}^2) - \frac{1}{2}k(x^2 + y^2)$.</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>Equations: $m\ddot{x} = -kx$ and $m\ddot{y} = -ky$. Both $x$ and $y$ undergo independent simple harmonic motion with the same frequency.</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.4 *</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>**Statement:** Mass $m$ moving in a frictionless plane that slopes at angle $\alpha$. Write down the Lagrangian in terms of $x$ (horizontally across slope) and $y$ (down slope).</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>$\mathcal{L} = \frac{1}{2}m(\dot{x}^2 + \dot{y}^2) + mgy\sin\alpha$.</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>Equations: $m\ddot{x} = 0$ and $m\ddot{y} = mg\sin\alpha$.</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.6 &amp; 7.7 *</span></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>**Statement:** Show that the $3N$ Newtonian equations are exactly equivalent to the $3N$ Lagrange equations in Cartesian coordinates, establishing Hamilton's principle.</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="fu">## Section 7.3: Constrained Systems in General</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Section 7.1: Lagrange's Equations for Unconstrained Motion</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.1 *</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>**Statement:** Write down the Lagrangian for a projectile (subject to no air resistance) in terms of its Cartesian coordinates $(x, y, z)$, with $z$ measured vertically upward. Find the three Lagrange equations and show that they are exactly what you would expect.  </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>*(See [Section 7.1 Notes](../notes/taylor-chapter-7-lagrange-equations.qmd#71-lagranges-equations-for-unconstrained-motion))*</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>$\mathcal{L} = \frac{1}{2}m(\dot{x}^2 + \dot{y}^2 + \dot{z}^2) - mgz$.</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>The equations are:</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$x$: $\frac{d}{dt}(m\dot{x}) = 0 \implies \ddot{x} = 0$</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$y$: $\frac{d}{dt}(m\dot{y}) = 0 \implies \ddot{y} = 0$</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$z$: $\frac{d}{dt}(m\dot{z}) = -mg \implies \ddot{z} = -g$</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>These are the standard equations of motion for a projectile.</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.2 *</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>**Statement:** Write down the Lagrangian for a one-dimensional particle moving along the $x$ axis and subject to a force $F = -kx$ (with $k$ positive). Find the Lagrange equation of motion and solve it.</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>$\mathcal{L} = \frac{1}{2}m\dot{x}^2 - \frac{1}{2}kx^2$.</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>Equation: $-kx = m\ddot{x} \implies \ddot{x} + \omega^2 x = 0$. Solution is simple harmonic motion $x(t) = A\cos(\omega t - \delta)$.</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.3 *</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>**Statement:** Consider a mass $m$ moving in two dimensions with potential energy $U(x, y) = \frac{1}{2}kr^2$, where $r^2 = x^2 + y^2$. Write down the Lagrangian and find the two Lagrange equations of motion. Describe their solutions.</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>$\mathcal{L} = \frac{1}{2}m(\dot{x}^2 + \dot{y}^2) - \frac{1}{2}k(x^2 + y^2)$.</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>Equations: $m\ddot{x} = -kx$ and $m\ddot{y} = -ky$. Both $x$ and $y$ undergo independent simple harmonic motion with the same frequency.</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.4 *</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>**Statement:** Mass $m$ moving in a frictionless plane that slopes at angle $\alpha$. Write down the Lagrangian in terms of $x$ (horizontally across slope) and $y$ (down slope).</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>$\mathcal{L} = \frac{1}{2}m(\dot{x}^2 + \dot{y}^2) + mgy\sin\alpha$.</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>Equations: $m\ddot{x} = 0$ and $m\ddot{y} = mg\sin\alpha$.</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.6 &amp; 7.7 *</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>**Statement:** Show that the $3N$ Newtonian equations are exactly equivalent to the $3N$ Lagrange equations in Cartesian coordinates, establishing Hamilton's principle.</span>
 <span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.9 *</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>**Statement:** Bead threaded on a rigid circular hoop of radius $R$ in the $xy$ plane. Use the angle $\phi$. Write equations giving $(x, y)$ in terms of $\phi$.  </span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>*(See [Section 7.3 Notes](../notes/taylor-chapter-7-lagrange-equations.qmd#73-constrained-systems-in-general))*</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>$x = R\cos\phi, \quad y = R\sin\phi$. Generalized coordinate is just $\phi$.</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.10 *</span></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>**Statement:** Particle on the surface of a circular cone, axis on $z$, half-angle $\alpha$. </span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>Using cylindrical $( \rho, \phi, z )$: $z = \rho \cot \alpha$.</span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>The coordinates are $(\rho, \phi)$. $x = \rho\cos\phi$, $y = \rho\sin\phi$, $z = \rho\cot\alpha$.</span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="fu">## Section 7.4: Proof of Lagrange's Equations with Constraints</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="fu">## Section 7.3: Constrained Systems in General</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.9 *</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>**Statement:** Bead threaded on a rigid circular hoop of radius $R$ in the $xy$ plane. Use the angle $\phi$. Write equations giving $(x, y)$ in terms of $\phi$.  </span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>*(See [Section 7.3 Notes](../notes/taylor-chapter-7-lagrange-equations.qmd#73-constrained-systems-in-general))*</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>$x = R\cos\phi, \quad y = R\sin\phi$. Generalized coordinate is just $\phi$.</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.10 *</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>**Statement:** Particle on the surface of a circular cone, axis on $z$, half-angle $\alpha$. </span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>Using cylindrical $( \rho, \phi, z )$: $z = \rho \cot \alpha$.</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>The coordinates are $(\rho, \phi)$. $x = \rho\cos\phi$, $y = \rho\sin\phi$, $z = \rho\cot\alpha$.</span>
 <span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.12 * (Friction)</span></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>**Statement:** Modify Lagrange's equations to include a nonconservative force $F_{\text{fric}}$.  </span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>*(See [Section 7.4 Notes](../notes/taylor-chapter-7-lagrange-equations.qmd#74-proof-of-lagranges-equations-with-constraints))*</span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>$\frac{\partial \mathcal{L}}{\partial x} + F_{\text{fric}} = \frac{d}{dt} \frac{\partial \mathcal{L}}{\partial \dot{x}}$.</span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.13 **</span></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>**Statement:** Prove Lagrange's equations for two particles subject to various constraints, using the property that constraint forces do zero net work.</span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="fu">## Section 7.5: Examples of Lagrange's Equations</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="fu">## Section 7.4: Proof of Lagrange's Equations with Constraints</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.12 * (Friction)</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>**Statement:** Modify Lagrange's equations to include a nonconservative force $F_{\text{fric}}$.  </span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>*(See [Section 7.4 Notes](../notes/taylor-chapter-7-lagrange-equations.qmd#74-proof-of-lagranges-equations-with-constraints))*</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>$\frac{\partial \mathcal{L}}{\partial x} + F_{\text{fric}} = \frac{d}{dt} \frac{\partial \mathcal{L}}{\partial \dot{x}}$.</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.13 **</span></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>**Statement:** Prove Lagrange's equations for two particles subject to various constraints, using the property that constraint forces do zero net work.</span>
 <span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.14 * (Yoyo)</span></span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>**Statement:** Massless string wrapped around a uniform cylinder (mass $m$, radius $R$). Find acceleration.</span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>$\mathcal{L} = \frac{1}{2}m\dot{x}^2 + \frac{1}{2}(\frac{1}{2}mR^2)\omega^2 - (-mgx)$. Since $x = R\phi$, $\omega = \dot{x}/R$.</span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>$\mathcal{L} = \frac{3}{4}m\dot{x}^2 + mgx$.</span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>Equation: $mg = \frac{3}{2}m\ddot{x} \implies \ddot{x} = \frac{2}{3}g$.</span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.15 * &amp; 7.16 * &amp; 7.17 *</span></span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>*(Standard problems: Mass on table attached to hanging mass, Cylinder rolling down incline, Atwood machine with massive pulley).*</span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.21 *</span></span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>**Statement:** Rod forced to rotate in horizontal plane at constant $\omega$. Bead on rod.</span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>$\mathcal{L} = \frac{1}{2}m(\dot{r}^2 + r^2\omega^2)$. Equation: $m\ddot{r} = mr\omega^2$. Shows centrifugal force accelerating the bead exponentially.</span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.28 &amp; 7.29 **</span></span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>*(Problems verifying stable/unstable equilibria and normal mode frequencies for rotating systems and pendulums attached to wheels.)*</span>
-<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a><span class="fu">## Section 7.8: More About Conservation Laws</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="fu">## Section 7.5: Examples of Lagrange's Equations</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.14 * (Yoyo)</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>**Statement:** Massless string wrapped around a uniform cylinder (mass $m$, radius $R$). Find acceleration.</span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>$\mathcal{L} = \frac{1}{2}m\dot{x}^2 + \frac{1}{2}(\frac{1}{2}mR^2)\omega^2 - (-mgx)$. Since $x = R\phi$, $\omega = \dot{x}/R$.</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>$\mathcal{L} = \frac{3}{4}m\dot{x}^2 + mgx$.</span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>Equation: $mg = \frac{3}{2}m\ddot{x} \implies \ddot{x} = \frac{2}{3}g$.</span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.15 * &amp; 7.16 * &amp; 7.17 *</span></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>*(Standard problems: Mass on table attached to hanging mass, Cylinder rolling down incline, Atwood machine with massive pulley).*</span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.21 *</span></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>**Statement:** Rod forced to rotate in horizontal plane at constant $\omega$. Bead on rod.</span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>$\mathcal{L} = \frac{1}{2}m(\dot{r}^2 + r^2\omega^2)$. Equation: $m\ddot{r} = mr\omega^2$. Shows centrifugal force accelerating the bead exponentially.</span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.28 &amp; 7.29 **</span></span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>*(Problems verifying stable/unstable equilibria and normal mode frequencies for rotating systems and pendulums attached to wheels.)*</span>
 <span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.46 ** (Noether's Theorem for Rotations)</span></span>
-<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>**Statement:** Prove that rotational invariance of $\mathcal{L}$ implies conservation of total angular momentum.  </span>
-<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>*(See [Section 7.8 Notes](../notes/taylor-chapter-7-lagrange-equations.qmd#78-conservation-laws-and-noethers-theorem))*</span>
-<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
-<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>Rotating by $\epsilon$ around the $z$-axis changes coordinates. If $\delta \mathcal{L} = 0$, the sum of $\frac{\partial \mathcal{L}}{\partial \phi_\alpha} = 0 \implies \sum \dot{p}_{\phi_\alpha} = 0 \implies L_z$ is conserved.</span>
-<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a><span class="fu">## Section 7.9: Lagrange's Equations for Magnetic Forces</span></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a><span class="fu">## Section 7.8: More About Conservation Laws</span></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.46 ** (Noether's Theorem for Rotations)</span></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>**Statement:** Prove that rotational invariance of $\mathcal{L}$ implies conservation of total angular momentum.  </span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>*(See [Section 7.8 Notes](../notes/taylor-chapter-7-lagrange-equations.qmd#78-conservation-laws-and-noethers-theorem))*</span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>Rotating by $\epsilon$ around the $z$-axis changes coordinates. If $\delta \mathcal{L} = 0$, the sum of $\frac{\partial \mathcal{L}}{\partial \phi_\alpha} = 0 \implies \sum \dot{p}_{\phi_\alpha} = 0 \implies L_z$ is conserved.</span>
 <span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.49 **</span></span>
-<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>**Statement:** Charge $q$ in uniform magnetic field $B \hat{z}$. Prove $B = \nabla \times A$ and find Lagrange equations.  </span>
-<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>*(See [Section 7.9 Notes](../notes/taylor-chapter-7-lagrange-equations.qmd#79-lagranges-equations-for-magnetic-forces))*</span>
-<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
-<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a>$A = \frac{1}{2} B \times r$. The Lagrangian involves the vector potential, leading directly to the Lorentz force equation.</span>
-<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a><span class="fu">## Section 7.10: Lagrange Multipliers and Constraint Forces</span></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="fu">## Section 7.9: Lagrange's Equations for Magnetic Forces</span></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.49 **</span></span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>**Statement:** Charge $q$ in uniform magnetic field $B \hat{z}$. Prove $B = \nabla \times A$ and find Lagrange equations.  </span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a>*(See [Section 7.9 Notes](../notes/taylor-chapter-7-lagrange-equations.qmd#79-lagranges-equations-for-magnetic-forces))*</span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a>$A = \frac{1}{2} B \times r$. The Lagrangian involves the vector potential, leading directly to the Lorentz force equation.</span>
 <span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.50 * &amp; 7.51 *</span></span>
-<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a>**Statement:** Atwood machine and pendulum solved using Lagrange multipliers $\lambda$ to find string tensions.  </span>
-<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a>*(See [Section 7.10 Notes](../notes/taylor-chapter-7-lagrange-equations.qmd#710-lagrange-multipliers-and-constraint-forces))*</span>
-<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
-<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a>For the pendulum, constraint $f(x, y) = \sqrt{x^2 + y^2} = l$. The multiplier $\lambda$ represents the constraint force (tension), yielding equations that simultaneously solve the motion and the dynamic tension in the rod.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a><span class="fu">## Section 7.10: Lagrange Multipliers and Constraint Forces</span></span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 7.50 * &amp; 7.51 *</span></span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a>**Statement:** Atwood machine and pendulum solved using Lagrange multipliers $\lambda$ to find string tensions.  </span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a>*(See [Section 7.10 Notes](../notes/taylor-chapter-7-lagrange-equations.qmd#710-lagrange-multipliers-and-constraint-forces))*</span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a>**Solution:**</span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a>For the pendulum, constraint $f(x, y) = \sqrt{x^2 + y^2} = l$. The multiplier $\lambda$ represents the constraint force (tension), yielding equations that simultaneously solve the motion and the dynamic tension in the rod.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Detailed step-by-step solutions to PHYC54 homework problem sets.">
 
 <title>Problem Sets &amp; Solutions – PHYC54H3: Classical Mechanics</title>
 <style>
@@ -121,9 +120,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-subtitle','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-date-modified','listing-title','listing-subtitle','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description"],
+      searchColumns: ["listing-title","listing-date","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -196,10 +195,6 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html"> 
-<span class="menu-text">Syllabus</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../notes/index.html"> 
 <span class="menu-text">Lecture Notes</span></a>
   </li>  
@@ -209,11 +204,7 @@ window.Quarto = {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../simulations/index.html"> 
-<span class="menu-text">Simulations &amp; Code</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../manim/index.html"> 
-<span class="menu-text">Manim Videos</span></a>
+<span class="menu-text">Code &amp; Simulations</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../reference/index.html"> 
@@ -230,25 +221,21 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    </div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="QmlmdXJjYXRpb25z">Bifurcations <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2xhc3NpY2FsLW1lY2hhbmljcw==">classical-mechanics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="TGFncmFuZ2lhbiUyME1lY2hhbmljcw==">Lagrangian Mechanics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWF0aA==">math <span class="quarto-category-count">(2)</span></div><div class="category" data-category="UGhhc2UlMjBQb3J0cmFpdA==">Phase Portrait <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c29sdXRpb25z">solutions <span class="quarto-category-count">(2)</span></div><div class="category" data-category="dGF5bG9y">taylor <span class="quarto-category-count">(2)</span></div></div></div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Problem Sets &amp; Solutions</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
-</div>
-
-<div>
-  <div class="description">
-    Detailed step-by-step solutions to PHYC54 homework problem sets.
-  </div>
+<p class="subtitle lead">Comprehensive step-by-step solutions to textbook exercises, tutorial problems, and exam review.</p>
 </div>
 
 
-<div class="quarto-title-meta column-page">
+
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -260,6 +247,7 @@ window.Quarto = {
 </header>
 
 
+<p>This section features comprehensive problem statements, analytical derivations, and computational checks for the homework and textbook exercises from John R. Taylor’s <em>Classical Mechanics</em>. Use the search and category filters below to locate solutions by chapter or topic.</p>
 
 
 
@@ -268,13 +256,36 @@ window.Quarto = {
 
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-title" data-direction="asc">
+        Title
+      </option>
+      <option value="listing-date-sort" data-direction="asc">
+        Created - Oldest
+      </option>
+      <option value="listing-date-sort" data-direction="desc">
+        Created - Newest
+      </option>
+      <option value="listing-date-modified-sort" data-direction="asc">
+        Modified - Oldest
+      </option>
+      <option value="listing-date-modified-sort" data-direction="desc">
+        Modified - Newest
+      </option>
+    </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="TGFncmFuZ2lhbiUyME1lY2hhbmljcyUyQ0JpZnVyY2F0aW9ucyUyQ1BoYXNlJTIwUG9ydHJhaXQ=" data-listing-date-sort="1788825600000" data-listing-file-modified-sort="1788897743501" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="439">
-<div class="thumbnail"><a href="../solutions/problem-set-1.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
+<div class="quarto-post image-right" data-index="0" data-categories="TGFncmFuZ2lhbiUyME1lY2hhbmljcyUyQ0JpZnVyY2F0aW9ucyUyQ1BoYXNlJTIwUG9ydHJhaXQ=" data-listing-date-sort="1788825600000" data-listing-file-modified-sort="1788898313988" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="439">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../solutions/problem-set-1.html" class="no-external">Problem Set 1: Bead on a Rotating Wire Hoop</a>
@@ -282,70 +293,88 @@ window.Quarto = {
 <div class="listing-subtitle">
 <a href="../solutions/problem-set-1.html" class="no-external">Analytical solution using Lagrangian mechanics and phase portrait stability analysis.</a>
 </div>
-<div class="delink listing-description"><a href="../solutions/problem-set-1.html" class="no-external">
-A bead of mass <span class="math inline">\(m\)</span> slides without friction on a circular wire hoop of radius <span class="math inline">\(R\)</span>. The hoop rotates with a constant angular velocity <span class="math inline">\(\omega\)</span> about its vertical diameter.
-</a></div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TGFncmFuZ2lhbiUyME1lY2hhbmljcw=='); return false;">Lagrangian Mechanics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QmlmdXJjYXRpb25z'); return false;">Bifurcations</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('UGhhc2UlMjBQb3J0cmFpdA=='); return false;">Phase Portrait</div>
+
+</div>
 </div>
 <div class="metadata">
 <a href="../solutions/problem-set-1.html" class="no-external">
 <div class="listing-date">
-Sep 8, 2026
+2026-09-08
+</div>
+<div class="listing-reading-time">3 min</div>
+<div class="metadata-value listing-date-modified">
+Invalid Date
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="Y2xhc3NpY2FsLW1lY2hhbmljcyUyQ21hdGglMkN0YXlsb3IlMkNzb2x1dGlvbnM=" data-listing-date-sort="1788825600000" data-listing-file-modified-sort="1788897743501" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="902">
-<div class="thumbnail"><a href="../solutions/taylor-chapter-6-problems.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
+<div class="quarto-post image-right" data-index="1" data-categories="Y2xhc3NpY2FsLW1lY2hhbmljcyUyQ21hdGglMkN0YXlsb3IlMkNzb2x1dGlvbnM=" data-listing-date-sort="1788825600000" data-listing-file-modified-sort="1788898313988" data-listing-date-modified-sort="1788898313000" data-listing-reading-time-sort="5" data-listing-word-count-sort="902">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../solutions/taylor-chapter-6-problems.html" class="no-external">Taylor Chapter 6 Problems: Calculus of Variations</a>
 </h3>
 <div class="listing-subtitle">
-<a href="../solutions/taylor-chapter-6-problems.html" class="no-external"></a>
+<a href="../solutions/taylor-chapter-6-problems.html" class="no-external">Step-by-step analytical solutions to Chapter 6 exercises from John R. Taylor’s Classical Mechanics.</a>
 </div>
-<div class="delink listing-description"><a href="../solutions/taylor-chapter-6-problems.html" class="no-external">
-<em>For a complete derivation of the theoretical concepts used to solve these problems, refer to the Chapter 6 Lecture Notes.</em>
-</a></div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y2xhc3NpY2FsLW1lY2hhbmljcw=='); return false;">classical-mechanics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWF0aA=='); return false;">math</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dGF5bG9y'); return false;">taylor</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('c29sdXRpb25z'); return false;">solutions</div>
+
+</div>
 </div>
 <div class="metadata">
 <a href="../solutions/taylor-chapter-6-problems.html" class="no-external">
 <div class="listing-date">
-Sep 8, 2026
+2026-09-08
 </div>
-<div class="listing-author">
-Igor
+<div class="listing-reading-time">5 min</div>
+<div class="metadata-value listing-date-modified">
+2026-09-08
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="Y2xhc3NpY2FsLW1lY2hhbmljcyUyQ21hdGglMkN0YXlsb3IlMkNzb2x1dGlvbnM=" data-listing-date-sort="1788825600000" data-listing-file-modified-sort="1788897743501" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="771">
-<div class="thumbnail"><a href="../solutions/taylor-chapter-7-problems.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
+<div class="quarto-post image-right" data-index="2" data-categories="Y2xhc3NpY2FsLW1lY2hhbmljcyUyQ21hdGglMkN0YXlsb3IlMkNzb2x1dGlvbnM=" data-listing-date-sort="1788825600000" data-listing-file-modified-sort="1788898313988" data-listing-date-modified-sort="1788898313000" data-listing-reading-time-sort="4" data-listing-word-count-sort="771">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../solutions/taylor-chapter-7-problems.html" class="no-external">Taylor Chapter 7 Problems: Lagrange’s Equations</a>
 </h3>
 <div class="listing-subtitle">
-<a href="../solutions/taylor-chapter-7-problems.html" class="no-external"></a>
+<a href="../solutions/taylor-chapter-7-problems.html" class="no-external">Step-by-step analytical solutions to Chapter 7 exercises from John R. Taylor’s Classical Mechanics.</a>
 </div>
-<div class="delink listing-description"><a href="../solutions/taylor-chapter-7-problems.html" class="no-external">
-This article contains problem statements and solution outlines for Chapter 7 of John R. Taylor’s <em>Classical Mechanics</em>. For a theoretical overview, see the Chapter 7 Lecture…
-</a></div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y2xhc3NpY2FsLW1lY2hhbmljcw=='); return false;">classical-mechanics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWF0aA=='); return false;">math</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dGF5bG9y'); return false;">taylor</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('c29sdXRpb25z'); return false;">solutions</div>
+
+</div>
 </div>
 <div class="metadata">
 <a href="../solutions/taylor-chapter-7-problems.html" class="no-external">
 <div class="listing-date">
-Sep 8, 2026
+2026-09-08
 </div>
-<div class="listing-author">
-Igor
+<div class="listing-reading-time">4 min</div>
+<div class="metadata-value listing-date-modified">
+2026-09-08
 </div>
 </a>
 </div>
@@ -806,13 +835,26 @@ Igor
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Problem Sets &amp; Solutions"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Detailed step-by-step solutions to PHYC54 homework problem sets."</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Comprehensive step-by-step solutions to textbook exercises, tutorial problems, and exam review."</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">listing:</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">  contents: "*.qmd"</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  sort: "date desc"</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">  type: default</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="an">page-layout:</span><span class="co"> full</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  sort:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    - "date desc"</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    - "title asc"</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  type: default</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">  categories: true</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">  sort-ui: [title, date, date-modified]</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">  filter-ui: [title, date, categories]</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">  fields: [date, date-modified, title, subtitle, categories, reading-time]</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">  field-display-names:</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">    date: "Created"</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">    date-modified: "Modified"</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">    reading-time: "Read Time"</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">  page-size: 15</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="an">page-layout:</span><span class="co"> full</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>This section features comprehensive problem statements, analytical derivations, and computational checks for the homework and textbook exercises from John R. Taylor's *Classical Mechanics*. Use the search and category filters below to locate solutions by chapter or topic.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

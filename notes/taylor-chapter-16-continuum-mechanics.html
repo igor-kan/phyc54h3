@@ -166,10 +166,6 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html"> 
-<span class="menu-text">Syllabus</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../notes/index.html"> 
 <span class="menu-text">Lecture Notes</span></a>
   </li>  
@@ -179,11 +175,7 @@ window.Quarto = {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../simulations/index.html"> 
-<span class="menu-text">Simulations &amp; Code</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../manim/index.html"> 
-<span class="menu-text">Manim Videos</span></a>
+<span class="menu-text">Code &amp; Simulations</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../reference/index.html"> 
@@ -200,8 +192,17 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview-syllabus-context" id="toc-overview-syllabus-context" class="nav-link active" data-scroll-target="#overview-syllabus-context">Overview &amp; Syllabus Context</a>
+  <ul class="collapse">
+  <li><a href="#core-topics" id="toc-core-topics" class="nav-link" data-scroll-target="#core-topics">Core Topics</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -209,8 +210,11 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Taylor Chapter 16: Continuum Mechanics</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<p class="subtitle lead">Continuous systems, wave equation for a stretched string, Lagrangian density, stress-energy, and field equations.</p>
   <div class="quarto-categories">
     <div class="quarto-category">classical-mechanics</div>
+    <div class="quarto-category">continuum-mechanics</div>
+    <div class="quarto-category">field-theory</div>
     <div class="quarto-category">notes</div>
   </div>
   </div>
@@ -229,10 +233,16 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 1, 2026</p>
+      <p class="date">2026-12-01</p>
     </div>
   </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">2026-09-08</p>
+    </div>
+  </div>
     
   </div>
   
@@ -241,12 +251,26 @@ window.Quarto = {
 </header>
 
 
-<p><em>(Content for this chapter to be written in Week 12 according to the syllabus.)</em></p>
+<section id="overview-syllabus-context" class="level1">
+<h1>Overview &amp; Syllabus Context</h1>
+<p>According to the <a href="../notes/syllabus.html">PHY C54 Syllabus</a>, Continuum Mechanics is the capstone topic of the course in <strong>Week 12</strong> (Taylor Ch 16: 1–4).</p>
+<section id="core-topics" class="level2">
+<h2 class="anchored" data-anchor-id="core-topics">Core Topics</h2>
+<ol type="1">
+<li><strong>Transverse Motion of a Taut String:</strong> Continuous limit of a 1D lattice of coupled oscillators.</li>
+<li><strong>The 1D Classical Wave Equation:</strong> <span class="math display">\[ \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}, \quad c = \sqrt{\frac{T}{\mu}} \]</span></li>
+<li><strong>Lagrangian Density (<span class="math inline">\(\mathcal{L}_{\text{density}}\)</span>):</strong> Transition from discrete generalized coordinates <span class="math inline">\(q_i(t)\)</span> to continuous field configurations <span class="math inline">\(\phi(x, t)\)</span>: <span class="math display">\[ S = \int dt \int dx \, \mathcal{L}\left(\phi, \frac{\partial \phi}{\partial x}, \frac{\partial \phi}{\partial t}, x, t\right) \]</span></li>
+<li><strong>Euler-Lagrange Field Equations:</strong> <span class="math display">\[ \frac{\partial \mathcal{L}}{\partial \phi} - \frac{\partial}{\partial x}\left( \frac{\partial \mathcal{L}}{\partial (\partial \phi / \partial x)} \right) - \frac{\partial}{\partial t}\left( \frac{\partial \mathcal{L}}{\partial (\partial \phi / \partial t)} \right) = 0 \]</span></li>
+<li><strong>Bridge to Classical Field Theory:</strong> Stress-energy-momentum conservation in continuum mechanics and the foundations of modern theoretical physics.</li>
+</ol>
+<p><em>(Detailed analytical lecture derivations and worked examples will be added here during Week 12).</em></p>
 
 
 
 <!-- -->
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -702,13 +726,32 @@ window.Quarto = {
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Taylor Chapter 16: Continuum Mechanics"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Igor"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-12-01"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [classical-mechanics, notes]</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>*(Content for this chapter to be written in Week 12 according to the syllabus.)*</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Continuous systems, wave equation for a stretched string, Lagrangian density, stress-energy, and field equations."</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Igor"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-12-01"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">date-modified:</span><span class="co"> last-modified</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [classical-mechanics, continuum-mechanics, field-theory, notes]</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">    math: true</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu"># Overview &amp; Syllabus Context</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>According to the <span class="co">[</span><span class="ot">PHY C54 Syllabus</span><span class="co">](syllabus.qmd)</span>, Continuum Mechanics is the capstone topic of the course in **Week 12** (Taylor Ch 16: 1–4).</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Core Topics</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Transverse Motion of a Taut String:** Continuous limit of a 1D lattice of coupled oscillators.</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**The 1D Classical Wave Equation:**</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>   $$ \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}, \quad c = \sqrt{\frac{T}{\mu}} $$</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Lagrangian Density ($\mathcal{L}_{\text{density}}$):** Transition from discrete generalized coordinates $q_i(t)$ to continuous field configurations $\phi(x, t)$:</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>   $$ S = \int dt \int dx \, \mathcal{L}\left(\phi, \frac{\partial \phi}{\partial x}, \frac{\partial \phi}{\partial t}, x, t\right) $$</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Euler-Lagrange Field Equations:**</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>   $$ \frac{\partial \mathcal{L}}{\partial \phi} - \frac{\partial}{\partial x}\left( \frac{\partial \mathcal{L}}{\partial (\partial \phi / \partial x)} \right) - \frac{\partial}{\partial t}\left( \frac{\partial \mathcal{L}}{\partial (\partial \phi / \partial t)} \right) = 0 $$</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>**Bridge to Classical Field Theory:** Stress-energy-momentum conservation in continuum mechanics and the foundations of modern theoretical physics.</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>*(Detailed analytical lecture derivations and worked examples will be added here during Week 12).*</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
