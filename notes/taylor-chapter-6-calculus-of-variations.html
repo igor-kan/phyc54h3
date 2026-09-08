@@ -200,18 +200,19 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#two-examples" id="toc-two-examples" class="nav-link" data-scroll-target="#two-examples">6.1 Two Examples</a>
   <ul class="collapse">
-  <li><a href="#example-1-the-shortest-path-between-two-points" id="toc-example-1-the-shortest-path-between-two-points" class="nav-link" data-scroll-target="#example-1-the-shortest-path-between-two-points">Example 1: The Shortest Path Between Two Points</a></li>
-  <li><a href="#example-2-the-brachistochrone-problem" id="toc-example-2-the-brachistochrone-problem" class="nav-link" data-scroll-target="#example-2-the-brachistochrone-problem">Example 2: The Brachistochrone Problem</a></li>
+  <li><a href="#the-shortest-path-between-two-points" id="toc-the-shortest-path-between-two-points" class="nav-link" data-scroll-target="#the-shortest-path-between-two-points">The Shortest Path between Two Points</a></li>
+  <li><a href="#fermats-principle" id="toc-fermats-principle" class="nav-link" data-scroll-target="#fermats-principle">Fermat’s Principle</a></li>
   </ul></li>
   <li><a href="#the-euler-lagrange-equation" id="toc-the-euler-lagrange-equation" class="nav-link" data-scroll-target="#the-euler-lagrange-equation">6.2 The Euler-Lagrange Equation</a>
   <ul class="collapse">
   <li><a href="#derivation" id="toc-derivation" class="nav-link" data-scroll-target="#derivation">Derivation</a></li>
-  <li><a href="#stationary-action-vs.-least-action-minimum-maximum-or-saddle-point" id="toc-stationary-action-vs.-least-action-minimum-maximum-or-saddle-point" class="nav-link" data-scroll-target="#stationary-action-vs.-least-action-minimum-maximum-or-saddle-point">⚠️ Stationary Action vs.&nbsp;“Least” Action: Minimum, Maximum, or Saddle Point?</a></li>
   </ul></li>
   <li><a href="#applications-of-the-euler-lagrange-equation" id="toc-applications-of-the-euler-lagrange-equation" class="nav-link" data-scroll-target="#applications-of-the-euler-lagrange-equation">6.3 Applications of the Euler-Lagrange Equation</a>
   <ul class="collapse">
-  <li><a href="#shortest-path-revisited" id="toc-shortest-path-revisited" class="nav-link" data-scroll-target="#shortest-path-revisited">1. Shortest Path Revisited</a></li>
-  <li><a href="#the-brachistochrone-solution" id="toc-the-brachistochrone-solution" class="nav-link" data-scroll-target="#the-brachistochrone-solution">2. The Brachistochrone Solution</a></li>
+  <li><a href="#example-6.1-shortest-path-between-two-points" id="toc-example-6.1-shortest-path-between-two-points" class="nav-link" data-scroll-target="#example-6.1-shortest-path-between-two-points">Example 6.1: Shortest Path between Two Points</a></li>
+  <li><a href="#a-note-on-variables" id="toc-a-note-on-variables" class="nav-link" data-scroll-target="#a-note-on-variables">A Note on Variables</a></li>
+  <li><a href="#example-6.2-the-brachistochrone" id="toc-example-6.2-the-brachistochrone" class="nav-link" data-scroll-target="#example-6.2-the-brachistochrone">Example 6.2: The Brachistochrone</a></li>
+  <li><a href="#maximum-and-minimum-vs.-stationary" id="toc-maximum-and-minimum-vs.-stationary" class="nav-link" data-scroll-target="#maximum-and-minimum-vs.-stationary">Maximum and Minimum vs.&nbsp;Stationary</a></li>
   </ul></li>
   <li><a href="#more-than-two-variables" id="toc-more-than-two-variables" class="nav-link" data-scroll-target="#more-than-two-variables">6.4 More Than Two Variables</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
@@ -267,20 +268,17 @@ window.Quarto = {
 <p>To transition to these generalized coordinates, Lagrangian mechanics provides a powerful framework built entirely on the calculus of variations and Hamilton’s Principle of Least Action.</p>
 <section id="two-examples" class="level2">
 <h2 class="anchored" data-anchor-id="two-examples">6.1 Two Examples</h2>
-<section id="example-1-the-shortest-path-between-two-points" class="level3">
-<h3 class="anchored" data-anchor-id="example-1-the-shortest-path-between-two-points">Example 1: The Shortest Path Between Two Points</h3>
+<p>The calculus of variations involves finding the minimum or maximum of a quantity that is expressible as an integral. To see how this can arise, let’s start with two simple, concrete examples.</p>
+<section id="the-shortest-path-between-two-points" class="level3">
+<h3 class="anchored" data-anchor-id="the-shortest-path-between-two-points">The Shortest Path between Two Points</h3>
 <p>What is the shortest path between two points <span class="math inline">\((x_1, y_1)\)</span> and <span class="math inline">\((x_2, y_2)\)</span> in a plane? Let the path be given by a function <span class="math inline">\(y = y(x)\)</span>. An infinitesimal element of length along the path is <span class="math inline">\(ds = \sqrt{dx^2 + dy^2} = \sqrt{1 + (y')^2} \, dx\)</span>, where <span class="math inline">\(y' = dy/dx\)</span>.</p>
 <p>The total length of the path is the integral: <span class="math display">\[ L = \int_{x_1}^{x_2} \sqrt{1 + [y'(x)]^2} \, dx \]</span></p>
 <p>The goal is to find the function <span class="math inline">\(y(x)\)</span> that minimizes <span class="math inline">\(L\)</span>.</p>
 <p><em>(See <a href="../solutions/taylor-chapter-6-problems.html#problem-61">Problem 6.1</a>)</em></p>
 </section>
-<section id="example-2-the-brachistochrone-problem" class="level3">
-<h3 class="anchored" data-anchor-id="example-2-the-brachistochrone-problem">Example 2: The Brachistochrone Problem</h3>
-<p>First posed by Johann Bernoulli in 1696. Given two points 1 and 2, with 1 higher than 2, what is the shape of a frictionless wire connecting them such that a bead released from rest at 1 slides to 2 in the minimum possible time?</p>
-<p>Let point 1 be the origin <span class="math inline">\((0,0)\)</span>. We take the <span class="math inline">\(y\)</span>-axis pointing <em>downward</em>. The speed of the bead is <span class="math inline">\(v = ds/dt\)</span>. By conservation of energy, <span class="math inline">\(E = T + U\)</span>. If released from rest at <span class="math inline">\((0,0)\)</span>, <span class="math inline">\(E = 0\)</span>. <span class="math display">\[ \frac{1}{2}mv^2 - mgy = 0 \implies v = \sqrt{2gy} \]</span></p>
-<p>The time to travel an infinitesimal distance <span class="math inline">\(ds\)</span> is <span class="math inline">\(dt = ds/v\)</span>. The total time is: <span class="math display">\[ t = \int_{1}^{2} \frac{ds}{v} = \int_{x_1}^{x_2} \frac{\sqrt{1 + (y')^2}}{\sqrt{2gy}} \, dx \]</span></p>
-<p>We need to find the function <span class="math inline">\(y(x)\)</span> that minimizes this time integral <span class="math inline">\(t\)</span>.</p>
-<p><em>(See <a href="../solutions/taylor-chapter-6-problems.html#problem-62">Problem 6.2</a>)</em></p>
+<section id="fermats-principle" class="level3">
+<h3 class="anchored" data-anchor-id="fermats-principle">Fermat’s Principle</h3>
+<p>A similar problem is to find the path that light will follow between two points. Fermat’s principle states that the path taken by light is the one for which the time of travel is minimum (or more precisely, stationary). The time to travel a short distance <span class="math inline">\(ds\)</span> is <span class="math inline">\(ds/v\)</span>, where <span class="math inline">\(v = c/n(x,y)\)</span> is the speed of light in a medium with refractive index <span class="math inline">\(n(x,y)\)</span>. The total time is: <span class="math display">\[ t = \int_1^2 \frac{ds}{v} = \frac{1}{c} \int_{x_1}^{x_2} n(x, y) \sqrt{1 + (y')^2} \, dx \]</span> As with the shortest path, we seek a function <span class="math inline">\(y(x)\)</span> that makes this integral stationary. In elementary calculus, a point where <span class="math inline">\(df/dx = 0\)</span> can be a maximum, minimum, or neither. Similarly, in the calculus of variations, making an integral stationary means an infinitesimal variation of the path leaves the integral unchanged, though it doesn’t guarantee a strict minimum.</p>
 </section>
 </section>
 <section id="the-euler-lagrange-equation" class="level2">
@@ -299,61 +297,24 @@ window.Quarto = {
 <p><span class="math display">\[ \frac{\partial f}{\partial y} - \frac{d}{dx} \frac{\partial f}{\partial y'} = 0 \]</span></p>
 <p><em>(See <a href="../solutions/taylor-chapter-6-problems.html#problem-64">Problem 6.4</a>)</em></p>
 </section>
-<section id="stationary-action-vs.-least-action-minimum-maximum-or-saddle-point" class="level3">
-<h3 class="anchored" data-anchor-id="stationary-action-vs.-least-action-minimum-maximum-or-saddle-point">⚠️ Stationary Action vs.&nbsp;“Least” Action: Minimum, Maximum, or Saddle Point?</h3>
-<p>A common conceptual question in variational calculus and classical mechanics is: <strong>Does the physical trajectory minimize, maximize, or merely make the action stationary? And why is this distinction almost entirely ignored in classical mechanics?</strong></p>
-<section id="why-the-distinction-is-irrelevant-for-classical-mechanics" class="level4">
-<h4 class="anchored" data-anchor-id="why-the-distinction-is-irrelevant-for-classical-mechanics">1. Why the Distinction is Irrelevant for Classical Mechanics</h4>
-<p>Hamilton’s principle states that the true physical trajectory satisfies: <span class="math display">\[ \delta S = 0 \quad \text{where} \quad S[q] = \int_{t_1}^{t_2} L(q, \dot{q}, t) \, dt \]</span> The derivation of the Euler-Lagrange equations—and therefore Newton’s second law <span class="math inline">\(\mathbf{F} = m\mathbf{a}\)</span>—rests <strong>entirely and exclusively on the vanishing of the first variation</strong> (<span class="math inline">\(\delta S = 0\)</span>). * The dynamical equations of motion are <strong>local in time</strong> differential equations. * A particle propagating along a trajectory does not “anticipate” or “calculate” the global second variation <span class="math inline">\(\delta^2 S\)</span> across the whole time interval <span class="math inline">\([t_1, t_2]\)</span>. * Whether <span class="math inline">\(\delta^2 S &gt; 0\)</span> (local minimum), <span class="math inline">\(\delta^2 S &lt; 0\)</span> (local maximum), or <span class="math inline">\(\delta^2 S\)</span> is indefinite (saddle point) has <strong>zero impact</strong> on whether the path satisfies <span class="math inline">\(\frac{\partial L}{\partial q} - \frac{d}{dt}\frac{\partial L}{\partial \dot{q}} = 0\)</span>.</p>
-<p>Historically, Maupertuis and Euler dubbed this the <em>“Principle of Least Action”</em>, believing nature operates with divine economy. However, calling it “least” action is a <strong>historical misnomer</strong>. In fact, for sufficiently long trajectories, true physical paths are almost never global minima—they are <strong>saddle points</strong>. Hence, modern physics refers to it strictly as the <strong>Principle of Stationary Action</strong>.</p>
-<p><em>(Note: In static equilibrium, <span class="math inline">\(\delta V = 0\)</span> gives equilibrium, but <span class="math inline">\(\delta^2 V &gt; 0\)</span> is indeed required for stability. But for dynamical trajectories, stationarity is all that mechanics requires.)</em></p>
-<hr>
-</section>
-<section id="where-and-when-does-min-vs.-max-vs.-saddle-point-matter" class="level4">
-<h4 class="anchored" data-anchor-id="where-and-when-does-min-vs.-max-vs.-saddle-point-matter">2. Where and When Does Min vs.&nbsp;Max vs.&nbsp;Saddle Point Matter?</h4>
-<p>While ordinary classical trajectories require only <span class="math inline">\(\delta S = 0\)</span>, distinguishing the character of the stationary point becomes critical in several advanced domains:</p>
-<ol type="1">
-<li><p><strong>Gravitational Lensing &amp; Fermat’s Principle (Geometrical Optics):</strong> Light rays follow paths of stationary travel time (<span class="math inline">\(\delta t = 0\)</span>). When a massive galaxy or cluster gravitationally lenses a background quasar, the light travel-time surface <span class="math inline">\(t(\boldsymbol{\theta})\)</span> has multiple stationary points:</p>
-<ul>
-<li><strong>Local Minima:</strong> Arrive first, produce bright, positive-parity images (Type I).</li>
-<li><strong>Saddle Points:</strong> Arrive second, produce inverted, negative-parity images (Type II).</li>
-<li><strong>Local Maxima:</strong> Arrive last, located near the dense core of the lens galaxy, and are typically highly demagnified (Type III). The famous <em>Odd Number Theorem</em> in gravitational lensing relies directly on Morse theory characterizing these critical points!</li>
-</ul></li>
-<li><p><strong>Quantum Mechanics &amp; Feynman Path Integrals:</strong> In Feynman’s path integral formulation, the transition amplitude sums over <em>all</em> conceivable paths: <span class="math display">\[ K(x_b, t_b; x_a, t_a) = \int \mathcal{D}[x(t)] \, e^{i S[x] / \hbar} \]</span> In the classical limit <span class="math inline">\(\hbar \to 0\)</span>, paths with <span class="math inline">\(\delta S \ne 0\)</span> experience destructive phase interference and cancel out, leaving the stationary path <span class="math inline">\(\delta S = 0\)</span>. However, the <strong>quantum fluctuations</strong> around the classical path are governed by the second variation <span class="math inline">\(\delta^2 S\)</span>:</p>
-<ul>
-<li>The eigenvalues of the second-variation operator determine the <strong>Van Vleck determinant</strong> and phase shifts called the <strong>Maslov index</strong>. Every time a classical path passes through a focal/conjugate point, the quantum wavefunction acquires an extra phase shift of <span class="math inline">\(e^{-i\pi/2}\)</span>.</li>
-</ul></li>
-<li><p><strong>Quantum Tunneling &amp; Instanton Calculations:</strong> In Euclidean field theory (wick-rotated imaginary time <span class="math inline">\(\tau = it\)</span>), the Euclidean action <span class="math inline">\(S_E\)</span> governs false-vacuum decay and barrier penetration. A true physical “bounce” (instanton) that mediates tunneling must have <strong>precisely one negative eigenvalue</strong> in its second variation operator <span class="math inline">\(\delta^2 S_E\)</span>. That solitary negative mode is the mathematical signature of metastability!</p></li>
-<li><p><strong>Spacetime Geodesics in General Relativity:</strong> For timelike worldlines of freely falling test particles between two events, the action is proportional to the proper time: <span class="math inline">\(S = -mc \int d\tau\)</span>. Here, free fall actually <strong>maximizes</strong> proper time locally (the twin paradox: the unaccelerated twin ages the most).</p></li>
-</ol>
-<hr>
-</section>
-<section id="why-is-this-question-in-general-hard-to-answer" class="level4">
-<h4 class="anchored" data-anchor-id="why-is-this-question-in-general-hard-to-answer">3. Why Is This Question in General Hard to Answer?</h4>
-<p>In single-variable calculus, determining whether <span class="math inline">\(f'(x_0) = 0\)</span> is a min or max requires merely computing the single scalar second derivative <span class="math inline">\(f''(x_0)\)</span>.</p>
-<p>In the calculus of variations, however, the action <span class="math inline">\(S[y]\)</span> is a functional defined on an <strong>infinite-dimensional function space</strong> (the space of all differentiable paths <span class="math inline">\(\eta(x)\)</span> satisfying <span class="math inline">\(\eta(x_1) = \eta(x_2) = 0\)</span>). The second variation is a differential operator: <span class="math display">\[ \delta^2 S = \frac{1}{2} \int_{x_1}^{x_2} \left[ P(x) (\eta')^2 + Q(x) \eta^2 \right] dx \]</span> where <span class="math inline">\(P(x) = \frac{\partial^2 f}{\partial y'^2}\)</span> and <span class="math inline">\(Q(x) = \frac{\partial^2 f}{\partial y^2} - \frac{d}{dx}\left(\frac{\partial^2 f}{\partial y \partial y'}\right)\)</span>.</p>
-<p>Determining whether <span class="math inline">\(\delta^2 S &gt; 0\)</span> for <strong>all possible variations</strong> <span class="math inline">\(\eta(x)\)</span> is difficult because:</p>
-<ol type="1">
-<li><strong>Legendre’s Condition is Only Necessary, Not Sufficient:</strong> The condition <span class="math inline">\(P(x) = \frac{\partial^2 f}{\partial y'^2} &gt; 0\)</span> ensures that very rapid, high-frequency wiggles (where <span class="math inline">\(\eta'\)</span> dominates <span class="math inline">\(\eta\)</span>) increase the action. But it tells you nothing about smooth, long-wavelength variations!</li>
-<li><strong>Jacobi’s Condition &amp; Conjugate Points:</strong> To verify a true local minimum, one must solve the <strong>Jacobi accessory differential equation</strong>: <span class="math display">\[ \frac{d}{dx}\left( P(x) \frac{du}{dx} \right) - Q(x) u = 0 \]</span> If there exists an intermediate point <span class="math inline">\(x^* \in (x_1, x_2)\)</span>—called a <strong>conjugate point</strong> (or focal point)—where a non-trivial solution vanishes (<span class="math inline">\(u(x_1) = 0\)</span> and <span class="math inline">\(u(x^*) = 0\)</span>), then the path <strong>immediately ceases to be a minimum</strong>! Beyond the conjugate point, one can construct an envelope of variations for which <span class="math inline">\(\delta^2 S &lt; 0\)</span>, turning the stationary path into a <strong>saddle point</strong>.</li>
-</ol>
-<section id="concrete-example-the-simple-harmonic-oscillator" class="level5">
-<h5 class="anchored" data-anchor-id="concrete-example-the-simple-harmonic-oscillator">Concrete Example: The Simple Harmonic Oscillator</h5>
-<p>Consider a 1D harmonic oscillator with Lagrangian <span class="math inline">\(L = \frac{1}{2}m\dot{x}^2 - \frac{1}{2}m\omega^2 x^2\)</span>, starting at <span class="math inline">\(x(0) = 0\)</span> and arriving at <span class="math inline">\(x(T) = 0\)</span>: * The stationary path is <span class="math inline">\(x(t) = 0\)</span> for all <span class="math inline">\(t\)</span>. * The Legendre condition is <span class="math inline">\(P = \frac{\partial^2 L}{\partial \dot{x}^2} = m &gt; 0\)</span> (trivially satisfied). * Now evaluate the second variation for a variation <span class="math inline">\(\eta(t) = \sin(\pi t / T)\)</span>: <span class="math display">\[ \delta^2 S = \frac{1}{2} \int_0^T \left[ m \left(\frac{\pi}{T}\right)^2 \cos^2\left(\frac{\pi t}{T}\right) - m\omega^2 \sin^2\left(\frac{\pi t}{T}\right) \right] dt = \frac{m T}{4} \left[ \left(\frac{\pi}{T}\right)^2 - \omega^2 \right] \]</span> * <strong>Case 1 (<span class="math inline">\(T &lt; \pi/\omega\)</span>, less than half a period):</strong> <span class="math inline">\(\left(\frac{\pi}{T}\right)^2 &gt; \omega^2 \implies \delta^2 S &gt; 0\)</span>. The path is a <strong>strict local minimum</strong>. * <strong>Case 2 (<span class="math inline">\(T = \pi/\omega\)</span>, exactly half a period):</strong> <span class="math inline">\(t^* = \pi/\omega\)</span> is a <strong>conjugate point</strong>. At this point, infinitely many physical trajectories (all amplitudes <span class="math inline">\(A \sin(\omega t)\)</span>) have the exact same action! * <strong>Case 3 (<span class="math inline">\(T &gt; \pi/\omega\)</span>, more than half a period):</strong> <span class="math inline">\(\left(\frac{\pi}{T}\right)^2 &lt; \omega^2 \implies \delta^2 S &lt; 0\)</span>! The action is a <strong>saddle point</strong>.</p>
-<p>Yet throughout all three cases, the harmonic oscillator obeys the exact same physical laws of motion (<span class="math inline">\(\ddot{x} + \omega^2 x = 0\)</span>) without any issue.</p>
-<hr>
-</section>
-</section>
-</section>
 </section>
 <section id="applications-of-the-euler-lagrange-equation" class="level2">
 <h2 class="anchored" data-anchor-id="applications-of-the-euler-lagrange-equation">6.3 Applications of the Euler-Lagrange Equation</h2>
-<section id="shortest-path-revisited" class="level3">
-<h3 class="anchored" data-anchor-id="shortest-path-revisited">1. Shortest Path Revisited</h3>
+<section id="example-6.1-shortest-path-between-two-points" class="level3">
+<h3 class="anchored" data-anchor-id="example-6.1-shortest-path-between-two-points">Example 6.1: Shortest Path between Two Points</h3>
 <p>For the shortest path, <span class="math inline">\(f(y, y', x) = \sqrt{1 + y'^2}\)</span>. Since <span class="math inline">\(\partial f / \partial y = 0\)</span>, the E-L equation reduces to: <span class="math display">\[ \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) = 0 \implies \frac{\partial f}{\partial y'} = C \]</span> <span class="math display">\[ \frac{y'}{\sqrt{1 + y'^2}} = C \implies y'^2 = C^2(1 + y'^2) \implies y'^2 = \frac{C^2}{1-C^2} = m^2 \]</span> Thus, <span class="math inline">\(y' = m\)</span>, meaning <span class="math inline">\(y = mx + b\)</span>. The shortest path is a straight line.</p>
 </section>
-<section id="the-brachistochrone-solution" class="level3">
-<h3 class="anchored" data-anchor-id="the-brachistochrone-solution">2. The Brachistochrone Solution</h3>
+<section id="a-note-on-variables" class="level3">
+<h3 class="anchored" data-anchor-id="a-note-on-variables">A Note on Variables</h3>
+<p>So far we have used <span class="math inline">\(x\)</span> as the independent variable and <span class="math inline">\(y\)</span> as the dependent variable. In mechanics, the independent variable is usually time <span class="math inline">\(t\)</span>, and the dependent variable is position <span class="math inline">\(x(t)\)</span>. Sometimes, as in the next example, it is more convenient to use <span class="math inline">\(y\)</span> as the independent variable and <span class="math inline">\(x(y)\)</span> as the dependent variable.</p>
+</section>
+<section id="example-6.2-the-brachistochrone" class="level3">
+<h3 class="anchored" data-anchor-id="example-6.2-the-brachistochrone">Example 6.2: The Brachistochrone</h3>
+<p>First posed by Johann Bernoulli in 1696. Given two points 1 and 2, with 1 higher than 2, what is the shape of a frictionless wire connecting them such that a bead released from rest at 1 slides to 2 in the minimum possible time?</p>
+<p>Let point 1 be the origin <span class="math inline">\((0,0)\)</span>. We take the <span class="math inline">\(y\)</span>-axis pointing <em>downward</em>. The speed of the bead is <span class="math inline">\(v = ds/dt\)</span>. By conservation of energy, <span class="math inline">\(E = T + U\)</span>. If released from rest at <span class="math inline">\((0,0)\)</span>, <span class="math inline">\(E = 0\)</span>. <span class="math display">\[ \frac{1}{2}mv^2 - mgy = 0 \implies v = \sqrt{2gy} \]</span></p>
+<p>The time to travel an infinitesimal distance <span class="math inline">\(ds\)</span> is <span class="math inline">\(dt = ds/v\)</span>. The total time is: <span class="math display">\[ t = \int_{1}^{2} \frac{ds}{v} = \int_{x_1}^{x_2} \frac{\sqrt{1 + (y')^2}}{\sqrt{2gy}} \, dx \]</span></p>
+<p>We need to find the function <span class="math inline">\(y(x)\)</span> that minimizes this time integral <span class="math inline">\(t\)</span>.</p>
+<p><em>(See <a href="../solutions/taylor-chapter-6-problems.html#problem-62">Problem 6.2</a>)</em></p>
 <section id="problem-formulation-the-beltrami-identity" class="level4">
 <h4 class="anchored" data-anchor-id="problem-formulation-the-beltrami-identity">Problem Formulation &amp; The Beltrami Identity</h4>
 <p>For the Brachistochrone, the functional integrand is <span class="math inline">\(f(y, y') = \sqrt{\frac{1 + (y')^2}{y}}\)</span> (dropping overall constants <span class="math inline">\(\sqrt{2g}\)</span>).<br>
@@ -517,6 +478,56 @@ Figure&nbsp;1: The Brachistochrone path is a cycloid, the curve traced by a poin
 </div>
 </div>
 <p><em>(See <a href="../solutions/taylor-chapter-6-problems.html#problem-611">Problem 6.11</a>)</em></p>
+</section>
+</section>
+<section id="maximum-and-minimum-vs.-stationary" class="level3">
+<h3 class="anchored" data-anchor-id="maximum-and-minimum-vs.-stationary">Maximum and Minimum vs.&nbsp;Stationary</h3>
+<p>You have probably noticed that we haven’t rigorously checked if the cycloid gives a true <em>minimum</em> time, as opposed to a maximum or saddle point. For instance, the geodesic between two points on a globe is a great circle. While the shortest path is a great circle, the <em>long</em> way around the globe on the same great circle is also a stationary path, but it is neither a minimum nor a maximum (it’s a saddle point).</p>
+<section id="stationary-action-vs.-least-action-in-physics" class="level4">
+<h4 class="anchored" data-anchor-id="stationary-action-vs.-least-action-in-physics">⚠️ Stationary Action vs.&nbsp;“Least” Action in Physics</h4>
+<p>A common conceptual question in variational calculus and classical mechanics is: <strong>Does the physical trajectory minimize, maximize, or merely make the action stationary? And why is this distinction almost entirely ignored in classical mechanics?</strong></p>
+</section>
+<section id="why-the-distinction-is-irrelevant-for-classical-mechanics" class="level4">
+<h4 class="anchored" data-anchor-id="why-the-distinction-is-irrelevant-for-classical-mechanics">1. Why the Distinction is Irrelevant for Classical Mechanics</h4>
+<p>Hamilton’s principle states that the true physical trajectory satisfies: <span class="math display">\[ \delta S = 0 \quad \text{where} \quad S[q] = \int_{t_1}^{t_2} L(q, \dot{q}, t) \, dt \]</span> The derivation of the Euler-Lagrange equations—and therefore Newton’s second law <span class="math inline">\(\mathbf{F} = m\mathbf{a}\)</span>—rests <strong>entirely and exclusively on the vanishing of the first variation</strong> (<span class="math inline">\(\delta S = 0\)</span>). * The dynamical equations of motion are <strong>local in time</strong> differential equations. * A particle propagating along a trajectory does not “anticipate” or “calculate” the global second variation <span class="math inline">\(\delta^2 S\)</span> across the whole time interval <span class="math inline">\([t_1, t_2]\)</span>. * Whether <span class="math inline">\(\delta^2 S &gt; 0\)</span> (local minimum), <span class="math inline">\(\delta^2 S &lt; 0\)</span> (local maximum), or <span class="math inline">\(\delta^2 S\)</span> is indefinite (saddle point) has <strong>zero impact</strong> on whether the path satisfies <span class="math inline">\(\frac{\partial L}{\partial q} - \frac{d}{dt}\frac{\partial L}{\partial \dot{q}} = 0\)</span>.</p>
+<p>Historically, Maupertuis and Euler dubbed this the <em>“Principle of Least Action”</em>, believing nature operates with divine economy. However, calling it “least” action is a <strong>historical misnomer</strong>. In fact, for sufficiently long trajectories, true physical paths are almost never global minima—they are <strong>saddle points</strong>. Hence, modern physics refers to it strictly as the <strong>Principle of Stationary Action</strong>.</p>
+<p><em>(Note: In static equilibrium, <span class="math inline">\(\delta V = 0\)</span> gives equilibrium, but <span class="math inline">\(\delta^2 V &gt; 0\)</span> is indeed required for stability. But for dynamical trajectories, stationarity is all that mechanics requires.)</em></p>
+<hr>
+</section>
+<section id="where-and-when-does-min-vs.-max-vs.-saddle-point-matter" class="level4">
+<h4 class="anchored" data-anchor-id="where-and-when-does-min-vs.-max-vs.-saddle-point-matter">2. Where and When Does Min vs.&nbsp;Max vs.&nbsp;Saddle Point Matter?</h4>
+<p>While ordinary classical trajectories require only <span class="math inline">\(\delta S = 0\)</span>, distinguishing the character of the stationary point becomes critical in several advanced domains:</p>
+<ol type="1">
+<li><p><strong>Gravitational Lensing &amp; Fermat’s Principle (Geometrical Optics):</strong> Light rays follow paths of stationary travel time (<span class="math inline">\(\delta t = 0\)</span>). When a massive galaxy or cluster gravitationally lenses a background quasar, the light travel-time surface <span class="math inline">\(t(\boldsymbol{\theta})\)</span> has multiple stationary points:</p>
+<ul>
+<li><strong>Local Minima:</strong> Arrive first, produce bright, positive-parity images (Type I).</li>
+<li><strong>Saddle Points:</strong> Arrive second, produce inverted, negative-parity images (Type II).</li>
+<li><strong>Local Maxima:</strong> Arrive last, located near the dense core of the lens galaxy, and are typically highly demagnified (Type III). The famous <em>Odd Number Theorem</em> in gravitational lensing relies directly on Morse theory characterizing these critical points!</li>
+</ul></li>
+<li><p><strong>Quantum Mechanics &amp; Feynman Path Integrals:</strong> In Feynman’s path integral formulation, the transition amplitude sums over <em>all</em> conceivable paths: <span class="math display">\[ K(x_b, t_b; x_a, t_a) = \int \mathcal{D}[x(t)] \, e^{i S[x] / \hbar} \]</span> In the classical limit <span class="math inline">\(\hbar \to 0\)</span>, paths with <span class="math inline">\(\delta S \ne 0\)</span> experience destructive phase interference and cancel out, leaving the stationary path <span class="math inline">\(\delta S = 0\)</span>. However, the <strong>quantum fluctuations</strong> around the classical path are governed by the second variation <span class="math inline">\(\delta^2 S\)</span>:</p>
+<ul>
+<li>The eigenvalues of the second-variation operator determine the <strong>Van Vleck determinant</strong> and phase shifts called the <strong>Maslov index</strong>. Every time a classical path passes through a focal/conjugate point, the quantum wavefunction acquires an extra phase shift of <span class="math inline">\(e^{-i\pi/2}\)</span>.</li>
+</ul></li>
+<li><p><strong>Quantum Tunneling &amp; Instanton Calculations:</strong> In Euclidean field theory (wick-rotated imaginary time <span class="math inline">\(\tau = it\)</span>), the Euclidean action <span class="math inline">\(S_E\)</span> governs false-vacuum decay and barrier penetration. A true physical “bounce” (instanton) that mediates tunneling must have <strong>precisely one negative eigenvalue</strong> in its second variation operator <span class="math inline">\(\delta^2 S_E\)</span>. That solitary negative mode is the mathematical signature of metastability!</p></li>
+<li><p><strong>Spacetime Geodesics in General Relativity:</strong> For timelike worldlines of freely falling test particles between two events, the action is proportional to the proper time: <span class="math inline">\(S = -mc \int d\tau\)</span>. Here, free fall actually <strong>maximizes</strong> proper time locally (the twin paradox: the unaccelerated twin ages the most).</p></li>
+</ol>
+<hr>
+</section>
+<section id="why-is-this-question-in-general-hard-to-answer" class="level4">
+<h4 class="anchored" data-anchor-id="why-is-this-question-in-general-hard-to-answer">3. Why Is This Question in General Hard to Answer?</h4>
+<p>In single-variable calculus, determining whether <span class="math inline">\(f'(x_0) = 0\)</span> is a min or max requires merely computing the single scalar second derivative <span class="math inline">\(f''(x_0)\)</span>.</p>
+<p>In the calculus of variations, however, the action <span class="math inline">\(S[y]\)</span> is a functional defined on an <strong>infinite-dimensional function space</strong> (the space of all differentiable paths <span class="math inline">\(\eta(x)\)</span> satisfying <span class="math inline">\(\eta(x_1) = \eta(x_2) = 0\)</span>). The second variation is a differential operator: <span class="math display">\[ \delta^2 S = \frac{1}{2} \int_{x_1}^{x_2} \left[ P(x) (\eta')^2 + Q(x) \eta^2 \right] dx \]</span> where <span class="math inline">\(P(x) = \frac{\partial^2 f}{\partial y'^2}\)</span> and <span class="math inline">\(Q(x) = \frac{\partial^2 f}{\partial y^2} - \frac{d}{dx}\left(\frac{\partial^2 f}{\partial y \partial y'}\right)\)</span>.</p>
+<p>Determining whether <span class="math inline">\(\delta^2 S &gt; 0\)</span> for <strong>all possible variations</strong> <span class="math inline">\(\eta(x)\)</span> is difficult because:</p>
+<ol type="1">
+<li><strong>Legendre’s Condition is Only Necessary, Not Sufficient:</strong> The condition <span class="math inline">\(P(x) = \frac{\partial^2 f}{\partial y'^2} &gt; 0\)</span> ensures that very rapid, high-frequency wiggles (where <span class="math inline">\(\eta'\)</span> dominates <span class="math inline">\(\eta\)</span>) increase the action. But it tells you nothing about smooth, long-wavelength variations!</li>
+<li><strong>Jacobi’s Condition &amp; Conjugate Points:</strong> To verify a true local minimum, one must solve the <strong>Jacobi accessory differential equation</strong>: <span class="math display">\[ \frac{d}{dx}\left( P(x) \frac{du}{dx} \right) - Q(x) u = 0 \]</span> If there exists an intermediate point <span class="math inline">\(x^* \in (x_1, x_2)\)</span>—called a <strong>conjugate point</strong> (or focal point)—where a non-trivial solution vanishes (<span class="math inline">\(u(x_1) = 0\)</span> and <span class="math inline">\(u(x^*) = 0\)</span>), then the path <strong>immediately ceases to be a minimum</strong>! Beyond the conjugate point, one can construct an envelope of variations for which <span class="math inline">\(\delta^2 S &lt; 0\)</span>, turning the stationary path into a <strong>saddle point</strong>.</li>
+</ol>
+<section id="concrete-example-the-simple-harmonic-oscillator" class="level5">
+<h5 class="anchored" data-anchor-id="concrete-example-the-simple-harmonic-oscillator">Concrete Example: The Simple Harmonic Oscillator</h5>
+<p>Consider a 1D harmonic oscillator with Lagrangian <span class="math inline">\(L = \frac{1}{2}m\dot{x}^2 - \frac{1}{2}m\omega^2 x^2\)</span>, starting at <span class="math inline">\(x(0) = 0\)</span> and arriving at <span class="math inline">\(x(T) = 0\)</span>: * The stationary path is <span class="math inline">\(x(t) = 0\)</span> for all <span class="math inline">\(t\)</span>. * The Legendre condition is <span class="math inline">\(P = \frac{\partial^2 L}{\partial \dot{x}^2} = m &gt; 0\)</span> (trivially satisfied). * Now evaluate the second variation for a variation <span class="math inline">\(\eta(t) = \sin(\pi t / T)\)</span>: <span class="math display">\[ \delta^2 S = \frac{1}{2} \int_0^T \left[ m \left(\frac{\pi}{T}\right)^2 \cos^2\left(\frac{\pi t}{T}\right) - m\omega^2 \sin^2\left(\frac{\pi t}{T}\right) \right] dt = \frac{m T}{4} \left[ \left(\frac{\pi}{T}\right)^2 - \omega^2 \right] \]</span> * <strong>Case 1 (<span class="math inline">\(T &lt; \pi/\omega\)</span>, less than half a period):</strong> <span class="math inline">\(\left(\frac{\pi}{T}\right)^2 &gt; \omega^2 \implies \delta^2 S &gt; 0\)</span>. The path is a <strong>strict local minimum</strong>. * <strong>Case 2 (<span class="math inline">\(T = \pi/\omega\)</span>, exactly half a period):</strong> <span class="math inline">\(t^* = \pi/\omega\)</span> is a <strong>conjugate point</strong>. At this point, infinitely many physical trajectories (all amplitudes <span class="math inline">\(A \sin(\omega t)\)</span>) have the exact same action! * <strong>Case 3 (<span class="math inline">\(T &gt; \pi/\omega\)</span>, more than half a period):</strong> <span class="math inline">\(\left(\frac{\pi}{T}\right)^2 &lt; \omega^2 \implies \delta^2 S &lt; 0\)</span>! The action is a <strong>saddle point</strong>.</p>
+<p>Yet throughout all three cases, the harmonic oscillator obeys the exact same physical laws of motion (<span class="math inline">\(\ddot{x} + \omega^2 x = 0\)</span>) without any issue.</p>
+<hr>
+</section>
 </section>
 </section>
 </section>
@@ -1016,340 +1027,351 @@ Figure&nbsp;1: The Brachistochrone path is a cycloid, the curve traced by a poin
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>To transition to these generalized coordinates, Lagrangian mechanics provides a powerful framework built entirely on the calculus of variations and Hamilton's Principle of Least Action.</span>
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.1 Two Examples</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example 1: The Shortest Path Between Two Points</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>What is the shortest path between two points $(x_1, y_1)$ and $(x_2, y_2)$ in a plane? Let the path be given by a function $y = y(x)$. An infinitesimal element of length along the path is $ds = \sqrt{dx^2 + dy^2} = \sqrt{1 + (y')^2} \, dx$, where $y' = dy/dx$.</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>The total length of the path is the integral:</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>$$ L = \int_{x_1}^{x_2} \sqrt{1 + <span class="co">[</span><span class="ot">y'(x)</span><span class="co">]</span>^2} \, dx $$</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>The goal is to find the function $y(x)$ that minimizes $L$.</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.1](../solutions/taylor-chapter-6-problems.qmd#problem-61))*</span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example 2: The Brachistochrone Problem</span></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>First posed by Johann Bernoulli in 1696. Given two points 1 and 2, with 1 higher than 2, what is the shape of a frictionless wire connecting them such that a bead released from rest at 1 slides to 2 in the minimum possible time?</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>Let point 1 be the origin $(0,0)$. We take the $y$-axis pointing *downward*.</span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>The speed of the bead is $v = ds/dt$. By conservation of energy, $E = T + U$. If released from rest at $(0,0)$, $E = 0$.</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>$$ \frac{1}{2}mv^2 - mgy = 0 \implies v = \sqrt{2gy} $$</span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>The time to travel an infinitesimal distance $ds$ is $dt = ds/v$. The total time is:</span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>$$ t = \int_{1}^{2} \frac{ds}{v} = \int_{x_1}^{x_2} \frac{\sqrt{1 + (y')^2}}{\sqrt{2gy}} \, dx $$</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>We need to find the function $y(x)$ that minimizes this time integral $t$.</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>The calculus of variations involves finding the minimum or maximum of a quantity that is expressible as an integral. To see how this can arise, let's start with two simple, concrete examples.</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Shortest Path between Two Points</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>What is the shortest path between two points $(x_1, y_1)$ and $(x_2, y_2)$ in a plane? Let the path be given by a function $y = y(x)$. An infinitesimal element of length along the path is $ds = \sqrt{dx^2 + dy^2} = \sqrt{1 + (y')^2} \, dx$, where $y' = dy/dx$.</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>The total length of the path is the integral:</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>$$ L = \int_{x_1}^{x_2} \sqrt{1 + <span class="co">[</span><span class="ot">y'(x)</span><span class="co">]</span>^2} \, dx $$</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>The goal is to find the function $y(x)$ that minimizes $L$.</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.1](../solutions/taylor-chapter-6-problems.qmd#problem-61))*</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="fu">### Fermat's Principle</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>A similar problem is to find the path that light will follow between two points. Fermat's principle states that the path taken by light is the one for which the time of travel is minimum (or more precisely, stationary).</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>The time to travel a short distance $ds$ is $ds/v$, where $v = c/n(x,y)$ is the speed of light in a medium with refractive index $n(x,y)$. The total time is:</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>$$ t = \int_1^2 \frac{ds}{v} = \frac{1}{c} \int_{x_1}^{x_2} n(x, y) \sqrt{1 + (y')^2} \, dx $$</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>As with the shortest path, we seek a function $y(x)$ that makes this integral stationary. In elementary calculus, a point where $df/dx = 0$ can be a maximum, minimum, or neither. Similarly, in the calculus of variations, making an integral stationary means an infinitesimal variation of the path leaves the integral unchanged, though it doesn't guarantee a strict minimum.</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.2 The Euler-Lagrange Equation</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>Both examples above involve an integral of the form:</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>$$ S<span class="co">[</span><span class="ot">y</span><span class="co">]</span> = \int_{x_1}^{x_2} f(y, y', x) \, dx $$</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>where $S$ is a functional. We want to find the path $y(x)$ that makes $S$ stationary (a minimum, maximum, or saddle point).</span>
 <span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.2](../solutions/taylor-chapter-6-problems.qmd#problem-62))*</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a><span class="fu">### Derivation</span></span>
 <span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.2 The Euler-Lagrange Equation</span></span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>Both examples above involve an integral of the form:</span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>$$ S<span class="co">[</span><span class="ot">y</span><span class="co">]</span> = \int_{x_1}^{x_2} f(y, y', x) \, dx $$</span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>where $S$ is a functional. We want to find the path $y(x)$ that makes $S$ stationary (a minimum, maximum, or saddle point).</span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a><span class="fu">### Derivation</span></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>Let the actual path that extremizes the integral be $y(x)$. Consider a "wrong" path $Y(x)$ that is close to $y(x)$. We can parameterize this wrong path as:</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>$$ Y(x) = y(x) + \alpha \eta(x) $$</span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>where $\alpha$ is a small parameter, and $\eta(x)$ is an arbitrary differentiable function representing the variation. Since all paths must start at $x_1$ and end at $x_2$, the variation must vanish at the endpoints:</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>$$ \eta(x_1) = \eta(x_2) = 0 $$</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>The integral evaluated along the varied path is a function of $\alpha$:</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>$$ S(\alpha) = \int_{x_1}^{x_2} f(Y, Y', x) \, dx = \int_{x_1}^{x_2} f(y + \alpha \eta, y' + \alpha \eta', x) \, dx $$</span>
 <span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>Let the actual path that extremizes the integral be $y(x)$. Consider a "wrong" path $Y(x)$ that is close to $y(x)$. We can parameterize this wrong path as:</span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>$$ Y(x) = y(x) + \alpha \eta(x) $$</span>
-<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>where $\alpha$ is a small parameter, and $\eta(x)$ is an arbitrary differentiable function representing the variation. Since all paths must start at $x_1$ and end at $x_2$, the variation must vanish at the endpoints:</span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>$$ \eta(x_1) = \eta(x_2) = 0 $$</span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>The integral evaluated along the varied path is a function of $\alpha$:</span>
-<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>$$ S(\alpha) = \int_{x_1}^{x_2} f(Y, Y', x) \, dx = \int_{x_1}^{x_2} f(y + \alpha \eta, y' + \alpha \eta', x) \, dx $$</span>
-<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>For the integral to be stationary at the correct path $y(x)$, the derivative of $S$ with respect to $\alpha$ must be zero when $\alpha = 0$:</span>
-<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>$$ \left. \frac{dS}{d\alpha} \right|_{\alpha=0} = 0 $$</span>
-<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>Using the chain rule to differentiate inside the integral:</span>
-<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>$$ \frac{dS}{d\alpha} = \int_{x_1}^{x_2} \left( \frac{\partial f}{\partial Y} \frac{\partial Y}{\partial \alpha} + \frac{\partial f}{\partial Y'} \frac{\partial Y'}{\partial \alpha} \right) dx = \int_{x_1}^{x_2} \left( \frac{\partial f}{\partial Y} \eta + \frac{\partial f}{\partial Y'} \eta' \right) dx $$</span>
-<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>Set $\alpha = 0$, so $Y \to y$ and $Y' \to y'$:</span>
-<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>$$ \int_{x_1}^{x_2} \left( \frac{\partial f}{\partial y} \eta(x) + \frac{\partial f}{\partial y'} \eta'(x) \right) dx = 0 $$</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>For the integral to be stationary at the correct path $y(x)$, the derivative of $S$ with respect to $\alpha$ must be zero when $\alpha = 0$:</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>$$ \left. \frac{dS}{d\alpha} \right|_{\alpha=0} = 0 $$</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>Using the chain rule to differentiate inside the integral:</span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>$$ \frac{dS}{d\alpha} = \int_{x_1}^{x_2} \left( \frac{\partial f}{\partial Y} \frac{\partial Y}{\partial \alpha} + \frac{\partial f}{\partial Y'} \frac{\partial Y'}{\partial \alpha} \right) dx = \int_{x_1}^{x_2} \left( \frac{\partial f}{\partial Y} \eta + \frac{\partial f}{\partial Y'} \eta' \right) dx $$</span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>Set $\alpha = 0$, so $Y \to y$ and $Y' \to y'$:</span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>$$ \int_{x_1}^{x_2} \left( \frac{\partial f}{\partial y} \eta(x) + \frac{\partial f}{\partial y'} \eta'(x) \right) dx = 0 $$</span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>We integrate the second term by parts:</span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>$$ \int_{x_1}^{x_2} \frac{\partial f}{\partial y'} \eta'(x) \, dx = \left<span class="co">[</span><span class="ot"> \frac{\partial f}{\partial y'} \eta(x) \right</span><span class="co">]</span>_{x_1}^{x_2} - \int_{x_1}^{x_2} \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) \eta(x) \, dx $$</span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>Since $\eta(x_1) = \eta(x_2) = 0$, the boundary term vanishes. The condition becomes:</span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>$$ \int_{x_1}^{x_2} \left<span class="co">[</span><span class="ot"> \frac{\partial f}{\partial y} - \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) \right</span><span class="co">]</span> \eta(x) \, dx = 0 $$</span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>For this to hold for *any* arbitrary variation $\eta(x)$, the term in the brackets must be identically zero. This yields the **Euler-Lagrange Equation**:</span>
 <span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>We integrate the second term by parts:</span>
-<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>$$ \int_{x_1}^{x_2} \frac{\partial f}{\partial y'} \eta'(x) \, dx = \left<span class="co">[</span><span class="ot"> \frac{\partial f}{\partial y'} \eta(x) \right</span><span class="co">]</span>_{x_1}^{x_2} - \int_{x_1}^{x_2} \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) \eta(x) \, dx $$</span>
-<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>Since $\eta(x_1) = \eta(x_2) = 0$, the boundary term vanishes. The condition becomes:</span>
-<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>$$ \int_{x_1}^{x_2} \left<span class="co">[</span><span class="ot"> \frac{\partial f}{\partial y} - \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) \right</span><span class="co">]</span> \eta(x) \, dx = 0 $$</span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial f}{\partial y} - \frac{d}{dx} \frac{\partial f}{\partial y'} = 0 $$</span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.4](../solutions/taylor-chapter-6-problems.qmd#problem-64))*</span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.3 Applications of the Euler-Lagrange Equation</span></span>
 <span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>For this to hold for *any* arbitrary variation $\eta(x)$, the term in the brackets must be identically zero. This yields the **Euler-Lagrange Equation**:</span>
-<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial f}{\partial y} - \frac{d}{dx} \frac{\partial f}{\partial y'} = 0 $$</span>
-<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.4](../solutions/taylor-chapter-6-problems.qmd#problem-64))*</span>
-<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a><span class="fu">### ⚠️ Stationary Action vs. "Least" Action: Minimum, Maximum, or Saddle Point?</span></span>
-<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>A common conceptual question in variational calculus and classical mechanics is: **Does the physical trajectory minimize, maximize, or merely make the action stationary? And why is this distinction almost entirely ignored in classical mechanics?**</span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example 6.1: Shortest Path between Two Points</span></span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>For the shortest path, $f(y, y', x) = \sqrt{1 + y'^2}$.</span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>Since $\partial f / \partial y = 0$, the E-L equation reduces to:</span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>$$ \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) = 0 \implies \frac{\partial f}{\partial y'} = C $$</span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>$$ \frac{y'}{\sqrt{1 + y'^2}} = C \implies y'^2 = C^2(1 + y'^2) \implies y'^2 = \frac{C^2}{1-C^2} = m^2 $$</span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>Thus, $y' = m$, meaning $y = mx + b$. The shortest path is a straight line.</span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a><span class="fu">### A Note on Variables</span></span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>So far we have used $x$ as the independent variable and $y$ as the dependent variable. In mechanics, the independent variable is usually time $t$, and the dependent variable is position $x(t)$. Sometimes, as in the next example, it is more convenient to use $y$ as the independent variable and $x(y)$ as the dependent variable.</span>
 <span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 1. Why the Distinction is Irrelevant for Classical Mechanics</span></span>
-<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>Hamilton's principle states that the true physical trajectory satisfies:</span>
-<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a>$$ \delta S = 0 \quad \text{where} \quad S<span class="co">[</span><span class="ot">q</span><span class="co">]</span> = \int_{t_1}^{t_2} L(q, \dot{q}, t) \, dt $$</span>
-<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>The derivation of the Euler-Lagrange equations—and therefore Newton's second law $\mathbf{F} = m\mathbf{a}$—rests **entirely and exclusively on the vanishing of the first variation** ($\delta S = 0$). </span>
-<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>The dynamical equations of motion are **local in time** differential equations. </span>
-<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>A particle propagating along a trajectory does not "anticipate" or "calculate" the global second variation $\delta^2 S$ across the whole time interval $<span class="co">[</span><span class="ot">t_1, t_2</span><span class="co">]</span>$.</span>
-<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Whether $\delta^2 S &gt; 0$ (local minimum), $\delta^2 S &lt; 0$ (local maximum), or $\delta^2 S$ is indefinite (saddle point) has **zero impact** on whether the path satisfies $\frac{\partial L}{\partial q} - \frac{d}{dt}\frac{\partial L}{\partial \dot{q}} = 0$.</span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example 6.2: The Brachistochrone</span></span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a>First posed by Johann Bernoulli in 1696. Given two points 1 and 2, with 1 higher than 2, what is the shape of a frictionless wire connecting them such that a bead released from rest at 1 slides to 2 in the minimum possible time?</span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>Let point 1 be the origin $(0,0)$. We take the $y$-axis pointing *downward*.</span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>The speed of the bead is $v = ds/dt$. By conservation of energy, $E = T + U$. If released from rest at $(0,0)$, $E = 0$.</span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a>$$ \frac{1}{2}mv^2 - mgy = 0 \implies v = \sqrt{2gy} $$</span>
 <span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>Historically, Maupertuis and Euler dubbed this the *"Principle of Least Action"*, believing nature operates with divine economy. However, calling it "least" action is a **historical misnomer**. In fact, for sufficiently long trajectories, true physical paths are almost never global minima—they are **saddle points**. Hence, modern physics refers to it strictly as the **Principle of Stationary Action**.</span>
-<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a>*(Note: In static equilibrium, $\delta V = 0$ gives equilibrium, but $\delta^2 V &gt; 0$ is indeed required for stability. But for dynamical trajectories, stationarity is all that mechanics requires.)*</span>
-<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 2. Where and When Does Min vs. Max vs. Saddle Point Matter?</span></span>
-<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a>While ordinary classical trajectories require only $\delta S = 0$, distinguishing the character of the stationary point becomes critical in several advanced domains:</span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>The time to travel an infinitesimal distance $ds$ is $dt = ds/v$. The total time is:</span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a>$$ t = \int_{1}^{2} \frac{ds}{v} = \int_{x_1}^{x_2} \frac{\sqrt{1 + (y')^2}}{\sqrt{2gy}} \, dx $$</span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a>We need to find the function $y(x)$ that minimizes this time integral $t$.</span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.2](../solutions/taylor-chapter-6-problems.qmd#problem-62))*</span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Problem Formulation &amp; The Beltrami Identity</span></span>
 <span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Gravitational Lensing &amp; Fermat's Principle (Geometrical Optics):**</span>
-<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a>   Light rays follow paths of stationary travel time ($\delta t = 0$). When a massive galaxy or cluster gravitationally lenses a background quasar, the light travel-time surface $t(\boldsymbol{\theta})$ has multiple stationary points:</span>
-<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a><span class="ss">   * </span>**Local Minima:** Arrive first, produce bright, positive-parity images (Type I).</span>
-<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a><span class="ss">   * </span>**Saddle Points:** Arrive second, produce inverted, negative-parity images (Type II).</span>
-<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a><span class="ss">   * </span>**Local Maxima:** Arrive last, located near the dense core of the lens galaxy, and are typically highly demagnified (Type III).</span>
-<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a>   The famous *Odd Number Theorem* in gravitational lensing relies directly on Morse theory characterizing these critical points!</span>
-<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Quantum Mechanics &amp; Feynman Path Integrals:**</span>
-<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a>   In Feynman's path integral formulation, the transition amplitude sums over *all* conceivable paths:</span>
-<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a>   $$ K(x_b, t_b; x_a, t_a) = \int \mathcal{D}<span class="co">[</span><span class="ot">x(t)</span><span class="co">]</span> \, e^{i S<span class="co">[</span><span class="ot">x</span><span class="co">]</span> / \hbar} $$</span>
-<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a>   In the classical limit $\hbar \to 0$, paths with $\delta S \ne 0$ experience destructive phase interference and cancel out, leaving the stationary path $\delta S = 0$. However, the **quantum fluctuations** around the classical path are governed by the second variation $\delta^2 S$:</span>
-<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a><span class="ss">   * </span>The eigenvalues of the second-variation operator determine the **Van Vleck determinant** and phase shifts called the **Maslov index**. Every time a classical path passes through a focal/conjugate point, the quantum wavefunction acquires an extra phase shift of $e^{-i\pi/2}$.</span>
-<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Quantum Tunneling &amp; Instanton Calculations:**</span>
-<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a>   In Euclidean field theory (wick-rotated imaginary time $\tau = it$), the Euclidean action $S_E$ governs false-vacuum decay and barrier penetration. A true physical "bounce" (instanton) that mediates tunneling must have **precisely one negative eigenvalue** in its second variation operator $\delta^2 S_E$. That solitary negative mode is the mathematical signature of metastability!</span>
-<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Spacetime Geodesics in General Relativity:**</span>
-<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a>   For timelike worldlines of freely falling test particles between two events, the action is proportional to the proper time: $S = -mc \int d\tau$. Here, free fall actually **maximizes** proper time locally (the twin paradox: the unaccelerated twin ages the most).</span>
-<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 3. Why Is This Question in General Hard to Answer?</span></span>
-<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a>In single-variable calculus, determining whether $f'(x_0) = 0$ is a min or max requires merely computing the single scalar second derivative $f''(x_0)$. </span>
-<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a>In the calculus of variations, however, the action $S<span class="co">[</span><span class="ot">y</span><span class="co">]</span>$ is a functional defined on an **infinite-dimensional function space** (the space of all differentiable paths $\eta(x)$ satisfying $\eta(x_1) = \eta(x_2) = 0$). The second variation is a differential operator:</span>
-<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a>$$ \delta^2 S = \frac{1}{2} \int_{x_1}^{x_2} \left<span class="co">[</span><span class="ot"> P(x) (\eta')^2 + Q(x) \eta^2 \right</span><span class="co">]</span> dx $$</span>
-<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a>where $P(x) = \frac{\partial^2 f}{\partial y'^2}$ and $Q(x) = \frac{\partial^2 f}{\partial y^2} - \frac{d}{dx}\left(\frac{\partial^2 f}{\partial y \partial y'}\right)$.</span>
-<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a>Determining whether $\delta^2 S &gt; 0$ for **all possible variations** $\eta(x)$ is difficult because:</span>
-<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Legendre's Condition is Only Necessary, Not Sufficient:**</span>
-<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a>   The condition $P(x) = \frac{\partial^2 f}{\partial y'^2} &gt; 0$ ensures that very rapid, high-frequency wiggles (where $\eta'$ dominates $\eta$) increase the action. But it tells you nothing about smooth, long-wavelength variations!</span>
-<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Jacobi's Condition &amp; Conjugate Points:**</span>
-<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>   To verify a true local minimum, one must solve the **Jacobi accessory differential equation**:</span>
-<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a>   $$ \frac{d}{dx}\left( P(x) \frac{du}{dx} \right) - Q(x) u = 0 $$</span>
-<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a>   If there exists an intermediate point $x^* \in (x_1, x_2)$—called a **conjugate point** (or focal point)—where a non-trivial solution vanishes ($u(x_1) = 0$ and $u(x^*) = 0$), then the path **immediately ceases to be a minimum**! Beyond the conjugate point, one can construct an envelope of variations for which $\delta^2 S &lt; 0$, turning the stationary path into a **saddle point**.</span>
-<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Concrete Example: The Simple Harmonic Oscillator</span></span>
-<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a>Consider a 1D harmonic oscillator with Lagrangian $L = \frac{1}{2}m\dot{x}^2 - \frac{1}{2}m\omega^2 x^2$, starting at $x(0) = 0$ and arriving at $x(T) = 0$:</span>
-<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>The stationary path is $x(t) = 0$ for all $t$.</span>
-<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>The Legendre condition is $P = \frac{\partial^2 L}{\partial \dot{x}^2} = m &gt; 0$ (trivially satisfied).</span>
-<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Now evaluate the second variation for a variation $\eta(t) = \sin(\pi t / T)$:</span>
-<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a>  $$ \delta^2 S = \frac{1}{2} \int_0^T \left<span class="co">[</span><span class="ot"> m \left(\frac{\pi}{T}\right)^2 \cos^2\left(\frac{\pi t}{T}\right) - m\omega^2 \sin^2\left(\frac{\pi t}{T}\right) \right</span><span class="co">]</span> dt = \frac{m T}{4} \left<span class="co">[</span><span class="ot"> \left(\frac{\pi}{T}\right)^2 - \omega^2 \right</span><span class="co">]</span> $$</span>
-<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Case 1 ($T &lt; \pi/\omega$, less than half a period):** $\left(\frac{\pi}{T}\right)^2 &gt; \omega^2 \implies \delta^2 S &gt; 0$. The path is a **strict local minimum**.</span>
-<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Case 2 ($T = \pi/\omega$, exactly half a period):** $t^* = \pi/\omega$ is a **conjugate point**. At this point, infinitely many physical trajectories (all amplitudes $A \sin(\omega t)$) have the exact same action!</span>
-<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Case 3 ($T &gt; \pi/\omega$, more than half a period):** $\left(\frac{\pi}{T}\right)^2 &lt; \omega^2 \implies \delta^2 S &lt; 0$! The action is a **saddle point**.</span>
+<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a>For the Brachistochrone, the functional integrand is $f(y, y') = \sqrt{\frac{1 + (y')^2}{y}}$ (dropping overall constants $\sqrt{2g}$).  </span>
+<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a>Because $f$ lacks explicit dependence on the independent variable $x$ ($\partial f / \partial x = 0$), the Euler-Lagrange equation possesses a first integral known as the **Beltrami Identity**:</span>
+<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a>$$ f - y' \frac{\partial f}{\partial y'} = C $$</span>
+<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a>Substituting $f$:</span>
+<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a>$$ \sqrt{\frac{1 + (y')^2}{y}} - y' \frac{y'}{\sqrt{y(1 + (y')^2)}} = C $$</span>
+<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a>$$ \frac{1 + (y')^2 - (y')^2}{\sqrt{y(1 + (y')^2)}} = C \implies \frac{1}{\sqrt{y(1 + (y')^2)}} = C \implies y\big(1 + (y')^2\big) = \frac{1}{C^2} \equiv 2a $$</span>
+<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a>Solving for the derivative $y' = dy/dx$:</span>
+<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a>$$ y' = \sqrt{\frac{2a - y}{y}} \implies dx = \sqrt{\frac{y}{2a - y}} \, dy $$</span>
+<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a>The total trajectory $x(y)$ is given by the integral:</span>
+<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a>$$ x = \int \sqrt{\frac{y}{2a - y}} \, dy $$</span>
+<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step-by-Step Evaluation of Taylor's Cycloid Substitution</span></span>
+<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a>Taylor introduces the parameterized substitution:</span>
+<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a>$$ y = a(1 - \cos\theta) $$</span>
+<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Differential of the Substitution:**  </span>
+<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a>   Differentiating $y$ with respect to $\theta$:</span>
+<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a>   $$ dy = a\sin\theta \, d\theta = 2a \sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right) d\theta $$</span>
+<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Simplifying the Radicand:**  </span>
+<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a>   Substitute $y = a(1 - \cos\theta)$ into the numerator and denominator:</span>
+<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Numerator: $y = a(1 - \cos\theta) = 2a\sin^2\left(\frac{\theta}{2}\right)$</span>
+<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Denominator: $2a - y = 2a - a(1 - \cos\theta) = a(1 + \cos\theta) = 2a\cos^2\left(\frac{\theta}{2}\right)$</span>
+<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a>   Taking the ratio inside the square root:</span>
+<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a>   $$ \frac{y}{2a - y} = \frac{2a\sin^2(\theta/2)}{2a\cos^2(\theta/2)} = \tan^2\left(\frac{\theta}{2}\right) $$</span>
+<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a>   Assuming the motion stays within the first arch ($\theta \in <span class="co">[</span><span class="ot">0, 2\pi</span><span class="co">]</span>$ where $\theta/2 \in <span class="co">[</span><span class="ot">0, \pi</span><span class="co">]</span>$ and $\sin(\theta/2) \ge 0$):</span>
+<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a>   $$ \sqrt{\frac{y}{2a - y}} = \tan\left(\frac{\theta}{2}\right) = \frac{\sin(\theta/2)}{\cos(\theta/2)} $$</span>
+<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Combining and Integrating:**  </span>
+<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>   Multiplying the simplified radical by $dy$:</span>
+<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a>   $$ dx = \left(\frac{\sin(\theta/2)}{\cos(\theta/2)}\right) \cdot \left<span class="co">[</span><span class="ot">2a \sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right) d\theta\right</span><span class="co">]</span> = 2a \sin^2\left(\frac{\theta}{2}\right) d\theta = a(1 - \cos\theta) \, d\theta $$</span>
+<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a>   Integrating directly with initial condition $x(0) = 0$ gives:</span>
+<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a>   $$ x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta) $$</span>
+<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a>   These are the parametric equations of a **cycloid**.</span>
+<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Mathematical &amp; Physical Rationale for the First Arch ($\theta \in [0, 2\pi]$)</span></span>
+<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Mathematical Reason (Principal Square Root):**  </span>
+<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a>   The square root identity is $\sqrt{u^2} = |u|$. Thus:</span>
+<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a>   $$ \sqrt{\tan^2(\theta/2)} = |\tan(\theta/2)| = \frac{|\sin(\theta/2)|}{|\cos(\theta/2)|} $$</span>
+<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a>   Within the first arch ($\theta \in <span class="co">[</span><span class="ot">0, 2\pi</span><span class="co">]</span>$), the half-angle satisfies $\frac{\theta}{2} \in <span class="co">[</span><span class="ot">0, \pi</span><span class="co">]</span>$, where the sine function is unconditionally non-negative:</span>
+<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a>   $$ \sin\left(\frac{\theta}{2}\right) \ge 0 \implies \left|\sin\left(\frac{\theta}{2}\right)\right| = \sin\left(\frac{\theta}{2}\right) $$</span>
+<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a>   This eliminates piece-wise absolute value signs without ambiguity. Along the descending branch ($\theta &lt; \pi$), $\cos(\theta/2) &gt; 0$ and $dy &gt; 0$. Past the trough ($\theta &gt; \pi$), $\cos(\theta/2) &lt; 0$ while the particle ascends ($dy &lt; 0$), maintaining consistent directional progress $dx \ge 0$.</span>
 <span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a>Yet throughout all three cases, the harmonic oscillator obeys the exact same physical laws of motion ($\ddot{x} + \omega^2 x = 0$) without any issue.</span>
-<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.3 Applications of the Euler-Lagrange Equation</span></span>
-<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. Shortest Path Revisited</span></span>
-<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a>For the shortest path, $f(y, y', x) = \sqrt{1 + y'^2}$.</span>
-<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a>Since $\partial f / \partial y = 0$, the E-L equation reduces to:</span>
-<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a>$$ \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) = 0 \implies \frac{\partial f}{\partial y'} = C $$</span>
-<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a>$$ \frac{y'}{\sqrt{1 + y'^2}} = C \implies y'^2 = C^2(1 + y'^2) \implies y'^2 = \frac{C^2}{1-C^2} = m^2 $$</span>
-<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a>Thus, $y' = m$, meaning $y = mx + b$. The shortest path is a straight line.</span>
-<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. The Brachistochrone Solution</span></span>
-<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Problem Formulation &amp; The Beltrami Identity</span></span>
-<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a>For the Brachistochrone, the functional integrand is $f(y, y') = \sqrt{\frac{1 + (y')^2}{y}}$ (dropping overall constants $\sqrt{2g}$).  </span>
-<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a>Because $f$ lacks explicit dependence on the independent variable $x$ ($\partial f / \partial x = 0$), the Euler-Lagrange equation possesses a first integral known as the **Beltrami Identity**:</span>
-<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a>$$ f - y' \frac{\partial f}{\partial y'} = C $$</span>
-<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a>Substituting $f$:</span>
-<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a>$$ \sqrt{\frac{1 + (y')^2}{y}} - y' \frac{y'}{\sqrt{y(1 + (y')^2)}} = C $$</span>
-<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a>$$ \frac{1 + (y')^2 - (y')^2}{\sqrt{y(1 + (y')^2)}} = C \implies \frac{1}{\sqrt{y(1 + (y')^2)}} = C \implies y\big(1 + (y')^2\big) = \frac{1}{C^2} \equiv 2a $$</span>
-<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a>Solving for the derivative $y' = dy/dx$:</span>
-<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a>$$ y' = \sqrt{\frac{2a - y}{y}} \implies dx = \sqrt{\frac{y}{2a - y}} \, dy $$</span>
+<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Physical Reason (Energy Bounds &amp; Uniqueness):**  </span>
+<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>**Energy Ceiling:** By conservation of energy, $v = \sqrt{2gy}$. At $y = 0$, speed vanishes ($v = 0$). The bead cannot ascend into $y &lt; 0$, ensuring the trajectory cannot continue past the cusp at $\theta = 2\pi$.</span>
+<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>**Path Uniqueness:** By scaling the radius $a$ and endpoint angle $\theta_2 \in (0, 2\pi]$, a unique single cycloid arch connects the origin $(0, 0)$ to any target point $(x_2, y_2)$ with $x_2 &gt; 0, y_2 \ge 0$.</span>
+<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>**No Redundant Loops:** Any path spanning into subsequent arches would entail climbing to a cusp, arresting, and falling through extra dips, adding superfluous travel time and violating $\delta T = 0$.</span>
+<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Why That Substitution Works: The Hidden Circle</span></span>
+<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a>Taylor calls $y = a(1 - \cos\theta)$ an "unlikely looking substitution," but it is completely systematic.  </span>
+<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a>Rationalizing the numerator:</span>
+<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a>$$ \sqrt{\frac{y}{2a - y}} = \frac{y}{\sqrt{y(2a - y)}} = \frac{y}{\sqrt{2ay - y^2}} $$</span>
+<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a>Completing the square in the denominator:</span>
+<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a>$$ 2ay - y^2 = a^2 - (y - a)^2 \implies \int \frac{y}{\sqrt{a^2 - (y - a)^2}} \, dy $$</span>
+<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a>**Geometric Origin:**  </span>
+<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a>The expression $\sqrt{a^2 - (y - a)^2}$ describes a semicircle $(y - a)^2 + w^2 = a^2$ of radius $a$ centered at $(0, a)$.</span>
+<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a>**Dual Circle Parameterizations:**  </span>
+<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a>Any form $\sqrt{a^2 - u^2}$ permits two standard circular substitutions:</span>
+<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Sine substitution ($u = a\sin\phi$):** Setting $y - a = a\sin\phi \implies y = a(1 + \sin\phi)$. At the release point $y = 0$, $\sin\phi = -1 \implies \phi = -\pi/2$, imposing an unwanted phase shift.</span>
+<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Inverted cosine substitution ($u = -a\cos\theta$):** Setting $y - a = -a\cos\theta \implies y = a(1 - \cos\theta)$. At release ($y = 0$), $\cos(0) = 1 \implies \theta = 0$, matching initial rest conditions at the origin with zero phase offset!</span>
+<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a><span class="fu">#### The Algebraic Alternative: Direct Root Substitution</span></span>
+<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a>Rather than guessing a trigonometric form, set the entire linear radical equal to an algebraic variable $u$:</span>
+<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a>$$ u = \sqrt{\frac{y}{2a - y}} \implies y = \frac{2a u^2}{1 + u^2}, \quad dy = \frac{4a u}{(1 + u^2)^2} \, du $$</span>
+<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a>The integral becomes:</span>
+<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a>$$ x = \int u \, dy = 4a \int \frac{u^2}{(1 + u^2)^2} \, du $$</span>
+<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a>This can be evaluated via two direct methods:</span>
 <span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a>The total trajectory $x(y)$ is given by the integral:</span>
-<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a>$$ x = \int \sqrt{\frac{y}{2a - y}} \, dy $$</span>
-<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step-by-Step Evaluation of Taylor's Cycloid Substitution</span></span>
-<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a>Taylor introduces the parameterized substitution:</span>
-<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a>$$ y = a(1 - \cos\theta) $$</span>
-<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Differential of the Substitution:**  </span>
-<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a>   Differentiating $y$ with respect to $\theta$:</span>
-<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a>   $$ dy = a\sin\theta \, d\theta = 2a \sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right) d\theta $$</span>
-<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Simplifying the Radicand:**  </span>
-<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a>   Substitute $y = a(1 - \cos\theta)$ into the numerator and denominator:</span>
-<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Numerator: $y = a(1 - \cos\theta) = 2a\sin^2\left(\frac{\theta}{2}\right)$</span>
-<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Denominator: $2a - y = 2a - a(1 - \cos\theta) = a(1 + \cos\theta) = 2a\cos^2\left(\frac{\theta}{2}\right)$</span>
+<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Method A: Integration by Parts (Pure Algebraic Route)</span></span>
+<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a>Decomposing as $u \cdot \frac{u}{(1 + u^2)^2}$ with $f = u$ and $dg = \frac{u}{(1 + u^2)^2}du \implies g = -\frac{1}{2(1 + u^2)}$:</span>
+<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a>$$ \int \frac{u^2}{(1 + u^2)^2} \, du = -\frac{u}{2(1 + u^2)} + \frac{1}{2}\int \frac{du}{1 + u^2} = -\frac{u}{2(1 + u^2)} + \frac{1}{2}\arctan(u) $$</span>
+<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a>Multiplying by $4a$ and enforcing $x(0) = 0$:</span>
+<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a>$$ x(u) = 2a\arctan(u) - \frac{2a u}{1 + u^2} $$</span>
+<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a>Setting $u = \tan(\theta/2)$, we find $\arctan(u) = \theta/2$ and $\frac{2u}{1 + u^2} = \sin\theta$, which directly recovers:</span>
+<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a>$$ x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta) $$</span>
+<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Method B: Trigonometric Substitution</span></span>
+<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a>Substituting $u = \tan\phi$ with $du = \sec^2\phi \, d\phi$:</span>
+<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a>$$ 4a \int \frac{\tan^2\phi}{\sec^4\phi}\sec^2\phi \, d\phi = 4a \int \sin^2\phi \, d\phi = 2a(\phi - \sin\phi\cos\phi) $$</span>
+<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a>Setting $\theta = 2\phi$ immediately produces $x = a(\theta - \sin\theta)$.</span>
+<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a><span class="fu">#### What $\theta$ Represents Physically</span></span>
+<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a>The parameter $\theta$ is the cumulative rotation angle (in radians) of a wheel of radius $a$ rolling without slipping along the underside of the horizontal axis ($y = 0$):</span>
 <span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a>   Taking the ratio inside the square root:</span>
-<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a>   $$ \frac{y}{2a - y} = \frac{2a\sin^2(\theta/2)}{2a\cos^2(\theta/2)} = \tan^2\left(\frac{\theta}{2}\right) $$</span>
-<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a>   Assuming the motion stays within the first arch ($\theta \in <span class="co">[</span><span class="ot">0, 2\pi</span><span class="co">]</span>$ where $\theta/2 \in <span class="co">[</span><span class="ot">0, \pi</span><span class="co">]</span>$ and $\sin(\theta/2) \ge 0$):</span>
-<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a>   $$ \sqrt{\frac{y}{2a - y}} = \tan\left(\frac{\theta}{2}\right) = \frac{\sin(\theta/2)}{\cos(\theta/2)} $$</span>
-<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Combining and Integrating:**  </span>
-<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a>   Multiplying the simplified radical by $dy$:</span>
-<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a>   $$ dx = \left(\frac{\sin(\theta/2)}{\cos(\theta/2)}\right) \cdot \left<span class="co">[</span><span class="ot">2a \sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right) d\theta\right</span><span class="co">]</span> = 2a \sin^2\left(\frac{\theta}{2}\right) d\theta = a(1 - \cos\theta) \, d\theta $$</span>
-<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a>   Integrating directly with initial condition $x(0) = 0$ gives:</span>
-<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a>   $$ x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta) $$</span>
-<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a>   These are the parametric equations of a **cycloid**.</span>
-<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Mathematical &amp; Physical Rationale for the First Arch ($\theta \in [0, 2\pi]$)</span></span>
-<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Mathematical Reason (Principal Square Root):**  </span>
-<span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a>   The square root identity is $\sqrt{u^2} = |u|$. Thus:</span>
-<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a>   $$ \sqrt{\tan^2(\theta/2)} = |\tan(\theta/2)| = \frac{|\sin(\theta/2)|}{|\cos(\theta/2)|} $$</span>
-<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a>   Within the first arch ($\theta \in <span class="co">[</span><span class="ot">0, 2\pi</span><span class="co">]</span>$), the half-angle satisfies $\frac{\theta}{2} \in <span class="co">[</span><span class="ot">0, \pi</span><span class="co">]</span>$, where the sine function is unconditionally non-negative:</span>
-<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a>   $$ \sin\left(\frac{\theta}{2}\right) \ge 0 \implies \left|\sin\left(\frac{\theta}{2}\right)\right| = \sin\left(\frac{\theta}{2}\right) $$</span>
-<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a>   This eliminates piece-wise absolute value signs without ambiguity. Along the descending branch ($\theta &lt; \pi$), $\cos(\theta/2) &gt; 0$ and $dy &gt; 0$. Past the trough ($\theta &gt; \pi$), $\cos(\theta/2) &lt; 0$ while the particle ascends ($dy &lt; 0$), maintaining consistent directional progress $dx \ge 0$.</span>
-<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Physical Reason (Energy Bounds &amp; Uniqueness):**  </span>
-<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>**Energy Ceiling:** By conservation of energy, $v = \sqrt{2gy}$. At $y = 0$, speed vanishes ($v = 0$). The bead cannot ascend into $y &lt; 0$, ensuring the trajectory cannot continue past the cusp at $\theta = 2\pi$.</span>
-<span id="cb3-226"><a href="#cb3-226" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>**Path Uniqueness:** By scaling the radius $a$ and endpoint angle $\theta_2 \in (0, 2\pi]$, a unique single cycloid arch connects the origin $(0, 0)$ to any target point $(x_2, y_2)$ with $x_2 &gt; 0, y_2 \ge 0$.</span>
-<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>**No Redundant Loops:** Any path spanning into subsequent arches would entail climbing to a cusp, arresting, and falling through extra dips, adding superfluous travel time and violating $\delta T = 0$.</span>
-<span id="cb3-228"><a href="#cb3-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-229"><a href="#cb3-229" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Why That Substitution Works: The Hidden Circle</span></span>
-<span id="cb3-230"><a href="#cb3-230" aria-hidden="true" tabindex="-1"></a>Taylor calls $y = a(1 - \cos\theta)$ an "unlikely looking substitution," but it is completely systematic.  </span>
-<span id="cb3-231"><a href="#cb3-231" aria-hidden="true" tabindex="-1"></a>Rationalizing the numerator:</span>
-<span id="cb3-232"><a href="#cb3-232" aria-hidden="true" tabindex="-1"></a>$$ \sqrt{\frac{y}{2a - y}} = \frac{y}{\sqrt{y(2a - y)}} = \frac{y}{\sqrt{2ay - y^2}} $$</span>
-<span id="cb3-233"><a href="#cb3-233" aria-hidden="true" tabindex="-1"></a>Completing the square in the denominator:</span>
-<span id="cb3-234"><a href="#cb3-234" aria-hidden="true" tabindex="-1"></a>$$ 2ay - y^2 = a^2 - (y - a)^2 \implies \int \frac{y}{\sqrt{a^2 - (y - a)^2}} \, dy $$</span>
-<span id="cb3-235"><a href="#cb3-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-236"><a href="#cb3-236" aria-hidden="true" tabindex="-1"></a>**Geometric Origin:**  </span>
-<span id="cb3-237"><a href="#cb3-237" aria-hidden="true" tabindex="-1"></a>The expression $\sqrt{a^2 - (y - a)^2}$ describes a semicircle $(y - a)^2 + w^2 = a^2$ of radius $a$ centered at $(0, a)$.</span>
-<span id="cb3-238"><a href="#cb3-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-239"><a href="#cb3-239" aria-hidden="true" tabindex="-1"></a>**Dual Circle Parameterizations:**  </span>
-<span id="cb3-240"><a href="#cb3-240" aria-hidden="true" tabindex="-1"></a>Any form $\sqrt{a^2 - u^2}$ permits two standard circular substitutions:</span>
-<span id="cb3-241"><a href="#cb3-241" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Sine substitution ($u = a\sin\phi$):** Setting $y - a = a\sin\phi \implies y = a(1 + \sin\phi)$. At the release point $y = 0$, $\sin\phi = -1 \implies \phi = -\pi/2$, imposing an unwanted phase shift.</span>
-<span id="cb3-242"><a href="#cb3-242" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Inverted cosine substitution ($u = -a\cos\theta$):** Setting $y - a = -a\cos\theta \implies y = a(1 - \cos\theta)$. At release ($y = 0$), $\cos(0) = 1 \implies \theta = 0$, matching initial rest conditions at the origin with zero phase offset!</span>
-<span id="cb3-243"><a href="#cb3-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-244"><a href="#cb3-244" aria-hidden="true" tabindex="-1"></a><span class="fu">#### The Algebraic Alternative: Direct Root Substitution</span></span>
-<span id="cb3-245"><a href="#cb3-245" aria-hidden="true" tabindex="-1"></a>Rather than guessing a trigonometric form, set the entire linear radical equal to an algebraic variable $u$:</span>
-<span id="cb3-246"><a href="#cb3-246" aria-hidden="true" tabindex="-1"></a>$$ u = \sqrt{\frac{y}{2a - y}} \implies y = \frac{2a u^2}{1 + u^2}, \quad dy = \frac{4a u}{(1 + u^2)^2} \, du $$</span>
-<span id="cb3-247"><a href="#cb3-247" aria-hidden="true" tabindex="-1"></a>The integral becomes:</span>
-<span id="cb3-248"><a href="#cb3-248" aria-hidden="true" tabindex="-1"></a>$$ x = \int u \, dy = 4a \int \frac{u^2}{(1 + u^2)^2} \, du $$</span>
+<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a><span class="in">```text</span></span>
+<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a><span class="in">          x=0                         x = a*theta                      x = 2*pi*a</span></span>
+<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a><span class="in">   y=0 ----*-------------------------------O-------------------------------*----&gt; x</span></span>
+<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a><span class="in">           |                              / \                              |</span></span>
+<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a><span class="in">           |                             /   \                             |</span></span>
+<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a><span class="in">           |                            /  a  \                            |</span></span>
+<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a><span class="in">           |                           O-------* P(x,y)                    |</span></span>
+<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a><span class="in">           |                            \ theta/                           |</span></span>
+<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a><span class="in">           |                             \    /                            |</span></span>
+<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a><span class="in">           |                              \  /                             |</span></span>
+<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a><span class="in">           |                               \/                              |</span></span>
+<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a><span class="in">           |                                                               |</span></span>
+<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a><span class="in">           |                               . (Trough: theta = pi, y = 2a)  |</span></span>
+<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a><span class="in">           v y</span></span>
+<span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Wheel Center Translation:** $(x_c, y_c) = (a\theta, a)$</span>
+<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Rim Marker Relative Displacement:** $(\Delta x, \Delta y) = (-a\sin\theta, -a\cos\theta)$</span>
+<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Absolute Coordinates:**</span>
+<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a>  $$ x(\theta) = x_c + \Delta x = a(\theta - \sin\theta), \quad y(\theta) = y_c + \Delta y = a(1 - \cos\theta) $$</span>
+<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Local Launch / Slope Angle:**</span>
+<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a>  $$ \frac{dy}{dx} = \frac{a\sin\theta}{a(1 - \cos\theta)} = \cot\left(\frac{\theta}{2}\right) \implies \psi = \frac{\pi - \theta}{2} $$</span>
+<span id="cb3-226"><a href="#cb3-226" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>At release ($\theta \to 0$): $\psi = \pi/2$ (instantaneous vertical drop).</span>
+<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>At the trough ($\theta = \pi$): $\psi = 0$ (instantaneous horizontal flight).</span>
+<span id="cb3-228"><a href="#cb3-228" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>At the terminal cusp ($\theta = 2\pi$): $\psi = -\pi/2$ (instantaneous vertical rise).</span>
+<span id="cb3-229"><a href="#cb3-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-230"><a href="#cb3-230" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb3-231"><a href="#cb3-231" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎮 Interactive Simulation: Rolling Wheel</span></span>
+<span id="cb3-232"><a href="#cb3-232" aria-hidden="true" tabindex="-1"></a>To dynamically adjust the wheel radius $a$, scrub the rotation angle $\theta$, and visualize the instantaneous velocity vectors in real time, check out our **[Interactive Rolling Wheel Cycloid Generator](../simulations/cycloid-mechanics-interactive.qmd#sim-rolling-wheel)**!</span>
+<span id="cb3-233"><a href="#cb3-233" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb3-234"><a href="#cb3-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-235"><a href="#cb3-235" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Essential Mathematical Properties of Cycloids</span></span>
+<span id="cb3-236"><a href="#cb3-236" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Parametric Equations:** $x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta)$</span>
+<span id="cb3-237"><a href="#cb3-237" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Differential Arc Length:**</span>
+<span id="cb3-238"><a href="#cb3-238" aria-hidden="true" tabindex="-1"></a>  $$ ds = \sqrt{\dot{x}^2 + \dot{y}^2} \, d\theta = 2a\sin\left(\frac{\theta}{2}\right) d\theta $$</span>
+<span id="cb3-239"><a href="#cb3-239" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Cumulative Arc Length from Origin:**</span>
+<span id="cb3-240"><a href="#cb3-240" aria-hidden="true" tabindex="-1"></a>  $$ s(\theta) = \int_0^\theta 2a\sin\left(\frac{\theta'}{2}\right) d\theta' = 4a\left(1 - \cos\left(\frac{\theta}{2}\right)\right) = 8a\sin^2\left(\frac{\theta}{4}\right) $$</span>
+<span id="cb3-241"><a href="#cb3-241" aria-hidden="true" tabindex="-1"></a>  A full single arch ($\theta = 2\pi$) has total perimeter $s_{\text{total}} = 8a$.</span>
+<span id="cb3-242"><a href="#cb3-242" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Radius of Curvature:**</span>
+<span id="cb3-243"><a href="#cb3-243" aria-hidden="true" tabindex="-1"></a>  $$ \rho(\theta) = 4a\sin\left(\frac{\theta}{2}\right) = \sqrt{8a y} $$</span>
+<span id="cb3-244"><a href="#cb3-244" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Self-Evolute Property:** The evolute of a cycloid is an identical cycloid shifted horizontally by $\pi a$ and downward by $2a$.</span>
+<span id="cb3-245"><a href="#cb3-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-246"><a href="#cb3-246" aria-hidden="true" tabindex="-1"></a>*(For additional substitution toolkits and speed benchmarks, see [Integration Tricks and Substitution Techniques](../reference/integration-tricks-and-substitutions.qmd). For physical systems such as charged particle drift in crossed $\mathbf{E}\times\mathbf{B}$ fields and cycloidal drives, see [Physics and Engineering Applications of Cycloids](../reference/cycloid-physics-applications.qmd).)*</span>
+<span id="cb3-247"><a href="#cb3-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-248"><a href="#cb3-248" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Trajectory Visualization &amp; The Brachistochrone Race</span></span>
 <span id="cb3-249"><a href="#cb3-249" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-250"><a href="#cb3-250" aria-hidden="true" tabindex="-1"></a>This can be evaluated via two direct methods:</span>
-<span id="cb3-251"><a href="#cb3-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-252"><a href="#cb3-252" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Method A: Integration by Parts (Pure Algebraic Route)</span></span>
-<span id="cb3-253"><a href="#cb3-253" aria-hidden="true" tabindex="-1"></a>Decomposing as $u \cdot \frac{u}{(1 + u^2)^2}$ with $f = u$ and $dg = \frac{u}{(1 + u^2)^2}du \implies g = -\frac{1}{2(1 + u^2)}$:</span>
-<span id="cb3-254"><a href="#cb3-254" aria-hidden="true" tabindex="-1"></a>$$ \int \frac{u^2}{(1 + u^2)^2} \, du = -\frac{u}{2(1 + u^2)} + \frac{1}{2}\int \frac{du}{1 + u^2} = -\frac{u}{2(1 + u^2)} + \frac{1}{2}\arctan(u) $$</span>
-<span id="cb3-255"><a href="#cb3-255" aria-hidden="true" tabindex="-1"></a>Multiplying by $4a$ and enforcing $x(0) = 0$:</span>
-<span id="cb3-256"><a href="#cb3-256" aria-hidden="true" tabindex="-1"></a>$$ x(u) = 2a\arctan(u) - \frac{2a u}{1 + u^2} $$</span>
-<span id="cb3-257"><a href="#cb3-257" aria-hidden="true" tabindex="-1"></a>Setting $u = \tan(\theta/2)$, we find $\arctan(u) = \theta/2$ and $\frac{2u}{1 + u^2} = \sin\theta$, which directly recovers:</span>
-<span id="cb3-258"><a href="#cb3-258" aria-hidden="true" tabindex="-1"></a>$$ x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta) $$</span>
-<span id="cb3-259"><a href="#cb3-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-260"><a href="#cb3-260" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Method B: Trigonometric Substitution</span></span>
-<span id="cb3-261"><a href="#cb3-261" aria-hidden="true" tabindex="-1"></a>Substituting $u = \tan\phi$ with $du = \sec^2\phi \, d\phi$:</span>
-<span id="cb3-262"><a href="#cb3-262" aria-hidden="true" tabindex="-1"></a>$$ 4a \int \frac{\tan^2\phi}{\sec^4\phi}\sec^2\phi \, d\phi = 4a \int \sin^2\phi \, d\phi = 2a(\phi - \sin\phi\cos\phi) $$</span>
-<span id="cb3-263"><a href="#cb3-263" aria-hidden="true" tabindex="-1"></a>Setting $\theta = 2\phi$ immediately produces $x = a(\theta - \sin\theta)$.</span>
-<span id="cb3-264"><a href="#cb3-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-265"><a href="#cb3-265" aria-hidden="true" tabindex="-1"></a><span class="fu">#### What $\theta$ Represents Physically</span></span>
-<span id="cb3-266"><a href="#cb3-266" aria-hidden="true" tabindex="-1"></a>The parameter $\theta$ is the cumulative rotation angle (in radians) of a wheel of radius $a$ rolling without slipping along the underside of the horizontal axis ($y = 0$):</span>
-<span id="cb3-267"><a href="#cb3-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-268"><a href="#cb3-268" aria-hidden="true" tabindex="-1"></a><span class="in">```text</span></span>
-<span id="cb3-269"><a href="#cb3-269" aria-hidden="true" tabindex="-1"></a><span class="in">          x=0                         x = a*theta                      x = 2*pi*a</span></span>
-<span id="cb3-270"><a href="#cb3-270" aria-hidden="true" tabindex="-1"></a><span class="in">   y=0 ----*-------------------------------O-------------------------------*----&gt; x</span></span>
-<span id="cb3-271"><a href="#cb3-271" aria-hidden="true" tabindex="-1"></a><span class="in">           |                              / \                              |</span></span>
-<span id="cb3-272"><a href="#cb3-272" aria-hidden="true" tabindex="-1"></a><span class="in">           |                             /   \                             |</span></span>
-<span id="cb3-273"><a href="#cb3-273" aria-hidden="true" tabindex="-1"></a><span class="in">           |                            /  a  \                            |</span></span>
-<span id="cb3-274"><a href="#cb3-274" aria-hidden="true" tabindex="-1"></a><span class="in">           |                           O-------* P(x,y)                    |</span></span>
-<span id="cb3-275"><a href="#cb3-275" aria-hidden="true" tabindex="-1"></a><span class="in">           |                            \ theta/                           |</span></span>
-<span id="cb3-276"><a href="#cb3-276" aria-hidden="true" tabindex="-1"></a><span class="in">           |                             \    /                            |</span></span>
-<span id="cb3-277"><a href="#cb3-277" aria-hidden="true" tabindex="-1"></a><span class="in">           |                              \  /                             |</span></span>
-<span id="cb3-278"><a href="#cb3-278" aria-hidden="true" tabindex="-1"></a><span class="in">           |                               \/                              |</span></span>
-<span id="cb3-279"><a href="#cb3-279" aria-hidden="true" tabindex="-1"></a><span class="in">           |                                                               |</span></span>
-<span id="cb3-280"><a href="#cb3-280" aria-hidden="true" tabindex="-1"></a><span class="in">           |                               . (Trough: theta = pi, y = 2a)  |</span></span>
-<span id="cb3-281"><a href="#cb3-281" aria-hidden="true" tabindex="-1"></a><span class="in">           v y</span></span>
-<span id="cb3-282"><a href="#cb3-282" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-252"><a href="#cb3-252" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb3-253"><a href="#cb3-253" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-cycloid</span></span>
+<span id="cb3-254"><a href="#cb3-254" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "The Brachistochrone path is a cycloid, the curve traced by a point on the rim of a rolling wheel."</span></span>
+<span id="cb3-255"><a href="#cb3-255" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-256"><a href="#cb3-256" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-257"><a href="#cb3-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-258"><a href="#cb3-258" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">100</span>)</span>
+<span id="cb3-259"><a href="#cb3-259" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb3-260"><a href="#cb3-260" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> a <span class="op">*</span> (theta <span class="op">-</span> np.sin(theta))</span>
+<span id="cb3-261"><a href="#cb3-261" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> a <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> np.cos(theta)) <span class="co"># Positive downwards</span></span>
+<span id="cb3-262"><a href="#cb3-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-263"><a href="#cb3-263" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb3-264"><a href="#cb3-264" aria-hidden="true" tabindex="-1"></a>ax.plot(x, <span class="op">-</span>y, label<span class="op">=</span><span class="st">'Brachistochrone (Cycloid)'</span>, color<span class="op">=</span><span class="st">'blue'</span>) <span class="co"># Negative to plot downwards intuitively</span></span>
+<span id="cb3-265"><a href="#cb3-265" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>, x[<span class="op">-</span><span class="dv">1</span>]], [<span class="dv">0</span>, <span class="op">-</span>y[<span class="op">-</span><span class="dv">1</span>]], <span class="st">'--'</span>, label<span class="op">=</span><span class="st">'Straight line'</span>, color<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb3-266"><a href="#cb3-266" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb3-267"><a href="#cb3-267" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'x'</span>)</span>
+<span id="cb3-268"><a href="#cb3-268" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'y'</span>)</span>
+<span id="cb3-269"><a href="#cb3-269" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Path of Minimum Time (Brachistochrone)'</span>)</span>
+<span id="cb3-270"><a href="#cb3-270" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb3-271"><a href="#cb3-271" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb3-272"><a href="#cb3-272" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb3-273"><a href="#cb3-273" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-274"><a href="#cb3-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-275"><a href="#cb3-275" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb3-276"><a href="#cb3-276" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎮 Live In-Browser Simulations</span></span>
+<span id="cb3-277"><a href="#cb3-277" aria-hidden="true" tabindex="-1"></a>Explore the complete interactive simulation suite on the **[Code &amp; Simulations: Cycloid Mechanics](../simulations/cycloid-mechanics-interactive.qmd)** page:</span>
+<span id="cb3-278"><a href="#cb3-278" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**[Simulation 1: Rolling Wheel Cycloid Generator](../simulations/cycloid-mechanics-interactive.qmd#sim-rolling-wheel)** — Dynamic radius scaling, scrubbing, and velocity vectors.</span>
+<span id="cb3-279"><a href="#cb3-279" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**[Simulation 2: The Brachistochrone 4-Track Race](../simulations/cycloid-mechanics-interactive.qmd#sim-brachistochrone)** — Real-time race between Cycloid, Circular Arc, Parabola, and Straight Line with stopwatches.</span>
+<span id="cb3-280"><a href="#cb3-280" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**[Simulation 3: The Tautochrone Synchronous Arrival](../simulations/cycloid-mechanics-interactive.qmd#sim-tautochrone)** — Simultaneous descent of beads released from different heights.</span>
+<span id="cb3-281"><a href="#cb3-281" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**[Simulation 4: Huygens' Isochronous Pendulum](../simulations/cycloid-mechanics-interactive.qmd#sim-huygens)** — Cycloidal cheeks eliminating circular error at high amplitudes.</span>
+<span id="cb3-282"><a href="#cb3-282" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb3-283"><a href="#cb3-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-284"><a href="#cb3-284" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Wheel Center Translation:** $(x_c, y_c) = (a\theta, a)$</span>
-<span id="cb3-285"><a href="#cb3-285" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Rim Marker Relative Displacement:** $(\Delta x, \Delta y) = (-a\sin\theta, -a\cos\theta)$</span>
-<span id="cb3-286"><a href="#cb3-286" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Absolute Coordinates:**</span>
-<span id="cb3-287"><a href="#cb3-287" aria-hidden="true" tabindex="-1"></a>  $$ x(\theta) = x_c + \Delta x = a(\theta - \sin\theta), \quad y(\theta) = y_c + \Delta y = a(1 - \cos\theta) $$</span>
-<span id="cb3-288"><a href="#cb3-288" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Local Launch / Slope Angle:**</span>
-<span id="cb3-289"><a href="#cb3-289" aria-hidden="true" tabindex="-1"></a>  $$ \frac{dy}{dx} = \frac{a\sin\theta}{a(1 - \cos\theta)} = \cot\left(\frac{\theta}{2}\right) \implies \psi = \frac{\pi - \theta}{2} $$</span>
-<span id="cb3-290"><a href="#cb3-290" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>At release ($\theta \to 0$): $\psi = \pi/2$ (instantaneous vertical drop).</span>
-<span id="cb3-291"><a href="#cb3-291" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>At the trough ($\theta = \pi$): $\psi = 0$ (instantaneous horizontal flight).</span>
-<span id="cb3-292"><a href="#cb3-292" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>At the terminal cusp ($\theta = 2\pi$): $\psi = -\pi/2$ (instantaneous vertical rise).</span>
-<span id="cb3-293"><a href="#cb3-293" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-294"><a href="#cb3-294" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
-<span id="cb3-295"><a href="#cb3-295" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎮 Interactive Simulation: Rolling Wheel</span></span>
-<span id="cb3-296"><a href="#cb3-296" aria-hidden="true" tabindex="-1"></a>To dynamically adjust the wheel radius $a$, scrub the rotation angle $\theta$, and visualize the instantaneous velocity vectors in real time, check out our **[Interactive Rolling Wheel Cycloid Generator](../simulations/cycloid-mechanics-interactive.qmd#sim-rolling-wheel)**!</span>
-<span id="cb3-297"><a href="#cb3-297" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb3-298"><a href="#cb3-298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-299"><a href="#cb3-299" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Essential Mathematical Properties of Cycloids</span></span>
-<span id="cb3-300"><a href="#cb3-300" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Parametric Equations:** $x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta)$</span>
-<span id="cb3-301"><a href="#cb3-301" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Differential Arc Length:**</span>
-<span id="cb3-302"><a href="#cb3-302" aria-hidden="true" tabindex="-1"></a>  $$ ds = \sqrt{\dot{x}^2 + \dot{y}^2} \, d\theta = 2a\sin\left(\frac{\theta}{2}\right) d\theta $$</span>
-<span id="cb3-303"><a href="#cb3-303" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Cumulative Arc Length from Origin:**</span>
-<span id="cb3-304"><a href="#cb3-304" aria-hidden="true" tabindex="-1"></a>  $$ s(\theta) = \int_0^\theta 2a\sin\left(\frac{\theta'}{2}\right) d\theta' = 4a\left(1 - \cos\left(\frac{\theta}{2}\right)\right) = 8a\sin^2\left(\frac{\theta}{4}\right) $$</span>
-<span id="cb3-305"><a href="#cb3-305" aria-hidden="true" tabindex="-1"></a>  A full single arch ($\theta = 2\pi$) has total perimeter $s_{\text{total}} = 8a$.</span>
-<span id="cb3-306"><a href="#cb3-306" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Radius of Curvature:**</span>
-<span id="cb3-307"><a href="#cb3-307" aria-hidden="true" tabindex="-1"></a>  $$ \rho(\theta) = 4a\sin\left(\frac{\theta}{2}\right) = \sqrt{8a y} $$</span>
-<span id="cb3-308"><a href="#cb3-308" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Self-Evolute Property:** The evolute of a cycloid is an identical cycloid shifted horizontally by $\pi a$ and downward by $2a$.</span>
+<span id="cb3-284"><a href="#cb3-284" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.11](../solutions/taylor-chapter-6-problems.qmd#problem-611))*</span>
+<span id="cb3-285"><a href="#cb3-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-286"><a href="#cb3-286" aria-hidden="true" tabindex="-1"></a><span class="fu">### Maximum and Minimum vs. Stationary</span></span>
+<span id="cb3-287"><a href="#cb3-287" aria-hidden="true" tabindex="-1"></a>You have probably noticed that we haven't rigorously checked if the cycloid gives a true *minimum* time, as opposed to a maximum or saddle point. For instance, the geodesic between two points on a globe is a great circle. While the shortest path is a great circle, the *long* way around the globe on the same great circle is also a stationary path, but it is neither a minimum nor a maximum (it's a saddle point).</span>
+<span id="cb3-288"><a href="#cb3-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-289"><a href="#cb3-289" aria-hidden="true" tabindex="-1"></a><span class="fu">#### ⚠️ Stationary Action vs. "Least" Action in Physics</span></span>
+<span id="cb3-290"><a href="#cb3-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-291"><a href="#cb3-291" aria-hidden="true" tabindex="-1"></a>A common conceptual question in variational calculus and classical mechanics is: **Does the physical trajectory minimize, maximize, or merely make the action stationary? And why is this distinction almost entirely ignored in classical mechanics?**</span>
+<span id="cb3-292"><a href="#cb3-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-293"><a href="#cb3-293" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 1. Why the Distinction is Irrelevant for Classical Mechanics</span></span>
+<span id="cb3-294"><a href="#cb3-294" aria-hidden="true" tabindex="-1"></a>Hamilton's principle states that the true physical trajectory satisfies:</span>
+<span id="cb3-295"><a href="#cb3-295" aria-hidden="true" tabindex="-1"></a>$$ \delta S = 0 \quad \text{where} \quad S<span class="co">[</span><span class="ot">q</span><span class="co">]</span> = \int_{t_1}^{t_2} L(q, \dot{q}, t) \, dt $$</span>
+<span id="cb3-296"><a href="#cb3-296" aria-hidden="true" tabindex="-1"></a>The derivation of the Euler-Lagrange equations—and therefore Newton's second law $\mathbf{F} = m\mathbf{a}$—rests **entirely and exclusively on the vanishing of the first variation** ($\delta S = 0$). </span>
+<span id="cb3-297"><a href="#cb3-297" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>The dynamical equations of motion are **local in time** differential equations. </span>
+<span id="cb3-298"><a href="#cb3-298" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>A particle propagating along a trajectory does not "anticipate" or "calculate" the global second variation $\delta^2 S$ across the whole time interval $<span class="co">[</span><span class="ot">t_1, t_2</span><span class="co">]</span>$.</span>
+<span id="cb3-299"><a href="#cb3-299" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Whether $\delta^2 S &gt; 0$ (local minimum), $\delta^2 S &lt; 0$ (local maximum), or $\delta^2 S$ is indefinite (saddle point) has **zero impact** on whether the path satisfies $\frac{\partial L}{\partial q} - \frac{d}{dt}\frac{\partial L}{\partial \dot{q}} = 0$.</span>
+<span id="cb3-300"><a href="#cb3-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-301"><a href="#cb3-301" aria-hidden="true" tabindex="-1"></a>Historically, Maupertuis and Euler dubbed this the *"Principle of Least Action"*, believing nature operates with divine economy. However, calling it "least" action is a **historical misnomer**. In fact, for sufficiently long trajectories, true physical paths are almost never global minima—they are **saddle points**. Hence, modern physics refers to it strictly as the **Principle of Stationary Action**.</span>
+<span id="cb3-302"><a href="#cb3-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-303"><a href="#cb3-303" aria-hidden="true" tabindex="-1"></a>*(Note: In static equilibrium, $\delta V = 0$ gives equilibrium, but $\delta^2 V &gt; 0$ is indeed required for stability. But for dynamical trajectories, stationarity is all that mechanics requires.)*</span>
+<span id="cb3-304"><a href="#cb3-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-305"><a href="#cb3-305" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-306"><a href="#cb3-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-307"><a href="#cb3-307" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 2. Where and When Does Min vs. Max vs. Saddle Point Matter?</span></span>
+<span id="cb3-308"><a href="#cb3-308" aria-hidden="true" tabindex="-1"></a>While ordinary classical trajectories require only $\delta S = 0$, distinguishing the character of the stationary point becomes critical in several advanced domains:</span>
 <span id="cb3-309"><a href="#cb3-309" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-310"><a href="#cb3-310" aria-hidden="true" tabindex="-1"></a>*(For additional substitution toolkits and speed benchmarks, see [Integration Tricks and Substitution Techniques](../reference/integration-tricks-and-substitutions.qmd). For physical systems such as charged particle drift in crossed $\mathbf{E}\times\mathbf{B}$ fields and cycloidal drives, see [Physics and Engineering Applications of Cycloids](../reference/cycloid-physics-applications.qmd).)*</span>
-<span id="cb3-311"><a href="#cb3-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-312"><a href="#cb3-312" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Trajectory Visualization &amp; The Brachistochrone Race</span></span>
-<span id="cb3-313"><a href="#cb3-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-316"><a href="#cb3-316" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb3-317"><a href="#cb3-317" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-cycloid</span></span>
-<span id="cb3-318"><a href="#cb3-318" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "The Brachistochrone path is a cycloid, the curve traced by a point on the rim of a rolling wheel."</span></span>
-<span id="cb3-319"><a href="#cb3-319" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-320"><a href="#cb3-320" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-321"><a href="#cb3-321" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-322"><a href="#cb3-322" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">100</span>)</span>
-<span id="cb3-323"><a href="#cb3-323" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb3-324"><a href="#cb3-324" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> a <span class="op">*</span> (theta <span class="op">-</span> np.sin(theta))</span>
-<span id="cb3-325"><a href="#cb3-325" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> a <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> np.cos(theta)) <span class="co"># Positive downwards</span></span>
-<span id="cb3-326"><a href="#cb3-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-327"><a href="#cb3-327" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
-<span id="cb3-328"><a href="#cb3-328" aria-hidden="true" tabindex="-1"></a>ax.plot(x, <span class="op">-</span>y, label<span class="op">=</span><span class="st">'Brachistochrone (Cycloid)'</span>, color<span class="op">=</span><span class="st">'blue'</span>) <span class="co"># Negative to plot downwards intuitively</span></span>
-<span id="cb3-329"><a href="#cb3-329" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>, x[<span class="op">-</span><span class="dv">1</span>]], [<span class="dv">0</span>, <span class="op">-</span>y[<span class="op">-</span><span class="dv">1</span>]], <span class="st">'--'</span>, label<span class="op">=</span><span class="st">'Straight line'</span>, color<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb3-330"><a href="#cb3-330" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>)</span>
-<span id="cb3-331"><a href="#cb3-331" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'x'</span>)</span>
-<span id="cb3-332"><a href="#cb3-332" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'y'</span>)</span>
-<span id="cb3-333"><a href="#cb3-333" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Path of Minimum Time (Brachistochrone)'</span>)</span>
-<span id="cb3-334"><a href="#cb3-334" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
-<span id="cb3-335"><a href="#cb3-335" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb3-336"><a href="#cb3-336" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb3-337"><a href="#cb3-337" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-338"><a href="#cb3-338" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-339"><a href="#cb3-339" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
-<span id="cb3-340"><a href="#cb3-340" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎮 Live In-Browser Simulations</span></span>
-<span id="cb3-341"><a href="#cb3-341" aria-hidden="true" tabindex="-1"></a>Explore the complete interactive simulation suite on the **[Code &amp; Simulations: Cycloid Mechanics](../simulations/cycloid-mechanics-interactive.qmd)** page:</span>
-<span id="cb3-342"><a href="#cb3-342" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**[Simulation 1: Rolling Wheel Cycloid Generator](../simulations/cycloid-mechanics-interactive.qmd#sim-rolling-wheel)** — Dynamic radius scaling, scrubbing, and velocity vectors.</span>
-<span id="cb3-343"><a href="#cb3-343" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**[Simulation 2: The Brachistochrone 4-Track Race](../simulations/cycloid-mechanics-interactive.qmd#sim-brachistochrone)** — Real-time race between Cycloid, Circular Arc, Parabola, and Straight Line with stopwatches.</span>
-<span id="cb3-344"><a href="#cb3-344" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**[Simulation 3: The Tautochrone Synchronous Arrival](../simulations/cycloid-mechanics-interactive.qmd#sim-tautochrone)** — Simultaneous descent of beads released from different heights.</span>
-<span id="cb3-345"><a href="#cb3-345" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**[Simulation 4: Huygens' Isochronous Pendulum](../simulations/cycloid-mechanics-interactive.qmd#sim-huygens)** — Cycloidal cheeks eliminating circular error at high amplitudes.</span>
-<span id="cb3-346"><a href="#cb3-346" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb3-347"><a href="#cb3-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-348"><a href="#cb3-348" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.11](../solutions/taylor-chapter-6-problems.qmd#problem-611))*</span>
-<span id="cb3-349"><a href="#cb3-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-350"><a href="#cb3-350" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.4 More Than Two Variables</span></span>
-<span id="cb3-351"><a href="#cb3-351" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-352"><a href="#cb3-352" aria-hidden="true" tabindex="-1"></a>If the functional depends on multiple functions $y_1(x), y_2(x), \dots, y_n(x)$,</span>
-<span id="cb3-353"><a href="#cb3-353" aria-hidden="true" tabindex="-1"></a>$$ S = \int_{x_1}^{x_2} f(y_1, \dots, y_n, y_1', \dots, y_n', x) \, dx $$</span>
-<span id="cb3-354"><a href="#cb3-354" aria-hidden="true" tabindex="-1"></a>we can vary each function independently. This leads to a system of $n$ independent Euler-Lagrange equations:</span>
-<span id="cb3-355"><a href="#cb3-355" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial f}{\partial y_i} - \frac{d}{dx} \frac{\partial f}{\partial y_i'} = 0 \quad \text{for } i = 1, 2, \dots, n $$</span>
+<span id="cb3-310"><a href="#cb3-310" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Gravitational Lensing &amp; Fermat's Principle (Geometrical Optics):**</span>
+<span id="cb3-311"><a href="#cb3-311" aria-hidden="true" tabindex="-1"></a>   Light rays follow paths of stationary travel time ($\delta t = 0$). When a massive galaxy or cluster gravitationally lenses a background quasar, the light travel-time surface $t(\boldsymbol{\theta})$ has multiple stationary points:</span>
+<span id="cb3-312"><a href="#cb3-312" aria-hidden="true" tabindex="-1"></a><span class="ss">   * </span>**Local Minima:** Arrive first, produce bright, positive-parity images (Type I).</span>
+<span id="cb3-313"><a href="#cb3-313" aria-hidden="true" tabindex="-1"></a><span class="ss">   * </span>**Saddle Points:** Arrive second, produce inverted, negative-parity images (Type II).</span>
+<span id="cb3-314"><a href="#cb3-314" aria-hidden="true" tabindex="-1"></a><span class="ss">   * </span>**Local Maxima:** Arrive last, located near the dense core of the lens galaxy, and are typically highly demagnified (Type III).</span>
+<span id="cb3-315"><a href="#cb3-315" aria-hidden="true" tabindex="-1"></a>   The famous *Odd Number Theorem* in gravitational lensing relies directly on Morse theory characterizing these critical points!</span>
+<span id="cb3-316"><a href="#cb3-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-317"><a href="#cb3-317" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Quantum Mechanics &amp; Feynman Path Integrals:**</span>
+<span id="cb3-318"><a href="#cb3-318" aria-hidden="true" tabindex="-1"></a>   In Feynman's path integral formulation, the transition amplitude sums over *all* conceivable paths:</span>
+<span id="cb3-319"><a href="#cb3-319" aria-hidden="true" tabindex="-1"></a>   $$ K(x_b, t_b; x_a, t_a) = \int \mathcal{D}<span class="co">[</span><span class="ot">x(t)</span><span class="co">]</span> \, e^{i S<span class="co">[</span><span class="ot">x</span><span class="co">]</span> / \hbar} $$</span>
+<span id="cb3-320"><a href="#cb3-320" aria-hidden="true" tabindex="-1"></a>   In the classical limit $\hbar \to 0$, paths with $\delta S \ne 0$ experience destructive phase interference and cancel out, leaving the stationary path $\delta S = 0$. However, the **quantum fluctuations** around the classical path are governed by the second variation $\delta^2 S$:</span>
+<span id="cb3-321"><a href="#cb3-321" aria-hidden="true" tabindex="-1"></a><span class="ss">   * </span>The eigenvalues of the second-variation operator determine the **Van Vleck determinant** and phase shifts called the **Maslov index**. Every time a classical path passes through a focal/conjugate point, the quantum wavefunction acquires an extra phase shift of $e^{-i\pi/2}$.</span>
+<span id="cb3-322"><a href="#cb3-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-323"><a href="#cb3-323" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Quantum Tunneling &amp; Instanton Calculations:**</span>
+<span id="cb3-324"><a href="#cb3-324" aria-hidden="true" tabindex="-1"></a>   In Euclidean field theory (wick-rotated imaginary time $\tau = it$), the Euclidean action $S_E$ governs false-vacuum decay and barrier penetration. A true physical "bounce" (instanton) that mediates tunneling must have **precisely one negative eigenvalue** in its second variation operator $\delta^2 S_E$. That solitary negative mode is the mathematical signature of metastability!</span>
+<span id="cb3-325"><a href="#cb3-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-326"><a href="#cb3-326" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Spacetime Geodesics in General Relativity:**</span>
+<span id="cb3-327"><a href="#cb3-327" aria-hidden="true" tabindex="-1"></a>   For timelike worldlines of freely falling test particles between two events, the action is proportional to the proper time: $S = -mc \int d\tau$. Here, free fall actually **maximizes** proper time locally (the twin paradox: the unaccelerated twin ages the most).</span>
+<span id="cb3-328"><a href="#cb3-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-329"><a href="#cb3-329" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-330"><a href="#cb3-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-331"><a href="#cb3-331" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 3. Why Is This Question in General Hard to Answer?</span></span>
+<span id="cb3-332"><a href="#cb3-332" aria-hidden="true" tabindex="-1"></a>In single-variable calculus, determining whether $f'(x_0) = 0$ is a min or max requires merely computing the single scalar second derivative $f''(x_0)$. </span>
+<span id="cb3-333"><a href="#cb3-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-334"><a href="#cb3-334" aria-hidden="true" tabindex="-1"></a>In the calculus of variations, however, the action $S<span class="co">[</span><span class="ot">y</span><span class="co">]</span>$ is a functional defined on an **infinite-dimensional function space** (the space of all differentiable paths $\eta(x)$ satisfying $\eta(x_1) = \eta(x_2) = 0$). The second variation is a differential operator:</span>
+<span id="cb3-335"><a href="#cb3-335" aria-hidden="true" tabindex="-1"></a>$$ \delta^2 S = \frac{1}{2} \int_{x_1}^{x_2} \left<span class="co">[</span><span class="ot"> P(x) (\eta')^2 + Q(x) \eta^2 \right</span><span class="co">]</span> dx $$</span>
+<span id="cb3-336"><a href="#cb3-336" aria-hidden="true" tabindex="-1"></a>where $P(x) = \frac{\partial^2 f}{\partial y'^2}$ and $Q(x) = \frac{\partial^2 f}{\partial y^2} - \frac{d}{dx}\left(\frac{\partial^2 f}{\partial y \partial y'}\right)$.</span>
+<span id="cb3-337"><a href="#cb3-337" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-338"><a href="#cb3-338" aria-hidden="true" tabindex="-1"></a>Determining whether $\delta^2 S &gt; 0$ for **all possible variations** $\eta(x)$ is difficult because:</span>
+<span id="cb3-339"><a href="#cb3-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-340"><a href="#cb3-340" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Legendre's Condition is Only Necessary, Not Sufficient:**</span>
+<span id="cb3-341"><a href="#cb3-341" aria-hidden="true" tabindex="-1"></a>   The condition $P(x) = \frac{\partial^2 f}{\partial y'^2} &gt; 0$ ensures that very rapid, high-frequency wiggles (where $\eta'$ dominates $\eta$) increase the action. But it tells you nothing about smooth, long-wavelength variations!</span>
+<span id="cb3-342"><a href="#cb3-342" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Jacobi's Condition &amp; Conjugate Points:**</span>
+<span id="cb3-343"><a href="#cb3-343" aria-hidden="true" tabindex="-1"></a>   To verify a true local minimum, one must solve the **Jacobi accessory differential equation**:</span>
+<span id="cb3-344"><a href="#cb3-344" aria-hidden="true" tabindex="-1"></a>   $$ \frac{d}{dx}\left( P(x) \frac{du}{dx} \right) - Q(x) u = 0 $$</span>
+<span id="cb3-345"><a href="#cb3-345" aria-hidden="true" tabindex="-1"></a>   If there exists an intermediate point $x^* \in (x_1, x_2)$—called a **conjugate point** (or focal point)—where a non-trivial solution vanishes ($u(x_1) = 0$ and $u(x^*) = 0$), then the path **immediately ceases to be a minimum**! Beyond the conjugate point, one can construct an envelope of variations for which $\delta^2 S &lt; 0$, turning the stationary path into a **saddle point**.</span>
+<span id="cb3-346"><a href="#cb3-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-347"><a href="#cb3-347" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Concrete Example: The Simple Harmonic Oscillator</span></span>
+<span id="cb3-348"><a href="#cb3-348" aria-hidden="true" tabindex="-1"></a>Consider a 1D harmonic oscillator with Lagrangian $L = \frac{1}{2}m\dot{x}^2 - \frac{1}{2}m\omega^2 x^2$, starting at $x(0) = 0$ and arriving at $x(T) = 0$:</span>
+<span id="cb3-349"><a href="#cb3-349" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>The stationary path is $x(t) = 0$ for all $t$.</span>
+<span id="cb3-350"><a href="#cb3-350" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>The Legendre condition is $P = \frac{\partial^2 L}{\partial \dot{x}^2} = m &gt; 0$ (trivially satisfied).</span>
+<span id="cb3-351"><a href="#cb3-351" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Now evaluate the second variation for a variation $\eta(t) = \sin(\pi t / T)$:</span>
+<span id="cb3-352"><a href="#cb3-352" aria-hidden="true" tabindex="-1"></a>  $$ \delta^2 S = \frac{1}{2} \int_0^T \left<span class="co">[</span><span class="ot"> m \left(\frac{\pi}{T}\right)^2 \cos^2\left(\frac{\pi t}{T}\right) - m\omega^2 \sin^2\left(\frac{\pi t}{T}\right) \right</span><span class="co">]</span> dt = \frac{m T}{4} \left<span class="co">[</span><span class="ot"> \left(\frac{\pi}{T}\right)^2 - \omega^2 \right</span><span class="co">]</span> $$</span>
+<span id="cb3-353"><a href="#cb3-353" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Case 1 ($T &lt; \pi/\omega$, less than half a period):** $\left(\frac{\pi}{T}\right)^2 &gt; \omega^2 \implies \delta^2 S &gt; 0$. The path is a **strict local minimum**.</span>
+<span id="cb3-354"><a href="#cb3-354" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Case 2 ($T = \pi/\omega$, exactly half a period):** $t^* = \pi/\omega$ is a **conjugate point**. At this point, infinitely many physical trajectories (all amplitudes $A \sin(\omega t)$) have the exact same action!</span>
+<span id="cb3-355"><a href="#cb3-355" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Case 3 ($T &gt; \pi/\omega$, more than half a period):** $\left(\frac{\pi}{T}\right)^2 &lt; \omega^2 \implies \delta^2 S &lt; 0$! The action is a **saddle point**.</span>
 <span id="cb3-356"><a href="#cb3-356" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-357"><a href="#cb3-357" aria-hidden="true" tabindex="-1"></a>This extension is crucial for Lagrangian mechanics in 3D space, where we have coordinates $x(t), y(t), z(t)$, and time $t$ plays the role of the independent variable.</span>
+<span id="cb3-357"><a href="#cb3-357" aria-hidden="true" tabindex="-1"></a>Yet throughout all three cases, the harmonic oscillator obeys the exact same physical laws of motion ($\ddot{x} + \omega^2 x = 0$) without any issue.</span>
 <span id="cb3-358"><a href="#cb3-358" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-359"><a href="#cb3-359" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.22](../solutions/taylor-chapter-6-problems.qmd#problem-622))*</span>
+<span id="cb3-359"><a href="#cb3-359" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb3-360"><a href="#cb3-360" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-361"><a href="#cb3-361" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary</span></span>
+<span id="cb3-361"><a href="#cb3-361" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.4 More Than Two Variables</span></span>
 <span id="cb3-362"><a href="#cb3-362" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-363"><a href="#cb3-363" aria-hidden="true" tabindex="-1"></a>The calculus of variations allows us to find stationary paths for functionals. The fundamental tool is the Euler-Lagrange equation, which converts a global variational problem into a local differential equation. This mathematical foundation is what allows us to formulate Lagrangian mechanics based on Hamilton's Principle of stationary action.</span>
+<span id="cb3-363"><a href="#cb3-363" aria-hidden="true" tabindex="-1"></a>If the functional depends on multiple functions $y_1(x), y_2(x), \dots, y_n(x)$,</span>
+<span id="cb3-364"><a href="#cb3-364" aria-hidden="true" tabindex="-1"></a>$$ S = \int_{x_1}^{x_2} f(y_1, \dots, y_n, y_1', \dots, y_n', x) \, dx $$</span>
+<span id="cb3-365"><a href="#cb3-365" aria-hidden="true" tabindex="-1"></a>we can vary each function independently. This leads to a system of $n$ independent Euler-Lagrange equations:</span>
+<span id="cb3-366"><a href="#cb3-366" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial f}{\partial y_i} - \frac{d}{dx} \frac{\partial f}{\partial y_i'} = 0 \quad \text{for } i = 1, 2, \dots, n $$</span>
+<span id="cb3-367"><a href="#cb3-367" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-368"><a href="#cb3-368" aria-hidden="true" tabindex="-1"></a>This extension is crucial for Lagrangian mechanics in 3D space, where we have coordinates $x(t), y(t), z(t)$, and time $t$ plays the role of the independent variable.</span>
+<span id="cb3-369"><a href="#cb3-369" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-370"><a href="#cb3-370" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.22](../solutions/taylor-chapter-6-problems.qmd#problem-622))*</span>
+<span id="cb3-371"><a href="#cb3-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-372"><a href="#cb3-372" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary</span></span>
+<span id="cb3-373"><a href="#cb3-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-374"><a href="#cb3-374" aria-hidden="true" tabindex="-1"></a>The calculus of variations allows us to find stationary paths for functionals. The fundamental tool is the Euler-Lagrange equation, which converts a global variational problem into a local differential equation. This mathematical foundation is what allows us to formulate Lagrangian mechanics based on Hamilton's Principle of stationary action.</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
