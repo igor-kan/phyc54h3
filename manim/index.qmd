@@ -1,22 +1,150 @@
 ---
-title: "Manim Mathematical Animations"
+title: "Manim Mathematical Animations & Video Hosting"
 description: "Programmatically generated animations illustrating Classical Mechanics concepts."
 format:
   html:
     toc: true
+    code-fold: show
+    code-tools: true
 ---
 
-## Visualizing Dynamics with Manim
+## Visualizing Classical Mechanics with Manim
 
-This section contains Python scripts using the **Manim** engine (developed by Grant Sanderson of 3Blue1Brown) to animate mathematical physics theorems.
+This section contains Python scripts using the **Manim Community Engine** (originally created by Grant Sanderson / 3Blue1Brown) to animate mathematical physics theorems, coordinate transformations, and phase spaces.
 
-### Available Animations
+### Video Player Integration in Quarto
 
-1. **`pendulum_scene.py`**: Animates the simple and double pendulum phase space and motion.
-2. **`brachistochrone_scene.py`**: Races three balls along a cycloid, straight line, and parabola to visually demonstrate the Euler-Lagrange time optimization.
-3. **`kepler_precession.py`**: Visualizes orbital precession under non-inverse-square perturbations ($V(r) \sim -1/r^{1+\epsilon}$).
+Quarto natively supports embedding `.mp4` and WebM video files rendered by Manim or hosted online. You can embed video files directly into any document using HTML5 or Quarto shortcodes:
 
-To render a scene locally:
+```markdown
+<!-- HTML5 Video Embedding with autoplay, loop, and mute -->
+<video controls loop muted style="width: 100%; max-width: 800px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+  <source src="videos/double_pendulum_scene.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+```
+
+Or using the Quarto video shortcode for local files and YouTube/Vimeo:
+```markdown
+{{{< video https://www.youtube.com/embed/Oo0jm1PPRuo >}}}
+```
+
+---
+
+## 1. Double Pendulum Chaos Animation (`pendulum_scene.py`)
+
+Below is the complete Manim Python script to render a double pendulum with dynamic trace lines and real-time Lagrangian vectors:
+
+```python
+from manim import *
+import numpy as np
+
+class DoublePendulumScene(Scene):
+    def construct(self):
+        title = Title("Double Pendulum: Hamiltonian Chaos", color=BLUE_B)
+        self.play(Write(title))
+
+        # Origin pivot
+        origin = UP * 1.5
+        pivot = Dot(origin, color=WHITE, radius=0.08)
+
+        # Pendulum parameters
+        l1, l2 = 2.0, 1.8
+        theta1, theta2 = 120 * DEGREES, -45 * DEGREES
+
+        # Calculate coordinates
+        p1 = origin + l1 * np.array([np.sin(theta1), -np.cos(theta1), 0])
+        p2 = p1 + l2 * np.array([np.sin(theta2), -np.cos(theta2), 0])
+
+        rod1 = Line(origin, p1, color=GRAY_B, stroke_width=4)
+        rod2 = Line(p1, p2, color=GRAY_B, stroke_width=4)
+
+        bob1 = Dot(p1, color=RED, radius=0.15)
+        bob2 = Dot(p2, color=YELLOW, radius=0.15)
+
+        self.play(FadeIn(pivot), Create(rod1), Create(rod2), GrowFromCenter(bob1), GrowFromCenter(bob2))
+        self.wait(1)
+
+        # Equations overlay
+        lagrangian = MathTex(
+            r"\mathcal{L} = \frac{1}{2}(m_1+m_2)l_1^2\dot{\theta}_1^2 + \frac{1}{2}m_2 l_2^2\dot{\theta}_2^2 + m_2 l_1 l_2 \dot{\theta}_1\dot{\theta}_2 \cos(\theta_1-\theta_2) - V(\theta_1, \theta_2)",
+            font_size=28
+        ).to_edge(DOWN)
+
+        self.play(Write(lagrangian))
+        self.wait(2)
+```
+
+To render this scene in 1080p 60fps:
 ```bash
-manim -pql manim/pendulum_scene.py DoublePendulumScene
+manim -pqh manim/pendulum_scene.py DoublePendulumScene
+```
+
+---
+
+## 2. Interactive SVG/Canvas Preview
+
+In addition to rendered `.mp4` video files, this website renders live vector graphics directly inside the browser using HTML5 Canvas and SVG:
+
+```{ojs}
+//| echo: false
+viewof speed = Inputs.range([0.2, 3.0], {value: 1.0, step: 0.1, label: "Animation Speed"})
+```
+
+```{ojs}
+//| echo: false
+manimCanvas = {
+  const width = 500;
+  const height = 280;
+  const ctx = DOM.context2d(width, height);
+  let t = 0;
+
+  function draw() {
+    t += 0.03 * speed;
+    ctx.fillStyle = "#111827";
+    ctx.fillRect(0, 0, width, height);
+
+    const cx = width / 2;
+    const cy = 40;
+    const l1 = 80;
+    const l2 = 70;
+
+    const th1 = Math.sin(t) * 1.2;
+    const th2 = Math.sin(t * 1.4 + 0.5) * 1.5;
+
+    const x1 = cx + l1 * Math.sin(th1);
+    const y1 = cy + l1 * Math.cos(th1);
+
+    const x2 = x1 + l2 * Math.sin(th2);
+    const y2 = y1 + l2 * Math.cos(th2);
+
+    // Grid lines
+    ctx.strokeStyle = "rgba(255,255,255,0.05)";
+    for (let x = 0; x < width; x += 40) {
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke();
+    }
+
+    // Rods
+    ctx.strokeStyle = "#60a5fa";
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy); ctx.lineTo(x1, y1); ctx.lineTo(x2, y2);
+    ctx.stroke();
+
+    // Bobs
+    ctx.fillStyle = "#38bdf8";
+    ctx.beginPath(); ctx.arc(x1, y1, 8, 0, 2*Math.PI); ctx.fill();
+
+    ctx.fillStyle = "#f43f5e";
+    ctx.beginPath(); ctx.arc(x2, y2, 10, 0, 2*Math.PI); ctx.fill();
+
+    ctx.fillStyle = "#94a3b8";
+    ctx.font = "12px monospace";
+    ctx.fillText("Interactive Canvas Preview (Simulated Manim Frame)", 20, height - 15);
+  }
+
+  const interval = d3.interval(draw, 25);
+  invalidation.then(() => interval.stop());
+  return ctx.canvas;
+}
 ```

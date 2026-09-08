@@ -4,6 +4,8 @@ project:
 
 website:
   title: "PHYC54H3: Classical Mechanics"
+  site-url: "https://igor-kan.github.io/phyc54h3"
+  repo-url: "https://github.com/igor-kan/phyc54h3"
   description: "Lecture notes, analytical derivations, Python simulations, Manim animations, and problem set solutions for UTSC PHYC54."
   navbar:
     left:
@@ -25,3 +27,6 @@ format:
     toc: true
     toc-depth: 3
     math: true
+    code-fold: show
+    code-tools: true
+    code-copy: true
