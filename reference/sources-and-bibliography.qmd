@@ -26,6 +26,24 @@ This repository references several classic and foundational textbooks for mathem
 **Description:** Highly regarded for its vast collection of very challenging problems, making it a staple for physics Olympiad preparation. The textbook emphasizes clever problem-solving techniques and covers the Lagrangian method extensively.
 **Link:** [Cambridge University Press - Morin](https://www.cambridge.org/highereducation/books/introduction-to-classical-mechanics/30AD597A8D8ED7FAD5C5F1CBEEF4EDC6#overview)
 
+### The Feynman Lectures on Physics, Volume I: Mainly Mechanics, Radiation, and Heat
+**Authors:** Richard P. Feynman, Robert B. Leighton, and Matthew Sands
+**Publisher:** Basic Books (Online edition by Caltech)
+**Description:** The legendary lecture series by Nobel laureate Richard Feynman. It approaches classical mechanics with unmatched physical intuition, emphasizing deep conceptual understanding over rote mathematics.
+**Link:** [Feynman Lectures Vol. I](https://www.feynmanlectures.caltech.edu/I_toc.html)
+
+### Mechanics (Course of Theoretical Physics, Volume 1)
+**Authors:** L. D. Landau and E. M. Lifshitz
+**Publisher:** Elsevier (Butterworth-Heinemann)
+**Description:** A hallmark of Russian theoretical physics, this dense and mathematically elegant text begins directly with the principle of least action and develops the entirety of mechanics deductively. Ideal for advanced students.
+**Link:** [Elsevier - Landau & Lifshitz](https://www.elsevier.com/books/mechanics/landau/978-0-7506-2896-9)
+
+### Mathematical Methods of Classical Mechanics (Graduate Texts in Mathematics, Vol. 60)
+**Author:** V. I. Arnold
+**Publisher:** Springer
+**Description:** A classic graduate-level textbook that provides a modern, geometric approach to classical mechanics. It builds mechanics from the ground up using the geometry of manifolds, symplectic geometry, and Lie groups.
+**Link:** [Springer - Arnold](https://link.springer.com/book/10.1007/978-1-4757-2063-1)
+
 ---
 
 ## Mathematical Methods
@@ -70,6 +88,18 @@ This repository references several classic and foundational textbooks for mathem
 **Instructor:** Prof. Ramamurti Shankar
 **Description:** A complete, filmed introductory physics course covering Newtonian mechanics, special relativity, and thermodynamics. Shankar's lectures are famous for their engaging and insightful delivery.
 **Link:** [Open Yale Courses - PHYS 200](https://oyc.yale.edu/physics/phys-200)
+
+### MIT OCW 8.012 Physics I: Classical Mechanics (Fall 2008)
+**Description:** An advanced version of the standard introductory mechanics course at MIT, aimed at students with strong math backgrounds. It explores Newtonian mechanics with greater rigor.
+**Link:** [MIT 8.012 Classical Mechanics](https://ocw.mit.edu/courses/8-012-physics-i-classical-mechanics-fall-2008/)
+
+### MIT OCW 8.223 Classical Mechanics II (January IAP 2017)
+**Description:** A fast-paced, intensive course focusing heavily on the Lagrangian and Hamiltonian formulations of classical mechanics, central forces, and rigid body dynamics.
+**Link:** [MIT 8.223 Classical Mechanics II](https://ocw.mit.edu/courses/8-223-classical-mechanics-ii-january-iap-2017/)
+
+### MIT OCW 8.09 Classical Mechanics III (Fall 2014)
+**Description:** An advanced undergraduate/graduate level course covering chaotic dynamics, canonical transformations, Hamilton-Jacobi theory, and continuum mechanics.
+**Link:** [MIT 8.09 Classical Mechanics III](https://ocw.mit.edu/courses/8-09-classical-mechanics-iii-fall-2014/)
 
 ---
 
