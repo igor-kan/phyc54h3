@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-09-01">
+<meta name="dcterms.date" content="2026-09-08">
 
-<title>Vector Calculus &amp; Identities – PHYC54H3: Classical Mechanics</title>
+<title>Problem Set #01 – PHYC54H3: Classical Mechanics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -196,25 +196,21 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#vector-algebra" id="toc-vector-algebra" class="nav-link active" data-scroll-target="#vector-algebra">Vector Algebra</a>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link active" data-scroll-target="#exercises">Exercises ★</a>
   <ul class="collapse">
-  <li><a href="#dot-and-cross-products" id="toc-dot-and-cross-products" class="nav-link" data-scroll-target="#dot-and-cross-products">Dot and Cross Products</a></li>
-  <li><a href="#triple-products" id="toc-triple-products" class="nav-link" data-scroll-target="#triple-products">Triple Products</a></li>
+  <li><a href="#problem-6.1" id="toc-problem-6.1" class="nav-link" data-scroll-target="#problem-6.1">Problem 6.1</a></li>
+  <li><a href="#problem-6.2" id="toc-problem-6.2" class="nav-link" data-scroll-target="#problem-6.2">Problem 6.2</a></li>
+  <li><a href="#problem-6.7" id="toc-problem-6.7" class="nav-link" data-scroll-target="#problem-6.7">Problem 6.7</a></li>
   </ul></li>
-  <li><a href="#differential-vector-calculus-nabla-operator-nabla" id="toc-differential-vector-calculus-nabla-operator-nabla" class="nav-link" data-scroll-target="#differential-vector-calculus-nabla-operator-nabla">Differential Vector Calculus (Nabla Operator <span class="math inline">\(\nabla\)</span>)</a>
+  <li><a href="#problems" id="toc-problems" class="nav-link" data-scroll-target="#problems">Problems ★★</a>
   <ul class="collapse">
-  <li><a href="#operations" id="toc-operations" class="nav-link" data-scroll-target="#operations">Operations</a></li>
+  <li><a href="#problem-6.4" id="toc-problem-6.4" class="nav-link" data-scroll-target="#problem-6.4">Problem 6.4</a></li>
+  <li><a href="#problem-6.16" id="toc-problem-6.16" class="nav-link" data-scroll-target="#problem-6.16">Problem 6.16</a></li>
+  <li><a href="#problem-6.20" id="toc-problem-6.20" class="nav-link" data-scroll-target="#problem-6.20">Problem 6.20</a></li>
   </ul></li>
-  <li><a href="#vector-identities" id="toc-vector-identities" class="nav-link" data-scroll-target="#vector-identities">Vector Identities</a>
+  <li><a href="#challenge" id="toc-challenge" class="nav-link" data-scroll-target="#challenge">Challenge ★★★</a>
   <ul class="collapse">
-  <li><a href="#product-rules" id="toc-product-rules" class="nav-link" data-scroll-target="#product-rules">Product Rules</a></li>
-  <li><a href="#second-derivatives" id="toc-second-derivatives" class="nav-link" data-scroll-target="#second-derivatives">Second Derivatives</a></li>
-  </ul></li>
-  <li><a href="#integral-theorems" id="toc-integral-theorems" class="nav-link" data-scroll-target="#integral-theorems">Integral Theorems</a>
-  <ul class="collapse">
-  <li><a href="#divergence-theorem-gausss-theorem" id="toc-divergence-theorem-gausss-theorem" class="nav-link" data-scroll-target="#divergence-theorem-gausss-theorem">Divergence Theorem (Gauss’s Theorem)</a></li>
-  <li><a href="#stokes-theorem" id="toc-stokes-theorem" class="nav-link" data-scroll-target="#stokes-theorem">Stokes’ Theorem</a></li>
-  <li><a href="#gradient-theorem-fundamental-theorem-of-calculus-for-line-integrals" id="toc-gradient-theorem-fundamental-theorem-of-calculus-for-line-integrals" class="nav-link" data-scroll-target="#gradient-theorem-fundamental-theorem-of-calculus-for-line-integrals">Gradient Theorem (Fundamental Theorem of Calculus for Line Integrals)</a></li>
+  <li><a href="#problem-6.25" id="toc-problem-6.25" class="nav-link" data-scroll-target="#problem-6.25">Problem 6.25</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -224,12 +220,12 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Vector Calculus &amp; Identities</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
-<p class="subtitle lead">Nabla calculus, BAC-CAB triple product rules, differential operators, and integral theorems.</p>
+<div class="quarto-title-block"><div><h1 class="title">Problem Set #01</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<p class="subtitle lead">Calculus of Variations: Taylor Chapter 6 (Sections 1-4)</p>
   <div class="quarto-categories">
-    <div class="quarto-category">math</div>
-    <div class="quarto-category">reference</div>
-    <div class="quarto-category">vectors</div>
+    <div class="quarto-category">problem-set</div>
+    <div class="quarto-category">calculus-of-variations</div>
+    <div class="quarto-category">tutorial</div>
   </div>
   </div>
 
@@ -241,7 +237,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2026-09-01</p>
+      <p class="date">2026-09-08</p>
     </div>
   </div>
   
@@ -259,61 +255,60 @@ window.Quarto = {
 </header>
 
 
-<section id="vector-algebra" class="level1">
-<h1>Vector Algebra</h1>
-<p>Let <span class="math inline">\(\mathbf{A}, \mathbf{B}, \mathbf{C}\)</span> be vectors in 3D space.</p>
-<section id="dot-and-cross-products" class="level2">
-<h2 class="anchored" data-anchor-id="dot-and-cross-products">Dot and Cross Products</h2>
-<p><span class="math display">\[ \mathbf{A} \cdot \mathbf{B} = A_x B_x + A_y B_y + A_z B_z = |\mathbf{A}| |\mathbf{B}| \cos\theta \]</span> <span class="math display">\[ \mathbf{A} \times \mathbf{B} = \det \begin{vmatrix} \mathbf{\hat{i}} &amp; \mathbf{\hat{j}} &amp; \mathbf{\hat{k}} \\ A_x &amp; A_y &amp; A_z \\ B_x &amp; B_y &amp; B_z \end{vmatrix} \]</span> <span class="math display">\[ |\mathbf{A} \times \mathbf{B}| = |\mathbf{A}| |\mathbf{B}| \sin\theta \]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Assignment Details
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Due:</strong> Sep 17 by 12:00 p.m.<br>
+<strong>Points:</strong> None (Preparation for Tutorial #01)<br>
+<strong>Available:</strong> Sep 8 at 2:55 p.m.<br>
+<strong>Required Reading:</strong> Chapter 6; Sections 1 - 4</p>
+<p><em>This is the material you must prepare for Tutorial #01.</em></p>
+</div>
+</div>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">Exercises ★</h2>
+<section id="problem-6.1" class="level3">
+<h3 class="anchored" data-anchor-id="problem-6.1">Problem 6.1</h3>
+<p>The shortest path between two points on a curved surface, such as the surface of a sphere, is called a geodesic. To find a geodesic, one has first to set up an integral that gives the length of a path on the surface in question. Use spherical polar coordinates <span class="math inline">\((r, \theta, \phi)\)</span> to show that the length of a path joining two points on a sphere of radius <span class="math inline">\(R\)</span> is <span class="math display">\[ L = R \int_{\theta_1}^{\theta_2} \sqrt{1 + \sin^2\theta \ (\phi')^2} \, d\theta \]</span> if <span class="math inline">\((\theta_1, \phi_1)\)</span> and <span class="math inline">\((\theta_2, \phi_2)\)</span> specify the two points and we assume that the path is expressed as <span class="math inline">\(\phi = \phi(\theta)\)</span>.</p>
 </section>
-<section id="triple-products" class="level2">
-<h2 class="anchored" data-anchor-id="triple-products">Triple Products</h2>
-<p><strong>Scalar Triple Product</strong> (Volume of parallelepiped): <span class="math display">\[ \mathbf{A} \cdot (\mathbf{B} \times \mathbf{C}) = \mathbf{B} \cdot (\mathbf{C} \times \mathbf{A}) = \mathbf{C} \cdot (\mathbf{A} \times \mathbf{B}) = \det \begin{vmatrix} A_x &amp; A_y &amp; A_z \\ B_x &amp; B_y &amp; B_z \\ C_x &amp; C_y &amp; C_z \end{vmatrix} \]</span></p>
-<p><strong>Vector Triple Product (BAC-CAB Rule)</strong>: <span class="math display">\[ \mathbf{A} \times (\mathbf{B} \times \mathbf{C}) = \mathbf{B}(\mathbf{A} \cdot \mathbf{C}) - \mathbf{C}(\mathbf{A} \cdot \mathbf{B}) \]</span></p>
+<section id="problem-6.2" class="level3">
+<h3 class="anchored" data-anchor-id="problem-6.2">Problem 6.2</h3>
+<p>Find the equation of the path <span class="math inline">\(y(x)\)</span> that makes the integral <span class="math inline">\(\int_{x_1}^{x_2} \sqrt{x} \sqrt{1 + (y')^2} \, dx\)</span> stationary.</p>
+</section>
+<section id="problem-6.7" class="level3">
+<h3 class="anchored" data-anchor-id="problem-6.7">Problem 6.7</h3>
+<p>Verify that a straight line is the shortest distance between two points in a Euclidean plane. Set up the integral for the length of a path <span class="math inline">\(y(x)\)</span> between two points <span class="math inline">\((x_1, y_1)\)</span> and <span class="math inline">\((x_2, y_2)\)</span> and use the Euler-Lagrange equation to show that the minimizing path is <span class="math inline">\(y(x) = mx + c\)</span>.</p>
 <hr>
 </section>
 </section>
-<section id="differential-vector-calculus-nabla-operator-nabla" class="level1">
-<h1>Differential Vector Calculus (Nabla Operator <span class="math inline">\(\nabla\)</span>)</h1>
-<p>The del operator in Cartesian coordinates: <span class="math display">\[ \nabla = \mathbf{\hat{i}}\frac{\partial}{\partial x} + \mathbf{\hat{j}}\frac{\partial}{\partial y} + \mathbf{\hat{k}}\frac{\partial}{\partial z} \]</span></p>
-<section id="operations" class="level2">
-<h2 class="anchored" data-anchor-id="operations">Operations</h2>
-<ol type="1">
-<li><strong>Gradient</strong> (Scalar <span class="math inline">\(f \to\)</span> Vector): <span class="math display">\[ \nabla f = \frac{\partial f}{\partial x}\mathbf{\hat{i}} + \frac{\partial f}{\partial y}\mathbf{\hat{j}} + \frac{\partial f}{\partial z}\mathbf{\hat{k}} \]</span></li>
-<li><strong>Divergence</strong> (Vector <span class="math inline">\(\mathbf{A} \to\)</span> Scalar): <span class="math display">\[ \nabla \cdot \mathbf{A} = \frac{\partial A_x}{\partial x} + \frac{\partial A_y}{\partial y} + \frac{\partial A_z}{\partial z} \]</span></li>
-<li><strong>Curl</strong> (Vector <span class="math inline">\(\mathbf{A} \to\)</span> Vector): <span class="math display">\[ \nabla \times \mathbf{A} = \begin{vmatrix} \mathbf{\hat{i}} &amp; \mathbf{\hat{j}} &amp; \mathbf{\hat{k}} \\ \frac{\partial}{\partial x} &amp; \frac{\partial}{\partial y} &amp; \frac{\partial}{\partial z} \\ A_x &amp; A_y &amp; A_z \end{vmatrix} \]</span></li>
-<li><strong>Laplacian</strong> (Scalar <span class="math inline">\(f \to\)</span> Scalar): <span class="math display">\[ \nabla^2 f = \nabla \cdot (\nabla f) = \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2} \]</span></li>
-</ol>
+<section id="problems" class="level2">
+<h2 class="anchored" data-anchor-id="problems">Problems ★★</h2>
+<section id="problem-6.4" class="level3">
+<h3 class="anchored" data-anchor-id="problem-6.4">Problem 6.4</h3>
+<p>Fermat’s principle of least time states that light travels between two points along the path that requires the least time. Suppose light travels in a medium where the speed of light is <span class="math inline">\(v(x, y)\)</span>. Set up the time integral and prove that if the medium is stratified such that <span class="math inline">\(v\)</span> only depends on <span class="math inline">\(y\)</span>, Fermat’s principle leads directly to Snell’s law.</p>
+</section>
+<section id="problem-6.16" class="level3">
+<h3 class="anchored" data-anchor-id="problem-6.16">Problem 6.16</h3>
+<p>Find the shape of a soap film stretched between two parallel circular rings (catenary). The soap film will naturally form the surface of revolution that minimizes the total surface area. Set up the integral for the area and use the Euler-Lagrange equation to find the functional form of the surface.</p>
+</section>
+<section id="problem-6.20" class="level3">
+<h3 class="anchored" data-anchor-id="problem-6.20">Problem 6.20</h3>
+<p>Use the calculus of variations to find the surface of revolution with the minimum area connecting two points. Consider a curve <span class="math inline">\(y(x)\)</span> revolved around the <span class="math inline">\(x\)</span>-axis. The area is <span class="math inline">\(A = 2\pi \int y \sqrt{1 + (y')^2} dx\)</span>. Show that the solution is a catenary <span class="math inline">\(y(x) = a \cosh(\frac{x - b}{a})\)</span>.</p>
 <hr>
 </section>
 </section>
-<section id="vector-identities" class="level1">
-<h1>Vector Identities</h1>
-<section id="product-rules" class="level2">
-<h2 class="anchored" data-anchor-id="product-rules">Product Rules</h2>
-<p><span class="math display">\[ \nabla(fg) = f\nabla g + g\nabla f \]</span> <span class="math display">\[ \nabla \cdot (f\mathbf{A}) = f(\nabla \cdot \mathbf{A}) + \mathbf{A} \cdot (\nabla f) \]</span> <span class="math display">\[ \nabla \times (f\mathbf{A}) = f(\nabla \times \mathbf{A}) + (\nabla f) \times \mathbf{A} \]</span> <span class="math display">\[ \nabla \cdot (\mathbf{A} \times \mathbf{B}) = \mathbf{B} \cdot (\nabla \times \mathbf{A}) - \mathbf{A} \cdot (\nabla \times \mathbf{B}) \]</span> <span class="math display">\[ \nabla(\mathbf{A} \cdot \mathbf{B}) = \mathbf{A} \times (\nabla \times \mathbf{B}) + \mathbf{B} \times (\nabla \times \mathbf{A}) + (\mathbf{A} \cdot \nabla)\mathbf{B} + (\mathbf{B} \cdot \nabla)\mathbf{A} \]</span></p>
-</section>
-<section id="second-derivatives" class="level2">
-<h2 class="anchored" data-anchor-id="second-derivatives">Second Derivatives</h2>
-<p><strong>Curl of a Gradient is zero:</strong> <span class="math display">\[ \nabla \times (\nabla f) = 0 \]</span> <em>(If <span class="math inline">\(\nabla \times \mathbf{F} = 0\)</span>, then <span class="math inline">\(\mathbf{F}\)</span> is conservative and <span class="math inline">\(\mathbf{F} = -\nabla U\)</span>.)</em></p>
-<p><strong>Divergence of a Curl is zero:</strong> <span class="math display">\[ \nabla \cdot (\nabla \times \mathbf{A}) = 0 \]</span> <em>(If <span class="math inline">\(\nabla \cdot \mathbf{B} = 0\)</span>, then <span class="math inline">\(\mathbf{B}\)</span> can be written as the curl of a vector potential <span class="math inline">\(\mathbf{A}\)</span>.)</em></p>
-<p><strong>Curl of a Curl:</strong> <span class="math display">\[ \nabla \times (\nabla \times \mathbf{A}) = \nabla(\nabla \cdot \mathbf{A}) - \nabla^2\mathbf{A} \]</span></p>
-<hr>
-</section>
-</section>
-<section id="integral-theorems" class="level1">
-<h1>Integral Theorems</h1>
-<section id="divergence-theorem-gausss-theorem" class="level2">
-<h2 class="anchored" data-anchor-id="divergence-theorem-gausss-theorem">Divergence Theorem (Gauss’s Theorem)</h2>
-<p>Relates a volume integral to a surface integral over the closed boundary <span class="math inline">\(S\)</span>: <span class="math display">\[ \iiint_V (\nabla \cdot \mathbf{A}) \, dV = \iint_S \mathbf{A} \cdot d\mathbf{a} \]</span></p>
-</section>
-<section id="stokes-theorem" class="level2">
-<h2 class="anchored" data-anchor-id="stokes-theorem">Stokes’ Theorem</h2>
-<p>Relates a surface integral to a line integral around the closed bounding curve <span class="math inline">\(C\)</span>: <span class="math display">\[ \iint_S (\nabla \times \mathbf{A}) \cdot d\mathbf{a} = \oint_C \mathbf{A} \cdot d\mathbf{l} \]</span></p>
-</section>
-<section id="gradient-theorem-fundamental-theorem-of-calculus-for-line-integrals" class="level2">
-<h2 class="anchored" data-anchor-id="gradient-theorem-fundamental-theorem-of-calculus-for-line-integrals">Gradient Theorem (Fundamental Theorem of Calculus for Line Integrals)</h2>
-<p><span class="math display">\[ \int_a^b (\nabla f) \cdot d\mathbf{l} = f(b) - f(a) \]</span></p>
+<section id="challenge" class="level2">
+<h2 class="anchored" data-anchor-id="challenge">Challenge ★★★</h2>
+<section id="problem-6.25" class="level3">
+<h3 class="anchored" data-anchor-id="problem-6.25">Problem 6.25</h3>
+<p>A particle is restricted to move on the surface of a cylinder of radius <span class="math inline">\(R\)</span>. Find the geodesic paths and discuss their geometric meaning. Write the line element in cylindrical coordinates <span class="math inline">\((\rho, \phi, z)\)</span> with <span class="math inline">\(\rho = R\)</span> fixed. Use the Euler-Lagrange equations to find the shortest path between two points on the cylinder and show it is a helix.</p>
 
 
 
@@ -775,87 +770,59 @@ window.Quarto = {
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Vector Calculus &amp; Identities"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Nabla calculus, BAC-CAB triple product rules, differential operators, and integral theorems."</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-09-01"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Problem Set #01"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Calculus of Variations: Taylor Chapter 6 (Sections 1-4)"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-09-08T14:55:00"</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">date-modified:</span><span class="co"> last-modified</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [math, reference, vectors]</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [problem-set, calculus-of-variations, tutorial]</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">    math: true</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu"># Vector Algebra</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>Let $\mathbf{A}, \mathbf{B}, \mathbf{C}$ be vectors in 3D space.</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Dot and Cross Products</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{A} \cdot \mathbf{B} = A_x B_x + A_y B_y + A_z B_z = |\mathbf{A}| |\mathbf{B}| \cos\theta $$</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{A} \times \mathbf{B} = \det \begin{vmatrix} \mathbf{\hat{i}} &amp; \mathbf{\hat{j}} &amp; \mathbf{\hat{k}} <span class="sc">\\</span> A_x &amp; A_y &amp; A_z <span class="sc">\\</span> B_x &amp; B_y &amp; B_z \end{vmatrix} $$</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>$$ |\mathbf{A} \times \mathbf{B}| = |\mathbf{A}| |\mathbf{B}| \sin\theta $$</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## Triple Products</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>**Scalar Triple Product** (Volume of parallelepiped):</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{A} \cdot (\mathbf{B} \times \mathbf{C}) = \mathbf{B} \cdot (\mathbf{C} \times \mathbf{A}) = \mathbf{C} \cdot (\mathbf{A} \times \mathbf{B}) = \det \begin{vmatrix} A_x &amp; A_y &amp; A_z <span class="sc">\\</span> B_x &amp; B_y &amp; B_z <span class="sc">\\</span> C_x &amp; C_y &amp; C_z \end{vmatrix} $$</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>**Vector Triple Product (BAC-CAB Rule)**:</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{A} \times (\mathbf{B} \times \mathbf{C}) = \mathbf{B}(\mathbf{A} \cdot \mathbf{C}) - \mathbf{C}(\mathbf{A} \cdot \mathbf{B}) $$</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu"># Differential Vector Calculus (Nabla Operator $\nabla$)</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">### Assignment Details</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>**Due:** Sep 17 by 12:00 p.m.  </span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>**Points:** None (Preparation for Tutorial #01)  </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>**Available:** Sep 8 at 2:55 p.m.  </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>**Required Reading:** Chapter 6; Sections 1 - 4  </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>*This is the material you must prepare for Tutorial #01.*</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercises ★</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 6.1</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>The shortest path between two points on a curved surface, such as the surface of a sphere, is called a geodesic. To find a geodesic, one has first to set up an integral that gives the length of a path on the surface in question. Use spherical polar coordinates $(r, \theta, \phi)$ to show that the length of a path joining two points on a sphere of radius $R$ is</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>$$ L = R \int_{\theta_1}^{\theta_2} \sqrt{1 + \sin^2\theta \ (\phi')^2} \, d\theta $$</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>if $(\theta_1, \phi_1)$ and $(\theta_2, \phi_2)$ specify the two points and we assume that the path is expressed as $\phi = \phi(\theta)$.</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 6.2</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>Find the equation of the path $y(x)$ that makes the integral $\int_{x_1}^{x_2} \sqrt{x} \sqrt{1 + (y')^2} \, dx$ stationary.</span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>The del operator in Cartesian coordinates:</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>$$ \nabla = \mathbf{\hat{i}}\frac{\partial}{\partial x} + \mathbf{\hat{j}}\frac{\partial}{\partial y} + \mathbf{\hat{k}}\frac{\partial}{\partial z} $$</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 6.7</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>Verify that a straight line is the shortest distance between two points in a Euclidean plane. Set up the integral for the length of a path $y(x)$ between two points $(x_1, y_1)$ and $(x_2, y_2)$ and use the Euler-Lagrange equation to show that the minimizing path is $y(x) = mx + c$.</span>
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## Operations</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Gradient** (Scalar $f \to$ Vector):</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>   $$ \nabla f = \frac{\partial f}{\partial x}\mathbf{\hat{i}} + \frac{\partial f}{\partial y}\mathbf{\hat{j}} + \frac{\partial f}{\partial z}\mathbf{\hat{k}} $$</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Divergence** (Vector $\mathbf{A} \to$ Scalar):</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>   $$ \nabla \cdot \mathbf{A} = \frac{\partial A_x}{\partial x} + \frac{\partial A_y}{\partial y} + \frac{\partial A_z}{\partial z} $$</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Curl** (Vector $\mathbf{A} \to$ Vector):</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>   $$ \nabla \times \mathbf{A} = \begin{vmatrix} \mathbf{\hat{i}} &amp; \mathbf{\hat{j}} &amp; \mathbf{\hat{k}} <span class="sc">\\</span> \frac{\partial}{\partial x} &amp; \frac{\partial}{\partial y} &amp; \frac{\partial}{\partial z} <span class="sc">\\</span> A_x &amp; A_y &amp; A_z \end{vmatrix} $$</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Laplacian** (Scalar $f \to$ Scalar):</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>   $$ \nabla^2 f = \nabla \cdot (\nabla f) = \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2} $$</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="fu">## Problems ★★</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 6.4</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>Fermat's principle of least time states that light travels between two points along the path that requires the least time. Suppose light travels in a medium where the speed of light is $v(x, y)$. Set up the time integral and prove that if the medium is stratified such that $v$ only depends on $y$, Fermat's principle leads directly to Snell's law.</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 6.16</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>Find the shape of a soap film stretched between two parallel circular rings (catenary). The soap film will naturally form the surface of revolution that minimizes the total surface area. Set up the integral for the area and use the Euler-Lagrange equation to find the functional form of the surface.</span>
 <span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="fu"># Vector Identities</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="fu">## Product Rules</span></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>$$ \nabla(fg) = f\nabla g + g\nabla f $$</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>$$ \nabla \cdot (f\mathbf{A}) = f(\nabla \cdot \mathbf{A}) + \mathbf{A} \cdot (\nabla f) $$</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>$$ \nabla \times (f\mathbf{A}) = f(\nabla \times \mathbf{A}) + (\nabla f) \times \mathbf{A} $$</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>$$ \nabla \cdot (\mathbf{A} \times \mathbf{B}) = \mathbf{B} \cdot (\nabla \times \mathbf{A}) - \mathbf{A} \cdot (\nabla \times \mathbf{B}) $$</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>$$ \nabla(\mathbf{A} \cdot \mathbf{B}) = \mathbf{A} \times (\nabla \times \mathbf{B}) + \mathbf{B} \times (\nabla \times \mathbf{A}) + (\mathbf{A} \cdot \nabla)\mathbf{B} + (\mathbf{B} \cdot \nabla)\mathbf{A} $$</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="fu">## Second Derivatives</span></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>**Curl of a Gradient is zero:**</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>$$ \nabla \times (\nabla f) = 0 $$</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>*(If $\nabla \times \mathbf{F} = 0$, then $\mathbf{F}$ is conservative and $\mathbf{F} = -\nabla U$.)*</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>**Divergence of a Curl is zero:**</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>$$ \nabla \cdot (\nabla \times \mathbf{A}) = 0 $$</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>*(If $\nabla \cdot \mathbf{B} = 0$, then $\mathbf{B}$ can be written as the curl of a vector potential $\mathbf{A}$.)*</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>**Curl of a Curl:**</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>$$ \nabla \times (\nabla \times \mathbf{A}) = \nabla(\nabla \cdot \mathbf{A}) - \nabla^2\mathbf{A} $$</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="fu"># Integral Theorems</span></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="fu">## Divergence Theorem (Gauss's Theorem)</span></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>Relates a volume integral to a surface integral over the closed boundary $S$:</span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>$$ \iiint_V (\nabla \cdot \mathbf{A}) \, dV = \iint_S \mathbf{A} \cdot d\mathbf{a} $$</span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="fu">## Stokes' Theorem</span></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>Relates a surface integral to a line integral around the closed bounding curve $C$:</span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>$$ \iint_S (\nabla \times \mathbf{A}) \cdot d\mathbf{a} = \oint_C \mathbf{A} \cdot d\mathbf{l} $$</span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="fu">## Gradient Theorem (Fundamental Theorem of Calculus for Line Integrals)</span></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>$$ \int_a^b (\nabla f) \cdot d\mathbf{l} = f(b) - f(a) $$</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 6.20</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>Use the calculus of variations to find the surface of revolution with the minimum area connecting two points. Consider a curve $y(x)$ revolved around the $x$-axis. The area is $A = 2\pi \int y \sqrt{1 + (y')^2} dx$. Show that the solution is a catenary $y(x) = a \cosh(\frac{x - b}{a})$.</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="fu">## Challenge ★★★</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="fu">### Problem 6.25</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>A particle is restricted to move on the surface of a cylinder of radius $R$. Find the geodesic paths and discuss their geometric meaning. Write the line element in cylindrical coordinates $(\rho, \phi, z)$ with $\rho = R$ fixed. Use the Euler-Lagrange equations to find the shortest path between two points on the cylinder and show it is a helix.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

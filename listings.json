@@ -6,34 +6,35 @@
       "/notes/taylor-chapter-10-rigid-bodies.html",
       "/notes/taylor-chapter-9-noninertial-frames.html",
       "/notes/taylor-chapter-13-hamiltonian-mechanics.html",
-      "/notes/syllabus.html",
+      "/notes/taylor-chapter-7-lagrange-equations.html",
       "/notes/taylor-chapter-6-calculus-of-variations.html",
-      "/notes/taylor-chapter-7-lagrange-equations.html"
+      "/notes/syllabus.html"
     ]
   },
   {
     "listing": "/simulations/index.html",
     "items": [
-      "/simulations/interactive-pendulum-and-verlet.html",
-      "/simulations/manim-animations.html"
+      "/simulations/manim-animations.html",
+      "/simulations/interactive-pendulum-and-verlet.html"
     ]
   },
   {
     "listing": "/solutions/index.html",
     "items": [
+      "/solutions/taylor-chapter-7-problems.html",
+      "/solutions/problem-set-01.html",
       "/solutions/problem-set-1.html",
-      "/solutions/taylor-chapter-6-problems.html",
-      "/solutions/taylor-chapter-7-problems.html"
+      "/solutions/taylor-chapter-6-problems.html"
     ]
   },
   {
     "listing": "/reference/index.html",
     "items": [
-      "/reference/computational-methods.html",
-      "/reference/math-identities-and-calculus.html",
-      "/reference/physical-constants-and-data.html",
       "/reference/sources-and-bibliography.html",
-      "/reference/vector-calculus-and-identities.html"
+      "/reference/computational-methods.html",
+      "/reference/physical-constants-and-data.html",
+      "/reference/vector-calculus-and-identities.html",
+      "/reference/math-identities-and-calculus.html"
     ]
   }
 ]
