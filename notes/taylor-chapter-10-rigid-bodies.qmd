@@ -1,9 +1,30 @@
 ---
 title: "Taylor Chapter 10: Rotational Motion of Rigid Bodies"
+subtitle: "Inertia tensor, principal axes, Euler's equations of motion, precession, nutation, and Euler angles."
 author: "Igor"
 date: "2026-11-10"
-categories: [classical-mechanics, notes]
-format: html
+date-modified: last-modified
+categories: [classical-mechanics, rigid-bodies, rotation, notes]
+format:
+  html:
+    toc: true
+    math: true
 ---
 
-*(Content for this chapter to be written in Weeks 9-11 according to the syllabus.)*
+# Overview & Syllabus Context
+
+According to the [PHY C54 Syllabus](syllabus.qmd), Rigid Body Dynamics is studied in **Weeks 09, 10, and 11** (Taylor Ch 10: 1–10), following **Test #2**.
+
+## Core Topics
+1. **Center of Mass & Angular Momentum:** $\mathbf{L} = \sum_\alpha \mathbf{r}_\alpha \times \mathbf{p}_\alpha = \mathbf{I}\boldsymbol{\omega}$.
+2. **The Inertia Tensor:** A symmetric rank-2 tensor:
+   $$ I_{ij} = \sum_\alpha m_\alpha \left( \delta_{ij} r_\alpha^2 - r_{\alpha, i} r_{\alpha, j} \right) $$
+3. **Principal Axes of Inertia:** Diagonalization of $\mathbf{I}$ via eigenvector analysis:
+   $$ \mathbf{I} \boldsymbol{\omega} = \lambda \boldsymbol{\omega} \implies \det(\mathbf{I} - \lambda \mathbf{1}) = 0 $$
+4. **Euler's Equations of Motion:** In the principal body frame:
+   $$ I_1 \dot{\omega}_1 - (I_2 - I_3)\omega_2 \omega_3 = \Gamma_1 $$
+   $$ I_2 \dot{\omega}_2 - (I_3 - I_1)\omega_3 \omega_1 = \Gamma_2 $$
+   $$ I_3 \dot{\omega}_3 - (I_1 - I_2)\omega_1 \omega_2 = \Gamma_3 $$
+5. **Euler Angles & Symmetric Tops:** Description of nutation and precession ($\phi, \theta, \psi$) using Lagrangian mechanics.
+
+*(Detailed analytical lecture derivations and worked examples will be added here during Weeks 9, 10 & 11).*

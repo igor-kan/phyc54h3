@@ -3,6 +3,7 @@ title: "Taylor Chapter 7: Lagrange's Equations"
 subtitle: "Overcoming constraint forces and deriving the laws of motion from a single radical formula."
 author: "Igor"
 date: "2026-09-08"
+date-modified: last-modified
 categories: [classical-mechanics, math, taylor, notes]
 format:
   html:

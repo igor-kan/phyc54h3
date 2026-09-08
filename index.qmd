@@ -1,46 +1,61 @@
 ---
 title: "PHYC54H3: Classical Mechanics"
-subtitle: "Analytical dynamics, variational principles, central force motion, rigid body rotations, and chaos."
+subtitle: "Analytical dynamics, variational principles, Hamiltonian mechanics, noninertial frames, rigid bodies, and continuum mechanics."
 page-layout: full
 ---
 
 ::: {.hero-banner}
 # PHYC54H3: Advanced Classical Mechanics
-### University of Toronto Scarborough
-Comprehensive course portal featuring interactive computational physics notebooks, Manim animations, lecture derivations, and problem set solutions.
+### University of Toronto Scarborough · Fall 2026
+Comprehensive course portal featuring the course syllabus, lecture derivations, textbook problem sets, interactive physics simulations, Manim animations, and mathematical reference toolkits.
 :::
 
 ::: {.card-grid}
 ::: {.course-card}
-### 📚 [Lecture Notes](notes/index.qmd)
-Rigorous derivations of the Euler-Lagrange equations, Hamilton's canonical equations, Poisson brackets, and canonical transformations.
+### 📚 [Lecture Notes & Syllabus](notes/index.qmd)
+Official course syllabus, marking scheme, and rigorous derivations of the Euler-Lagrange equations, Hamilton's canonical equations, noninertial Coriolis forces, and rigid body dynamics.
 :::
 
 ::: {.course-card}
-### ✏️ [Problem Sets](solutions/index.qmd)
-Full step-by-step solutions to homework problem sets, midterm review problems, and textbook exercises.
+### ✏️ [Problem Sets & Solutions](solutions/index.qmd)
+Full step-by-step analytical solutions to homework problem sets, tutorial exercises, and end-of-chapter problems from John R. Taylor's *Classical Mechanics*.
 :::
 
 ::: {.course-card}
-### 💻 [Simulations & Code](simulations/index.qmd)
-Numerical integration of the double pendulum, Runge-Kutta 4th-order (RK4) orbital mechanics, and phase-space attractors in Python.
+### 💻 [Code & Simulations](simulations/index.qmd)
+Interactive in-browser simulations (Observable JS Canvas), high-performance symplectic Velocity Verlet integrators (C++ / Python), and Manim mathematical video animations.
 :::
 
 ::: {.course-card}
-### 🎬 [Manim Visualizations](manim/index.qmd)
-Programmatically rendered mathematical animations showcasing brachistochrone trajectories, Keplerian precession, and normal modes.
+### 📐 [Reference & Math](reference/index.qmd)
+Mathematical cheatsheets (trigonometry, hyperbolic functions, vector calculus identities), physical/astronomical constants, numerical methods, and complete course bibliography.
 :::
 :::
 
 ---
 
-## Course Roadmap
+## 🗺️ Course Roadmap & 12-Week Syllabus
 
-| Week | Core Topics | Key Mathematical Tools | Status |
-| :--- | :--- | :--- | :--- |
-| **01 - 02** | Review of Newtonian Mechanics, Damped & Driven Oscillations | Complex numbers, ODEs, Green's functions | Available |
-| **03 - 04** | Calculus of Variations & Hamilton's Principle | Functional differentiation, Euler-Lagrange, Constraints | Available |
-| **05 - 06** | Central Forces, Kepler's Laws & Orbital Scattering | Effective potential, Binet equation, Rutherford cross-section | In Progress |
-| **07 - 08** | Non-Inertial Reference Frames & Coriolis Effects | Rotating coordinates, Foucault pendulum, centrifugal potential | Upcoming |
-| **09 - 10** | Rigid Body Dynamics & The Inertia Tensor | Principal axes, Euler angles, Euler's equations of motion | Upcoming |
-| **11 - 12** | Hamiltonian Mechanics, Poisson Brackets & Chaos | Phase space volume (Liouville's theorem), Lyapunov exponents | Upcoming |
+Follows the official PHYC54 Fall 2026 syllabus taught by Prof. Johann Bayer. Weekly readings correspond to John R. Taylor's *Classical Mechanics* (2005).
+
+| Week | Dates | Core Topics & Taylor Readings | Associated Tutorials & Milestones | Status |
+| :--- | :--- | :--- | :--- | :--- |
+| **01** | Sep. 08-10 | [Calculus of Variations](notes/taylor-chapter-6-calculus-of-variations.qmd) (Ch 6: 1–2) | Calculus of Variations (Ch 6: 3–4) | Available |
+| **02** | Sep. 15-17 | [Lagrange's Equations](notes/taylor-chapter-7-lagrange-equations.qmd) (Ch 7: 1–4) | [Problem Set #01](solutions/taylor-chapter-7-problems.qmd) | Available |
+| **03** | Sep. 22-24 | [Lagrange's Equations](notes/taylor-chapter-7-lagrange-equations.qmd) (Ch 7: 5–8) | [Problem Set #02](solutions/taylor-chapter-7-problems.qmd) | Available |
+| **04** | Sep. 29 - Oct. 01 | [Hamiltonian Mechanics](notes/taylor-chapter-13-hamiltonian-mechanics.qmd) (Ch 13: 1–4) | Problem Set #03 | Upcoming |
+| **05** | Oct. 06-08 | [Hamiltonian Mechanics & Phase Space](notes/taylor-chapter-13-hamiltonian-mechanics.qmd) (Ch 13: 5–7) | Problem Set #04 (**Test #1**) | Upcoming |
+| **06** | Oct. 13-15 | [Mechanics in Noninertial Frames](notes/taylor-chapter-9-noninertial-frames.qmd) (Ch 9: 1–3) | Problem Set #05 | Upcoming |
+| **07** | Oct. 20-22 | [Mechanics in Noninertial Frames](notes/taylor-chapter-9-noninertial-frames.qmd) (Ch 9: 4–7) | Problem Set #06 | Upcoming |
+| **RW** | Oct. 27-29 | **Reading Week** (No classes) | Problem Set #07 Review | Study Break |
+| **08** | Nov. 03-05 | [Mechanics in Noninertial Frames](notes/taylor-chapter-9-noninertial-frames.qmd) (Ch 9: 8–10) | Problem Set #08 | Upcoming |
+| **09** | Nov. 10-12 | [Rotational Motion of Rigid Bodies](notes/taylor-chapter-10-rigid-bodies.qmd) (Ch 10: 1–3) | Problem Set #09 (**Test #2**) | Upcoming |
+| **10** | Nov. 17-19 | [Rotational Motion of Rigid Bodies](notes/taylor-chapter-10-rigid-bodies.qmd) (Ch 10: 4–7) | Problem Set #10 | Upcoming |
+| **11** | Nov. 24-26 | [Rotational Motion of Rigid Bodies](notes/taylor-chapter-10-rigid-bodies.qmd) (Ch 10: 8–10) | Problem Set #11 | Upcoming |
+| **12** | Dec. 01-03 | [Continuum Mechanics](notes/taylor-chapter-16-continuum-mechanics.qmd) (Ch 16: 1–4) | Problem Set #12 | Upcoming |
+| **Final** | Dec. 10-22 | **Comprehensive Final Examination** | Dec. 10–22 Exam Period | Scheduled |
+
+::: {.callout-note}
+### Course Schedule & Grading Notes
+Detailed policies on the Autofail rule (minimum 50% on test average or final exam), tutorial submission requirements, and academic integrity policies are detailed in the official [Course Syllabus](notes/syllabus.qmd).
+:::

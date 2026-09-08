@@ -1,7 +1,9 @@
 ---
 title: "Taylor Chapter 6 Problems: Calculus of Variations"
+subtitle: "Step-by-step analytical solutions to Chapter 6 exercises from John R. Taylor's Classical Mechanics."
 author: "Igor"
 date: "2026-09-08"
+date-modified: last-modified
 categories: [classical-mechanics, math, taylor, solutions]
 format:
   html:

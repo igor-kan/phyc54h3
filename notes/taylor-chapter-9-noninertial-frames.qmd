@@ -1,9 +1,31 @@
 ---
 title: "Taylor Chapter 9: Mechanics in Noninertial Frames"
+subtitle: "Linearly accelerating frames, rotating coordinate systems, centrifugal force, Coriolis force, and the Foucault pendulum."
 author: "Igor"
 date: "2026-10-13"
-categories: [classical-mechanics, notes]
-format: html
+date-modified: last-modified
+categories: [classical-mechanics, noninertial-frames, coriolis, notes]
+format:
+  html:
+    toc: true
+    math: true
 ---
 
-*(Content for this chapter to be written in Weeks 6-8 according to the syllabus.)*
+# Overview & Syllabus Context
+
+According to the [PHY C54 Syllabus](syllabus.qmd), Noninertial Frames are studied in **Weeks 06, 07, and 08** (Taylor Ch 9: 1–10).
+
+## Core Topics
+1. **Linearly Accelerating Frames:** Inertial (fictitious) forces $\mathbf{F}_{\text{inertial}} = -m\mathbf{A}_0$ and Einstein's Equivalence Principle.
+2. **Rotating Reference Frames:** The time-derivative operator in a frame rotating with angular velocity $\boldsymbol{\Omega}$:
+   $$ \left(\frac{d\mathbf{Q}}{dt}\right)_{\text{space}} = \left(\frac{d\mathbf{Q}}{dt}\right)_{\text{body}} + \boldsymbol{\Omega} \times \mathbf{Q} $$
+3. **Fictitious Forces:**
+   - **Centrifugal Force:** $\mathbf{F}_{\text{cf}} = m(\boldsymbol{\Omega} \times \mathbf{r}) \times \boldsymbol{\Omega} = -m\boldsymbol{\Omega} \times (\boldsymbol{\Omega} \times \mathbf{r})$.
+   - **Coriolis Force:** $\mathbf{F}_{\text{cor}} = 2m \mathbf{v}_{\text{rel}} \times \boldsymbol{\Omega}$.
+   - **Azimuthal (Euler) Force:** $\mathbf{F}_{\text{euler}} = -m \dot{\boldsymbol{\Omega}} \times \mathbf{r}$.
+4. **Physical Manifestations:**
+   - Free-fall deflection to the east.
+   - Atmospheric cyclonic motion.
+   - The Foucault Pendulum and precession of the oscillation plane.
+
+*(Detailed analytical lecture derivations and worked examples will be added here during Weeks 6, 7 & 8).*

@@ -1,9 +1,27 @@
 ---
 title: "Taylor Chapter 13: Hamiltonian Mechanics"
+subtitle: "Canonical momentum, phase space flow, Hamilton's equations, Liouville's theorem, and Poisson brackets."
 author: "Igor"
 date: "2026-09-29"
-categories: [classical-mechanics, notes]
-format: html
+date-modified: last-modified
+categories: [classical-mechanics, hamiltonian, phase-space, notes]
+format:
+  html:
+    toc: true
+    math: true
 ---
 
-*(Content for this chapter to be written in Weeks 4-5 according to the syllabus.)*
+# Overview & Syllabus Context
+
+According to the [PHY C54 Syllabus](syllabus.qmd), Hamiltonian Mechanics spans **Week 04** (Ch 13: 1–4) and **Week 05** (Ch 13: 5–7), concluding before **Test #1**.
+
+## Core Topics
+1. **The Legendre Transformation:** Transitioning from generalized velocities $\dot{q}_i$ to generalized canonical momenta $p_i = \frac{\partial \mathcal{L}}{\partial \dot{q}_i}$.
+2. **Hamilton's Canonical Equations:**
+   $$ \dot{q}_i = \frac{\partial \mathcal{H}}{\partial p_i}, \quad \dot{p}_i = -\frac{\partial \mathcal{H}}{\partial q_i} $$
+3. **Phase Space Geometry & Liouville's Theorem:** Incompressibility of phase space volume under Hamiltonian time evolution ($\frac{d\rho}{dt} = 0$).
+4. **Poisson Brackets:** Fundamental brackets, equations of motion in Poisson form, and canonical invariance:
+   $$ [F, G] = \sum_i \left( \frac{\partial F}{\partial q_i}\frac{\partial G}{\partial p_i} - \frac{\partial F}{\partial p_i}\frac{\partial G}{\partial q_i} \right) $$
+5. **Noether's Theorem in Hamiltonian Mechanics:** Symmetries, generators of infinitesimal canonical transformations, and conservation laws.
+
+*(Detailed analytical lecture derivations and worked examples will be added here during Weeks 4 & 5).*

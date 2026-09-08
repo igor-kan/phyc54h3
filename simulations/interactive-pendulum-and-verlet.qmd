@@ -1,7 +1,9 @@
 ---
 title: "Interactive Simulations & Multi-Language Integrators"
 subtitle: "Real-time browser dynamics (Observable JS), high-performance C++ Verlet integration, and Python phase portraits."
+author: "Igor"
 date: "2026-09-08"
+date-modified: last-modified
 categories: ["Simulations", "C++", "Python", "Interactive", "Observable JS"]
 format:
   html:

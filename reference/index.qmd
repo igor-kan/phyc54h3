@@ -1,25 +1,22 @@
 ---
 title: "Reference & Mathematical Tools"
-subtitle: "Formulas, constants, and computational methods for Classical Mechanics"
-author: "Igor"
-date: "2026-09-08"
-categories: [reference, math, physics]
-format:
-  html:
-    toc: true
+subtitle: "Formulas, physical constants, vector identities, computational methods, and course bibliography."
+listing:
+  contents: "*.qmd"
+  sort:
+    - "date desc"
+    - "title asc"
+  type: default
+  categories: true
+  sort-ui: [title, date, date-modified]
+  filter-ui: [title, date, categories]
+  fields: [date, date-modified, title, subtitle, categories, reading-time]
+  field-display-names:
+    date: "Created"
+    date-modified: "Modified"
+    reading-time: "Read Time"
+  page-size: 15
+page-layout: full
 ---
 
-Welcome to the reference section for PHYC54H3 (Classical Mechanics). This section contains quick-reference articles covering the essential mathematical, physical, and computational tools used throughout the course.
-
-### [Mathematical Identities & Calculus](math-identities-and-calculus.qmd)
-A comprehensive cheatsheet of trigonometric identities, hyperbolic functions, essential derivatives, common integrals (including Gaussian integrals), and Taylor/Maclaurin series expansions.
-
-### [Vector Calculus & Identities](vector-calculus-and-identities.qmd)
-Formulas for dot and cross products, scalar and vector triple products (BAC-CAB), the Del operator ($\nabla$), divergence, gradient, curl, Laplacian, and the major integral theorems (Gauss's and Stokes's).
-
-### [Physical Constants & Astronomical Data](physical-constants-and-data.qmd)
-A reference table of fundamental physical constants (SI units), particle masses, solar system orbital and physical parameters, and common physics conversion factors.
-### [Sources & Bibliography](sources-and-bibliography.qmd)
-A detailed list of the textbooks (Taylor, Morin, Riley, Arfken, Boas, Krane), online open courses (MIT OCW, Yale), and websites utilized as primary resources for this course's material.
-### [Computational Methods for Mechanics](computational-methods.qmd)
-An overview of the numerical integration techniques used to solve ODEs in classical mechanics, including the Euler method, 4th-Order Runge-Kutta (RK4), the symplectic Velocity Verlet method (critical for energy conservation in Hamiltonian systems), and SciPy's `solve_ivp`.
+Quick-reference toolkits, cheatsheets, and comprehensive bibliographies supporting analytical derivations and computational physics in PHYC54. Filter by category or sort by topic below.

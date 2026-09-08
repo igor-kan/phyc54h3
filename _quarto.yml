@@ -11,16 +11,12 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: syllabus.qmd
-        text: Syllabus
       - href: notes/index.qmd
         text: Lecture Notes
       - href: solutions/index.qmd
         text: Problem Sets
       - href: simulations/index.qmd
-        text: Simulations & Code
-      - href: manim/index.qmd
-        text: Manim Videos
+        text: Code & Simulations
       - href: reference/index.qmd
         text: Reference & Math
 
@@ -34,3 +30,4 @@ format:
     code-fold: show
     code-tools: true
     code-copy: true
+    date-format: "YYYY-MM-DD"

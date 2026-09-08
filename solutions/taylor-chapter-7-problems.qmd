@@ -1,7 +1,9 @@
 ---
 title: "Taylor Chapter 7 Problems: Lagrange's Equations"
+subtitle: "Step-by-step analytical solutions to Chapter 7 exercises from John R. Taylor's Classical Mechanics."
 author: "Igor"
 date: "2026-09-08"
+date-modified: last-modified
 categories: [classical-mechanics, math, taylor, solutions]
 format:
   html:
@@ -11,7 +13,7 @@ format:
 jupyter: python3
 ---
 
-# Calculus of Variations: Problem Solutions
+# Lagrange's Equations: Problem Solutions
 
 This article contains problem statements and solution outlines for Chapter 7 of John R. Taylor's *Classical Mechanics*. For a theoretical overview, see the [Chapter 7 Lecture Notes](../notes/taylor-chapter-7-lagrange-equations.qmd).
 

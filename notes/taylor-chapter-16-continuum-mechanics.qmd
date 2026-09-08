@@ -1,9 +1,28 @@
 ---
 title: "Taylor Chapter 16: Continuum Mechanics"
+subtitle: "Continuous systems, wave equation for a stretched string, Lagrangian density, stress-energy, and field equations."
 author: "Igor"
 date: "2026-12-01"
-categories: [classical-mechanics, notes]
-format: html
+date-modified: last-modified
+categories: [classical-mechanics, continuum-mechanics, field-theory, notes]
+format:
+  html:
+    toc: true
+    math: true
 ---
 
-*(Content for this chapter to be written in Week 12 according to the syllabus.)*
+# Overview & Syllabus Context
+
+According to the [PHY C54 Syllabus](syllabus.qmd), Continuum Mechanics is the capstone topic of the course in **Week 12** (Taylor Ch 16: 1–4).
+
+## Core Topics
+1. **Transverse Motion of a Taut String:** Continuous limit of a 1D lattice of coupled oscillators.
+2. **The 1D Classical Wave Equation:**
+   $$ \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}, \quad c = \sqrt{\frac{T}{\mu}} $$
+3. **Lagrangian Density ($\mathcal{L}_{\text{density}}$):** Transition from discrete generalized coordinates $q_i(t)$ to continuous field configurations $\phi(x, t)$:
+   $$ S = \int dt \int dx \, \mathcal{L}\left(\phi, \frac{\partial \phi}{\partial x}, \frac{\partial \phi}{\partial t}, x, t\right) $$
+4. **Euler-Lagrange Field Equations:**
+   $$ \frac{\partial \mathcal{L}}{\partial \phi} - \frac{\partial}{\partial x}\left( \frac{\partial \mathcal{L}}{\partial (\partial \phi / \partial x)} \right) - \frac{\partial}{\partial t}\left( \frac{\partial \mathcal{L}}{\partial (\partial \phi / \partial t)} \right) = 0 $$
+5. **Bridge to Classical Field Theory:** Stress-energy-momentum conservation in continuum mechanics and the foundations of modern theoretical physics.
+
+*(Detailed analytical lecture derivations and worked examples will be added here during Week 12).*

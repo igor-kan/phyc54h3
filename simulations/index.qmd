@@ -1,9 +1,26 @@
 ---
-title: "Computational Physics & Simulations"
-description: "Interactive Python simulations, numerical integrators, and phase space plots."
+title: "Code & Simulations"
+subtitle: "Interactive in-browser simulations, symplectic numerical integrators, Python scripts, and Manim video animations."
 listing:
   contents: "*.qmd"
-  sort: "date desc"
+  sort:
+    - "date desc"
+    - "title asc"
   type: default
+  categories: true
+  sort-ui: [title, date, date-modified]
+  filter-ui: [title, date, categories]
+  fields: [date, date-modified, title, subtitle, categories, reading-time]
+  field-display-names:
+    date: "Created"
+    date-modified: "Modified"
+    reading-time: "Read Time"
+  page-size: 15
 page-layout: full
 ---
+
+This section hosts all computational tools, code notebooks, and programmatic visualizations for PHYC54:
+
+*   **Interactive Simulations:** Live in-browser physics simulations running via Observable JS (OJS) and HTML5 Canvas.
+*   **Symplectic Integrators:** Velocity Verlet and RK4 solvers implemented in Python, C++, and Fortran for energy-conserving Hamiltonian orbits.
+*   **Manim Mathematical Animations:** Python scripts and rendering pipelines for 3Blue1Brown-style video demonstrations of chaos, phase trajectories, and coordinate transformations.

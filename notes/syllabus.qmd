@@ -1,0 +1,100 @@
+---
+title: "Course Syllabus: PHY C54 - Classical Mechanics"
+subtitle: "Course policies, marking scheme, autofail condition, and 12-week lecture schedule for Fall 2026."
+author: "Igor (Instructor: Johann Bayer)"
+date: "2026-09-08"
+date-modified: last-modified
+categories: [course, syllabus, administration]
+format:
+  html:
+    toc: true
+    toc-depth: 3
+---
+
+# Course Information
+
+**Lecture:** Tuesday 12:00 pm - 2:00 pm (IA 2100)  
+**Tutorial:** Thursday 12:00 pm - 2:00 pm (SW 311)  
+**Instructor:** Johann Bayer  
+**Office:** SW 503A | **Phone:** 416-287-7327 | **Email:** jbayer@utsc.utoronto.ca  
+**Course Website:** [q.utoronto.ca](https://q.utoronto.ca)  
+
+### Office Hours (Preliminary)
+*   **Tuesday:** 2:30 pm - 3:30 pm (In-person)
+*   **Wednesday:** 1:30 pm - 3:30 pm (In-person)
+*   **Thursday:** 9:30 am - 11:30 am & 2:30 pm - 3:30 pm (In-person)
+
+---
+
+# Course Description & Requisites
+
+This course concentrates on the study of symmetry and conservation laws, stability and instability, generalized coordinates, Hamilton’s principle, Hamilton’s equations, phase space, Liouville’s theorem, canonical transformations, Poisson brackets, and Noether’s theorem.
+
+*   **Math Prerequisite:** Differential Equations I (MATB44)
+*   **Physics Prerequisite:** Mechanics: Oscillations to Chaos (PHYB54)
+
+## Learning Outcomes
+By the end of the course students will be able to:
+1. Identify and define the basic vocabulary used in Lagrangian and Hamiltonian Mechanics, and employ related variational methods to the study of mechanical systems.
+2. Apply the fundamental principles of Classical Mechanics to the description of systems in noninertial frames of reference and to the analysis of the motion of rigid bodies.
+3. Develop and implement problem-solving strategies useful in the analysis of examples and questions related to the description, behaviour, and evolution of mechanical systems.
+4. Identify the main ideas and core physical principles in Classical Mechanics, and demonstrate their knowledge through deliberate time management and reflective judgement of the questions and problems in tutorial work, tests, and the final exam.
+5. Review and update the mathematical toolbox of quantitative and analytical skills relevant and useful in the scientific endeavour in general and to the study of Physics in particular.
+
+## Required Materials
+*   **Textbook:** *Classical Mechanics* by John R. Taylor (University Science Books 2005)
+*   **Calculator:** A scientific, non-programmable, and non-graphing calculator is required.
+
+---
+
+# Grading Scheme
+
+| Component | Weight | Due Date / Timeline |
+| :--- | :---: | :--- |
+| **Reading Quizzes** | 5% | Ongoing (Pre-Lecture, due Tuesdays 9:55 am) |
+| **Tutorial Work** | 15% | Ongoing (Weekly Tutorials, best 10 counted) |
+| **Test #1** | 15% | Week 05 (Covers Weeks 1-4) |
+| **Test #2** | 20% | Week 09 (Covers Weeks 1-8) |
+| **Final Examination** | 45% | Exam Period (December 10 - 22) |
+
+::: {.callout-important}
+### Passing the Course - Autofail Condition
+In order to receive passing credit for the course you must satisfy **both** of the following conditions:
+1. You must attain a final course grade of **50 or higher** when all course components are taken into account according to their respective weights.
+2. You must satisfy **at least one** of the following two conditions:
+   - **(a)** Obtain **50% or more** in the weighted average of Test #1 and Test #2 ($\ge 17.5 / 35.0$).
+   - **(b)** Obtain **50% or more** in the Final Exam ($\ge 22.5 / 45.0$).
+
+If you fail condition 2 despite having a weighted grade $\ge 50$, your recorded final grade will be capped at **47** (Auto-Fail).
+:::
+
+---
+
+# Class Schedule & Weekly Readings
+
+*Read the assigned textbook sections before each Tuesday lecture to prepare for the weekly reading quiz.*
+
+| Week | Dates | Tuesday Lecture Topic & Taylor Readings | Thursday Tutorial | Status |
+| :--- | :--- | :--- | :--- | :--- |
+| **01** | Sep. 08-10 | [Calculus of Variations](taylor-chapter-6-calculus-of-variations.qmd) (Ch 6: 1-2) | Calculus of Variations (Ch 6: 3-4) | Available |
+| **02** | Sep. 15-17 | [Lagrange's Equations](taylor-chapter-7-lagrange-equations.qmd) (Ch 7: 1-4) | Problem Set #01 | Available |
+| **03** | Sep. 22-24 | [Lagrange's Equations](taylor-chapter-7-lagrange-equations.qmd) (Ch 7: 5-8) | Problem Set #02 | Available |
+| **04** | Sep. 29 - Oct. 01 | [Hamiltonian Mechanics](taylor-chapter-13-hamiltonian-mechanics.qmd) (Ch 13: 1-4) | Problem Set #03 | Upcoming |
+| **05** | Oct. 06-08 | [Hamiltonian Mechanics](taylor-chapter-13-hamiltonian-mechanics.qmd) (Ch 13: 5-7) | Problem Set #04 (**Test #1**) | Upcoming |
+| **06** | Oct. 13-15 | [Mechanics in Noninertial Frames](taylor-chapter-9-noninertial-frames.qmd) (Ch 9: 1-3) | Problem Set #05 | Upcoming |
+| **07** | Oct. 20-22 | [Mechanics in Noninertial Frames](taylor-chapter-9-noninertial-frames.qmd) (Ch 9: 4-7) | Problem Set #06 | Upcoming |
+| **RW** | Oct. 27-29 | **Reading Week** (No classes) | Problem Set #07 | Study Break |
+| **08** | Nov. 03-05 | [Mechanics in Noninertial Frames](taylor-chapter-9-noninertial-frames.qmd) (Ch 9: 8-10) | Problem Set #08 | Upcoming |
+| **09** | Nov. 10-12 | [Rotational Motion of Rigid Bodies](taylor-chapter-10-rigid-bodies.qmd) (Ch 10: 1-3) | Problem Set #09 (**Test #2**) | Upcoming |
+| **10** | Nov. 17-19 | [Rotational Motion of Rigid Bodies](taylor-chapter-10-rigid-bodies.qmd) (Ch 10: 4-7) | Problem Set #10 | Upcoming |
+| **11** | Nov. 24-26 | [Rotational Motion of Rigid Bodies](taylor-chapter-10-rigid-bodies.qmd) (Ch 10: 8-10) | Problem Set #11 | Upcoming |
+| **12** | Dec. 01-03 | [Continuum Mechanics](taylor-chapter-16-continuum-mechanics.qmd) (Ch 16: 1-4) | Problem Set #12 | Upcoming |
+
+---
+
+# Course Policies
+
+*   **Generative Artificial Intelligence:** The use of generative AI tools or apps for any graded component in this course (ChatGPT, Gemini, Copilot, etc.) is strictly prohibited.
+*   **Academic Integrity:** Suspected cases of academic dishonesty will be investigated according to the University of Toronto's *Code of Behaviour on Academic Matters*.
+*   **Absences & Missed Term Work:** There are no default makeup options for missed term work. Valid documented absences must be declared via ACORN and the DPES Missed Term Work Form. Missed test weights transfer to subsequent tests/exams.
+*   **Classroom Etiquette:** Lectures and tutorials run from 12:10 pm to 2:00 pm. Electronic devices (phones, laptops, tablets) must be put away unless directly used for ongoing classroom tasks. No food or drinks permitted.
