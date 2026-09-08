@@ -270,6 +270,7 @@ window.Quarto = {
 <hr>
 <section id="lagranges-equations-for-unconstrained-motion" class="level2">
 <h2 class="anchored" data-anchor-id="lagranges-equations-for-unconstrained-motion">7.1 Lagrange’s Equations for Unconstrained Motion</h2>
+<p><em>(See <a href="../solutions/taylor-chapter-7-problems.html#section-71-lagranges-equations-for-unconstrained-motion">Problems 7.1-7.7</a>)</em></p>
 <p>For a particle moving freely in 3D subject to a conservative force <span class="math inline">\(\mathbf{F} = -\nabla U\)</span>, the <strong>Lagrangian</strong> <span class="math inline">\(\mathcal{L}\)</span> is defined as the kinetic energy minus the potential energy: <span class="math display">\[ \mathcal{L} = T - U = \frac{1}{2}m(\dot{x}^2 + \dot{y}^2 + \dot{z}^2) - U(x, y, z) \]</span></p>
 <p>By checking the partial derivatives, we see that: <span class="math display">\[ \frac{\partial \mathcal{L}}{\partial x} = -\frac{\partial U}{\partial x} = F_x, \quad \text{and} \quad \frac{\partial \mathcal{L}}{\partial \dot{x}} = m\dot{x} = p_x \]</span> Newton’s second law (<span class="math inline">\(F_x = \dot{p}_x\)</span>) is therefore exactly equivalent to the <strong>Lagrange equation</strong> in Cartesian coordinates: <span class="math display">\[ \frac{\partial \mathcal{L}}{\partial x} - \frac{d}{dt}\frac{\partial \mathcal{L}}{\partial \dot{x}} = 0 \]</span></p>
 <section id="hamiltons-principle" class="level3">
@@ -285,6 +286,7 @@ window.Quarto = {
 </section>
 <section id="constrained-systems-in-general" class="level2">
 <h2 class="anchored" data-anchor-id="constrained-systems-in-general">7.3 Constrained Systems in General</h2>
+<p><em>(See <a href="../solutions/taylor-chapter-7-problems.html#section-73-constrained-systems-in-general">Problems 7.9-7.11</a>)</em></p>
 <p>A system of <span class="math inline">\(N\)</span> particles with positions <span class="math inline">\(\mathbf{r}_\alpha\)</span> is parametrized by <strong>generalized coordinates</strong> <span class="math inline">\(q_1, \dots, q_n\)</span>: <span class="math display">\[ \mathbf{r}_\alpha = \mathbf{r}_\alpha(q_1, \dots, q_n, t) \]</span></p>
 <ul>
 <li><strong>Degrees of Freedom:</strong> The number of independently variable coordinates <span class="math inline">\(n\)</span>. If <span class="math inline">\(n &lt; 3N\)</span>, the system is <strong>constrained</strong>.</li>
@@ -295,12 +297,14 @@ window.Quarto = {
 </section>
 <section id="proof-of-lagranges-equations-with-constraints" class="level2">
 <h2 class="anchored" data-anchor-id="proof-of-lagranges-equations-with-constraints">7.4 Proof of Lagrange’s Equations with Constraints</h2>
+<p><em>(See <a href="../solutions/taylor-chapter-7-problems.html#section-74-proof-of-lagranges-equations-with-constraints">Problems 7.12-7.13</a>)</em></p>
 <p>For a particle constrained to a surface (e.g., a bead on a wire), the total force is <span class="math inline">\(\mathbf{F}_{tot} = \mathbf{F}_{cstr} + \mathbf{F}\)</span>. The constraint force <span class="math inline">\(\mathbf{F}_{cstr}\)</span> acts normal to the surface, and any virtual displacement <span class="math inline">\(\epsilon\)</span> consistent with the constraint lies within the surface. Thus, <span class="math inline">\(\mathbf{F}_{cstr} \cdot \epsilon = 0\)</span>.</p>
 <p>This geometric fact means the constraint forces do zero virtual work, entirely vanishing from the variation of the action <span class="math inline">\(\delta S = 0\)</span>. The resulting path requires only the potential <span class="math inline">\(U\)</span> of the <em>non-constraint</em> forces: <span class="math display">\[ \mathcal{L}(q, \dot{q}, t) = T - U \]</span> yielding the <span class="math inline">\(n\)</span> equations of motion: <span class="math display">\[ \frac{\partial \mathcal{L}}{\partial q_i} - \frac{d}{dt}\frac{\partial \mathcal{L}}{\partial \dot{q}_i} = 0 \quad \text{for } i = 1, \dots, n \]</span></p>
 <hr>
 </section>
 <section id="examples-of-lagranges-equations" class="level2">
 <h2 class="anchored" data-anchor-id="examples-of-lagranges-equations">7.5 Examples of Lagrange’s Equations</h2>
+<p><em>(See <a href="../solutions/taylor-chapter-7-problems.html#section-75-examples-of-lagranges-equations">Problems 7.14-7.44</a>)</em></p>
 <p>The procedure is nearly infallible: 1. Choose <span class="math inline">\(n\)</span> generalized coordinates. 2. Write <span class="math inline">\(T\)</span> and <span class="math inline">\(U\)</span> in an inertial frame, then express them in terms of the <span class="math inline">\(q\)</span>’s and <span class="math inline">\(\dot{q}\)</span>’s. 3. Construct <span class="math inline">\(\mathcal{L} = T - U\)</span>. 4. Evaluate the Lagrange equations.</p>
 <section id="bead-on-a-spinning-wire-hoop-bifurcation-example" class="level3">
 <h3 class="anchored" data-anchor-id="bead-on-a-spinning-wire-hoop-bifurcation-example">Bead on a Spinning Wire Hoop (Bifurcation Example)</h3>
@@ -354,6 +358,7 @@ Figure&nbsp;1: The effective restoring force on the spinning hoop bead. Note the
 </section>
 <section id="conservation-laws-and-noethers-theorem" class="level2">
 <h2 class="anchored" data-anchor-id="conservation-laws-and-noethers-theorem">7.8 Conservation Laws and Noether’s Theorem</h2>
+<p><em>(See <a href="../solutions/taylor-chapter-7-problems.html#section-78-more-about-conservation-laws">Problems 7.45-7.47</a>)</em></p>
 <section id="total-momentum" class="level3">
 <h3 class="anchored" data-anchor-id="total-momentum">Total Momentum</h3>
 <p>If an isolated system is <strong>translationally invariant</strong> (meaning <span class="math inline">\(\mathcal{L}\)</span> doesn’t change if we shift all particles by an infinitesimal vector <span class="math inline">\(\boldsymbol{\epsilon}\)</span>), it follows directly from Lagrange’s equations that the total linear momentum <span class="math inline">\(\mathbf{P} = \sum \mathbf{p}_\alpha\)</span> is conserved.</p>
@@ -367,6 +372,7 @@ Figure&nbsp;1: The effective restoring force on the spinning hoop bead. Note the
 </section>
 <section id="lagranges-equations-for-magnetic-forces" class="level2">
 <h2 class="anchored" data-anchor-id="lagranges-equations-for-magnetic-forces">7.9 Lagrange’s Equations for Magnetic Forces</h2>
+<p><em>(See <a href="../solutions/taylor-chapter-7-problems.html#section-79-lagranges-equations-for-magnetic-forces">Problems 7.48-7.49</a>)</em></p>
 <p>For a charged particle <span class="math inline">\(q\)</span> in an electromagnetic field described by a scalar potential <span class="math inline">\(V\)</span> and vector potential <span class="math inline">\(\mathbf{A}\)</span>, the Lorentz force is velocity-dependent: <span class="math inline">\(\mathbf{F} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})\)</span>.</p>
 <p>The Lagrangian formulation still works if we adopt a <strong>generalized definition of the Lagrangian</strong>—a Lagrangian is simply <em>any</em> scalar function <span class="math inline">\(\mathcal{L}\)</span> that reproduces the correct equations of motion.</p>
 <p>For the electromagnetic case, the correct function is: <span class="math display">\[ \mathcal{L} = \frac{1}{2}m\dot{\mathbf{r}}^2 - q(V - \dot{\mathbf{r}} \cdot \mathbf{A}) \]</span> This Lagrangian is foundational to quantum mechanics, as it modifies the canonical generalized momentum of the particle: <span class="math display">\[ \mathbf{p} = \frac{\partial \mathcal{L}}{\partial \dot{\mathbf{r}}} = m\mathbf{v} + q\mathbf{A} \]</span> This shows that the momentum operator in quantum mechanics corresponds to <span class="math inline">\(m\mathbf{v} + q\mathbf{A}\)</span>, not just the mechanical momentum <span class="math inline">\(m\mathbf{v}\)</span>.</p>
@@ -374,6 +380,7 @@ Figure&nbsp;1: The effective restoring force on the spinning hoop bead. Note the
 </section>
 <section id="lagrange-multipliers-and-constraint-forces" class="level2">
 <h2 class="anchored" data-anchor-id="lagrange-multipliers-and-constraint-forces">7.10 Lagrange Multipliers and Constraint Forces</h2>
+<p><em>(See <a href="../solutions/taylor-chapter-7-problems.html#section-710-lagrange-multipliers-and-constraint-forces">Problems 7.50-7.52</a>)</em></p>
 <p>If we <em>need</em> to determine a constraint force (e.g.&nbsp;tension in a string, or structural stress on a roller coaster track), we deliberately don’t use a minimal set of coordinates. Instead, we retain extra coordinates tied by a constraint equation <span class="math inline">\(f(q_1, q_2) = \text{const}\)</span>.</p>
 <p>We introduce a <strong>Lagrange multiplier</strong> <span class="math inline">\(\lambda(t)\)</span> to scale the constraint equation, modifying Hamilton’s principle: <span class="math display">\[ \frac{\partial \mathcal{L}}{\partial q_i} - \frac{d}{dt}\frac{\partial \mathcal{L}}{\partial \dot{q}_i} + \lambda \frac{\partial f}{\partial q_i} = 0 \]</span></p>
 <p>The extra term <span class="math inline">\(\lambda \frac{\partial f}{\partial q_i}\)</span> is precisely the <span class="math inline">\(i\)</span>-th component of the <strong>force of constraint</strong>. Solving this system of differential algebraic equations (DAEs) yields both the trajectory <span class="math inline">\(q_i(t)\)</span> and the dynamic magnitude of the constraint force via <span class="math inline">\(\lambda(t)\)</span>.</p>
@@ -863,141 +870,155 @@ Figure&nbsp;1: The effective restoring force on the spinning hoop bead. Note the
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.1 Lagrange's Equations for Unconstrained Motion</span></span>
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>For a particle moving freely in 3D subject to a conservative force $\mathbf{F} = -\nabla U$, the **Lagrangian** $\mathcal{L}$ is defined as the kinetic energy minus the potential energy:</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>$$ \mathcal{L} = T - U = \frac{1}{2}m(\dot{x}^2 + \dot{y}^2 + \dot{z}^2) - U(x, y, z) $$</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>By checking the partial derivatives, we see that:</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial \mathcal{L}}{\partial x} = -\frac{\partial U}{\partial x} = F_x, \quad \text{and} \quad \frac{\partial \mathcal{L}}{\partial \dot{x}} = m\dot{x} = p_x $$</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>Newton's second law ($F_x = \dot{p}_x$) is therefore exactly equivalent to the **Lagrange equation** in Cartesian coordinates:</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial \mathcal{L}}{\partial x} - \frac{d}{dt}\frac{\partial \mathcal{L}}{\partial \dot{x}} = 0 $$</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="fu">### Hamilton's Principle</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>Because this has the exact form of the Euler-Lagrange equations, we can re-state Newton's Second Law as an integral variational principle known as **Hamilton's Principle**:</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *The actual path which a particle follows between two points 1 and 2 in a given time interval makes the action integral $S = \int_{t_1}^{t_2} \mathcal{L} \, dt$ stationary.*</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>Because Hamilton's Principle applies globally to the action integral $S$, the value of the integral is invariant under coordinate transformations. This proves that **Lagrange's equations are valid in any choice of generalized coordinates** $q_1, q_2, \dots, q_n$.</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>*(See [Problems 7.1-7.7](../solutions/taylor-chapter-7-problems.qmd#section-71-lagranges-equations-for-unconstrained-motion))*</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>For a particle moving freely in 3D subject to a conservative force $\mathbf{F} = -\nabla U$, the **Lagrangian** $\mathcal{L}$ is defined as the kinetic energy minus the potential energy:</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>$$ \mathcal{L} = T - U = \frac{1}{2}m(\dot{x}^2 + \dot{y}^2 + \dot{z}^2) - U(x, y, z) $$</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>By checking the partial derivatives, we see that:</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial \mathcal{L}}{\partial x} = -\frac{\partial U}{\partial x} = F_x, \quad \text{and} \quad \frac{\partial \mathcal{L}}{\partial \dot{x}} = m\dot{x} = p_x $$</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>Newton's second law ($F_x = \dot{p}_x$) is therefore exactly equivalent to the **Lagrange equation** in Cartesian coordinates:</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial \mathcal{L}}{\partial x} - \frac{d}{dt}\frac{\partial \mathcal{L}}{\partial \dot{x}} = 0 $$</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="fu">### Hamilton's Principle</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>Because this has the exact form of the Euler-Lagrange equations, we can re-state Newton's Second Law as an integral variational principle known as **Hamilton's Principle**:</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *The actual path which a particle follows between two points 1 and 2 in a given time interval makes the action integral $S = \int_{t_1}^{t_2} \mathcal{L} \, dt$ stationary.*</span></span>
 <span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example: Polar Coordinates</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>If we write $\mathcal{L} = \frac{1}{2}m(\dot{r}^2 + r^2 \dot{\theta}^2) - U(r, \theta)$, the $\theta$ equation becomes:</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial \mathcal{L}}{\partial \theta} = \frac{d}{dt} \frac{\partial \mathcal{L}}{\partial \dot{\theta}} \implies -\frac{\partial U}{\partial \theta} = \frac{d}{dt} (mr^2 \dot{\theta}) $$</span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>Since $-\partial U/\partial \theta$ is the torque $\Gamma$ and $mr^2\dot{\theta}$ is the angular momentum $L$, this automatically yields $\Gamma = \dot{L}$. The geometry of the coordinates naturally yields the appropriate mechanical theorem.</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>Because Hamilton's Principle applies globally to the action integral $S$, the value of the integral is invariant under coordinate transformations. This proves that **Lagrange's equations are valid in any choice of generalized coordinates** $q_1, q_2, \dots, q_n$.</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example: Polar Coordinates</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>If we write $\mathcal{L} = \frac{1}{2}m(\dot{r}^2 + r^2 \dot{\theta}^2) - U(r, \theta)$, the $\theta$ equation becomes:</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial \mathcal{L}}{\partial \theta} = \frac{d}{dt} \frac{\partial \mathcal{L}}{\partial \dot{\theta}} \implies -\frac{\partial U}{\partial \theta} = \frac{d}{dt} (mr^2 \dot{\theta}) $$</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>Since $-\partial U/\partial \theta$ is the torque $\Gamma$ and $mr^2\dot{\theta}$ is the angular momentum $L$, this automatically yields $\Gamma = \dot{L}$. The geometry of the coordinates naturally yields the appropriate mechanical theorem.</span>
 <span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.3 Constrained Systems in General</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>A system of $N$ particles with positions $\mathbf{r}_\alpha$ is parametrized by **generalized coordinates** $q_1, \dots, q_n$:</span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{r}_\alpha = \mathbf{r}_\alpha(q_1, \dots, q_n, t) $$</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Degrees of Freedom:** The number of independently variable coordinates $n$. If $n &lt; 3N$, the system is **constrained**.</span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Holonomic Systems:** When the number of degrees of freedom exactly matches the number of generalized coordinates required to describe the configuration, the system is holonomic. (A rolling ball is non-holonomic, as it needs 5 coordinates but only has 2 translational degrees of freedom).</span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Natural Coordinates:** If the transformation mapping $\mathbf{r}_\alpha(q_1, \dots, q_n)$ does not depend explicitly on time $t$, the coordinates are called "natural".</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.3 Constrained Systems in General</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>*(See [Problems 7.9-7.11](../solutions/taylor-chapter-7-problems.qmd#section-73-constrained-systems-in-general))*</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>A system of $N$ particles with positions $\mathbf{r}_\alpha$ is parametrized by **generalized coordinates** $q_1, \dots, q_n$:</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{r}_\alpha = \mathbf{r}_\alpha(q_1, \dots, q_n, t) $$</span>
 <span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.4 Proof of Lagrange's Equations with Constraints</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Degrees of Freedom:** The number of independently variable coordinates $n$. If $n &lt; 3N$, the system is **constrained**.</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Holonomic Systems:** When the number of degrees of freedom exactly matches the number of generalized coordinates required to describe the configuration, the system is holonomic. (A rolling ball is non-holonomic, as it needs 5 coordinates but only has 2 translational degrees of freedom).</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Natural Coordinates:** If the transformation mapping $\mathbf{r}_\alpha(q_1, \dots, q_n)$ does not depend explicitly on time $t$, the coordinates are called "natural".</span>
 <span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>For a particle constrained to a surface (e.g., a bead on a wire), the total force is $\mathbf{F}_{tot} = \mathbf{F}_{cstr} + \mathbf{F}$. </span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>The constraint force $\mathbf{F}_{cstr}$ acts normal to the surface, and any virtual displacement $\epsilon$ consistent with the constraint lies within the surface. Thus, $\mathbf{F}_{cstr} \cdot \epsilon = 0$.</span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>This geometric fact means the constraint forces do zero virtual work, entirely vanishing from the variation of the action $\delta S = 0$. The resulting path requires only the potential $U$ of the *non-constraint* forces:</span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>$$ \mathcal{L}(q, \dot{q}, t) = T - U $$</span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>yielding the $n$ equations of motion:</span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial \mathcal{L}}{\partial q_i} - \frac{d}{dt}\frac{\partial \mathcal{L}}{\partial \dot{q}_i} = 0 \quad \text{for } i = 1, \dots, n $$</span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.5 Examples of Lagrange's Equations</span></span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>The procedure is nearly infallible:</span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Choose $n$ generalized coordinates.</span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Write $T$ and $U$ in an inertial frame, then express them in terms of the $q$'s and $\dot{q}$'s.</span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Construct $\mathcal{L} = T - U$.</span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Evaluate the Lagrange equations.</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.4 Proof of Lagrange's Equations with Constraints</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>*(See [Problems 7.12-7.13](../solutions/taylor-chapter-7-problems.qmd#section-74-proof-of-lagranges-equations-with-constraints))*</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>For a particle constrained to a surface (e.g., a bead on a wire), the total force is $\mathbf{F}_{tot} = \mathbf{F}_{cstr} + \mathbf{F}$. </span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>The constraint force $\mathbf{F}_{cstr}$ acts normal to the surface, and any virtual displacement $\epsilon$ consistent with the constraint lies within the surface. Thus, $\mathbf{F}_{cstr} \cdot \epsilon = 0$.</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>This geometric fact means the constraint forces do zero virtual work, entirely vanishing from the variation of the action $\delta S = 0$. The resulting path requires only the potential $U$ of the *non-constraint* forces:</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>$$ \mathcal{L}(q, \dot{q}, t) = T - U $$</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>yielding the $n$ equations of motion:</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial \mathcal{L}}{\partial q_i} - \frac{d}{dt}\frac{\partial \mathcal{L}}{\partial \dot{q}_i} = 0 \quad \text{for } i = 1, \dots, n $$</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.5 Examples of Lagrange's Equations</span></span>
 <span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="fu">### Bead on a Spinning Wire Hoop (Bifurcation Example)</span></span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>Consider a circular wire hoop of radius $R$ spinning at constant angular velocity $\omega$ about its vertical axis, with a bead of mass $m$ free to slide. The generalized coordinate is the angle $\theta$ from the bottom.</span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>$$ \mathcal{L} = \frac{1}{2}mR^2(\dot{\theta}^2 + \omega^2 \sin^2 \theta) - mgR(1 - \cos \theta) $$</span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>The equation of motion is:</span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>$$ R\ddot{\theta} = (\omega^2 R \cos \theta - g) \sin \theta $$</span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>When $\omega^2 &lt; g/R$, the only stable equilibrium is at the bottom ($\theta=0$). But when the hoop spins fast enough ($\omega^2 &gt; g/R$), the bottom becomes an *unstable* equilibrium, and two new stable equilibria emerge at $\theta = \pm \arccos(g / \omega^2 R)$. This emergence is known in chaos theory as a **pitchfork bifurcation**.</span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-bifurcation</span></span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "The effective restoring force on the spinning hoop bead. Note the stable equilibria moving away from the origin as rotation rate increases."</span></span>
-<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>*(See [Problems 7.14-7.44](../solutions/taylor-chapter-7-problems.qmd#section-75-examples-of-lagranges-equations))*</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>The procedure is nearly infallible:</span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Choose $n$ generalized coordinates.</span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Write $T$ and $U$ in an inertial frame, then express them in terms of the $q$'s and $\dot{q}$'s.</span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Construct $\mathcal{L} = T - U$.</span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Evaluate the Lagrange equations.</span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="fu">### Bead on a Spinning Wire Hoop (Bifurcation Example)</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>Consider a circular wire hoop of radius $R$ spinning at constant angular velocity $\omega$ about its vertical axis, with a bead of mass $m$ free to slide. The generalized coordinate is the angle $\theta$ from the bottom.</span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>$$ \mathcal{L} = \frac{1}{2}mR^2(\dot{\theta}^2 + \omega^2 \sin^2 \theta) - mgR(1 - \cos \theta) $$</span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>The equation of motion is:</span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>$$ R\ddot{\theta} = (\omega^2 R \cos \theta - g) \sin \theta $$</span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>When $\omega^2 &lt; g/R$, the only stable equilibrium is at the bottom ($\theta=0$). But when the hoop spins fast enough ($\omega^2 &gt; g/R$), the bottom becomes an *unstable* equilibrium, and two new stable equilibria emerge at $\theta = \pm \arccos(g / \omega^2 R)$. This emergence is known in chaos theory as a **pitchfork bifurcation**.</span>
 <span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> np.linspace(<span class="op">-</span>np.pi, np.pi, <span class="dv">200</span>)</span>
-<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.81</span></span>
-<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
-<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> w_sq <span class="kw">in</span> [<span class="dv">5</span>, <span class="fl">9.81</span>, <span class="dv">20</span>, <span class="dv">40</span>]:</span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>    force <span class="op">=</span> (w_sq <span class="op">*</span> R <span class="op">*</span> np.cos(theta) <span class="op">-</span> g) <span class="op">*</span> np.sin(theta)</span>
-<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>    plt.plot(theta, force, label<span class="op">=</span><span class="vs">rf'</span><span class="dv">$</span><span class="er">\</span><span class="vs">omega</span><span class="dv">^</span><span class="vs">2=</span><span class="sc">{</span>w_sq<span class="sc">}</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'k'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.8</span>)</span>
-<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Restoring Force vs. Angle $</span><span class="ch">\\</span><span class="st">theta$"</span>)</span>
-<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"$</span><span class="ch">\\</span><span class="st">theta$ (radians)"</span>)</span>
-<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Normalized Force"</span>)</span>
-<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.6 Generalized Momenta &amp; Ignorable Coordinates</span></span>
-<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>We define the **generalized force** $F_i$ and **generalized momentum** $p_i$ as:</span>
-<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>$$ F_i = \frac{\partial \mathcal{L}}{\partial q_i} \quad \text{and} \quad p_i = \frac{\partial \mathcal{L}}{\partial \dot{q}_i} $$</span>
-<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>Lagrange's equations become exactly $F_i = \dot{p}_i$.</span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-bifurcation</span></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "The effective restoring force on the spinning hoop bead. Note the stable equilibria moving away from the origin as rotation rate increases."</span></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> np.linspace(<span class="op">-</span>np.pi, np.pi, <span class="dv">200</span>)</span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.81</span></span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> w_sq <span class="kw">in</span> [<span class="dv">5</span>, <span class="fl">9.81</span>, <span class="dv">20</span>, <span class="dv">40</span>]:</span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>    force <span class="op">=</span> (w_sq <span class="op">*</span> R <span class="op">*</span> np.cos(theta) <span class="op">-</span> g) <span class="op">*</span> np.sin(theta)</span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>    plt.plot(theta, force, label<span class="op">=</span><span class="vs">rf'</span><span class="dv">$</span><span class="er">\</span><span class="vs">omega</span><span class="dv">^</span><span class="vs">2=</span><span class="sc">{</span>w_sq<span class="sc">}</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'k'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Restoring Force vs. Angle $</span><span class="ch">\\</span><span class="st">theta$"</span>)</span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"$</span><span class="ch">\\</span><span class="st">theta$ (radians)"</span>)</span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Normalized Force"</span>)</span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>**Ignorable Coordinates:** If $\mathcal{L}$ is independent of a coordinate $q_k$, we call $q_k$ *ignorable* or *cyclic*. Its generalized force $F_k = 0$, meaning the conjugate momentum $p_k$ is strictly conserved! Every ignorable coordinate points to a conservation law.</span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.6 Generalized Momenta &amp; Ignorable Coordinates</span></span>
 <span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.8 Conservation Laws and Noether's Theorem</span></span>
-<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a><span class="fu">### Total Momentum</span></span>
-<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>If an isolated system is **translationally invariant** (meaning $\mathcal{L}$ doesn't change if we shift all particles by an infinitesimal vector $\boldsymbol{\epsilon}$), it follows directly from Lagrange's equations that the total linear momentum $\mathbf{P} = \sum \mathbf{p}_\alpha$ is conserved.</span>
-<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a><span class="fu">### Conservation of Energy and The Hamiltonian</span></span>
-<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>The total time derivative of $\mathcal{L}$ leads us to define the **Hamiltonian** $\mathcal{H}$:</span>
-<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>$$ \mathcal{H} = \sum_{i=1}^n p_i \dot{q}_i - \mathcal{L} $$</span>
-<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>If the Lagrangian has no explicit time dependence ($\partial \mathcal{L} / \partial t = 0$), then $d\mathcal{H}/dt = 0$, and the Hamiltonian is conserved.</span>
-<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>Furthermore, if the generalized coordinates are *natural* (time-independent transformations), Euler's homogeneous function theorem guarantees that the kinetic energy $T$ is a homogeneous quadratic function of the velocities, which implies:</span>
-<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>$$ \sum_{i} p_i \dot{q}_i = 2T \implies \mathcal{H} = 2T - (T - U) = T + U = E $$</span>
-<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>Hence, time-translation invariance leads to **Energy Conservation**.</span>
-<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.9 Lagrange's Equations for Magnetic Forces</span></span>
-<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>For a charged particle $q$ in an electromagnetic field described by a scalar potential $V$ and vector potential $\mathbf{A}$, the Lorentz force is velocity-dependent: $\mathbf{F} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})$.</span>
-<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>The Lagrangian formulation still works if we adopt a **generalized definition of the Lagrangian**—a Lagrangian is simply *any* scalar function $\mathcal{L}$ that reproduces the correct equations of motion.</span>
-<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a>For the electromagnetic case, the correct function is:</span>
-<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>$$ \mathcal{L} = \frac{1}{2}m\dot{\mathbf{r}}^2 - q(V - \dot{\mathbf{r}} \cdot \mathbf{A}) $$</span>
-<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a>This Lagrangian is foundational to quantum mechanics, as it modifies the canonical generalized momentum of the particle:</span>
-<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{p} = \frac{\partial \mathcal{L}}{\partial \dot{\mathbf{r}}} = m\mathbf{v} + q\mathbf{A} $$</span>
-<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>This shows that the momentum operator in quantum mechanics corresponds to $m\mathbf{v} + q\mathbf{A}$, not just the mechanical momentum $m\mathbf{v}$.</span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a>We define the **generalized force** $F_i$ and **generalized momentum** $p_i$ as:</span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>$$ F_i = \frac{\partial \mathcal{L}}{\partial q_i} \quad \text{and} \quad p_i = \frac{\partial \mathcal{L}}{\partial \dot{q}_i} $$</span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>Lagrange's equations become exactly $F_i = \dot{p}_i$.</span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>**Ignorable Coordinates:** If $\mathcal{L}$ is independent of a coordinate $q_k$, we call $q_k$ *ignorable* or *cyclic*. Its generalized force $F_k = 0$, meaning the conjugate momentum $p_k$ is strictly conserved! Every ignorable coordinate points to a conservation law.</span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.8 Conservation Laws and Noether's Theorem</span></span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>*(See [Problems 7.45-7.47](../solutions/taylor-chapter-7-problems.qmd#section-78-more-about-conservation-laws))*</span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a><span class="fu">### Total Momentum</span></span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>If an isolated system is **translationally invariant** (meaning $\mathcal{L}$ doesn't change if we shift all particles by an infinitesimal vector $\boldsymbol{\epsilon}$), it follows directly from Lagrange's equations that the total linear momentum $\mathbf{P} = \sum \mathbf{p}_\alpha$ is conserved.</span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a><span class="fu">### Conservation of Energy and The Hamiltonian</span></span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>The total time derivative of $\mathcal{L}$ leads us to define the **Hamiltonian** $\mathcal{H}$:</span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>$$ \mathcal{H} = \sum_{i=1}^n p_i \dot{q}_i - \mathcal{L} $$</span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>If the Lagrangian has no explicit time dependence ($\partial \mathcal{L} / \partial t = 0$), then $d\mathcal{H}/dt = 0$, and the Hamiltonian is conserved.</span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>Furthermore, if the generalized coordinates are *natural* (time-independent transformations), Euler's homogeneous function theorem guarantees that the kinetic energy $T$ is a homogeneous quadratic function of the velocities, which implies:</span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a>$$ \sum_{i} p_i \dot{q}_i = 2T \implies \mathcal{H} = 2T - (T - U) = T + U = E $$</span>
+<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a>Hence, time-translation invariance leads to **Energy Conservation**.</span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.9 Lagrange's Equations for Magnetic Forces</span></span>
 <span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>*(See [Problems 7.48-7.49](../solutions/taylor-chapter-7-problems.qmd#section-79-lagranges-equations-for-magnetic-forces))*</span>
 <span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.10 Lagrange Multipliers and Constraint Forces</span></span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a>For a charged particle $q$ in an electromagnetic field described by a scalar potential $V$ and vector potential $\mathbf{A}$, the Lorentz force is velocity-dependent: $\mathbf{F} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})$.</span>
 <span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a>If we *need* to determine a constraint force (e.g. tension in a string, or structural stress on a roller coaster track), we deliberately don't use a minimal set of coordinates. Instead, we retain extra coordinates tied by a constraint equation $f(q_1, q_2) = \text{const}$.</span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a>The Lagrangian formulation still works if we adopt a **generalized definition of the Lagrangian**—a Lagrangian is simply *any* scalar function $\mathcal{L}$ that reproduces the correct equations of motion.</span>
 <span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>We introduce a **Lagrange multiplier** $\lambda(t)$ to scale the constraint equation, modifying Hamilton's principle:</span>
-<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial \mathcal{L}}{\partial q_i} - \frac{d}{dt}\frac{\partial \mathcal{L}}{\partial \dot{q}_i} + \lambda \frac{\partial f}{\partial q_i} = 0 $$</span>
-<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a>The extra term $\lambda \frac{\partial f}{\partial q_i}$ is precisely the $i$-th component of the **force of constraint**. Solving this system of differential algebraic equations (DAEs) yields both the trajectory $q_i(t)$ and the dynamic magnitude of the constraint force via $\lambda(t)$.</span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>For the electromagnetic case, the correct function is:</span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>$$ \mathcal{L} = \frac{1}{2}m\dot{\mathbf{r}}^2 - q(V - \dot{\mathbf{r}} \cdot \mathbf{A}) $$</span>
+<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a>This Lagrangian is foundational to quantum mechanics, as it modifies the canonical generalized momentum of the particle:</span>
+<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{p} = \frac{\partial \mathcal{L}}{\partial \dot{\mathbf{r}}} = m\mathbf{v} + q\mathbf{A} $$</span>
+<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a>This shows that the momentum operator in quantum mechanics corresponds to $m\mathbf{v} + q\mathbf{A}$, not just the mechanical momentum $m\mathbf{v}$.</span>
+<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.10 Lagrange Multipliers and Constraint Forces</span></span>
+<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a>*(See [Problems 7.50-7.52](../solutions/taylor-chapter-7-problems.qmd#section-710-lagrange-multipliers-and-constraint-forces))*</span>
+<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a>If we *need* to determine a constraint force (e.g. tension in a string, or structural stress on a roller coaster track), we deliberately don't use a minimal set of coordinates. Instead, we retain extra coordinates tied by a constraint equation $f(q_1, q_2) = \text{const}$.</span>
+<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a>We introduce a **Lagrange multiplier** $\lambda(t)$ to scale the constraint equation, modifying Hamilton's principle:</span>
+<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial \mathcal{L}}{\partial q_i} - \frac{d}{dt}\frac{\partial \mathcal{L}}{\partial \dot{q}_i} + \lambda \frac{\partial f}{\partial q_i} = 0 $$</span>
+<span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a>The extra term $\lambda \frac{\partial f}{\partial q_i}$ is precisely the $i$-th component of the **force of constraint**. Solving this system of differential algebraic equations (DAEs) yields both the trajectory $q_i(t)$ and the dynamic magnitude of the constraint force via $\lambda(t)$.</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
