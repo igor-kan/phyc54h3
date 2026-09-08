@@ -24,6 +24,8 @@ The Lagrangian formulation holds **two major advantages** over Newtonian mechani
 
 ## 7.1 Lagrange's Equations for Unconstrained Motion
 
+*(See [Problems 7.1-7.7](../solutions/taylor-chapter-7-problems.qmd#section-71-lagranges-equations-for-unconstrained-motion))*
+
 For a particle moving freely in 3D subject to a conservative force $\mathbf{F} = -\nabla U$, the **Lagrangian** $\mathcal{L}$ is defined as the kinetic energy minus the potential energy:
 $$ \mathcal{L} = T - U = \frac{1}{2}m(\dot{x}^2 + \dot{y}^2 + \dot{z}^2) - U(x, y, z) $$
 
@@ -47,6 +49,8 @@ Since $-\partial U/\partial \theta$ is the torque $\Gamma$ and $mr^2\dot{\theta}
 
 ## 7.3 Constrained Systems in General
 
+*(See [Problems 7.9-7.11](../solutions/taylor-chapter-7-problems.qmd#section-73-constrained-systems-in-general))*
+
 A system of $N$ particles with positions $\mathbf{r}_\alpha$ is parametrized by **generalized coordinates** $q_1, \dots, q_n$:
 $$ \mathbf{r}_\alpha = \mathbf{r}_\alpha(q_1, \dots, q_n, t) $$
 
@@ -57,6 +61,8 @@ $$ \mathbf{r}_\alpha = \mathbf{r}_\alpha(q_1, \dots, q_n, t) $$
 ---
 
 ## 7.4 Proof of Lagrange's Equations with Constraints
+
+*(See [Problems 7.12-7.13](../solutions/taylor-chapter-7-problems.qmd#section-74-proof-of-lagranges-equations-with-constraints))*
 
 For a particle constrained to a surface (e.g., a bead on a wire), the total force is $\mathbf{F}_{tot} = \mathbf{F}_{cstr} + \mathbf{F}$. 
 The constraint force $\mathbf{F}_{cstr}$ acts normal to the surface, and any virtual displacement $\epsilon$ consistent with the constraint lies within the surface. Thus, $\mathbf{F}_{cstr} \cdot \epsilon = 0$.
@@ -69,6 +75,8 @@ $$ \frac{\partial \mathcal{L}}{\partial q_i} - \frac{d}{dt}\frac{\partial \mathc
 ---
 
 ## 7.5 Examples of Lagrange's Equations
+
+*(See [Problems 7.14-7.44](../solutions/taylor-chapter-7-problems.qmd#section-75-examples-of-lagranges-equations))*
 
 The procedure is nearly infallible:
 1. Choose $n$ generalized coordinates.
@@ -123,6 +131,8 @@ Lagrange's equations become exactly $F_i = \dot{p}_i$.
 
 ## 7.8 Conservation Laws and Noether's Theorem
 
+*(See [Problems 7.45-7.47](../solutions/taylor-chapter-7-problems.qmd#section-78-more-about-conservation-laws))*
+
 ### Total Momentum
 If an isolated system is **translationally invariant** (meaning $\mathcal{L}$ doesn't change if we shift all particles by an infinitesimal vector $\boldsymbol{\epsilon}$), it follows directly from Lagrange's equations that the total linear momentum $\mathbf{P} = \sum \mathbf{p}_\alpha$ is conserved.
 
@@ -139,6 +149,8 @@ Hence, time-translation invariance leads to **Energy Conservation**.
 
 ## 7.9 Lagrange's Equations for Magnetic Forces
 
+*(See [Problems 7.48-7.49](../solutions/taylor-chapter-7-problems.qmd#section-79-lagranges-equations-for-magnetic-forces))*
+
 For a charged particle $q$ in an electromagnetic field described by a scalar potential $V$ and vector potential $\mathbf{A}$, the Lorentz force is velocity-dependent: $\mathbf{F} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})$.
 
 The Lagrangian formulation still works if we adopt a **generalized definition of the Lagrangian**—a Lagrangian is simply *any* scalar function $\mathcal{L}$ that reproduces the correct equations of motion.
@@ -152,6 +164,8 @@ This shows that the momentum operator in quantum mechanics corresponds to $m\mat
 ---
 
 ## 7.10 Lagrange Multipliers and Constraint Forces
+
+*(See [Problems 7.50-7.52](../solutions/taylor-chapter-7-problems.qmd#section-710-lagrange-multipliers-and-constraint-forces))*
 
 If we *need* to determine a constraint force (e.g. tension in a string, or structural stress on a roller coaster track), we deliberately don't use a minimal set of coordinates. Instead, we retain extra coordinates tied by a constraint equation $f(q_1, q_2) = \text{const}$.
 

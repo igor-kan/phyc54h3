@@ -1,0 +1,131 @@
+---
+title: "Taylor Chapter 7 Problems: Lagrange's Equations"
+author: "Igor"
+date: "2026-09-08"
+categories: [classical-mechanics, math, taylor, solutions]
+format:
+  html:
+    toc: true
+    math: true
+    code-fold: true
+jupyter: python3
+---
+
+# Calculus of Variations: Problem Solutions
+
+This article contains problem statements and solution outlines for Chapter 7 of John R. Taylor's *Classical Mechanics*. For a theoretical overview, see the [Chapter 7 Lecture Notes](../notes/taylor-chapter-7-lagrange-equations.qmd).
+
+## Section 7.1: Lagrange's Equations for Unconstrained Motion
+
+### Problem 7.1 *
+**Statement:** Write down the Lagrangian for a projectile (subject to no air resistance) in terms of its Cartesian coordinates $(x, y, z)$, with $z$ measured vertically upward. Find the three Lagrange equations and show that they are exactly what you would expect.  
+*(See [Section 7.1 Notes](../notes/taylor-chapter-7-lagrange-equations.qmd#71-lagranges-equations-for-unconstrained-motion))*
+
+**Solution:**
+$\mathcal{L} = \frac{1}{2}m(\dot{x}^2 + \dot{y}^2 + \dot{z}^2) - mgz$.
+The equations are:
+- $x$: $\frac{d}{dt}(m\dot{x}) = 0 \implies \ddot{x} = 0$
+- $y$: $\frac{d}{dt}(m\dot{y}) = 0 \implies \ddot{y} = 0$
+- $z$: $\frac{d}{dt}(m\dot{z}) = -mg \implies \ddot{z} = -g$
+These are the standard equations of motion for a projectile.
+
+### Problem 7.2 *
+**Statement:** Write down the Lagrangian for a one-dimensional particle moving along the $x$ axis and subject to a force $F = -kx$ (with $k$ positive). Find the Lagrange equation of motion and solve it.
+
+**Solution:**
+$\mathcal{L} = \frac{1}{2}m\dot{x}^2 - \frac{1}{2}kx^2$.
+Equation: $-kx = m\ddot{x} \implies \ddot{x} + \omega^2 x = 0$. Solution is simple harmonic motion $x(t) = A\cos(\omega t - \delta)$.
+
+### Problem 7.3 *
+**Statement:** Consider a mass $m$ moving in two dimensions with potential energy $U(x, y) = \frac{1}{2}kr^2$, where $r^2 = x^2 + y^2$. Write down the Lagrangian and find the two Lagrange equations of motion. Describe their solutions.
+
+**Solution:**
+$\mathcal{L} = \frac{1}{2}m(\dot{x}^2 + \dot{y}^2) - \frac{1}{2}k(x^2 + y^2)$.
+Equations: $m\ddot{x} = -kx$ and $m\ddot{y} = -ky$. Both $x$ and $y$ undergo independent simple harmonic motion with the same frequency.
+
+### Problem 7.4 *
+**Statement:** Mass $m$ moving in a frictionless plane that slopes at angle $\alpha$. Write down the Lagrangian in terms of $x$ (horizontally across slope) and $y$ (down slope).
+
+**Solution:**
+$\mathcal{L} = \frac{1}{2}m(\dot{x}^2 + \dot{y}^2) + mgy\sin\alpha$.
+Equations: $m\ddot{x} = 0$ and $m\ddot{y} = mg\sin\alpha$.
+
+### Problem 7.6 & 7.7 *
+**Statement:** Show that the $3N$ Newtonian equations are exactly equivalent to the $3N$ Lagrange equations in Cartesian coordinates, establishing Hamilton's principle.
+
+## Section 7.3: Constrained Systems in General
+
+### Problem 7.9 *
+**Statement:** Bead threaded on a rigid circular hoop of radius $R$ in the $xy$ plane. Use the angle $\phi$. Write equations giving $(x, y)$ in terms of $\phi$.  
+*(See [Section 7.3 Notes](../notes/taylor-chapter-7-lagrange-equations.qmd#73-constrained-systems-in-general))*
+
+**Solution:**
+$x = R\cos\phi, \quad y = R\sin\phi$. Generalized coordinate is just $\phi$.
+
+### Problem 7.10 *
+**Statement:** Particle on the surface of a circular cone, axis on $z$, half-angle $\alpha$. 
+
+**Solution:**
+Using cylindrical $( \rho, \phi, z )$: $z = \rho \cot \alpha$.
+The coordinates are $(\rho, \phi)$. $x = \rho\cos\phi$, $y = \rho\sin\phi$, $z = \rho\cot\alpha$.
+
+## Section 7.4: Proof of Lagrange's Equations with Constraints
+
+### Problem 7.12 * (Friction)
+**Statement:** Modify Lagrange's equations to include a nonconservative force $F_{\text{fric}}$.  
+*(See [Section 7.4 Notes](../notes/taylor-chapter-7-lagrange-equations.qmd#74-proof-of-lagranges-equations-with-constraints))*
+
+**Solution:**
+$\frac{\partial \mathcal{L}}{\partial x} + F_{\text{fric}} = \frac{d}{dt} \frac{\partial \mathcal{L}}{\partial \dot{x}}$.
+
+### Problem 7.13 **
+**Statement:** Prove Lagrange's equations for two particles subject to various constraints, using the property that constraint forces do zero net work.
+
+## Section 7.5: Examples of Lagrange's Equations
+
+### Problem 7.14 * (Yoyo)
+**Statement:** Massless string wrapped around a uniform cylinder (mass $m$, radius $R$). Find acceleration.
+
+**Solution:**
+$\mathcal{L} = \frac{1}{2}m\dot{x}^2 + \frac{1}{2}(\frac{1}{2}mR^2)\omega^2 - (-mgx)$. Since $x = R\phi$, $\omega = \dot{x}/R$.
+$\mathcal{L} = \frac{3}{4}m\dot{x}^2 + mgx$.
+Equation: $mg = \frac{3}{2}m\ddot{x} \implies \ddot{x} = \frac{2}{3}g$.
+
+### Problem 7.15 * & 7.16 * & 7.17 *
+*(Standard problems: Mass on table attached to hanging mass, Cylinder rolling down incline, Atwood machine with massive pulley).*
+
+### Problem 7.21 *
+**Statement:** Rod forced to rotate in horizontal plane at constant $\omega$. Bead on rod.
+
+**Solution:**
+$\mathcal{L} = \frac{1}{2}m(\dot{r}^2 + r^2\omega^2)$. Equation: $m\ddot{r} = mr\omega^2$. Shows centrifugal force accelerating the bead exponentially.
+
+### Problem 7.28 & 7.29 **
+*(Problems verifying stable/unstable equilibria and normal mode frequencies for rotating systems and pendulums attached to wheels.)*
+
+## Section 7.8: More About Conservation Laws
+
+### Problem 7.46 ** (Noether's Theorem for Rotations)
+**Statement:** Prove that rotational invariance of $\mathcal{L}$ implies conservation of total angular momentum.  
+*(See [Section 7.8 Notes](../notes/taylor-chapter-7-lagrange-equations.qmd#78-conservation-laws-and-noethers-theorem))*
+
+**Solution:**
+Rotating by $\epsilon$ around the $z$-axis changes coordinates. If $\delta \mathcal{L} = 0$, the sum of $\frac{\partial \mathcal{L}}{\partial \phi_\alpha} = 0 \implies \sum \dot{p}_{\phi_\alpha} = 0 \implies L_z$ is conserved.
+
+## Section 7.9: Lagrange's Equations for Magnetic Forces
+
+### Problem 7.49 **
+**Statement:** Charge $q$ in uniform magnetic field $B \hat{z}$. Prove $B = \nabla \times A$ and find Lagrange equations.  
+*(See [Section 7.9 Notes](../notes/taylor-chapter-7-lagrange-equations.qmd#79-lagranges-equations-for-magnetic-forces))*
+
+**Solution:**
+$A = \frac{1}{2} B \times r$. The Lagrangian involves the vector potential, leading directly to the Lorentz force equation.
+
+## Section 7.10: Lagrange Multipliers and Constraint Forces
+
+### Problem 7.50 * & 7.51 *
+**Statement:** Atwood machine and pendulum solved using Lagrange multipliers $\lambda$ to find string tensions.  
+*(See [Section 7.10 Notes](../notes/taylor-chapter-7-lagrange-equations.qmd#710-lagrange-multipliers-and-constraint-forces))*
+
+**Solution:**
+For the pendulum, constraint $f(x, y) = \sqrt{x^2 + y^2} = l$. The multiplier $\lambda$ represents the constraint force (tension), yielding equations that simultaneously solve the motion and the dynamic tension in the rod.
