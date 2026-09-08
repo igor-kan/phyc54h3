@@ -1,0 +1,161 @@
+---
+title: "Taylor Chapter 7: Lagrange's Equations"
+subtitle: "Overcoming constraint forces and deriving the laws of motion from a single radical formula."
+author: "Igor"
+date: "2026-09-08"
+categories: [classical-mechanics, math, taylor, notes]
+format:
+  html:
+    toc: true
+    math: true
+    code-fold: true
+jupyter: python3
+---
+
+# Introduction: The Beauty of the Lagrangian Method
+
+The theoretical development of the laws of motion found its most poetic formulation in 1788 when the Italian-French mathematician Joseph-Louis Lagrange published *Mécanique Analytique*. 
+
+The Lagrangian formulation holds **two major advantages** over Newtonian mechanics:
+1. Lagrange's equations take the **same form in any coordinate system** (Cartesian, spherical, non-inertial, etc.).
+2. For constrained systems (like a bead on a wire), the Lagrangian approach naturally **eliminates the forces of constraint** (like normal forces), which are often unknown and uninteresting.
+
+---
+
+## 7.1 Lagrange's Equations for Unconstrained Motion
+
+For a particle moving freely in 3D subject to a conservative force $\mathbf{F} = -\nabla U$, the **Lagrangian** $\mathcal{L}$ is defined as the kinetic energy minus the potential energy:
+$$ \mathcal{L} = T - U = \frac{1}{2}m(\dot{x}^2 + \dot{y}^2 + \dot{z}^2) - U(x, y, z) $$
+
+By checking the partial derivatives, we see that:
+$$ \frac{\partial \mathcal{L}}{\partial x} = -\frac{\partial U}{\partial x} = F_x, \quad \text{and} \quad \frac{\partial \mathcal{L}}{\partial \dot{x}} = m\dot{x} = p_x $$
+Newton's second law ($F_x = \dot{p}_x$) is therefore exactly equivalent to the **Lagrange equation** in Cartesian coordinates:
+$$ \frac{\partial \mathcal{L}}{\partial x} - \frac{d}{dt}\frac{\partial \mathcal{L}}{\partial \dot{x}} = 0 $$
+
+### Hamilton's Principle
+Because this has the exact form of the Euler-Lagrange equations, we can re-state Newton's Second Law as an integral variational principle known as **Hamilton's Principle**:
+> *The actual path which a particle follows between two points 1 and 2 in a given time interval makes the action integral $S = \int_{t_1}^{t_2} \mathcal{L} \, dt$ stationary.*
+
+Because Hamilton's Principle applies globally to the action integral $S$, the value of the integral is invariant under coordinate transformations. This proves that **Lagrange's equations are valid in any choice of generalized coordinates** $q_1, q_2, \dots, q_n$.
+
+### Example: Polar Coordinates
+If we write $\mathcal{L} = \frac{1}{2}m(\dot{r}^2 + r^2 \dot{\theta}^2) - U(r, \theta)$, the $\theta$ equation becomes:
+$$ \frac{\partial \mathcal{L}}{\partial \theta} = \frac{d}{dt} \frac{\partial \mathcal{L}}{\partial \dot{\theta}} \implies -\frac{\partial U}{\partial \theta} = \frac{d}{dt} (mr^2 \dot{\theta}) $$
+Since $-\partial U/\partial \theta$ is the torque $\Gamma$ and $mr^2\dot{\theta}$ is the angular momentum $L$, this automatically yields $\Gamma = \dot{L}$. The geometry of the coordinates naturally yields the appropriate mechanical theorem.
+
+---
+
+## 7.3 Constrained Systems in General
+
+A system of $N$ particles with positions $\mathbf{r}_\alpha$ is parametrized by **generalized coordinates** $q_1, \dots, q_n$:
+$$ \mathbf{r}_\alpha = \mathbf{r}_\alpha(q_1, \dots, q_n, t) $$
+
+*   **Degrees of Freedom:** The number of independently variable coordinates $n$. If $n < 3N$, the system is **constrained**.
+*   **Holonomic Systems:** When the number of degrees of freedom exactly matches the number of generalized coordinates required to describe the configuration, the system is holonomic. (A rolling ball is non-holonomic, as it needs 5 coordinates but only has 2 translational degrees of freedom).
+*   **Natural Coordinates:** If the transformation mapping $\mathbf{r}_\alpha(q_1, \dots, q_n)$ does not depend explicitly on time $t$, the coordinates are called "natural".
+
+---
+
+## 7.4 Proof of Lagrange's Equations with Constraints
+
+For a particle constrained to a surface (e.g., a bead on a wire), the total force is $\mathbf{F}_{tot} = \mathbf{F}_{cstr} + \mathbf{F}$. 
+The constraint force $\mathbf{F}_{cstr}$ acts normal to the surface, and any virtual displacement $\epsilon$ consistent with the constraint lies within the surface. Thus, $\mathbf{F}_{cstr} \cdot \epsilon = 0$.
+
+This geometric fact means the constraint forces do zero virtual work, entirely vanishing from the variation of the action $\delta S = 0$. The resulting path requires only the potential $U$ of the *non-constraint* forces:
+$$ \mathcal{L}(q, \dot{q}, t) = T - U $$
+yielding the $n$ equations of motion:
+$$ \frac{\partial \mathcal{L}}{\partial q_i} - \frac{d}{dt}\frac{\partial \mathcal{L}}{\partial \dot{q}_i} = 0 \quad \text{for } i = 1, \dots, n $$
+
+---
+
+## 7.5 Examples of Lagrange's Equations
+
+The procedure is nearly infallible:
+1. Choose $n$ generalized coordinates.
+2. Write $T$ and $U$ in an inertial frame, then express them in terms of the $q$'s and $\dot{q}$'s.
+3. Construct $\mathcal{L} = T - U$.
+4. Evaluate the Lagrange equations.
+
+### Bead on a Spinning Wire Hoop (Bifurcation Example)
+Consider a circular wire hoop of radius $R$ spinning at constant angular velocity $\omega$ about its vertical axis, with a bead of mass $m$ free to slide. The generalized coordinate is the angle $\theta$ from the bottom.
+
+$$ \mathcal{L} = \frac{1}{2}mR^2(\dot{\theta}^2 + \omega^2 \sin^2 \theta) - mgR(1 - \cos \theta) $$
+The equation of motion is:
+$$ R\ddot{\theta} = (\omega^2 R \cos \theta - g) \sin \theta $$
+
+When $\omega^2 < g/R$, the only stable equilibrium is at the bottom ($\theta=0$). But when the hoop spins fast enough ($\omega^2 > g/R$), the bottom becomes an *unstable* equilibrium, and two new stable equilibria emerge at $\theta = \pm \arccos(g / \omega^2 R)$. This emergence is known in chaos theory as a **pitchfork bifurcation**.
+
+```{python}
+#| label: fig-bifurcation
+#| fig-cap: "The effective restoring force on the spinning hoop bead. Note the stable equilibria moving away from the origin as rotation rate increases."
+import numpy as np
+import matplotlib.pyplot as plt
+
+theta = np.linspace(-np.pi, np.pi, 200)
+R = 1.0
+g = 9.81
+
+plt.figure(figsize=(8, 4))
+for w_sq in [5, 9.81, 20, 40]:
+    force = (w_sq * R * np.cos(theta) - g) * np.sin(theta)
+    plt.plot(theta, force, label=rf'$\omega^2={w_sq}$')
+
+plt.axhline(0, color='k', linestyle='--', linewidth=0.8)
+plt.title("Restoring Force vs. Angle $\\theta$")
+plt.xlabel("$\\theta$ (radians)")
+plt.ylabel("Normalized Force")
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+
+---
+
+## 7.6 Generalized Momenta & Ignorable Coordinates
+
+We define the **generalized force** $F_i$ and **generalized momentum** $p_i$ as:
+$$ F_i = \frac{\partial \mathcal{L}}{\partial q_i} \quad \text{and} \quad p_i = \frac{\partial \mathcal{L}}{\partial \dot{q}_i} $$
+Lagrange's equations become exactly $F_i = \dot{p}_i$.
+
+**Ignorable Coordinates:** If $\mathcal{L}$ is independent of a coordinate $q_k$, we call $q_k$ *ignorable* or *cyclic*. Its generalized force $F_k = 0$, meaning the conjugate momentum $p_k$ is strictly conserved! Every ignorable coordinate points to a conservation law.
+
+---
+
+## 7.8 Conservation Laws and Noether's Theorem
+
+### Total Momentum
+If an isolated system is **translationally invariant** (meaning $\mathcal{L}$ doesn't change if we shift all particles by an infinitesimal vector $\boldsymbol{\epsilon}$), it follows directly from Lagrange's equations that the total linear momentum $\mathbf{P} = \sum \mathbf{p}_\alpha$ is conserved.
+
+### Conservation of Energy and The Hamiltonian
+The total time derivative of $\mathcal{L}$ leads us to define the **Hamiltonian** $\mathcal{H}$:
+$$ \mathcal{H} = \sum_{i=1}^n p_i \dot{q}_i - \mathcal{L} $$
+
+If the Lagrangian has no explicit time dependence ($\partial \mathcal{L} / \partial t = 0$), then $d\mathcal{H}/dt = 0$, and the Hamiltonian is conserved.
+Furthermore, if the generalized coordinates are *natural* (time-independent transformations), Euler's homogeneous function theorem guarantees that the kinetic energy $T$ is a homogeneous quadratic function of the velocities, which implies:
+$$ \sum_{i} p_i \dot{q}_i = 2T \implies \mathcal{H} = 2T - (T - U) = T + U = E $$
+Hence, time-translation invariance leads to **Energy Conservation**.
+
+---
+
+## 7.9 Lagrange's Equations for Magnetic Forces
+
+For a charged particle $q$ in an electromagnetic field described by a scalar potential $V$ and vector potential $\mathbf{A}$, the Lorentz force is velocity-dependent: $\mathbf{F} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})$.
+
+The Lagrangian formulation still works if we adopt a **generalized definition of the Lagrangian**—a Lagrangian is simply *any* scalar function $\mathcal{L}$ that reproduces the correct equations of motion.
+
+For the electromagnetic case, the correct function is:
+$$ \mathcal{L} = \frac{1}{2}m\dot{\mathbf{r}}^2 - q(V - \dot{\mathbf{r}} \cdot \mathbf{A}) $$
+This Lagrangian is foundational to quantum mechanics, as it modifies the canonical generalized momentum of the particle:
+$$ \mathbf{p} = \frac{\partial \mathcal{L}}{\partial \dot{\mathbf{r}}} = m\mathbf{v} + q\mathbf{A} $$
+This shows that the momentum operator in quantum mechanics corresponds to $m\mathbf{v} + q\mathbf{A}$, not just the mechanical momentum $m\mathbf{v}$.
+
+---
+
+## 7.10 Lagrange Multipliers and Constraint Forces
+
+If we *need* to determine a constraint force (e.g. tension in a string, or structural stress on a roller coaster track), we deliberately don't use a minimal set of coordinates. Instead, we retain extra coordinates tied by a constraint equation $f(q_1, q_2) = \text{const}$.
+
+We introduce a **Lagrange multiplier** $\lambda(t)$ to scale the constraint equation, modifying Hamilton's principle:
+$$ \frac{\partial \mathcal{L}}{\partial q_i} - \frac{d}{dt}\frac{\partial \mathcal{L}}{\partial \dot{q}_i} + \lambda \frac{\partial f}{\partial q_i} = 0 $$
+
+The extra term $\lambda \frac{\partial f}{\partial q_i}$ is precisely the $i$-th component of the **force of constraint**. Solving this system of differential algebraic equations (DAEs) yields both the trajectory $q_i(t)$ and the dynamic magnitude of the constraint force via $\lambda(t)$.
