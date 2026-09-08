@@ -1,0 +1,86 @@
+---
+title: "Formalizing Calculus of Variations in Lean 4"
+date: "2026-09-08"
+description: "An overview of how the principles of stationary action and the Euler-Lagrange equations are formally verified in the Lean 4 theorem prover using mathlib."
+categories: [Formal Verification, Lean 4, Calculus of Variations, Code]
+---
+
+# Introduction to Lean 4 and Formal Verification
+
+In Chapter 6, we derived the Euler-Lagrange equations using the calculus of variations. While physicists often use heuristic arguments and physical intuition to define functional derivatives and stationary points, mathematicians require rigorous definitions involving Banach spaces, Fréchet derivatives, and functional analysis. 
+
+[Lean 4](https://leanprover.github.io/) is a dependently typed functional programming language and interactive theorem prover. In recent years, it has gained immense popularity in academia (e.g., the Fields Medalist Peter Scholze's Liquid Tensor Experiment, and Terrence Tao's recent work) for formalizing complex mathematics. 
+
+In this article, we explore how the calculus of variations and the principle of stationary action can be formalized in Lean 4 using its mathematics library, `mathlib`.
+
+## Functional Analysis in `mathlib`
+
+To formalize the calculus of variations, we need a rigorous framework for calculus on infinite-dimensional spaces (spaces of paths/functions). In Lean 4, this is handled through the theory of **Normed Spaces** and **Fréchet derivatives**.
+
+In `mathlib`, the derivative of a function $f : E \to F$ between two normed vector spaces is defined using the `HasFDerivAt` or `fderiv` API.
+
+```lean
+import Mathlib.Analysis.Calculus.Deriv.Basic
+import Mathlib.Analysis.NormedSpace.Basic
+
+-- E and F are Normed Vector Spaces over ℝ
+variable {E F : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+variable [NormedAddCommGroup F] [NormedSpace ℝ F]
+
+-- A function f is differentiable at x if it has a continuous linear map as its Fréchet derivative
+-- fderiv ℝ f x represents the Fréchet derivative of f at x
+```
+
+For the action functional $S$, the domain $E$ is a space of paths (e.g., a Sobolev space $W^{1,2}$ or a space of smooth functions $C^\infty([t_1, t_2], \mathbb{R}^n)$), and the codomain $F$ is $\mathbb{R}$.
+
+## Defining the Action Functional
+
+In physics, the action is:
+$$ S[q] = \int_{t_1}^{t_2} L(t, q(t), \dot{q}(t)) \, dt $$
+
+To formalize this in Lean, we must:
+1. Define the Lagrangian $L : \mathbb{R} \times \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ with appropriate smoothness conditions (e.g., $C^2$).
+2. Define the space of admissible paths $\mathcal{P} = \{ q \in C^2([t_1, t_2], \mathbb{R}^n) \mid q(t_1) = q_1, q(t_2) = q_2 \}$.
+3. Define the integral using Lean's measure theory library (Bochner integration).
+
+```lean
+import Mathlib.MeasureTheory.Integral.Bochner
+
+-- A rough sketch of how the action functional might be typed in Lean
+def ActionFunctional (L : ℝ → ℝ → ℝ → ℝ) (q : ℝ → ℝ) (t1 t2 : ℝ) : ℝ :=
+  ∫ t in t1..t2, L t (q t) (deriv q t)
+```
+
+## The Principle of Stationary Action
+
+The principle of stationary action states that the physical path $q_{true}$ is a critical point of $S[q]$:
+$$ \delta S = 0 \iff D S(q_{true})[\eta] = 0 \quad \text{for all variations } \eta $$
+
+In Lean, stating that a function has a local extremum (or just a stationary point) involves asserting that its Fréchet derivative evaluates to zero. `mathlib` contains theorems like `hasFDerivAt_of_local_min`, which proves that the derivative is zero at a local minimum, generalizing Fermat's theorem to Banach spaces.
+
+```lean
+theorem stationary_action (S : (ℝ → ℝ) → ℝ) (q : ℝ → ℝ)
+    (h_stat : fderiv ℝ S q = 0) : 
+    /- Euler-Lagrange equations hold -/ := by
+  sorry -- The proof involves integration by parts, formalized via the Fundamental Theorem of Calculus.
+```
+
+## Deriving Euler-Lagrange: The Fundamental Lemma of Calculus of Variations
+
+A crucial step in the physics derivation is the Fundamental Lemma of Calculus of Variations:
+If $\int_{t_1}^{t_2} f(t) \eta(t) dt = 0$ for all smooth functions $\eta(t)$ vanishing at the boundaries, then $f(t) = 0$ everywhere.
+
+Formalizing this lemma in Lean 4 requires:
+1. Constructing bump functions (which are available in `mathlib`'s smooth manifolds library).
+2. Using measure theory to show that if the integral of $f \cdot \eta$ is zero for all bump functions, the almost-everywhere equivalence class of $f$ is zero.
+3. Using the continuity of $f$ to upgrade "almost everywhere zero" to "everywhere zero".
+
+## Current State of Research and Academia
+
+While the basic calculus of variations is well-understood mathematically, its complete, end-to-end formalization in Lean 4 is an active area of interest within the **mathematical physics community**:
+
+1. **Differential Geometry and Mechanics**: The `mathlib` community is actively developing the theory of smooth manifolds, tangent bundles, and symplectic geometry. Classical mechanics naturally lives on the cotangent bundle $T^*M$ (Hamiltonian mechanics) and the tangent bundle $TM$ (Lagrangian mechanics).
+2. **Noether's Theorem**: Formalizing symmetry and conservation laws using Lie groups acting on manifolds is a major milestone for formalizing physics.
+3. **Optics & Shortest Paths**: Formalizing that geodesics on a Riemannian manifold satisfy the geodesic equation (a special case of Euler-Lagrange) is closely tied to ongoing work in Riemannian geometry in Lean 4.
+
+By translating physics into Lean 4, researchers can ensure there are no hidden assumptions in their derivations, providing absolute rigor to the foundational principles of mechanics we study in Chapter 6!
