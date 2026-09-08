@@ -122,92 +122,147 @@ Use the **Wheel Radius Slider ($a$)** below to interactively scale the wheel and
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Ceiling / Rail (y = 0)
-    ctx.fillStyle = '#334155';
+    ctx.fillStyle = '#0f172a';
     ctx.fillRect(0, 0, canvas.width, yRail);
-
-    ctx.strokeStyle = '#475569';
+    ctx.strokeStyle = '#334155';
     ctx.lineWidth = 1.5;
     for (let hx = 10; hx < canvas.width; hx += 16) {
-      ctx.beginPath();
-      ctx.moveTo(hx, yRail - 15);
-      ctx.lineTo(hx + 12, yRail);
-      ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(hx, yRail - 14); ctx.lineTo(hx + 12, yRail); ctx.stroke();
     }
-
     ctx.strokeStyle = '#94a3b8';
     ctx.lineWidth = 3;
-    ctx.beginPath();
-    ctx.moveTo(0, yRail);
-    ctx.lineTo(canvas.width, yRail);
-    ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, yRail); ctx.lineTo(canvas.width, yRail); ctx.stroke();
 
-    ctx.fillStyle = '#e2e8f0';
-    ctx.font = '12px system-ui, sans-serif';
-    ctx.fillText('Horizontal Rail: y = 0 (Underside track)', 20, yRail - 18);
-    ctx.fillText('Origin (x=0, θ=0)', xOrigin - 25, yRail - 6);
+    ctx.fillStyle = '#f8fafc';
+    ctx.font = 'bold 12px system-ui, sans-serif';
+    ctx.fillText('Horizontal Rail: y = 0 (Underside track)', 20, yRail - 14);
+    ctx.fillText('Origin (x=0, θ=0)', xOrigin - 25, yRail - 5);
 
+    // Center of Mass trajectory line (y = yRail + a)
+    ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([5, 5]);
+    ctx.beginPath(); ctx.moveTo(0, yRail + a); ctx.lineTo(canvas.width, yRail + a); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#38bdf8';
+    ctx.font = '10px system-ui, sans-serif';
+    ctx.fillText(`Center of Mass Path: y_c = a (${a}px)`, 20, yRail + a - 5);
+
+    // Trough depth boundary line (y = yRail + 2a)
+    ctx.strokeStyle = 'rgba(168, 85, 247, 0.4)';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([5, 5]);
+    ctx.beginPath(); ctx.moveTo(0, yRail + 2*a); ctx.lineTo(canvas.width, yRail + 2*a); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#c084fc';
+    ctx.fillText(`Maximum Trough Depth: y_max = 2a (${2*a}px)`, 20, yRail + 2*a + 14);
+
+    // Cusp markers (x = xOrigin + k*2*pi*a)
     for (let k = 1; k <= 2; k++) {
       const xCusp = xOrigin + k * 2 * Math.PI * a;
       if (xCusp < canvas.width) {
-        ctx.fillStyle = '#64748b';
-        ctx.beginPath();
-        ctx.arc(xCusp, yRail, 4, 0, 2*Math.PI);
-        ctx.fill();
-        ctx.fillText(`Cusp ${k} (x = ${k}·2πa)`, xCusp - 40, yRail - 6);
+        ctx.fillStyle = '#ef4444';
+        ctx.beginPath(); ctx.arc(xCusp, yRail, 4.5, 0, 2*Math.PI); ctx.fill();
+        ctx.fillStyle = '#cbd5e1';
+        ctx.font = 'bold 11px system-ui, sans-serif';
+        ctx.fillText(`Cusp ${k} (${k}·2πa)`, xCusp - 30, yRail - 5);
       }
     }
 
     // Faint full cycloid path
-    ctx.strokeStyle = '#3b4252';
-    ctx.lineWidth = 2;
+    ctx.strokeStyle = '#475569';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([4, 4]);
     ctx.beginPath();
     const totalSteps = 400;
     for (let i = 0; i <= totalSteps; i++) {
       const th = (i / totalSteps) * maxTheta;
       const x = xOrigin + a * (th - Math.sin(th));
       const y = yRail + a * (1 - Math.cos(th));
-      if (i === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
     }
     ctx.stroke();
+    ctx.setLineDash([]);
 
-    // Active traced path from 0 to theta
-    ctx.strokeStyle = '#c084fc';
-    ctx.lineWidth = 3.5;
-    ctx.shadowColor = '#a855f7';
-    ctx.shadowBlur = 10;
-    ctx.beginPath();
+    // Gradient fill under the active traced curve
     const currentSteps = Math.min(totalSteps, Math.floor((theta / maxTheta) * totalSteps));
+    if (currentSteps > 1) {
+      const grad = ctx.createLinearGradient(0, yRail, 0, yRail + 2*a);
+      grad.addColorStop(0, 'rgba(192, 132, 252, 0.22)');
+      grad.addColorStop(1, 'rgba(168, 85, 247, 0.02)');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.moveTo(xOrigin, yRail);
+      for (let i = 0; i <= currentSteps; i++) {
+        const th = (i / totalSteps) * maxTheta;
+        const x = xOrigin + a * (th - Math.sin(th));
+        const y = yRail + a * (1 - Math.cos(th));
+        ctx.lineTo(x, y);
+      }
+      const lastTh = (currentSteps / totalSteps) * maxTheta;
+      const lastX = xOrigin + a * (lastTh - Math.sin(lastTh));
+      ctx.lineTo(lastX, yRail);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    // Glowing active traced cycloid path
+    ctx.strokeStyle = '#c084fc';
+    ctx.lineWidth = 4;
+    ctx.shadowColor = '#a855f7';
+    ctx.shadowBlur = 14;
+    ctx.beginPath();
     for (let i = 0; i <= currentSteps; i++) {
       const th = (i / totalSteps) * maxTheta;
       const x = xOrigin + a * (th - Math.sin(th));
       const y = yRail + a * (1 - Math.cos(th));
-      if (i === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
     }
     ctx.stroke();
     ctx.shadowBlur = 0;
 
-    // Rolling Wheel
+    // Wheel center & Marker coordinates
     const xc = xOrigin + a * theta;
     const yc = yRail + a;
+    const xp = xc - a * Math.sin(theta);
+    const yp = yc - a * Math.cos(theta);
 
-    ctx.fillStyle = 'rgba(56, 189, 248, 0.12)';
+    // Instantaneous Center of Rotation (ICR) - Contact point on rail
+    ctx.fillStyle = '#f43f5e';
+    ctx.beginPath(); ctx.arc(xc, yRail, 5, 0, 2*Math.PI); ctx.fill();
+    ctx.fillStyle = '#fda4af';
+    ctx.font = '10px system-ui, sans-serif';
+    ctx.fillText('ICR (Contact C)', xc - 36, yRail + 14);
+
+    // Normal line connecting Contact C to Marker P
+    ctx.strokeStyle = 'rgba(244, 63, 94, 0.45)';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(xc, yRail); ctx.lineTo(xp, yp); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Wheel Disk Body
+    const wheelGrad = ctx.createRadialGradient(xc, yc, 2, xc, yc, a);
+    wheelGrad.addColorStop(0, 'rgba(56, 189, 248, 0.35)');
+    wheelGrad.addColorStop(0.85, 'rgba(14, 116, 144, 0.2)');
+    wheelGrad.addColorStop(1, 'rgba(56, 189, 248, 0.55)');
+    ctx.fillStyle = wheelGrad;
     ctx.strokeStyle = '#38bdf8';
-    ctx.lineWidth = 2.5;
+    ctx.lineWidth = 3;
     ctx.beginPath();
     ctx.arc(xc, yc, a, 0, 2*Math.PI);
     ctx.fill();
     ctx.stroke();
 
-    ctx.fillStyle = '#38bdf8';
-    ctx.beginPath();
-    ctx.arc(xc, yc, 4, 0, 2*Math.PI);
-    ctx.fill();
+    // Wheel Hub
+    ctx.fillStyle = '#0284c7';
+    ctx.beginPath(); ctx.arc(xc, yc, 5.5, 0, 2*Math.PI); ctx.fill();
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath(); ctx.arc(xc, yc, 2.5, 0, 2*Math.PI); ctx.fill();
 
-    // Spokes
-    ctx.strokeStyle = 'rgba(56, 189, 248, 0.45)';
-    ctx.lineWidth = 1.5;
+    // Spokes (8 spokes rotating with theta)
+    ctx.strokeStyle = 'rgba(56, 189, 248, 0.6)';
+    ctx.lineWidth = 1.8;
     for (let i = 0; i < 8; i++) {
       const spAng = theta + (i * Math.PI / 4) - Math.PI/2;
       ctx.beginPath();
@@ -216,40 +271,50 @@ Use the **Wheel Radius Slider ($a$)** below to interactively scale the wheel and
       ctx.stroke();
     }
 
-    // Contact point dot
-    ctx.fillStyle = '#f87171';
-    ctx.beginPath();
-    ctx.arc(xc, yRail, 3.5, 0, 2*Math.PI);
-    ctx.fill();
-
-    // Marker arm
-    const xp = xc - a * Math.sin(theta);
-    const yp = yc - a * Math.cos(theta);
-
-    ctx.strokeStyle = '#e879f9';
+    // Radius arm connecting Center to Marker P
+    ctx.strokeStyle = '#f43f5e';
     ctx.lineWidth = 2.5;
-    ctx.beginPath();
-    ctx.moveTo(xc, yc);
-    ctx.lineTo(xp, yp);
-    ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(xc, yc); ctx.lineTo(xp, yp); ctx.stroke();
 
-    // Tracing Marker P(x, y)
-    ctx.shadowColor = '#e879f9';
-    ctx.shadowBlur = 14;
-    ctx.fillStyle = '#f472b6';
+    // Instantaneous Velocity Vector at Marker P
+    const vx = a * (1 - Math.cos(theta));
+    const vy = a * Math.sin(theta);
+    const vMag = Math.sqrt(vx*vx + vy*vy) || 1;
+    const arrowLen = 34;
+    const dirX = (vx / vMag) * arrowLen;
+    const dirY = (vy / vMag) * arrowLen;
+
+    ctx.strokeStyle = '#4ade80';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath(); ctx.moveTo(xp, yp); ctx.lineTo(xp + dirX, yp + dirY); ctx.stroke();
+
+    const arrHeadLen = 7;
+    const arrAng = Math.atan2(dirY, dirX);
+    ctx.fillStyle = '#4ade80';
     ctx.beginPath();
-    ctx.arc(xp, yp, 7.5, 0, 2*Math.PI);
+    ctx.moveTo(xp + dirX, yp + dirY);
+    ctx.lineTo(xp + dirX - arrHeadLen * Math.cos(arrAng - Math.PI/6), yp + dirY - arrHeadLen * Math.sin(arrAng - Math.PI/6));
+    ctx.lineTo(xp + dirX - arrHeadLen * Math.cos(arrAng + Math.PI/6), yp + dirY - arrHeadLen * Math.sin(arrAng + Math.PI/6));
+    ctx.closePath();
     ctx.fill();
+
+    ctx.fillStyle = '#86efac';
+    ctx.font = 'bold 11px system-ui, sans-serif';
+    ctx.fillText('v(t)', xp + dirX + 4, yp + dirY + 4);
+
+    // Tracing Marker P
+    ctx.shadowColor = '#e879f9';
+    ctx.shadowBlur = 16;
+    ctx.fillStyle = '#f43f5e';
+    ctx.beginPath(); ctx.arc(xp, yp, 8, 0, 2*Math.PI); ctx.fill();
     ctx.shadowBlur = 0;
 
     ctx.fillStyle = '#ffffff';
-    ctx.beginPath();
-    ctx.arc(xp - 1.5, yp - 1.5, 2.5, 0, 2*Math.PI);
-    ctx.fill();
+    ctx.beginPath(); ctx.arc(xp - 1.5, yp - 1.5, 3, 0, 2*Math.PI); ctx.fill();
 
     ctx.fillStyle = '#fdf4ff';
     ctx.font = 'bold 12px system-ui, sans-serif';
-    ctx.fillText('P(x,y)', xp + 10, yp + 16);
+    ctx.fillText('P(x,y)', xp + 10, yp + 18);
   }
 
   function step(ts) {
@@ -481,38 +546,69 @@ The four competing trajectories below connect the origin $(0, 0)$ to a lower tar
       ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
     }
 
-    // Draw tracks
+    // Draw tracks with glow and prominent labels
     runners.forEach(r => {
       ctx.beginPath();
       ctx.strokeStyle = r.color;
-      ctx.lineWidth = 2.5;
-      ctx.globalAlpha = 0.7;
+      ctx.lineWidth = 3;
+      ctx.shadowColor = r.color;
+      ctx.shadowBlur = 6;
       r.path.pts.forEach((p, i) => {
         if (i === 0) ctx.moveTo(p.x, p.y);
         else ctx.lineTo(p.x, p.y);
       });
       ctx.stroke();
-      ctx.globalAlpha = 1.0;
+      ctx.shadowBlur = 0;
     });
 
-    // Start and Finish Markers
+    // On-canvas track labels
+    ctx.font = 'bold 11px system-ui, sans-serif';
+    ctx.fillStyle = '#c084fc';
+    const pCyc = getPosOnPath(cycloidPath, cycloidPath.totLen * 0.45);
+    ctx.fillText('🟣 Cycloid (Fastest)', pCyc.x - 30, pCyc.y + 22);
+
+    ctx.fillStyle = '#38bdf8';
+    const pCirc = getPosOnPath(circlePath, circlePath.totLen * 0.35);
+    ctx.fillText('🔵 Circular Arc', pCirc.x - 20, pCirc.y + 18);
+
+    ctx.fillStyle = '#4ade80';
+    const pPara = getPosOnPath(parabolaPath, parabolaPath.totLen * 0.55);
+    ctx.fillText('🟢 Parabola', pPara.x - 10, pPara.y - 10);
+
+    ctx.fillStyle = '#fb923c';
+    const pLine = getPosOnPath(linePath, linePath.totLen * 0.7);
+    ctx.fillText('🟠 Straight Line', pLine.x - 10, pLine.y - 12);
+
+    // Start Marker
     ctx.fillStyle = '#f8fafc';
-    ctx.beginPath(); ctx.arc(xStart, yStart, 5, 0, 2*Math.PI); ctx.fill();
-    ctx.font = '12px system-ui, sans-serif';
-    ctx.fillText('Origin (0,0)', xStart - 30, yStart - 12);
-
+    ctx.beginPath(); ctx.arc(xStart, yStart, 6, 0, 2*Math.PI); ctx.fill();
     ctx.fillStyle = '#e2e8f0';
-    ctx.beginPath(); ctx.arc(xEnd, yEnd, 6, 0, 2*Math.PI); ctx.fill();
-    ctx.fillText('Target (x₂, y₂)', xEnd - 20, yEnd + 22);
+    ctx.font = 'bold 12px system-ui, sans-serif';
+    ctx.fillText('Start (0,0)', xStart - 32, yStart - 14);
 
-    // Draw Beads
+    // Finish Line Banner & Marker
+    ctx.strokeStyle = '#38bdf8';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.moveTo(xEnd, yEnd - 25);
+    ctx.lineTo(xEnd, yEnd + 25);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    ctx.fillStyle = '#38bdf8';
+    ctx.beginPath(); ctx.arc(xEnd, yEnd, 7, 0, 2*Math.PI); ctx.fill();
+    ctx.fillStyle = '#f8fafc';
+    ctx.fillText('🏁 Finish (x₂, y₂)', xEnd - 45, yEnd + 38);
+
+    // Draw Beads with Glow & Direction
     runners.forEach(r => {
       const pos = getPosOnPath(r.path, r.s);
       ctx.shadowColor = r.color;
-      ctx.shadowBlur = 10;
+      ctx.shadowBlur = 14;
       ctx.fillStyle = r.color;
       ctx.beginPath();
-      ctx.arc(pos.x, pos.y, 8, 0, 2*Math.PI);
+      ctx.arc(pos.x, pos.y, 8.5, 0, 2*Math.PI);
       ctx.fill();
       ctx.shadowBlur = 0;
 

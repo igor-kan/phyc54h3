@@ -289,9 +289,9 @@ The parameter $\theta$ is the cumulative rotation angle (in radians) of the roll
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = '#334155';
+    ctx.fillStyle = '#0f172a';
     ctx.fillRect(0, 0, canvas.width, yRail);
-    ctx.strokeStyle = '#475569';
+    ctx.strokeStyle = '#334155';
     ctx.lineWidth = 1.5;
     for (let hx = 10; hx < canvas.width; hx += 16) {
       ctx.beginPath(); ctx.moveTo(hx, yRail - 12); ctx.lineTo(hx + 10, yRail); ctx.stroke();
@@ -300,12 +300,33 @@ The parameter $\theta$ is the cumulative rotation angle (in radians) of the roll
     ctx.lineWidth = 2.5;
     ctx.beginPath(); ctx.moveTo(0, yRail); ctx.lineTo(canvas.width, yRail); ctx.stroke();
 
-    ctx.fillStyle = '#cbd5e1';
-    ctx.font = '11px system-ui, sans-serif';
+    ctx.fillStyle = '#f8fafc';
+    ctx.font = 'bold 11px system-ui, sans-serif';
     ctx.fillText('Underside Rail (y = 0)', 15, yRail - 12);
 
-    ctx.strokeStyle = '#334155';
+    // Center of Mass trajectory line (y = yRail + a)
+    ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
+    ctx.lineWidth = 1.2;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath(); ctx.moveTo(0, yRail + a); ctx.lineTo(canvas.width, yRail + a); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#38bdf8';
+    ctx.font = '10px system-ui, sans-serif';
+    ctx.fillText(`Center Path: y_c = a (${a}px)`, 20, yRail + a - 4);
+
+    // Trough depth boundary line (y = yRail + 2a)
+    ctx.strokeStyle = 'rgba(168, 85, 247, 0.4)';
+    ctx.lineWidth = 1.2;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath(); ctx.moveTo(0, yRail + 2*a); ctx.lineTo(canvas.width, yRail + 2*a); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#c084fc';
+    ctx.fillText(`Trough Depth: y_max = 2a (${2*a}px)`, 20, yRail + 2*a + 12);
+
+    // Faint full cycloid path
+    ctx.strokeStyle = '#475569';
     ctx.lineWidth = 1.5;
+    ctx.setLineDash([4, 4]);
     ctx.beginPath();
     const totalSteps = 300;
     for (let i = 0; i <= totalSteps; i++) {
@@ -315,13 +336,36 @@ The parameter $\theta$ is the cumulative rotation angle (in radians) of the roll
       if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
     }
     ctx.stroke();
+    ctx.setLineDash([]);
 
-    ctx.strokeStyle = '#c084fc';
-    ctx.lineWidth = 3;
-    ctx.shadowColor = '#a855f7';
-    ctx.shadowBlur = 8;
-    ctx.beginPath();
+    // Gradient fill under the active traced curve
     const currentSteps = Math.min(totalSteps, Math.floor((theta / maxTheta) * totalSteps));
+    if (currentSteps > 1) {
+      const grad = ctx.createLinearGradient(0, yRail, 0, yRail + 2*a);
+      grad.addColorStop(0, 'rgba(192, 132, 252, 0.22)');
+      grad.addColorStop(1, 'rgba(168, 85, 247, 0.02)');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.moveTo(xOrigin, yRail);
+      for (let i = 0; i <= currentSteps; i++) {
+        const th = (i / totalSteps) * maxTheta;
+        const x = xOrigin + a * (th - Math.sin(th));
+        const y = yRail + a * (1 - Math.cos(th));
+        ctx.lineTo(x, y);
+      }
+      const lastTh = (currentSteps / totalSteps) * maxTheta;
+      const lastX = xOrigin + a * (lastTh - Math.sin(lastTh));
+      ctx.lineTo(lastX, yRail);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    // Glowing active traced path up to theta
+    ctx.strokeStyle = '#c084fc';
+    ctx.lineWidth = 3.5;
+    ctx.shadowColor = '#a855f7';
+    ctx.shadowBlur = 10;
+    ctx.beginPath();
     for (let i = 0; i <= currentSteps; i++) {
       const th = (i / totalSteps) * maxTheta;
       const x = xOrigin + a * (th - Math.sin(th));
@@ -331,42 +375,84 @@ The parameter $\theta$ is the cumulative rotation angle (in radians) of the roll
     ctx.stroke();
     ctx.shadowBlur = 0;
 
+    // Rolling Wheel
     const xc = xOrigin + a * theta;
     const yc = yRail + a;
+    const xp = xc - a * Math.sin(theta);
+    const yp = yc - a * Math.cos(theta);
 
-    ctx.fillStyle = 'rgba(56, 189, 248, 0.12)';
+    // Instantaneous Center of Rotation (ICR)
+    ctx.fillStyle = '#f43f5e';
+    ctx.beginPath(); ctx.arc(xc, yRail, 4.5, 0, 2*Math.PI); ctx.fill();
+
+    // Normal line connecting Contact C to Marker P
+    ctx.strokeStyle = 'rgba(244, 63, 94, 0.4)';
+    ctx.lineWidth = 1.2;
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(xc, yRail); ctx.lineTo(xp, yp); ctx.stroke();
+    ctx.setLineDash([]);
+
+    const wheelGrad = ctx.createRadialGradient(xc, yc, 2, xc, yc, a);
+    wheelGrad.addColorStop(0, 'rgba(56, 189, 248, 0.35)');
+    wheelGrad.addColorStop(0.85, 'rgba(14, 116, 144, 0.2)');
+    wheelGrad.addColorStop(1, 'rgba(56, 189, 248, 0.55)');
+    ctx.fillStyle = wheelGrad;
     ctx.strokeStyle = '#38bdf8';
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 2.5;
     ctx.beginPath();
     ctx.arc(xc, yc, a, 0, 2*Math.PI);
     ctx.fill();
     ctx.stroke();
 
-    ctx.fillStyle = '#38bdf8';
-    ctx.beginPath(); ctx.arc(xc, yc, 3.5, 0, 2*Math.PI); ctx.fill();
+    ctx.fillStyle = '#0284c7';
+    ctx.beginPath(); ctx.arc(xc, yc, 4.5, 0, 2*Math.PI); ctx.fill();
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath(); ctx.arc(xc, yc, 2, 0, 2*Math.PI); ctx.fill();
 
-    ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
-    ctx.lineWidth = 1.2;
+    // Spokes
+    ctx.strokeStyle = 'rgba(56, 189, 248, 0.5)';
+    ctx.lineWidth = 1.5;
     for (let i = 0; i < 6; i++) {
       const spAng = theta + (i * Math.PI / 3) - Math.PI/2;
       ctx.beginPath(); ctx.moveTo(xc, yc); ctx.lineTo(xc + a * Math.cos(spAng), yc + a * Math.sin(spAng)); ctx.stroke();
     }
 
-    const xp = xc - a * Math.sin(theta);
-    const yp = yc - a * Math.cos(theta);
-
-    ctx.strokeStyle = '#e879f9';
-    ctx.lineWidth = 2;
+    // Marker arm
+    ctx.strokeStyle = '#f43f5e';
+    ctx.lineWidth = 2.2;
     ctx.beginPath(); ctx.moveTo(xc, yc); ctx.lineTo(xp, yp); ctx.stroke();
 
+    // Velocity vector
+    const vx = a * (1 - Math.cos(theta));
+    const vy = a * Math.sin(theta);
+    const vMag = Math.sqrt(vx*vx + vy*vy) || 1;
+    const arrowLen = 28;
+    const dirX = (vx / vMag) * arrowLen;
+    const dirY = (vy / vMag) * arrowLen;
+
+    ctx.strokeStyle = '#4ade80';
+    ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(xp, yp); ctx.lineTo(xp + dirX, yp + dirY); ctx.stroke();
+
+    const arrHeadLen = 6;
+    const arrAng = Math.atan2(dirY, dirX);
+    ctx.fillStyle = '#4ade80';
+    ctx.beginPath();
+    ctx.moveTo(xp + dirX, yp + dirY);
+    ctx.lineTo(xp + dirX - arrHeadLen * Math.cos(arrAng - Math.PI/6), yp + dirY - arrHeadLen * Math.sin(arrAng - Math.PI/6));
+    ctx.lineTo(xp + dirX - arrHeadLen * Math.cos(arrAng + Math.PI/6), yp + dirY - arrHeadLen * Math.sin(arrAng + Math.PI/6));
+    ctx.closePath();
+    ctx.fill();
+
+    // Tracing Marker P
     ctx.shadowColor = '#e879f9';
-    ctx.shadowBlur = 12;
-    ctx.fillStyle = '#f472b6';
-    ctx.beginPath(); ctx.arc(xp, yp, 6.5, 0, 2*Math.PI); ctx.fill();
+    ctx.shadowBlur = 14;
+    ctx.fillStyle = '#f43f5e';
+    ctx.beginPath(); ctx.arc(xp, yp, 7.5, 0, 2*Math.PI); ctx.fill();
     ctx.shadowBlur = 0;
 
     ctx.fillStyle = '#ffffff';
-    ctx.beginPath(); ctx.arc(xp - 1, yp - 1, 2, 0, 2*Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.arc(xp - 1.5, yp - 1.5, 2.5, 0, 2*Math.PI); ctx.fill();
 
     ctx.fillStyle = '#fdf4ff';
     ctx.font = 'bold 11px system-ui, sans-serif';
