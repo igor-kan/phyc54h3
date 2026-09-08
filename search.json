@@ -91,88 +91,109 @@
     "text": "(See Problems 7.50-7.52)\nIf we need to determine a constraint force (e.g. tension in a string, or structural stress on a roller coaster track), we deliberately don’t use a minimal set of coordinates. Instead, we retain extra coordinates tied by a constraint equation \\(f(q_1, q_2) = \\text{const}\\).\nWe introduce a Lagrange multiplier \\(\\lambda(t)\\) to scale the constraint equation, modifying Hamilton’s principle: \\[ \\frac{\\partial \\mathcal{L}}{\\partial q_i} - \\frac{d}{dt}\\frac{\\partial \\mathcal{L}}{\\partial \\dot{q}_i} + \\lambda \\frac{\\partial f}{\\partial q_i} = 0 \\]\nThe extra term \\(\\lambda \\frac{\\partial f}{\\partial q_i}\\) is precisely the \\(i\\)-th component of the force of constraint. Solving this system of differential algebraic equations (DAEs) yields both the trajectory \\(q_i(t)\\) and the dynamic magnitude of the constraint force via \\(\\lambda(t)\\)."
   },
   {
-    "objectID": "simulations/interactive-pendulum-and-verlet.html",
-    "href": "simulations/interactive-pendulum-and-verlet.html",
-    "title": "Interactive Simulations & Multi-Language Integrators",
+    "objectID": "reference/vector-calculus-and-identities.html",
+    "href": "reference/vector-calculus-and-identities.html",
+    "title": "Vector Calculus & Identities",
     "section": "",
-    "text": "Quarto allows client-side interactive simulations using Observable JS ({ojs}). The simulation runs entirely within your browser via HTML5 Canvas—no Python or server backend required!\nUse the sliders below to adjust the physical parameters and observe the real-time dynamics:\n\n\nCode\nviewof length = Inputs.range([0.5, 3.0], {value: 1.5, step: 0.1, label: \"Pendulum Length (m)\"})\nviewof gravity = Inputs.range([1.0, 25.0], {value: 9.81, step: 0.1, label: \"Gravity g (m/s²)\"})\nviewof damping = Inputs.range([0.0, 0.5], {value: 0.05, step: 0.01, label: \"Damping Factor γ\"})\nviewof initialAngle = Inputs.range([-170, 170], {value: 60, step: 5, label: \"Initial Angle θ₀ (deg)\"})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\ncanvas = {\n  const width = 600;\n  const height = 350;\n  const ctx = DOM.context2d(width, height);\n  \n  let theta = initialAngle * Math.PI / 180;\n  let omega = 0.0;\n  let dt = 0.02;\n  const originX = width / 2;\n  const originY = 50;\n  const scale = 80;\n\n  function step() {\n    // Non-linear pendulum: d²θ/dt² = -(g/L) sin(θ) - γ dθ/dt\n    const alpha = -(gravity / length) * Math.sin(theta) - damping * omega;\n    omega += alpha * dt;\n    theta += omega * dt;\n\n    ctx.clearRect(0, 0, width, height);\n\n    // Pivot support\n    ctx.fillStyle = \"#333\";\n    ctx.fillRect(originX - 40, originY - 10, 80, 10);\n\n    const bobX = originX + length * scale * Math.sin(theta);\n    const bobY = originY + length * scale * Math.cos(theta);\n\n    // Rod\n    ctx.beginPath();\n    ctx.moveTo(originX, originY);\n    ctx.lineTo(bobX, bobY);\n    ctx.strokeStyle = \"#4f46e5\";\n    ctx.lineWidth = 3;\n    ctx.stroke();\n\n    // Pivot pin\n    ctx.beginPath();\n    ctx.arc(originX, originY, 5, 0, 2 * Math.PI);\n    ctx.fillStyle = \"#1e293b\";\n    ctx.fill();\n\n    // Bob\n    ctx.beginPath();\n    ctx.arc(bobX, bobY, 18, 0, 2 * Math.PI);\n    ctx.fillStyle = \"#ef4444\";\n    ctx.shadowColor = \"rgba(0,0,0,0.3)\";\n    ctx.shadowBlur = 8;\n    ctx.fill();\n    ctx.shadowBlur = 0;\n\n    // Display telemetry\n    ctx.fillStyle = \"#0f172a\";\n    ctx.font = \"14px monospace\";\n    ctx.fillText(`θ: ${(theta * 180 / Math.PI).toFixed(1)}°`, 20, 30);\n    ctx.fillText(`ω: ${omega.toFixed(2)} rad/s`, 20, 50);\n    ctx.fillText(`E_mech: ${(0.5 * length * length * omega * omega + gravity * length * (1 - Math.cos(theta))).toFixed(2)} J/kg`, 20, 70);\n  }\n\n  const timer = d3.interval(step, 20);\n  invalidation.then(() =&gt; timer.stop());\n\n  return ctx.canvas;\n}"
+    "text": "Let \\(\\mathbf{A}, \\mathbf{B}, \\mathbf{C}\\) be vectors in 3D space.\n\n\n\\[ \\mathbf{A} \\cdot \\mathbf{B} = A_x B_x + A_y B_y + A_z B_z = |\\mathbf{A}| |\\mathbf{B}| \\cos\\theta \\] \\[ \\mathbf{A} \\times \\mathbf{B} = \\det \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix} \\] \\[ |\\mathbf{A} \\times \\mathbf{B}| = |\\mathbf{A}| |\\mathbf{B}| \\sin\\theta \\]\n\n\n\nScalar Triple Product (Volume of parallelepiped): \\[ \\mathbf{A} \\cdot (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B} \\cdot (\\mathbf{C} \\times \\mathbf{A}) = \\mathbf{C} \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\det \\begin{vmatrix} A_x & A_y & A_z \\\\ B_x & B_y & B_z \\\\ C_x & C_y & C_z \\end{vmatrix} \\]\nVector Triple Product (BAC-CAB Rule): \\[ \\mathbf{A} \\times (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B}(\\mathbf{A} \\cdot \\mathbf{C}) - \\mathbf{C}(\\mathbf{A} \\cdot \\mathbf{B}) \\]"
   },
   {
-    "objectID": "simulations/interactive-pendulum-and-verlet.html#live-in-browser-interactive-simulation-observable-js",
-    "href": "simulations/interactive-pendulum-and-verlet.html#live-in-browser-interactive-simulation-observable-js",
-    "title": "Interactive Simulations & Multi-Language Integrators",
+    "objectID": "reference/vector-calculus-and-identities.html#dot-and-cross-products",
+    "href": "reference/vector-calculus-and-identities.html#dot-and-cross-products",
+    "title": "Vector Calculus & Identities",
     "section": "",
-    "text": "Quarto allows client-side interactive simulations using Observable JS ({ojs}). The simulation runs entirely within your browser via HTML5 Canvas—no Python or server backend required!\nUse the sliders below to adjust the physical parameters and observe the real-time dynamics:\n\n\nCode\nviewof length = Inputs.range([0.5, 3.0], {value: 1.5, step: 0.1, label: \"Pendulum Length (m)\"})\nviewof gravity = Inputs.range([1.0, 25.0], {value: 9.81, step: 0.1, label: \"Gravity g (m/s²)\"})\nviewof damping = Inputs.range([0.0, 0.5], {value: 0.05, step: 0.01, label: \"Damping Factor γ\"})\nviewof initialAngle = Inputs.range([-170, 170], {value: 60, step: 5, label: \"Initial Angle θ₀ (deg)\"})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\ncanvas = {\n  const width = 600;\n  const height = 350;\n  const ctx = DOM.context2d(width, height);\n  \n  let theta = initialAngle * Math.PI / 180;\n  let omega = 0.0;\n  let dt = 0.02;\n  const originX = width / 2;\n  const originY = 50;\n  const scale = 80;\n\n  function step() {\n    // Non-linear pendulum: d²θ/dt² = -(g/L) sin(θ) - γ dθ/dt\n    const alpha = -(gravity / length) * Math.sin(theta) - damping * omega;\n    omega += alpha * dt;\n    theta += omega * dt;\n\n    ctx.clearRect(0, 0, width, height);\n\n    // Pivot support\n    ctx.fillStyle = \"#333\";\n    ctx.fillRect(originX - 40, originY - 10, 80, 10);\n\n    const bobX = originX + length * scale * Math.sin(theta);\n    const bobY = originY + length * scale * Math.cos(theta);\n\n    // Rod\n    ctx.beginPath();\n    ctx.moveTo(originX, originY);\n    ctx.lineTo(bobX, bobY);\n    ctx.strokeStyle = \"#4f46e5\";\n    ctx.lineWidth = 3;\n    ctx.stroke();\n\n    // Pivot pin\n    ctx.beginPath();\n    ctx.arc(originX, originY, 5, 0, 2 * Math.PI);\n    ctx.fillStyle = \"#1e293b\";\n    ctx.fill();\n\n    // Bob\n    ctx.beginPath();\n    ctx.arc(bobX, bobY, 18, 0, 2 * Math.PI);\n    ctx.fillStyle = \"#ef4444\";\n    ctx.shadowColor = \"rgba(0,0,0,0.3)\";\n    ctx.shadowBlur = 8;\n    ctx.fill();\n    ctx.shadowBlur = 0;\n\n    // Display telemetry\n    ctx.fillStyle = \"#0f172a\";\n    ctx.font = \"14px monospace\";\n    ctx.fillText(`θ: ${(theta * 180 / Math.PI).toFixed(1)}°`, 20, 30);\n    ctx.fillText(`ω: ${omega.toFixed(2)} rad/s`, 20, 50);\n    ctx.fillText(`E_mech: ${(0.5 * length * length * omega * omega + gravity * length * (1 - Math.cos(theta))).toFixed(2)} J/kg`, 20, 70);\n  }\n\n  const timer = d3.interval(step, 20);\n  invalidation.then(() =&gt; timer.stop());\n\n  return ctx.canvas;\n}"
+    "text": "\\[ \\mathbf{A} \\cdot \\mathbf{B} = A_x B_x + A_y B_y + A_z B_z = |\\mathbf{A}| |\\mathbf{B}| \\cos\\theta \\] \\[ \\mathbf{A} \\times \\mathbf{B} = \\det \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix} \\] \\[ |\\mathbf{A} \\times \\mathbf{B}| = |\\mathbf{A}| |\\mathbf{B}| \\sin\\theta \\]"
   },
   {
-    "objectID": "simulations/interactive-pendulum-and-verlet.html#high-performance-symplectic-integrator-in-c",
-    "href": "simulations/interactive-pendulum-and-verlet.html#high-performance-symplectic-integrator-in-c",
-    "title": "Interactive Simulations & Multi-Language Integrators",
-    "section": "2. High-Performance Symplectic Integrator in C++",
-    "text": "2. High-Performance Symplectic Integrator in C++\nStandard integrators like Forward Euler or standard Runge-Kutta 4th order (RK4) do not conserve the symplectic 2-form \\(\\omega = \\sum dq_i \\wedge dp_i\\). Over long integration times, non-symplectic integrators suffer from artificial energy drift.\nBelow is a production-grade implementation of the Velocity Verlet (Symplectic Störmer-Verlet) algorithm in C++17:\n// verlet_integrator.cpp\n// Compile: g++ -O3 -std=c++17 verlet_integrator.cpp -o verlet_sim\n#include &lt;iostream&gt;\n#include &lt;vector&gt;\n#include &lt;cmath&gt;\n#include &lt;fstream&gt;\n#include &lt;iomanip&gt;\n\nstruct State {\n    double theta; // generalized coordinate\n    double omega; // generalized velocity\n    double t;\n};\n\nclass SymplecticPendulum {\nprivate:\n    double g;\n    double L;\n    double m;\n\npublic:\n    SymplecticPendulum(double gravity = 9.80665, double length = 1.0, double mass = 1.0)\n        : g(gravity), L(length), m(mass) {}\n\n    // Acceleration a(theta) = - (g / L) * sin(theta)\n    double acceleration(double theta) const {\n        return -(g / L) * std::sin(theta);\n    }\n\n    double totalEnergy(double theta, double omega) const {\n        double kinetic = 0.5 * m * (L * omega) * (L * omega);\n        double potential = m * g * L * (1.0 - std::cos(theta));\n        return kinetic + potential;\n    }\n\n    // Velocity Verlet Step\n    void step(State& s, double dt) const {\n        double a_current = acceleration(s.theta);\n        \n        // 1. Position update: q(t + dt) = q(t) + v(t)*dt + 0.5*a(t)*dt^2\n        s.theta += s.omega * dt + 0.5 * a_current * dt * dt;\n        \n        // 2. New acceleration: a(t + dt)\n        double a_next = acceleration(s.theta);\n        \n        // 3. Velocity update: v(t + dt) = v(t) + 0.5*(a(t) + a(t + dt))*dt\n        s.omega += 0.5 * (a_current + a_next) * dt;\n        s.t += dt;\n    }\n};\n\nint main() {\n    SymplecticPendulum sim(9.80665, 1.0, 1.0);\n    State state = {M_PI / 3.0, 0.0, 0.0}; // 60 degrees release from rest\n    double dt = 0.005;\n    double t_max = 50.0;\n\n    std::ofstream out(\"verlet_trajectory.csv\");\n    out &lt;&lt; \"time,theta,omega,energy\\n\";\n\n    double E0 = sim.totalEnergy(state.theta, state.omega);\n\n    while (state.t &lt;= t_max) {\n        double E = sim.totalEnergy(state.theta, state.omega);\n        out &lt;&lt; std::fixed &lt;&lt; std::setprecision(6)\n            &lt;&lt; state.t &lt;&lt; \",\" &lt;&lt; state.theta &lt;&lt; \",\" &lt;&lt; state.omega &lt;&lt; \",\" &lt;&lt; E &lt;&lt; \"\\n\";\n        sim.step(state, dt);\n    }\n\n    std::cout &lt;&lt; \"Simulation complete. Initial Energy: \" &lt;&lt; E0 \n              &lt;&lt; \" J | Final Energy: \" &lt;&lt; sim.totalEnergy(state.theta, state.omega) \n              &lt;&lt; \" J (Symplectic bound preserved).\" &lt;&lt; std::endl;\n    return 0;\n}"
-  },
-  {
-    "objectID": "simulations/interactive-pendulum-and-verlet.html#high-precision-python-integration-phase-portraits",
-    "href": "simulations/interactive-pendulum-and-verlet.html#high-precision-python-integration-phase-portraits",
-    "title": "Interactive Simulations & Multi-Language Integrators",
-    "section": "3. High-Precision Python Integration & Phase Portraits",
-    "text": "3. High-Precision Python Integration & Phase Portraits\nIn Python, we utilize scipy.integrate.solve_ivp with the Dormand-Prince 8th order (DOP853) method to integrate the non-linear pendulum and plot its phase portrait:\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom scipy.integrate import solve_ivp\n\ndef pendulum_deriv(t, y, g=9.81, L=1.0):\n    theta, omega = y\n    return [omega, -(g / L) * np.sin(theta)]\n\nt_span = (0, 20)\nt_eval = np.linspace(0, 20, 1000)\n\nplt.figure(figsize=(10, 5))\n\n# Plot trajectories for several initial angles\nfor theta0 in [np.pi/6, np.pi/3, np.pi/2, 2.5, 3.1]:\n    sol = solve_ivp(pendulum_deriv, t_span, [theta0, 0.0], t_eval=t_eval, method='DOP853')\n    plt.plot(sol.y[0], sol.y[1], label=f\"$\\\\theta_0 = {theta0:.2f}$ rad\")\n\nplt.title(\"Phase Space Trajectories ($\\\\theta$ vs $\\\\dot{\\\\theta}$)\")\nplt.xlabel(\"Angle $\\\\theta$ (rad)\")\nplt.ylabel(\"Angular Velocity $\\\\dot{\\\\theta}$ (rad/s)\")\nplt.grid(True, linestyle=\"--\", alpha=0.6)\nplt.axvline(x=np.pi, color='r', linestyle=':', label=\"Separatrix Saddle ($\\\\pm \\\\pi$)\")\nplt.axvline(x=-np.pi, color='r', linestyle=':')\nplt.legend(loc=\"upper right\")\nplt.show()"
-  },
-  {
-    "objectID": "simulations/interactive-pendulum-and-verlet.html#fortran-90-symplectic-orbit-integrator",
-    "href": "simulations/interactive-pendulum-and-verlet.html#fortran-90-symplectic-orbit-integrator",
-    "title": "Interactive Simulations & Multi-Language Integrators",
-    "section": "4. Fortran 90 Symplectic Orbit Integrator",
-    "text": "4. Fortran 90 Symplectic Orbit Integrator\nFor ultra-high-throughput orbital mechanics, Fortran remains an industry standard in celestial dynamics:\n! orbit_integrator.f90\n! Compile: gfortran -O3 -march=native orbit_integrator.f90 -o orbit_sim\nprogram kepler_verlet\n    implicit none\n    integer, parameter :: dp = kind(1.0d0)\n    real(dp) :: x, y, vx, vy, ax, ay, r, dt, t, t_end, GM\n    real(dp) :: ax_new, ay_new\n    integer :: step, n_steps\n\n    GM = 4.0_dp * 3.141592653589793_dp**2 ! AU^3 / yr^2\n    x = 1.0_dp; y = 0.0_dp               ! Initial position (1 AU)\n    vx = 0.0_dp; vy = 2.0_dp * 3.141592653589793_dp ! Circular velocity\n\n    dt = 0.001_dp\n    t_end = 10.0_dp\n    n_steps = int(t_end / dt)\n\n    do step = 1, n_steps\n        r = sqrt(x**2 + y**2)\n        ax = -GM * x / (r**3)\n        ay = -GM * y / (r**3)\n\n        x = x + vx * dt + 0.5_dp * ax * dt**2\n        y = y + vy * dt + 0.5_dp * ay * dt**2\n\n        r = sqrt(x**2 + y**2)\n        ax_new = -GM * x / (r**3)\n        ay_new = -GM * y / (r**3)\n\n        vx = vx + 0.5_dp * (ax + ax_new) * dt\n        vy = vy + 0.5_dp * (ay + ay_new) * dt\n    end do\n\n    print *, \"Completed 10 Earth orbits with zero secular energy drift.\"\nend program kepler_verlet"
-  },
-  {
-    "objectID": "solutions/taylor-chapter-6-problems.html",
-    "href": "solutions/taylor-chapter-6-problems.html",
-    "title": "Taylor Chapter 6 Problems: Calculus of Variations",
+    "objectID": "reference/vector-calculus-and-identities.html#triple-products",
+    "href": "reference/vector-calculus-and-identities.html#triple-products",
+    "title": "Vector Calculus & Identities",
     "section": "",
-    "text": "For a complete derivation of the theoretical concepts used to solve these problems, refer to the Chapter 6 Lecture Notes."
+    "text": "Scalar Triple Product (Volume of parallelepiped): \\[ \\mathbf{A} \\cdot (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B} \\cdot (\\mathbf{C} \\times \\mathbf{A}) = \\mathbf{C} \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\det \\begin{vmatrix} A_x & A_y & A_z \\\\ B_x & B_y & B_z \\\\ C_x & C_y & C_z \\end{vmatrix} \\]\nVector Triple Product (BAC-CAB Rule): \\[ \\mathbf{A} \\times (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B}(\\mathbf{A} \\cdot \\mathbf{C}) - \\mathbf{C}(\\mathbf{A} \\cdot \\mathbf{B}) \\]"
   },
   {
-    "objectID": "solutions/problem-set-1.html",
-    "href": "solutions/problem-set-1.html",
-    "title": "Problem Set 1: Bead on a Rotating Wire Hoop",
+    "objectID": "reference/vector-calculus-and-identities.html#operations",
+    "href": "reference/vector-calculus-and-identities.html#operations",
+    "title": "Vector Calculus & Identities",
+    "section": "Operations",
+    "text": "Operations\n\nGradient (Scalar \\(f \\to\\) Vector): \\[ \\nabla f = \\frac{\\partial f}{\\partial x}\\mathbf{\\hat{i}} + \\frac{\\partial f}{\\partial y}\\mathbf{\\hat{j}} + \\frac{\\partial f}{\\partial z}\\mathbf{\\hat{k}} \\]\nDivergence (Vector \\(\\mathbf{A} \\to\\) Scalar): \\[ \\nabla \\cdot \\mathbf{A} = \\frac{\\partial A_x}{\\partial x} + \\frac{\\partial A_y}{\\partial y} + \\frac{\\partial A_z}{\\partial z} \\]\nCurl (Vector \\(\\mathbf{A} \\to\\) Vector): \\[ \\nabla \\times \\mathbf{A} = \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ \\frac{\\partial}{\\partial x} & \\frac{\\partial}{\\partial y} & \\frac{\\partial}{\\partial z} \\\\ A_x & A_y & A_z \\end{vmatrix} \\]\nLaplacian (Scalar \\(f \\to\\) Scalar): \\[ \\nabla^2 f = \\nabla \\cdot (\\nabla f) = \\frac{\\partial^2 f}{\\partial x^2} + \\frac{\\partial^2 f}{\\partial y^2} + \\frac{\\partial^2 f}{\\partial z^2} \\]"
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html#product-rules",
+    "href": "reference/vector-calculus-and-identities.html#product-rules",
+    "title": "Vector Calculus & Identities",
+    "section": "Product Rules",
+    "text": "Product Rules\n\\[ \\nabla(fg) = f\\nabla g + g\\nabla f \\] \\[ \\nabla \\cdot (f\\mathbf{A}) = f(\\nabla \\cdot \\mathbf{A}) + \\mathbf{A} \\cdot (\\nabla f) \\] \\[ \\nabla \\times (f\\mathbf{A}) = f(\\nabla \\times \\mathbf{A}) + (\\nabla f) \\times \\mathbf{A} \\] \\[ \\nabla \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\mathbf{B} \\cdot (\\nabla \\times \\mathbf{A}) - \\mathbf{A} \\cdot (\\nabla \\times \\mathbf{B}) \\] \\[ \\nabla(\\mathbf{A} \\cdot \\mathbf{B}) = \\mathbf{A} \\times (\\nabla \\times \\mathbf{B}) + \\mathbf{B} \\times (\\nabla \\times \\mathbf{A}) + (\\mathbf{A} \\cdot \\nabla)\\mathbf{B} + (\\mathbf{B} \\cdot \\nabla)\\mathbf{A} \\]"
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html#second-derivatives",
+    "href": "reference/vector-calculus-and-identities.html#second-derivatives",
+    "title": "Vector Calculus & Identities",
+    "section": "Second Derivatives",
+    "text": "Second Derivatives\nCurl of a Gradient is zero: \\[ \\nabla \\times (\\nabla f) = 0 \\] (If \\(\\nabla \\times \\mathbf{F} = 0\\), then \\(\\mathbf{F}\\) is conservative and \\(\\mathbf{F} = -\\nabla U\\).)\nDivergence of a Curl is zero: \\[ \\nabla \\cdot (\\nabla \\times \\mathbf{A}) = 0 \\] (If \\(\\nabla \\cdot \\mathbf{B} = 0\\), then \\(\\mathbf{B}\\) can be written as the curl of a vector potential \\(\\mathbf{A}\\).)\nCurl of a Curl: \\[ \\nabla \\times (\\nabla \\times \\mathbf{A}) = \\nabla(\\nabla \\cdot \\mathbf{A}) - \\nabla^2\\mathbf{A} \\]"
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html#divergence-theorem-gausss-theorem",
+    "href": "reference/vector-calculus-and-identities.html#divergence-theorem-gausss-theorem",
+    "title": "Vector Calculus & Identities",
+    "section": "Divergence Theorem (Gauss’s Theorem)",
+    "text": "Divergence Theorem (Gauss’s Theorem)\nRelates a volume integral to a surface integral over the closed boundary \\(S\\): \\[ \\iiint_V (\\nabla \\cdot \\mathbf{A}) \\, dV = \\iint_S \\mathbf{A} \\cdot d\\mathbf{a} \\]"
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html#stokes-theorem",
+    "href": "reference/vector-calculus-and-identities.html#stokes-theorem",
+    "title": "Vector Calculus & Identities",
+    "section": "Stokes’ Theorem",
+    "text": "Stokes’ Theorem\nRelates a surface integral to a line integral around the closed bounding curve \\(C\\): \\[ \\iint_S (\\nabla \\times \\mathbf{A}) \\cdot d\\mathbf{a} = \\oint_C \\mathbf{A} \\cdot d\\mathbf{l} \\]"
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html#gradient-theorem-fundamental-theorem-of-calculus-for-line-integrals",
+    "href": "reference/vector-calculus-and-identities.html#gradient-theorem-fundamental-theorem-of-calculus-for-line-integrals",
+    "title": "Vector Calculus & Identities",
+    "section": "Gradient Theorem (Fundamental Theorem of Calculus for Line Integrals)",
+    "text": "Gradient Theorem (Fundamental Theorem of Calculus for Line Integrals)\n\\[ \\int_a^b (\\nabla f) \\cdot d\\mathbf{l} = f(b) - f(a) \\]"
+  },
+  {
+    "objectID": "reference/physical-constants-and-data.html",
+    "href": "reference/physical-constants-and-data.html",
+    "title": "Physical Constants & Astronomical Data",
     "section": "",
-    "text": "A bead of mass \\(m\\) slides without friction on a circular wire hoop of radius \\(R\\). The hoop rotates with a constant angular velocity \\(\\omega\\) about its vertical diameter.\n\nConstruct the Lagrangian \\(\\mathcal{L}(\\theta, \\dot{\\theta})\\).\nDerive the equation of motion for the polar angle \\(\\theta\\).\nDetermine the equilibrium positions and their stability as a function of rotation speed \\(\\omega\\).\nIdentify the pitchfork bifurcation threshold."
+    "text": "Constant\nSymbol\nValue\nUnits (SI)\n\n\n\n\nSpeed of Light in Vacuum\n\\(c\\)\n\\(2.99792458 \\times 10^8\\)\n\\(\\text{m s}^{-1}\\)\n\n\nNewtonian Constant of Gravitation\n\\(G\\)\n\\(6.67430 \\times 10^{-11}\\)\n\\(\\text{m}^3 \\text{kg}^{-1} \\text{s}^{-2}\\)\n\n\nPlanck Constant\n\\(h\\)\n\\(6.62607015 \\times 10^{-34}\\)\n\\(\\text{J s}\\)\n\n\nReduced Planck Constant\n\\(\\hbar = h/2\\pi\\)\n\\(1.054571817 \\times 10^{-34}\\)\n\\(\\text{J s}\\)\n\n\nElementary Charge\n\\(e\\)\n\\(1.602176634 \\times 10^{-19}\\)\n\\(\\text{C}\\)\n\n\nBoltzmann Constant\n\\(k_B\\)\n\\(1.380649 \\times 10^{-23}\\)\n\\(\\text{J K}^{-1}\\)\n\n\nAvogadro Constant\n\\(N_A\\)\n\\(6.02214076 \\times 10^{23}\\)\n\\(\\text{mol}^{-1}\\)\n\n\nIdeal Gas Constant\n\\(R = N_A k_B\\)\n\\(8.314462618\\)\n\\(\\text{J mol}^{-1} \\text{K}^{-1}\\)\n\n\nVacuum Permittivity\n\\(\\epsilon_0\\)\n\\(8.85418781 \\times 10^{-12}\\)\n\\(\\text{F m}^{-1}\\)\n\n\nVacuum Permeability\n\\(\\mu_0\\)\n\\(1.25663706 \\times 10^{-6}\\)\n\\(\\text{N A}^{-2}\\)"
   },
   {
-    "objectID": "solutions/problem-set-1.html#problem-statement",
-    "href": "solutions/problem-set-1.html#problem-statement",
-    "title": "Problem Set 1: Bead on a Rotating Wire Hoop",
+    "objectID": "reference/physical-constants-and-data.html#energy",
+    "href": "reference/physical-constants-and-data.html#energy",
+    "title": "Physical Constants & Astronomical Data",
+    "section": "Energy",
+    "text": "Energy\n\n\\(1 \\text{ eV} = 1.602176634 \\times 10^{-19} \\text{ J}\\)\n\\(1 \\text{ erg} = 10^{-7} \\text{ J}\\)\n\\(1 \\text{ calorie} = 4.184 \\text{ J}\\)"
+  },
+  {
+    "objectID": "reference/physical-constants-and-data.html#distance",
+    "href": "reference/physical-constants-and-data.html#distance",
+    "title": "Physical Constants & Astronomical Data",
+    "section": "Distance",
+    "text": "Distance\n\n\\(1 \\text{ Angstrom (\\AA)} = 10^{-10} \\text{ m}\\)\n\\(1 \\text{ Astronomical Unit (AU)} = 1.495978707 \\times 10^{11} \\text{ m}\\)\n\\(1 \\text{ Light Year (ly)} = 9.4607 \\times 10^{15} \\text{ m}\\)\n\\(1 \\text{ Parsec (pc)} = 3.0857 \\times 10^{16} \\text{ m} = 3.26 \\text{ ly}\\)"
+  },
+  {
+    "objectID": "reference/physical-constants-and-data.html#pressure",
+    "href": "reference/physical-constants-and-data.html#pressure",
+    "title": "Physical Constants & Astronomical Data",
+    "section": "Pressure",
+    "text": "Pressure\n\n\\(1 \\text{ Atmosphere (atm)} = 101,325 \\text{ Pa}\\)\n\\(1 \\text{ bar} = 100,000 \\text{ Pa}\\)\n\\(1 \\text{ Torr (mmHg)} = 133.322 \\text{ Pa}\\)"
+  },
+  {
+    "objectID": "reference/index.html",
+    "href": "reference/index.html",
+    "title": "Reference & Mathematical Tools",
     "section": "",
-    "text": "A bead of mass \\(m\\) slides without friction on a circular wire hoop of radius \\(R\\). The hoop rotates with a constant angular velocity \\(\\omega\\) about its vertical diameter.\n\nConstruct the Lagrangian \\(\\mathcal{L}(\\theta, \\dot{\\theta})\\).\nDerive the equation of motion for the polar angle \\(\\theta\\).\nDetermine the equilibrium positions and their stability as a function of rotation speed \\(\\omega\\).\nIdentify the pitchfork bifurcation threshold."
+    "text": "Welcome to the reference section for PHYC54H3 (Classical Mechanics). This section contains quick-reference articles covering the essential mathematical, physical, and computational tools used throughout the course.\n\nMathematical Identities & Calculus\nA comprehensive cheatsheet of trigonometric identities, hyperbolic functions, essential derivatives, common integrals (including Gaussian integrals), and Taylor/Maclaurin series expansions.\n\n\nVector Calculus & Identities\nFormulas for dot and cross products, scalar and vector triple products (BAC-CAB), the Del operator (\\(\\nabla\\)), divergence, gradient, curl, Laplacian, and the major integral theorems (Gauss’s and Stokes’s).\n\n\nPhysical Constants & Astronomical Data\nA reference table of fundamental physical constants (SI units), particle masses, solar system orbital and physical parameters, and common physics conversion factors.\n\n\nComputational Methods for Mechanics\nAn overview of the numerical integration techniques used to solve ODEs in classical mechanics, including the Euler method, 4th-Order Runge-Kutta (RK4), the symplectic Velocity Verlet method (critical for energy conservation in Hamiltonian systems), and SciPy’s solve_ivp."
   },
   {
-    "objectID": "solutions/problem-set-1.html#solution",
-    "href": "solutions/problem-set-1.html#solution",
-    "title": "Problem Set 1: Bead on a Rotating Wire Hoop",
-    "section": "Solution",
-    "text": "Solution\n\n1. Constructing the Lagrangian\nLet \\(\\theta\\) be the angle of the bead measured from the lowest point of the hoop. In spherical coordinates with the origin at the center of the hoop: * \\(x = R \\sin\\theta \\cos(\\omega t)\\) * \\(y = R \\sin\\theta \\sin(\\omega t)\\) * \\(z = -R \\cos\\theta\\)\nTaking time derivatives: \\[\\dot{x} = R \\dot{\\theta} \\cos\\theta \\cos(\\omega t) - R \\omega \\sin\\theta \\sin(\\omega t)\\] \\[\\dot{y} = R \\dot{\\theta} \\cos\\theta \\sin(\\omega t) + R \\omega \\sin\\theta \\cos(\\omega t)\\] \\[\\dot{z} = R \\dot{\\theta} \\sin\\theta\\]\nCalculating \\(v^2 = \\dot{x}^2 + \\dot{y}^2 + \\dot{z}^2\\): \\[v^2 = R^2 \\dot{\\theta}^2 + R^2 \\omega^2 \\sin^2\\theta\\]\n\nKinetic Energy: \\(T = \\frac{1}{2} m R^2 (\\dot{\\theta}^2 + \\omega^2 \\sin^2\\theta)\\)\nPotential Energy: \\(V = mgz = -mgR \\cos\\theta\\)\n\nThe Lagrangian is: \\[\\boxed{\\mathcal{L} = T - V = \\frac{1}{2} m R^2 \\dot{\\theta}^2 + \\frac{1}{2} m R^2 \\omega^2 \\sin^2\\theta + mgR \\cos\\theta}\\]\n\n\n\n2. Equation of Motion\nCompute the Euler-Lagrange derivatives: \\[\\frac{\\partial \\mathcal{L}}{\\partial \\dot{\\theta}} = m R^2 \\dot{\\theta} \\implies \\frac{d}{dt}\\left(\\frac{\\partial \\mathcal{L}}{\\partial \\dot{\\theta}}\\right) = m R^2 \\ddot{\\theta}\\] \\[\\frac{\\partial \\mathcal{L}}{\\partial \\theta} = m R^2 \\omega^2 \\sin\\theta \\cos\\theta - mgR \\sin\\theta\\]\nApplying \\(\\frac{d}{dt}\\frac{\\partial \\mathcal{L}}{\\partial \\dot{\\theta}} - \\frac{\\partial \\mathcal{L}}{\\partial \\theta} = 0\\): \\[m R^2 \\ddot{\\theta} - m R^2 \\omega^2 \\sin\\theta \\cos\\theta + mgR \\sin\\theta = 0\\] \\[\\boxed{\\ddot{\\theta} = \\left( \\omega^2 \\cos\\theta - \\frac{g}{R} \\right) \\sin\\theta}\\]\n\n\n\n3. Equilibrium Positions and Stability Analysis\nEquilibrium occurs when \\(\\ddot{\\theta} = 0\\): \\[\\sin\\theta \\left( \\omega^2 \\cos\\theta - \\frac{g}{R} \\right) = 0\\]\nThis yields two distinct branches of equilibria: 1. \\(\\sin\\theta = 0 \\implies \\theta_0 = 0\\) (bottom) or \\(\\theta_0 = \\pi\\) (top). 2. \\(\\cos\\theta_0 = \\frac{g}{\\omega^2 R}\\) (lateral positions, existing only if \\(\\omega^2 \\ge g/R\\)).\n\nEffective Potential\nRewrite the equation of motion as \\(\\ddot{\\theta} = -\\frac{1}{mR^2} \\frac{dV_{\\text{eff}}}{d\\theta}\\): \\[V_{\\text{eff}}(\\theta) = -mgR \\cos\\theta - \\frac{1}{2} m R^2 \\omega^2 \\sin^2\\theta\\]\nEvaluate the second derivative \\(\\frac{d^2 V_{\\text{eff}}}{d\\theta^2}\\): \\[\\frac{d^2 V_{\\text{eff}}}{d\\theta^2} = mgR \\cos\\theta - m R^2 \\omega^2 \\cos(2\\theta)\\]\nAt the bottom (\\(\\theta = 0\\)): \\[\\left. \\frac{d^2 V_{\\text{eff}}}{d\\theta^2} \\right|_{\\theta=0} = mgR - m R^2 \\omega^2 = m R^2 \\left( \\frac{g}{R} - \\omega^2 \\right)\\]\n\nSubcritical (\\(\\omega &lt; \\sqrt{g/R}\\)): \\(V_{\\text{eff}}''(0) &gt; 0 \\implies\\) Stable minimum.\nSupercritical (\\(\\omega &gt; \\sqrt{g/R}\\)): \\(V_{\\text{eff}}''(0) &lt; 0 \\implies\\) Unstable maximum. The bottom position loses stability!\n\nAt the critical rotation speed \\(\\omega_c = \\sqrt{g/R}\\), the system undergoes a classic supercritical pitchfork bifurcation: the bottom point becomes unstable, and two symmetric stable equilibrium points emerge at: \\[\\boxed{\\theta_0 = \\pm \\arccos\\left(\\frac{g}{\\omega^2 R}\\right)}\\]"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PHYC54H3: Classical Mechanics",
+    "objectID": "simulations/index.html",
+    "href": "simulations/index.html",
+    "title": "Computational Physics & Simulations",
     "section": "",
-    "text": "Comprehensive course portal featuring interactive computational physics notebooks, Manim animations, lecture derivations, and problem set solutions."
-  },
-  {
-    "objectID": "index.html#course-roadmap",
-    "href": "index.html#course-roadmap",
-    "title": "PHYC54H3: Classical Mechanics",
-    "section": "Course Roadmap",
-    "text": "Course Roadmap\n\n\n\n\n\n\n\n\n\nWeek\nCore Topics\nKey Mathematical Tools\nStatus\n\n\n\n\n01 - 02\nReview of Newtonian Mechanics, Damped & Driven Oscillations\nComplex numbers, ODEs, Green’s functions\nAvailable\n\n\n03 - 04\nCalculus of Variations & Hamilton’s Principle\nFunctional differentiation, Euler-Lagrange, Constraints\nAvailable\n\n\n05 - 06\nCentral Forces, Kepler’s Laws & Orbital Scattering\nEffective potential, Binet equation, Rutherford cross-section\nIn Progress\n\n\n07 - 08\nNon-Inertial Reference Frames & Coriolis Effects\nRotating coordinates, Foucault pendulum, centrifugal potential\nUpcoming\n\n\n09 - 10\nRigid Body Dynamics & The Inertia Tensor\nPrincipal axes, Euler angles, Euler’s equations of motion\nUpcoming\n\n\n11 - 12\nHamiltonian Mechanics, Poisson Brackets & Chaos\nPhase space volume (Liouville’s theorem), Lyapunov exponents\nUpcoming"
-  },
-  {
-    "objectID": "solutions/index.html",
-    "href": "solutions/index.html",
-    "title": "Problem Sets & Solutions",
-    "section": "",
-    "text": "Problem Set 1: Bead on a Rotating Wire Hoop\n\n\nAnalytical solution using Lagrangian mechanics and phase portrait stability analysis.\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nTaylor Chapter 6 Problems: Calculus of Variations\n\n\n\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\nIgor\n\n\n\n\n\n\n\n\n\n\n\n\nTaylor Chapter 7 Problems: Lagrange’s Equations\n\n\n\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\nIgor\n\n\n\n\n\nNo matching items"
+    "text": "Interactive Simulations & Multi-Language Integrators\n\n\nReal-time browser dynamics (Observable JS), high-performance C++ Verlet integration, and Python phase portraits.\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "solutions/taylor-chapter-7-problems.html",
@@ -231,11 +252,172 @@
     "text": "Statement: Atwood machine and pendulum solved using Lagrange multipliers \\(\\lambda\\) to find string tensions.\n(See Section 7.10 Notes)\nSolution: For the pendulum, constraint \\(f(x, y) = \\sqrt{x^2 + y^2} = l\\). The multiplier \\(\\lambda\\) represents the constraint force (tension), yielding equations that simultaneously solve the motion and the dynamic tension in the rod."
   },
   {
-    "objectID": "simulations/index.html",
-    "href": "simulations/index.html",
-    "title": "Computational Physics & Simulations",
+    "objectID": "solutions/index.html",
+    "href": "solutions/index.html",
+    "title": "Problem Sets & Solutions",
     "section": "",
-    "text": "Interactive Simulations & Multi-Language Integrators\n\n\nReal-time browser dynamics (Observable JS), high-performance C++ Verlet integration, and Python phase portraits.\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\n\n\n\nNo matching items"
+    "text": "Problem Set 1: Bead on a Rotating Wire Hoop\n\n\nAnalytical solution using Lagrangian mechanics and phase portrait stability analysis.\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nTaylor Chapter 6 Problems: Calculus of Variations\n\n\n\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\nIgor\n\n\n\n\n\n\n\n\n\n\n\n\nTaylor Chapter 7 Problems: Lagrange’s Equations\n\n\n\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\nIgor\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PHYC54H3: Classical Mechanics",
+    "section": "",
+    "text": "Comprehensive course portal featuring interactive computational physics notebooks, Manim animations, lecture derivations, and problem set solutions."
+  },
+  {
+    "objectID": "index.html#course-roadmap",
+    "href": "index.html#course-roadmap",
+    "title": "PHYC54H3: Classical Mechanics",
+    "section": "Course Roadmap",
+    "text": "Course Roadmap\n\n\n\n\n\n\n\n\n\nWeek\nCore Topics\nKey Mathematical Tools\nStatus\n\n\n\n\n01 - 02\nReview of Newtonian Mechanics, Damped & Driven Oscillations\nComplex numbers, ODEs, Green’s functions\nAvailable\n\n\n03 - 04\nCalculus of Variations & Hamilton’s Principle\nFunctional differentiation, Euler-Lagrange, Constraints\nAvailable\n\n\n05 - 06\nCentral Forces, Kepler’s Laws & Orbital Scattering\nEffective potential, Binet equation, Rutherford cross-section\nIn Progress\n\n\n07 - 08\nNon-Inertial Reference Frames & Coriolis Effects\nRotating coordinates, Foucault pendulum, centrifugal potential\nUpcoming\n\n\n09 - 10\nRigid Body Dynamics & The Inertia Tensor\nPrincipal axes, Euler angles, Euler’s equations of motion\nUpcoming\n\n\n11 - 12\nHamiltonian Mechanics, Poisson Brackets & Chaos\nPhase space volume (Liouville’s theorem), Lyapunov exponents\nUpcoming"
+  },
+  {
+    "objectID": "solutions/problem-set-1.html",
+    "href": "solutions/problem-set-1.html",
+    "title": "Problem Set 1: Bead on a Rotating Wire Hoop",
+    "section": "",
+    "text": "A bead of mass \\(m\\) slides without friction on a circular wire hoop of radius \\(R\\). The hoop rotates with a constant angular velocity \\(\\omega\\) about its vertical diameter.\n\nConstruct the Lagrangian \\(\\mathcal{L}(\\theta, \\dot{\\theta})\\).\nDerive the equation of motion for the polar angle \\(\\theta\\).\nDetermine the equilibrium positions and their stability as a function of rotation speed \\(\\omega\\).\nIdentify the pitchfork bifurcation threshold."
+  },
+  {
+    "objectID": "solutions/problem-set-1.html#problem-statement",
+    "href": "solutions/problem-set-1.html#problem-statement",
+    "title": "Problem Set 1: Bead on a Rotating Wire Hoop",
+    "section": "",
+    "text": "A bead of mass \\(m\\) slides without friction on a circular wire hoop of radius \\(R\\). The hoop rotates with a constant angular velocity \\(\\omega\\) about its vertical diameter.\n\nConstruct the Lagrangian \\(\\mathcal{L}(\\theta, \\dot{\\theta})\\).\nDerive the equation of motion for the polar angle \\(\\theta\\).\nDetermine the equilibrium positions and their stability as a function of rotation speed \\(\\omega\\).\nIdentify the pitchfork bifurcation threshold."
+  },
+  {
+    "objectID": "solutions/problem-set-1.html#solution",
+    "href": "solutions/problem-set-1.html#solution",
+    "title": "Problem Set 1: Bead on a Rotating Wire Hoop",
+    "section": "Solution",
+    "text": "Solution\n\n1. Constructing the Lagrangian\nLet \\(\\theta\\) be the angle of the bead measured from the lowest point of the hoop. In spherical coordinates with the origin at the center of the hoop: * \\(x = R \\sin\\theta \\cos(\\omega t)\\) * \\(y = R \\sin\\theta \\sin(\\omega t)\\) * \\(z = -R \\cos\\theta\\)\nTaking time derivatives: \\[\\dot{x} = R \\dot{\\theta} \\cos\\theta \\cos(\\omega t) - R \\omega \\sin\\theta \\sin(\\omega t)\\] \\[\\dot{y} = R \\dot{\\theta} \\cos\\theta \\sin(\\omega t) + R \\omega \\sin\\theta \\cos(\\omega t)\\] \\[\\dot{z} = R \\dot{\\theta} \\sin\\theta\\]\nCalculating \\(v^2 = \\dot{x}^2 + \\dot{y}^2 + \\dot{z}^2\\): \\[v^2 = R^2 \\dot{\\theta}^2 + R^2 \\omega^2 \\sin^2\\theta\\]\n\nKinetic Energy: \\(T = \\frac{1}{2} m R^2 (\\dot{\\theta}^2 + \\omega^2 \\sin^2\\theta)\\)\nPotential Energy: \\(V = mgz = -mgR \\cos\\theta\\)\n\nThe Lagrangian is: \\[\\boxed{\\mathcal{L} = T - V = \\frac{1}{2} m R^2 \\dot{\\theta}^2 + \\frac{1}{2} m R^2 \\omega^2 \\sin^2\\theta + mgR \\cos\\theta}\\]\n\n\n\n2. Equation of Motion\nCompute the Euler-Lagrange derivatives: \\[\\frac{\\partial \\mathcal{L}}{\\partial \\dot{\\theta}} = m R^2 \\dot{\\theta} \\implies \\frac{d}{dt}\\left(\\frac{\\partial \\mathcal{L}}{\\partial \\dot{\\theta}}\\right) = m R^2 \\ddot{\\theta}\\] \\[\\frac{\\partial \\mathcal{L}}{\\partial \\theta} = m R^2 \\omega^2 \\sin\\theta \\cos\\theta - mgR \\sin\\theta\\]\nApplying \\(\\frac{d}{dt}\\frac{\\partial \\mathcal{L}}{\\partial \\dot{\\theta}} - \\frac{\\partial \\mathcal{L}}{\\partial \\theta} = 0\\): \\[m R^2 \\ddot{\\theta} - m R^2 \\omega^2 \\sin\\theta \\cos\\theta + mgR \\sin\\theta = 0\\] \\[\\boxed{\\ddot{\\theta} = \\left( \\omega^2 \\cos\\theta - \\frac{g}{R} \\right) \\sin\\theta}\\]\n\n\n\n3. Equilibrium Positions and Stability Analysis\nEquilibrium occurs when \\(\\ddot{\\theta} = 0\\): \\[\\sin\\theta \\left( \\omega^2 \\cos\\theta - \\frac{g}{R} \\right) = 0\\]\nThis yields two distinct branches of equilibria: 1. \\(\\sin\\theta = 0 \\implies \\theta_0 = 0\\) (bottom) or \\(\\theta_0 = \\pi\\) (top). 2. \\(\\cos\\theta_0 = \\frac{g}{\\omega^2 R}\\) (lateral positions, existing only if \\(\\omega^2 \\ge g/R\\)).\n\nEffective Potential\nRewrite the equation of motion as \\(\\ddot{\\theta} = -\\frac{1}{mR^2} \\frac{dV_{\\text{eff}}}{d\\theta}\\): \\[V_{\\text{eff}}(\\theta) = -mgR \\cos\\theta - \\frac{1}{2} m R^2 \\omega^2 \\sin^2\\theta\\]\nEvaluate the second derivative \\(\\frac{d^2 V_{\\text{eff}}}{d\\theta^2}\\): \\[\\frac{d^2 V_{\\text{eff}}}{d\\theta^2} = mgR \\cos\\theta - m R^2 \\omega^2 \\cos(2\\theta)\\]\nAt the bottom (\\(\\theta = 0\\)): \\[\\left. \\frac{d^2 V_{\\text{eff}}}{d\\theta^2} \\right|_{\\theta=0} = mgR - m R^2 \\omega^2 = m R^2 \\left( \\frac{g}{R} - \\omega^2 \\right)\\]\n\nSubcritical (\\(\\omega &lt; \\sqrt{g/R}\\)): \\(V_{\\text{eff}}''(0) &gt; 0 \\implies\\) Stable minimum.\nSupercritical (\\(\\omega &gt; \\sqrt{g/R}\\)): \\(V_{\\text{eff}}''(0) &lt; 0 \\implies\\) Unstable maximum. The bottom position loses stability!\n\nAt the critical rotation speed \\(\\omega_c = \\sqrt{g/R}\\), the system undergoes a classic supercritical pitchfork bifurcation: the bottom point becomes unstable, and two symmetric stable equilibrium points emerge at: \\[\\boxed{\\theta_0 = \\pm \\arccos\\left(\\frac{g}{\\omega^2 R}\\right)}\\]"
+  },
+  {
+    "objectID": "solutions/taylor-chapter-6-problems.html",
+    "href": "solutions/taylor-chapter-6-problems.html",
+    "title": "Taylor Chapter 6 Problems: Calculus of Variations",
+    "section": "",
+    "text": "For a complete derivation of the theoretical concepts used to solve these problems, refer to the Chapter 6 Lecture Notes."
+  },
+  {
+    "objectID": "simulations/interactive-pendulum-and-verlet.html",
+    "href": "simulations/interactive-pendulum-and-verlet.html",
+    "title": "Interactive Simulations & Multi-Language Integrators",
+    "section": "",
+    "text": "Quarto allows client-side interactive simulations using Observable JS ({ojs}). The simulation runs entirely within your browser via HTML5 Canvas—no Python or server backend required!\nUse the sliders below to adjust the physical parameters and observe the real-time dynamics:\n\n\nCode\nviewof length = Inputs.range([0.5, 3.0], {value: 1.5, step: 0.1, label: \"Pendulum Length (m)\"})\nviewof gravity = Inputs.range([1.0, 25.0], {value: 9.81, step: 0.1, label: \"Gravity g (m/s²)\"})\nviewof damping = Inputs.range([0.0, 0.5], {value: 0.05, step: 0.01, label: \"Damping Factor γ\"})\nviewof initialAngle = Inputs.range([-170, 170], {value: 60, step: 5, label: \"Initial Angle θ₀ (deg)\"})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\ncanvas = {\n  const width = 600;\n  const height = 350;\n  const ctx = DOM.context2d(width, height);\n  \n  let theta = initialAngle * Math.PI / 180;\n  let omega = 0.0;\n  let dt = 0.02;\n  const originX = width / 2;\n  const originY = 50;\n  const scale = 80;\n\n  function step() {\n    // Non-linear pendulum: d²θ/dt² = -(g/L) sin(θ) - γ dθ/dt\n    const alpha = -(gravity / length) * Math.sin(theta) - damping * omega;\n    omega += alpha * dt;\n    theta += omega * dt;\n\n    ctx.clearRect(0, 0, width, height);\n\n    // Pivot support\n    ctx.fillStyle = \"#333\";\n    ctx.fillRect(originX - 40, originY - 10, 80, 10);\n\n    const bobX = originX + length * scale * Math.sin(theta);\n    const bobY = originY + length * scale * Math.cos(theta);\n\n    // Rod\n    ctx.beginPath();\n    ctx.moveTo(originX, originY);\n    ctx.lineTo(bobX, bobY);\n    ctx.strokeStyle = \"#4f46e5\";\n    ctx.lineWidth = 3;\n    ctx.stroke();\n\n    // Pivot pin\n    ctx.beginPath();\n    ctx.arc(originX, originY, 5, 0, 2 * Math.PI);\n    ctx.fillStyle = \"#1e293b\";\n    ctx.fill();\n\n    // Bob\n    ctx.beginPath();\n    ctx.arc(bobX, bobY, 18, 0, 2 * Math.PI);\n    ctx.fillStyle = \"#ef4444\";\n    ctx.shadowColor = \"rgba(0,0,0,0.3)\";\n    ctx.shadowBlur = 8;\n    ctx.fill();\n    ctx.shadowBlur = 0;\n\n    // Display telemetry\n    ctx.fillStyle = \"#0f172a\";\n    ctx.font = \"14px monospace\";\n    ctx.fillText(`θ: ${(theta * 180 / Math.PI).toFixed(1)}°`, 20, 30);\n    ctx.fillText(`ω: ${omega.toFixed(2)} rad/s`, 20, 50);\n    ctx.fillText(`E_mech: ${(0.5 * length * length * omega * omega + gravity * length * (1 - Math.cos(theta))).toFixed(2)} J/kg`, 20, 70);\n  }\n\n  const timer = d3.interval(step, 20);\n  invalidation.then(() =&gt; timer.stop());\n\n  return ctx.canvas;\n}"
+  },
+  {
+    "objectID": "simulations/interactive-pendulum-and-verlet.html#live-in-browser-interactive-simulation-observable-js",
+    "href": "simulations/interactive-pendulum-and-verlet.html#live-in-browser-interactive-simulation-observable-js",
+    "title": "Interactive Simulations & Multi-Language Integrators",
+    "section": "",
+    "text": "Quarto allows client-side interactive simulations using Observable JS ({ojs}). The simulation runs entirely within your browser via HTML5 Canvas—no Python or server backend required!\nUse the sliders below to adjust the physical parameters and observe the real-time dynamics:\n\n\nCode\nviewof length = Inputs.range([0.5, 3.0], {value: 1.5, step: 0.1, label: \"Pendulum Length (m)\"})\nviewof gravity = Inputs.range([1.0, 25.0], {value: 9.81, step: 0.1, label: \"Gravity g (m/s²)\"})\nviewof damping = Inputs.range([0.0, 0.5], {value: 0.05, step: 0.01, label: \"Damping Factor γ\"})\nviewof initialAngle = Inputs.range([-170, 170], {value: 60, step: 5, label: \"Initial Angle θ₀ (deg)\"})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\ncanvas = {\n  const width = 600;\n  const height = 350;\n  const ctx = DOM.context2d(width, height);\n  \n  let theta = initialAngle * Math.PI / 180;\n  let omega = 0.0;\n  let dt = 0.02;\n  const originX = width / 2;\n  const originY = 50;\n  const scale = 80;\n\n  function step() {\n    // Non-linear pendulum: d²θ/dt² = -(g/L) sin(θ) - γ dθ/dt\n    const alpha = -(gravity / length) * Math.sin(theta) - damping * omega;\n    omega += alpha * dt;\n    theta += omega * dt;\n\n    ctx.clearRect(0, 0, width, height);\n\n    // Pivot support\n    ctx.fillStyle = \"#333\";\n    ctx.fillRect(originX - 40, originY - 10, 80, 10);\n\n    const bobX = originX + length * scale * Math.sin(theta);\n    const bobY = originY + length * scale * Math.cos(theta);\n\n    // Rod\n    ctx.beginPath();\n    ctx.moveTo(originX, originY);\n    ctx.lineTo(bobX, bobY);\n    ctx.strokeStyle = \"#4f46e5\";\n    ctx.lineWidth = 3;\n    ctx.stroke();\n\n    // Pivot pin\n    ctx.beginPath();\n    ctx.arc(originX, originY, 5, 0, 2 * Math.PI);\n    ctx.fillStyle = \"#1e293b\";\n    ctx.fill();\n\n    // Bob\n    ctx.beginPath();\n    ctx.arc(bobX, bobY, 18, 0, 2 * Math.PI);\n    ctx.fillStyle = \"#ef4444\";\n    ctx.shadowColor = \"rgba(0,0,0,0.3)\";\n    ctx.shadowBlur = 8;\n    ctx.fill();\n    ctx.shadowBlur = 0;\n\n    // Display telemetry\n    ctx.fillStyle = \"#0f172a\";\n    ctx.font = \"14px monospace\";\n    ctx.fillText(`θ: ${(theta * 180 / Math.PI).toFixed(1)}°`, 20, 30);\n    ctx.fillText(`ω: ${omega.toFixed(2)} rad/s`, 20, 50);\n    ctx.fillText(`E_mech: ${(0.5 * length * length * omega * omega + gravity * length * (1 - Math.cos(theta))).toFixed(2)} J/kg`, 20, 70);\n  }\n\n  const timer = d3.interval(step, 20);\n  invalidation.then(() =&gt; timer.stop());\n\n  return ctx.canvas;\n}"
+  },
+  {
+    "objectID": "simulations/interactive-pendulum-and-verlet.html#high-performance-symplectic-integrator-in-c",
+    "href": "simulations/interactive-pendulum-and-verlet.html#high-performance-symplectic-integrator-in-c",
+    "title": "Interactive Simulations & Multi-Language Integrators",
+    "section": "2. High-Performance Symplectic Integrator in C++",
+    "text": "2. High-Performance Symplectic Integrator in C++\nStandard integrators like Forward Euler or standard Runge-Kutta 4th order (RK4) do not conserve the symplectic 2-form \\(\\omega = \\sum dq_i \\wedge dp_i\\). Over long integration times, non-symplectic integrators suffer from artificial energy drift.\nBelow is a production-grade implementation of the Velocity Verlet (Symplectic Störmer-Verlet) algorithm in C++17:\n// verlet_integrator.cpp\n// Compile: g++ -O3 -std=c++17 verlet_integrator.cpp -o verlet_sim\n#include &lt;iostream&gt;\n#include &lt;vector&gt;\n#include &lt;cmath&gt;\n#include &lt;fstream&gt;\n#include &lt;iomanip&gt;\n\nstruct State {\n    double theta; // generalized coordinate\n    double omega; // generalized velocity\n    double t;\n};\n\nclass SymplecticPendulum {\nprivate:\n    double g;\n    double L;\n    double m;\n\npublic:\n    SymplecticPendulum(double gravity = 9.80665, double length = 1.0, double mass = 1.0)\n        : g(gravity), L(length), m(mass) {}\n\n    // Acceleration a(theta) = - (g / L) * sin(theta)\n    double acceleration(double theta) const {\n        return -(g / L) * std::sin(theta);\n    }\n\n    double totalEnergy(double theta, double omega) const {\n        double kinetic = 0.5 * m * (L * omega) * (L * omega);\n        double potential = m * g * L * (1.0 - std::cos(theta));\n        return kinetic + potential;\n    }\n\n    // Velocity Verlet Step\n    void step(State& s, double dt) const {\n        double a_current = acceleration(s.theta);\n        \n        // 1. Position update: q(t + dt) = q(t) + v(t)*dt + 0.5*a(t)*dt^2\n        s.theta += s.omega * dt + 0.5 * a_current * dt * dt;\n        \n        // 2. New acceleration: a(t + dt)\n        double a_next = acceleration(s.theta);\n        \n        // 3. Velocity update: v(t + dt) = v(t) + 0.5*(a(t) + a(t + dt))*dt\n        s.omega += 0.5 * (a_current + a_next) * dt;\n        s.t += dt;\n    }\n};\n\nint main() {\n    SymplecticPendulum sim(9.80665, 1.0, 1.0);\n    State state = {M_PI / 3.0, 0.0, 0.0}; // 60 degrees release from rest\n    double dt = 0.005;\n    double t_max = 50.0;\n\n    std::ofstream out(\"verlet_trajectory.csv\");\n    out &lt;&lt; \"time,theta,omega,energy\\n\";\n\n    double E0 = sim.totalEnergy(state.theta, state.omega);\n\n    while (state.t &lt;= t_max) {\n        double E = sim.totalEnergy(state.theta, state.omega);\n        out &lt;&lt; std::fixed &lt;&lt; std::setprecision(6)\n            &lt;&lt; state.t &lt;&lt; \",\" &lt;&lt; state.theta &lt;&lt; \",\" &lt;&lt; state.omega &lt;&lt; \",\" &lt;&lt; E &lt;&lt; \"\\n\";\n        sim.step(state, dt);\n    }\n\n    std::cout &lt;&lt; \"Simulation complete. Initial Energy: \" &lt;&lt; E0 \n              &lt;&lt; \" J | Final Energy: \" &lt;&lt; sim.totalEnergy(state.theta, state.omega) \n              &lt;&lt; \" J (Symplectic bound preserved).\" &lt;&lt; std::endl;\n    return 0;\n}"
+  },
+  {
+    "objectID": "simulations/interactive-pendulum-and-verlet.html#high-precision-python-integration-phase-portraits",
+    "href": "simulations/interactive-pendulum-and-verlet.html#high-precision-python-integration-phase-portraits",
+    "title": "Interactive Simulations & Multi-Language Integrators",
+    "section": "3. High-Precision Python Integration & Phase Portraits",
+    "text": "3. High-Precision Python Integration & Phase Portraits\nIn Python, we utilize scipy.integrate.solve_ivp with the Dormand-Prince 8th order (DOP853) method to integrate the non-linear pendulum and plot its phase portrait:\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom scipy.integrate import solve_ivp\n\ndef pendulum_deriv(t, y, g=9.81, L=1.0):\n    theta, omega = y\n    return [omega, -(g / L) * np.sin(theta)]\n\nt_span = (0, 20)\nt_eval = np.linspace(0, 20, 1000)\n\nplt.figure(figsize=(10, 5))\n\n# Plot trajectories for several initial angles\nfor theta0 in [np.pi/6, np.pi/3, np.pi/2, 2.5, 3.1]:\n    sol = solve_ivp(pendulum_deriv, t_span, [theta0, 0.0], t_eval=t_eval, method='DOP853')\n    plt.plot(sol.y[0], sol.y[1], label=f\"$\\\\theta_0 = {theta0:.2f}$ rad\")\n\nplt.title(\"Phase Space Trajectories ($\\\\theta$ vs $\\\\dot{\\\\theta}$)\")\nplt.xlabel(\"Angle $\\\\theta$ (rad)\")\nplt.ylabel(\"Angular Velocity $\\\\dot{\\\\theta}$ (rad/s)\")\nplt.grid(True, linestyle=\"--\", alpha=0.6)\nplt.axvline(x=np.pi, color='r', linestyle=':', label=\"Separatrix Saddle ($\\\\pm \\\\pi$)\")\nplt.axvline(x=-np.pi, color='r', linestyle=':')\nplt.legend(loc=\"upper right\")\nplt.show()"
+  },
+  {
+    "objectID": "simulations/interactive-pendulum-and-verlet.html#fortran-90-symplectic-orbit-integrator",
+    "href": "simulations/interactive-pendulum-and-verlet.html#fortran-90-symplectic-orbit-integrator",
+    "title": "Interactive Simulations & Multi-Language Integrators",
+    "section": "4. Fortran 90 Symplectic Orbit Integrator",
+    "text": "4. Fortran 90 Symplectic Orbit Integrator\nFor ultra-high-throughput orbital mechanics, Fortran remains an industry standard in celestial dynamics:\n! orbit_integrator.f90\n! Compile: gfortran -O3 -march=native orbit_integrator.f90 -o orbit_sim\nprogram kepler_verlet\n    implicit none\n    integer, parameter :: dp = kind(1.0d0)\n    real(dp) :: x, y, vx, vy, ax, ay, r, dt, t, t_end, GM\n    real(dp) :: ax_new, ay_new\n    integer :: step, n_steps\n\n    GM = 4.0_dp * 3.141592653589793_dp**2 ! AU^3 / yr^2\n    x = 1.0_dp; y = 0.0_dp               ! Initial position (1 AU)\n    vx = 0.0_dp; vy = 2.0_dp * 3.141592653589793_dp ! Circular velocity\n\n    dt = 0.001_dp\n    t_end = 10.0_dp\n    n_steps = int(t_end / dt)\n\n    do step = 1, n_steps\n        r = sqrt(x**2 + y**2)\n        ax = -GM * x / (r**3)\n        ay = -GM * y / (r**3)\n\n        x = x + vx * dt + 0.5_dp * ax * dt**2\n        y = y + vy * dt + 0.5_dp * ay * dt**2\n\n        r = sqrt(x**2 + y**2)\n        ax_new = -GM * x / (r**3)\n        ay_new = -GM * y / (r**3)\n\n        vx = vx + 0.5_dp * (ax + ax_new) * dt\n        vy = vy + 0.5_dp * (ay + ay_new) * dt\n    end do\n\n    print *, \"Completed 10 Earth orbits with zero secular energy drift.\"\nend program kepler_verlet"
+  },
+  {
+    "objectID": "reference/computational-methods.html",
+    "href": "reference/computational-methods.html",
+    "title": "Computational Methods for Mechanics",
+    "section": "",
+    "text": "In classical mechanics, analytic solutions are often impossible for systems that exhibit nonlinear dynamics, chaos, or lack conservation laws (e.g., the double pendulum, the 3-body problem, or driven damped oscillators). For these, we rely on numerical integration of Ordinary Differential Equations (ODEs).\nAny \\(n\\)-th order ODE can be reduced to a system of \\(n\\) first-order ODEs. For Newton’s second law \\(\\ddot{\\mathbf{x}} = \\mathbf{F}(\\mathbf{x}, \\mathbf{v}, t)/m\\), we define the state vector \\(\\mathbf{Y} = [\\mathbf{x}, \\mathbf{v}]^T\\): \\[ \\frac{d\\mathbf{Y}}{dt} = \\begin{bmatrix} \\mathbf{v} \\\\ \\mathbf{a} \\end{bmatrix} = \\begin{bmatrix} \\mathbf{v} \\\\ \\mathbf{F}/m \\end{bmatrix} \\]"
+  },
+  {
+    "objectID": "reference/computational-methods.html#the-velocity-verlet-method",
+    "href": "reference/computational-methods.html#the-velocity-verlet-method",
+    "title": "Computational Methods for Mechanics",
+    "section": "The Velocity Verlet Method",
+    "text": "The Velocity Verlet Method\nUsed extensively in molecular dynamics and astrophysics: 1. Update position by a half-step and full-step acceleration: \\[ \\mathbf{x}_{n+1} = \\mathbf{x}_n + \\mathbf{v}_n \\Delta t + \\frac{1}{2}\\mathbf{a}_n \\Delta t^2 \\] 2. Calculate new forces/accelerations based on new position: \\[ \\mathbf{a}_{n+1} = \\frac{1}{m} \\mathbf{F}(\\mathbf{x}_{n+1}) \\] 3. Update velocity using the average of old and new accelerations: \\[ \\mathbf{v}_{n+1} = \\mathbf{v}_n + \\frac{1}{2}(\\mathbf{a}_n + \\mathbf{a}_{n+1}) \\Delta t \\]\n\n\nCode\nimport numpy as np\n\ndef velocity_verlet(x0, v0, force_func, m, dt, steps):\n    x = np.zeros(steps)\n    v = np.zeros(steps)\n    x[0], v[0] = x0, v0\n    \n    a = force_func(x0) / m\n    for i in range(steps - 1):\n        x[i+1] = x[i] + v[i]*dt + 0.5*a*dt**2\n        a_next = force_func(x[i+1]) / m\n        v[i+1] = v[i] + 0.5*(a + a_next)*dt\n        a = a_next\n        \n    return x, v"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html",
+    "href": "reference/math-identities-and-calculus.html",
+    "title": "Mathematical Identities & Calculus",
+    "section": "",
+    "text": "\\[ \\sin^2 \\theta + \\cos^2 \\theta = 1 \\] \\[ 1 + \\tan^2 \\theta = \\sec^2 \\theta \\] \\[ 1 + \\cot^2 \\theta = \\csc^2 \\theta \\]\n\n\n\n\\[ \\sin(\\alpha \\pm \\beta) = \\sin\\alpha \\cos\\beta \\pm \\cos\\alpha \\sin\\beta \\] \\[ \\cos(\\alpha \\pm \\beta) = \\cos\\alpha \\cos\\beta \\mp \\sin\\alpha \\sin\\beta \\] \\[ \\tan(\\alpha \\pm \\beta) = \\frac{\\tan\\alpha \\pm \\tan\\beta}{1 \\mp \\tan\\alpha \\tan\\beta} \\]\n\n\n\n\\[ \\sin(2\\theta) = 2\\sin\\theta \\cos\\theta \\] \\[ \\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta \\] \\[ \\sin^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 - \\cos\\theta}{2}, \\quad \\cos^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 + \\cos\\theta}{2} \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#pythagorean-identities",
+    "href": "reference/math-identities-and-calculus.html#pythagorean-identities",
+    "title": "Mathematical Identities & Calculus",
+    "section": "",
+    "text": "\\[ \\sin^2 \\theta + \\cos^2 \\theta = 1 \\] \\[ 1 + \\tan^2 \\theta = \\sec^2 \\theta \\] \\[ 1 + \\cot^2 \\theta = \\csc^2 \\theta \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#angle-addition-and-subtraction",
+    "href": "reference/math-identities-and-calculus.html#angle-addition-and-subtraction",
+    "title": "Mathematical Identities & Calculus",
+    "section": "",
+    "text": "\\[ \\sin(\\alpha \\pm \\beta) = \\sin\\alpha \\cos\\beta \\pm \\cos\\alpha \\sin\\beta \\] \\[ \\cos(\\alpha \\pm \\beta) = \\cos\\alpha \\cos\\beta \\mp \\sin\\alpha \\sin\\beta \\] \\[ \\tan(\\alpha \\pm \\beta) = \\frac{\\tan\\alpha \\pm \\tan\\beta}{1 \\mp \\tan\\alpha \\tan\\beta} \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#double-and-half-angle",
+    "href": "reference/math-identities-and-calculus.html#double-and-half-angle",
+    "title": "Mathematical Identities & Calculus",
+    "section": "",
+    "text": "\\[ \\sin(2\\theta) = 2\\sin\\theta \\cos\\theta \\] \\[ \\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta \\] \\[ \\sin^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 - \\cos\\theta}{2}, \\quad \\cos^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 + \\cos\\theta}{2} \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#core-identities",
+    "href": "reference/math-identities-and-calculus.html#core-identities",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Core Identities",
+    "text": "Core Identities\n\\[ \\cosh^2 x - \\sinh^2 x = 1 \\] \\[ 1 - \\tanh^2 x = \\text{sech}^2 x \\] \\[ \\sinh(2x) = 2\\sinh x \\cosh x \\] \\[ \\cosh(2x) = \\cosh^2 x + \\sinh^2 x \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#common-derivatives",
+    "href": "reference/math-identities-and-calculus.html#common-derivatives",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Common Derivatives",
+    "text": "Common Derivatives\n\\[ \\frac{d}{dx} \\sin x = \\cos x, \\quad \\frac{d}{dx} \\cos x = -\\sin x, \\quad \\frac{d}{dx} \\tan x = \\sec^2 x \\] \\[ \\frac{d}{dx} \\sinh x = \\cosh x, \\quad \\frac{d}{dx} \\cosh x = \\sinh x \\] \\[ \\frac{d}{dx} \\ln(x) = \\frac{1}{x} \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#common-integrals",
+    "href": "reference/math-identities-and-calculus.html#common-integrals",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Common Integrals",
+    "text": "Common Integrals\n\\[ \\int x^n \\, dx = \\frac{x^{n+1}}{n+1} \\quad (n \\neq -1) \\] \\[ \\int \\frac{1}{x} \\, dx = \\ln|x| \\] \\[ \\int e^{ax} \\, dx = \\frac{1}{a}e^{ax} \\] \\[ \\int \\frac{dx}{x^2 + a^2} = \\frac{1}{a} \\arctan\\left(\\frac{x}{a}\\right) \\] \\[ \\int \\frac{dx}{\\sqrt{a^2 - x^2}} = \\arcsin\\left(\\frac{x}{a}\\right) \\]\n\nGaussian Integrals (Crucial for Statistical Mechanics)\n\\[ \\int_{-\\infty}^{\\infty} e^{-ax^2} \\, dx = \\sqrt{\\frac{\\pi}{a}} \\] \\[ \\int_{-\\infty}^{\\infty} x^2 e^{-ax^2} \\, dx = \\frac{1}{2a} \\sqrt{\\frac{\\pi}{a}} \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#taylor-series-general",
+    "href": "reference/math-identities-and-calculus.html#taylor-series-general",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Taylor Series (General)",
+    "text": "Taylor Series (General)\n\\[ f(x) = f(a) + f'(a)(x-a) + \\frac{f''(a)}{2!}(x-a)^2 + \\frac{f'''(a)}{3!}(x-a)^3 + \\dots \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#maclaurin-series-around-x0",
+    "href": "reference/math-identities-and-calculus.html#maclaurin-series-around-x0",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Maclaurin Series (around \\(x=0\\))",
+    "text": "Maclaurin Series (around \\(x=0\\))\n\\[ e^x = 1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!} + \\dots = \\sum_{n=0}^{\\infty} \\frac{x^n}{n!} \\] \\[ \\sin x = x - \\frac{x^3}{3!} + \\frac{x^5}{5!} - \\dots = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n+1}}{(2n+1)!} \\] \\[ \\cos x = 1 - \\frac{x^2}{2!} + \\frac{x^4}{4!} - \\dots = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n}}{(2n)!} \\] \\[ \\ln(1+x) = x - \\frac{x^2}{2} + \\frac{x^3}{3} - \\dots \\quad (\\text{for } |x| &lt; 1) \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#binomial-expansion",
+    "href": "reference/math-identities-and-calculus.html#binomial-expansion",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Binomial Expansion",
+    "text": "Binomial Expansion\nFor \\(|x| &lt; 1\\) and any real \\(n\\): \\[ (1+x)^n = 1 + nx + \\frac{n(n-1)}{2!}x^2 + \\frac{n(n-1)(n-2)}{3!}x^3 + \\dots \\] Useful small \\(x\\) approximations: \\[ (1+x)^n \\approx 1 + nx \\] \\[ (1-x)^{-1} \\approx 1 + x + x^2 + \\dots \\]"
   },
   {
     "objectID": "notes/index.html",
