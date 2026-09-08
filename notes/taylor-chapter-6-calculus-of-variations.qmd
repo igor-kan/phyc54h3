@@ -280,6 +280,12 @@ $$ \psi = \frac{\pi - \theta}{2} $$
 
 *(For broader integration techniques and speed benchmarks, see [Integration Tricks and Substitution Techniques](../reference/integration-tricks-and-substitutions.qmd). For physical systems such as Huygens' isochronous pendulum, $E\times B$ drifts, and cycloidal gear drives, see [Physics and Engineering Applications of Cycloids](../reference/cycloid-physics-applications.qmd).)*
 
+::: {.callout-tip}
+### 🎮 Interactive Simulations
+Experience these phenomena live in your browser:  
+Launch the **[Interactive Cycloid Mechanics: Brachistochrone, Tautochrone & Huygens' Pendulum](../simulations/cycloid-mechanics-interactive.qmd)** to run the 4-track Brachistochrone race, test simultaneous Tautochrone arrivals, and compare Huygens' isochronous clock against ordinary circular pendulums!
+:::
+
 ```{python}
 #| label: fig-cycloid
 #| fig-cap: "The Brachistochrone path is a cycloid, the curve traced by a point on the rim of a rolling wheel."

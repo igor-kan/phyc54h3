@@ -1,0 +1,811 @@
+---
+title: "Interactive Cycloid Mechanics: Brachistochrone, Tautochrone & Huygens' Pendulum"
+subtitle: "Real-time HTML5 Canvas physics simulations: Curve of fastest descent, equal-time oscillations, and isochronous cycloidal clocks."
+date: "2026-09-08"
+date-modified: last-modified
+categories: ["Simulations", "Interactive", "Calculus of Variations", "Cycloid", "Mechanics"]
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    math: true
+---
+
+# Overview
+
+The cycloid is one of the most celebrated curves in classical mechanics and the calculus of variations. Discovered by Galileo and investigated by Bernoulli, Newton, Leibniz, and Huygens, it possesses two remarkable variational properties:
+
+1. **The Brachistochrone:** The path of fastest descent under uniform gravity between two points.
+2. **The Tautochrone (Isochrone):** A curve along which a particle released from rest at any point reaches the bottom in the exact same time, independent of release height.
+3. **The Cycloidal Pendulum:** By suspending a flexible pendulum string between two cycloidal guides ("cheeks"), the string unwraps along the cheeks so the bob traces an exact evolute cycloid, eliminating the "circular error" of ordinary pendulums.
+
+Below are three live, interactive in-browser simulations demonstrating these principles.
+
+---
+
+# Simulation 1: The Brachistochrone Race
+
+In 1696, Johann Bernoulli challenged mathematicians to find the shape of a wire connecting two points along which a bead will slide under gravity (without friction) in the shortest possible time.
+
+The four competing trajectories below connect the origin $(0, 0)$ to a lower target $(x_2, y_2)$:
+- <span style="color: #9333ea; font-weight: bold;">● Cycloid</span>: The true Brachistochrone ($y(\theta) = a(1 - \cos\theta), x(\theta) = a(\theta - \sin\theta)$).
+- <span style="color: #f97316; font-weight: bold;">● Straight Line</span>: The shortest geometric distance ($y = \frac{y_2}{x_2} x$).
+- <span style="color: #0284c7; font-weight: bold;">● Circular Arc</span>: Constant radius of curvature.
+- <span style="color: #16a34a; font-weight: bold;">● Parabola</span>: Rapid initial vertical drop ($y \propto \sqrt{x}$).
+
+```{=html}
+<div style="background: #0f172a; color: #f8fafc; border-radius: 12px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-bottom: 30px;">
+  <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+    <div style="display: flex; gap: 10px;">
+      <button id="brach-start-btn" style="background: #3b82f6; color: white; border: none; padding: 8px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s;">▶ Start Race</button>
+      <button id="brach-reset-btn" style="background: #475569; color: white; border: none; padding: 8px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s;">↺ Reset</button>
+    </div>
+    <div style="display: flex; gap: 15px; align-items: center; font-size: 0.9em;">
+      <label>Speed: <input type="range" id="brach-speed-slider" min="0.2" max="2.0" step="0.1" value="1.0" style="vertical-align: middle;"></label>
+      <span id="brach-speed-val">1.0x</span>
+    </div>
+  </div>
+
+  <canvas id="brach-canvas" width="750" height="400" style="width: 100%; height: auto; background: #1e293b; border-radius: 8px; border: 1px solid #334155; display: block;"></canvas>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-top: 15px;">
+    <div style="background: #1e293b; padding: 10px 14px; border-radius: 6px; border-left: 4px solid #9333ea;">
+      <div style="font-size: 0.85em; color: #cbd5e1;">Cycloid (Brachistochrone)</div>
+      <div id="time-cycloid" style="font-size: 1.2em; font-weight: bold; color: #c084fc;">0.000 s</div>
+      <div id="status-cycloid" style="font-size: 0.75em; color: #94a3b8;">Ready</div>
+    </div>
+    <div style="background: #1e293b; padding: 10px 14px; border-radius: 6px; border-left: 4px solid #0284c7;">
+      <div style="font-size: 0.85em; color: #cbd5e1;">Circular Arc</div>
+      <div id="time-circle" style="font-size: 1.2em; font-weight: bold; color: #38bdf8;">0.000 s</div>
+      <div id="status-circle" style="font-size: 0.75em; color: #94a3b8;">Ready</div>
+    </div>
+    <div style="background: #1e293b; padding: 10px 14px; border-radius: 6px; border-left: 4px solid #16a34a;">
+      <div style="font-size: 0.85em; color: #cbd5e1;">Parabola (Square Root)</div>
+      <div id="time-parabola" style="font-size: 1.2em; font-weight: bold; color: #4ade80;">0.000 s</div>
+      <div id="status-parabola" style="font-size: 0.75em; color: #94a3b8;">Ready</div>
+    </div>
+    <div style="background: #1e293b; padding: 10px 14px; border-radius: 6px; border-left: 4px solid #f97316;">
+      <div style="font-size: 0.85em; color: #cbd5e1;">Straight Line</div>
+      <div id="time-line" style="font-size: 1.2em; font-weight: bold; color: #fb923c;">0.000 s</div>
+      <div id="status-line" style="font-size: 0.75em; color: #94a3b8;">Ready</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const canvas = document.getElementById('brach-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const g = 9.81;
+  const xEnd = 620;
+  const yEnd = 310;
+  const xStart = 80;
+  const yStart = 60;
+  const W = xEnd - xStart;
+  const H = yEnd - yStart;
+
+  // Cycloid parameter solver for endpoint (W, H)
+  // x = a*(theta - sin(theta)), y = a*(1 - cos(theta))
+  // y/x = (1 - cos(theta)) / (theta - sin(theta))
+  let thetaEnd = 3.5;
+  for (let i = 0; i < 20; i++) {
+    const f = (1 - Math.cos(thetaEnd)) / (thetaEnd - Math.sin(thetaEnd)) - (H / W);
+    const num = Math.sin(thetaEnd) * (thetaEnd - Math.sin(thetaEnd)) - (1 - Math.cos(thetaEnd)) * (1 - Math.cos(thetaEnd));
+    const den = Math.pow(thetaEnd - Math.sin(thetaEnd), 2);
+    const fprime = num / den;
+    thetaEnd -= f / fprime;
+  }
+  const aRadius = H / (1 - Math.cos(thetaEnd));
+
+  // Build discretized paths
+  const N = 400;
+  function makePath(func) {
+    const pts = [];
+    let totLen = 0;
+    for (let i = 0; i <= N; i++) {
+      const u = i / N;
+      const pt = func(u);
+      if (i > 0) {
+        const dx = pt.x - pts[i-1].x;
+        const dy = pt.y - pts[i-1].y;
+        totLen += Math.sqrt(dx*dx + dy*dy);
+      }
+      pts.push({ x: pt.x, y: pt.y, dist: totLen });
+    }
+    return { pts, totLen };
+  }
+
+  const cycloidPath = makePath(u => {
+    const th = u * thetaEnd;
+    return { x: xStart + aRadius * (th - Math.sin(th)), y: yStart + aRadius * (1 - Math.cos(th)) };
+  });
+
+  const linePath = makePath(u => ({
+    x: xStart + u * W,
+    y: yStart + u * H
+  }));
+
+  const parabolaPath = makePath(u => ({
+    x: xStart + u * W,
+    y: yStart + H * Math.sqrt(u)
+  }));
+
+  // Circular arc passing through start and end
+  // Center (xc, yc), radius R
+  const chord = Math.sqrt(W*W + H*H);
+  const R_circ = chord * 0.85;
+  const mx = (xStart + xEnd) / 2;
+  const my = (yStart + yEnd) / 2;
+  const dToCenter = Math.sqrt(Math.max(0, R_circ*R_circ - (chord*chord)/4));
+  const nx = -(yEnd - yStart) / chord;
+  const ny = (xEnd - xStart) / chord;
+  const circCenter = { x: mx - nx * dToCenter, y: my - ny * dToCenter };
+  const ang1 = Math.atan2(yStart - circCenter.y, xStart - circCenter.x);
+  const ang2 = Math.atan2(yEnd - circCenter.y, xEnd - circCenter.x);
+
+  const circlePath = makePath(u => {
+    const ang = ang1 + u * (ang2 - ang1);
+    return { x: circCenter.x + R_circ * Math.cos(ang), y: circCenter.y + R_circ * Math.sin(ang) };
+  });
+
+  const runners = [
+    { id: 'cycloid', name: 'Cycloid', color: '#c084fc', path: cycloidPath, s: 0, v: 0, done: false, time: 0 },
+    { id: 'circle', name: 'Circular Arc', color: '#38bdf8', path: circlePath, s: 0, v: 0, done: false, time: 0 },
+    { id: 'parabola', name: 'Parabola', color: '#4ade80', path: parabolaPath, s: 0, v: 0, done: false, time: 0 },
+    { id: 'line', name: 'Straight Line', color: '#fb923c', path: linePath, s: 0, v: 0, done: false, time: 0 }
+  ];
+
+  let running = false;
+  let animId = null;
+  let speedMultiplier = 1.0;
+  let lastTime = 0;
+
+  function getPosOnPath(path, dist) {
+    const pts = path.pts;
+    if (dist <= 0) return pts[0];
+    if (dist >= path.totLen) return pts[pts.length - 1];
+    let low = 0, high = pts.length - 1;
+    while (low <= high) {
+      const mid = (low + high) >> 1;
+      if (pts[mid].dist < dist) low = mid + 1;
+      else high = mid - 1;
+    }
+    const idx = Math.max(1, low);
+    const p0 = pts[idx - 1];
+    const p1 = pts[idx];
+    const t = (dist - p0.dist) / (p1.dist - p0.dist || 1);
+    return { x: p0.x + t * (p1.x - p0.x), y: p0.y + t * (p1.y - p0.y) };
+  }
+
+  function render() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Grid lines
+    ctx.strokeStyle = '#334155';
+    ctx.lineWidth = 0.5;
+    for (let x = 50; x < canvas.width; x += 50) {
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+    }
+    for (let y = 50; y < canvas.height; y += 50) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+    }
+
+    // Draw tracks
+    runners.forEach(r => {
+      ctx.beginPath();
+      ctx.strokeStyle = r.color;
+      ctx.lineWidth = 2.5;
+      ctx.globalAlpha = 0.7;
+      r.path.pts.forEach((p, i) => {
+        if (i === 0) ctx.moveTo(p.x, p.y);
+        else ctx.lineTo(p.x, p.y);
+      });
+      ctx.stroke();
+      ctx.globalAlpha = 1.0;
+    });
+
+    // Start and Finish Markers
+    ctx.fillStyle = '#f8fafc';
+    ctx.beginPath(); ctx.arc(xStart, yStart, 5, 0, 2*Math.PI); ctx.fill();
+    ctx.font = '12px system-ui, sans-serif';
+    ctx.fillText('Origin (0,0)', xStart - 30, yStart - 12);
+
+    ctx.fillStyle = '#e2e8f0';
+    ctx.beginPath(); ctx.arc(xEnd, yEnd, 6, 0, 2*Math.PI); ctx.fill();
+    ctx.fillText('Target (x₂, y₂)', xEnd - 20, yEnd + 22);
+
+    // Draw Beads
+    runners.forEach(r => {
+      const pos = getPosOnPath(r.path, r.s);
+      ctx.shadowColor = r.color;
+      ctx.shadowBlur = 10;
+      ctx.fillStyle = r.color;
+      ctx.beginPath();
+      ctx.arc(pos.x, pos.y, 8, 0, 2*Math.PI);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      // Inner shine
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      ctx.arc(pos.x - 2, pos.y - 2, 2.5, 0, 2*Math.PI);
+      ctx.fill();
+    });
+  }
+
+  function step(timestamp) {
+    if (!lastTime) lastTime = timestamp;
+    const realDt = Math.min((timestamp - lastTime) / 1000, 0.05);
+    lastTime = timestamp;
+
+    const dt = realDt * speedMultiplier;
+    let allDone = true;
+
+    runners.forEach(r => {
+      if (!r.done) {
+        allDone = false;
+        r.time += dt;
+        const pos = getPosOnPath(r.path, r.s);
+        const dropY = Math.max(0.001, (pos.y - yStart) / 120); // Normalized scale
+        const vPhys = Math.sqrt(2 * g * dropY);
+        const pxPerSec = vPhys * 180;
+        r.s += pxPerSec * dt;
+
+        document.getElementById('time-' + r.id).innerText = r.time.toFixed(3) + ' s';
+        document.getElementById('status-' + r.id).innerText = 'Racing...';
+
+        if (r.s >= r.path.totLen) {
+          r.s = r.path.totLen;
+          r.done = true;
+          document.getElementById('status-' + r.id).innerText = 'Finished 🏁';
+          document.getElementById('status-' + r.id).style.color = '#38bdf8';
+        }
+      }
+    });
+
+    render();
+
+    if (allDone) {
+      running = false;
+      document.getElementById('brach-start-btn').innerText = '▶ Restart';
+    } else if (running) {
+      animId = requestAnimationFrame(step);
+    }
+  }
+
+  function resetRace() {
+    running = false;
+    if (animId) cancelAnimationFrame(animId);
+    lastTime = 0;
+    runners.forEach(r => {
+      r.s = 0;
+      r.v = 0;
+      r.done = false;
+      r.time = 0;
+      document.getElementById('time-' + r.id).innerText = '0.000 s';
+      document.getElementById('status-' + r.id).innerText = 'Ready';
+      document.getElementById('status-' + r.id).style.color = '#94a3b8';
+    });
+    document.getElementById('brach-start-btn').innerText = '▶ Start Race';
+    render();
+  }
+
+  document.getElementById('brach-start-btn').onclick = function() {
+    if (running) return;
+    if (runners.every(r => r.done)) resetRace();
+    running = true;
+    lastTime = 0;
+    this.innerText = 'Racing...';
+    animId = requestAnimationFrame(step);
+  };
+
+  document.getElementById('brach-reset-btn').onclick = resetRace;
+
+  const slider = document.getElementById('brach-speed-slider');
+  slider.oninput = function() {
+    speedMultiplier = parseFloat(this.value);
+    document.getElementById('brach-speed-val').innerText = speedMultiplier.toFixed(1) + 'x';
+  };
+
+  render();
+})();
+</script>
+```
+
+---
+
+# Simulation 2: The Tautochrone (Isochrone) Property
+
+Huygens discovered in 1659 that an inverted cycloid is **tautochronous**: a frictionless particle sliding down a cycloidal track to the lowest point takes the *exact same time* regardless of where on the arch it is released!
+
+The equation of motion along the arc length $s$ (measured from the trough) is pure simple harmonic motion:
+$$ \ddot{s} + \left(\frac{g}{4a}\right) s = 0 $$
+All beads reach the trough $s = 0$ at the identical quarter-period mark:
+$$ t_{\text{trough}} = \pi \sqrt{\frac{a}{g}} $$
+
+In the simulation below, four beads are placed at widely disparate initial release heights along the cycloid. Press **"Release All Beads"** and watch them converge at the bottom in perfect synchronization!
+
+```{=html}
+<div style="background: #0f172a; color: #f8fafc; border-radius: 12px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-bottom: 30px;">
+  <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+    <div style="display: flex; gap: 10px;">
+      <button id="tauto-start-btn" style="background: #10b981; color: white; border: none; padding: 8px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s;">▶ Release All Beads</button>
+      <button id="tauto-reset-btn" style="background: #475569; color: white; border: none; padding: 8px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s;">↺ Reset</button>
+    </div>
+    <div style="display: flex; gap: 15px; align-items: center; font-size: 0.9em;">
+      <span id="tauto-timer-display" style="font-family: monospace; font-size: 1.2em; font-weight: bold; color: #34d399;">Timer: 0.000 s</span>
+    </div>
+  </div>
+
+  <canvas id="tauto-canvas" width="750" height="380" style="width: 100%; height: auto; background: #1e293b; border-radius: 8px; border: 1px solid #334155; display: block;"></canvas>
+
+  <div id="tauto-banner" style="margin-top: 15px; padding: 12px; border-radius: 6px; background: #1e293b; text-align: center; font-weight: bold; color: #94a3b8; border: 1px dashed #334155;">
+    Press "Release All Beads" to observe simultaneous arrival at the trough.
+  </div>
+</div>
+
+<script>
+(function() {
+  const canvas = document.getElementById('tauto-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const g = 9.81;
+  const aRadius = 55;
+  const centerX = canvas.width / 2;
+  const topY = 40;
+  const omega0 = Math.sqrt(g / (4 * (aRadius / 100))); // Scaled frequency
+  const T_quarter = (Math.PI / (2 * omega0));
+
+  // Cycloid arch: theta in [0, 2*pi]
+  // x(theta) = centerX + aRadius*(theta - pi - sin(theta - pi))
+  // y(theta) = topY + aRadius*(1 - cos(theta))
+  const N = 400;
+  const archPts = [];
+  for (let i = 0; i <= N; i++) {
+    const th = (i / N) * 2 * Math.PI;
+    const x = centerX + aRadius * ((th - Math.PI) + Math.sin(th));
+    const y = topY + aRadius * (1 - Math.cos(th));
+    archPts.push({ theta: th, x, y });
+  }
+
+  // Arc length from trough: s(theta) = 4*a*cos(theta/2)
+  function thetaFromArc(s) {
+    const val = Math.max(-1, Math.min(1, s / (4 * aRadius)));
+    return 2 * Math.acos(val);
+  }
+
+  function getCoords(th) {
+    const x = centerX + aRadius * ((th - Math.PI) + Math.sin(th));
+    const y = topY + aRadius * (1 - Math.cos(th));
+    return { x, y };
+  }
+
+  const beads = [
+    { name: "Cyan", color: "#38bdf8", s0: 3.6 * aRadius, s: 3.6 * aRadius },
+    { name: "Yellow", color: "#facc15", s0: 2.7 * aRadius, s: 2.7 * aRadius },
+    { name: "Purple", color: "#c084fc", s0: 1.8 * aRadius, s: 1.8 * aRadius },
+    { name: "Pink", color: "#f472b6", s0: 0.9 * aRadius, s: 0.9 * aRadius }
+  ];
+
+  let simTime = 0;
+  let running = false;
+  let animId = null;
+  let lastTimestamp = 0;
+  let reachedTrough = false;
+
+  function render() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Floor & trough marker
+    const trough = getCoords(Math.PI);
+    ctx.strokeStyle = '#334155';
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.moveTo(trough.x, 0);
+    ctx.lineTo(trough.x, canvas.height);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Draw Cycloid Track
+    ctx.strokeStyle = '#64748b';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    archPts.forEach((p, i) => {
+      if (i === 0) ctx.moveTo(p.x, p.y);
+      else ctx.lineTo(p.x, p.y);
+    });
+    ctx.stroke();
+
+    // Trough indicator dot
+    ctx.fillStyle = '#10b981';
+    ctx.beginPath();
+    ctx.arc(trough.x, trough.y + 4, 6, 0, 2*Math.PI);
+    ctx.fill();
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = '12px system-ui, sans-serif';
+    ctx.fillText('Trough (Lowest Point)', trough.x - 60, trough.y + 24);
+
+    // Draw Beads
+    beads.forEach(b => {
+      const th = thetaFromArc(b.s);
+      const pos = getCoords(th);
+
+      ctx.shadowColor = b.color;
+      ctx.shadowBlur = 12;
+      ctx.fillStyle = b.color;
+      ctx.beginPath();
+      ctx.arc(pos.x, pos.y, 9, 0, 2*Math.PI);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      // Center shine
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      ctx.arc(pos.x - 2, pos.y - 2, 2.5, 0, 2*Math.PI);
+      ctx.fill();
+    });
+  }
+
+  function step(timestamp) {
+    if (!lastTimestamp) lastTimestamp = timestamp;
+    const dt = Math.min((timestamp - lastTimestamp) / 1000, 0.04);
+    lastTimestamp = timestamp;
+
+    simTime += dt;
+    document.getElementById('tauto-timer-display').innerText = 'Timer: ' + simTime.toFixed(3) + ' s';
+
+    // Harmonic motion: s(t) = s0 * cos(omega0 * t)
+    beads.forEach(b => {
+      b.s = b.s0 * Math.cos(omega0 * simTime);
+    });
+
+    if (!reachedTrough && simTime >= T_quarter) {
+      reachedTrough = true;
+      const banner = document.getElementById('tauto-banner');
+      banner.style.background = '#065f46';
+      banner.style.color = '#34d399';
+      banner.style.borderColor = '#10b981';
+      banner.innerHTML = `⭐ <b>PERFECT SYNCHRONIZATION DETECTED!</b> All 4 beads reached the trough simultaneously at <i>t</i> = ${simTime.toFixed(3)} s (Theoretical: ${T_quarter.toFixed(3)} s)!`;
+    }
+
+    render();
+
+    if (running) {
+      animId = requestAnimationFrame(step);
+    }
+  }
+
+  function reset() {
+    running = false;
+    if (animId) cancelAnimationFrame(animId);
+    simTime = 0;
+    lastTimestamp = 0;
+    reachedTrough = false;
+    beads.forEach(b => { b.s = b.s0; });
+    document.getElementById('tauto-timer-display').innerText = 'Timer: 0.000 s';
+    const banner = document.getElementById('tauto-banner');
+    banner.style.background = '#1e293b';
+    banner.style.color = '#94a3b8';
+    banner.style.borderColor = '#334155';
+    banner.innerHTML = 'Press "Release All Beads" to observe simultaneous arrival at the trough.';
+    document.getElementById('tauto-start-btn').innerText = '▶ Release All Beads';
+    render();
+  }
+
+  document.getElementById('tauto-start-btn').onclick = function() {
+    if (running) return;
+    running = true;
+    lastTimestamp = 0;
+    this.innerText = 'Oscillating...';
+    animId = requestAnimationFrame(step);
+  };
+
+  document.getElementById('tauto-reset-btn').onclick = reset;
+
+  render();
+})();
+</script>
+```
+
+---
+
+# Simulation 3: Huygens' Isochronous Cycloidal Pendulum
+
+In a standard circular pendulum, the period increases with amplitude:
+$$ T \approx 2\pi\sqrt{\frac{L}{g}}\left(1 + \frac{1}{16}\theta_0^2 + \frac{11}{3072}\theta_0^4 + \dots\right) $$
+This **circular error** caused grandfather clocks to lose time whenever the drive spring wound down and the swing amplitude decreased.
+
+Christiaan Huygens eliminated this error in 1673 by flanking the suspension string with two curved metal guides shaped like cycloids (**cycloidal cheeks**). As the pendulum swings wide, the flexible string wraps against the cheek, shortening the effective radius of curvature and accelerating the bob just enough so that the trajectory of the bob is an exact evolute cycloid!
+
+The period of Huygens' cycloidal clock is strictly invariant across all amplitudes:
+$$ T_{\text{cycloid}} = 4\pi\sqrt{\frac{a}{g}} $$
+
+### Live Side-by-Side Comparison
+
+Observe the simulation below:
+- **Left:** Huygens' Cycloidal Pendulum with cycloidal cheeks (String wraps against cheeks).
+- **Right:** Standard Circular Pendulum of the same nominal length $L = 4a$.
+- Drag the **Release Amplitude Slider** up to $75^\circ$ to see the standard pendulum suffer massive circular error lag, while Huygens' clock keeps perfect time!
+
+```{=html}
+<div style="background: #0f172a; color: #f8fafc; border-radius: 12px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-bottom: 30px;">
+  <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+    <div style="display: flex; gap: 10px;">
+      <button id="huygens-toggle-btn" style="background: #6366f1; color: white; border: none; padding: 8px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s;">❚❚ Pause</button>
+      <button id="huygens-reset-btn" style="background: #475569; color: white; border: none; padding: 8px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s;">↺ Reset</button>
+    </div>
+    <div style="display: flex; gap: 15px; align-items: center; font-size: 0.9em;">
+      <label>Release Amplitude θ₀: 
+        <input type="range" id="huygens-amp-slider" min="15" max="80" step="5" value="65" style="vertical-align: middle;">
+      </label>
+      <span id="huygens-amp-val" style="font-weight: bold; color: #a5b4fc;">65°</span>
+    </div>
+  </div>
+
+  <canvas id="huygens-canvas" width="750" height="420" style="width: 100%; height: auto; background: #1e293b; border-radius: 8px; border: 1px solid #334155; display: block;"></canvas>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
+    <div style="background: #1e293b; padding: 12px 16px; border-radius: 6px; border-left: 4px solid #818cf8;">
+      <div style="font-weight: bold; color: #c7d2fe;">Huygens' Cycloidal Pendulum</div>
+      <div style="font-size: 0.85em; color: #94a3b8; margin-top: 4px;">Constrained by cheeks • <b>Strictly Isochronous</b></div>
+      <div style="font-size: 1.1em; color: #34d399; margin-top: 6px;">Exact Period: T = 1.795 s</div>
+    </div>
+    <div style="background: #1e293b; padding: 12px 16px; border-radius: 6px; border-left: 4px solid #f43f5e;">
+      <div style="font-weight: bold; color: #fecdd3;">Ordinary Circular Pendulum</div>
+      <div style="font-size: 0.85em; color: #94a3b8; margin-top: 4px;">Unconstrained string • <b>Suffers Circular Error</b></div>
+      <div id="simple-period-readout" style="font-size: 1.1em; color: #fb7185; margin-top: 6px;">Period: T ≈ 1.942 s (+8.2% slow)</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const canvas = document.getElementById('huygens-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const g = 9.81;
+  const aRadius = 38; // Radius of generating wheel
+  const L = 4 * aRadius; // Total string length = 152 px
+
+  const pivot1 = { x: canvas.width * 0.28, y: 50 };
+  const pivot2 = { x: canvas.width * 0.74, y: 50 };
+
+  let ampDeg = 65;
+  let ampRad = ampDeg * Math.PI / 180;
+  let running = true;
+  let animId = null;
+  let simTime = 0;
+  let lastTs = 0;
+
+  // Simple pendulum numerical state
+  let theta_simple = ampRad;
+  let omega_simple = 0.0;
+
+  // Cycloidal pendulum natural frequency
+  // s(t) = s0 * cos(omega_c * t) where omega_c = sqrt(g / (4a))
+  const omega_c = Math.sqrt(g / (4 * (aRadius / 100)));
+  const T_cycloid = 2 * Math.PI / omega_c;
+
+  // Generate cycloidal cheek paths (evolute of bob trajectory)
+  // Left cheek: theta in [0, pi]
+  // Right cheek: theta in [0, pi]
+  const cheekN = 80;
+  const leftCheek = [];
+  const rightCheek = [];
+  for (let i = 0; i <= cheekN; i++) {
+    const th = (i / cheekN) * Math.PI;
+    // Left cheek
+    const xl = pivot1.x - aRadius * (th - Math.sin(th));
+    const yl = pivot1.y + aRadius * (1 - Math.cos(th));
+    leftCheek.push({ x: xl, y: yl });
+
+    // Right cheek
+    const xr = pivot1.x + aRadius * (th - Math.sin(th));
+    const yr = pivot1.y + aRadius * (1 - Math.cos(th));
+    rightCheek.push({ x: xr, y: yr });
+  }
+
+  function updateSimplePendulumReadout() {
+    const errorFactor = 1 + (1/16) * Math.pow(ampRad, 2) + (11/3072) * Math.pow(ampRad, 4);
+    const T_simple = T_cycloid * errorFactor;
+    const pct = ((errorFactor - 1) * 100).toFixed(1);
+    document.getElementById('simple-period-readout').innerText = `Period: T ≈ ${T_simple.toFixed(3)} s (+${pct}% slow)`;
+  }
+  updateSimplePendulumReadout();
+
+  function render() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Divider line
+    ctx.strokeStyle = '#334155';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.moveTo(canvas.width / 2, 20);
+    ctx.lineTo(canvas.width / 2, canvas.height - 20);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // -------------------------------------------------------------
+    // 1. LEFT: Huygens' Cycloidal Pendulum
+    // -------------------------------------------------------------
+    // Suspension Ceiling
+    ctx.fillStyle = '#475569';
+    ctx.fillRect(pivot1.x - 110, pivot1.y - 12, 220, 12);
+    ctx.fillStyle = '#cbd5e1';
+    ctx.font = '13px system-ui, sans-serif';
+    ctx.fillText("Huygens' Cycloidal Cheeks", pivot1.x - 75, pivot1.y - 18);
+
+    // Draw Cycloidal Cheeks
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = '#818cf8';
+    ctx.beginPath();
+    leftCheek.forEach((p, i) => { if (i === 0) ctx.moveTo(p.x, p.y); else ctx.lineTo(p.x, p.y); });
+    ctx.stroke();
+
+    ctx.beginPath();
+    rightCheek.forEach((p, i) => { if (i === 0) ctx.moveTo(p.x, p.y); else ctx.lineTo(p.x, p.y); });
+    ctx.stroke();
+
+    // Cycloid bob kinematics: s(t) = s0 * cos(omega_c * t)
+    const s0 = 4 * aRadius * Math.sin(ampRad / 2);
+    const sCurrent = s0 * Math.cos(omega_c * simTime);
+    // Corresponding angle: s = 4a*sin(phi/2)
+    const phi_c = 2 * Math.asin(Math.max(-0.999, Math.min(0.999, sCurrent / (4 * aRadius))));
+
+    // Bob coordinates: x = a*(phi + sin(phi)), y = a*(1 - cos(phi))
+    const bob1X = pivot1.x + aRadius * (phi_c + Math.sin(phi_c));
+    const bob1Y = pivot1.y + aRadius * (3 - Math.cos(phi_c)); // Adjusted for suspension
+
+    // String drawing (tangent to cheek or straight)
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = '#e2e8f0';
+    ctx.beginPath();
+    ctx.moveTo(pivot1.x, pivot1.y);
+    // Draw approximation of wrapped string
+    if (Math.abs(phi_c) > 0.1) {
+      const cheek = phi_c > 0 ? rightCheek : leftCheek;
+      const wrapIdx = Math.min(cheek.length - 1, Math.floor((Math.abs(phi_c) / Math.PI) * cheek.length * 0.7));
+      for (let i = 0; i <= wrapIdx; i++) {
+        ctx.lineTo(cheek[i].x, cheek[i].y);
+      }
+      ctx.lineTo(bob1X, bob1Y);
+    } else {
+      ctx.lineTo(bob1X, bob1Y);
+    }
+    ctx.stroke();
+
+    // Cycloidal Bob
+    ctx.shadowColor = '#818cf8';
+    ctx.shadowBlur = 12;
+    ctx.fillStyle = '#818cf8';
+    ctx.beginPath();
+    ctx.arc(bob1X, bob1Y, 12, 0, 2*Math.PI);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+
+    // -------------------------------------------------------------
+    // 2. RIGHT: Simple Circular Pendulum
+    // -------------------------------------------------------------
+    // Ceiling
+    ctx.fillStyle = '#475569';
+    ctx.fillRect(pivot2.x - 70, pivot2.y - 12, 140, 12);
+    ctx.fillStyle = '#cbd5e1';
+    ctx.fillText("Standard Pivot", pivot2.x - 45, pivot2.y - 18);
+
+    const bob2X = pivot2.x + L * 1.35 * Math.sin(theta_simple);
+    const bob2Y = pivot2.y + L * 1.35 * Math.cos(theta_simple);
+
+    // Rod
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = '#e2e8f0';
+    ctx.beginPath();
+    ctx.moveTo(pivot2.x, pivot2.y);
+    ctx.lineTo(bob2X, bob2Y);
+    ctx.stroke();
+
+    // Circular Bob
+    ctx.shadowColor = '#f43f5e';
+    ctx.shadowBlur = 12;
+    ctx.fillStyle = '#f43f5e';
+    ctx.beginPath();
+    ctx.arc(bob2X, bob2Y, 12, 0, 2*Math.PI);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+
+    // Center pivot dots
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath(); ctx.arc(pivot1.x, pivot1.y, 4, 0, 2*Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.arc(pivot2.x, pivot2.y, 4, 0, 2*Math.PI); ctx.fill();
+  }
+
+  function step(ts) {
+    if (!lastTs) lastTs = ts;
+    const dt = Math.min((ts - lastTs) / 1000, 0.04);
+    lastTs = ts;
+
+    simTime += dt;
+
+    // RK4 integration for non-linear simple pendulum
+    const L_phys = (L * 1.35) / 120; // scale
+    function f_alpha(th) { return -(g / L_phys) * Math.sin(th); }
+    
+    // Sub-stepping for stability
+    const subSteps = 4;
+    const subDt = dt / subSteps;
+    for (let stepIdx = 0; stepIdx < subSteps; stepIdx++) {
+      const k1_v = f_alpha(theta_simple);
+      const k1_x = omega_simple;
+
+      const k2_v = f_alpha(theta_simple + 0.5 * subDt * k1_x);
+      const k2_x = omega_simple + 0.5 * subDt * k1_v;
+
+      const k3_v = f_alpha(theta_simple + 0.5 * subDt * k2_x);
+      const k3_x = omega_simple + 0.5 * subDt * k2_v;
+
+      const k4_v = f_alpha(theta_simple + subDt * k3_x);
+      const k4_x = omega_simple + subDt * k3_v;
+
+      omega_simple += (subDt / 6) * (k1_v + 2*k2_v + 2*k3_v + k4_v);
+      theta_simple += (subDt / 6) * (k1_x + 2*k2_x + 2*k3_x + k4_x);
+    }
+
+    render();
+
+    if (running) {
+      animId = requestAnimationFrame(step);
+    }
+  }
+
+  function reset() {
+    simTime = 0;
+    lastTs = 0;
+    theta_simple = ampRad;
+    omega_simple = 0.0;
+    render();
+  }
+
+  document.getElementById('huygens-toggle-btn').onclick = function() {
+    running = !running;
+    this.innerText = running ? '❚❚ Pause' : '▶ Resume';
+    if (running) {
+      lastTs = 0;
+      animId = requestAnimationFrame(step);
+    }
+  };
+
+  document.getElementById('huygens-reset-btn').onclick = function() {
+    reset();
+  };
+
+  const slider = document.getElementById('huygens-amp-slider');
+  slider.oninput = function() {
+    ampDeg = parseInt(this.value);
+    ampRad = ampDeg * Math.PI / 180;
+    document.getElementById('huygens-amp-val').innerText = ampDeg + '°';
+    updateSimplePendulumReadout();
+    reset();
+  };
+
+  render();
+  animId = requestAnimationFrame(step);
+})();
+</script>
+```
+
+---
+
+# Mathematical Foundations & Cross-References
+
+For the step-by-step mathematical proofs and theoretical derivations of the phenomena demonstrated above, explore the accompanying course materials:
+
+- **[Chapter 6 Lecture Notes: Calculus of Variations](../notes/taylor-chapter-6-calculus-of-variations.qmd#2-the-brachistochrone-solution):**  
+  Detailed derivation of the Brachistochrone differential equation via the Beltrami identity, the hidden circle origin, and the algebraic substitution method.
+- **[Physics & Engineering Applications of Cycloids](../reference/cycloid-physics-applications.qmd):**  
+  In-depth analysis of the Tautochrone property, Huygens' cycloidal clock escapement, charged particle drift in crossed $\mathbf{E} \times \mathbf{B}$ fields, and cycloidal drive speed reducers.
+- **[Integration Tricks & Substitution Techniques](../reference/integration-tricks-and-substitutions.qmd):**  
+  Mastery toolkit for solving quadratic surds, Weierstrass half-angle transforms, and hyperbolic catenary integrals.

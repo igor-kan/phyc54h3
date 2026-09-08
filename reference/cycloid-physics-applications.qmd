@@ -39,6 +39,11 @@ Because the evolute of a cycloid is another cycloid, Huygens built clocks with t
                       [Bob]  --> Follows an exact cycloid path
 ```
 
+::: {.callout-tip}
+### 🎮 Live Interactive Simulations
+To interactively experiment with the Brachistochrone curve race, release multiple beads on a Tautochrone track, and test Huygens' cycloidal pendulum side-by-side with an ordinary circular pendulum, launch our **[Interactive Cycloid Mechanics Simulation](../simulations/cycloid-mechanics-interactive.qmd)**!
+:::
+
 ## 3. Charged Particle Drift in Crossed Fields ($\mathbf{E} \times \mathbf{B}$)
 When a non-relativistic particle of charge $q$ and mass $m$ moves in uniform, orthogonal electric and magnetic fields ($\mathbf{E} = E\hat{\mathbf{y}}$, $\mathbf{B} = B\hat{\mathbf{z}}$), its equations of motion are:
 $$\ddot{x} = \omega_c \dot{y}, \quad \ddot{y} = \frac{qE}{m} - \omega_c \dot{x}, \quad \omega_c = \frac{qB}{m}$$
