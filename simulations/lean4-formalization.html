@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-09-08">
+<meta name="description" content="An overview of how the principles of stationary action and the Euler-Lagrange equations are formally verified in the Lean 4 theorem prover using mathlib.">
 
-<title>Code &amp; Simulations – PHYC54H3: Classical Mechanics</title>
+<title>Formalizing Calculus of Variations in Lean 4 – PHYC54H3: Classical Mechanics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -71,8 +73,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -110,35 +110,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-date-modified','listing-title','listing-subtitle','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-date","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -203,7 +174,7 @@ window.Quarto = {
 <span class="menu-text">Problem Sets</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../simulations/index.html" aria-current="page"> 
+    <a class="nav-link" href="../simulations/index.html"> 
 <span class="menu-text">Code &amp; Simulations</span></a>
   </li>  
   <li class="nav-item">
@@ -218,26 +189,55 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="YW5pbWF0aW9u">animation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QyUyQiUyQg==">C++ <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q2FsY3VsdXMlMjBvZiUyMFZhcmlhdGlvbnM=">Calculus of Variations <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Q29kZQ==">Code <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29kZQ==">code <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q3ljbG9pZA==">Cycloid <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Rm9ybWFsJTIwVmVyaWZpY2F0aW9u">Formal Verification <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SW50ZXJhY3RpdmU=">Interactive <span class="quarto-category-count">(2)</span></div><div class="category" data-category="TGVhbiUyMDQ=">Lean 4 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWFuaW0=">manim <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TWVjaGFuaWNz">Mechanics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="T2JzZXJ2YWJsZSUyMEpT">Observable JS <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHl0aG9u">python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHl0aG9u">Python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2ltdWxhdGlvbg==">simulation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U2ltdWxhdGlvbnM=">Simulations <span class="quarto-category-count">(2)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-lean-4-and-formal-verification" id="toc-introduction-to-lean-4-and-formal-verification" class="nav-link active" data-scroll-target="#introduction-to-lean-4-and-formal-verification">Introduction to Lean 4 and Formal Verification</a>
+  <ul class="collapse">
+  <li><a href="#functional-analysis-in-mathlib" id="toc-functional-analysis-in-mathlib" class="nav-link" data-scroll-target="#functional-analysis-in-mathlib">Functional Analysis in <code>mathlib</code></a></li>
+  <li><a href="#defining-the-action-functional" id="toc-defining-the-action-functional" class="nav-link" data-scroll-target="#defining-the-action-functional">Defining the Action Functional</a></li>
+  <li><a href="#the-principle-of-stationary-action" id="toc-the-principle-of-stationary-action" class="nav-link" data-scroll-target="#the-principle-of-stationary-action">The Principle of Stationary Action</a></li>
+  <li><a href="#deriving-euler-lagrange-the-fundamental-lemma-of-calculus-of-variations" id="toc-deriving-euler-lagrange-the-fundamental-lemma-of-calculus-of-variations" class="nav-link" data-scroll-target="#deriving-euler-lagrange-the-fundamental-lemma-of-calculus-of-variations">Deriving Euler-Lagrange: The Fundamental Lemma of Calculus of Variations</a></li>
+  <li><a href="#current-state-of-research-and-academia" id="toc-current-state-of-research-and-academia" class="nav-link" data-scroll-target="#current-state-of-research-and-academia">Current State of Research and Academia</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Code &amp; Simulations</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
-<p class="subtitle lead">Interactive in-browser simulations, symplectic numerical integrators, Python scripts, and Manim video animations.</p>
+<div class="quarto-title-block"><div><h1 class="title">Formalizing Calculus of Variations in Lean 4</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+  <div class="quarto-categories">
+    <div class="quarto-category">Formal Verification</div>
+    <div class="quarto-category">Lean 4</div>
+    <div class="quarto-category">Calculus of Variations</div>
+    <div class="quarto-category">Code</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    An overview of how the principles of stationary action and the Euler-Lagrange equations are formally verified in the Lean 4 theorem prover using mathlib.
+  </div>
 </div>
 
 
-
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026-09-08</p>
+    </div>
+  </div>
   
     
   </div>
@@ -247,186 +247,68 @@ window.Quarto = {
 </header>
 
 
-<p>This section hosts all computational tools, code notebooks, and programmatic visualizations for PHYC54:</p>
-<ul>
-<li><strong>Interactive Simulations:</strong> Live in-browser physics simulations running via Observable JS (OJS) and HTML5 Canvas.</li>
-<li><strong>Symplectic Integrators:</strong> Velocity Verlet and RK4 solvers implemented in Python, C++, and Fortran for energy-conserving Hamiltonian orbits.</li>
-<li><strong>Manim Mathematical Animations:</strong> Python scripts and rendering pipelines for 3Blue1Brown-style video demonstrations of chaos, phase trajectories, and coordinate transformations.</li>
-</ul>
+<section id="introduction-to-lean-4-and-formal-verification" class="level1">
+<h1>Introduction to Lean 4 and Formal Verification</h1>
+<p>In Chapter 6, we derived the Euler-Lagrange equations using the calculus of variations. While physicists often use heuristic arguments and physical intuition to define functional derivatives and stationary points, mathematicians require rigorous definitions involving Banach spaces, Fréchet derivatives, and functional analysis.</p>
+<p><a href="https://leanprover.github.io/">Lean 4</a> is a dependently typed functional programming language and interactive theorem prover. In recent years, it has gained immense popularity in academia (e.g., the Fields Medalist Peter Scholze’s Liquid Tensor Experiment, and Terrence Tao’s recent work) for formalizing complex mathematics.</p>
+<p>In this article, we explore how the calculus of variations and the principle of stationary action can be formalized in Lean 4 using its mathematics library, <code>mathlib</code>.</p>
+<section id="functional-analysis-in-mathlib" class="level2">
+<h2 class="anchored" data-anchor-id="functional-analysis-in-mathlib">Functional Analysis in <code>mathlib</code></h2>
+<p>To formalize the calculus of variations, we need a rigorous framework for calculus on infinite-dimensional spaces (spaces of paths/functions). In Lean 4, this is handled through the theory of <strong>Normed Spaces</strong> and <strong>Fréchet derivatives</strong>.</p>
+<p>In <code>mathlib</code>, the derivative of a function <span class="math inline">\(f : E \to F\)</span> between two normed vector spaces is defined using the <code>HasFDerivAt</code> or <code>fderiv</code> API.</p>
+<pre class="lean"><code>import Mathlib.Analysis.Calculus.Deriv.Basic
+import Mathlib.Analysis.NormedSpace.Basic
 
+-- E and F are Normed Vector Spaces over ℝ
+variable {E F : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+variable [NormedAddCommGroup F] [NormedSpace ℝ F]
+
+-- A function f is differentiable at x if it has a continuous linear map as its Fréchet derivative
+-- fderiv ℝ f x represents the Fréchet derivative of f at x</code></pre>
+<p>For the action functional <span class="math inline">\(S\)</span>, the domain <span class="math inline">\(E\)</span> is a space of paths (e.g., a Sobolev space <span class="math inline">\(W^{1,2}\)</span> or a space of smooth functions <span class="math inline">\(C^\infty([t_1, t_2], \mathbb{R}^n)\)</span>), and the codomain <span class="math inline">\(F\)</span> is <span class="math inline">\(\mathbb{R}\)</span>.</p>
+</section>
+<section id="defining-the-action-functional" class="level2">
+<h2 class="anchored" data-anchor-id="defining-the-action-functional">Defining the Action Functional</h2>
+<p>In physics, the action is: <span class="math display">\[ S[q] = \int_{t_1}^{t_2} L(t, q(t), \dot{q}(t)) \, dt \]</span></p>
+<p>To formalize this in Lean, we must: 1. Define the Lagrangian <span class="math inline">\(L : \mathbb{R} \times \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}\)</span> with appropriate smoothness conditions (e.g., <span class="math inline">\(C^2\)</span>). 2. Define the space of admissible paths <span class="math inline">\(\mathcal{P} = \{ q \in C^2([t_1, t_2], \mathbb{R}^n) \mid q(t_1) = q_1, q(t_2) = q_2 \}\)</span>. 3. Define the integral using Lean’s measure theory library (Bochner integration).</p>
+<pre class="lean"><code>import Mathlib.MeasureTheory.Integral.Bochner
+
+-- A rough sketch of how the action functional might be typed in Lean
+def ActionFunctional (L : ℝ → ℝ → ℝ → ℝ) (q : ℝ → ℝ) (t1 t2 : ℝ) : ℝ :=
+  ∫ t in t1..t2, L t (q t) (deriv q t)</code></pre>
+</section>
+<section id="the-principle-of-stationary-action" class="level2">
+<h2 class="anchored" data-anchor-id="the-principle-of-stationary-action">The Principle of Stationary Action</h2>
+<p>The principle of stationary action states that the physical path <span class="math inline">\(q_{true}\)</span> is a critical point of <span class="math inline">\(S[q]\)</span>: <span class="math display">\[ \delta S = 0 \iff D S(q_{true})[\eta] = 0 \quad \text{for all variations } \eta \]</span></p>
+<p>In Lean, stating that a function has a local extremum (or just a stationary point) involves asserting that its Fréchet derivative evaluates to zero. <code>mathlib</code> contains theorems like <code>hasFDerivAt_of_local_min</code>, which proves that the derivative is zero at a local minimum, generalizing Fermat’s theorem to Banach spaces.</p>
+<pre class="lean"><code>theorem stationary_action (S : (ℝ → ℝ) → ℝ) (q : ℝ → ℝ)
+    (h_stat : fderiv ℝ S q = 0) : 
+    /- Euler-Lagrange equations hold -/ := by
+  sorry -- The proof involves integration by parts, formalized via the Fundamental Theorem of Calculus.</code></pre>
+</section>
+<section id="deriving-euler-lagrange-the-fundamental-lemma-of-calculus-of-variations" class="level2">
+<h2 class="anchored" data-anchor-id="deriving-euler-lagrange-the-fundamental-lemma-of-calculus-of-variations">Deriving Euler-Lagrange: The Fundamental Lemma of Calculus of Variations</h2>
+<p>A crucial step in the physics derivation is the Fundamental Lemma of Calculus of Variations: If <span class="math inline">\(\int_{t_1}^{t_2} f(t) \eta(t) dt = 0\)</span> for all smooth functions <span class="math inline">\(\eta(t)\)</span> vanishing at the boundaries, then <span class="math inline">\(f(t) = 0\)</span> everywhere.</p>
+<p>Formalizing this lemma in Lean 4 requires: 1. Constructing bump functions (which are available in <code>mathlib</code>’s smooth manifolds library). 2. Using measure theory to show that if the integral of <span class="math inline">\(f \cdot \eta\)</span> is zero for all bump functions, the almost-everywhere equivalence class of <span class="math inline">\(f\)</span> is zero. 3. Using the continuity of <span class="math inline">\(f\)</span> to upgrade “almost everywhere zero” to “everywhere zero”.</p>
+</section>
+<section id="current-state-of-research-and-academia" class="level2">
+<h2 class="anchored" data-anchor-id="current-state-of-research-and-academia">Current State of Research and Academia</h2>
+<p>While the basic calculus of variations is well-understood mathematically, its complete, end-to-end formalization in Lean 4 is an active area of interest within the <strong>mathematical physics community</strong>:</p>
+<ol type="1">
+<li><strong>Differential Geometry and Mechanics</strong>: The <code>mathlib</code> community is actively developing the theory of smooth manifolds, tangent bundles, and symplectic geometry. Classical mechanics naturally lives on the cotangent bundle <span class="math inline">\(T^*M\)</span> (Hamiltonian mechanics) and the tangent bundle <span class="math inline">\(TM\)</span> (Lagrangian mechanics).</li>
+<li><strong>Noether’s Theorem</strong>: Formalizing symmetry and conservation laws using Lie groups acting on manifolds is a major milestone for formalizing physics.</li>
+<li><strong>Optics &amp; Shortest Paths</strong>: Formalizing that geodesics on a Riemannian manifold satisfy the geodesic equation (a special case of Euler-Lagrange) is closely tied to ongoing work in Riemannian geometry in Lean 4.</li>
+</ol>
+<p>By translating physics into Lean 4, researchers can ensure there are no hidden assumptions in their derivations, providing absolute rigor to the foundational principles of mechanics we study in Chapter 6!</p>
 
 
 
 <!-- -->
 
+</section>
+</section>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-title" data-direction="asc">
-        Title
-      </option>
-      <option value="listing-date-sort" data-direction="asc">
-        Created - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Created - Newest
-      </option>
-      <option value="listing-date-modified-sort" data-direction="asc">
-        Modified - Oldest
-      </option>
-      <option value="listing-date-modified-sort" data-direction="desc">
-        Modified - Newest
-      </option>
-    </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Rm9ybWFsJTIwVmVyaWZpY2F0aW9uJTJDTGVhbiUyMDQlMkNDYWxjdWx1cyUyMG9mJTIwVmFyaWF0aW9ucyUyQ0NvZGU=" data-listing-date-sort="1788825600000" data-listing-file-modified-sort="1788908436225" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="764">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../simulations/lean4-formalization.html" class="no-external">Formalizing Calculus of Variations in Lean 4</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../simulations/lean4-formalization.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Rm9ybWFsJTIwVmVyaWZpY2F0aW9u'); return false;">Formal Verification</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TGVhbiUyMDQ='); return false;">Lean 4</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q2FsY3VsdXMlMjBvZiUyMFZhcmlhdGlvbnM='); return false;">Calculus of Variations</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q29kZQ=='); return false;">Code</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../simulations/lean4-formalization.html" class="no-external">
-<div class="listing-date">
-2026-09-08
-</div>
-<div class="listing-reading-time">4 min</div>
-<div class="metadata-value listing-date-modified">
-Invalid Date
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="U2ltdWxhdGlvbnMlMkNJbnRlcmFjdGl2ZSUyQ0NhbGN1bHVzJTIwb2YlMjBWYXJpYXRpb25zJTJDQ3ljbG9pZCUyQ01lY2hhbmljcw==" data-listing-date-sort="1788825600000" data-listing-file-modified-sort="1788908436225" data-listing-date-modified-sort="1788908436000" data-listing-reading-time-sort="43" data-listing-word-count-sort="8552">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../simulations/cycloid-mechanics-interactive.html" class="no-external">Interactive Cycloid Mechanics: Brachistochrone, Tautochrone &amp; Huygens’ Pendulum</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../simulations/cycloid-mechanics-interactive.html" class="no-external">Real-time HTML5 Canvas physics simulations: Curve of fastest descent, equal-time oscillations, and isochronous cycloidal clocks.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('U2ltdWxhdGlvbnM='); return false;">Simulations</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SW50ZXJhY3RpdmU='); return false;">Interactive</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q2FsY3VsdXMlMjBvZiUyMFZhcmlhdGlvbnM='); return false;">Calculus of Variations</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q3ljbG9pZA=='); return false;">Cycloid</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TWVjaGFuaWNz'); return false;">Mechanics</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../simulations/cycloid-mechanics-interactive.html" class="no-external">
-<div class="listing-date">
-2026-09-08
-</div>
-<div class="listing-reading-time">43 min</div>
-<div class="metadata-value listing-date-modified">
-2026-09-08
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="bWFuaW0lMkNweXRob24lMkNhbmltYXRpb24lMkNjb2RlJTJDc2ltdWxhdGlvbg==" data-listing-date-sort="1788652800000" data-listing-file-modified-sort="1788908436225" data-listing-date-modified-sort="1788908436000" data-listing-reading-time-sort="5" data-listing-word-count-sort="861">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../simulations/manim-animations.html" class="no-external">Manim Mathematical Animations &amp; Code</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../simulations/manim-animations.html" class="no-external">Programmatic video rendering, 3Blue1Brown-style animations, and browser-native vector simulations.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWFuaW0='); return false;">manim</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cHl0aG9u'); return false;">python</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('YW5pbWF0aW9u'); return false;">animation</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">code</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('c2ltdWxhdGlvbg=='); return false;">simulation</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../simulations/manim-animations.html" class="no-external">
-<div class="listing-date">
-2026-09-06
-</div>
-<div class="listing-reading-time">5 min</div>
-<div class="metadata-value listing-date-modified">
-2026-09-08
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="U2ltdWxhdGlvbnMlMkNDJTJCJTJCJTJDUHl0aG9uJTJDSW50ZXJhY3RpdmUlMkNPYnNlcnZhYmxlJTIwSlM=" data-listing-date-sort="1788566400000" data-listing-file-modified-sort="1788908436225" data-listing-date-modified-sort="1788908436000" data-listing-reading-time-sort="8" data-listing-word-count-sort="1487">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../simulations/interactive-pendulum-and-verlet.html" class="no-external">Interactive Simulations &amp; Multi-Language Integrators</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../simulations/interactive-pendulum-and-verlet.html" class="no-external">Real-time browser dynamics (Observable JS), high-performance C++ Verlet integration, and Python phase portraits.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('U2ltdWxhdGlvbnM='); return false;">Simulations</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QyUyQiUyQg=='); return false;">C++</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SW50ZXJhY3RpdmU='); return false;">Interactive</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('T2JzZXJ2YWJsZSUyMEpT'); return false;">Observable JS</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../simulations/interactive-pendulum-and-verlet.html" class="no-external">
-<div class="listing-date">
-2026-09-05
-</div>
-<div class="listing-reading-time">8 min</div>
-<div class="metadata-value listing-date-modified">
-2026-09-08
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -878,32 +760,92 @@ Invalid Date
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Code &amp; Simulations"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Interactive in-browser simulations, symplectic numerical integrators, Python scripts, and Manim video animations."</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">listing:</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">  contents: "*.qmd"</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  sort:</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    - "date desc"</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    - "title asc"</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  type: default</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">  categories: true</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">  sort-ui: [title, date, date-modified]</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">  filter-ui: [title, date, categories]</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">  fields: [date, date-modified, title, subtitle, categories, reading-time]</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">  field-display-names:</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">    date: "Created"</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">    date-modified: "Modified"</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">    reading-time: "Read Time"</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">  page-size: 15</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="an">page-layout:</span><span class="co"> full</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>This section hosts all computational tools, code notebooks, and programmatic visualizations for PHYC54:</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Interactive Simulations:** Live in-browser physics simulations running via Observable JS (OJS) and HTML5 Canvas.</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Symplectic Integrators:** Velocity Verlet and RK4 solvers implemented in Python, C++, and Fortran for energy-conserving Hamiltonian orbits.</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Manim Mathematical Animations:** Python scripts and rendering pipelines for 3Blue1Brown-style video demonstrations of chaos, phase trajectories, and coordinate transformations.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Formalizing Calculus of Variations in Lean 4"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-09-08"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "An overview of how the principles of stationary action and the Euler-Lagrange equations are formally verified in the Lean 4 theorem prover using mathlib."</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [Formal Verification, Lean 4, Calculus of Variations, Code]</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction to Lean 4 and Formal Verification</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>In Chapter 6, we derived the Euler-Lagrange equations using the calculus of variations. While physicists often use heuristic arguments and physical intuition to define functional derivatives and stationary points, mathematicians require rigorous definitions involving Banach spaces, Fréchet derivatives, and functional analysis. </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Lean 4</span><span class="co">](https://leanprover.github.io/)</span> is a dependently typed functional programming language and interactive theorem prover. In recent years, it has gained immense popularity in academia (e.g., the Fields Medalist Peter Scholze's Liquid Tensor Experiment, and Terrence Tao's recent work) for formalizing complex mathematics. </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>In this article, we explore how the calculus of variations and the principle of stationary action can be formalized in Lean 4 using its mathematics library, <span class="in">`mathlib`</span>.</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Functional Analysis in `mathlib`</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>To formalize the calculus of variations, we need a rigorous framework for calculus on infinite-dimensional spaces (spaces of paths/functions). In Lean 4, this is handled through the theory of **Normed Spaces** and **Fréchet derivatives**.</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>In <span class="in">`mathlib`</span>, the derivative of a function $f : E \to F$ between two normed vector spaces is defined using the <span class="in">`HasFDerivAt`</span> or <span class="in">`fderiv`</span> API.</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="in">```lean</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="in">import Mathlib.Analysis.Calculus.Deriv.Basic</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="in">import Mathlib.Analysis.NormedSpace.Basic</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="in">-- E and F are Normed Vector Spaces over ℝ</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="in">variable {E F : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="in">variable [NormedAddCommGroup F] [NormedSpace ℝ F]</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="in">-- A function f is differentiable at x if it has a continuous linear map as its Fréchet derivative</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="in">-- fderiv ℝ f x represents the Fréchet derivative of f at x</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>For the action functional $S$, the domain $E$ is a space of paths (e.g., a Sobolev space $W^{1,2}$ or a space of smooth functions $C^\infty(<span class="co">[</span><span class="ot">t_1, t_2</span><span class="co">]</span>, \mathbb{R}^n)$), and the codomain $F$ is $\mathbb{R}$.</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## Defining the Action Functional</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>In physics, the action is:</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>$$ S<span class="co">[</span><span class="ot">q</span><span class="co">]</span> = \int_{t_1}^{t_2} L(t, q(t), \dot{q}(t)) \, dt $$</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>To formalize this in Lean, we must:</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Define the Lagrangian $L : \mathbb{R} \times \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ with appropriate smoothness conditions (e.g., $C^2$).</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Define the space of admissible paths $\mathcal{P} = <span class="sc">\{</span> q \in C^2(<span class="co">[</span><span class="ot">t_1, t_2</span><span class="co">]</span>, \mathbb{R}^n) \mid q(t_1) = q_1, q(t_2) = q_2 <span class="sc">\}</span>$.</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Define the integral using Lean's measure theory library (Bochner integration).</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="in">```lean</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="in">import Mathlib.MeasureTheory.Integral.Bochner</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="in">-- A rough sketch of how the action functional might be typed in Lean</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="in">def ActionFunctional (L : ℝ → ℝ → ℝ → ℝ) (q : ℝ → ℝ) (t1 t2 : ℝ) : ℝ :=</span></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a><span class="in">  ∫ t in t1..t2, L t (q t) (deriv q t)</span></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Principle of Stationary Action</span></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>The principle of stationary action states that the physical path $q_{true}$ is a critical point of $S<span class="co">[</span><span class="ot">q</span><span class="co">]</span>$:</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>$$ \delta S = 0 \iff D S(q_{true})<span class="co">[</span><span class="ot">\eta</span><span class="co">]</span> = 0 \quad \text{for all variations } \eta $$</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>In Lean, stating that a function has a local extremum (or just a stationary point) involves asserting that its Fréchet derivative evaluates to zero. <span class="in">`mathlib`</span> contains theorems like <span class="in">`hasFDerivAt_of_local_min`</span>, which proves that the derivative is zero at a local minimum, generalizing Fermat's theorem to Banach spaces.</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a><span class="in">```lean</span></span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a><span class="in">theorem stationary_action (S : (ℝ → ℝ) → ℝ) (q : ℝ → ℝ)</span></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a><span class="in">    (h_stat : fderiv ℝ S q = 0) : </span></span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a><span class="in">    /- Euler-Lagrange equations hold -/ := by</span></span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a><span class="in">  sorry -- The proof involves integration by parts, formalized via the Fundamental Theorem of Calculus.</span></span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a><span class="fu">## Deriving Euler-Lagrange: The Fundamental Lemma of Calculus of Variations</span></span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>A crucial step in the physics derivation is the Fundamental Lemma of Calculus of Variations:</span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>If $\int_{t_1}^{t_2} f(t) \eta(t) dt = 0$ for all smooth functions $\eta(t)$ vanishing at the boundaries, then $f(t) = 0$ everywhere.</span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>Formalizing this lemma in Lean 4 requires:</span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Constructing bump functions (which are available in <span class="in">`mathlib`</span>'s smooth manifolds library).</span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Using measure theory to show that if the integral of $f \cdot \eta$ is zero for all bump functions, the almost-everywhere equivalence class of $f$ is zero.</span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Using the continuity of $f$ to upgrade "almost everywhere zero" to "everywhere zero".</span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a><span class="fu">## Current State of Research and Academia</span></span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>While the basic calculus of variations is well-understood mathematically, its complete, end-to-end formalization in Lean 4 is an active area of interest within the **mathematical physics community**:</span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Differential Geometry and Mechanics**: The <span class="in">`mathlib`</span> community is actively developing the theory of smooth manifolds, tangent bundles, and symplectic geometry. Classical mechanics naturally lives on the cotangent bundle $T^*M$ (Hamiltonian mechanics) and the tangent bundle $TM$ (Lagrangian mechanics).</span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Noether's Theorem**: Formalizing symmetry and conservation laws using Lie groups acting on manifolds is a major milestone for formalizing physics.</span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Optics &amp; Shortest Paths**: Formalizing that geodesics on a Riemannian manifold satisfy the geodesic equation (a special case of Euler-Lagrange) is closely tied to ongoing work in Riemannian geometry in Lean 4.</span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>By translating physics into Lean 4, researchers can ensure there are no hidden assumptions in their derivations, providing absolute rigor to the foundational principles of mechanics we study in Chapter 6!</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
