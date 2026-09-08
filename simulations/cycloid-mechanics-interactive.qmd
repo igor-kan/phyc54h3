@@ -19,11 +19,300 @@ The cycloid is one of the most celebrated curves in classical mechanics and the 
 2. **The Tautochrone (Isochrone):** A curve along which a particle released from rest at any point reaches the bottom in the exact same time, independent of release height.
 3. **The Cycloidal Pendulum:** By suspending a flexible pendulum string between two cycloidal guides ("cheeks"), the string unwraps along the cheeks so the bob traces an exact evolute cycloid, eliminating the "circular error" of ordinary pendulums.
 
-Below are three live, interactive in-browser simulations demonstrating these principles.
+Below are four live, interactive in-browser simulations demonstrating these principles.
 
 ---
 
-# Simulation 1: The Brachistochrone Race
+# Simulation 1: Generating a Cycloid — Rolling Wheel Along Underside of Axis
+
+A cycloid is defined geometrically as the trajectory traced out by a fixed marker point on the rim of a wheel of radius $a$ rolling without slipping along a straight line. In the Brachistochrone problem, the rail is the horizontal ceiling axis $y = 0$, and the wheel rolls along its underside ($y$ increasing downward):
+
+- **Wheel Center:** $(x_c, y_c) = (a\theta, a)$
+- **Rim Marker $P(x, y)$:** $x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta)$
+
+Use the **Wheel Radius Slider ($a$)** below to interactively scale the wheel and observe how the cycloid arch dynamically stretches or compresses. You can also pause, reset, or scrub the rotation angle $\theta$ manually!
+
+```{=html}
+<div style="background: #0f172a; color: #f8fafc; border-radius: 12px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-bottom: 30px;">
+  <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+    <div style="display: flex; gap: 10px;">
+      <button id="wheel-play-btn" style="background: #0284c7; color: white; border: none; padding: 8px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s;">❚❚ Pause</button>
+      <button id="wheel-reset-btn" style="background: #475569; color: white; border: none; padding: 8px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s;">↺ Reset</button>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: center; font-size: 0.9em;">
+      <label>Wheel Radius <i>a</i>: 
+        <input type="range" id="wheel-radius-slider" min="22" max="60" step="1" value="40" style="vertical-align: middle;">
+        <span id="wheel-radius-val" style="font-weight: bold; color: #38bdf8;">40 px</span>
+      </label>
+      <label>Angle θ: 
+        <input type="range" id="wheel-theta-slider" min="0" max="1256" step="1" value="0" style="vertical-align: middle; width: 140px;">
+        <span id="wheel-theta-val" style="font-weight: bold; color: #a855f7;">0.00 rad</span>
+      </label>
+    </div>
+  </div>
+
+  <canvas id="wheel-canvas" width="750" height="340" style="width: 100%; height: auto; background: #1e293b; border-radius: 8px; border: 1px solid #334155; display: block;"></canvas>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-top: 15px;">
+    <div style="background: #1e293b; padding: 10px 14px; border-radius: 6px; border-left: 4px solid #38bdf8;">
+      <div style="font-size: 0.8em; color: #94a3b8;">Wheel Center (x_c, y_c)</div>
+      <div id="wheel-center-readout" style="font-size: 1.1em; font-weight: bold; color: #7dd3fc;">(0, 40) px</div>
+    </div>
+    <div style="background: #1e293b; padding: 10px 14px; border-radius: 6px; border-left: 4px solid #c084fc;">
+      <div style="font-size: 0.8em; color: #94a3b8;">Tracing Marker P(x, y)</div>
+      <div id="wheel-marker-readout" style="font-size: 1.1em; font-weight: bold; color: #d8b4fe;">(0, 0) px</div>
+    </div>
+    <div style="background: #1e293b; padding: 10px 14px; border-radius: 6px; border-left: 4px solid #facc15;">
+      <div style="font-size: 0.8em; color: #94a3b8;">Launch / Slope Angle ψ</div>
+      <div id="wheel-angle-readout" style="font-size: 1.1em; font-weight: bold; color: #fde047;">90.0° (Vertical)</div>
+    </div>
+    <div style="background: #1e293b; padding: 10px 14px; border-radius: 6px; border-left: 4px solid #4ade80;">
+      <div style="font-size: 0.8em; color: #94a3b8;">Arch Length s(θ)</div>
+      <div id="wheel-arc-readout" style="font-size: 1.1em; font-weight: bold; color: #86efac;">0.0 px</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const canvas = document.getElementById('wheel-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  let a = 40;
+  let theta = 0;
+  const maxTheta = 4 * Math.PI;
+  let running = true;
+  let animId = null;
+  let lastTimestamp = 0;
+  const rollSpeed = 1.6;
+
+  const xOrigin = 50;
+  const yRail = 45;
+
+  function updateReadouts() {
+    const rVal = document.getElementById('wheel-radius-val');
+    const thVal = document.getElementById('wheel-theta-val');
+    const thSlider = document.getElementById('wheel-theta-slider');
+    if (rVal) rVal.innerText = a + ' px';
+    if (thVal) thVal.innerText = theta.toFixed(2) + ' rad';
+    if (thSlider) thSlider.value = Math.round((theta / maxTheta) * 1256);
+
+    const cReadout = document.getElementById('wheel-center-readout');
+    const mReadout = document.getElementById('wheel-marker-readout');
+    const aReadout = document.getElementById('wheel-angle-readout');
+    const sReadout = document.getElementById('wheel-arc-readout');
+
+    if (cReadout) cReadout.innerText = `(${Math.round(a*theta)}, ${a}) px`;
+    if (mReadout) mReadout.innerText = `(${Math.round(a*(theta - Math.sin(theta)))}, ${Math.round(a*(1 - Math.cos(theta)))}) px`;
+
+    const thMod = theta % (2 * Math.PI);
+    const psiDeg = ((Math.PI - thMod) / 2) * (180 / Math.PI);
+    let desc = "";
+    if (Math.abs(psiDeg - 90) < 2) desc = "(Vertical drop)";
+    else if (Math.abs(psiDeg) < 2) desc = "(Horizontal trough)";
+    else if (Math.abs(psiDeg + 90) < 2) desc = "(Vertical rise)";
+    if (aReadout) aReadout.innerText = `${psiDeg.toFixed(1)}° ${desc}`;
+
+    const sArc = 4 * a * (1 - Math.cos(thMod / 2));
+    if (sReadout) sReadout.innerText = `${sArc.toFixed(1)} px`;
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Ceiling / Rail (y = 0)
+    ctx.fillStyle = '#334155';
+    ctx.fillRect(0, 0, canvas.width, yRail);
+
+    ctx.strokeStyle = '#475569';
+    ctx.lineWidth = 1.5;
+    for (let hx = 10; hx < canvas.width; hx += 16) {
+      ctx.beginPath();
+      ctx.moveTo(hx, yRail - 15);
+      ctx.lineTo(hx + 12, yRail);
+      ctx.stroke();
+    }
+
+    ctx.strokeStyle = '#94a3b8';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(0, yRail);
+    ctx.lineTo(canvas.width, yRail);
+    ctx.stroke();
+
+    ctx.fillStyle = '#e2e8f0';
+    ctx.font = '12px system-ui, sans-serif';
+    ctx.fillText('Horizontal Rail: y = 0 (Underside track)', 20, yRail - 18);
+    ctx.fillText('Origin (x=0, θ=0)', xOrigin - 25, yRail - 6);
+
+    for (let k = 1; k <= 2; k++) {
+      const xCusp = xOrigin + k * 2 * Math.PI * a;
+      if (xCusp < canvas.width) {
+        ctx.fillStyle = '#64748b';
+        ctx.beginPath();
+        ctx.arc(xCusp, yRail, 4, 0, 2*Math.PI);
+        ctx.fill();
+        ctx.fillText(`Cusp ${k} (x = ${k}·2πa)`, xCusp - 40, yRail - 6);
+      }
+    }
+
+    // Faint full cycloid path
+    ctx.strokeStyle = '#3b4252';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    const totalSteps = 400;
+    for (let i = 0; i <= totalSteps; i++) {
+      const th = (i / totalSteps) * maxTheta;
+      const x = xOrigin + a * (th - Math.sin(th));
+      const y = yRail + a * (1 - Math.cos(th));
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // Active traced path from 0 to theta
+    ctx.strokeStyle = '#c084fc';
+    ctx.lineWidth = 3.5;
+    ctx.shadowColor = '#a855f7';
+    ctx.shadowBlur = 10;
+    ctx.beginPath();
+    const currentSteps = Math.min(totalSteps, Math.floor((theta / maxTheta) * totalSteps));
+    for (let i = 0; i <= currentSteps; i++) {
+      const th = (i / totalSteps) * maxTheta;
+      const x = xOrigin + a * (th - Math.sin(th));
+      const y = yRail + a * (1 - Math.cos(th));
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+
+    // Rolling Wheel
+    const xc = xOrigin + a * theta;
+    const yc = yRail + a;
+
+    ctx.fillStyle = 'rgba(56, 189, 248, 0.12)';
+    ctx.strokeStyle = '#38bdf8';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.arc(xc, yc, a, 0, 2*Math.PI);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle = '#38bdf8';
+    ctx.beginPath();
+    ctx.arc(xc, yc, 4, 0, 2*Math.PI);
+    ctx.fill();
+
+    // Spokes
+    ctx.strokeStyle = 'rgba(56, 189, 248, 0.45)';
+    ctx.lineWidth = 1.5;
+    for (let i = 0; i < 8; i++) {
+      const spAng = theta + (i * Math.PI / 4) - Math.PI/2;
+      ctx.beginPath();
+      ctx.moveTo(xc, yc);
+      ctx.lineTo(xc + a * Math.cos(spAng), yc + a * Math.sin(spAng));
+      ctx.stroke();
+    }
+
+    // Contact point dot
+    ctx.fillStyle = '#f87171';
+    ctx.beginPath();
+    ctx.arc(xc, yRail, 3.5, 0, 2*Math.PI);
+    ctx.fill();
+
+    // Marker arm
+    const xp = xc - a * Math.sin(theta);
+    const yp = yc - a * Math.cos(theta);
+
+    ctx.strokeStyle = '#e879f9';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.moveTo(xc, yc);
+    ctx.lineTo(xp, yp);
+    ctx.stroke();
+
+    // Tracing Marker P(x, y)
+    ctx.shadowColor = '#e879f9';
+    ctx.shadowBlur = 14;
+    ctx.fillStyle = '#f472b6';
+    ctx.beginPath();
+    ctx.arc(xp, yp, 7.5, 0, 2*Math.PI);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath();
+    ctx.arc(xp - 1.5, yp - 1.5, 2.5, 0, 2*Math.PI);
+    ctx.fill();
+
+    ctx.fillStyle = '#fdf4ff';
+    ctx.font = 'bold 12px system-ui, sans-serif';
+    ctx.fillText('P(x,y)', xp + 10, yp + 16);
+  }
+
+  function step(ts) {
+    if (!lastTimestamp) lastTimestamp = ts;
+    const dt = Math.min((ts - lastTimestamp) / 1000, 0.04);
+    lastTimestamp = ts;
+
+    if (running) {
+      theta += rollSpeed * dt;
+      if (theta > maxTheta) {
+        theta = 0;
+      }
+      updateReadouts();
+    }
+
+    draw();
+    animId = requestAnimationFrame(step);
+  }
+
+  const playBtn = document.getElementById('wheel-play-btn');
+  if (playBtn) {
+    playBtn.onclick = function() {
+      running = !running;
+      this.innerText = running ? '❚❚ Pause' : '▶ Play';
+    };
+  }
+
+  const resetBtn = document.getElementById('wheel-reset-btn');
+  if (resetBtn) {
+    resetBtn.onclick = function() {
+      theta = 0;
+      updateReadouts();
+      draw();
+    };
+  }
+
+  const rSlider = document.getElementById('wheel-radius-slider');
+  if (rSlider) {
+    rSlider.oninput = function() {
+      a = parseInt(this.value);
+      updateReadouts();
+      draw();
+    };
+  }
+
+  const thSlider = document.getElementById('wheel-theta-slider');
+  if (thSlider) {
+    thSlider.oninput = function() {
+      theta = (parseInt(this.value) / 1256) * maxTheta;
+      updateReadouts();
+      draw();
+    };
+  }
+
+  updateReadouts();
+  draw();
+  animId = requestAnimationFrame(step);
+})();
+</script>
+
+---
+
+# Simulation 2: The Brachistochrone Race
 
 In 1696, Johann Bernoulli challenged mathematicians to find the shape of a wire connecting two points along which a bead will slide under gravity (without friction) in the shortest possible time.
 
@@ -316,7 +605,7 @@ The four competing trajectories below connect the origin $(0, 0)$ to a lower tar
 
 ---
 
-# Simulation 2: The Tautochrone (Isochrone) Property
+# Simulation 3: The Tautochrone (Isochrone) Property
 
 Huygens discovered in 1659 that an inverted cycloid is **tautochronous**: a frictionless particle sliding down a cycloidal track to the lowest point takes the *exact same time* regardless of where on the arch it is released!
 
@@ -512,7 +801,7 @@ In the simulation below, four beads are placed at widely disparate initial relea
 
 ---
 
-# Simulation 3: Huygens' Isochronous Cycloidal Pendulum
+# Simulation 4: Huygens' Isochronous Cycloidal Pendulum
 
 In a standard circular pendulum, the period increases with amplitude:
 $$ T \approx 2\pi\sqrt{\frac{L}{g}}\left(1 + \frac{1}{16}\theta_0^2 + \frac{11}{3072}\theta_0^4 + \dots\right) $$

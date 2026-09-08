@@ -235,6 +235,200 @@ The parameter $\theta$ is the cumulative rotation angle (in radians) of the roll
            v y
 ```
 
+```{=html}
+<div style="background: #0f172a; color: #f8fafc; border-radius: 12px; padding: 18px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin: 20px 0;">
+  <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+    <div style="display: flex; gap: 10px;">
+      <button id="ch6-wheel-play-btn" style="background: #0284c7; color: white; border: none; padding: 6px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s;">❚❚ Pause</button>
+      <button id="ch6-wheel-reset-btn" style="background: #475569; color: white; border: none; padding: 6px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s;">↺ Reset</button>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center; font-size: 0.88em;">
+      <label>Wheel Radius <i>a</i>: 
+        <input type="range" id="ch6-wheel-radius-slider" min="20" max="55" step="1" value="38" style="vertical-align: middle;">
+        <span id="ch6-wheel-radius-val" style="font-weight: bold; color: #38bdf8;">38 px</span>
+      </label>
+      <label>Angle θ: 
+        <input type="range" id="ch6-wheel-theta-slider" min="0" max="1256" step="1" value="0" style="vertical-align: middle; width: 120px;">
+        <span id="ch6-wheel-theta-val" style="font-weight: bold; color: #a855f7;">0.00 rad</span>
+      </label>
+    </div>
+  </div>
+
+  <canvas id="ch6-wheel-canvas" width="720" height="300" style="width: 100%; height: auto; background: #1e293b; border-radius: 8px; border: 1px solid #334155; display: block;"></canvas>
+  <div style="font-size: 0.82em; color: #94a3b8; margin-top: 8px; text-align: center;">
+    <b>Interactive Demo:</b> Adjust radius <i>a</i> to observe how the cycloid arch scales proportionally with wheel size.
+  </div>
+</div>
+
+<script>
+(function() {
+  const canvas = document.getElementById('ch6-wheel-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  let a = 38;
+  let theta = 0;
+  const maxTheta = 4 * Math.PI;
+  let running = true;
+  let animId = null;
+  let lastTs = 0;
+  const rollSpeed = 1.5;
+
+  const xOrigin = 45;
+  const yRail = 35;
+
+  function update() {
+    const rVal = document.getElementById('ch6-wheel-radius-val');
+    const thVal = document.getElementById('ch6-wheel-theta-val');
+    const thSlider = document.getElementById('ch6-wheel-theta-slider');
+    if (rVal) rVal.innerText = a + ' px';
+    if (thVal) thVal.innerText = theta.toFixed(2) + ' rad';
+    if (thSlider) thSlider.value = Math.round((theta / maxTheta) * 1256);
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = '#334155';
+    ctx.fillRect(0, 0, canvas.width, yRail);
+    ctx.strokeStyle = '#475569';
+    ctx.lineWidth = 1.5;
+    for (let hx = 10; hx < canvas.width; hx += 16) {
+      ctx.beginPath(); ctx.moveTo(hx, yRail - 12); ctx.lineTo(hx + 10, yRail); ctx.stroke();
+    }
+    ctx.strokeStyle = '#94a3b8';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath(); ctx.moveTo(0, yRail); ctx.lineTo(canvas.width, yRail); ctx.stroke();
+
+    ctx.fillStyle = '#cbd5e1';
+    ctx.font = '11px system-ui, sans-serif';
+    ctx.fillText('Underside Rail (y = 0)', 15, yRail - 12);
+
+    ctx.strokeStyle = '#334155';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    const totalSteps = 300;
+    for (let i = 0; i <= totalSteps; i++) {
+      const th = (i / totalSteps) * maxTheta;
+      const x = xOrigin + a * (th - Math.sin(th));
+      const y = yRail + a * (1 - Math.cos(th));
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    ctx.strokeStyle = '#c084fc';
+    ctx.lineWidth = 3;
+    ctx.shadowColor = '#a855f7';
+    ctx.shadowBlur = 8;
+    ctx.beginPath();
+    const currentSteps = Math.min(totalSteps, Math.floor((theta / maxTheta) * totalSteps));
+    for (let i = 0; i <= currentSteps; i++) {
+      const th = (i / totalSteps) * maxTheta;
+      const x = xOrigin + a * (th - Math.sin(th));
+      const y = yRail + a * (1 - Math.cos(th));
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+
+    const xc = xOrigin + a * theta;
+    const yc = yRail + a;
+
+    ctx.fillStyle = 'rgba(56, 189, 248, 0.12)';
+    ctx.strokeStyle = '#38bdf8';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(xc, yc, a, 0, 2*Math.PI);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle = '#38bdf8';
+    ctx.beginPath(); ctx.arc(xc, yc, 3.5, 0, 2*Math.PI); ctx.fill();
+
+    ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
+    ctx.lineWidth = 1.2;
+    for (let i = 0; i < 6; i++) {
+      const spAng = theta + (i * Math.PI / 3) - Math.PI/2;
+      ctx.beginPath(); ctx.moveTo(xc, yc); ctx.lineTo(xc + a * Math.cos(spAng), yc + a * Math.sin(spAng)); ctx.stroke();
+    }
+
+    const xp = xc - a * Math.sin(theta);
+    const yp = yc - a * Math.cos(theta);
+
+    ctx.strokeStyle = '#e879f9';
+    ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(xc, yc); ctx.lineTo(xp, yp); ctx.stroke();
+
+    ctx.shadowColor = '#e879f9';
+    ctx.shadowBlur = 12;
+    ctx.fillStyle = '#f472b6';
+    ctx.beginPath(); ctx.arc(xp, yp, 6.5, 0, 2*Math.PI); ctx.fill();
+    ctx.shadowBlur = 0;
+
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath(); ctx.arc(xp - 1, yp - 1, 2, 0, 2*Math.PI); ctx.fill();
+
+    ctx.fillStyle = '#fdf4ff';
+    ctx.font = 'bold 11px system-ui, sans-serif';
+    ctx.fillText('P(x,y)', xp + 8, yp + 14);
+  }
+
+  function step(ts) {
+    if (!lastTs) lastTs = ts;
+    const dt = Math.min((ts - lastTs) / 1000, 0.04);
+    lastTs = ts;
+
+    if (running) {
+      theta += rollSpeed * dt;
+      if (theta > maxTheta) theta = 0;
+      update();
+    }
+
+    draw();
+    animId = requestAnimationFrame(step);
+  }
+
+  const playBtn = document.getElementById('ch6-wheel-play-btn');
+  if (playBtn) {
+    playBtn.onclick = function() {
+      running = !running;
+      this.innerText = running ? '❚❚ Pause' : '▶ Play';
+    };
+  }
+
+  const resetBtn = document.getElementById('ch6-wheel-reset-btn');
+  if (resetBtn) {
+    resetBtn.onclick = function() {
+      theta = 0;
+      update();
+      draw();
+    };
+  }
+
+  const rSlider = document.getElementById('ch6-wheel-radius-slider');
+  if (rSlider) {
+    rSlider.oninput = function() {
+      a = parseInt(this.value);
+      update();
+      draw();
+    };
+  }
+
+  const thSlider = document.getElementById('ch6-wheel-theta-slider');
+  if (thSlider) {
+    thSlider.oninput = function() {
+      theta = (parseInt(this.value) / 1256) * maxTheta;
+      update();
+      draw();
+    };
+  }
+
+  update();
+  draw();
+  animId = requestAnimationFrame(step);
+})();
+</script>
+
 Imagine a circular disk of radius $a$ rolling without slipping along the underside of the horizontal axis ($y = 0$, pointing downward):
 - **Center of the wheel:** As the wheel rolls through an angle $\theta$, its contact point has rolled a distance $a\theta$ along the rail:
   $$ (x_c, y_c) = (a\theta, a) $$
