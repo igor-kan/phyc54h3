@@ -176,3 +176,82 @@ Apply the inversion substitution $y = \frac{1}{t}$, which gives $dy = -\frac{dt}
 $$\int_1^{1/2} \frac{-\frac{dt}{t^2}}{\frac{1}{t}\sqrt{\frac{1}{t^2} + 1}} = \int_{1/2}^1 \frac{dt}{\sqrt{1 + t^2}}$$
 Using the standard anti-derivative $\int \frac{dt}{\sqrt{1+t^2}} = \operatorname{arsinh}(t) = \ln(t + \sqrt{t^2+1})$:
 $$\left[ \ln\left(t + \sqrt{t^2 + 1}\right) \right]_{1/2}^1 = \ln(1 + \sqrt{2}) - \ln\left(\frac{1 + \sqrt{5}}{2}\right) = \mathbf{\ln\left(\frac{2 + 2\sqrt{2}}{1 + \sqrt{5}}\right)}$$
+
+---
+
+# Appendix: The Cycloid Substitution Details
+
+## What $\theta$ Represents Physically
+The parameter $\theta$ is the cumulative rotation angle (in radians) of the rolling circle that generates the curve.
+
+```text
+          x=0                         x = a*theta                      x = 2*pi*a
+   y=0 ----*-------------------------------O-------------------------------*----> x
+           |                              / \                              |
+           |                             /   \                             |
+           |                            /  a  \                            |
+           |                           O-------* P(x,y)                    |
+           |                            \ theta/                           |
+           |                             \    /                            |
+           |                              \  /                             |
+           |                               \/                              |
+           |                                                               |
+           |                               . (Trough: theta = pi, y = 2a)  |
+           v y
+```
+
+Imagine a circular disk of radius $a$ rolling without slipping along the underside of the horizontal axis ($y = 0$, pointing downward):
+
+**Center of the wheel:** As the wheel rolls through an angle $\theta$, its contact point has rolled a distance $a\theta$ along the rail. The center of the disk is located at:
+$$(x_c, y_c) = (a\theta, a)$$
+
+**Point on the perimeter ($P$):** A marker fixed to the rim starts at the origin $(0, 0)$ when $\theta = 0$. After rotating clockwise by $\theta$, the marker's relative displacement from the wheel's center is:
+$$\Delta x = -a\sin\theta, \quad \Delta y = -a\cos\theta$$
+
+**Absolute coordinates:** Combining center translation and rim rotation yields the parametric equations:
+$$x(\theta) = x_c + \Delta x = a(\theta - \sin\theta)$$
+$$y(\theta) = y_c + \Delta y = a(1 - \cos\theta)$$
+
+$\theta$ also directly determines the local slope and launch angle of the path. Differentiating with respect to $\theta$:
+$$\frac{dy}{dx} = \frac{dy/d\theta}{dx/d\theta} = \frac{a\sin\theta}{a(1 - \cos\theta)} = \frac{2\sin(\theta/2)\cos(\theta/2)}{2\sin^2(\theta/2)} = \cot\left(\frac{\theta}{2}\right)$$
+
+If $\psi$ is the inclination angle of the velocity vector relative to the horizontal ($\tan\psi = dy/dx$):
+$$\psi = \frac{\pi - \theta}{2}$$
+- **At $\theta \to 0$ (the start):** $\psi = \pi/2$ (the path drops straight vertically).
+- **At $\theta = \pi$ (the trough):** $\psi = 0$ (the trajectory is completely horizontal).
+- **At $\theta = 2\pi$ (the next cusp):** $\psi = -\pi/2$ (the path rises back to vertical).
+
+## Why Assume the First Arch ($\theta \in [0, 2\pi]$) and $\sin(\theta/2) \ge 0$?
+
+### 1. The Mathematical Reason: Eliminating Absolute Value Signs
+The substitution replaces $\sqrt{y / (2a - y)}$ with trigonometric functions:
+$$\sqrt{\frac{y}{2a - y}} = \sqrt{\frac{2a\sin^2(\theta/2)}{2a\cos^2(\theta/2)}} = \sqrt{\tan^2\left(\frac{\theta}{2}\right)} = \left\vert{} \tan\left(\frac{\theta}{2}\right) \right\vert{} = \frac{\left\vert{}\sin(\theta/2)\right\vert{}}{\left\vert{}\cos(\theta/2)\right\vert{}}$$
+By definition, the principal square root $\sqrt{u^2} = \vert{}u\vert{}$. If $\theta \in [0, 2\pi]$, then the half-angle satisfies $\frac{\theta}{2} \in [0, \pi]$.
+The sine function is strictly non-negative across the entire interval $[0, \pi]$:
+$$\sin\left(\frac{\theta}{2}\right) \ge 0 \implies \left\vert{}\sin\left(\frac{\theta}{2}\right)\right\vert{} = \sin\left(\frac{\theta}{2}\right)$$
+This ensures that the integrand evaluates to $\sin(\theta/2)$ without carrying piece-wise $\pm$ absolute value signs.
+
+### 2. The Physical Reason: Geometry of the Fastest Path
+- **Energy Bounds:** Conservation of mechanical energy gives $v = \sqrt{2gy}$. At $y = 0$, speed is zero ($v = 0$). The particle cannot rise above $y = 0$, which means it cannot continue past a cusp into negative $y$.
+- **Uniqueness:** A single arch ($\theta \in [0, 2\pi]$) starts at $(0, 0)$ and terminates at $(2\pi a, 0)$. By scaling the radius $a$, a single cycloid arch can pass through any target point $(x_2, y_2)$ in the lower half-plane ($x_2 > 0, y_2 \ge 0$).
+- **No Redundant Loops:** Any path extending past $\theta = 2\pi$ into a second arch would involve rising up to a cusp, stopping, and dropping into a new dip. That would add unnecessary path length and travel time, violating the time-minimization condition $\delta T = 0$.
+
+## Essential Mathematical Properties of Cycloids
+
+**Parametric Form:**
+$$x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta)$$
+
+**Differential Arc Length:**
+$$ds = \sqrt{\dot{x}^2 + \dot{y}^2}\, d\theta = a\sqrt{(1-\cos\theta)^2 + \sin^2\theta}\, d\theta = 2a\sin\left(\frac{\theta}{2}\right) d\theta$$
+
+**Total Arc Length from Origin to $\theta$:**
+$$s(\theta) = \int_0^\theta 2a\sin\left(\frac{\theta'}{2}\right) d\theta' = 4a\left(1 - \cos\left(\frac{\theta}{2}\right)\right) = 8a\sin^2\left(\frac{\theta}{4}\right)$$
+
+The total perimeter of one complete arch ($\theta = 2\pi$) is exactly:
+$$s_{\text{total}} = 8a$$
+
+**Radius of Curvature:**
+$$\rho(\theta) = \frac{(\dot{x}^2 + \dot{y}^2)^{3/2}}{\vert{}\dot{x}\ddot{y} - \dot{y}\ddot{x}\vert{}} = 4a\sin\left(\frac{\theta}{2}\right) = \sqrt{8a y}$$
+
+**Self-Evolute Property:**
+The evolute (locus of centers of curvature) of a cycloid is an identical cycloid, shifted horizontally by $\pi a$ and vertically downward by $2a$.
