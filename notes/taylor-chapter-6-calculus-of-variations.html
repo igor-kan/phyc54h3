@@ -430,9 +430,9 @@ To interpret this geometrically, let <span class="math inline">\(u = \tan\left(\
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = '#334155';
+    ctx.fillStyle = '#0f172a';
     ctx.fillRect(0, 0, canvas.width, yRail);
-    ctx.strokeStyle = '#475569';
+    ctx.strokeStyle = '#334155';
     ctx.lineWidth = 1.5;
     for (let hx = 10; hx < canvas.width; hx += 16) {
       ctx.beginPath(); ctx.moveTo(hx, yRail - 12); ctx.lineTo(hx + 10, yRail); ctx.stroke();
@@ -441,12 +441,33 @@ To interpret this geometrically, let <span class="math inline">\(u = \tan\left(\
     ctx.lineWidth = 2.5;
     ctx.beginPath(); ctx.moveTo(0, yRail); ctx.lineTo(canvas.width, yRail); ctx.stroke();
 
-    ctx.fillStyle = '#cbd5e1';
-    ctx.font = '11px system-ui, sans-serif';
+    ctx.fillStyle = '#f8fafc';
+    ctx.font = 'bold 11px system-ui, sans-serif';
     ctx.fillText('Underside Rail (y = 0)', 15, yRail - 12);
 
-    ctx.strokeStyle = '#334155';
+    // Center of Mass trajectory line (y = yRail + a)
+    ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
+    ctx.lineWidth = 1.2;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath(); ctx.moveTo(0, yRail + a); ctx.lineTo(canvas.width, yRail + a); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#38bdf8';
+    ctx.font = '10px system-ui, sans-serif';
+    ctx.fillText(`Center Path: y_c = a (${a}px)`, 20, yRail + a - 4);
+
+    // Trough depth boundary line (y = yRail + 2a)
+    ctx.strokeStyle = 'rgba(168, 85, 247, 0.4)';
+    ctx.lineWidth = 1.2;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath(); ctx.moveTo(0, yRail + 2*a); ctx.lineTo(canvas.width, yRail + 2*a); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#c084fc';
+    ctx.fillText(`Trough Depth: y_max = 2a (${2*a}px)`, 20, yRail + 2*a + 12);
+
+    // Faint full cycloid path
+    ctx.strokeStyle = '#475569';
     ctx.lineWidth = 1.5;
+    ctx.setLineDash([4, 4]);
     ctx.beginPath();
     const totalSteps = 300;
     for (let i = 0; i <= totalSteps; i++) {
@@ -456,13 +477,36 @@ To interpret this geometrically, let <span class="math inline">\(u = \tan\left(\
       if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
     }
     ctx.stroke();
+    ctx.setLineDash([]);
 
-    ctx.strokeStyle = '#c084fc';
-    ctx.lineWidth = 3;
-    ctx.shadowColor = '#a855f7';
-    ctx.shadowBlur = 8;
-    ctx.beginPath();
+    // Gradient fill under the active traced curve
     const currentSteps = Math.min(totalSteps, Math.floor((theta / maxTheta) * totalSteps));
+    if (currentSteps > 1) {
+      const grad = ctx.createLinearGradient(0, yRail, 0, yRail + 2*a);
+      grad.addColorStop(0, 'rgba(192, 132, 252, 0.22)');
+      grad.addColorStop(1, 'rgba(168, 85, 247, 0.02)');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.moveTo(xOrigin, yRail);
+      for (let i = 0; i <= currentSteps; i++) {
+        const th = (i / totalSteps) * maxTheta;
+        const x = xOrigin + a * (th - Math.sin(th));
+        const y = yRail + a * (1 - Math.cos(th));
+        ctx.lineTo(x, y);
+      }
+      const lastTh = (currentSteps / totalSteps) * maxTheta;
+      const lastX = xOrigin + a * (lastTh - Math.sin(lastTh));
+      ctx.lineTo(lastX, yRail);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    // Glowing active traced path up to theta
+    ctx.strokeStyle = '#c084fc';
+    ctx.lineWidth = 3.5;
+    ctx.shadowColor = '#a855f7';
+    ctx.shadowBlur = 10;
+    ctx.beginPath();
     for (let i = 0; i <= currentSteps; i++) {
       const th = (i / totalSteps) * maxTheta;
       const x = xOrigin + a * (th - Math.sin(th));
@@ -472,42 +516,84 @@ To interpret this geometrically, let <span class="math inline">\(u = \tan\left(\
     ctx.stroke();
     ctx.shadowBlur = 0;
 
+    // Rolling Wheel
     const xc = xOrigin + a * theta;
     const yc = yRail + a;
+    const xp = xc - a * Math.sin(theta);
+    const yp = yc - a * Math.cos(theta);
 
-    ctx.fillStyle = 'rgba(56, 189, 248, 0.12)';
+    // Instantaneous Center of Rotation (ICR)
+    ctx.fillStyle = '#f43f5e';
+    ctx.beginPath(); ctx.arc(xc, yRail, 4.5, 0, 2*Math.PI); ctx.fill();
+
+    // Normal line connecting Contact C to Marker P
+    ctx.strokeStyle = 'rgba(244, 63, 94, 0.4)';
+    ctx.lineWidth = 1.2;
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(xc, yRail); ctx.lineTo(xp, yp); ctx.stroke();
+    ctx.setLineDash([]);
+
+    const wheelGrad = ctx.createRadialGradient(xc, yc, 2, xc, yc, a);
+    wheelGrad.addColorStop(0, 'rgba(56, 189, 248, 0.35)');
+    wheelGrad.addColorStop(0.85, 'rgba(14, 116, 144, 0.2)');
+    wheelGrad.addColorStop(1, 'rgba(56, 189, 248, 0.55)');
+    ctx.fillStyle = wheelGrad;
     ctx.strokeStyle = '#38bdf8';
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 2.5;
     ctx.beginPath();
     ctx.arc(xc, yc, a, 0, 2*Math.PI);
     ctx.fill();
     ctx.stroke();
 
-    ctx.fillStyle = '#38bdf8';
-    ctx.beginPath(); ctx.arc(xc, yc, 3.5, 0, 2*Math.PI); ctx.fill();
+    ctx.fillStyle = '#0284c7';
+    ctx.beginPath(); ctx.arc(xc, yc, 4.5, 0, 2*Math.PI); ctx.fill();
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath(); ctx.arc(xc, yc, 2, 0, 2*Math.PI); ctx.fill();
 
-    ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
-    ctx.lineWidth = 1.2;
+    // Spokes
+    ctx.strokeStyle = 'rgba(56, 189, 248, 0.5)';
+    ctx.lineWidth = 1.5;
     for (let i = 0; i < 6; i++) {
       const spAng = theta + (i * Math.PI / 3) - Math.PI/2;
       ctx.beginPath(); ctx.moveTo(xc, yc); ctx.lineTo(xc + a * Math.cos(spAng), yc + a * Math.sin(spAng)); ctx.stroke();
     }
 
-    const xp = xc - a * Math.sin(theta);
-    const yp = yc - a * Math.cos(theta);
-
-    ctx.strokeStyle = '#e879f9';
-    ctx.lineWidth = 2;
+    // Marker arm
+    ctx.strokeStyle = '#f43f5e';
+    ctx.lineWidth = 2.2;
     ctx.beginPath(); ctx.moveTo(xc, yc); ctx.lineTo(xp, yp); ctx.stroke();
 
+    // Velocity vector
+    const vx = a * (1 - Math.cos(theta));
+    const vy = a * Math.sin(theta);
+    const vMag = Math.sqrt(vx*vx + vy*vy) || 1;
+    const arrowLen = 28;
+    const dirX = (vx / vMag) * arrowLen;
+    const dirY = (vy / vMag) * arrowLen;
+
+    ctx.strokeStyle = '#4ade80';
+    ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(xp, yp); ctx.lineTo(xp + dirX, yp + dirY); ctx.stroke();
+
+    const arrHeadLen = 6;
+    const arrAng = Math.atan2(dirY, dirX);
+    ctx.fillStyle = '#4ade80';
+    ctx.beginPath();
+    ctx.moveTo(xp + dirX, yp + dirY);
+    ctx.lineTo(xp + dirX - arrHeadLen * Math.cos(arrAng - Math.PI/6), yp + dirY - arrHeadLen * Math.sin(arrAng - Math.PI/6));
+    ctx.lineTo(xp + dirX - arrHeadLen * Math.cos(arrAng + Math.PI/6), yp + dirY - arrHeadLen * Math.sin(arrAng + Math.PI/6));
+    ctx.closePath();
+    ctx.fill();
+
+    // Tracing Marker P
     ctx.shadowColor = '#e879f9';
-    ctx.shadowBlur = 12;
-    ctx.fillStyle = '#f472b6';
-    ctx.beginPath(); ctx.arc(xp, yp, 6.5, 0, 2*Math.PI); ctx.fill();
+    ctx.shadowBlur = 14;
+    ctx.fillStyle = '#f43f5e';
+    ctx.beginPath(); ctx.arc(xp, yp, 7.5, 0, 2*Math.PI); ctx.fill();
     ctx.shadowBlur = 0;
 
     ctx.fillStyle = '#ffffff';
-    ctx.beginPath(); ctx.arc(xp - 1, yp - 1, 2, 0, 2*Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.arc(xp - 1.5, yp - 1.5, 2.5, 0, 2*Math.PI); ctx.fill();
 
     ctx.fillStyle = '#fdf4ff';
     ctx.font = 'bold 11px system-ui, sans-serif';
@@ -1418,9 +1504,9 @@ Figure&nbsp;1: The Brachistochrone path is a cycloid, the curve traced by a poin
 <span id="cb2-289"><a href="#cb2-289" aria-hidden="true" tabindex="-1"></a><span class="in">  function draw() {</span></span>
 <span id="cb2-290"><a href="#cb2-290" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.clearRect(0, 0, canvas.width, canvas.height);</span></span>
 <span id="cb2-291"><a href="#cb2-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-292"><a href="#cb2-292" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#334155';</span></span>
+<span id="cb2-292"><a href="#cb2-292" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#0f172a';</span></span>
 <span id="cb2-293"><a href="#cb2-293" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillRect(0, 0, canvas.width, yRail);</span></span>
-<span id="cb2-294"><a href="#cb2-294" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = '#475569';</span></span>
+<span id="cb2-294"><a href="#cb2-294" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = '#334155';</span></span>
 <span id="cb2-295"><a href="#cb2-295" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 1.5;</span></span>
 <span id="cb2-296"><a href="#cb2-296" aria-hidden="true" tabindex="-1"></a><span class="in">    for (let hx = 10; hx &lt; canvas.width; hx += 16) {</span></span>
 <span id="cb2-297"><a href="#cb2-297" aria-hidden="true" tabindex="-1"></a><span class="in">      ctx.beginPath(); ctx.moveTo(hx, yRail - 12); ctx.lineTo(hx + 10, yRail); ctx.stroke();</span></span>
@@ -1429,225 +1515,311 @@ Figure&nbsp;1: The Brachistochrone path is a cycloid, the curve traced by a poin
 <span id="cb2-300"><a href="#cb2-300" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 2.5;</span></span>
 <span id="cb2-301"><a href="#cb2-301" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.moveTo(0, yRail); ctx.lineTo(canvas.width, yRail); ctx.stroke();</span></span>
 <span id="cb2-302"><a href="#cb2-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-303"><a href="#cb2-303" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#cbd5e1';</span></span>
-<span id="cb2-304"><a href="#cb2-304" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.font = '11px system-ui, sans-serif';</span></span>
+<span id="cb2-303"><a href="#cb2-303" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#f8fafc';</span></span>
+<span id="cb2-304"><a href="#cb2-304" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.font = 'bold 11px system-ui, sans-serif';</span></span>
 <span id="cb2-305"><a href="#cb2-305" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillText('Underside Rail (y = 0)', 15, yRail - 12);</span></span>
 <span id="cb2-306"><a href="#cb2-306" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-307"><a href="#cb2-307" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = '#334155';</span></span>
-<span id="cb2-308"><a href="#cb2-308" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 1.5;</span></span>
-<span id="cb2-309"><a href="#cb2-309" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath();</span></span>
-<span id="cb2-310"><a href="#cb2-310" aria-hidden="true" tabindex="-1"></a><span class="in">    const totalSteps = 300;</span></span>
-<span id="cb2-311"><a href="#cb2-311" aria-hidden="true" tabindex="-1"></a><span class="in">    for (let i = 0; i &lt;= totalSteps; i++) {</span></span>
-<span id="cb2-312"><a href="#cb2-312" aria-hidden="true" tabindex="-1"></a><span class="in">      const th = (i / totalSteps) * maxTheta;</span></span>
-<span id="cb2-313"><a href="#cb2-313" aria-hidden="true" tabindex="-1"></a><span class="in">      const x = xOrigin + a * (th - Math.sin(th));</span></span>
-<span id="cb2-314"><a href="#cb2-314" aria-hidden="true" tabindex="-1"></a><span class="in">      const y = yRail + a * (1 - Math.cos(th));</span></span>
-<span id="cb2-315"><a href="#cb2-315" aria-hidden="true" tabindex="-1"></a><span class="in">      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);</span></span>
-<span id="cb2-316"><a href="#cb2-316" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb2-317"><a href="#cb2-317" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.stroke();</span></span>
-<span id="cb2-318"><a href="#cb2-318" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-319"><a href="#cb2-319" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = '#c084fc';</span></span>
-<span id="cb2-320"><a href="#cb2-320" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 3;</span></span>
-<span id="cb2-321"><a href="#cb2-321" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.shadowColor = '#a855f7';</span></span>
-<span id="cb2-322"><a href="#cb2-322" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.shadowBlur = 8;</span></span>
-<span id="cb2-323"><a href="#cb2-323" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath();</span></span>
-<span id="cb2-324"><a href="#cb2-324" aria-hidden="true" tabindex="-1"></a><span class="in">    const currentSteps = Math.min(totalSteps, Math.floor((theta / maxTheta) * totalSteps));</span></span>
-<span id="cb2-325"><a href="#cb2-325" aria-hidden="true" tabindex="-1"></a><span class="in">    for (let i = 0; i &lt;= currentSteps; i++) {</span></span>
-<span id="cb2-326"><a href="#cb2-326" aria-hidden="true" tabindex="-1"></a><span class="in">      const th = (i / totalSteps) * maxTheta;</span></span>
-<span id="cb2-327"><a href="#cb2-327" aria-hidden="true" tabindex="-1"></a><span class="in">      const x = xOrigin + a * (th - Math.sin(th));</span></span>
-<span id="cb2-328"><a href="#cb2-328" aria-hidden="true" tabindex="-1"></a><span class="in">      const y = yRail + a * (1 - Math.cos(th));</span></span>
-<span id="cb2-329"><a href="#cb2-329" aria-hidden="true" tabindex="-1"></a><span class="in">      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);</span></span>
-<span id="cb2-330"><a href="#cb2-330" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb2-331"><a href="#cb2-331" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.stroke();</span></span>
-<span id="cb2-332"><a href="#cb2-332" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.shadowBlur = 0;</span></span>
-<span id="cb2-333"><a href="#cb2-333" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-334"><a href="#cb2-334" aria-hidden="true" tabindex="-1"></a><span class="in">    const xc = xOrigin + a * theta;</span></span>
-<span id="cb2-335"><a href="#cb2-335" aria-hidden="true" tabindex="-1"></a><span class="in">    const yc = yRail + a;</span></span>
-<span id="cb2-336"><a href="#cb2-336" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-337"><a href="#cb2-337" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = 'rgba(56, 189, 248, 0.12)';</span></span>
-<span id="cb2-338"><a href="#cb2-338" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = '#38bdf8';</span></span>
-<span id="cb2-339"><a href="#cb2-339" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 2;</span></span>
-<span id="cb2-340"><a href="#cb2-340" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath();</span></span>
-<span id="cb2-341"><a href="#cb2-341" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.arc(xc, yc, a, 0, 2*Math.PI);</span></span>
-<span id="cb2-342"><a href="#cb2-342" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fill();</span></span>
-<span id="cb2-343"><a href="#cb2-343" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.stroke();</span></span>
-<span id="cb2-344"><a href="#cb2-344" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-345"><a href="#cb2-345" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#38bdf8';</span></span>
-<span id="cb2-346"><a href="#cb2-346" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.arc(xc, yc, 3.5, 0, 2*Math.PI); ctx.fill();</span></span>
-<span id="cb2-347"><a href="#cb2-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-348"><a href="#cb2-348" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';</span></span>
-<span id="cb2-349"><a href="#cb2-349" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 1.2;</span></span>
-<span id="cb2-350"><a href="#cb2-350" aria-hidden="true" tabindex="-1"></a><span class="in">    for (let i = 0; i &lt; 6; i++) {</span></span>
-<span id="cb2-351"><a href="#cb2-351" aria-hidden="true" tabindex="-1"></a><span class="in">      const spAng = theta + (i * Math.PI / 3) - Math.PI/2;</span></span>
-<span id="cb2-352"><a href="#cb2-352" aria-hidden="true" tabindex="-1"></a><span class="in">      ctx.beginPath(); ctx.moveTo(xc, yc); ctx.lineTo(xc + a * Math.cos(spAng), yc + a * Math.sin(spAng)); ctx.stroke();</span></span>
-<span id="cb2-353"><a href="#cb2-353" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb2-354"><a href="#cb2-354" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-355"><a href="#cb2-355" aria-hidden="true" tabindex="-1"></a><span class="in">    const xp = xc - a * Math.sin(theta);</span></span>
-<span id="cb2-356"><a href="#cb2-356" aria-hidden="true" tabindex="-1"></a><span class="in">    const yp = yc - a * Math.cos(theta);</span></span>
-<span id="cb2-357"><a href="#cb2-357" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-358"><a href="#cb2-358" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = '#e879f9';</span></span>
-<span id="cb2-359"><a href="#cb2-359" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 2;</span></span>
-<span id="cb2-360"><a href="#cb2-360" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.moveTo(xc, yc); ctx.lineTo(xp, yp); ctx.stroke();</span></span>
-<span id="cb2-361"><a href="#cb2-361" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-362"><a href="#cb2-362" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.shadowColor = '#e879f9';</span></span>
-<span id="cb2-363"><a href="#cb2-363" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.shadowBlur = 12;</span></span>
-<span id="cb2-364"><a href="#cb2-364" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#f472b6';</span></span>
-<span id="cb2-365"><a href="#cb2-365" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.arc(xp, yp, 6.5, 0, 2*Math.PI); ctx.fill();</span></span>
-<span id="cb2-366"><a href="#cb2-366" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.shadowBlur = 0;</span></span>
-<span id="cb2-367"><a href="#cb2-367" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-368"><a href="#cb2-368" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#ffffff';</span></span>
-<span id="cb2-369"><a href="#cb2-369" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.arc(xp - 1, yp - 1, 2, 0, 2*Math.PI); ctx.fill();</span></span>
-<span id="cb2-370"><a href="#cb2-370" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-371"><a href="#cb2-371" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#fdf4ff';</span></span>
-<span id="cb2-372"><a href="#cb2-372" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.font = 'bold 11px system-ui, sans-serif';</span></span>
-<span id="cb2-373"><a href="#cb2-373" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillText('P(x,y)', xp + 8, yp + 14);</span></span>
-<span id="cb2-374"><a href="#cb2-374" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
-<span id="cb2-375"><a href="#cb2-375" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-376"><a href="#cb2-376" aria-hidden="true" tabindex="-1"></a><span class="in">  function step(ts) {</span></span>
-<span id="cb2-377"><a href="#cb2-377" aria-hidden="true" tabindex="-1"></a><span class="in">    if (!lastTs) lastTs = ts;</span></span>
-<span id="cb2-378"><a href="#cb2-378" aria-hidden="true" tabindex="-1"></a><span class="in">    const dt = Math.min((ts - lastTs) / 1000, 0.04);</span></span>
-<span id="cb2-379"><a href="#cb2-379" aria-hidden="true" tabindex="-1"></a><span class="in">    lastTs = ts;</span></span>
-<span id="cb2-380"><a href="#cb2-380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-381"><a href="#cb2-381" aria-hidden="true" tabindex="-1"></a><span class="in">    if (running) {</span></span>
-<span id="cb2-382"><a href="#cb2-382" aria-hidden="true" tabindex="-1"></a><span class="in">      theta += rollSpeed * dt;</span></span>
-<span id="cb2-383"><a href="#cb2-383" aria-hidden="true" tabindex="-1"></a><span class="in">      if (theta &gt; maxTheta) theta = 0;</span></span>
-<span id="cb2-384"><a href="#cb2-384" aria-hidden="true" tabindex="-1"></a><span class="in">      update();</span></span>
-<span id="cb2-385"><a href="#cb2-385" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb2-386"><a href="#cb2-386" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-387"><a href="#cb2-387" aria-hidden="true" tabindex="-1"></a><span class="in">    draw();</span></span>
-<span id="cb2-388"><a href="#cb2-388" aria-hidden="true" tabindex="-1"></a><span class="in">    animId = requestAnimationFrame(step);</span></span>
-<span id="cb2-389"><a href="#cb2-389" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
-<span id="cb2-390"><a href="#cb2-390" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-391"><a href="#cb2-391" aria-hidden="true" tabindex="-1"></a><span class="in">  const playBtn = document.getElementById('ch6-wheel-play-btn');</span></span>
-<span id="cb2-392"><a href="#cb2-392" aria-hidden="true" tabindex="-1"></a><span class="in">  if (playBtn) {</span></span>
-<span id="cb2-393"><a href="#cb2-393" aria-hidden="true" tabindex="-1"></a><span class="in">    playBtn.onclick = function() {</span></span>
-<span id="cb2-394"><a href="#cb2-394" aria-hidden="true" tabindex="-1"></a><span class="in">      running = !running;</span></span>
-<span id="cb2-395"><a href="#cb2-395" aria-hidden="true" tabindex="-1"></a><span class="in">      this.innerText = running ? '❚❚ Pause' : '▶ Play';</span></span>
-<span id="cb2-396"><a href="#cb2-396" aria-hidden="true" tabindex="-1"></a><span class="in">    };</span></span>
-<span id="cb2-397"><a href="#cb2-397" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
-<span id="cb2-398"><a href="#cb2-398" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-399"><a href="#cb2-399" aria-hidden="true" tabindex="-1"></a><span class="in">  const resetBtn = document.getElementById('ch6-wheel-reset-btn');</span></span>
-<span id="cb2-400"><a href="#cb2-400" aria-hidden="true" tabindex="-1"></a><span class="in">  if (resetBtn) {</span></span>
-<span id="cb2-401"><a href="#cb2-401" aria-hidden="true" tabindex="-1"></a><span class="in">    resetBtn.onclick = function() {</span></span>
-<span id="cb2-402"><a href="#cb2-402" aria-hidden="true" tabindex="-1"></a><span class="in">      theta = 0;</span></span>
-<span id="cb2-403"><a href="#cb2-403" aria-hidden="true" tabindex="-1"></a><span class="in">      update();</span></span>
-<span id="cb2-404"><a href="#cb2-404" aria-hidden="true" tabindex="-1"></a><span class="in">      draw();</span></span>
-<span id="cb2-405"><a href="#cb2-405" aria-hidden="true" tabindex="-1"></a><span class="in">    };</span></span>
-<span id="cb2-406"><a href="#cb2-406" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
-<span id="cb2-407"><a href="#cb2-407" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-408"><a href="#cb2-408" aria-hidden="true" tabindex="-1"></a><span class="in">  const rSlider = document.getElementById('ch6-wheel-radius-slider');</span></span>
-<span id="cb2-409"><a href="#cb2-409" aria-hidden="true" tabindex="-1"></a><span class="in">  if (rSlider) {</span></span>
-<span id="cb2-410"><a href="#cb2-410" aria-hidden="true" tabindex="-1"></a><span class="in">    rSlider.oninput = function() {</span></span>
-<span id="cb2-411"><a href="#cb2-411" aria-hidden="true" tabindex="-1"></a><span class="in">      a = parseInt(this.value);</span></span>
-<span id="cb2-412"><a href="#cb2-412" aria-hidden="true" tabindex="-1"></a><span class="in">      update();</span></span>
-<span id="cb2-413"><a href="#cb2-413" aria-hidden="true" tabindex="-1"></a><span class="in">      draw();</span></span>
-<span id="cb2-414"><a href="#cb2-414" aria-hidden="true" tabindex="-1"></a><span class="in">    };</span></span>
-<span id="cb2-415"><a href="#cb2-415" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
-<span id="cb2-416"><a href="#cb2-416" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-417"><a href="#cb2-417" aria-hidden="true" tabindex="-1"></a><span class="in">  const thSlider = document.getElementById('ch6-wheel-theta-slider');</span></span>
-<span id="cb2-418"><a href="#cb2-418" aria-hidden="true" tabindex="-1"></a><span class="in">  if (thSlider) {</span></span>
-<span id="cb2-419"><a href="#cb2-419" aria-hidden="true" tabindex="-1"></a><span class="in">    thSlider.oninput = function() {</span></span>
-<span id="cb2-420"><a href="#cb2-420" aria-hidden="true" tabindex="-1"></a><span class="in">      theta = (parseInt(this.value) / 1256) * maxTheta;</span></span>
-<span id="cb2-421"><a href="#cb2-421" aria-hidden="true" tabindex="-1"></a><span class="in">      update();</span></span>
-<span id="cb2-422"><a href="#cb2-422" aria-hidden="true" tabindex="-1"></a><span class="in">      draw();</span></span>
-<span id="cb2-423"><a href="#cb2-423" aria-hidden="true" tabindex="-1"></a><span class="in">    };</span></span>
-<span id="cb2-424"><a href="#cb2-424" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
-<span id="cb2-425"><a href="#cb2-425" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-426"><a href="#cb2-426" aria-hidden="true" tabindex="-1"></a><span class="in">  update();</span></span>
-<span id="cb2-427"><a href="#cb2-427" aria-hidden="true" tabindex="-1"></a><span class="in">  draw();</span></span>
-<span id="cb2-428"><a href="#cb2-428" aria-hidden="true" tabindex="-1"></a><span class="in">  animId = requestAnimationFrame(step);</span></span>
-<span id="cb2-429"><a href="#cb2-429" aria-hidden="true" tabindex="-1"></a><span class="in">})();</span></span>
-<span id="cb2-430"><a href="#cb2-430" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/script&gt;</span></span>
-<span id="cb2-431"><a href="#cb2-431" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-432"><a href="#cb2-432" aria-hidden="true" tabindex="-1"></a><span class="in">Imagine a circular disk of radius $a$ rolling without slipping along the underside of the horizontal axis ($y = 0$, pointing downward):</span></span>
-<span id="cb2-433"><a href="#cb2-433" aria-hidden="true" tabindex="-1"></a><span class="in">- **Center of the wheel:** As the wheel rolls through an angle $\theta$, its contact point has rolled a distance $a\theta$ along the rail:</span></span>
-<span id="cb2-434"><a href="#cb2-434" aria-hidden="true" tabindex="-1"></a><span class="in">  $$ (x_c, y_c) = (a\theta, a) $$</span></span>
-<span id="cb2-435"><a href="#cb2-435" aria-hidden="true" tabindex="-1"></a><span class="in">- **Point on the perimeter ($P$):** A marker fixed to the rim starts at the origin $(0, 0)$ when $\theta = 0$. After rotating clockwise by $\theta$, the marker's relative displacement from the wheel's center is:</span></span>
-<span id="cb2-436"><a href="#cb2-436" aria-hidden="true" tabindex="-1"></a><span class="in">  $$ \Delta x = -a\sin\theta, \quad \Delta y = -a\cos\theta $$</span></span>
-<span id="cb2-437"><a href="#cb2-437" aria-hidden="true" tabindex="-1"></a><span class="in">- **Absolute coordinates:** Combining center translation and rim rotation yields:</span></span>
-<span id="cb2-438"><a href="#cb2-438" aria-hidden="true" tabindex="-1"></a><span class="in">  $$ x(\theta) = x_c + \Delta x = a(\theta - \sin\theta) $$</span></span>
-<span id="cb2-439"><a href="#cb2-439" aria-hidden="true" tabindex="-1"></a><span class="in">  $$ y(\theta) = y_c + \Delta y = a(1 - \cos\theta) $$</span></span>
-<span id="cb2-440"><a href="#cb2-440" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-441"><a href="#cb2-441" aria-hidden="true" tabindex="-1"></a><span class="in">$\theta$ also directly determines the local slope and launch angle of the path. Differentiating with respect to $\theta$:</span></span>
-<span id="cb2-442"><a href="#cb2-442" aria-hidden="true" tabindex="-1"></a><span class="in">$$ \frac{dy}{dx} = \frac{dy/d\theta}{dx/d\theta} = \frac{a\sin\theta}{a(1 - \cos\theta)} = \frac{2\sin(\theta/2)\cos(\theta/2)}{2\sin^2(\theta/2)} = \cot\left(\frac{\theta}{2}\right) $$</span></span>
-<span id="cb2-443"><a href="#cb2-443" aria-hidden="true" tabindex="-1"></a><span class="in">If $\psi$ is the inclination angle of the velocity vector relative to the horizontal ($\tan\psi = dy/dx$):</span></span>
-<span id="cb2-444"><a href="#cb2-444" aria-hidden="true" tabindex="-1"></a><span class="in">$$ \psi = \frac{\pi - \theta}{2} $$</span></span>
-<span id="cb2-445"><a href="#cb2-445" aria-hidden="true" tabindex="-1"></a><span class="in">- At $\theta \to 0$ (the start): $\psi = \pi/2$ (the path drops straight vertically).</span></span>
-<span id="cb2-446"><a href="#cb2-446" aria-hidden="true" tabindex="-1"></a><span class="in">- At $\theta = \pi$ (the trough): $\psi = 0$ (the trajectory is completely horizontal).</span></span>
-<span id="cb2-447"><a href="#cb2-447" aria-hidden="true" tabindex="-1"></a><span class="in">- At $\theta = 2\pi$ (the next cusp): $\psi = -\pi/2$ (the path rises back to vertical).</span></span>
-<span id="cb2-448"><a href="#cb2-448" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-449"><a href="#cb2-449" aria-hidden="true" tabindex="-1"></a><span class="in">#### Why Assume the First Arch ($\theta \in [0, 2\pi]$) and $\sin(\theta/2) \ge 0$?</span></span>
-<span id="cb2-450"><a href="#cb2-450" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-451"><a href="#cb2-451" aria-hidden="true" tabindex="-1"></a><span class="in">1. **The Mathematical Reason: Eliminating Absolute Value Signs**  </span></span>
-<span id="cb2-452"><a href="#cb2-452" aria-hidden="true" tabindex="-1"></a><span class="in">   The principal square root satisfies $\sqrt{u^2} = |u|$. In simplifying the radical:</span></span>
-<span id="cb2-453"><a href="#cb2-453" aria-hidden="true" tabindex="-1"></a><span class="in">   $$ \sqrt{\frac{y}{2a - y}} = \left| \tan\left(\frac{\theta}{2}\right) \right| = \frac{\left|\sin(\theta/2)\right|}{\left|\cos(\theta/2)\right|} $$</span></span>
-<span id="cb2-454"><a href="#cb2-454" aria-hidden="true" tabindex="-1"></a><span class="in">   If $\theta \in [0, 2\pi]$, then $\frac{\theta}{2} \in [0, \pi]$. Since sine is strictly non-negative on $[0, \pi]$:</span></span>
-<span id="cb2-455"><a href="#cb2-455" aria-hidden="true" tabindex="-1"></a><span class="in">   $$ \sin\left(\frac{\theta}{2}\right) \ge 0 \implies \left|\sin\left(\frac{\theta}{2}\right)\right| = \sin\left(\frac{\theta}{2}\right) $$</span></span>
-<span id="cb2-456"><a href="#cb2-456" aria-hidden="true" tabindex="-1"></a><span class="in">   This avoids carrying piece-wise $\pm$ absolute value signs.</span></span>
-<span id="cb2-457"><a href="#cb2-457" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-458"><a href="#cb2-458" aria-hidden="true" tabindex="-1"></a><span class="in">2. **The Physical Reason: Geometry of the Fastest Path**  </span></span>
-<span id="cb2-459"><a href="#cb2-459" aria-hidden="true" tabindex="-1"></a><span class="in">   - **Energy Bounds:** Conservation of mechanical energy gives $v = \sqrt{2gy}$. At $y = 0$, speed is zero ($v = 0$). The particle cannot rise above $y = 0$, so it cannot continue past a cusp into negative $y$.</span></span>
-<span id="cb2-460"><a href="#cb2-460" aria-hidden="true" tabindex="-1"></a><span class="in">   - **Uniqueness:** A single arch ($\theta \in [0, 2\pi]$) starts at $(0, 0)$ and terminates at $(2\pi a, 0)$. By scaling the radius $a$, a single cycloid arch can pass through any target point $(x_2, y_2)$ in the lower half-plane ($x_2 &gt; 0, y_2 \ge 0$).</span></span>
-<span id="cb2-461"><a href="#cb2-461" aria-hidden="true" tabindex="-1"></a><span class="in">   - **No Redundant Loops:** Any path extending past $\theta = 2\pi$ into a second arch would involve rising up to a cusp, stopping, and dropping into a new dip. That would add unnecessary path length and travel time, violating the time-minimization condition $\delta T = 0$.</span></span>
-<span id="cb2-462"><a href="#cb2-462" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-463"><a href="#cb2-463" aria-hidden="true" tabindex="-1"></a><span class="in">#### Essential Mathematical Properties of Cycloids</span></span>
-<span id="cb2-464"><a href="#cb2-464" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-465"><a href="#cb2-465" aria-hidden="true" tabindex="-1"></a><span class="in">- **Parametric Form:** $x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta)$</span></span>
-<span id="cb2-466"><a href="#cb2-466" aria-hidden="true" tabindex="-1"></a><span class="in">- **Differential Arc Length:**</span></span>
-<span id="cb2-467"><a href="#cb2-467" aria-hidden="true" tabindex="-1"></a><span class="in">  $$ ds = \sqrt{\dot{x}^2 + \dot{y}^2}\, d\theta = a\sqrt{(1-\cos\theta)^2 + \sin^2\theta}\, d\theta = 2a\sin\left(\frac{\theta}{2}\right) d\theta $$</span></span>
-<span id="cb2-468"><a href="#cb2-468" aria-hidden="true" tabindex="-1"></a><span class="in">- **Total Arc Length from Origin to $\theta$:**</span></span>
-<span id="cb2-469"><a href="#cb2-469" aria-hidden="true" tabindex="-1"></a><span class="in">  $$ s(\theta) = \int_0^\theta 2a\sin\left(\frac{\theta'}{2}\right) d\theta' = 4a\left(1 - \cos\left(\frac{\theta}{2}\right)\right) = 8a\sin^2\left(\frac{\theta}{4}\right) $$</span></span>
-<span id="cb2-470"><a href="#cb2-470" aria-hidden="true" tabindex="-1"></a><span class="in">  The total perimeter of one complete arch ($\theta = 2\pi$) is exactly $s_{\text{total}} = 8a$.</span></span>
-<span id="cb2-471"><a href="#cb2-471" aria-hidden="true" tabindex="-1"></a><span class="in">- **Radius of Curvature:**</span></span>
-<span id="cb2-472"><a href="#cb2-472" aria-hidden="true" tabindex="-1"></a><span class="in">  $$ \rho(\theta) = \frac{(\dot{x}^2 + \dot{y}^2)^{3/2}}{|\dot{x}\ddot{y} - \dot{y}\ddot{x}|} = 4a\sin\left(\frac{\theta}{2}\right) = \sqrt{8a y} $$</span></span>
-<span id="cb2-473"><a href="#cb2-473" aria-hidden="true" tabindex="-1"></a><span class="in">- **Self-Evolute Property:** The evolute (locus of centers of curvature) of a cycloid is an identical cycloid, shifted horizontally by $\pi a$ and vertically downward by $2a$.</span></span>
-<span id="cb2-474"><a href="#cb2-474" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-475"><a href="#cb2-475" aria-hidden="true" tabindex="-1"></a><span class="in">*(For broader integration techniques and speed benchmarks, see [Integration Tricks and Substitution Techniques](../reference/integration-tricks-and-substitutions.qmd). For physical systems such as Huygens' isochronous pendulum, $E\times B$ drifts, and cycloidal gear drives, see [Physics and Engineering Applications of Cycloids](../reference/cycloid-physics-applications.qmd).)*</span></span>
+<span id="cb2-307"><a href="#cb2-307" aria-hidden="true" tabindex="-1"></a><span class="in">    // Center of Mass trajectory line (y = yRail + a)</span></span>
+<span id="cb2-308"><a href="#cb2-308" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';</span></span>
+<span id="cb2-309"><a href="#cb2-309" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 1.2;</span></span>
+<span id="cb2-310"><a href="#cb2-310" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.setLineDash([4, 4]);</span></span>
+<span id="cb2-311"><a href="#cb2-311" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.moveTo(0, yRail + a); ctx.lineTo(canvas.width, yRail + a); ctx.stroke();</span></span>
+<span id="cb2-312"><a href="#cb2-312" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.setLineDash([]);</span></span>
+<span id="cb2-313"><a href="#cb2-313" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#38bdf8';</span></span>
+<span id="cb2-314"><a href="#cb2-314" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.font = '10px system-ui, sans-serif';</span></span>
+<span id="cb2-315"><a href="#cb2-315" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillText(`Center Path: y_c = a (${a}px)`, 20, yRail + a - 4);</span></span>
+<span id="cb2-316"><a href="#cb2-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-317"><a href="#cb2-317" aria-hidden="true" tabindex="-1"></a><span class="in">    // Trough depth boundary line (y = yRail + 2a)</span></span>
+<span id="cb2-318"><a href="#cb2-318" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = 'rgba(168, 85, 247, 0.4)';</span></span>
+<span id="cb2-319"><a href="#cb2-319" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 1.2;</span></span>
+<span id="cb2-320"><a href="#cb2-320" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.setLineDash([4, 4]);</span></span>
+<span id="cb2-321"><a href="#cb2-321" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.moveTo(0, yRail + 2*a); ctx.lineTo(canvas.width, yRail + 2*a); ctx.stroke();</span></span>
+<span id="cb2-322"><a href="#cb2-322" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.setLineDash([]);</span></span>
+<span id="cb2-323"><a href="#cb2-323" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#c084fc';</span></span>
+<span id="cb2-324"><a href="#cb2-324" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillText(`Trough Depth: y_max = 2a (${2*a}px)`, 20, yRail + 2*a + 12);</span></span>
+<span id="cb2-325"><a href="#cb2-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-326"><a href="#cb2-326" aria-hidden="true" tabindex="-1"></a><span class="in">    // Faint full cycloid path</span></span>
+<span id="cb2-327"><a href="#cb2-327" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = '#475569';</span></span>
+<span id="cb2-328"><a href="#cb2-328" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 1.5;</span></span>
+<span id="cb2-329"><a href="#cb2-329" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.setLineDash([4, 4]);</span></span>
+<span id="cb2-330"><a href="#cb2-330" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath();</span></span>
+<span id="cb2-331"><a href="#cb2-331" aria-hidden="true" tabindex="-1"></a><span class="in">    const totalSteps = 300;</span></span>
+<span id="cb2-332"><a href="#cb2-332" aria-hidden="true" tabindex="-1"></a><span class="in">    for (let i = 0; i &lt;= totalSteps; i++) {</span></span>
+<span id="cb2-333"><a href="#cb2-333" aria-hidden="true" tabindex="-1"></a><span class="in">      const th = (i / totalSteps) * maxTheta;</span></span>
+<span id="cb2-334"><a href="#cb2-334" aria-hidden="true" tabindex="-1"></a><span class="in">      const x = xOrigin + a * (th - Math.sin(th));</span></span>
+<span id="cb2-335"><a href="#cb2-335" aria-hidden="true" tabindex="-1"></a><span class="in">      const y = yRail + a * (1 - Math.cos(th));</span></span>
+<span id="cb2-336"><a href="#cb2-336" aria-hidden="true" tabindex="-1"></a><span class="in">      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);</span></span>
+<span id="cb2-337"><a href="#cb2-337" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb2-338"><a href="#cb2-338" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.stroke();</span></span>
+<span id="cb2-339"><a href="#cb2-339" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.setLineDash([]);</span></span>
+<span id="cb2-340"><a href="#cb2-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-341"><a href="#cb2-341" aria-hidden="true" tabindex="-1"></a><span class="in">    // Gradient fill under the active traced curve</span></span>
+<span id="cb2-342"><a href="#cb2-342" aria-hidden="true" tabindex="-1"></a><span class="in">    const currentSteps = Math.min(totalSteps, Math.floor((theta / maxTheta) * totalSteps));</span></span>
+<span id="cb2-343"><a href="#cb2-343" aria-hidden="true" tabindex="-1"></a><span class="in">    if (currentSteps &gt; 1) {</span></span>
+<span id="cb2-344"><a href="#cb2-344" aria-hidden="true" tabindex="-1"></a><span class="in">      const grad = ctx.createLinearGradient(0, yRail, 0, yRail + 2*a);</span></span>
+<span id="cb2-345"><a href="#cb2-345" aria-hidden="true" tabindex="-1"></a><span class="in">      grad.addColorStop(0, 'rgba(192, 132, 252, 0.22)');</span></span>
+<span id="cb2-346"><a href="#cb2-346" aria-hidden="true" tabindex="-1"></a><span class="in">      grad.addColorStop(1, 'rgba(168, 85, 247, 0.02)');</span></span>
+<span id="cb2-347"><a href="#cb2-347" aria-hidden="true" tabindex="-1"></a><span class="in">      ctx.fillStyle = grad;</span></span>
+<span id="cb2-348"><a href="#cb2-348" aria-hidden="true" tabindex="-1"></a><span class="in">      ctx.beginPath();</span></span>
+<span id="cb2-349"><a href="#cb2-349" aria-hidden="true" tabindex="-1"></a><span class="in">      ctx.moveTo(xOrigin, yRail);</span></span>
+<span id="cb2-350"><a href="#cb2-350" aria-hidden="true" tabindex="-1"></a><span class="in">      for (let i = 0; i &lt;= currentSteps; i++) {</span></span>
+<span id="cb2-351"><a href="#cb2-351" aria-hidden="true" tabindex="-1"></a><span class="in">        const th = (i / totalSteps) * maxTheta;</span></span>
+<span id="cb2-352"><a href="#cb2-352" aria-hidden="true" tabindex="-1"></a><span class="in">        const x = xOrigin + a * (th - Math.sin(th));</span></span>
+<span id="cb2-353"><a href="#cb2-353" aria-hidden="true" tabindex="-1"></a><span class="in">        const y = yRail + a * (1 - Math.cos(th));</span></span>
+<span id="cb2-354"><a href="#cb2-354" aria-hidden="true" tabindex="-1"></a><span class="in">        ctx.lineTo(x, y);</span></span>
+<span id="cb2-355"><a href="#cb2-355" aria-hidden="true" tabindex="-1"></a><span class="in">      }</span></span>
+<span id="cb2-356"><a href="#cb2-356" aria-hidden="true" tabindex="-1"></a><span class="in">      const lastTh = (currentSteps / totalSteps) * maxTheta;</span></span>
+<span id="cb2-357"><a href="#cb2-357" aria-hidden="true" tabindex="-1"></a><span class="in">      const lastX = xOrigin + a * (lastTh - Math.sin(lastTh));</span></span>
+<span id="cb2-358"><a href="#cb2-358" aria-hidden="true" tabindex="-1"></a><span class="in">      ctx.lineTo(lastX, yRail);</span></span>
+<span id="cb2-359"><a href="#cb2-359" aria-hidden="true" tabindex="-1"></a><span class="in">      ctx.closePath();</span></span>
+<span id="cb2-360"><a href="#cb2-360" aria-hidden="true" tabindex="-1"></a><span class="in">      ctx.fill();</span></span>
+<span id="cb2-361"><a href="#cb2-361" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb2-362"><a href="#cb2-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-363"><a href="#cb2-363" aria-hidden="true" tabindex="-1"></a><span class="in">    // Glowing active traced path up to theta</span></span>
+<span id="cb2-364"><a href="#cb2-364" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = '#c084fc';</span></span>
+<span id="cb2-365"><a href="#cb2-365" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 3.5;</span></span>
+<span id="cb2-366"><a href="#cb2-366" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.shadowColor = '#a855f7';</span></span>
+<span id="cb2-367"><a href="#cb2-367" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.shadowBlur = 10;</span></span>
+<span id="cb2-368"><a href="#cb2-368" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath();</span></span>
+<span id="cb2-369"><a href="#cb2-369" aria-hidden="true" tabindex="-1"></a><span class="in">    for (let i = 0; i &lt;= currentSteps; i++) {</span></span>
+<span id="cb2-370"><a href="#cb2-370" aria-hidden="true" tabindex="-1"></a><span class="in">      const th = (i / totalSteps) * maxTheta;</span></span>
+<span id="cb2-371"><a href="#cb2-371" aria-hidden="true" tabindex="-1"></a><span class="in">      const x = xOrigin + a * (th - Math.sin(th));</span></span>
+<span id="cb2-372"><a href="#cb2-372" aria-hidden="true" tabindex="-1"></a><span class="in">      const y = yRail + a * (1 - Math.cos(th));</span></span>
+<span id="cb2-373"><a href="#cb2-373" aria-hidden="true" tabindex="-1"></a><span class="in">      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);</span></span>
+<span id="cb2-374"><a href="#cb2-374" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb2-375"><a href="#cb2-375" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.stroke();</span></span>
+<span id="cb2-376"><a href="#cb2-376" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.shadowBlur = 0;</span></span>
+<span id="cb2-377"><a href="#cb2-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-378"><a href="#cb2-378" aria-hidden="true" tabindex="-1"></a><span class="in">    // Rolling Wheel</span></span>
+<span id="cb2-379"><a href="#cb2-379" aria-hidden="true" tabindex="-1"></a><span class="in">    const xc = xOrigin + a * theta;</span></span>
+<span id="cb2-380"><a href="#cb2-380" aria-hidden="true" tabindex="-1"></a><span class="in">    const yc = yRail + a;</span></span>
+<span id="cb2-381"><a href="#cb2-381" aria-hidden="true" tabindex="-1"></a><span class="in">    const xp = xc - a * Math.sin(theta);</span></span>
+<span id="cb2-382"><a href="#cb2-382" aria-hidden="true" tabindex="-1"></a><span class="in">    const yp = yc - a * Math.cos(theta);</span></span>
+<span id="cb2-383"><a href="#cb2-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-384"><a href="#cb2-384" aria-hidden="true" tabindex="-1"></a><span class="in">    // Instantaneous Center of Rotation (ICR)</span></span>
+<span id="cb2-385"><a href="#cb2-385" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#f43f5e';</span></span>
+<span id="cb2-386"><a href="#cb2-386" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.arc(xc, yRail, 4.5, 0, 2*Math.PI); ctx.fill();</span></span>
+<span id="cb2-387"><a href="#cb2-387" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-388"><a href="#cb2-388" aria-hidden="true" tabindex="-1"></a><span class="in">    // Normal line connecting Contact C to Marker P</span></span>
+<span id="cb2-389"><a href="#cb2-389" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = 'rgba(244, 63, 94, 0.4)';</span></span>
+<span id="cb2-390"><a href="#cb2-390" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 1.2;</span></span>
+<span id="cb2-391"><a href="#cb2-391" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.setLineDash([3, 3]);</span></span>
+<span id="cb2-392"><a href="#cb2-392" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.moveTo(xc, yRail); ctx.lineTo(xp, yp); ctx.stroke();</span></span>
+<span id="cb2-393"><a href="#cb2-393" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.setLineDash([]);</span></span>
+<span id="cb2-394"><a href="#cb2-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-395"><a href="#cb2-395" aria-hidden="true" tabindex="-1"></a><span class="in">    const wheelGrad = ctx.createRadialGradient(xc, yc, 2, xc, yc, a);</span></span>
+<span id="cb2-396"><a href="#cb2-396" aria-hidden="true" tabindex="-1"></a><span class="in">    wheelGrad.addColorStop(0, 'rgba(56, 189, 248, 0.35)');</span></span>
+<span id="cb2-397"><a href="#cb2-397" aria-hidden="true" tabindex="-1"></a><span class="in">    wheelGrad.addColorStop(0.85, 'rgba(14, 116, 144, 0.2)');</span></span>
+<span id="cb2-398"><a href="#cb2-398" aria-hidden="true" tabindex="-1"></a><span class="in">    wheelGrad.addColorStop(1, 'rgba(56, 189, 248, 0.55)');</span></span>
+<span id="cb2-399"><a href="#cb2-399" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = wheelGrad;</span></span>
+<span id="cb2-400"><a href="#cb2-400" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = '#38bdf8';</span></span>
+<span id="cb2-401"><a href="#cb2-401" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 2.5;</span></span>
+<span id="cb2-402"><a href="#cb2-402" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath();</span></span>
+<span id="cb2-403"><a href="#cb2-403" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.arc(xc, yc, a, 0, 2*Math.PI);</span></span>
+<span id="cb2-404"><a href="#cb2-404" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fill();</span></span>
+<span id="cb2-405"><a href="#cb2-405" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.stroke();</span></span>
+<span id="cb2-406"><a href="#cb2-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-407"><a href="#cb2-407" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#0284c7';</span></span>
+<span id="cb2-408"><a href="#cb2-408" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.arc(xc, yc, 4.5, 0, 2*Math.PI); ctx.fill();</span></span>
+<span id="cb2-409"><a href="#cb2-409" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#ffffff';</span></span>
+<span id="cb2-410"><a href="#cb2-410" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.arc(xc, yc, 2, 0, 2*Math.PI); ctx.fill();</span></span>
+<span id="cb2-411"><a href="#cb2-411" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-412"><a href="#cb2-412" aria-hidden="true" tabindex="-1"></a><span class="in">    // Spokes</span></span>
+<span id="cb2-413"><a href="#cb2-413" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = 'rgba(56, 189, 248, 0.5)';</span></span>
+<span id="cb2-414"><a href="#cb2-414" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 1.5;</span></span>
+<span id="cb2-415"><a href="#cb2-415" aria-hidden="true" tabindex="-1"></a><span class="in">    for (let i = 0; i &lt; 6; i++) {</span></span>
+<span id="cb2-416"><a href="#cb2-416" aria-hidden="true" tabindex="-1"></a><span class="in">      const spAng = theta + (i * Math.PI / 3) - Math.PI/2;</span></span>
+<span id="cb2-417"><a href="#cb2-417" aria-hidden="true" tabindex="-1"></a><span class="in">      ctx.beginPath(); ctx.moveTo(xc, yc); ctx.lineTo(xc + a * Math.cos(spAng), yc + a * Math.sin(spAng)); ctx.stroke();</span></span>
+<span id="cb2-418"><a href="#cb2-418" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb2-419"><a href="#cb2-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-420"><a href="#cb2-420" aria-hidden="true" tabindex="-1"></a><span class="in">    // Marker arm</span></span>
+<span id="cb2-421"><a href="#cb2-421" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = '#f43f5e';</span></span>
+<span id="cb2-422"><a href="#cb2-422" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 2.2;</span></span>
+<span id="cb2-423"><a href="#cb2-423" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.moveTo(xc, yc); ctx.lineTo(xp, yp); ctx.stroke();</span></span>
+<span id="cb2-424"><a href="#cb2-424" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-425"><a href="#cb2-425" aria-hidden="true" tabindex="-1"></a><span class="in">    // Velocity vector</span></span>
+<span id="cb2-426"><a href="#cb2-426" aria-hidden="true" tabindex="-1"></a><span class="in">    const vx = a * (1 - Math.cos(theta));</span></span>
+<span id="cb2-427"><a href="#cb2-427" aria-hidden="true" tabindex="-1"></a><span class="in">    const vy = a * Math.sin(theta);</span></span>
+<span id="cb2-428"><a href="#cb2-428" aria-hidden="true" tabindex="-1"></a><span class="in">    const vMag = Math.sqrt(vx*vx + vy*vy) || 1;</span></span>
+<span id="cb2-429"><a href="#cb2-429" aria-hidden="true" tabindex="-1"></a><span class="in">    const arrowLen = 28;</span></span>
+<span id="cb2-430"><a href="#cb2-430" aria-hidden="true" tabindex="-1"></a><span class="in">    const dirX = (vx / vMag) * arrowLen;</span></span>
+<span id="cb2-431"><a href="#cb2-431" aria-hidden="true" tabindex="-1"></a><span class="in">    const dirY = (vy / vMag) * arrowLen;</span></span>
+<span id="cb2-432"><a href="#cb2-432" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-433"><a href="#cb2-433" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = '#4ade80';</span></span>
+<span id="cb2-434"><a href="#cb2-434" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 2;</span></span>
+<span id="cb2-435"><a href="#cb2-435" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.moveTo(xp, yp); ctx.lineTo(xp + dirX, yp + dirY); ctx.stroke();</span></span>
+<span id="cb2-436"><a href="#cb2-436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-437"><a href="#cb2-437" aria-hidden="true" tabindex="-1"></a><span class="in">    const arrHeadLen = 6;</span></span>
+<span id="cb2-438"><a href="#cb2-438" aria-hidden="true" tabindex="-1"></a><span class="in">    const arrAng = Math.atan2(dirY, dirX);</span></span>
+<span id="cb2-439"><a href="#cb2-439" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#4ade80';</span></span>
+<span id="cb2-440"><a href="#cb2-440" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath();</span></span>
+<span id="cb2-441"><a href="#cb2-441" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.moveTo(xp + dirX, yp + dirY);</span></span>
+<span id="cb2-442"><a href="#cb2-442" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineTo(xp + dirX - arrHeadLen * Math.cos(arrAng - Math.PI/6), yp + dirY - arrHeadLen * Math.sin(arrAng - Math.PI/6));</span></span>
+<span id="cb2-443"><a href="#cb2-443" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineTo(xp + dirX - arrHeadLen * Math.cos(arrAng + Math.PI/6), yp + dirY - arrHeadLen * Math.sin(arrAng + Math.PI/6));</span></span>
+<span id="cb2-444"><a href="#cb2-444" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.closePath();</span></span>
+<span id="cb2-445"><a href="#cb2-445" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fill();</span></span>
+<span id="cb2-446"><a href="#cb2-446" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-447"><a href="#cb2-447" aria-hidden="true" tabindex="-1"></a><span class="in">    // Tracing Marker P</span></span>
+<span id="cb2-448"><a href="#cb2-448" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.shadowColor = '#e879f9';</span></span>
+<span id="cb2-449"><a href="#cb2-449" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.shadowBlur = 14;</span></span>
+<span id="cb2-450"><a href="#cb2-450" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#f43f5e';</span></span>
+<span id="cb2-451"><a href="#cb2-451" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.arc(xp, yp, 7.5, 0, 2*Math.PI); ctx.fill();</span></span>
+<span id="cb2-452"><a href="#cb2-452" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.shadowBlur = 0;</span></span>
+<span id="cb2-453"><a href="#cb2-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-454"><a href="#cb2-454" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#ffffff';</span></span>
+<span id="cb2-455"><a href="#cb2-455" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.arc(xp - 1.5, yp - 1.5, 2.5, 0, 2*Math.PI); ctx.fill();</span></span>
+<span id="cb2-456"><a href="#cb2-456" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-457"><a href="#cb2-457" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#fdf4ff';</span></span>
+<span id="cb2-458"><a href="#cb2-458" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.font = 'bold 11px system-ui, sans-serif';</span></span>
+<span id="cb2-459"><a href="#cb2-459" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillText('P(x,y)', xp + 8, yp + 14);</span></span>
+<span id="cb2-460"><a href="#cb2-460" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb2-461"><a href="#cb2-461" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-462"><a href="#cb2-462" aria-hidden="true" tabindex="-1"></a><span class="in">  function step(ts) {</span></span>
+<span id="cb2-463"><a href="#cb2-463" aria-hidden="true" tabindex="-1"></a><span class="in">    if (!lastTs) lastTs = ts;</span></span>
+<span id="cb2-464"><a href="#cb2-464" aria-hidden="true" tabindex="-1"></a><span class="in">    const dt = Math.min((ts - lastTs) / 1000, 0.04);</span></span>
+<span id="cb2-465"><a href="#cb2-465" aria-hidden="true" tabindex="-1"></a><span class="in">    lastTs = ts;</span></span>
+<span id="cb2-466"><a href="#cb2-466" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-467"><a href="#cb2-467" aria-hidden="true" tabindex="-1"></a><span class="in">    if (running) {</span></span>
+<span id="cb2-468"><a href="#cb2-468" aria-hidden="true" tabindex="-1"></a><span class="in">      theta += rollSpeed * dt;</span></span>
+<span id="cb2-469"><a href="#cb2-469" aria-hidden="true" tabindex="-1"></a><span class="in">      if (theta &gt; maxTheta) theta = 0;</span></span>
+<span id="cb2-470"><a href="#cb2-470" aria-hidden="true" tabindex="-1"></a><span class="in">      update();</span></span>
+<span id="cb2-471"><a href="#cb2-471" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb2-472"><a href="#cb2-472" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-473"><a href="#cb2-473" aria-hidden="true" tabindex="-1"></a><span class="in">    draw();</span></span>
+<span id="cb2-474"><a href="#cb2-474" aria-hidden="true" tabindex="-1"></a><span class="in">    animId = requestAnimationFrame(step);</span></span>
+<span id="cb2-475"><a href="#cb2-475" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
 <span id="cb2-476"><a href="#cb2-476" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-477"><a href="#cb2-477" aria-hidden="true" tabindex="-1"></a><span class="in">::: {.callout-tip}</span></span>
-<span id="cb2-478"><a href="#cb2-478" aria-hidden="true" tabindex="-1"></a><span class="in">### 🎮 Interactive Simulations</span></span>
-<span id="cb2-479"><a href="#cb2-479" aria-hidden="true" tabindex="-1"></a><span class="in">Experience these phenomena live in your browser:  </span></span>
-<span id="cb2-480"><a href="#cb2-480" aria-hidden="true" tabindex="-1"></a><span class="in">Launch the **[Interactive Cycloid Mechanics: Brachistochrone, Tautochrone &amp; Huygens' Pendulum](../simulations/cycloid-mechanics-interactive.qmd)** to run the 4-track Brachistochrone race, test simultaneous Tautochrone arrivals, and compare Huygens' isochronous clock against ordinary circular pendulums!</span></span>
-<span id="cb2-481"><a href="#cb2-481" aria-hidden="true" tabindex="-1"></a><span class="in">:::</span></span>
-<span id="cb2-482"><a href="#cb2-482" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-485"><a href="#cb2-485" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb2-486"><a href="#cb2-486" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-cycloid</span></span>
-<span id="cb2-487"><a href="#cb2-487" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: "The Brachistochrone path is a cycloid, the curve traced by a point on the rim of a rolling wheel."</span></span>
-<span id="cb2-488"><a href="#cb2-488" aria-hidden="true" tabindex="-1"></a><span class="in">import numpy as np</span></span>
-<span id="cb2-489"><a href="#cb2-489" aria-hidden="true" tabindex="-1"></a><span class="in">import matplotlib.pyplot as plt</span></span>
-<span id="cb2-490"><a href="#cb2-490" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-491"><a href="#cb2-491" aria-hidden="true" tabindex="-1"></a><span class="in">theta = np.linspace(0, 2*np.pi, 100)</span></span>
-<span id="cb2-492"><a href="#cb2-492" aria-hidden="true" tabindex="-1"></a><span class="in">a = 1</span></span>
-<span id="cb2-493"><a href="#cb2-493" aria-hidden="true" tabindex="-1"></a><span class="in">x = a * (theta - np.sin(theta))</span></span>
-<span id="cb2-494"><a href="#cb2-494" aria-hidden="true" tabindex="-1"></a><span class="in">y = a * (1 - np.cos(theta)) # Positive downwards</span></span>
-<span id="cb2-495"><a href="#cb2-495" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-496"><a href="#cb2-496" aria-hidden="true" tabindex="-1"></a><span class="in">fig, ax = plt.subplots(figsize=(8, 4))</span></span>
-<span id="cb2-497"><a href="#cb2-497" aria-hidden="true" tabindex="-1"></a><span class="in">ax.plot(x, -y, label='Brachistochrone (Cycloid)', color='blue') # Negative to plot downwards intuitively</span></span>
-<span id="cb2-498"><a href="#cb2-498" aria-hidden="true" tabindex="-1"></a><span class="in">ax.plot([0, x[-1]], [0, -y[-1]], '--', label='Straight line', color='gray')</span></span>
-<span id="cb2-499"><a href="#cb2-499" aria-hidden="true" tabindex="-1"></a><span class="in">ax.set_aspect('equal')</span></span>
-<span id="cb2-500"><a href="#cb2-500" aria-hidden="true" tabindex="-1"></a><span class="in">ax.set_xlabel('x')</span></span>
-<span id="cb2-501"><a href="#cb2-501" aria-hidden="true" tabindex="-1"></a><span class="in">ax.set_ylabel('y')</span></span>
-<span id="cb2-502"><a href="#cb2-502" aria-hidden="true" tabindex="-1"></a><span class="in">ax.set_title('Path of Minimum Time (Brachistochrone)')</span></span>
-<span id="cb2-503"><a href="#cb2-503" aria-hidden="true" tabindex="-1"></a><span class="in">ax.legend()</span></span>
-<span id="cb2-504"><a href="#cb2-504" aria-hidden="true" tabindex="-1"></a><span class="in">plt.grid(True)</span></span>
-<span id="cb2-505"><a href="#cb2-505" aria-hidden="true" tabindex="-1"></a><span class="in">plt.show()</span></span>
-<span id="cb2-506"><a href="#cb2-506" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-507"><a href="#cb2-507" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-508"><a href="#cb2-508" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.11](../solutions/taylor-chapter-6-problems.qmd#problem-611))*</span>
-<span id="cb2-509"><a href="#cb2-509" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-510"><a href="#cb2-510" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.4 More Than Two Variables</span></span>
+<span id="cb2-477"><a href="#cb2-477" aria-hidden="true" tabindex="-1"></a><span class="in">  const playBtn = document.getElementById('ch6-wheel-play-btn');</span></span>
+<span id="cb2-478"><a href="#cb2-478" aria-hidden="true" tabindex="-1"></a><span class="in">  if (playBtn) {</span></span>
+<span id="cb2-479"><a href="#cb2-479" aria-hidden="true" tabindex="-1"></a><span class="in">    playBtn.onclick = function() {</span></span>
+<span id="cb2-480"><a href="#cb2-480" aria-hidden="true" tabindex="-1"></a><span class="in">      running = !running;</span></span>
+<span id="cb2-481"><a href="#cb2-481" aria-hidden="true" tabindex="-1"></a><span class="in">      this.innerText = running ? '❚❚ Pause' : '▶ Play';</span></span>
+<span id="cb2-482"><a href="#cb2-482" aria-hidden="true" tabindex="-1"></a><span class="in">    };</span></span>
+<span id="cb2-483"><a href="#cb2-483" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb2-484"><a href="#cb2-484" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-485"><a href="#cb2-485" aria-hidden="true" tabindex="-1"></a><span class="in">  const resetBtn = document.getElementById('ch6-wheel-reset-btn');</span></span>
+<span id="cb2-486"><a href="#cb2-486" aria-hidden="true" tabindex="-1"></a><span class="in">  if (resetBtn) {</span></span>
+<span id="cb2-487"><a href="#cb2-487" aria-hidden="true" tabindex="-1"></a><span class="in">    resetBtn.onclick = function() {</span></span>
+<span id="cb2-488"><a href="#cb2-488" aria-hidden="true" tabindex="-1"></a><span class="in">      theta = 0;</span></span>
+<span id="cb2-489"><a href="#cb2-489" aria-hidden="true" tabindex="-1"></a><span class="in">      update();</span></span>
+<span id="cb2-490"><a href="#cb2-490" aria-hidden="true" tabindex="-1"></a><span class="in">      draw();</span></span>
+<span id="cb2-491"><a href="#cb2-491" aria-hidden="true" tabindex="-1"></a><span class="in">    };</span></span>
+<span id="cb2-492"><a href="#cb2-492" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb2-493"><a href="#cb2-493" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-494"><a href="#cb2-494" aria-hidden="true" tabindex="-1"></a><span class="in">  const rSlider = document.getElementById('ch6-wheel-radius-slider');</span></span>
+<span id="cb2-495"><a href="#cb2-495" aria-hidden="true" tabindex="-1"></a><span class="in">  if (rSlider) {</span></span>
+<span id="cb2-496"><a href="#cb2-496" aria-hidden="true" tabindex="-1"></a><span class="in">    rSlider.oninput = function() {</span></span>
+<span id="cb2-497"><a href="#cb2-497" aria-hidden="true" tabindex="-1"></a><span class="in">      a = parseInt(this.value);</span></span>
+<span id="cb2-498"><a href="#cb2-498" aria-hidden="true" tabindex="-1"></a><span class="in">      update();</span></span>
+<span id="cb2-499"><a href="#cb2-499" aria-hidden="true" tabindex="-1"></a><span class="in">      draw();</span></span>
+<span id="cb2-500"><a href="#cb2-500" aria-hidden="true" tabindex="-1"></a><span class="in">    };</span></span>
+<span id="cb2-501"><a href="#cb2-501" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb2-502"><a href="#cb2-502" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-503"><a href="#cb2-503" aria-hidden="true" tabindex="-1"></a><span class="in">  const thSlider = document.getElementById('ch6-wheel-theta-slider');</span></span>
+<span id="cb2-504"><a href="#cb2-504" aria-hidden="true" tabindex="-1"></a><span class="in">  if (thSlider) {</span></span>
+<span id="cb2-505"><a href="#cb2-505" aria-hidden="true" tabindex="-1"></a><span class="in">    thSlider.oninput = function() {</span></span>
+<span id="cb2-506"><a href="#cb2-506" aria-hidden="true" tabindex="-1"></a><span class="in">      theta = (parseInt(this.value) / 1256) * maxTheta;</span></span>
+<span id="cb2-507"><a href="#cb2-507" aria-hidden="true" tabindex="-1"></a><span class="in">      update();</span></span>
+<span id="cb2-508"><a href="#cb2-508" aria-hidden="true" tabindex="-1"></a><span class="in">      draw();</span></span>
+<span id="cb2-509"><a href="#cb2-509" aria-hidden="true" tabindex="-1"></a><span class="in">    };</span></span>
+<span id="cb2-510"><a href="#cb2-510" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
 <span id="cb2-511"><a href="#cb2-511" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-512"><a href="#cb2-512" aria-hidden="true" tabindex="-1"></a>If the functional depends on multiple functions $y_1(x), y_2(x), \dots, y_n(x)$,</span>
-<span id="cb2-513"><a href="#cb2-513" aria-hidden="true" tabindex="-1"></a>$$ S = \int_{x_1}^{x_2} f(y_1, \dots, y_n, y_1', \dots, y_n', x) \, dx $$</span>
-<span id="cb2-514"><a href="#cb2-514" aria-hidden="true" tabindex="-1"></a>we can vary each function independently. This leads to a system of $n$ independent Euler-Lagrange equations:</span>
-<span id="cb2-515"><a href="#cb2-515" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial f}{\partial y_i} - \frac{d}{dx} \frac{\partial f}{\partial y_i'} = 0 \quad \text{for } i = 1, 2, \dots, n $$</span>
-<span id="cb2-516"><a href="#cb2-516" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-517"><a href="#cb2-517" aria-hidden="true" tabindex="-1"></a>This extension is crucial for Lagrangian mechanics in 3D space, where we have coordinates $x(t), y(t), z(t)$, and time $t$ plays the role of the independent variable.</span>
-<span id="cb2-518"><a href="#cb2-518" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-519"><a href="#cb2-519" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.22](../solutions/taylor-chapter-6-problems.qmd#problem-622))*</span>
-<span id="cb2-520"><a href="#cb2-520" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-521"><a href="#cb2-521" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary</span></span>
-<span id="cb2-522"><a href="#cb2-522" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-523"><a href="#cb2-523" aria-hidden="true" tabindex="-1"></a>The calculus of variations allows us to find stationary paths for functionals. The fundamental tool is the Euler-Lagrange equation, which converts a global variational problem into a local differential equation. This mathematical foundation is what allows us to formulate Lagrangian mechanics based on Hamilton's Principle of stationary action.</span>
+<span id="cb2-512"><a href="#cb2-512" aria-hidden="true" tabindex="-1"></a><span class="in">  update();</span></span>
+<span id="cb2-513"><a href="#cb2-513" aria-hidden="true" tabindex="-1"></a><span class="in">  draw();</span></span>
+<span id="cb2-514"><a href="#cb2-514" aria-hidden="true" tabindex="-1"></a><span class="in">  animId = requestAnimationFrame(step);</span></span>
+<span id="cb2-515"><a href="#cb2-515" aria-hidden="true" tabindex="-1"></a><span class="in">})();</span></span>
+<span id="cb2-516"><a href="#cb2-516" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/script&gt;</span></span>
+<span id="cb2-517"><a href="#cb2-517" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-518"><a href="#cb2-518" aria-hidden="true" tabindex="-1"></a><span class="in">Imagine a circular disk of radius $a$ rolling without slipping along the underside of the horizontal axis ($y = 0$, pointing downward):</span></span>
+<span id="cb2-519"><a href="#cb2-519" aria-hidden="true" tabindex="-1"></a><span class="in">- **Center of the wheel:** As the wheel rolls through an angle $\theta$, its contact point has rolled a distance $a\theta$ along the rail:</span></span>
+<span id="cb2-520"><a href="#cb2-520" aria-hidden="true" tabindex="-1"></a><span class="in">  $$ (x_c, y_c) = (a\theta, a) $$</span></span>
+<span id="cb2-521"><a href="#cb2-521" aria-hidden="true" tabindex="-1"></a><span class="in">- **Point on the perimeter ($P$):** A marker fixed to the rim starts at the origin $(0, 0)$ when $\theta = 0$. After rotating clockwise by $\theta$, the marker's relative displacement from the wheel's center is:</span></span>
+<span id="cb2-522"><a href="#cb2-522" aria-hidden="true" tabindex="-1"></a><span class="in">  $$ \Delta x = -a\sin\theta, \quad \Delta y = -a\cos\theta $$</span></span>
+<span id="cb2-523"><a href="#cb2-523" aria-hidden="true" tabindex="-1"></a><span class="in">- **Absolute coordinates:** Combining center translation and rim rotation yields:</span></span>
+<span id="cb2-524"><a href="#cb2-524" aria-hidden="true" tabindex="-1"></a><span class="in">  $$ x(\theta) = x_c + \Delta x = a(\theta - \sin\theta) $$</span></span>
+<span id="cb2-525"><a href="#cb2-525" aria-hidden="true" tabindex="-1"></a><span class="in">  $$ y(\theta) = y_c + \Delta y = a(1 - \cos\theta) $$</span></span>
+<span id="cb2-526"><a href="#cb2-526" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-527"><a href="#cb2-527" aria-hidden="true" tabindex="-1"></a><span class="in">$\theta$ also directly determines the local slope and launch angle of the path. Differentiating with respect to $\theta$:</span></span>
+<span id="cb2-528"><a href="#cb2-528" aria-hidden="true" tabindex="-1"></a><span class="in">$$ \frac{dy}{dx} = \frac{dy/d\theta}{dx/d\theta} = \frac{a\sin\theta}{a(1 - \cos\theta)} = \frac{2\sin(\theta/2)\cos(\theta/2)}{2\sin^2(\theta/2)} = \cot\left(\frac{\theta}{2}\right) $$</span></span>
+<span id="cb2-529"><a href="#cb2-529" aria-hidden="true" tabindex="-1"></a><span class="in">If $\psi$ is the inclination angle of the velocity vector relative to the horizontal ($\tan\psi = dy/dx$):</span></span>
+<span id="cb2-530"><a href="#cb2-530" aria-hidden="true" tabindex="-1"></a><span class="in">$$ \psi = \frac{\pi - \theta}{2} $$</span></span>
+<span id="cb2-531"><a href="#cb2-531" aria-hidden="true" tabindex="-1"></a><span class="in">- At $\theta \to 0$ (the start): $\psi = \pi/2$ (the path drops straight vertically).</span></span>
+<span id="cb2-532"><a href="#cb2-532" aria-hidden="true" tabindex="-1"></a><span class="in">- At $\theta = \pi$ (the trough): $\psi = 0$ (the trajectory is completely horizontal).</span></span>
+<span id="cb2-533"><a href="#cb2-533" aria-hidden="true" tabindex="-1"></a><span class="in">- At $\theta = 2\pi$ (the next cusp): $\psi = -\pi/2$ (the path rises back to vertical).</span></span>
+<span id="cb2-534"><a href="#cb2-534" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-535"><a href="#cb2-535" aria-hidden="true" tabindex="-1"></a><span class="in">#### Why Assume the First Arch ($\theta \in [0, 2\pi]$) and $\sin(\theta/2) \ge 0$?</span></span>
+<span id="cb2-536"><a href="#cb2-536" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-537"><a href="#cb2-537" aria-hidden="true" tabindex="-1"></a><span class="in">1. **The Mathematical Reason: Eliminating Absolute Value Signs**  </span></span>
+<span id="cb2-538"><a href="#cb2-538" aria-hidden="true" tabindex="-1"></a><span class="in">   The principal square root satisfies $\sqrt{u^2} = |u|$. In simplifying the radical:</span></span>
+<span id="cb2-539"><a href="#cb2-539" aria-hidden="true" tabindex="-1"></a><span class="in">   $$ \sqrt{\frac{y}{2a - y}} = \left| \tan\left(\frac{\theta}{2}\right) \right| = \frac{\left|\sin(\theta/2)\right|}{\left|\cos(\theta/2)\right|} $$</span></span>
+<span id="cb2-540"><a href="#cb2-540" aria-hidden="true" tabindex="-1"></a><span class="in">   If $\theta \in [0, 2\pi]$, then $\frac{\theta}{2} \in [0, \pi]$. Since sine is strictly non-negative on $[0, \pi]$:</span></span>
+<span id="cb2-541"><a href="#cb2-541" aria-hidden="true" tabindex="-1"></a><span class="in">   $$ \sin\left(\frac{\theta}{2}\right) \ge 0 \implies \left|\sin\left(\frac{\theta}{2}\right)\right| = \sin\left(\frac{\theta}{2}\right) $$</span></span>
+<span id="cb2-542"><a href="#cb2-542" aria-hidden="true" tabindex="-1"></a><span class="in">   This avoids carrying piece-wise $\pm$ absolute value signs.</span></span>
+<span id="cb2-543"><a href="#cb2-543" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-544"><a href="#cb2-544" aria-hidden="true" tabindex="-1"></a><span class="in">2. **The Physical Reason: Geometry of the Fastest Path**  </span></span>
+<span id="cb2-545"><a href="#cb2-545" aria-hidden="true" tabindex="-1"></a><span class="in">   - **Energy Bounds:** Conservation of mechanical energy gives $v = \sqrt{2gy}$. At $y = 0$, speed is zero ($v = 0$). The particle cannot rise above $y = 0$, so it cannot continue past a cusp into negative $y$.</span></span>
+<span id="cb2-546"><a href="#cb2-546" aria-hidden="true" tabindex="-1"></a><span class="in">   - **Uniqueness:** A single arch ($\theta \in [0, 2\pi]$) starts at $(0, 0)$ and terminates at $(2\pi a, 0)$. By scaling the radius $a$, a single cycloid arch can pass through any target point $(x_2, y_2)$ in the lower half-plane ($x_2 &gt; 0, y_2 \ge 0$).</span></span>
+<span id="cb2-547"><a href="#cb2-547" aria-hidden="true" tabindex="-1"></a><span class="in">   - **No Redundant Loops:** Any path extending past $\theta = 2\pi$ into a second arch would involve rising up to a cusp, stopping, and dropping into a new dip. That would add unnecessary path length and travel time, violating the time-minimization condition $\delta T = 0$.</span></span>
+<span id="cb2-548"><a href="#cb2-548" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-549"><a href="#cb2-549" aria-hidden="true" tabindex="-1"></a><span class="in">#### Essential Mathematical Properties of Cycloids</span></span>
+<span id="cb2-550"><a href="#cb2-550" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-551"><a href="#cb2-551" aria-hidden="true" tabindex="-1"></a><span class="in">- **Parametric Form:** $x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta)$</span></span>
+<span id="cb2-552"><a href="#cb2-552" aria-hidden="true" tabindex="-1"></a><span class="in">- **Differential Arc Length:**</span></span>
+<span id="cb2-553"><a href="#cb2-553" aria-hidden="true" tabindex="-1"></a><span class="in">  $$ ds = \sqrt{\dot{x}^2 + \dot{y}^2}\, d\theta = a\sqrt{(1-\cos\theta)^2 + \sin^2\theta}\, d\theta = 2a\sin\left(\frac{\theta}{2}\right) d\theta $$</span></span>
+<span id="cb2-554"><a href="#cb2-554" aria-hidden="true" tabindex="-1"></a><span class="in">- **Total Arc Length from Origin to $\theta$:**</span></span>
+<span id="cb2-555"><a href="#cb2-555" aria-hidden="true" tabindex="-1"></a><span class="in">  $$ s(\theta) = \int_0^\theta 2a\sin\left(\frac{\theta'}{2}\right) d\theta' = 4a\left(1 - \cos\left(\frac{\theta}{2}\right)\right) = 8a\sin^2\left(\frac{\theta}{4}\right) $$</span></span>
+<span id="cb2-556"><a href="#cb2-556" aria-hidden="true" tabindex="-1"></a><span class="in">  The total perimeter of one complete arch ($\theta = 2\pi$) is exactly $s_{\text{total}} = 8a$.</span></span>
+<span id="cb2-557"><a href="#cb2-557" aria-hidden="true" tabindex="-1"></a><span class="in">- **Radius of Curvature:**</span></span>
+<span id="cb2-558"><a href="#cb2-558" aria-hidden="true" tabindex="-1"></a><span class="in">  $$ \rho(\theta) = \frac{(\dot{x}^2 + \dot{y}^2)^{3/2}}{|\dot{x}\ddot{y} - \dot{y}\ddot{x}|} = 4a\sin\left(\frac{\theta}{2}\right) = \sqrt{8a y} $$</span></span>
+<span id="cb2-559"><a href="#cb2-559" aria-hidden="true" tabindex="-1"></a><span class="in">- **Self-Evolute Property:** The evolute (locus of centers of curvature) of a cycloid is an identical cycloid, shifted horizontally by $\pi a$ and vertically downward by $2a$.</span></span>
+<span id="cb2-560"><a href="#cb2-560" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-561"><a href="#cb2-561" aria-hidden="true" tabindex="-1"></a><span class="in">*(For broader integration techniques and speed benchmarks, see [Integration Tricks and Substitution Techniques](../reference/integration-tricks-and-substitutions.qmd). For physical systems such as Huygens' isochronous pendulum, $E\times B$ drifts, and cycloidal gear drives, see [Physics and Engineering Applications of Cycloids](../reference/cycloid-physics-applications.qmd).)*</span></span>
+<span id="cb2-562"><a href="#cb2-562" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-563"><a href="#cb2-563" aria-hidden="true" tabindex="-1"></a><span class="in">::: {.callout-tip}</span></span>
+<span id="cb2-564"><a href="#cb2-564" aria-hidden="true" tabindex="-1"></a><span class="in">### 🎮 Interactive Simulations</span></span>
+<span id="cb2-565"><a href="#cb2-565" aria-hidden="true" tabindex="-1"></a><span class="in">Experience these phenomena live in your browser:  </span></span>
+<span id="cb2-566"><a href="#cb2-566" aria-hidden="true" tabindex="-1"></a><span class="in">Launch the **[Interactive Cycloid Mechanics: Brachistochrone, Tautochrone &amp; Huygens' Pendulum](../simulations/cycloid-mechanics-interactive.qmd)** to run the 4-track Brachistochrone race, test simultaneous Tautochrone arrivals, and compare Huygens' isochronous clock against ordinary circular pendulums!</span></span>
+<span id="cb2-567"><a href="#cb2-567" aria-hidden="true" tabindex="-1"></a><span class="in">:::</span></span>
+<span id="cb2-568"><a href="#cb2-568" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-571"><a href="#cb2-571" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb2-572"><a href="#cb2-572" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-cycloid</span></span>
+<span id="cb2-573"><a href="#cb2-573" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: "The Brachistochrone path is a cycloid, the curve traced by a point on the rim of a rolling wheel."</span></span>
+<span id="cb2-574"><a href="#cb2-574" aria-hidden="true" tabindex="-1"></a><span class="in">import numpy as np</span></span>
+<span id="cb2-575"><a href="#cb2-575" aria-hidden="true" tabindex="-1"></a><span class="in">import matplotlib.pyplot as plt</span></span>
+<span id="cb2-576"><a href="#cb2-576" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-577"><a href="#cb2-577" aria-hidden="true" tabindex="-1"></a><span class="in">theta = np.linspace(0, 2*np.pi, 100)</span></span>
+<span id="cb2-578"><a href="#cb2-578" aria-hidden="true" tabindex="-1"></a><span class="in">a = 1</span></span>
+<span id="cb2-579"><a href="#cb2-579" aria-hidden="true" tabindex="-1"></a><span class="in">x = a * (theta - np.sin(theta))</span></span>
+<span id="cb2-580"><a href="#cb2-580" aria-hidden="true" tabindex="-1"></a><span class="in">y = a * (1 - np.cos(theta)) # Positive downwards</span></span>
+<span id="cb2-581"><a href="#cb2-581" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-582"><a href="#cb2-582" aria-hidden="true" tabindex="-1"></a><span class="in">fig, ax = plt.subplots(figsize=(8, 4))</span></span>
+<span id="cb2-583"><a href="#cb2-583" aria-hidden="true" tabindex="-1"></a><span class="in">ax.plot(x, -y, label='Brachistochrone (Cycloid)', color='blue') # Negative to plot downwards intuitively</span></span>
+<span id="cb2-584"><a href="#cb2-584" aria-hidden="true" tabindex="-1"></a><span class="in">ax.plot([0, x[-1]], [0, -y[-1]], '--', label='Straight line', color='gray')</span></span>
+<span id="cb2-585"><a href="#cb2-585" aria-hidden="true" tabindex="-1"></a><span class="in">ax.set_aspect('equal')</span></span>
+<span id="cb2-586"><a href="#cb2-586" aria-hidden="true" tabindex="-1"></a><span class="in">ax.set_xlabel('x')</span></span>
+<span id="cb2-587"><a href="#cb2-587" aria-hidden="true" tabindex="-1"></a><span class="in">ax.set_ylabel('y')</span></span>
+<span id="cb2-588"><a href="#cb2-588" aria-hidden="true" tabindex="-1"></a><span class="in">ax.set_title('Path of Minimum Time (Brachistochrone)')</span></span>
+<span id="cb2-589"><a href="#cb2-589" aria-hidden="true" tabindex="-1"></a><span class="in">ax.legend()</span></span>
+<span id="cb2-590"><a href="#cb2-590" aria-hidden="true" tabindex="-1"></a><span class="in">plt.grid(True)</span></span>
+<span id="cb2-591"><a href="#cb2-591" aria-hidden="true" tabindex="-1"></a><span class="in">plt.show()</span></span>
+<span id="cb2-592"><a href="#cb2-592" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-593"><a href="#cb2-593" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-594"><a href="#cb2-594" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.11](../solutions/taylor-chapter-6-problems.qmd#problem-611))*</span>
+<span id="cb2-595"><a href="#cb2-595" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-596"><a href="#cb2-596" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.4 More Than Two Variables</span></span>
+<span id="cb2-597"><a href="#cb2-597" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-598"><a href="#cb2-598" aria-hidden="true" tabindex="-1"></a>If the functional depends on multiple functions $y_1(x), y_2(x), \dots, y_n(x)$,</span>
+<span id="cb2-599"><a href="#cb2-599" aria-hidden="true" tabindex="-1"></a>$$ S = \int_{x_1}^{x_2} f(y_1, \dots, y_n, y_1', \dots, y_n', x) \, dx $$</span>
+<span id="cb2-600"><a href="#cb2-600" aria-hidden="true" tabindex="-1"></a>we can vary each function independently. This leads to a system of $n$ independent Euler-Lagrange equations:</span>
+<span id="cb2-601"><a href="#cb2-601" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial f}{\partial y_i} - \frac{d}{dx} \frac{\partial f}{\partial y_i'} = 0 \quad \text{for } i = 1, 2, \dots, n $$</span>
+<span id="cb2-602"><a href="#cb2-602" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-603"><a href="#cb2-603" aria-hidden="true" tabindex="-1"></a>This extension is crucial for Lagrangian mechanics in 3D space, where we have coordinates $x(t), y(t), z(t)$, and time $t$ plays the role of the independent variable.</span>
+<span id="cb2-604"><a href="#cb2-604" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-605"><a href="#cb2-605" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.22](../solutions/taylor-chapter-6-problems.qmd#problem-622))*</span>
+<span id="cb2-606"><a href="#cb2-606" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-607"><a href="#cb2-607" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary</span></span>
+<span id="cb2-608"><a href="#cb2-608" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-609"><a href="#cb2-609" aria-hidden="true" tabindex="-1"></a>The calculus of variations allows us to find stationary paths for functionals. The fundamental tool is the Euler-Lagrange equation, which converts a global variational problem into a local differential equation. This mathematical foundation is what allows us to formulate Lagrangian mechanics based on Hamilton's Principle of stationary action.</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
