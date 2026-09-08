@@ -1,0 +1,21 @@
+[
+  {
+    "listing": "/notes/index.html",
+    "items": [
+      "/notes/lagrangian-mechanics.html",
+      "/notes/taylor-chapter-6-calculus-of-variations.html"
+    ]
+  },
+  {
+    "listing": "/solutions/index.html",
+    "items": [
+      "/solutions/problem-set-1.html"
+    ]
+  },
+  {
+    "listing": "/simulations/index.html",
+    "items": [
+      "/simulations/interactive-pendulum-and-verlet.html"
+    ]
+  }
+]
