@@ -70,6 +70,34 @@
     "text": "4. Fortran 90 Symplectic Orbit Integrator\nFor ultra-high-throughput orbital mechanics, Fortran remains an industry standard in celestial dynamics:\n! orbit_integrator.f90\n! Compile: gfortran -O3 -march=native orbit_integrator.f90 -o orbit_sim\nprogram kepler_verlet\n    implicit none\n    integer, parameter :: dp = kind(1.0d0)\n    real(dp) :: x, y, vx, vy, ax, ay, r, dt, t, t_end, GM\n    real(dp) :: ax_new, ay_new\n    integer :: step, n_steps\n\n    GM = 4.0_dp * 3.141592653589793_dp**2 ! AU^3 / yr^2\n    x = 1.0_dp; y = 0.0_dp               ! Initial position (1 AU)\n    vx = 0.0_dp; vy = 2.0_dp * 3.141592653589793_dp ! Circular velocity\n\n    dt = 0.001_dp\n    t_end = 10.0_dp\n    n_steps = int(t_end / dt)\n\n    do step = 1, n_steps\n        r = sqrt(x**2 + y**2)\n        ax = -GM * x / (r**3)\n        ay = -GM * y / (r**3)\n\n        x = x + vx * dt + 0.5_dp * ax * dt**2\n        y = y + vy * dt + 0.5_dp * ay * dt**2\n\n        r = sqrt(x**2 + y**2)\n        ax_new = -GM * x / (r**3)\n        ay_new = -GM * y / (r**3)\n\n        vx = vx + 0.5_dp * (ax + ax_new) * dt\n        vy = vy + 0.5_dp * (ay + ay_new) * dt\n    end do\n\n    print *, \"Completed 10 Earth orbits with zero secular energy drift.\"\nend program kepler_verlet"
   },
   {
+    "objectID": "solutions/taylor-chapter-6-problems.html",
+    "href": "solutions/taylor-chapter-6-problems.html",
+    "title": "Taylor Chapter 6 Problems: Calculus of Variations",
+    "section": "",
+    "text": "For a complete derivation of the theoretical concepts used to solve these problems, refer to the Chapter 6 Lecture Notes."
+  },
+  {
+    "objectID": "solutions/index.html",
+    "href": "solutions/index.html",
+    "title": "Problem Sets & Solutions",
+    "section": "",
+    "text": "Problem Set 1: Bead on a Rotating Wire Hoop\n\n\nAnalytical solution using Lagrangian mechanics and phase portrait stability analysis.\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nTaylor Chapter 6 Problems: Calculus of Variations\n\n\n\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\nIgor\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PHYC54H3: Classical Mechanics",
+    "section": "",
+    "text": "Comprehensive course portal featuring interactive computational physics notebooks, Manim animations, lecture derivations, and problem set solutions."
+  },
+  {
+    "objectID": "index.html#course-roadmap",
+    "href": "index.html#course-roadmap",
+    "title": "PHYC54H3: Classical Mechanics",
+    "section": "Course Roadmap",
+    "text": "Course Roadmap\n\n\n\n\n\n\n\n\n\nWeek\nCore Topics\nKey Mathematical Tools\nStatus\n\n\n\n\n01 - 02\nReview of Newtonian Mechanics, Damped & Driven Oscillations\nComplex numbers, ODEs, Green’s functions\nAvailable\n\n\n03 - 04\nCalculus of Variations & Hamilton’s Principle\nFunctional differentiation, Euler-Lagrange, Constraints\nAvailable\n\n\n05 - 06\nCentral Forces, Kepler’s Laws & Orbital Scattering\nEffective potential, Binet equation, Rutherford cross-section\nIn Progress\n\n\n07 - 08\nNon-Inertial Reference Frames & Coriolis Effects\nRotating coordinates, Foucault pendulum, centrifugal potential\nUpcoming\n\n\n09 - 10\nRigid Body Dynamics & The Inertia Tensor\nPrincipal axes, Euler angles, Euler’s equations of motion\nUpcoming\n\n\n11 - 12\nHamiltonian Mechanics, Poisson Brackets & Chaos\nPhase space volume (Liouville’s theorem), Lyapunov exponents\nUpcoming"
+  },
+  {
     "objectID": "solutions/problem-set-1.html",
     "href": "solutions/problem-set-1.html",
     "title": "Problem Set 1: Bead on a Rotating Wire Hoop",
@@ -89,27 +117,6 @@
     "title": "Problem Set 1: Bead on a Rotating Wire Hoop",
     "section": "Solution",
     "text": "Solution\n\n1. Constructing the Lagrangian\nLet \\(\\theta\\) be the angle of the bead measured from the lowest point of the hoop. In spherical coordinates with the origin at the center of the hoop: * \\(x = R \\sin\\theta \\cos(\\omega t)\\) * \\(y = R \\sin\\theta \\sin(\\omega t)\\) * \\(z = -R \\cos\\theta\\)\nTaking time derivatives: \\[\\dot{x} = R \\dot{\\theta} \\cos\\theta \\cos(\\omega t) - R \\omega \\sin\\theta \\sin(\\omega t)\\] \\[\\dot{y} = R \\dot{\\theta} \\cos\\theta \\sin(\\omega t) + R \\omega \\sin\\theta \\cos(\\omega t)\\] \\[\\dot{z} = R \\dot{\\theta} \\sin\\theta\\]\nCalculating \\(v^2 = \\dot{x}^2 + \\dot{y}^2 + \\dot{z}^2\\): \\[v^2 = R^2 \\dot{\\theta}^2 + R^2 \\omega^2 \\sin^2\\theta\\]\n\nKinetic Energy: \\(T = \\frac{1}{2} m R^2 (\\dot{\\theta}^2 + \\omega^2 \\sin^2\\theta)\\)\nPotential Energy: \\(V = mgz = -mgR \\cos\\theta\\)\n\nThe Lagrangian is: \\[\\boxed{\\mathcal{L} = T - V = \\frac{1}{2} m R^2 \\dot{\\theta}^2 + \\frac{1}{2} m R^2 \\omega^2 \\sin^2\\theta + mgR \\cos\\theta}\\]\n\n\n\n2. Equation of Motion\nCompute the Euler-Lagrange derivatives: \\[\\frac{\\partial \\mathcal{L}}{\\partial \\dot{\\theta}} = m R^2 \\dot{\\theta} \\implies \\frac{d}{dt}\\left(\\frac{\\partial \\mathcal{L}}{\\partial \\dot{\\theta}}\\right) = m R^2 \\ddot{\\theta}\\] \\[\\frac{\\partial \\mathcal{L}}{\\partial \\theta} = m R^2 \\omega^2 \\sin\\theta \\cos\\theta - mgR \\sin\\theta\\]\nApplying \\(\\frac{d}{dt}\\frac{\\partial \\mathcal{L}}{\\partial \\dot{\\theta}} - \\frac{\\partial \\mathcal{L}}{\\partial \\theta} = 0\\): \\[m R^2 \\ddot{\\theta} - m R^2 \\omega^2 \\sin\\theta \\cos\\theta + mgR \\sin\\theta = 0\\] \\[\\boxed{\\ddot{\\theta} = \\left( \\omega^2 \\cos\\theta - \\frac{g}{R} \\right) \\sin\\theta}\\]\n\n\n\n3. Equilibrium Positions and Stability Analysis\nEquilibrium occurs when \\(\\ddot{\\theta} = 0\\): \\[\\sin\\theta \\left( \\omega^2 \\cos\\theta - \\frac{g}{R} \\right) = 0\\]\nThis yields two distinct branches of equilibria: 1. \\(\\sin\\theta = 0 \\implies \\theta_0 = 0\\) (bottom) or \\(\\theta_0 = \\pi\\) (top). 2. \\(\\cos\\theta_0 = \\frac{g}{\\omega^2 R}\\) (lateral positions, existing only if \\(\\omega^2 \\ge g/R\\)).\n\nEffective Potential\nRewrite the equation of motion as \\(\\ddot{\\theta} = -\\frac{1}{mR^2} \\frac{dV_{\\text{eff}}}{d\\theta}\\): \\[V_{\\text{eff}}(\\theta) = -mgR \\cos\\theta - \\frac{1}{2} m R^2 \\omega^2 \\sin^2\\theta\\]\nEvaluate the second derivative \\(\\frac{d^2 V_{\\text{eff}}}{d\\theta^2}\\): \\[\\frac{d^2 V_{\\text{eff}}}{d\\theta^2} = mgR \\cos\\theta - m R^2 \\omega^2 \\cos(2\\theta)\\]\nAt the bottom (\\(\\theta = 0\\)): \\[\\left. \\frac{d^2 V_{\\text{eff}}}{d\\theta^2} \\right|_{\\theta=0} = mgR - m R^2 \\omega^2 = m R^2 \\left( \\frac{g}{R} - \\omega^2 \\right)\\]\n\nSubcritical (\\(\\omega &lt; \\sqrt{g/R}\\)): \\(V_{\\text{eff}}''(0) &gt; 0 \\implies\\) Stable minimum.\nSupercritical (\\(\\omega &gt; \\sqrt{g/R}\\)): \\(V_{\\text{eff}}''(0) &lt; 0 \\implies\\) Unstable maximum. The bottom position loses stability!\n\nAt the critical rotation speed \\(\\omega_c = \\sqrt{g/R}\\), the system undergoes a classic supercritical pitchfork bifurcation: the bottom point becomes unstable, and two symmetric stable equilibrium points emerge at: \\[\\boxed{\\theta_0 = \\pm \\arccos\\left(\\frac{g}{\\omega^2 R}\\right)}\\]"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PHYC54H3: Classical Mechanics",
-    "section": "",
-    "text": "Comprehensive course portal featuring interactive computational physics notebooks, Manim animations, lecture derivations, and problem set solutions."
-  },
-  {
-    "objectID": "index.html#course-roadmap",
-    "href": "index.html#course-roadmap",
-    "title": "PHYC54H3: Classical Mechanics",
-    "section": "Course Roadmap",
-    "text": "Course Roadmap\n\n\n\n\n\n\n\n\n\nWeek\nCore Topics\nKey Mathematical Tools\nStatus\n\n\n\n\n01 - 02\nReview of Newtonian Mechanics, Damped & Driven Oscillations\nComplex numbers, ODEs, Green’s functions\nAvailable\n\n\n03 - 04\nCalculus of Variations & Hamilton’s Principle\nFunctional differentiation, Euler-Lagrange, Constraints\nAvailable\n\n\n05 - 06\nCentral Forces, Kepler’s Laws & Orbital Scattering\nEffective potential, Binet equation, Rutherford cross-section\nIn Progress\n\n\n07 - 08\nNon-Inertial Reference Frames & Coriolis Effects\nRotating coordinates, Foucault pendulum, centrifugal potential\nUpcoming\n\n\n09 - 10\nRigid Body Dynamics & The Inertia Tensor\nPrincipal axes, Euler angles, Euler’s equations of motion\nUpcoming\n\n\n11 - 12\nHamiltonian Mechanics, Poisson Brackets & Chaos\nPhase space volume (Liouville’s theorem), Lyapunov exponents\nUpcoming"
-  },
-  {
-    "objectID": "solutions/index.html",
-    "href": "solutions/index.html",
-    "title": "Problem Sets & Solutions",
-    "section": "",
-    "text": "Problem Set 1: Bead on a Rotating Wire Hoop\n\n\nAnalytical solution using Lagrangian mechanics and phase portrait stability analysis.\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "simulations/index.html",

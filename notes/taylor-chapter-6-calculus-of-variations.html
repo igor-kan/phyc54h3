@@ -272,7 +272,7 @@ window.Quarto = {
 <p>The total length of the path is the integral: <span class="math display">\[ L = \int_{x_1}^{x_2} \sqrt{1 + [y'(x)]^2} \, dx \]</span></p>
 <p>The goal is to find the function <span class="math inline">\(y(x)\)</span> that minimizes <span class="math inline">\(L\)</span>.</p>
 <blockquote class="blockquote">
-<p><strong>Problem 6.1 (Shortest path in a plane):</strong> Prove that the shortest path between two points in a 2D plane is a straight line. (We will solve this using the Euler-Lagrange equation later in this chapter.)</p>
+<p><strong><a href="../solutions/taylor-chapter-6-problems.html#problem-61">Problem 6.1</a></strong> (Shortest path in a plane): Prove that the shortest path between two points in a 2D plane is a straight line. (We will solve this using the Euler-Lagrange equation later in this chapter.)</p>
 </blockquote>
 </section>
 <section id="example-2-the-brachistochrone-problem" class="level3">
@@ -282,7 +282,7 @@ window.Quarto = {
 <p>The time to travel an infinitesimal distance <span class="math inline">\(ds\)</span> is <span class="math inline">\(dt = ds/v\)</span>. The total time is: <span class="math display">\[ t = \int_{1}^{2} \frac{ds}{v} = \int_{x_1}^{x_2} \frac{\sqrt{1 + (y')^2}}{\sqrt{2gy}} \, dx \]</span></p>
 <p>We need to find the function <span class="math inline">\(y(x)\)</span> that minimizes this time integral <span class="math inline">\(t\)</span>.</p>
 <blockquote class="blockquote">
-<p><strong>Problem 6.2 (Brachistochrone coordinates):</strong> Write down the time integral if the <span class="math inline">\(y\)</span>-axis was defined pointing upwards instead. How does the energy conservation equation change? <em>Hint:</em> If <span class="math inline">\(y\)</span> points up, <span class="math inline">\(U = mgy\)</span>. <span class="math inline">\(E = 0 \implies \frac{1}{2}mv^2 + mgy = 0 \implies v = \sqrt{-2gy}\)</span> (since <span class="math inline">\(y\)</span> will be negative as the bead falls). The integral remains similar, just with <span class="math inline">\(-y\)</span> under the square root.</p>
+<p><strong><a href="../solutions/taylor-chapter-6-problems.html#problem-62-1">Problem 6.2</a></strong> (Brachistochrone coordinates): Write down the time integral if the <span class="math inline">\(y\)</span>-axis was defined pointing upwards instead. How does the energy conservation equation change? <em>Hint:</em> If <span class="math inline">\(y\)</span> points up, <span class="math inline">\(U = mgy\)</span>. <span class="math inline">\(E = 0 \implies \frac{1}{2}mv^2 + mgy = 0 \implies v = \sqrt{-2gy}\)</span> (since <span class="math inline">\(y\)</span> will be negative as the bead falls). The integral remains similar, just with <span class="math inline">\(-y\)</span> under the square root.</p>
 </blockquote>
 </section>
 </section>
@@ -301,7 +301,7 @@ window.Quarto = {
 <p>For this to hold for <em>any</em> arbitrary variation <span class="math inline">\(\eta(x)\)</span>, the term in the brackets must be identically zero. This yields the <strong>Euler-Lagrange Equation</strong>:</p>
 <p><span class="math display">\[ \frac{\partial f}{\partial y} - \frac{d}{dx} \frac{\partial f}{\partial y'} = 0 \]</span></p>
 <blockquote class="blockquote">
-<p><strong>Problem 6.4:</strong> Find the Euler-Lagrange equation for the functional <span class="math inline">\(S = \int (y'^2 + y^2) dx\)</span>. <em>Solution:</em> <span class="math inline">\(f = y'^2 + y^2\)</span>. <span class="math inline">\(\frac{\partial f}{\partial y} = 2y\)</span>, <span class="math inline">\(\frac{\partial f}{\partial y'} = 2y'\)</span>. <span class="math inline">\(\frac{d}{dx}(2y') = 2y''\)</span>. The E-L equation is <span class="math inline">\(2y - 2y'' = 0\)</span>, or <span class="math inline">\(y'' = y\)</span>.</p>
+<p><strong><a href="../solutions/taylor-chapter-6-problems.html#problem-64">Problem 6.4</a>:</strong> Find the Euler-Lagrange equation for the functional <span class="math inline">\(S = \int (y'^2 + y^2) dx\)</span>. <em>Solution:</em> <span class="math inline">\(f = y'^2 + y^2\)</span>. <span class="math inline">\(\frac{\partial f}{\partial y} = 2y\)</span>, <span class="math inline">\(\frac{\partial f}{\partial y'} = 2y'\)</span>. <span class="math inline">\(\frac{d}{dx}(2y') = 2y''\)</span>. The E-L equation is <span class="math inline">\(2y - 2y'' = 0\)</span>, or <span class="math inline">\(y'' = y\)</span>.</p>
 </blockquote>
 </section>
 </section>
@@ -353,7 +353,7 @@ Figure&nbsp;1: The Brachistochrone path is a cycloid, the curve traced by a poin
 </div>
 </div>
 <blockquote class="blockquote">
-<p><strong>Problem 6.11 (Geodesic on a cylinder):</strong> Find the equation for the shortest path (geodesic) between two points on the surface of a cylinder <span class="math inline">\(R = \text{const}\)</span>. <em>Hint:</em> Use cylindrical coordinates <span class="math inline">\((R, \phi, z)\)</span>. The arc length is <span class="math inline">\(ds^2 = dR^2 + R^2 d\phi^2 + dz^2 = R^2 d\phi^2 + dz^2\)</span>. Minimize the integral <span class="math inline">\(\int \sqrt{R^2 + (z')^2} d\phi\)</span>.</p>
+<p><strong><a href="../solutions/taylor-chapter-6-problems.html#problem-611">Problem 6.11</a></strong> (Geodesic on a cylinder): Find the equation for the shortest path (geodesic) between two points on the surface of a cylinder <span class="math inline">\(R = \text{const}\)</span>. <em>Hint:</em> Use cylindrical coordinates <span class="math inline">\((R, \phi, z)\)</span>. The arc length is <span class="math inline">\(ds^2 = dR^2 + R^2 d\phi^2 + dz^2 = R^2 d\phi^2 + dz^2\)</span>. Minimize the integral <span class="math inline">\(\int \sqrt{R^2 + (z')^2} d\phi\)</span>.</p>
 </blockquote>
 </section>
 </section>
@@ -362,7 +362,7 @@ Figure&nbsp;1: The Brachistochrone path is a cycloid, the curve traced by a poin
 <p>If the functional depends on multiple functions <span class="math inline">\(y_1(x), y_2(x), \dots, y_n(x)\)</span>, <span class="math display">\[ S = \int_{x_1}^{x_2} f(y_1, \dots, y_n, y_1', \dots, y_n', x) \, dx \]</span> we can vary each function independently. This leads to a system of <span class="math inline">\(n\)</span> independent Euler-Lagrange equations: <span class="math display">\[ \frac{\partial f}{\partial y_i} - \frac{d}{dx} \frac{\partial f}{\partial y_i'} = 0 \quad \text{for } i = 1, 2, \dots, n \]</span></p>
 <p>This extension is crucial for Lagrangian mechanics in 3D space, where we have coordinates <span class="math inline">\(x(t), y(t), z(t)\)</span>, and time <span class="math inline">\(t\)</span> plays the role of the independent variable.</p>
 <blockquote class="blockquote">
-<p><strong>Problem 6.22 (Fermat’s Principle):</strong> Fermat’s principle states that light travels between two points along the path that requires the least time. Show that this leads to Snell’s Law <span class="math inline">\(n_1 \sin\theta_1 = n_2 \sin\theta_2\)</span> for light crossing a boundary between media with refractive indices <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span>. <em>Hint:</em> Time <span class="math inline">\(t = \int \frac{ds}{v} = \int \frac{n(y)}{c} \sqrt{1+y'^2} dx\)</span>. Use the Beltrami identity since <span class="math inline">\(f\)</span> doesn’t depend on <span class="math inline">\(x\)</span>.</p>
+<p><strong><a href="../solutions/taylor-chapter-6-problems.html#problem-622-fermat-s-principle">Problem 6.22</a></strong> (Fermat’s Principle): Fermat’s principle states that light travels between two points along the path that requires the least time. Show that this leads to Snell’s Law <span class="math inline">\(n_1 \sin\theta_1 = n_2 \sin\theta_2\)</span> for light crossing a boundary between media with refractive indices <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span>. <em>Hint:</em> Time <span class="math inline">\(t = \int \frac{ds}{v} = \int \frac{n(y)}{c} \sqrt{1+y'^2} dx\)</span>. Use the Beltrami identity since <span class="math inline">\(f\)</span> doesn’t depend on <span class="math inline">\(x\)</span>.</p>
 </blockquote>
 <hr>
 <p><strong>Summary</strong> The calculus of variations allows us to find stationary paths for functionals. The fundamental tool is the Euler-Lagrange equation, which converts a global variational problem into a local differential equation. This mathematical foundation is what allows us to formulate Lagrangian mechanics based on Hamilton’s Principle of stationary action.</p>
@@ -863,7 +863,7 @@ Figure&nbsp;1: The Brachistochrone path is a cycloid, the curve traced by a poin
 <span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>The goal is to find the function $y(x)$ that minimizes $L$.</span>
 <span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Problem 6.1 (Shortest path in a plane):** Prove that the shortest path between two points in a 2D plane is a straight line. (We will solve this using the Euler-Lagrange equation later in this chapter.)</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **[Problem 6.1](../solutions/taylor-chapter-6-problems.qmd#problem-61)** (Shortest path in a plane): Prove that the shortest path between two points in a 2D plane is a straight line. (We will solve this using the Euler-Lagrange equation later in this chapter.)</span></span>
 <span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example 2: The Brachistochrone Problem</span></span>
 <span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
@@ -878,7 +878,7 @@ Figure&nbsp;1: The Brachistochrone path is a cycloid, the curve traced by a poin
 <span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>We need to find the function $y(x)$ that minimizes this time integral $t$.</span>
 <span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Problem 6.2 (Brachistochrone coordinates):** Write down the time integral if the $y$-axis was defined pointing upwards instead. How does the energy conservation equation change?</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **[Problem 6.2](../solutions/taylor-chapter-6-problems.qmd#problem-62-1)** (Brachistochrone coordinates): Write down the time integral if the $y$-axis was defined pointing upwards instead. How does the energy conservation equation change?</span></span>
 <span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *Hint:* If $y$ points up, $U = mgy$. $E = 0 \implies \frac{1}{2}mv^2 + mgy = 0 \implies v = \sqrt{-2gy}$ (since $y$ will be negative as the bead falls). The integral remains similar, just with $-y$ under the square root.</span></span>
 <span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.2 The Euler-Lagrange Equation</span></span>
@@ -916,7 +916,7 @@ Figure&nbsp;1: The Brachistochrone path is a cycloid, the curve traced by a poin
 <span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial f}{\partial y} - \frac{d}{dx} \frac{\partial f}{\partial y'} = 0 $$</span>
 <span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Problem 6.4:** Find the Euler-Lagrange equation for the functional $S = \int (y'^2 + y^2) dx$.</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **[Problem 6.4](../solutions/taylor-chapter-6-problems.qmd#problem-64):** Find the Euler-Lagrange equation for the functional $S = \int (y'^2 + y^2) dx$.</span></span>
 <span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *Solution:* $f = y'^2 + y^2$. $\frac{\partial f}{\partial y} = 2y$, $\frac{\partial f}{\partial y'} = 2y'$. $\frac{d}{dx}(2y') = 2y''$. The E-L equation is $2y - 2y'' = 0$, or $y'' = y$.</span></span>
 <span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.3 Applications of the Euler-Lagrange Equation</span></span>
@@ -972,7 +972,7 @@ Figure&nbsp;1: The Brachistochrone path is a cycloid, the curve traced by a poin
 <span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
 <span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Problem 6.11 (Geodesic on a cylinder):** Find the equation for the shortest path (geodesic) between two points on the surface of a cylinder $R = \text{const}$.</span></span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **[Problem 6.11](../solutions/taylor-chapter-6-problems.qmd#problem-611)** (Geodesic on a cylinder): Find the equation for the shortest path (geodesic) between two points on the surface of a cylinder $R = \text{const}$.</span></span>
 <span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *Hint:* Use cylindrical coordinates $(R, \phi, z)$. The arc length is $ds^2 = dR^2 + R^2 d\phi^2 + dz^2 = R^2 d\phi^2 + dz^2$. Minimize the integral $\int \sqrt{R^2 + (z')^2} d\phi$.</span></span>
 <span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.4 More Than Two Variables</span></span>
@@ -984,7 +984,7 @@ Figure&nbsp;1: The Brachistochrone path is a cycloid, the curve traced by a poin
 <span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a>This extension is crucial for Lagrangian mechanics in 3D space, where we have coordinates $x(t), y(t), z(t)$, and time $t$ plays the role of the independent variable.</span>
 <span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Problem 6.22 (Fermat's Principle):** Fermat's principle states that light travels between two points along the path that requires the least time. Show that this leads to Snell's Law $n_1 \sin\theta_1 = n_2 \sin\theta_2$ for light crossing a boundary between media with refractive indices $n_1$ and $n_2$.</span></span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **[Problem 6.22](../solutions/taylor-chapter-6-problems.qmd#problem-622-fermat-s-principle)** (Fermat's Principle): Fermat's principle states that light travels between two points along the path that requires the least time. Show that this leads to Snell's Law $n_1 \sin\theta_1 = n_2 \sin\theta_2$ for light crossing a boundary between media with refractive indices $n_1$ and $n_2$.</span></span>
 <span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *Hint:* Time $t = \int \frac{ds}{v} = \int \frac{n(y)}{c} \sqrt{1+y'^2} dx$. Use the Beltrami identity since $f$ doesn't depend on $x$.</span></span>
 <span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a>---</span>
