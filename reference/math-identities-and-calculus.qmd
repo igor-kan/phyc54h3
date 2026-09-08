@@ -1,0 +1,80 @@
+---
+title: "Mathematical Identities & Calculus"
+author: "Igor"
+date: "2026-09-08"
+categories: [math, reference, calculus]
+format:
+  html:
+    toc: true
+    math: true
+---
+
+# Trigonometric Identities
+
+## Pythagorean Identities
+$$ \sin^2 \theta + \cos^2 \theta = 1 $$
+$$ 1 + \tan^2 \theta = \sec^2 \theta $$
+$$ 1 + \cot^2 \theta = \csc^2 \theta $$
+
+## Angle Addition and Subtraction
+$$ \sin(\alpha \pm \beta) = \sin\alpha \cos\beta \pm \cos\alpha \sin\beta $$
+$$ \cos(\alpha \pm \beta) = \cos\alpha \cos\beta \mp \sin\alpha \sin\beta $$
+$$ \tan(\alpha \pm \beta) = \frac{\tan\alpha \pm \tan\beta}{1 \mp \tan\alpha \tan\beta} $$
+
+## Double and Half Angle
+$$ \sin(2\theta) = 2\sin\theta \cos\theta $$
+$$ \cos(2\theta) = \cos^2\theta - \sin^2\theta = 2\cos^2\theta - 1 = 1 - 2\sin^2\theta $$
+$$ \sin^2\left(\frac{\theta}{2}\right) = \frac{1 - \cos\theta}{2}, \quad \cos^2\left(\frac{\theta}{2}\right) = \frac{1 + \cos\theta}{2} $$
+
+---
+
+# Hyperbolic Identities
+
+Hyperbolic functions are defined via exponentials:
+$$ \sinh x = \frac{e^x - e^{-x}}{2}, \quad \cosh x = \frac{e^x + e^{-x}}{2}, \quad \tanh x = \frac{\sinh x}{\cosh x} $$
+
+## Core Identities
+$$ \cosh^2 x - \sinh^2 x = 1 $$
+$$ 1 - \tanh^2 x = \text{sech}^2 x $$
+$$ \sinh(2x) = 2\sinh x \cosh x $$
+$$ \cosh(2x) = \cosh^2 x + \sinh^2 x $$
+
+---
+
+# Calculus
+
+## Common Derivatives
+$$ \frac{d}{dx} \sin x = \cos x, \quad \frac{d}{dx} \cos x = -\sin x, \quad \frac{d}{dx} \tan x = \sec^2 x $$
+$$ \frac{d}{dx} \sinh x = \cosh x, \quad \frac{d}{dx} \cosh x = \sinh x $$
+$$ \frac{d}{dx} \ln(x) = \frac{1}{x} $$
+
+## Common Integrals
+$$ \int x^n \, dx = \frac{x^{n+1}}{n+1} \quad (n \neq -1) $$
+$$ \int \frac{1}{x} \, dx = \ln|x| $$
+$$ \int e^{ax} \, dx = \frac{1}{a}e^{ax} $$
+$$ \int \frac{dx}{x^2 + a^2} = \frac{1}{a} \arctan\left(\frac{x}{a}\right) $$
+$$ \int \frac{dx}{\sqrt{a^2 - x^2}} = \arcsin\left(\frac{x}{a}\right) $$
+
+### Gaussian Integrals (Crucial for Statistical Mechanics)
+$$ \int_{-\infty}^{\infty} e^{-ax^2} \, dx = \sqrt{\frac{\pi}{a}} $$
+$$ \int_{-\infty}^{\infty} x^2 e^{-ax^2} \, dx = \frac{1}{2a} \sqrt{\frac{\pi}{a}} $$
+
+---
+
+# Series Expansions
+
+## Taylor Series (General)
+$$ f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f'''(a)}{3!}(x-a)^3 + \dots $$
+
+## Maclaurin Series (around $x=0$)
+$$ e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots = \sum_{n=0}^{\infty} \frac{x^n}{n!} $$
+$$ \sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \dots = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{(2n+1)!} $$
+$$ \cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \dots = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!} $$
+$$ \ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \dots \quad (\text{for } |x| < 1) $$
+
+## Binomial Expansion
+For $|x| < 1$ and any real $n$:
+$$ (1+x)^n = 1 + nx + \frac{n(n-1)}{2!}x^2 + \frac{n(n-1)(n-2)}{3!}x^3 + \dots $$
+Useful small $x$ approximations:
+$$ (1+x)^n \approx 1 + nx $$
+$$ (1-x)^{-1} \approx 1 + x + x^2 + \dots $$

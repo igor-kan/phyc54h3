@@ -19,6 +19,8 @@ website:
         text: Simulations & Code
       - href: manim/index.qmd
         text: Manim Videos
+      - href: reference/index.qmd
+        text: Reference & Math
 
 format:
   html:

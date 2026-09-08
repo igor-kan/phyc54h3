@@ -1,0 +1,72 @@
+---
+title: "Physical Constants & Astronomical Data"
+author: "Igor"
+date: "2026-09-08"
+categories: [data, constants, reference]
+format:
+  html:
+    toc: true
+    math: true
+---
+
+# Fundamental Physical Constants
+
+| Constant | Symbol | Value | Units (SI) |
+| :--- | :---: | :--- | :--- |
+| Speed of Light in Vacuum | $c$ | $2.99792458 \times 10^8$ | $\text{m s}^{-1}$ |
+| Newtonian Constant of Gravitation | $G$ | $6.67430 \times 10^{-11}$ | $\text{m}^3 \text{kg}^{-1} \text{s}^{-2}$ |
+| Planck Constant | $h$ | $6.62607015 \times 10^{-34}$ | $\text{J s}$ |
+| Reduced Planck Constant | $\hbar = h/2\pi$ | $1.054571817 \times 10^{-34}$ | $\text{J s}$ |
+| Elementary Charge | $e$ | $1.602176634 \times 10^{-19}$ | $\text{C}$ |
+| Boltzmann Constant | $k_B$ | $1.380649 \times 10^{-23}$ | $\text{J K}^{-1}$ |
+| Avogadro Constant | $N_A$ | $6.02214076 \times 10^{23}$ | $\text{mol}^{-1}$ |
+| Ideal Gas Constant | $R = N_A k_B$ | $8.314462618$ | $\text{J mol}^{-1} \text{K}^{-1}$ |
+| Vacuum Permittivity | $\epsilon_0$ | $8.85418781 \times 10^{-12}$ | $\text{F m}^{-1}$ |
+| Vacuum Permeability | $\mu_0$ | $1.25663706 \times 10^{-6}$ | $\text{N A}^{-2}$ |
+
+---
+
+# Particle Masses
+
+| Particle | Symbol | Mass (kg) | Mass (MeV/$c^2$) |
+| :--- | :---: | :--- | :--- |
+| Electron | $m_e$ | $9.1093837 \times 10^{-31}$ | $0.51099895$ |
+| Proton | $m_p$ | $1.67262192 \times 10^{-27}$ | $938.272088$ |
+| Neutron | $m_n$ | $1.67492750 \times 10^{-27}$ | $939.565420$ |
+
+---
+
+# Astronomical and Solar System Data
+
+| Body | Mass (kg) | Equatorial Radius (km) | Mean Orbital Radius (m) | Orbital Period |
+| :--- | :--- | :--- | :--- | :--- |
+| **Sun** | $1.9885 \times 10^{30}$ | $695,700$ | N/A | N/A |
+| **Mercury** | $3.3011 \times 10^{23}$ | $2,439.7$ | $5.79 \times 10^{10}$ | $88.0$ days |
+| **Venus** | $4.8675 \times 10^{24}$ | $6,051.8$ | $1.08 \times 10^{11}$ | $224.7$ days |
+| **Earth** | $5.9724 \times 10^{24}$ | $6,378.1$ | $1.496 \times 10^{11}$ (1 AU) | $365.25$ days |
+| **Moon** | $7.342 \times 10^{22}$ | $1,737.4$ | $3.84 \times 10^8$ | $27.3$ days |
+| **Mars** | $6.4171 \times 10^{23}$ | $3,389.5$ | $2.28 \times 10^{11}$ | $687.0$ days |
+| **Jupiter** | $1.8982 \times 10^{27}$ | $71,492$ | $7.78 \times 10^{11}$ | $11.86$ years |
+| **Saturn** | $5.6834 \times 10^{26}$ | $60,268$ | $1.43 \times 10^{12}$ | $29.45$ years |
+
+**Standard Gravity on Earth:** $g = 9.80665 \text{ m/s}^2$
+
+---
+
+# Conversion Factors
+
+## Energy
+*   $1 \text{ eV} = 1.602176634 \times 10^{-19} \text{ J}$
+*   $1 \text{ erg} = 10^{-7} \text{ J}$
+*   $1 \text{ calorie} = 4.184 \text{ J}$
+
+## Distance
+*   $1 \text{ Angstrom (\AA)} = 10^{-10} \text{ m}$
+*   $1 \text{ Astronomical Unit (AU)} = 1.495978707 \times 10^{11} \text{ m}$
+*   $1 \text{ Light Year (ly)} = 9.4607 \times 10^{15} \text{ m}$
+*   $1 \text{ Parsec (pc)} = 3.0857 \times 10^{16} \text{ m} = 3.26 \text{ ly}$
+
+## Pressure
+*   $1 \text{ Atmosphere (atm)} = 101,325 \text{ Pa}$
+*   $1 \text{ bar} = 100,000 \text{ Pa}$
+*   $1 \text{ Torr (mmHg)} = 133.322 \text{ Pa}$

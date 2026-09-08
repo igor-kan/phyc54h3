@@ -1,0 +1,81 @@
+---
+title: "Vector Calculus & Identities"
+author: "Igor"
+date: "2026-09-08"
+categories: [math, reference, vectors]
+format:
+  html:
+    toc: true
+    math: true
+---
+
+# Vector Algebra
+
+Let $\mathbf{A}, \mathbf{B}, \mathbf{C}$ be vectors in 3D space.
+
+## Dot and Cross Products
+$$ \mathbf{A} \cdot \mathbf{B} = A_x B_x + A_y B_y + A_z B_z = |\mathbf{A}| |\mathbf{B}| \cos\theta $$
+$$ \mathbf{A} \times \mathbf{B} = \det \begin{vmatrix} \mathbf{\hat{i}} & \mathbf{\hat{j}} & \mathbf{\hat{k}} \\ A_x & A_y & A_z \\ B_x & B_y & B_z \end{vmatrix} $$
+$$ |\mathbf{A} \times \mathbf{B}| = |\mathbf{A}| |\mathbf{B}| \sin\theta $$
+
+## Triple Products
+**Scalar Triple Product** (Volume of parallelepiped):
+$$ \mathbf{A} \cdot (\mathbf{B} \times \mathbf{C}) = \mathbf{B} \cdot (\mathbf{C} \times \mathbf{A}) = \mathbf{C} \cdot (\mathbf{A} \times \mathbf{B}) = \det \begin{vmatrix} A_x & A_y & A_z \\ B_x & B_y & B_z \\ C_x & C_y & C_z \end{vmatrix} $$
+
+**Vector Triple Product (BAC-CAB Rule)**:
+$$ \mathbf{A} \times (\mathbf{B} \times \mathbf{C}) = \mathbf{B}(\mathbf{A} \cdot \mathbf{C}) - \mathbf{C}(\mathbf{A} \cdot \mathbf{B}) $$
+
+---
+
+# Differential Vector Calculus (Nabla Operator $\nabla$)
+
+The del operator in Cartesian coordinates:
+$$ \nabla = \mathbf{\hat{i}}\frac{\partial}{\partial x} + \mathbf{\hat{j}}\frac{\partial}{\partial y} + \mathbf{\hat{k}}\frac{\partial}{\partial z} $$
+
+## Operations
+1. **Gradient** (Scalar $f \to$ Vector):
+   $$ \nabla f = \frac{\partial f}{\partial x}\mathbf{\hat{i}} + \frac{\partial f}{\partial y}\mathbf{\hat{j}} + \frac{\partial f}{\partial z}\mathbf{\hat{k}} $$
+2. **Divergence** (Vector $\mathbf{A} \to$ Scalar):
+   $$ \nabla \cdot \mathbf{A} = \frac{\partial A_x}{\partial x} + \frac{\partial A_y}{\partial y} + \frac{\partial A_z}{\partial z} $$
+3. **Curl** (Vector $\mathbf{A} \to$ Vector):
+   $$ \nabla \times \mathbf{A} = \begin{vmatrix} \mathbf{\hat{i}} & \mathbf{\hat{j}} & \mathbf{\hat{k}} \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\ A_x & A_y & A_z \end{vmatrix} $$
+4. **Laplacian** (Scalar $f \to$ Scalar):
+   $$ \nabla^2 f = \nabla \cdot (\nabla f) = \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2} $$
+
+---
+
+# Vector Identities
+
+## Product Rules
+$$ \nabla(fg) = f\nabla g + g\nabla f $$
+$$ \nabla \cdot (f\mathbf{A}) = f(\nabla \cdot \mathbf{A}) + \mathbf{A} \cdot (\nabla f) $$
+$$ \nabla \times (f\mathbf{A}) = f(\nabla \times \mathbf{A}) + (\nabla f) \times \mathbf{A} $$
+$$ \nabla \cdot (\mathbf{A} \times \mathbf{B}) = \mathbf{B} \cdot (\nabla \times \mathbf{A}) - \mathbf{A} \cdot (\nabla \times \mathbf{B}) $$
+$$ \nabla(\mathbf{A} \cdot \mathbf{B}) = \mathbf{A} \times (\nabla \times \mathbf{B}) + \mathbf{B} \times (\nabla \times \mathbf{A}) + (\mathbf{A} \cdot \nabla)\mathbf{B} + (\mathbf{B} \cdot \nabla)\mathbf{A} $$
+
+## Second Derivatives
+**Curl of a Gradient is zero:**
+$$ \nabla \times (\nabla f) = 0 $$
+*(If $\nabla \times \mathbf{F} = 0$, then $\mathbf{F}$ is conservative and $\mathbf{F} = -\nabla U$.)*
+
+**Divergence of a Curl is zero:**
+$$ \nabla \cdot (\nabla \times \mathbf{A}) = 0 $$
+*(If $\nabla \cdot \mathbf{B} = 0$, then $\mathbf{B}$ can be written as the curl of a vector potential $\mathbf{A}$.)*
+
+**Curl of a Curl:**
+$$ \nabla \times (\nabla \times \mathbf{A}) = \nabla(\nabla \cdot \mathbf{A}) - \nabla^2\mathbf{A} $$
+
+---
+
+# Integral Theorems
+
+## Divergence Theorem (Gauss's Theorem)
+Relates a volume integral to a surface integral over the closed boundary $S$:
+$$ \iiint_V (\nabla \cdot \mathbf{A}) \, dV = \iint_S \mathbf{A} \cdot d\mathbf{a} $$
+
+## Stokes' Theorem
+Relates a surface integral to a line integral around the closed bounding curve $C$:
+$$ \iint_S (\nabla \times \mathbf{A}) \cdot d\mathbf{a} = \oint_C \mathbf{A} \cdot d\mathbf{l} $$
+
+## Gradient Theorem (Fundamental Theorem of Calculus for Line Integrals)
+$$ \int_a^b (\nabla f) \cdot d\mathbf{l} = f(b) - f(a) $$
