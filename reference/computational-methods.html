@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Igor">
 <meta name="dcterms.date" content="2026-09-08">
 
 <title>Computational Methods for Mechanics – PHYC54H3: Classical Mechanics</title>
@@ -232,12 +231,6 @@ window.Quarto = {
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Igor </p>
-          </div>
-  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
@@ -278,7 +271,7 @@ window.Quarto = {
 <section id="the-velocity-verlet-method" class="level2">
 <h2 class="anchored" data-anchor-id="the-velocity-verlet-method">The Velocity Verlet Method</h2>
 <p>Used extensively in molecular dynamics and astrophysics: 1. Update position by a half-step and full-step acceleration: <span class="math display">\[ \mathbf{x}_{n+1} = \mathbf{x}_n + \mathbf{v}_n \Delta t + \frac{1}{2}\mathbf{a}_n \Delta t^2 \]</span> 2. Calculate new forces/accelerations based on new position: <span class="math display">\[ \mathbf{a}_{n+1} = \frac{1}{m} \mathbf{F}(\mathbf{x}_{n+1}) \]</span> 3. Update velocity using the average of old and new accelerations: <span class="math display">\[ \mathbf{v}_{n+1} = \mathbf{v}_n + \frac{1}{2}(\mathbf{a}_n + \mathbf{a}_{n+1}) \Delta t \]</span></p>
-<div id="9ae9bf36" class="cell" data-execution_count="1">
+<div id="0d157f91" class="cell" data-execution_count="1">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -305,7 +298,7 @@ window.Quarto = {
 <h1>3. 4th-Order Runge-Kutta (RK4)</h1>
 <p>The “workhorse” of numerical ODEs. It evaluates the derivatives at four points within the timestep interval and takes a weighted average, yielding error of <span class="math inline">\(\mathcal{O}(\Delta t^4)\)</span>.</p>
 <p>For <span class="math inline">\(\frac{d\mathbf{Y}}{dt} = f(t, \mathbf{Y})\)</span>: <span class="math display">\[ \mathbf{k}_1 = f(t_n, \mathbf{Y}_n) \]</span> <span class="math display">\[ \mathbf{k}_2 = f(t_n + \frac{\Delta t}{2}, \mathbf{Y}_n + \mathbf{k}_1 \frac{\Delta t}{2}) \]</span> <span class="math display">\[ \mathbf{k}_3 = f(t_n + \frac{\Delta t}{2}, \mathbf{Y}_n + \mathbf{k}_2 \frac{\Delta t}{2}) \]</span> <span class="math display">\[ \mathbf{k}_4 = f(t_n + \Delta t, \mathbf{Y}_n + \mathbf{k}_3 \Delta t) \]</span> <span class="math display">\[ \mathbf{Y}_{n+1} = \mathbf{Y}_n + \frac{\Delta t}{6}(\mathbf{k}_1 + 2\mathbf{k}_2 + 2\mathbf{k}_3 + \mathbf{k}_4) \]</span></p>
-<div id="da9f0413" class="cell" data-execution_count="2">
+<div id="45b74387" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rk4_step(Y, t, dt, derivs):</span>
@@ -321,7 +314,7 @@ window.Quarto = {
 <section id="scipy-integration-solve_ivp" class="level1">
 <h1>SciPy Integration (<code>solve_ivp</code>)</h1>
 <p>In Python, the <code>scipy.integrate.solve_ivp</code> function provides a highly optimized, adaptive-timestep interface for these methods (defaulting to the RK45 method).</p>
-<div id="0ac5e87e" class="cell" data-execution_count="3">
+<div id="5bda1c5a" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> solve_ivp</span>
@@ -815,137 +808,149 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Computational Methods for Mechanics"</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Numerical ODE integration (Euler, Verlet, RK4), SciPy solvers, and algorithmic math challenges."</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Igor"</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-09-08"</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="an">date-modified:</span><span class="co"> last-modified</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [computational, reference, python, solvers]</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">    math: true</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>In classical mechanics, analytic solutions are often impossible for systems that exhibit nonlinear dynamics, chaos, or lack conservation laws (e.g., the double pendulum, the 3-body problem, or driven damped oscillators). For these, we rely on **numerical integration** of Ordinary Differential Equations (ODEs).</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>Any $n$-th order ODE can be reduced to a system of $n$ first-order ODEs. For Newton's second law $\ddot{\mathbf{x}} = \mathbf{F}(\mathbf{x}, \mathbf{v}, t)/m$, we define the state vector $\mathbf{Y} = <span class="co">[</span><span class="ot">\mathbf{x}, \mathbf{v}</span><span class="co">]</span>^T$:</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>$$ \frac{d\mathbf{Y}}{dt} = \begin{bmatrix} \mathbf{v} <span class="sc">\\</span> \mathbf{a} \end{bmatrix} = \begin{bmatrix} \mathbf{v} <span class="sc">\\</span> \mathbf{F}/m \end{bmatrix} $$</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="fu"># 1. Forward Euler Method (1st Order)</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>The simplest, but least accurate method. It uses the derivative at the beginning of the timestep $\Delta t$ to step forward.</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{x}_{n+1} = \mathbf{x}_n + \mathbf{v}_n \Delta t $$</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{v}_{n+1} = \mathbf{v}_n + \mathbf{a}_n \Delta t $$</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>**Drawbacks:**</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>Euler's method accumulates error at $\mathcal{O}(\Delta t)$. Crucially for mechanics, **it does not conserve energy** for oscillatory systems, often causing orbits to spiral outward artificially.</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="fu"># 2. Symplectic Integrators (Verlet / Leapfrog)</span></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>For Hamiltonian systems (where energy is conserved), standard Runge-Kutta methods can still cause long-term energy drift. **Symplectic integrators** preserve the phase-space volume over time, meaning energy oscillates slightly around the true value but never diverges.</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Velocity Verlet Method</span></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>Used extensively in molecular dynamics and astrophysics:</span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Update position by a half-step and full-step acceleration:</span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>   $$ \mathbf{x}_{n+1} = \mathbf{x}_n + \mathbf{v}_n \Delta t + \frac{1}{2}\mathbf{a}_n \Delta t^2 $$</span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Calculate new forces/accelerations based on new position:</span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>   $$ \mathbf{a}_{n+1} = \frac{1}{m} \mathbf{F}(\mathbf{x}_{n+1}) $$</span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Update velocity using the average of old and new accelerations:</span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>   $$ \mathbf{v}_{n+1} = \mathbf{v}_n + \frac{1}{2}(\mathbf{a}_n + \mathbf{a}_{n+1}) \Delta t $$</span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> velocity_verlet(x0, v0, force_func, m, dt, steps):</span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.zeros(steps)</span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> np.zeros(steps)</span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>    x[<span class="dv">0</span>], v[<span class="dv">0</span>] <span class="op">=</span> x0, v0</span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> force_func(x0) <span class="op">/</span> m</span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(steps <span class="op">-</span> <span class="dv">1</span>):</span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>        x[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> x[i] <span class="op">+</span> v[i]<span class="op">*</span>dt <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>a<span class="op">*</span>dt<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>        a_next <span class="op">=</span> force_func(x[i<span class="op">+</span><span class="dv">1</span>]) <span class="op">/</span> m</span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>        v[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> v[i] <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>(a <span class="op">+</span> a_next)<span class="op">*</span>dt</span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> a_next</span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x, v</span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a><span class="fu"># 3. 4th-Order Runge-Kutta (RK4)</span></span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>The "workhorse" of numerical ODEs. It evaluates the derivatives at four points within the timestep interval and takes a weighted average, yielding error of $\mathcal{O}(\Delta t^4)$.</span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>For $\frac{d\mathbf{Y}}{dt} = f(t, \mathbf{Y})$:</span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{k}_1 = f(t_n, \mathbf{Y}_n) $$</span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{k}_2 = f(t_n + \frac{\Delta t}{2}, \mathbf{Y}_n + \mathbf{k}_1 \frac{\Delta t}{2}) $$</span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{k}_3 = f(t_n + \frac{\Delta t}{2}, \mathbf{Y}_n + \mathbf{k}_2 \frac{\Delta t}{2}) $$</span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{k}_4 = f(t_n + \Delta t, \mathbf{Y}_n + \mathbf{k}_3 \Delta t) $$</span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{Y}_{n+1} = \mathbf{Y}_n + \frac{\Delta t}{6}(\mathbf{k}_1 + 2\mathbf{k}_2 + 2\mathbf{k}_3 + \mathbf{k}_4) $$</span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rk4_step(Y, t, dt, derivs):</span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>    k1 <span class="op">=</span> derivs(Y, t)</span>
-<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>    k2 <span class="op">=</span> derivs(Y <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>dt<span class="op">*</span>k1, t <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>dt)</span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>    k3 <span class="op">=</span> derivs(Y <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>dt<span class="op">*</span>k2, t <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>dt)</span>
-<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>    k4 <span class="op">=</span> derivs(Y <span class="op">+</span> dt<span class="op">*</span>k3, t <span class="op">+</span> dt)</span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Y <span class="op">+</span> (dt<span class="op">/</span><span class="fl">6.0</span>) <span class="op">*</span> (k1 <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>k2 <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>k3 <span class="op">+</span> k4)</span>
-<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a><span class="fu"># SciPy Integration (`solve_ivp`)</span></span>
-<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>In Python, the <span class="in">`scipy.integrate.solve_ivp`</span> function provides a highly optimized, adaptive-timestep interface for these methods (defaulting to the RK45 method).</span>
-<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> solve_ivp</span>
-<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the state derivative for a simple harmonic oscillator</span></span>
-<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a><span class="co"># Y = [x, v] -&gt; dY/dt = [v, -k/m x]</span></span>
-<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sho_derivs(t, Y, k<span class="op">=</span><span class="fl">1.0</span>, m<span class="op">=</span><span class="fl">1.0</span>):</span>
-<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>    x, v <span class="op">=</span> Y</span>
-<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [v, <span class="op">-</span>(k<span class="op">/</span>m)<span class="op">*</span>x]</span>
-<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve from t=0 to t=10 with initial conditions x=1, v=0</span></span>
-<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a>sol <span class="op">=</span> solve_ivp(sho_derivs, [<span class="dv">0</span>, <span class="dv">10</span>], [<span class="fl">1.0</span>, <span class="fl">0.0</span>], t_eval<span class="op">=</span>np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">100</span>))</span>
-<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a><span class="co"># sol.t contains the time array</span></span>
-<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a><span class="co"># sol.y[0] contains x(t)</span></span>
-<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a><span class="co"># sol.y[1] contains v(t)</span></span>
-<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a><span class="fu"># Algorithm &amp; Competitive Programming Connections</span></span>
-<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a>Numerical integration, root finding, and mathematical simulations are core components of competitive programming. Here are resources for practicing these algorithmic skills on platforms like LeetCode and Codeforces.</span>
-<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a><span class="fu">## LeetCode Mathematical &amp; Simulation Problems</span></span>
-<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a>While LeetCode primarily focuses on software engineering interviews, several hard problems test applied mathematics, geometry, and discrete simulations:</span>
-<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span><span class="co">[</span><span class="ot">Max Points on a Line (149)</span><span class="co">](https://leetcode.com/problems/max-points-on-a-line/)</span> - 2D geometry and precision issues.</span>
-<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span><span class="co">[</span><span class="ot">Erect the Fence (587)</span><span class="co">](https://leetcode.com/problems/erect-the-fence/)</span> - Convex hull algorithms (Monotone Chain / Graham Scan).</span>
-<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span><span class="co">[</span><span class="ot">Water and Jug Problem (365)</span><span class="co">](https://leetcode.com/problems/water-and-jug-problem/)</span> - Diophantine equations and state-space search.</span>
-<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span><span class="co">[</span><span class="ot">Poor Pigs (458)</span><span class="co">](https://leetcode.com/problems/poor-pigs/)</span> - Information theory and states.</span>
-<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a><span class="fu">## Codeforces Math &amp; Geometry Tags</span></span>
-<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a>Codeforces features exceptionally difficult mathematical and geometric tasks that require deep knowledge of linear algebra, calculus, and discrete math.</span>
-<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Geometry:** Problems tagged <span class="in">`geometry`</span> often require implementing vector math (cross products, dot products) without floating-point errors.</span>
-<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span><span class="co">[</span><span class="ot">Codeforces Problemset: Tag = geometry</span><span class="co">](https://codeforces.com/problemset?tags=geometry)</span></span>
-<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Math &amp; Matrices:** Problems tagged <span class="in">`math`</span> or <span class="in">`matrices`</span> often require fast matrix exponentiation, linear recurrences, and modular arithmetic, highly relevant for discrete time steps and state space matrices in physics.</span>
-<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span><span class="co">[</span><span class="ot">Codeforces Problemset: Tag = math</span><span class="co">](https://codeforces.com/problemset?tags=math)</span></span>
-<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span><span class="co">[</span><span class="ot">Codeforces Problemset: Tag = matrices</span><span class="co">](https://codeforces.com/problemset?tags=matrices)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-09-08"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="an">date-modified:</span><span class="co"> last-modified</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [computational, reference, python, solvers]</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">    math: true</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>In classical mechanics, analytic solutions are often impossible for systems that exhibit nonlinear dynamics, chaos, or lack conservation laws (e.g., the double pendulum, the 3-body problem, or driven damped oscillators). For these, we rely on **numerical integration** of Ordinary Differential Equations (ODEs).</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>Any $n$-th order ODE can be reduced to a system of $n$ first-order ODEs. For Newton's second law $\ddot{\mathbf{x}} = \mathbf{F}(\mathbf{x}, \mathbf{v}, t)/m$, we define the state vector $\mathbf{Y} = <span class="co">[</span><span class="ot">\mathbf{x}, \mathbf{v}</span><span class="co">]</span>^T$:</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>$$ \frac{d\mathbf{Y}}{dt} = \begin{bmatrix} \mathbf{v} <span class="sc">\\</span> \mathbf{a} \end{bmatrix} = \begin{bmatrix} \mathbf{v} <span class="sc">\\</span> \mathbf{F}/m \end{bmatrix} $$</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="fu"># 1. Forward Euler Method (1st Order)</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>The simplest, but least accurate method. It uses the derivative at the beginning of the timestep $\Delta t$ to step forward.</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{x}_{n+1} = \mathbf{x}_n + \mathbf{v}_n \Delta t $$</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{v}_{n+1} = \mathbf{v}_n + \mathbf{a}_n \Delta t $$</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>**Drawbacks:**</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>Euler's method accumulates error at $\mathcal{O}(\Delta t)$. Crucially for mechanics, **it does not conserve energy** for oscillatory systems, often causing orbits to spiral outward artificially.</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="fu"># 2. Symplectic Integrators (Verlet / Leapfrog)</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>For Hamiltonian systems (where energy is conserved), standard Runge-Kutta methods can still cause long-term energy drift. **Symplectic integrators** preserve the phase-space volume over time, meaning energy oscillates slightly around the true value but never diverges.</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Velocity Verlet Method</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>Used extensively in molecular dynamics and astrophysics:</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Update position by a half-step and full-step acceleration:</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>   $$ \mathbf{x}_{n+1} = \mathbf{x}_n + \mathbf{v}_n \Delta t + \frac{1}{2}\mathbf{a}_n \Delta t^2 $$</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Calculate new forces/accelerations based on new position:</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>   $$ \mathbf{a}_{n+1} = \frac{1}{m} \mathbf{F}(\mathbf{x}_{n+1}) $$</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Update velocity using the average of old and new accelerations:</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>   $$ \mathbf{v}_{n+1} = \mathbf{v}_n + \frac{1}{2}(\mathbf{a}_n + \mathbf{a}_{n+1}) \Delta t $$</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> velocity_verlet(x0, v0, force_func, m, dt, steps):</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.zeros(steps)</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> np.zeros(steps)</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>    x[<span class="dv">0</span>], v[<span class="dv">0</span>] <span class="op">=</span> x0, v0</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> force_func(x0) <span class="op">/</span> m</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(steps <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>        x[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> x[i] <span class="op">+</span> v[i]<span class="op">*</span>dt <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>a<span class="op">*</span>dt<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>        a_next <span class="op">=</span> force_func(x[i<span class="op">+</span><span class="dv">1</span>]) <span class="op">/</span> m</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>        v[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> v[i] <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>(a <span class="op">+</span> a_next)<span class="op">*</span>dt</span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> a_next</span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x, v</span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a><span class="fu"># 3. 4th-Order Runge-Kutta (RK4)</span></span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>The "workhorse" of numerical ODEs. It evaluates the derivatives at four points within the timestep interval and takes a weighted average, yielding error of $\mathcal{O}(\Delta t^4)$.</span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>For $\frac{d\mathbf{Y}}{dt} = f(t, \mathbf{Y})$:</span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{k}_1 = f(t_n, \mathbf{Y}_n) $$</span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{k}_2 = f(t_n + \frac{\Delta t}{2}, \mathbf{Y}_n + \mathbf{k}_1 \frac{\Delta t}{2}) $$</span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{k}_3 = f(t_n + \frac{\Delta t}{2}, \mathbf{Y}_n + \mathbf{k}_2 \frac{\Delta t}{2}) $$</span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{k}_4 = f(t_n + \Delta t, \mathbf{Y}_n + \mathbf{k}_3 \Delta t) $$</span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{Y}_{n+1} = \mathbf{Y}_n + \frac{\Delta t}{6}(\mathbf{k}_1 + 2\mathbf{k}_2 + 2\mathbf{k}_3 + \mathbf{k}_4) $$</span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rk4_step(Y, t, dt, derivs):</span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>    k1 <span class="op">=</span> derivs(Y, t)</span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>    k2 <span class="op">=</span> derivs(Y <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>dt<span class="op">*</span>k1, t <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>dt)</span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>    k3 <span class="op">=</span> derivs(Y <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>dt<span class="op">*</span>k2, t <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>dt)</span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>    k4 <span class="op">=</span> derivs(Y <span class="op">+</span> dt<span class="op">*</span>k3, t <span class="op">+</span> dt)</span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Y <span class="op">+</span> (dt<span class="op">/</span><span class="fl">6.0</span>) <span class="op">*</span> (k1 <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>k2 <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>k3 <span class="op">+</span> k4)</span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a><span class="fu"># SciPy Integration (`solve_ivp`)</span></span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>In Python, the <span class="in">`scipy.integrate.solve_ivp`</span> function provides a highly optimized, adaptive-timestep interface for these methods (defaulting to the RK45 method).</span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> solve_ivp</span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the state derivative for a simple harmonic oscillator</span></span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a><span class="co"># Y = [x, v] -&gt; dY/dt = [v, -k/m x]</span></span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sho_derivs(t, Y, k<span class="op">=</span><span class="fl">1.0</span>, m<span class="op">=</span><span class="fl">1.0</span>):</span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>    x, v <span class="op">=</span> Y</span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [v, <span class="op">-</span>(k<span class="op">/</span>m)<span class="op">*</span>x]</span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve from t=0 to t=10 with initial conditions x=1, v=0</span></span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>sol <span class="op">=</span> solve_ivp(sho_derivs, [<span class="dv">0</span>, <span class="dv">10</span>], [<span class="fl">1.0</span>, <span class="fl">0.0</span>], t_eval<span class="op">=</span>np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">100</span>))</span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a><span class="co"># sol.t contains the time array</span></span>
+<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a><span class="co"># sol.y[0] contains x(t)</span></span>
+<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a><span class="co"># sol.y[1] contains v(t)</span></span>
+<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a><span class="fu"># Algorithm &amp; Competitive Programming Connections</span></span>
+<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a>Numerical integration, root finding, and mathematical simulations are core components of competitive programming. Here are resources for practicing these algorithmic skills on platforms like LeetCode and Codeforces.</span>
+<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a><span class="fu">## LeetCode Mathematical &amp; Simulation Problems</span></span>
+<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a>While LeetCode primarily focuses on software engineering interviews, several hard problems test applied mathematics, geometry, and discrete simulations:</span>
+<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span><span class="co">[</span><span class="ot">Max Points on a Line (149)</span><span class="co">](https://leetcode.com/problems/max-points-on-a-line/)</span> - 2D geometry and precision issues.</span>
+<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span><span class="co">[</span><span class="ot">Erect the Fence (587)</span><span class="co">](https://leetcode.com/problems/erect-the-fence/)</span> - Convex hull algorithms (Monotone Chain / Graham Scan).</span>
+<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span><span class="co">[</span><span class="ot">Water and Jug Problem (365)</span><span class="co">](https://leetcode.com/problems/water-and-jug-problem/)</span> - Diophantine equations and state-space search.</span>
+<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span><span class="co">[</span><span class="ot">Poor Pigs (458)</span><span class="co">](https://leetcode.com/problems/poor-pigs/)</span> - Information theory and states.</span>
+<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a><span class="fu">## Codeforces Math &amp; Geometry Tags</span></span>
+<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a>Codeforces features exceptionally difficult mathematical and geometric tasks that require deep knowledge of linear algebra, calculus, and discrete math.</span>
+<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Geometry:** Problems tagged <span class="in">`geometry`</span> often require implementing vector math (cross products, dot products) without floating-point errors.</span>
+<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span><span class="co">[</span><span class="ot">Codeforces Problemset: Tag = geometry</span><span class="co">](https://codeforces.com/problemset?tags=geometry)</span></span>
+<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Math &amp; Matrices:** Problems tagged <span class="in">`math`</span> or <span class="in">`matrices`</span> often require fast matrix exponentiation, linear recurrences, and modular arithmetic, highly relevant for discrete time steps and state space matrices in physics.</span>
+<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span><span class="co">[</span><span class="ot">Codeforces Problemset: Tag = math</span><span class="co">](https://codeforces.com/problemset?tags=math)</span></span>
+<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span><span class="co">[</span><span class="ot">Codeforces Problemset: Tag = matrices</span><span class="co">](https://codeforces.com/problemset?tags=matrices)</span></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><span style="font-size: 0.8em;">© 2026 Igor Kan / Johann Bayer</span></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p><span style="font-size: 0.8em;">University of Toronto Scarborough — PHYC54H3 Classical Mechanics</span></p>
+</div>
+  </div>
+</footer>
 
 
 
