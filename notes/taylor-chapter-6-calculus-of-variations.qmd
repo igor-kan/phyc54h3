@@ -1,0 +1,164 @@
+---
+title: "Taylor Chapter 6: Calculus of Variations"
+subtitle: "Summary, Derivations, and Problems"
+author: "Igor"
+date: "2026-09-08"
+categories: [classical-mechanics, math, taylor]
+format:
+  html:
+    toc: true
+    math: true
+    code-fold: true
+jupyter: python3
+---
+
+# Introduction to the Calculus of Variations
+
+In classical mechanics, we often encounter problems where we need to find a path or a function that minimizes (or maximizes) a certain quantity. This is the domain of the **Calculus of Variations**. While ordinary calculus deals with finding points that extremize a function $y = f(x)$, the calculus of variations deals with finding *functions* $y(x)$ that extremize a *functional* (a function of a function), often expressed as an integral:
+
+$$ S = \int_{x_1}^{x_2} f(y, y', x) \, dx $$
+
+Two main classes of problems require this approach:
+1. Symmetries make non-Cartesian coordinates (spherical, cylindrical) advantageous.
+2. Constraints make it best to choose generalized coordinates (e.g., a particle on a sphere).
+
+To transition to these generalized coordinates, Lagrangian mechanics provides a powerful framework built entirely on the calculus of variations and Hamilton's Principle of Least Action.
+
+## 6.1 Two Examples
+
+### Example 1: The Shortest Path Between Two Points
+
+What is the shortest path between two points $(x_1, y_1)$ and $(x_2, y_2)$ in a plane? Let the path be given by a function $y = y(x)$. An infinitesimal element of length along the path is $ds = \sqrt{dx^2 + dy^2} = \sqrt{1 + (y')^2} \, dx$, where $y' = dy/dx$.
+
+The total length of the path is the integral:
+$$ L = \int_{x_1}^{x_2} \sqrt{1 + [y'(x)]^2} \, dx $$
+
+The goal is to find the function $y(x)$ that minimizes $L$.
+
+> **Problem 6.1 (Shortest path in a plane):** Prove that the shortest path between two points in a 2D plane is a straight line. (We will solve this using the Euler-Lagrange equation later in this chapter.)
+
+### Example 2: The Brachistochrone Problem
+
+First posed by Johann Bernoulli in 1696. Given two points 1 and 2, with 1 higher than 2, what is the shape of a frictionless wire connecting them such that a bead released from rest at 1 slides to 2 in the minimum possible time?
+
+Let point 1 be the origin $(0,0)$. We take the $y$-axis pointing *downward*.
+The speed of the bead is $v = ds/dt$. By conservation of energy, $E = T + U$. If released from rest at $(0,0)$, $E = 0$.
+$$ \frac{1}{2}mv^2 - mgy = 0 \implies v = \sqrt{2gy} $$
+
+The time to travel an infinitesimal distance $ds$ is $dt = ds/v$. The total time is:
+$$ t = \int_{1}^{2} \frac{ds}{v} = \int_{x_1}^{x_2} \frac{\sqrt{1 + (y')^2}}{\sqrt{2gy}} \, dx $$
+
+We need to find the function $y(x)$ that minimizes this time integral $t$.
+
+> **Problem 6.2 (Brachistochrone coordinates):** Write down the time integral if the $y$-axis was defined pointing upwards instead. How does the energy conservation equation change?
+> *Hint:* If $y$ points up, $U = mgy$. $E = 0 \implies \frac{1}{2}mv^2 + mgy = 0 \implies v = \sqrt{-2gy}$ (since $y$ will be negative as the bead falls). The integral remains similar, just with $-y$ under the square root.
+
+## 6.2 The Euler-Lagrange Equation
+
+Both examples above involve an integral of the form:
+$$ S[y] = \int_{x_1}^{x_2} f(y, y', x) \, dx $$
+where $S$ is a functional. We want to find the path $y(x)$ that makes $S$ stationary (a minimum, maximum, or saddle point).
+
+### Derivation
+
+Let the actual path that extremizes the integral be $y(x)$. Consider a "wrong" path $Y(x)$ that is close to $y(x)$. We can parameterize this wrong path as:
+$$ Y(x) = y(x) + \alpha \eta(x) $$
+where $\alpha$ is a small parameter, and $\eta(x)$ is an arbitrary differentiable function representing the variation. Since all paths must start at $x_1$ and end at $x_2$, the variation must vanish at the endpoints:
+$$ \eta(x_1) = \eta(x_2) = 0 $$
+
+The integral evaluated along the varied path is a function of $\alpha$:
+$$ S(\alpha) = \int_{x_1}^{x_2} f(Y, Y', x) \, dx = \int_{x_1}^{x_2} f(y + \alpha \eta, y' + \alpha \eta', x) \, dx $$
+
+For the integral to be stationary at the correct path $y(x)$, the derivative of $S$ with respect to $\alpha$ must be zero when $\alpha = 0$:
+$$ \left. \frac{dS}{d\alpha} \right|_{\alpha=0} = 0 $$
+
+Using the chain rule to differentiate inside the integral:
+$$ \frac{dS}{d\alpha} = \int_{x_1}^{x_2} \left( \frac{\partial f}{\partial Y} \frac{\partial Y}{\partial \alpha} + \frac{\partial f}{\partial Y'} \frac{\partial Y'}{\partial \alpha} \right) dx = \int_{x_1}^{x_2} \left( \frac{\partial f}{\partial Y} \eta + \frac{\partial f}{\partial Y'} \eta' \right) dx $$
+
+Set $\alpha = 0$, so $Y \to y$ and $Y' \to y'$:
+$$ \int_{x_1}^{x_2} \left( \frac{\partial f}{\partial y} \eta(x) + \frac{\partial f}{\partial y'} \eta'(x) \right) dx = 0 $$
+
+We integrate the second term by parts:
+$$ \int_{x_1}^{x_2} \frac{\partial f}{\partial y'} \eta'(x) \, dx = \left[ \frac{\partial f}{\partial y'} \eta(x) \right]_{x_1}^{x_2} - \int_{x_1}^{x_2} \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) \eta(x) \, dx $$
+
+Since $\eta(x_1) = \eta(x_2) = 0$, the boundary term vanishes. The condition becomes:
+$$ \int_{x_1}^{x_2} \left[ \frac{\partial f}{\partial y} - \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) \right] \eta(x) \, dx = 0 $$
+
+For this to hold for *any* arbitrary variation $\eta(x)$, the term in the brackets must be identically zero. This yields the **Euler-Lagrange Equation**:
+
+$$ \frac{\partial f}{\partial y} - \frac{d}{dx} \frac{\partial f}{\partial y'} = 0 $$
+
+> **Problem 6.4:** Find the Euler-Lagrange equation for the functional $S = \int (y'^2 + y^2) dx$.
+> *Solution:* $f = y'^2 + y^2$. $\frac{\partial f}{\partial y} = 2y$, $\frac{\partial f}{\partial y'} = 2y'$. $\frac{d}{dx}(2y') = 2y''$. The E-L equation is $2y - 2y'' = 0$, or $y'' = y$.
+
+## 6.3 Applications of the Euler-Lagrange Equation
+
+### 1. Shortest Path Revisited
+
+For the shortest path, $f(y, y', x) = \sqrt{1 + y'^2}$.
+Since $\partial f / \partial y = 0$, the E-L equation reduces to:
+$$ \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) = 0 \implies \frac{\partial f}{\partial y'} = C $$
+$$ \frac{y'}{\sqrt{1 + y'^2}} = C \implies y'^2 = C^2(1 + y'^2) \implies y'^2 = \frac{C^2}{1-C^2} = m^2 $$
+Thus, $y' = m$, meaning $y = mx + b$. The shortest path is a straight line.
+
+### 2. The Brachistochrone Solution
+
+For the Brachistochrone, $f = \sqrt{\frac{1+y'^2}{y}}$ (ignoring constants).
+Notice that $f$ does not depend explicitly on $x$. When $\partial f / \partial x = 0$, we can use the **Beltrami Identity** (a first integral of the E-L equation):
+$$ f - y' \frac{\partial f}{\partial y'} = C $$
+
+Substituting $f$:
+$$ \sqrt{\frac{1+y'^2}{y}} - y' \frac{y'}{\sqrt{y(1+y'^2)}} = C $$
+$$ \frac{1+y'^2 - y'^2}{\sqrt{y(1+y'^2)}} = C \implies \frac{1}{\sqrt{y(1+y'^2)}} = C \implies y(1+y'^2) = \frac{1}{C^2} = 2a $$
+
+Solving for $y'$:
+$$ y' = \frac{dy}{dx} = \sqrt{\frac{2a-y}{y}} \implies dx = \sqrt{\frac{y}{2a-y}} dy $$
+
+To integrate this, we use the substitution $y = a(1 - \cos\theta)$.
+Then $dy = a \sin\theta \, d\theta$.
+$$ dx = \sqrt{\frac{a(1-\cos\theta)}{a(1+\cos\theta)}} a \sin\theta \, d\theta = a (1-\cos\theta) d\theta $$
+Integrating gives the parametric equations for a **cycloid**:
+$$ x(\theta) = a(\theta - \sin\theta) $$
+$$ y(\theta) = a(1 - \cos\theta) $$
+
+```{python}
+#| label: fig-cycloid
+#| fig-cap: "The Brachistochrone path is a cycloid, the curve traced by a point on the rim of a rolling wheel."
+import numpy as np
+import matplotlib.pyplot as plt
+
+theta = np.linspace(0, 2*np.pi, 100)
+a = 1
+x = a * (theta - np.sin(theta))
+y = a * (1 - np.cos(theta)) # Positive downwards
+
+fig, ax = plt.subplots(figsize=(8, 4))
+ax.plot(x, -y, label='Brachistochrone (Cycloid)', color='blue') # Negative to plot downwards intuitively
+ax.plot([0, x[-1]], [0, -y[-1]], '--', label='Straight line', color='gray')
+ax.set_aspect('equal')
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_title('Path of Minimum Time (Brachistochrone)')
+ax.legend()
+plt.grid(True)
+plt.show()
+```
+
+> **Problem 6.11 (Geodesic on a cylinder):** Find the equation for the shortest path (geodesic) between two points on the surface of a cylinder $R = \text{const}$.
+> *Hint:* Use cylindrical coordinates $(R, \phi, z)$. The arc length is $ds^2 = dR^2 + R^2 d\phi^2 + dz^2 = R^2 d\phi^2 + dz^2$. Minimize the integral $\int \sqrt{R^2 + (z')^2} d\phi$.
+
+## 6.4 More Than Two Variables
+
+If the functional depends on multiple functions $y_1(x), y_2(x), \dots, y_n(x)$,
+$$ S = \int_{x_1}^{x_2} f(y_1, \dots, y_n, y_1', \dots, y_n', x) \, dx $$
+we can vary each function independently. This leads to a system of $n$ independent Euler-Lagrange equations:
+$$ \frac{\partial f}{\partial y_i} - \frac{d}{dx} \frac{\partial f}{\partial y_i'} = 0 \quad \text{for } i = 1, 2, \dots, n $$
+
+This extension is crucial for Lagrangian mechanics in 3D space, where we have coordinates $x(t), y(t), z(t)$, and time $t$ plays the role of the independent variable.
+
+> **Problem 6.22 (Fermat's Principle):** Fermat's principle states that light travels between two points along the path that requires the least time. Show that this leads to Snell's Law $n_1 \sin\theta_1 = n_2 \sin\theta_2$ for light crossing a boundary between media with refractive indices $n_1$ and $n_2$.
+> *Hint:* Time $t = \int \frac{ds}{v} = \int \frac{n(y)}{c} \sqrt{1+y'^2} dx$. Use the Beltrami identity since $f$ doesn't depend on $x$.
+
+---
+**Summary**
+The calculus of variations allows us to find stationary paths for functionals. The fundamental tool is the Euler-Lagrange equation, which converts a global variational problem into a local differential equation. This mathematical foundation is what allows us to formulate Lagrangian mechanics based on Hamilton's Principle of stationary action.
