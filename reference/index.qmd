@@ -19,6 +19,7 @@ Formulas for dot and cross products, scalar and vector triple products (BAC-CAB)
 
 ### [Physical Constants & Astronomical Data](physical-constants-and-data.qmd)
 A reference table of fundamental physical constants (SI units), particle masses, solar system orbital and physical parameters, and common physics conversion factors.
-
+### [Sources & Bibliography](sources-and-bibliography.qmd)
+A detailed list of the textbooks (Taylor, Morin, Riley, Arfken, Boas, Krane), online open courses (MIT OCW, Yale), and websites utilized as primary resources for this course's material.
 ### [Computational Methods for Mechanics](computational-methods.qmd)
 An overview of the numerical integration techniques used to solve ODEs in classical mechanics, including the Euler method, 4th-Order Runge-Kutta (RK4), the symplectic Velocity Verlet method (critical for energy conservation in Hamiltonian systems), and SciPy's `solve_ivp`.

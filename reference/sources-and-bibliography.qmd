@@ -1,0 +1,81 @@
+---
+title: "Sources & Bibliography"
+author: "Igor"
+date: "2026-09-08"
+categories: [reference, bibliography, textbooks, courses]
+format:
+  html:
+    toc: true
+---
+
+# Textbooks & Course Literature
+
+This repository references several classic and foundational textbooks for mathematical methods, classical mechanics, and general physics.
+
+## Core Mechanics
+
+### Classical Mechanics (2005)
+**Author:** John R. Taylor
+**Publisher:** University Science Books
+**Description:** The primary textbook for PHYC54H3. Known for its conversational tone and extreme clarity, it builds from elementary Newtonian mechanics to advanced topics like the Lagrangian and Hamiltonian formalisms, central-force motion, and chaos theory.
+**Link:** [University Science Books - Taylor](https://uscibooks.aip.org/books/classical-mechanics/)
+
+### Introduction to Classical Mechanics: With Problems and Solutions (2008)
+**Author:** David Morin
+**Publisher:** Cambridge University Press
+**Description:** Highly regarded for its vast collection of very challenging problems, making it a staple for physics Olympiad preparation. The textbook emphasizes clever problem-solving techniques and covers the Lagrangian method extensively.
+**Link:** [Cambridge University Press - Morin](https://www.cambridge.org/highereducation/books/introduction-to-classical-mechanics/30AD597A8D8ED7FAD5C5F1CBEEF4EDC6#overview)
+
+---
+
+## Mathematical Methods
+
+### Mathematical Methods for Physics and Engineering
+**Authors:** K. F. Riley, M. P. Hobson, and S. J. Bence
+**Publisher:** Cambridge University Press
+**Description:** An immensely practical guide covering all undergraduate mathematical requirements, from basic calculus and vectors to complex variables, tensors, and group theory.
+**Link:** [Cambridge University Press - Riley](https://www.cambridge.org/highereducation/books/mathematical-methods-for-physics-and-engineering/1DEBEED7643BA46AD4ED5E4FE3487013#overview)
+
+### Mathematical Methods for Physicists
+**Authors:** George B. Arfken and Hans J. Weber
+**Publisher:** Academic Press (Elsevier)
+**Description:** Known as the "bible" of mathematical physics, this comprehensive text goes extremely deep into vector analysis, differential equations, and special functions.
+**Link:** [Elsevier - Arfken](https://www.elsevier.com/books/mathematical-methods-for-physicists/arfken/978-0-12-384654-9)
+
+### Mathematical Methods in the Physical Sciences
+**Author:** Mary L. Boas
+**Publisher:** John Wiley & Sons
+**Description:** An approachable but rigorous text that bridges the gap between basic calculus and the advanced mathematics required in upper-level physics courses.
+**Link:** [Wiley - Boas](https://www.wiley.com/en-us/Mathematical+Methods+in+the+Physical+Sciences%2C+3rd+Edition-p-9780471198260)
+
+---
+
+## General Physics
+
+### Physics, Volume 1 (5th Edition)
+**Authors:** Robert Resnick, David Halliday, Kenneth S. Krane
+**Publisher:** John Wiley & Sons
+**Description:** The definitive introductory calculus-based physics text. This classical tome is incredibly thorough on mechanics, thermodynamics, and waves.
+**Link:** [Wiley - Krane](https://www.wiley.com/en-us/Physics%2C+Volume+1%2C+5th+Edition-p-9780471320579)
+
+---
+
+# Online Open Courses
+
+### MIT OCW 8.01SC Classical Mechanics (Fall 2016)
+**Description:** A spectacular open courseware resource from MIT, emphasizing problem-solving and rigorous foundational mechanics. Contains lecture notes, problem sets, and video lectures.
+**Link:** [MIT 8.01SC Classical Mechanics](https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/)
+
+### Fundamentals of Physics I (PHYS 200) - Open Yale Courses
+**Instructor:** Prof. Ramamurti Shankar
+**Description:** A complete, filmed introductory physics course covering Newtonian mechanics, special relativity, and thermodynamics. Shankar's lectures are famous for their engaging and insightful delivery.
+**Link:** [Open Yale Courses - PHYS 200](https://oyc.yale.edu/physics/phys-200)
+
+---
+
+# Computational References
+
+### Python Programming and Numerical Methods: A Guide for Engineers and Scientists
+**Authors:** Qingkai Kong, Timmy Siauw, Alexandre Bayen
+**Description:** An open-access textbook (Jupyter Notebooks) from UC Berkeley detailing numerical Python (NumPy, SciPy) methods for ODEs, root finding, and basic data analysis.
+**Link:** [Berkeley Python Numerical Methods](https://pythonnumericalmethods.studentorg.berkeley.edu/notebooks/Index.html)

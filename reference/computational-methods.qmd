@@ -106,3 +106,24 @@ sol = solve_ivp(sho_derivs, [0, 10], [1.0, 0.0], t_eval=np.linspace(0, 10, 100))
 # sol.y[0] contains x(t)
 # sol.y[1] contains v(t)
 ```
+
+---
+
+# Algorithm & Competitive Programming Connections
+
+Numerical integration, root finding, and mathematical simulations are core components of competitive programming. Here are resources for practicing these algorithmic skills on platforms like LeetCode and Codeforces.
+
+## LeetCode Mathematical & Simulation Problems
+While LeetCode primarily focuses on software engineering interviews, several hard problems test applied mathematics, geometry, and discrete simulations:
+*   [Max Points on a Line (149)](https://leetcode.com/problems/max-points-on-a-line/) - 2D geometry and precision issues.
+*   [Erect the Fence (587)](https://leetcode.com/problems/erect-the-fence/) - Convex hull algorithms (Monotone Chain / Graham Scan).
+*   [Water and Jug Problem (365)](https://leetcode.com/problems/water-and-jug-problem/) - Diophantine equations and state-space search.
+*   [Poor Pigs (458)](https://leetcode.com/problems/poor-pigs/) - Information theory and states.
+
+## Codeforces Math & Geometry Tags
+Codeforces features exceptionally difficult mathematical and geometric tasks that require deep knowledge of linear algebra, calculus, and discrete math.
+*   **Geometry:** Problems tagged `geometry` often require implementing vector math (cross products, dot products) without floating-point errors.
+    *   [Codeforces Problemset: Tag = geometry](https://codeforces.com/problemset?tags=geometry)
+*   **Math & Matrices:** Problems tagged `math` or `matrices` often require fast matrix exponentiation, linear recurrences, and modular arithmetic, highly relevant for discrete time steps and state space matrices in physics.
+    *   [Codeforces Problemset: Tag = math](https://codeforces.com/problemset?tags=math)
+    *   [Codeforces Problemset: Tag = matrices](https://codeforces.com/problemset?tags=matrices)
