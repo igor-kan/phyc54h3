@@ -107,3 +107,72 @@ Instead of trigonometric secant substitution ($y = y_0 \sec\theta$), use the hyp
 $$y = y_0 \cosh u \implies dy = y_0 \sinh u \, du$$
 $$\int \frac{y_0 \sinh u \, du}{\sqrt{y_0^2(\cosh^2 u - 1)}} = \int \frac{y_0 \sinh u}{y_0 \sinh u} \, du = \int du = u + C = \text{arcosh}\left(\frac{y}{y_0}\right) + C$$
 Inverting this immediately gives $y(x) = y_0 \cosh\left(\frac{x - x_0}{y_0}\right)$ in one step without messy logarithms of absolute values.
+
+---
+
+# Practice Problems for Speed Integration
+
+## Problem 1: The Normalized Fractional Root
+$$\int_0^1 \sqrt{\frac{x}{1-x}} \, dx$$
+
+**Target Trick:** The half-angle cycloid substitution ($x = \sin^2\theta$).
+
+**Speed-Round Solution:**
+Let $x = \sin^2\theta$, so $dx = 2\sin\theta\cos\theta\, d\theta$. The bounds transform as $0 \to 0$ and $1 \to \pi/2$:
+$$\sqrt{\frac{x}{1-x}} = \sqrt{\frac{\sin^2\theta}{\cos^2\theta}} = \tan\theta$$
+Substitute directly into the integral:
+$$\int_0^{\pi/2} (\tan\theta) \cdot (2\sin\theta\cos\theta)\, d\theta = 2 \int_0^{\pi/2} \sin^2\theta\, d\theta$$
+Using the average value of $\sin^2\theta$ over a quarter-period:
+$$2 \left(\frac{1}{2} \cdot \frac{\pi}{2}\right) = \mathbf{\frac{\pi}{2}}$$
+
+## Problem 2: The Factored Quadratic Surd
+$$\int_0^1 \frac{dx}{(x+1)\sqrt{x(1-x)}}$$
+
+**Target Trick:** Euler’s third substitution / factored root normalization.
+
+**Speed-Round Solution:**
+Substitute $x = \sin^2\theta$, giving $dx = 2\sin\theta\cos\theta\, d\theta$ and $\sqrt{x(1-x)} = \sin\theta\cos\theta$:
+$$\int_0^{\pi/2} \frac{2\sin\theta\cos\theta\, d\theta}{(1 + \sin^2\theta)\sin\theta\cos\theta} = \int_0^{\pi/2} \frac{2\, d\theta}{1 + \sin^2\theta}$$
+Divide numerator and denominator by $\cos^2\theta$ to prepare an algebraic substitution:
+$$\int_0^{\pi/2} \frac{2\sec^2\theta}{\sec^2\theta + \tan^2\theta}\, d\theta = \int_0^{\pi/2} \frac{2\sec^2\theta}{1 + 2\tan^2\theta}\, d\theta$$
+Substitute $u = \sqrt{2}\tan\theta$, so $du = \sqrt{2}\sec^2\theta\, d\theta$, with limits $0 \to \infty$:
+$$\int_0^\infty \frac{\sqrt{2}\, du}{1 + u^2} = \sqrt{2} \left[ \arctan(u) \right]_0^\infty = \sqrt{2}\left(\frac{\pi}{2}\right) = \mathbf{\frac{\pi}{\sqrt{2}}}$$
+
+## Problem 3: The 15-Second Weierstrass Benchmark
+$$\int_0^{\pi/2} \frac{dx}{1 + \sin x + \cos x}$$
+
+**Target Trick:** The classic half-angle substitution $t = \tan(x/2)$.
+
+**Speed-Round Solution:**
+Recall the rational identities:
+$$\sin x = \frac{2t}{1+t^2}, \quad \cos x = \frac{1-t^2}{1+t^2}, \quad dx = \frac{2\, dt}{1+t^2}$$
+Combine the denominator terms:
+$$1 + \sin x + \cos x = \frac{(1+t^2) + 2t + (1-t^2)}{1+t^2} = \frac{2(1+t)}{1+t^2}$$
+The $(1+t^2)$ factors cancel against $dx$:
+$$\int_0^1 \frac{\frac{2\, dt}{1+t^2}}{\frac{2(1+t)}{1+t^2}} = \int_0^1 \frac{dt}{1+t} = \left[ \ln(1+t) \right]_0^1 = \mathbf{\ln 2}$$
+
+## Problem 4: Inverse Factorization on $\sqrt{x^2 - 1}$
+$$\int_1^2 \frac{\sqrt{x^2 - 1}}{x^4}\, dx$$
+
+**Target Trick:** Direct radical factoring $u = \sqrt{1 - x^{-2}}$ (bypassing trigonometric substitution).
+
+**Speed-Round Solution:**
+Factor $x$ out of the radical in the numerator:
+$$\frac{\sqrt{x^2-1}}{x^4} = \frac{x\sqrt{1 - x^{-2}}}{x^4} = \frac{\sqrt{1 - x^{-2}}}{x^3}$$
+Set $u = \sqrt{1 - x^{-2}}$. Then $u^2 = 1 - x^{-2} \implies 2u\, du = 2x^{-3}\, dx$, so:
+$$\frac{dx}{x^3} = u\, du$$
+The bounds transform from $x \in [1, 2]$ to $u \in \left[0, \frac{\sqrt{3}}{2}\right]$:
+$$\int_0^{\sqrt{3}/2} u \cdot (u\, du) = \int_0^{\sqrt{3}/2} u^2\, du = \left[ \frac{u^3}{3} \right]_0^{\sqrt{3}/2} = \frac{1}{3}\left(\frac{3\sqrt{3}}{8}\right) = \mathbf{\frac{\sqrt{3}}{8}}$$
+
+## Problem 5: Hyperbolic Shift with Inversion
+$$\int_0^1 \frac{dx}{(x+1)\sqrt{x^2 + 2x + 2}}$$
+
+**Target Trick:** Completing the square followed by inversion substitution $u = 1/t$.
+
+**Speed-Round Solution:**
+Complete the square inside the radical: $x^2 + 2x + 2 = (x+1)^2 + 1$. Shift variables with $y = x+1$:
+$$\int_1^2 \frac{dy}{y\sqrt{y^2 + 1}}$$
+Apply the inversion substitution $y = \frac{1}{t}$, which gives $dy = -\frac{dt}{t^2}$:
+$$\int_1^{1/2} \frac{-\frac{dt}{t^2}}{\frac{1}{t}\sqrt{\frac{1}{t^2} + 1}} = \int_{1/2}^1 \frac{dt}{\sqrt{1 + t^2}}$$
+Using the standard anti-derivative $\int \frac{dt}{\sqrt{1+t^2}} = \operatorname{arsinh}(t) = \ln(t + \sqrt{t^2+1})$:
+$$\left[ \ln\left(t + \sqrt{t^2 + 1}\right) \right]_{1/2}^1 = \ln(1 + \sqrt{2}) - \ln\left(\frac{1 + \sqrt{5}}{2}\right) = \mathbf{\ln\left(\frac{2 + 2\sqrt{2}}{1 + \sqrt{5}}\right)}$$
