@@ -268,6 +268,19 @@ window.Quarto = {
                     \      /
                      \    /
                       [Bob]  --&gt; Follows an exact cycloid path</code></pre>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>🎮 Live Interactive Simulations
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To interactively experiment with the Brachistochrone curve race, release multiple beads on a Tautochrone track, and test Huygens’ cycloidal pendulum side-by-side with an ordinary circular pendulum, launch our <strong><a href="../simulations/cycloid-mechanics-interactive.html">Interactive Cycloid Mechanics Simulation</a></strong>!</p>
+</div>
+</div>
 </section>
 <section id="charged-particle-drift-in-crossed-fields-mathbfe-times-mathbfb" class="level2">
 <h2 class="anchored" data-anchor-id="charged-particle-drift-in-crossed-fields-mathbfe-times-mathbfb">3. Charged Particle Drift in Crossed Fields (<span class="math inline">\(\mathbf{E} \times \mathbf{B}\)</span>)</h2>
@@ -781,26 +794,31 @@ window.Quarto = {
 <span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="in">                      [Bob]  --&gt; Follows an exact cycloid path</span></span>
 <span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3. Charged Particle Drift in Crossed Fields ($\mathbf{E} \times \mathbf{B}$)</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>When a non-relativistic particle of charge $q$ and mass $m$ moves in uniform, orthogonal electric and magnetic fields ($\mathbf{E} = E\hat{\mathbf{y}}$, $\mathbf{B} = B\hat{\mathbf{z}}$), its equations of motion are:</span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>$$\ddot{x} = \omega_c \dot{y}, \quad \ddot{y} = \frac{qE}{m} - \omega_c \dot{x}, \quad \omega_c = \frac{qB}{m}$$</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>If the particle is released from rest at the origin, the solution is a pure cycloid:</span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>$$x(t) = R(\omega_c t - \sin\omega_c t), \quad y(t) = R(1 - \cos\omega_c t), \quad R = \frac{E}{\omega_c B}$$</span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>The particle accelerates along the electric field, curves under the magnetic Lorentz force, loops back to zero vertical velocity, and repeats, producing a net macroscopic drift speed:</span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>$$v_d = \frac{E}{B}$$</span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="fu">## 4. Cycloidal Drive Speed Reducers (Robotics &amp; Precision Gearing)</span></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>Conventional involute spur gears concentrate torque on small tooth contact areas and suffer from mechanical backlash.</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>Cycloidal speed reducers use an eccentric cam driving a disc whose perimeter follows an epicycloidal/hypocycloidal profile engaging fixed ring-gear pins. Because multiple cycloidal teeth share the load simultaneously under pure rolling contact, they achieve:</span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Zero or near-zero backlash.</span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>High shock load tolerance (up to 500% overload).</span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Compact single-stage gear ratios from $10:1$ to $100:1$ in robotic joint actuators and precision CNC rotary axes.</span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="fu">## 5. Trochoidal / Gerstner Ocean Gravity Waves</span></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>In non-linear fluid dynamics, deep-water ocean surface waves are modeled as Gerstner (trochoidal) waves. Individual water parcels do not translate horizontally; instead, each parcel executes a closed circular orbit of radius $r(z) = r_0 e^{kz}$ around a fixed center $(x_0, z_0)$:</span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>$$x = x_0 - r_0 e^{k z_0}\sin(k x_0 - \omega t)$$</span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>$$z = z_0 + r_0 e^{k z_0}\cos(k x_0 - \omega t)$$</span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>The resulting water surface profile is a trochoid (shortened cycloid). When the wave reaches its theoretical steepness limit ($H/\lambda = 1/\pi$), the surface develops sharp, cusp-like peaks forming an inverted cycloid with an interior crest angle of $120^\circ$, at which point the wave breaks.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎮 Live Interactive Simulations</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>To interactively experiment with the Brachistochrone curve race, release multiple beads on a Tautochrone track, and test Huygens' cycloidal pendulum side-by-side with an ordinary circular pendulum, launch our **[Interactive Cycloid Mechanics Simulation](../simulations/cycloid-mechanics-interactive.qmd)**!</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3. Charged Particle Drift in Crossed Fields ($\mathbf{E} \times \mathbf{B}$)</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>When a non-relativistic particle of charge $q$ and mass $m$ moves in uniform, orthogonal electric and magnetic fields ($\mathbf{E} = E\hat{\mathbf{y}}$, $\mathbf{B} = B\hat{\mathbf{z}}$), its equations of motion are:</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>$$\ddot{x} = \omega_c \dot{y}, \quad \ddot{y} = \frac{qE}{m} - \omega_c \dot{x}, \quad \omega_c = \frac{qB}{m}$$</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>If the particle is released from rest at the origin, the solution is a pure cycloid:</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>$$x(t) = R(\omega_c t - \sin\omega_c t), \quad y(t) = R(1 - \cos\omega_c t), \quad R = \frac{E}{\omega_c B}$$</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>The particle accelerates along the electric field, curves under the magnetic Lorentz force, loops back to zero vertical velocity, and repeats, producing a net macroscopic drift speed:</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>$$v_d = \frac{E}{B}$$</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## 4. Cycloidal Drive Speed Reducers (Robotics &amp; Precision Gearing)</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>Conventional involute spur gears concentrate torque on small tooth contact areas and suffer from mechanical backlash.</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>Cycloidal speed reducers use an eccentric cam driving a disc whose perimeter follows an epicycloidal/hypocycloidal profile engaging fixed ring-gear pins. Because multiple cycloidal teeth share the load simultaneously under pure rolling contact, they achieve:</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Zero or near-zero backlash.</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>High shock load tolerance (up to 500% overload).</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Compact single-stage gear ratios from $10:1$ to $100:1$ in robotic joint actuators and precision CNC rotary axes.</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="fu">## 5. Trochoidal / Gerstner Ocean Gravity Waves</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>In non-linear fluid dynamics, deep-water ocean surface waves are modeled as Gerstner (trochoidal) waves. Individual water parcels do not translate horizontally; instead, each parcel executes a closed circular orbit of radius $r(z) = r_0 e^{kz}$ around a fixed center $(x_0, z_0)$:</span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>$$x = x_0 - r_0 e^{k z_0}\sin(k x_0 - \omega t)$$</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>$$z = z_0 + r_0 e^{k z_0}\cos(k x_0 - \omega t)$$</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>The resulting water surface profile is a trochoid (shortened cycloid). When the wave reaches its theoretical steepness limit ($H/\lambda = 1/\pi$), the surface develops sharp, cusp-like peaks forming an inverted cycloid with an interior crest angle of $120^\circ$, at which point the wave breaks.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
