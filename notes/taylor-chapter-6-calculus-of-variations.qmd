@@ -134,8 +134,15 @@ $$ y = a(1 - \cos\theta) $$
      $$ 2a - y = 2a - a(1 - \cos\theta) = a(1 + \cos\theta) = 2a\cos^2\left(\frac{\theta}{2}\right) $$
    Taking the ratio inside the square root:
    $$ \frac{y}{2a - y} = \frac{2a\sin^2\left(\frac{\theta}{2}\right)}{2a\cos^2\left(\frac{\theta}{2}\right)} = \tan^2\left(\frac{\theta}{2}\right) $$
-   Assuming the motion stays within the first arch ($\theta \in [0, 2\pi]$ where $\theta/2 \in [0, \pi]$ and $\sin(\theta/2) \ge 0$):
-   $$ \sqrt{\frac{y}{2a - y}} = \tan\left(\frac{\theta}{2}\right) = \frac{\sin\left(\frac{\theta}{2}\right)}{\cos\left(\frac{\theta}{2}\right)} $$
+   
+   **Why We Assume the First Arch ($\theta \in [0, 2\pi]$ and $\sin(\theta/2) \ge 0$):**  
+   The principal square root of any real square evaluates to its absolute value: $\sqrt{\tan^2(\theta/2)} = |\tan(\theta/2)| = \frac{|\sin(\theta/2)|}{|\cos(\theta/2)|}$.  
+   - In any single Brachistochrone descent starting from rest at the origin $(0,0)$, energy conservation dictates $v = \sqrt{2gy}$. The bead cannot ascend higher than its release height $y = 0$, meaning the curve terminates before or at the completion of a single revolution of the generating wheel ($\theta \le 2\pi$). Hence the relevant motion is strictly confined within the first arch: $\theta \in [0, 2\pi]$, giving $\frac{\theta}{2} \in [0, \pi]$.
+   - Across the entire half-angle domain $[0, \pi]$, the sine function is unconditionally non-negative ($\sin(\theta/2) \ge 0$). Therefore, the absolute value on the sine can be dropped without piecewise branching:
+     $$ \left|\sin\left(\frac{\theta}{2}\right)\right| = \sin\left(\frac{\theta}{2}\right) $$
+   - For the denominator, $\cos(\theta/2) > 0$ along the entire descending branch $\theta \in [0, \pi)$, where $y$ is increasing from $0$ to $2a$. When the particle crosses the trough at $\theta = \pi$, $\cos(\theta/2)$ changes sign as $y$ begins decreasing, while $dx/d\theta = a(1 - \cos\theta) \ge 0$ remains positive throughout. Thus, setting:
+     $$ \sqrt{\frac{y}{2a - y}} = \tan\left(\frac{\theta}{2}\right) = \frac{\sin\left(\frac{\theta}{2}\right)}{\cos\left(\frac{\theta}{2}\right)} $$
+     correctly captures the trajectory without extraneous signs.
 
 3. **Combining and Integrating:**  
    Multiply the simplified radical by $dy$:
@@ -154,21 +161,59 @@ Complete the square in the denominator:
 $$ 2ay - y^2 = -(y^2 - 2ay + a^2) + a^2 = a^2 - (y - a)^2 $$
 Now the integral becomes:
 $$ \int \frac{y}{\sqrt{a^2 - (y - a)^2}} \, dy $$
-Any integral containing $\sqrt{a^2 - u^2}$ calls for the standard circle substitution $u = a\sin\phi$ or $u = -a\cos\theta$. Setting:
-$$ y - a = -a\cos\theta \implies y = a(1 - \cos\theta) $$
-The "clever" substitution is simply the standard trigonometric substitution for a circle of radius $a$ centered at $(0, a)$.
 
-#### The Algebraic Alternative: Direct Root Substitution
+**Why This Is a Circle:**  
+In the $(w, y)$ plane, the equation $w = \sqrt{a^2 - (y - a)^2}$ describes the boundary of a circle of radius $a$ centered at $(0, a)$:
+$$ w^2 + (y - a)^2 = a^2 $$
 
-You do not need to guess a trigonometric substitution. When faced with any rational function of a single linear radical $\sqrt{\frac{a y + b}{c y + d}}$, set the entire radical equal to a new variable $u$:
+**Why Two Different Types of $u$ Can Be Substituted:**  
+Any expression involving $\sqrt{a^2 - u^2}$ naturally invites a circular parameterization, but we have two standard choices depending on the angle reference axis:
+1. **The Sine Substitution ($u = a\sin\phi$):**  
+   If we set $y - a = a\sin\phi$, then $y = a(1 + \sin\phi)$. Here the angle $\phi$ is measured relative to the horizontal diameter of the circle. At the release point ($y = 0$), this requires $\sin\phi = -1 \implies \phi = -\pi/2$. While mathematically valid, it introduces an awkward phase shift of $-\pi/2$ into the equations of motion.
+2. **The Inverted Cosine Substitution ($u = -a\cos\theta$):**  
+   If we instead set $y - a = -a\cos\theta$, then:
+   $$ y = a(1 - \cos\theta) $$
+   Here the angle $\theta$ is measured from the top apex of the circle. At $\theta = 0$, $\cos(0) = 1$, which gives $y = a(1 - 1) = 0$ automatically! Thus, the negative cosine choice is physically tailored to align $\theta = 0$ directly with the initial release point at the origin without requiring arbitrary phase angles.
+
+#### The Algebraic Alternative: Direct Root Substitution (With Both Integration by Parts and Trig Methods)
+
+You do not need to guess a trigonometric substitution. When faced with any rational function of a single linear radical $\sqrt{\frac{a y + b}{c y + d}}$, set the entire radical equal to a new algebraic variable $u$:
 $$ u = \sqrt{\frac{y}{2a - y}} $$
 Inverting for $y$:
 $$ u^2 = \frac{y}{2a - y} \implies u^2(2a - y) = y \implies 2a u^2 = y(1 + u^2) \implies y = \frac{2a u^2}{1 + u^2} $$
 Compute $dy$:
 $$ dy = 2a \frac{d}{du}\left[1 - \frac{1}{1 + u^2}\right] du = \frac{4a u}{(1 + u^2)^2} \, du $$
-Substitute into the integral:
-$$ \int u \, dy = \int u \cdot \frac{4a u}{(1 + u^2)^2} \, du = 4a \int \frac{u^2}{(1 + u^2)^2} \, du $$
-With $u = \tan\phi$, this integral reduces directly to elementary trig integrals without guessing parameters in advance (integrating via trigonometric substitution and integration by parts).
+Substitute into the integral $x = \int u \, dy$:
+$$ x = \int u \cdot \frac{4a u}{(1 + u^2)^2} \, du = 4a \int \frac{u^2}{(1 + u^2)^2} \, du $$
+
+We can solve this integral via two independent pathways:
+
+##### Method A: Integration by Parts (Pure Algebraic Route)
+Split the numerator as $u \cdot \frac{u}{(1+u^2)^2}$:
+- Let $f = u \implies df = du$
+- Let $dg = \frac{u}{(1+u^2)^2} \, du \implies g = -\frac{1}{2(1+u^2)}$
+
+Applying $\int f \, dg = fg - \int g \, df$:
+$$ \int \frac{u^2}{(1+u^2)^2} \, du = -\frac{u}{2(1+u^2)} + \frac{1}{2}\int \frac{du}{1+u^2} = -\frac{u}{2(1+u^2)} + \frac{1}{2}\arctan(u) $$
+Multiplying by the overall factor $4a$:
+$$ x(u) = 2a \arctan(u) - \frac{2a u}{1 + u^2} + C $$
+Since $u = 0$ at $y = 0$, the boundary condition $x(0) = 0$ enforces $C = 0$.  
+To interpret this geometrically, let $u = \tan\left(\frac{\theta}{2}\right)$. Then:
+- $\arctan(u) = \frac{\theta}{2}$
+- $\frac{2u}{1+u^2} = \frac{2\tan(\theta/2)}{1+\tan^2(\theta/2)} = \sin\theta$ (the standard double-angle identity)
+
+Substituting these directly into $x(u)$:
+$$ x(\theta) = 2a\left(\frac{\theta}{2}\right) - a\sin\theta = a(\theta - \sin\theta) $$
+And for $y$:
+$$ y = \frac{2a u^2}{1+u^2} = 2a\sin^2\left(\frac{\theta}{2}\right) = a(1 - \cos\theta) $$
+This recovers the cycloid parametric equations without having to guess the substitution upfront!
+
+##### Method B: Trigonometric Substitution
+Setting $u = \tan\phi$, so $du = \sec^2\phi \, d\phi$:
+$$ 4a \int \frac{\tan^2\phi}{(1+\tan^2\phi)^2} \sec^2\phi \, d\phi = 4a \int \frac{\tan^2\phi}{\sec^4\phi}\sec^2\phi \, d\phi = 4a \int \sin^2\phi \, d\phi $$
+Using $\sin^2\phi = \frac{1 - \cos 2\phi}{2}$:
+$$ 4a \int \left(\frac{1 - \cos 2\phi}{2}\right) d\phi = 2a\left(\phi - \frac{1}{2}\sin 2\phi\right) = 2a(\phi - \sin\phi\cos\phi) $$
+Setting $\theta = 2\phi$ (so $\phi = \theta/2$), this immediately yields $x(\theta) = a(\theta - \sin\theta)$.
 
 #### What $\theta$ Represents Physically
 

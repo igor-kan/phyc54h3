@@ -47,66 +47,183 @@ $$x = a(\theta - \sin\theta), \quad y = a(1 - \cos\theta)$$
 
 # Why That Substitution Works: The Hidden Circle
 
-Taylor calls this an "unlikely looking substitution," but it is completely systematic.
+# Why That Substitution Works: The Hidden Circle
+
+Taylor calls this an "unlikely looking substitution," but it is completely systematic.  
 Rationalize the numerator of the integrand:
-$$\sqrt{\frac{y}{2a - y}} = \frac{y}{\sqrt{y(2a - y)}} = \frac{y}{\sqrt{2ay - y^2}}$$
+$$ \sqrt{\frac{y}{2a - y}} = \frac{y}{\sqrt{y(2a - y)}} = \frac{y}{\sqrt{2ay - y^2}} $$
 Complete the square in the denominator:
-$$2ay - y^2 = -(y^2 - 2ay + a^2) + a^2 = a^2 - (y - a)^2$$
+$$ 2ay - y^2 = -(y^2 - 2ay + a^2) + a^2 = a^2 - (y - a)^2 $$
 Now the integral becomes:
-$$\int \frac{y}{\sqrt{a^2 - (y - a)^2}} \, dy$$
-Any integral containing $\sqrt{a^2 - u^2}$ calls for the standard circle substitution $u = a\sin\phi$ or $u = -a\cos\theta$. Setting:
-$$y - a = -a\cos\theta \implies y = a(1 - \cos\theta)$$
-The "clever" substitution is simply the standard trigonometric substitution for a circle of radius $a$ centered at $(0, a)$.
+$$ \int \frac{y}{\sqrt{a^2 - (y - a)^2}} \, dy $$
+
+### Why This Is a Circle
+In auxiliary coordinates $(w, y)$, the radical $w = \sqrt{a^2 - (y - a)^2}$ describes the upper semicircle of:
+$$ w^2 + (y - a)^2 = a^2 $$
+which is a circle of radius $a$ centered at $(w, y) = (0, a)$.
+
+### Why Two Different Types of $u$ Can Be Substituted
+Any integrand featuring $\sqrt{a^2 - u^2}$ naturally invites a circular trigonometric substitution. However, there are two distinct ways to define the angular parameter:
+
+1. **The Standard Sine Substitution ($u = a\sin\phi$):**  
+   Setting $y - a = a\sin\phi \implies y = a(1 + \sin\phi)$.  
+   Here, the angle $\phi$ is referenced from the horizontal equator of the circle. At the release point ($y = 0$), we must have $\sin\phi = -1 \implies \phi = -\pi/2$. While mathematically sound, this carries an unnecessary phase shift of $-\pi/2$ into the final equations.
+
+2. **The Inverted Cosine Substitution ($u = -a\cos\theta$):**  
+   Setting $y - a = -a\cos\theta \implies y = a(1 - \cos\theta)$.  
+   Here, the angle $\theta$ is measured clockwise directly from the topmost vertical point (the cusp). At $\theta = 0$, we have $\cos(0) = 1 \implies y = a(1 - 1) = 0$. The initial release condition $y(0) = 0$ is naturally satisfied with zero phase offset!
+
+Both are valid circular parameterizations, but $u = -a\cos\theta$ is chosen because it directly mirrors the physical launch boundary conditions.
 
 ---
 
 # The Algebraic Alternative: The Direct Root Substitution
 
-You do not need to guess a trigonometric substitution. When faced with any rational function of a single linear radical $\sqrt{\frac{a y + b}{c y + d}}$, set the entire radical equal to a new variable $u$:
-$$u = \sqrt{\frac{y}{2a - y}}$$
-Invert for $y$:
-$$u^2 = \frac{y}{2a - y} \implies u^2(2a - y) = y \implies 2a u^2 = y(1 + u^2) \implies y = \frac{2a u^2}{1 + u^2}$$
+You do not need to guess a trigonometric substitution. When faced with any rational function of a single linear radical $\sqrt{\frac{a y + b}{c y + d}}$, set the entire radical equal to a new algebraic variable $u$:
+$$ u = \sqrt{\frac{y}{2a - y}} $$
+Inverting for $y$:
+$$ u^2 = \frac{y}{2a - y} \implies u^2(2a - y) = y \implies 2a u^2 = y(1 + u^2) \implies y = \frac{2a u^2}{1 + u^2} $$
 Compute $dy$:
-$$dy = 2a \frac{d}{du}\left[1 - \frac{1}{1 + u^2}\right] du = \frac{4a u}{(1 + u^2)^2} \, du$$
-Substitute into the integral:
-$$\int u \, dy = \int u \cdot \frac{4a u}{(1 + u^2)^2} \, du = 4a \int \frac{u^2}{(1 + u^2)^2} \, du$$
-Integrate by parts or standard trig:
-With $u = \tan\phi$, this integral reduces directly to elementary trig integrals without guessing parameters in advance. *So for algebraic integration use both trig and integration by parts.*
+$$ dy = 2a \frac{d}{du}\left[1 - \frac{1}{1 + u^2}\right] du = \frac{4a u}{(1 + u^2)^2} \, du $$
+Substitute into the integral $x = \int u \, dy$:
+$$ x = \int u \cdot \frac{4a u}{(1 + u^2)^2} \, du = 4a \int \frac{u^2}{(1 + u^2)^2} \, du $$
+
+To evaluate this integral without guessing parameters, we can use either integration by parts or a standard trigonometric substitution:
+
+### Method 1: Integration by Parts (Pure Algebraic Route)
+Decompose the integrand as $u \cdot \frac{u}{(1 + u^2)^2}$:
+- Let $f = u \implies df = du$
+- Let $dg = \frac{u}{(1 + u^2)^2} \, du \implies g = -\frac{1}{2(1 + u^2)}$
+
+Applying $\int f \, dg = fg - \int g \, df$:
+$$ \int \frac{u^2}{(1 + u^2)^2} \, du = -\frac{u}{2(1 + u^2)} + \frac{1}{2} \int \frac{du}{1 + u^2} = -\frac{u}{2(1 + u^2)} + \frac{1}{2}\arctan(u) $$
+Multiplying by the overall factor $4a$:
+$$ x(u) = 2a\arctan(u) - \frac{2au}{1 + u^2} + C $$
+Using $x(0) = 0$ at $u = 0$, we have $C = 0$.  
+Setting $u = \tan(\theta/2)$, we observe:
+- $\arctan(u) = \frac{\theta}{2}$
+- $\frac{2u}{1 + u^2} = \frac{2\tan(\theta/2)}{1 + \tan^2(\theta/2)} = \sin\theta$ (double-angle sine formula)
+
+Substituting these gives:
+$$ x(\theta) = 2a\left(\frac{\theta}{2}\right) - a\sin\theta = a(\theta - \sin\theta) $$
+and:
+$$ y(\theta) = \frac{2a u^2}{1 + u^2} = 2a\sin^2\left(\frac{\theta}{2}\right) = a(1 - \cos\theta) $$
+This confirms the cycloid equations with zero guesswork!
+
+### Method 2: Standard Trigonometric Substitution
+Let $u = \tan\phi$, so $du = \sec^2\phi \, d\phi$:
+$$ 4a \int \frac{\tan^2\phi}{(1 + \tan^2\phi)^2} \sec^2\phi \, d\phi = 4a \int \frac{\tan^2\phi}{\sec^4\phi}\sec^2\phi \, d\phi = 4a \int \sin^2\phi \, d\phi $$
+Using $\sin^2\phi = \frac{1 - \cos 2\phi}{2}$:
+$$ 4a \int \left(\frac{1 - \cos 2\phi}{2}\right) d\phi = 2a\left(\phi - \frac{1}{2}\sin 2\phi\right) = 2a(\phi - \sin\phi\cos\phi) $$
+Setting $\theta = 2\phi$, we immediately recover $x = a(\theta - \sin\theta)$.
 
 ---
 
 # Core Substitution Toolkit for Mechanics & Variational Calculus
 
-| Radicand Pattern | Primary Substitution | Algebraic Identity Used | Resulting Differential |
-| :--- | :--- | :--- | :--- |
-| $\sqrt{a^2 - x^2}$ | $x = a\sin\theta$ or $a\cos\theta$ | $1 - \sin^2\theta = \cos^2\theta$ | $dx = a\cos\theta \, d\theta$ |
-| $\sqrt{a^2 + x^2}$ | $x = a\tan\theta$ or $a\sinh u$ | $1 + \tan^2\theta = \sec^2\theta$ or $1 + \sinh^2 u = \cosh^2 u$ | $dx = a\sec^2\theta \, d\theta$ or $a\cosh u \, du$ |
-| $\sqrt{x^2 - a^2}$ | $x = a\sec\theta$ or $a\cosh u$ | $\sec^2\theta - 1 = \tan^2\theta$ or $\cosh^2 u - 1 = \sinh^2 u$ | $dx = a\sec\theta\tan\theta \, d\theta$ or $a\sinh u \, du$ |
-| $\sqrt{\frac{a+x}{a-x}}$ | $x = a\cos(2\theta)$ | $\frac{1+\cos 2\theta}{1-\cos 2\theta} = \cot^2\theta$ | $dx = -2a\sin(2\theta) \, d\theta$ |
-| $\sqrt{\frac{2a-x}{x}}$ | $x = a(1-\cos\theta) = 2a\sin^2(\theta/2)$ | $\frac{1+\cos\theta}{1-\cos\theta} = \cot^2(\theta/2)$ | $dx = a\sin\theta \, d\theta$ |
-| $\sqrt{(x-\alpha)(\beta-x)}$ | $x = \alpha + (\beta-\alpha)\sin^2\theta$ | Factored root normalization | $dx = 2(\beta-\alpha)\sin\theta\cos\theta \, d\theta$ |
+| Radicand Pattern | Primary Substitution | Algebraic Identity Used | Resulting Differential | Typical Mechanics / Physics Applications |
+| :--- | :--- | :--- | :--- | :--- |
+| $\sqrt{a^2 - x^2}$ | $x = a\sin\theta$ or $a\cos\theta$ | $1 - \sin^2\theta = \cos^2\theta$ | $dx = a\cos\theta \, d\theta$ | Harmonic oscillator phase curves ($E = \frac{p^2}{2m} + \frac{1}{2}kx^2$); circular pendulum arc lengths. |
+| $\sqrt{a^2 + x^2}$ | $x = a\tan\theta$ or $a\sinh u$ | $1 + \tan^2\theta = \sec^2\theta$ or $1 + \sinh^2 u = \cosh^2 u$ | $dx = a\sec^2\theta \, d\theta$ or $a\cosh u \, du$ | Relativistic momentum ($E = \sqrt{p^2c^2 + m^2c^4}$); geodesics on cylinders ($ds = \sqrt{R^2 + z'^2}d\phi$). |
+| $\sqrt{x^2 - a^2}$ | $x = a\sec\theta$ or $a\cosh u$ | $\sec^2\theta - 1 = \tan^2\theta$ or $\cosh^2 u - 1 = \sinh^2 u$ | $dx = a\sec\theta\tan\theta \, d\theta$ or $a\sinh u \, du$ | Catenary / soap-film surfaces of revolution ($y = y_0\cosh(x/y_0)$); hyperbolic orbits in Kepler scattering. |
+| $\sqrt{\frac{a - x}{a + x}}$ | $x = a\cos(2\theta)$ | $\frac{1 - \cos 2\theta}{1 + \cos 2\theta} = \tan^2\theta$ | $dx = -2a\sin(2\theta) \, d\theta$ | Joukowsky conformal airfoil mappings; action integrals in asymmetric wedge potentials. |
+| $\sqrt{\frac{x}{2a - x}}$ | $x = a(1 - \cos\theta) = 2a\sin^2(\theta/2)$ | $\frac{1 - \cos\theta}{1 + \cos\theta} = \tan^2(\theta/2)$ | $dx = a\sin\theta \, d\theta$ | The Brachistochrone problem (Taylor Eq 6.23); rolling wheel cycloid coordinates; parabolic escape trajectories. |
+| $\sqrt{(x - \alpha)(\beta - x)}$ | $x = \alpha + (\beta - \alpha)\sin^2\theta$ | Factored root normalization | $dx = 2(\beta - \alpha)\sin\theta\cos\theta \, d\theta$ | Action-angle variables $J = \oint p \, dq$ between turning points $\alpha \le x \le \beta$ in conservative wells. |
+
+### Derivation & Mechanics Insights for the Toolkit Patterns
+
+1. **$\sqrt{a^2 - x^2}$ (The Circle / Ellipse Pattern):**  
+   - **Origin:** Comes from the Pythagorean identity $x^2 + y^2 = a^2$.  
+   - **Physics Use:** Appears whenever potential energy is quadratic ($U(x) = \frac{1}{2}kx^2$), leading to velocity $v(x) = \sqrt{\frac{2}{m}(E - \frac{1}{2}kx^2)} = \sqrt{\frac{k}{m}}\sqrt{A^2 - x^2}$. Integrating $dt = dx/v$ gives $t(x) = \sqrt{m/k}\arcsin(x/A)$, which inverts to pure harmonic oscillation $x(t) = A\sin(\omega t)$.
+
+2. **$\sqrt{a^2 + x^2}$ (The Hyperbolic Sum Pattern):**  
+   - **Origin:** Parameterizes the equilateral hyperbola $y^2 - x^2 = a^2$ using $y = a\cosh u, x = a\sinh u$.  
+   - **Physics Use:** In special relativity, relativistic velocity $v$ and proper velocity $w = \gamma v$ obey $1 + (w/c)^2 = \gamma^2$. Integrating proper time $d\tau = dt/\gamma = dt/\sqrt{1 + (w/c)^2}$ naturally invites $w = c\sinh\eta$, where $\eta$ is the relativistic rapidity.
+
+3. **$\sqrt{x^2 - a^2}$ (The Inverted Hyperbola Pattern):**  
+   - **Origin:** Arises in Euler-Lagrange variational problems where $f(y, y') = y\sqrt{1 + y'^2}$ (e.g. minimal surface of revolution, Taylor Problem 6.19).  
+   - **Beltrami Identity:** $f - y'\frac{\partial f}{\partial y'} = \frac{y}{\sqrt{1 + y'^2}} = y_0 \implies y' = \frac{\sqrt{y^2 - y_0^2}}{y_0} \implies dx = \frac{y_0}{\sqrt{y^2 - y_0^2}} dy$.  
+   - **Substitution:** Setting $y = y_0\cosh u$ gives $dx = y_0 du \implies u = \frac{x - x_0}{y_0} \implies y(x) = y_0\cosh\left(\frac{x - x_0}{y_0}\right)$.
+
+4. **$\sqrt{\frac{a - x}{a + x}}$ (The Ratio Root Pattern):**  
+   - **Origin:** By multiplying numerator and denominator by $\sqrt{a - x}$, we get $\frac{a - x}{\sqrt{a^2 - x^2}}$.  
+   - **Trigonometric Rationale:** The half-angle formula $\tan^2\theta = \frac{1 - \cos 2\theta}{1 + \cos 2\theta}$ matches this ratio when $x = a\cos(2\theta)$, collapsing the radical into a single trigonometric term $\tan\theta$.
+
+5. **$\sqrt{\frac{x}{2a - x}}$ (The Cycloid / Half-Angle Ratio Pattern):**  
+   - **Origin:** Rationalizing gives $\frac{x}{\sqrt{2ax - x^2}} = \frac{x}{\sqrt{a^2 - (x - a)^2}}$.  
+   - **Trigonometric Rationale:** Matches $\tan^2(\theta/2) = \frac{1 - \cos\theta}{1 + \cos\theta}$ under $x = a(1 - \cos\theta)$, mapping the entire arch into monotonic angles $\theta \in [0, 2\pi]$.
+
+6. **$\sqrt{(x - \alpha)(\beta - x)}$ (The Bound-State Turning Points Pattern):**  
+   - **Origin:** In any 1D potential well $U(x)$, classical turning points occur where $E - U(x) = 0$. Near generic turning points, $E - U(x) \approx k(x - \alpha)(\beta - x)$.  
+   - **Normalization:** Setting $x = \alpha + (\beta - \alpha)\sin^2\theta$ maps $x \in [\alpha, \beta]$ into $\theta \in [0, \pi/2]$, converting the radical into $(\beta - \alpha)\sin\theta\cos\theta$ and linearizing action-angle integrals $\oint p\, dx = \pi(\beta - \alpha)^2/4$.
 
 ---
 
 # Advanced Integration Tricks for Variational Physics
 
 ## 1. Euler's First and Third Substitutions for $\sqrt{Ax^2 + Bx + C}$
-When completing the square is cumbersome:
-- **If $A > 0$:** Substitute $\sqrt{Ax^2 + Bx + C} = \pm x\sqrt{A} + t$. Squaring both sides cancels $Ax^2$, leaving $x$ as a purely rational function of $t$.
-- **If the quadratic factors as $A(x - r_1)(x - r_2)$:** Substitute $\sqrt{A(x - r_1)(x - r_2)} = t(x - r_1)$. Squaring eliminates the radical and rationalizes the entire expression.
+
+When quadratic radicands cannot be cleanly solved by simple trigonometric substitution or completing the square, **Euler's algebraic substitutions** rationalize the integral by establishing a birational map between the conic $Y^2 = Ax^2 + Bx + C$ and a parameter $t$:
+
+### Euler's First Substitution ($A > 0$)
+- **Condition:** The leading coefficient $A$ is positive.
+- **Substitution:**
+  $$ \sqrt{Ax^2 + Bx + C} = \pm \sqrt{A}x + t $$
+- **Derivation:** Square both sides:
+  $$ Ax^2 + Bx + C = Ax^2 \pm 2\sqrt{A}xt + t^2 \implies Bx + C = \pm 2\sqrt{A}xt + t^2 $$
+  Notice that $Ax^2$ cancels completely! Solving for $x$ yields a purely rational expression in $t$:
+  $$ x = \frac{t^2 - C}{B \mp 2\sqrt{A}t} $$
+  Both $x$ and $dx = \frac{d}{dt}\left[\frac{t^2 - C}{B \mp 2\sqrt{A}t}\right]dt$, as well as the radical itself, become rational functions of $t$. The integral is completely solved by partial fractions.
+
+### Euler's Third Substitution (Real Roots $r_1, r_2$)
+- **Condition:** The quadratic factors over the reals as $Ax^2 + Bx + C = A(x - r_1)(x - r_2)$.
+- **Substitution:**
+  $$ \sqrt{A(x - r_1)(x - r_2)} = t(x - r_1) $$
+- **Derivation:** Square both sides:
+  $$ A(x - r_1)(x - r_2) = t^2(x - r_1)^2 $$
+  Divide by $(x - r_1)$:
+  $$ A(x - r_2) = t^2(x - r_1) \implies Ax - A r_2 = t^2 x - t^2 r_1 \implies x = \frac{A r_2 - t^2 r_1}{A - t^2} $$
+  The radical simplifies to $t(x - r_1) = \frac{A(r_2 - r_1)t}{A - t^2}$, rendering the integrand completely rational in $t$.
 
 ## 2. The Weierstrass Tangent Half-Angle Substitution
-For any integrand that is a rational function of $\sin\theta$ and $\cos\theta$:
-$$t = \tan\left(\frac{\theta}{2}\right) \implies \cos\theta = \frac{1 - t^2}{1 + t^2}, \quad \sin\theta = \frac{2t}{1 + t^2}, \quad d\theta = \frac{2}{1 + t^2} dt$$
-This maps any trigonometric integral into a rational polynomial integral solvable by partial fractions.
+
+The Weierstrass substitution is known as the "universal trigonometric substitution." It algebraically transforms any rational expression of $\sin\theta$ and $\cos\theta$ into a rational polynomial integral:
+
+### Geometric Origin
+Consider the unit circle $X^2 + Y^2 = 1$ parameterized by the angle $\theta$ where $(X, Y) = (\cos\theta, \sin\theta)$. Draw a secant line from the fixed point $(-1, 0)$ through $(\cos\theta, \sin\theta)$ to the vertical line $X = 0$. The slope of this line is:
+$$ t = \tan\left(\frac{\theta}{2}\right) $$
+By stereographic projection, every point on the unit circle corresponds to a unique real slope $t \in (-\infty, \infty)$.
+
+### Algebraic Formulas
+Using standard double-angle formulas with $\tan(\theta/2) = t$:
+$$ \cos\theta = \cos^2\left(\frac{\theta}{2}\right) - \sin^2\left(\frac{\theta}{2}\right) = \frac{\cos^2(\theta/2) - \sin^2(\theta/2)}{\cos^2(\theta/2) + \sin^2(\theta/2)} = \frac{1 - t^2}{1 + t^2} $$
+$$ \sin\theta = 2\sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right) = \frac{2\sin(\theta/2)\cos(\theta/2)}{\cos^2(\theta/2) + \sin^2(\theta/2)} = \frac{2t}{1 + t^2} $$
+Differentiating $\theta = 2\arctan(t)$:
+$$ d\theta = \frac{2}{1 + t^2} \, dt $$
+
+### Example
+To evaluate $\int \frac{d\theta}{2 + \cos\theta}$:
+$$ \int \frac{\frac{2\, dt}{1 + t^2}}{2 + \frac{1 - t^2}{1 + t^2}} = \int \frac{2\, dt}{2(1 + t^2) + (1 - t^2)} = \int \frac{2\, dt}{3 + t^2} = \frac{2}{\sqrt{3}}\arctan\left(\frac{t}{\sqrt{3}}\right) + C = \frac{2}{\sqrt{3}}\arctan\left(\frac{\tan(\theta/2)}{\sqrt{3}}\right) + C $$
 
 ## 3. Hyperbolic Conversions for Catenaries and Relativistic Rapidity
-Whenever you encounter forms like $\int \frac{dy}{\sqrt{y^2 - y_0^2}}$ (as in the soap-film catenoid problem 6.19):
 
-Instead of trigonometric secant substitution ($y = y_0 \sec\theta$), use the hyperbolic cosine:
-$$y = y_0 \cosh u \implies dy = y_0 \sinh u \, du$$
-$$\int \frac{y_0 \sinh u \, du}{\sqrt{y_0^2(\cosh^2 u - 1)}} = \int \frac{y_0 \sinh u}{y_0 \sinh u} \, du = \int du = u + C = \text{arcosh}\left(\frac{y}{y_0}\right) + C$$
-Inverting this immediately gives $y(x) = y_0 \cosh\left(\frac{x - x_0}{y_0}\right)$ in one step without messy logarithms of absolute values.
+Whenever variational problems produce forms like $\int \frac{dy}{\sqrt{y^2 - y_0^2}}$:
+
+### Why Hyperbolic Beats Trigonometric Secant
+- If you use trigonometric secant $y = y_0\sec\theta$:
+  $$ \int \frac{y_0\sec\theta\tan\theta}{\sqrt{y_0^2(\sec^2\theta - 1)}} \, d\theta = \int \sec\theta \, d\theta = \ln|\sec\theta + \tan\theta| + C = \ln\left|\frac{y + \sqrt{y^2 - y_0^2}}{y_0}\right| + C $$
+  Inverting this logarithm to isolate $y(x)$ requires exponentiation and solving quadratic equations with annoying sign choices.
+- Using hyperbolic cosine $y = y_0\cosh u \implies dy = y_0\sinh u \, du$:
+  $$ \int \frac{y_0\sinh u}{\sqrt{y_0^2(\cosh^2 u - 1)}} \, du = \int \frac{y_0\sinh u}{y_0\sinh u} \, du = \int du = u + C = \operatorname{arcosh}\left(\frac{y}{y_0}\right) + C $$
+  Inverting this immediately gives:
+  $$ y(x) = y_0\cosh\left(\frac{x - x_0}{y_0}\right) $$
+  in a single clean step, eliminating absolute values and logarithms.
+
+### Application to Relativistic Rapidity
+In special relativity, velocity addition is non-linear: $v_{13} = \frac{v_{12} + v_{23}}{1 + v_{12}v_{23}/c^2}$.  
+By defining rapidity $\eta = \operatorname{artanh}(v/c)$, velocity addition becomes strictly linear:
+$$ \eta_{13} = \eta_{12} + \eta_{23} $$
+The Lorentz factor becomes $\gamma = \cosh\eta$, the momentum becomes $p = mc\sinh\eta$, and the relativistic kinetic energy integral $\int v\, dp = mc^2\int \tanh\eta\cosh\eta\, d\eta = mc^2\int \sinh\eta\, d\eta = mc^2(\cosh\eta - 1) = (\gamma - 1)mc^2$ is evaluated instantly.
 
 ---
 
