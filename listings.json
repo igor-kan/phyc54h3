@@ -12,14 +12,10 @@
     ]
   },
   {
-    "listing": "/reference/index.html",
+    "listing": "/simulations/index.html",
     "items": [
-      "/reference/integration-tricks-and-substitutions.html",
-      "/reference/sources-and-bibliography.html",
-      "/reference/computational-methods.html",
-      "/reference/physical-constants-and-data.html",
-      "/reference/vector-calculus-and-identities.html",
-      "/reference/math-identities-and-calculus.html"
+      "/simulations/manim-animations.html",
+      "/simulations/interactive-pendulum-and-verlet.html"
     ]
   },
   {
@@ -32,10 +28,15 @@
     ]
   },
   {
-    "listing": "/simulations/index.html",
+    "listing": "/reference/index.html",
     "items": [
-      "/simulations/manim-animations.html",
-      "/simulations/interactive-pendulum-and-verlet.html"
+      "/reference/integration-tricks-and-substitutions.html",
+      "/reference/cycloid-physics-applications.html",
+      "/reference/sources-and-bibliography.html",
+      "/reference/computational-methods.html",
+      "/reference/physical-constants-and-data.html",
+      "/reference/vector-calculus-and-identities.html",
+      "/reference/math-identities-and-calculus.html"
     ]
   }
 ]
