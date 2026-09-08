@@ -374,6 +374,7 @@ Use the **Wheel Radius Slider ($a$)** below to interactively scale the wheel and
   animId = requestAnimationFrame(step);
 })();
 </script>
+```
 
 ---
 
