@@ -151,11 +151,21 @@ Setting $\theta = 2\phi$, we immediately recover $x = a(\theta - \sin\theta)$.
 
 5. **$\sqrt{\frac{x}{2a - x}}$ (The Cycloid / Half-Angle Ratio Pattern):**  
    - **Origin:** Rationalizing gives $\frac{x}{\sqrt{2ax - x^2}} = \frac{x}{\sqrt{a^2 - (x - a)^2}}$.  
-   - **Trigonometric Rationale:** Matches $\tan^2(\theta/2) = \frac{1 - \cos\theta}{1 + \cos\theta}$ under $x = a(1 - \cos\theta)$, mapping the entire arch into monotonic angles $\theta \in [0, 2\pi]$.
+   - **Trigonometric Rationale & Algebraic Identity:** This substitution perfectly neutralizes the fractional radical. Using $x = a(1 - \cos\theta)$ (which is equivalent to $2a\sin^2(\theta/2)$ by the half-angle formula), the denominator becomes $2a - x = 2a - a(1 - \cos\theta) = a(1 + \cos\theta)$.  
+     Plugging these into the radical yields the ratio:
+     $$ \frac{x}{2a - x} = \frac{a(1 - \cos\theta)}{a(1 + \cos\theta)} = \frac{1 - \cos\theta}{1 + \cos\theta} = \tan^2(\theta/2) $$
+     Taking the square root simplifies the entire fractional expression to just $\tan(\theta/2)$.
+   - **Differential:** Differentiating the substitution yields $dx = a\sin\theta\, d\theta$.
 
 6. **$\sqrt{(x - \alpha)(\beta - x)}$ (The Bound-State Turning Points Pattern):**  
    - **Origin:** In any 1D potential well $U(x)$, classical turning points occur where $E - U(x) = 0$. Near generic turning points, $E - U(x) \approx k(x - \alpha)(\beta - x)$.  
-   - **Normalization:** Setting $x = \alpha + (\beta - \alpha)\sin^2\theta$ maps $x \in [\alpha, \beta]$ into $\theta \in [0, \pi/2]$, converting the radical into $(\beta - \alpha)\sin\theta\cos\theta$ and linearizing action-angle integrals $\oint p\, dx = \pi(\beta - \alpha)^2/4$.
+   - **Factored Root Normalization:** This substitution geometrically maps the linear span between the two roots $\alpha$ and $\beta$ to a unit trigonometric domain. By setting $x = \alpha + (\beta - \alpha)\sin^2\theta$, we normalize the two factors inside the radical:
+     1. The lower bound distance: $x - \alpha = (\beta - \alpha)\sin^2\theta$
+     2. The upper bound distance: $\beta - x = \beta - [\alpha + (\beta - \alpha)\sin^2\theta] = (\beta - \alpha)(1 - \sin^2\theta) = (\beta - \alpha)\cos^2\theta$
+     Multiplying them together inside the square root creates a perfect square:
+     $$ \sqrt{(x - \alpha)(\beta - x)} = \sqrt{(\beta - \alpha)^2 \sin^2\theta \cos^2\theta} = (\beta - \alpha)\sin\theta\cos\theta $$
+   - **Differential:** $dx = 2(\beta - \alpha)\sin\theta\cos\theta\, d\theta$.
+   - **Result:** This cleanly converts the radical, mapping $x \in [\alpha, \beta]$ into $\theta \in [0, \pi/2]$ and linearizing action-angle integrals $\oint p\, dx = \pi(\beta - \alpha)^2/4$.
 
 ---
 
