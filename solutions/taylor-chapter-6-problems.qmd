@@ -1,0 +1,116 @@
+---
+title: "Taylor Chapter 6 Problems: Calculus of Variations"
+author: "Igor"
+date: "2026-09-08"
+categories: [classical-mechanics, math, taylor, solutions]
+format:
+  html:
+    toc: true
+    math: true
+    code-fold: true
+jupyter: python3
+---
+
+# Calculus of Variations: Problem Solutions
+
+This article contains problem statements and solution outlines for Chapter 6 of John R. Taylor's *Classical Mechanics*.
+
+## Section 6.1: Two Examples
+
+### Problem 6.1 *
+**Statement:** The shortest path between two points on a curved surface, such as the surface of a sphere, is called a geodesic. To find a geodesic, one has first to set up an integral that gives the length of a path on the surface in question. Use spherical polar coordinates $(r, \theta, \phi)$ to show that the length of a path joining two points on a sphere of radius $R$ is
+$$ L = R \int_{\theta_1}^{\theta_2} \sqrt{1 + \sin^2\theta \ (\phi')^2} \, d\theta $$
+if $(\theta_1, \phi_1)$ and $(\theta_2, \phi_2)$ specify the two points and we assume that the path is expressed as $\phi = \phi(\theta)$.
+
+**Solution:**
+The infinitesimal line element in spherical coordinates is:
+$$ ds^2 = dr^2 + r^2 d\theta^2 + r^2 \sin^2\theta \, d\phi^2 $$
+On the surface of a sphere, the radius is constant ($r = R \implies dr = 0$). Thus:
+$$ ds^2 = R^2 d\theta^2 + R^2 \sin^2\theta \, d\phi^2 $$
+Factoring out $d\theta^2$, we get:
+$$ ds = R \sqrt{1 + \sin^2\theta \left(\frac{d\phi}{d\theta}\right)^2} \, d\theta $$
+Integrating from $\theta_1$ to $\theta_2$ gives the desired length $L$:
+$$ L = R \int_{\theta_1}^{\theta_2} \sqrt{1 + \sin^2\theta \ (\phi')^2} \, d\theta $$
+
+### Problem 6.2 *
+**Statement:** Find the equation of the path $y(x)$ that makes the integral $ \int_{x_1}^{x_2} \sqrt{x} \sqrt{1 + (y')^2} dx $ stationary.
+
+**Solution:**
+Here $f = \sqrt{x(1+(y')^2)}$. Since $\frac{\partial f}{\partial y} = 0$, the Euler-Lagrange equation implies $\frac{\partial f}{\partial y'} = \text{const} = C$.
+$$ \frac{\partial f}{\partial y'} = \frac{\sqrt{x} y'}{\sqrt{1 + (y')^2}} = C $$
+Squaring both sides:
+$$ x (y')^2 = C^2 (1 + (y')^2) \implies (y')^2 (x - C^2) = C^2 \implies y' = \frac{C}{\sqrt{x - C^2}} $$
+Integrating this gives:
+$$ y(x) = 2C \sqrt{x - C^2} + K $$
+which represents a parabola $ (y - K)^2 = 4C^2 (x - C^2) $.
+
+## Section 6.2: The Euler-Lagrange Equation
+
+### Problem 6.3 *
+**Statement:** Find the Euler-Lagrange equation for the functional $\int_{x_1}^{x_2} x^2 (y')^2 dx$.
+
+**Solution:**
+$f = x^2 (y')^2$. We have $\frac{\partial f}{\partial y} = 0$ and $\frac{\partial f}{\partial y'} = 2x^2 y'$.
+The E-L equation is $\frac{d}{dx}(2x^2 y') = 0$, meaning $2x^2 y' = C$.
+$$ y' = \frac{C}{2x^2} \implies y(x) = -\frac{C}{2x} + K $$
+
+### Problem 6.4 *
+**Statement:** Find the Euler-Lagrange equation for the functional $S = \int (y'^2 + y^2) dx$.
+
+**Solution:**
+$f = y'^2 + y^2$. 
+$$ \frac{\partial f}{\partial y} = 2y, \quad \frac{\partial f}{\partial y'} = 2y' $$
+The E-L equation is $2y - \frac{d}{dx}(2y') = 0 \implies y'' - y = 0$.
+The solution is a linear combination of exponentials or hyperbolic functions: $y(x) = A e^x + B e^{-x}$.
+
+### Problem 6.5 - 6.10
+*(Straightforward applications of the E-L equation to various functionals. Using $ \frac{\partial f}{\partial y} - \frac{d}{dx} \frac{\partial f}{\partial y'} = 0 $)*
+
+## Section 6.3: Applications of the Euler-Lagrange Equation
+
+### Problem 6.11 **
+**Statement:** Find the geodesic on the surface of a cylinder $R = \text{const}$.
+
+**Solution:**
+In cylindrical coordinates $(R, \phi, z)$ with constant $R$, the arc length element is $ds^2 = R^2 d\phi^2 + dz^2$. Let the path be parameterized as $z(\phi)$. Then $ds = \sqrt{R^2 + (z')^2} d\phi$.
+$$ L = \int \sqrt{R^2 + (z')^2} d\phi $$
+Since the integrand doesn't depend on $z$, $\frac{\partial f}{\partial z} = 0$, so $\frac{\partial f}{\partial z'} = \text{const}$.
+$$ \frac{z'}{\sqrt{R^2 + (z')^2}} = C \implies (z')^2 = C^2(R^2 + (z')^2) \implies z' = \text{const} = m $$
+Thus, $z(\phi) = m\phi + b$. The geodesic on a cylinder is a helix (or a straight line if rolled out flat).
+
+### Problem 6.14 **
+**Statement:** Find the geodesic on a cone of half-angle $\alpha$. 
+
+**Solution:**
+Use spherical coordinates with $\theta = \alpha$. The line element becomes $ds^2 = dr^2 + r^2 \sin^2\alpha d\phi^2$.
+Let $r = r(\phi)$. The integral to minimize is:
+$$ L = \int \sqrt{r'^2 + r^2 \sin^2\alpha} d\phi $$
+The integrand does not depend on $\phi$ explicitly, so the Beltrami identity (or Euler-Lagrange for $\phi$ if parameterized by $r$) can be used. The solution, when unrolled into a flat plane, is a straight line.
+
+## Section 6.4: More Than Two Variables
+
+### Problem 6.22 ** (Fermat's Principle)
+**Statement:** Fermat's principle states that light travels between two points along the path that requires the least time. Show that this leads to Snell's Law $n_1 \sin\theta_1 = n_2 \sin\theta_2$ for light crossing a boundary between media with refractive indices $n_1$ and $n_2$.
+
+**Solution:**
+Let the boundary be at $x=0$, with $n=n_1$ for $x<0$ and $n=n_2$ for $x>0$.
+The time taken to travel from point $(-x_1, y_1)$ to $(x_2, y_2)$ is:
+$$ t = \frac{\sqrt{x_1^2 + y_0^2}}{v_1} + \frac{\sqrt{x_2^2 + (y_2 - y_0)^2}}{v_2} $$
+where $y_0$ is the intercept on the boundary.
+Minimizing time with respect to $y_0$:
+$$ \frac{dt}{dy_0} = \frac{1}{v_1} \frac{y_0}{\sqrt{x_1^2 + y_0^2}} - \frac{1}{v_2} \frac{y_2 - y_0}{\sqrt{x_2^2 + (y_2 - y_0)^2}} = 0 $$
+From geometry, the terms are $\sin\theta_1$ and $\sin\theta_2$. Therefore:
+$$ \frac{\sin\theta_1}{v_1} = \frac{\sin\theta_2}{v_2} $$
+Since $n = c/v$, multiplying both sides by $c$ yields Snell's Law:
+$$ n_1 \sin\theta_1 = n_2 \sin\theta_2 $$
+
+### Problem 6.27 ***
+**Statement:** A particle is constrained to move on the surface of a sphere. Formulate the integral for action and extract the equations of motion.
+
+**Solution:**
+The kinetic energy is $T = \frac{1}{2}m(\dot{r}^2 + r^2 \dot{\theta}^2 + r^2 \sin^2\theta \dot{\phi}^2)$.
+With $r = R$ (constant), this is $T = \frac{1}{2}mR^2(\dot{\theta}^2 + \sin^2\theta \dot{\phi}^2)$.
+The action is $S = \int T dt$. Applying the Euler-Lagrange equations to $\theta$ and $\phi$ yields the equations for geodesic motion on the sphere (great circles).
+
+---
+*For a complete derivation of the theoretical concepts used to solve these problems, refer to the [Chapter 6 Lecture Notes](../notes/taylor-chapter-6-calculus-of-variations.qmd).*

@@ -35,7 +35,7 @@ $$ L = \int_{x_1}^{x_2} \sqrt{1 + [y'(x)]^2} \, dx $$
 
 The goal is to find the function $y(x)$ that minimizes $L$.
 
-> **Problem 6.1 (Shortest path in a plane):** Prove that the shortest path between two points in a 2D plane is a straight line. (We will solve this using the Euler-Lagrange equation later in this chapter.)
+> **[Problem 6.1](../solutions/taylor-chapter-6-problems.qmd#problem-61)** (Shortest path in a plane): Prove that the shortest path between two points in a 2D plane is a straight line. (We will solve this using the Euler-Lagrange equation later in this chapter.)
 
 ### Example 2: The Brachistochrone Problem
 
@@ -50,7 +50,7 @@ $$ t = \int_{1}^{2} \frac{ds}{v} = \int_{x_1}^{x_2} \frac{\sqrt{1 + (y')^2}}{\sq
 
 We need to find the function $y(x)$ that minimizes this time integral $t$.
 
-> **Problem 6.2 (Brachistochrone coordinates):** Write down the time integral if the $y$-axis was defined pointing upwards instead. How does the energy conservation equation change?
+> **[Problem 6.2](../solutions/taylor-chapter-6-problems.qmd#problem-62-1)** (Brachistochrone coordinates): Write down the time integral if the $y$-axis was defined pointing upwards instead. How does the energy conservation equation change?
 > *Hint:* If $y$ points up, $U = mgy$. $E = 0 \implies \frac{1}{2}mv^2 + mgy = 0 \implies v = \sqrt{-2gy}$ (since $y$ will be negative as the bead falls). The integral remains similar, just with $-y$ under the square root.
 
 ## 6.2 The Euler-Lagrange Equation
@@ -88,7 +88,7 @@ For this to hold for *any* arbitrary variation $\eta(x)$, the term in the bracke
 
 $$ \frac{\partial f}{\partial y} - \frac{d}{dx} \frac{\partial f}{\partial y'} = 0 $$
 
-> **Problem 6.4:** Find the Euler-Lagrange equation for the functional $S = \int (y'^2 + y^2) dx$.
+> **[Problem 6.4](../solutions/taylor-chapter-6-problems.qmd#problem-64):** Find the Euler-Lagrange equation for the functional $S = \int (y'^2 + y^2) dx$.
 > *Solution:* $f = y'^2 + y^2$. $\frac{\partial f}{\partial y} = 2y$, $\frac{\partial f}{\partial y'} = 2y'$. $\frac{d}{dx}(2y') = 2y''$. The E-L equation is $2y - 2y'' = 0$, or $y'' = y$.
 
 ## 6.3 Applications of the Euler-Lagrange Equation
@@ -144,7 +144,7 @@ plt.grid(True)
 plt.show()
 ```
 
-> **Problem 6.11 (Geodesic on a cylinder):** Find the equation for the shortest path (geodesic) between two points on the surface of a cylinder $R = \text{const}$.
+> **[Problem 6.11](../solutions/taylor-chapter-6-problems.qmd#problem-611)** (Geodesic on a cylinder): Find the equation for the shortest path (geodesic) between two points on the surface of a cylinder $R = \text{const}$.
 > *Hint:* Use cylindrical coordinates $(R, \phi, z)$. The arc length is $ds^2 = dR^2 + R^2 d\phi^2 + dz^2 = R^2 d\phi^2 + dz^2$. Minimize the integral $\int \sqrt{R^2 + (z')^2} d\phi$.
 
 ## 6.4 More Than Two Variables
@@ -156,7 +156,7 @@ $$ \frac{\partial f}{\partial y_i} - \frac{d}{dx} \frac{\partial f}{\partial y_i
 
 This extension is crucial for Lagrangian mechanics in 3D space, where we have coordinates $x(t), y(t), z(t)$, and time $t$ plays the role of the independent variable.
 
-> **Problem 6.22 (Fermat's Principle):** Fermat's principle states that light travels between two points along the path that requires the least time. Show that this leads to Snell's Law $n_1 \sin\theta_1 = n_2 \sin\theta_2$ for light crossing a boundary between media with refractive indices $n_1$ and $n_2$.
+> **[Problem 6.22](../solutions/taylor-chapter-6-problems.qmd#problem-622-fermat-s-principle)** (Fermat's Principle): Fermat's principle states that light travels between two points along the path that requires the least time. Show that this leads to Snell's Law $n_1 \sin\theta_1 = n_2 \sin\theta_2$ for light crossing a boundary between media with refractive indices $n_1$ and $n_2$.
 > *Hint:* Time $t = \int \frac{ds}{v} = \int \frac{n(y)}{c} \sqrt{1+y'^2} dx$. Use the Beltrami identity since $f$ doesn't depend on $x$.
 
 ---
