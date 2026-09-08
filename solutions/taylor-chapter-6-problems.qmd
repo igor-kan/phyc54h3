@@ -18,6 +18,8 @@ This article contains full problem statements and available solution outlines fo
 
 ## SECTION 6.1 Two Examples
 
+*(See [Section 6.1 Notes](../notes/taylor-chapter-6-calculus-of-variations.qmd#61-two-examples))*
+
 ### Problem 6.1 *
 **Statement:** The shortest path between two points on a curved surface, such as the surface of a sphere, is called a geodesic. To find a geodesic, one has first to set up an integral that gives the length of a path on the surface in question. This will always be similar to the integral (6.2) but may be more complicated (depending on the nature of the surface) and may involve different coordinates than x and y. To illustrate this, use spherical polar coordinates (r, 0, 0) to show that the length of a path joining two points on a sphere of radius R is 02 L = R f \11+ sin2 0'(9)2 d0 (6.41) e, [Eq. (6.13)] if (0 1, 01) and (82 , 02) specify the two points and we assume that the path is expressed as 0 = (0). (You will find how to minimize this length in Problem 6.16.)Problems for Chapter 6 231 Figure 6.8 Problem 6.3
 
@@ -56,7 +58,9 @@ $$ L = R \int_{\theta_1}^{\theta_2} \sqrt{1 + \sin^2\theta \ (\phi')^2} \, d\the
 
 *(Solution pending)*
 
-## SECTION 6.3 Applications of the Euler—Lagrange Equation
+## SECTION 6.3 Applications of the Euler-Lagrange Equation
+
+*(See [Section 6.3 Notes](../notes/taylor-chapter-6-calculus-of-variations.qmd#63-applications-of-the-euler-lagrange-equation))*
 
 ### Problem 6.7 *
 **Statement:** Consider a right circular cylinder of radius R centered on the z axis. Find the equation giving 0 as a function of z for the geodesic (shortest path) on the cylinder between two points with cylindrical polar coordinates (R, cb i , z i) and (R, 02 , z 2). Describe the geodesic. Is it unique? By imagining the surface of the cylinder unwrapped and laid out flat, explain why the geodesic has the form it does.
@@ -154,6 +158,8 @@ $$ L = R \int_{\theta_1}^{\theta_2} \sqrt{1 + \sin^2\theta \ (\phi')^2} \, d\the
 *(Solution pending)*
 
 ## SECTION 6.4 More than Two Variables
+
+*(See [Section 6.4 Notes](../notes/taylor-chapter-6-calculus-of-variations.qmd#64-more-than-two-variables))*
 
 ### Problem 6.26 **
 **Statement:** Give in detail the argument that leads from the stationary property of the integral (6.30) to the two Euler—Lagrange equations (6.34).
