@@ -1,5 +1,5 @@
 ---
-title: "Problem Set 1: Bead on a Rotating Wire Hoop"
+title: "Bead on a Rotating Wire Hoop Problem"
 subtitle: "Analytical solution using Lagrangian mechanics and phase portrait stability analysis."
 date: "2026-09-08"
 categories: ["Lagrangian Mechanics", "Bifurcations", "Phase Portrait"]
