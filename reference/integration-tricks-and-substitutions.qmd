@@ -1,0 +1,109 @@
+---
+title: "Integration Tricks and Substitution Techniques"
+subtitle: "Algebraic rationales, cycloid parametrics, and advanced substitution tricks for variational physics."
+date: "2026-09-08"
+date-modified: last-modified
+categories: [math, calculus, reference, integration]
+format:
+  html:
+    toc: true
+    math: true
+---
+
+# Step-by-Step Evaluation of Taylor's Cycloid Substitution
+
+The integral to evaluate from Equation (6.23) is:
+$$x = \int \sqrt{\frac{y}{2a - y}} \, dy$$
+
+Taylor introduces the substitution:
+$$y = a(1 - \cos\theta)$$
+
+## 1. Differential of the Substitution
+Differentiating $y$ with respect to $\theta$:
+$$dy = \frac{d}{d\theta}\big[a(1 - \cos\theta)\big] d\theta = a\sin\theta \, d\theta$$
+Using the double-angle identity $\sin\theta = 2\sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right)$:
+$$dy = 2a \sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right) d\theta$$
+
+## 2. Simplifying the Radicand
+Substitute $y = a(1 - \cos\theta)$ into the numerator and denominator under the radical:
+Numerator:
+$$y = a(1 - \cos\theta) = 2a\sin^2\left(\frac{\theta}{2}\right)$$
+Denominator:
+$$2a - y = 2a - a(1 - \cos\theta) = a(1 + \cos\theta) = 2a\cos^2\left(\frac{\theta}{2}\right)$$
+Taking the ratio inside the square root:
+$$\frac{y}{2a - y} = \frac{2a\sin^2\left(\frac{\theta}{2}\right)}{2a\cos^2\left(\frac{\theta}{2}\right)} = \tan^2\left(\frac{\theta}{2}\right)$$
+Assuming the motion stays within the first arch ($\theta \in [0, 2\pi]$ where $\theta/2 \in [0, \pi]$ and $\sin(\theta/2) \ge 0$):
+$$\sqrt{\frac{y}{2a - y}} = \tan\left(\frac{\theta}{2}\right) = \frac{\sin\left(\frac{\theta}{2}\right)}{\cos\left(\frac{\theta}{2}\right)}$$
+
+## 3. Combining and Integrating
+Multiply the simplified radical by $dy$:
+$$\sqrt{\frac{y}{2a - y}} \, dy = \left(\frac{\sin\left(\frac{\theta}{2}\right)}{\cos\left(\frac{\theta}{2}\right)}\right) \cdot \left[2a \sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right) d\theta\right] = 2a \sin^2\left(\frac{\theta}{2}\right) d\theta$$
+Recall the half-angle identity $2\sin^2\left(\frac{\theta}{2}\right) = 1 - \cos\theta$:
+$$x = \int a(1 - \cos\theta) \, d\theta = a(\theta - \sin\theta) + C$$
+Applying the initial condition $x(0) = 0$ gives $C = 0$, recovering the cycloid parametric equations:
+$$x = a(\theta - \sin\theta), \quad y = a(1 - \cos\theta)$$
+
+---
+
+# Why That Substitution Works: The Hidden Circle
+
+Taylor calls this an "unlikely looking substitution," but it is completely systematic.
+Rationalize the numerator of the integrand:
+$$\sqrt{\frac{y}{2a - y}} = \frac{y}{\sqrt{y(2a - y)}} = \frac{y}{\sqrt{2ay - y^2}}$$
+Complete the square in the denominator:
+$$2ay - y^2 = -(y^2 - 2ay + a^2) + a^2 = a^2 - (y - a)^2$$
+Now the integral becomes:
+$$\int \frac{y}{\sqrt{a^2 - (y - a)^2}} \, dy$$
+Any integral containing $\sqrt{a^2 - u^2}$ calls for the standard circle substitution $u = a\sin\phi$ or $u = -a\cos\theta$. Setting:
+$$y - a = -a\cos\theta \implies y = a(1 - \cos\theta)$$
+The "clever" substitution is simply the standard trigonometric substitution for a circle of radius $a$ centered at $(0, a)$.
+
+---
+
+# The Algebraic Alternative: The Direct Root Substitution
+
+You do not need to guess a trigonometric substitution. When faced with any rational function of a single linear radical $\sqrt{\frac{a y + b}{c y + d}}$, set the entire radical equal to a new variable $u$:
+$$u = \sqrt{\frac{y}{2a - y}}$$
+Invert for $y$:
+$$u^2 = \frac{y}{2a - y} \implies u^2(2a - y) = y \implies 2a u^2 = y(1 + u^2) \implies y = \frac{2a u^2}{1 + u^2}$$
+Compute $dy$:
+$$dy = 2a \frac{d}{du}\left[1 - \frac{1}{1 + u^2}\right] du = \frac{4a u}{(1 + u^2)^2} \, du$$
+Substitute into the integral:
+$$\int u \, dy = \int u \cdot \frac{4a u}{(1 + u^2)^2} \, du = 4a \int \frac{u^2}{(1 + u^2)^2} \, du$$
+Integrate by parts or standard trig:
+With $u = \tan\phi$, this integral reduces directly to elementary trig integrals without guessing parameters in advance. *So for algebraic integration use both trig and integration by parts.*
+
+---
+
+# Core Substitution Toolkit for Mechanics & Variational Calculus
+
+| Radicand Pattern | Primary Substitution | Algebraic Identity Used | Resulting Differential |
+| :--- | :--- | :--- | :--- |
+| $\sqrt{a^2 - x^2}$ | $x = a\sin\theta$ or $a\cos\theta$ | $1 - \sin^2\theta = \cos^2\theta$ | $dx = a\cos\theta \, d\theta$ |
+| $\sqrt{a^2 + x^2}$ | $x = a\tan\theta$ or $a\sinh u$ | $1 + \tan^2\theta = \sec^2\theta$ or $1 + \sinh^2 u = \cosh^2 u$ | $dx = a\sec^2\theta \, d\theta$ or $a\cosh u \, du$ |
+| $\sqrt{x^2 - a^2}$ | $x = a\sec\theta$ or $a\cosh u$ | $\sec^2\theta - 1 = \tan^2\theta$ or $\cosh^2 u - 1 = \sinh^2 u$ | $dx = a\sec\theta\tan\theta \, d\theta$ or $a\sinh u \, du$ |
+| $\sqrt{\frac{a+x}{a-x}}$ | $x = a\cos(2\theta)$ | $\frac{1+\cos 2\theta}{1-\cos 2\theta} = \cot^2\theta$ | $dx = -2a\sin(2\theta) \, d\theta$ |
+| $\sqrt{\frac{2a-x}{x}}$ | $x = a(1-\cos\theta) = 2a\sin^2(\theta/2)$ | $\frac{1+\cos\theta}{1-\cos\theta} = \cot^2(\theta/2)$ | $dx = a\sin\theta \, d\theta$ |
+| $\sqrt{(x-\alpha)(\beta-x)}$ | $x = \alpha + (\beta-\alpha)\sin^2\theta$ | Factored root normalization | $dx = 2(\beta-\alpha)\sin\theta\cos\theta \, d\theta$ |
+
+---
+
+# Advanced Integration Tricks for Variational Physics
+
+## 1. Euler's First and Third Substitutions for $\sqrt{Ax^2 + Bx + C}$
+When completing the square is cumbersome:
+- **If $A > 0$:** Substitute $\sqrt{Ax^2 + Bx + C} = \pm x\sqrt{A} + t$. Squaring both sides cancels $Ax^2$, leaving $x$ as a purely rational function of $t$.
+- **If the quadratic factors as $A(x - r_1)(x - r_2)$:** Substitute $\sqrt{A(x - r_1)(x - r_2)} = t(x - r_1)$. Squaring eliminates the radical and rationalizes the entire expression.
+
+## 2. The Weierstrass Tangent Half-Angle Substitution
+For any integrand that is a rational function of $\sin\theta$ and $\cos\theta$:
+$$t = \tan\left(\frac{\theta}{2}\right) \implies \cos\theta = \frac{1 - t^2}{1 + t^2}, \quad \sin\theta = \frac{2t}{1 + t^2}, \quad d\theta = \frac{2}{1 + t^2} dt$$
+This maps any trigonometric integral into a rational polynomial integral solvable by partial fractions.
+
+## 3. Hyperbolic Conversions for Catenaries and Relativistic Rapidity
+Whenever you encounter forms like $\int \frac{dy}{\sqrt{y^2 - y_0^2}}$ (as in the soap-film catenoid problem 6.19):
+
+Instead of trigonometric secant substitution ($y = y_0 \sec\theta$), use the hyperbolic cosine:
+$$y = y_0 \cosh u \implies dy = y_0 \sinh u \, du$$
+$$\int \frac{y_0 \sinh u \, du}{\sqrt{y_0^2(\cosh^2 u - 1)}} = \int \frac{y_0 \sinh u}{y_0 \sinh u} \, du = \int du = u + C = \text{arcosh}\left(\frac{y}{y_0}\right) + C$$
+Inverting this immediately gives $y(x) = y_0 \cosh\left(\frac{x - x_0}{y_0}\right)$ in one step without messy logarithms of absolute values.

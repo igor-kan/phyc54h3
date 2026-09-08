@@ -1,5 +1,5 @@
 ---
-title: "Problem Set #01"
+title: "Problem Set #01: Bead on a Rotating Wire Hoop Problem"
 subtitle: "Calculus of Variations: Taylor Chapter 6 (Sections 1-4)"
 date: "2026-09-08T14:55:00"
 date-modified: last-modified
