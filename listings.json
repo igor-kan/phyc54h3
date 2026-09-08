@@ -1,10 +1,13 @@
 [
   {
-    "listing": "/solutions/index.html",
+    "listing": "/notes/index.html",
     "items": [
-      "/solutions/problem-set-1.html",
-      "/solutions/taylor-chapter-6-problems.html",
-      "/solutions/taylor-chapter-7-problems.html"
+      "/notes/taylor-chapter-16-continuum-mechanics.html",
+      "/notes/taylor-chapter-10-rigid-bodies.html",
+      "/notes/taylor-chapter-9-noninertial-frames.html",
+      "/notes/taylor-chapter-13-hamiltonian-mechanics.html",
+      "/notes/taylor-chapter-6-calculus-of-variations.html",
+      "/notes/taylor-chapter-7-lagrange-equations.html"
     ]
   },
   {
@@ -14,10 +17,11 @@
     ]
   },
   {
-    "listing": "/notes/index.html",
+    "listing": "/solutions/index.html",
     "items": [
-      "/notes/taylor-chapter-6-calculus-of-variations.html",
-      "/notes/taylor-chapter-7-lagrange-equations.html"
+      "/solutions/problem-set-1.html",
+      "/solutions/taylor-chapter-6-problems.html",
+      "/solutions/taylor-chapter-7-problems.html"
     ]
   }
 ]

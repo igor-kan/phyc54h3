@@ -166,6 +166,10 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../notes/index.html"> 
 <span class="menu-text">Lecture Notes</span></a>
   </li>  
@@ -275,7 +279,7 @@ window.Quarto = {
 <section id="the-velocity-verlet-method" class="level2">
 <h2 class="anchored" data-anchor-id="the-velocity-verlet-method">The Velocity Verlet Method</h2>
 <p>Used extensively in molecular dynamics and astrophysics: 1. Update position by a half-step and full-step acceleration: <span class="math display">\[ \mathbf{x}_{n+1} = \mathbf{x}_n + \mathbf{v}_n \Delta t + \frac{1}{2}\mathbf{a}_n \Delta t^2 \]</span> 2. Calculate new forces/accelerations based on new position: <span class="math display">\[ \mathbf{a}_{n+1} = \frac{1}{m} \mathbf{F}(\mathbf{x}_{n+1}) \]</span> 3. Update velocity using the average of old and new accelerations: <span class="math display">\[ \mathbf{v}_{n+1} = \mathbf{v}_n + \frac{1}{2}(\mathbf{a}_n + \mathbf{a}_{n+1}) \Delta t \]</span></p>
-<div id="63d172cf" class="cell" data-execution_count="1">
+<div id="f48e8519" class="cell" data-execution_count="1">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -302,7 +306,7 @@ window.Quarto = {
 <h1>3. 4th-Order Runge-Kutta (RK4)</h1>
 <p>The “workhorse” of numerical ODEs. It evaluates the derivatives at four points within the timestep interval and takes a weighted average, yielding error of <span class="math inline">\(\mathcal{O}(\Delta t^4)\)</span>.</p>
 <p>For <span class="math inline">\(\frac{d\mathbf{Y}}{dt} = f(t, \mathbf{Y})\)</span>: <span class="math display">\[ \mathbf{k}_1 = f(t_n, \mathbf{Y}_n) \]</span> <span class="math display">\[ \mathbf{k}_2 = f(t_n + \frac{\Delta t}{2}, \mathbf{Y}_n + \mathbf{k}_1 \frac{\Delta t}{2}) \]</span> <span class="math display">\[ \mathbf{k}_3 = f(t_n + \frac{\Delta t}{2}, \mathbf{Y}_n + \mathbf{k}_2 \frac{\Delta t}{2}) \]</span> <span class="math display">\[ \mathbf{k}_4 = f(t_n + \Delta t, \mathbf{Y}_n + \mathbf{k}_3 \Delta t) \]</span> <span class="math display">\[ \mathbf{Y}_{n+1} = \mathbf{Y}_n + \frac{\Delta t}{6}(\mathbf{k}_1 + 2\mathbf{k}_2 + 2\mathbf{k}_3 + \mathbf{k}_4) \]</span></p>
-<div id="fad91234" class="cell" data-execution_count="2">
+<div id="f3b91937" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rk4_step(Y, t, dt, derivs):</span>
@@ -318,7 +322,7 @@ window.Quarto = {
 <section id="scipy-integration-solve_ivp" class="level1">
 <h1>SciPy Integration (<code>solve_ivp</code>)</h1>
 <p>In Python, the <code>scipy.integrate.solve_ivp</code> function provides a highly optimized, adaptive-timestep interface for these methods (defaulting to the RK45 method).</p>
-<div id="ce081e53" class="cell" data-execution_count="3">
+<div id="559ab262" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> solve_ivp</span>

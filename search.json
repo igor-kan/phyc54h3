@@ -28,6 +28,13 @@
     "text": "2. Interactive SVG/Canvas Preview\nIn addition to rendered .mp4 video files, this website renders live vector graphics directly inside the browser using HTML5 Canvas and SVG:\n\n\nCode\nviewof speed = Inputs.range([0.2, 3.0], {value: 1.0, step: 0.1, label: \"Animation Speed\"})\n\n\n\n\n\n\n\n\n\nCode\nmanimCanvas = {\n  const width = 500;\n  const height = 280;\n  const ctx = DOM.context2d(width, height);\n  let t = 0;\n\n  function draw() {\n    t += 0.03 * speed;\n    ctx.fillStyle = \"#111827\";\n    ctx.fillRect(0, 0, width, height);\n\n    const cx = width / 2;\n    const cy = 40;\n    const l1 = 80;\n    const l2 = 70;\n\n    const th1 = Math.sin(t) * 1.2;\n    const th2 = Math.sin(t * 1.4 + 0.5) * 1.5;\n\n    const x1 = cx + l1 * Math.sin(th1);\n    const y1 = cy + l1 * Math.cos(th1);\n\n    const x2 = x1 + l2 * Math.sin(th2);\n    const y2 = y1 + l2 * Math.cos(th2);\n\n    // Grid lines\n    ctx.strokeStyle = \"rgba(255,255,255,0.05)\";\n    for (let x = 0; x &lt; width; x += 40) {\n      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke();\n    }\n\n    // Rods\n    ctx.strokeStyle = \"#60a5fa\";\n    ctx.lineWidth = 3;\n    ctx.beginPath();\n    ctx.moveTo(cx, cy); ctx.lineTo(x1, y1); ctx.lineTo(x2, y2);\n    ctx.stroke();\n\n    // Bobs\n    ctx.fillStyle = \"#38bdf8\";\n    ctx.beginPath(); ctx.arc(x1, y1, 8, 0, 2*Math.PI); ctx.fill();\n\n    ctx.fillStyle = \"#f43f5e\";\n    ctx.beginPath(); ctx.arc(x2, y2, 10, 0, 2*Math.PI); ctx.fill();\n\n    ctx.fillStyle = \"#94a3b8\";\n    ctx.font = \"12px monospace\";\n    ctx.fillText(\"Interactive Canvas Preview (Simulated Manim Frame)\", 20, height - 15);\n  }\n\n  const interval = d3.interval(draw, 25);\n  invalidation.then(() =&gt; interval.stop());\n  return ctx.canvas;\n}"
   },
   {
+    "objectID": "notes/taylor-chapter-10-rigid-bodies.html",
+    "href": "notes/taylor-chapter-10-rigid-bodies.html",
+    "title": "Taylor Chapter 10: Rotational Motion of Rigid Bodies",
+    "section": "",
+    "text": "(Content for this chapter to be written in Weeks 9-11 according to the syllabus.)"
+  },
+  {
     "objectID": "notes/taylor-chapter-7-lagrange-equations.html",
     "href": "notes/taylor-chapter-7-lagrange-equations.html",
     "title": "Taylor Chapter 7: Lagrange’s Equations",
@@ -91,305 +98,25 @@
     "text": "(See Problems 7.50-7.52)\nIf we need to determine a constraint force (e.g. tension in a string, or structural stress on a roller coaster track), we deliberately don’t use a minimal set of coordinates. Instead, we retain extra coordinates tied by a constraint equation \\(f(q_1, q_2) = \\text{const}\\).\nWe introduce a Lagrange multiplier \\(\\lambda(t)\\) to scale the constraint equation, modifying Hamilton’s principle: \\[ \\frac{\\partial \\mathcal{L}}{\\partial q_i} - \\frac{d}{dt}\\frac{\\partial \\mathcal{L}}{\\partial \\dot{q}_i} + \\lambda \\frac{\\partial f}{\\partial q_i} = 0 \\]\nThe extra term \\(\\lambda \\frac{\\partial f}{\\partial q_i}\\) is precisely the \\(i\\)-th component of the force of constraint. Solving this system of differential algebraic equations (DAEs) yields both the trajectory \\(q_i(t)\\) and the dynamic magnitude of the constraint force via \\(\\lambda(t)\\)."
   },
   {
-    "objectID": "reference/vector-calculus-and-identities.html",
-    "href": "reference/vector-calculus-and-identities.html",
-    "title": "Vector Calculus & Identities",
+    "objectID": "notes/index.html",
+    "href": "notes/index.html",
+    "title": "PHYC54 Lecture Notes",
     "section": "",
-    "text": "Let \\(\\mathbf{A}, \\mathbf{B}, \\mathbf{C}\\) be vectors in 3D space.\n\n\n\\[ \\mathbf{A} \\cdot \\mathbf{B} = A_x B_x + A_y B_y + A_z B_z = |\\mathbf{A}| |\\mathbf{B}| \\cos\\theta \\] \\[ \\mathbf{A} \\times \\mathbf{B} = \\det \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix} \\] \\[ |\\mathbf{A} \\times \\mathbf{B}| = |\\mathbf{A}| |\\mathbf{B}| \\sin\\theta \\]\n\n\n\nScalar Triple Product (Volume of parallelepiped): \\[ \\mathbf{A} \\cdot (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B} \\cdot (\\mathbf{C} \\times \\mathbf{A}) = \\mathbf{C} \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\det \\begin{vmatrix} A_x & A_y & A_z \\\\ B_x & B_y & B_z \\\\ C_x & C_y & C_z \\end{vmatrix} \\]\nVector Triple Product (BAC-CAB Rule): \\[ \\mathbf{A} \\times (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B}(\\mathbf{A} \\cdot \\mathbf{C}) - \\mathbf{C}(\\mathbf{A} \\cdot \\mathbf{B}) \\]"
+    "text": "Taylor Chapter 16: Continuum Mechanics\n\n\n\n\n\n\nclassical-mechanics\n\nnotes\n\n\n\n\n\n\n\n\n\nDec 1, 2026\n\n\nIgor\n\n\n\n\n\n\n\n\n\n\n\n\nTaylor Chapter 10: Rotational Motion of Rigid Bodies\n\n\n\n\n\n\nclassical-mechanics\n\nnotes\n\n\n\n\n\n\n\n\n\nNov 10, 2026\n\n\nIgor\n\n\n\n\n\n\n\n\n\n\n\n\nTaylor Chapter 9: Mechanics in Noninertial Frames\n\n\n\n\n\n\nclassical-mechanics\n\nnotes\n\n\n\n\n\n\n\n\n\nOct 13, 2026\n\n\nIgor\n\n\n\n\n\n\n\n\n\n\n\n\nTaylor Chapter 13: Hamiltonian Mechanics\n\n\n\n\n\n\nclassical-mechanics\n\nnotes\n\n\n\n\n\n\n\n\n\nSep 29, 2026\n\n\nIgor\n\n\n\n\n\n\n\n\n\n\n\n\nTaylor Chapter 6: Calculus of Variations\n\n\nSummary, Derivations, and Problems\n\n\n\nclassical-mechanics\n\nmath\n\ntaylor\n\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\nIgor\n\n\n\n\n\n\n\n\n\n\n\n\nTaylor Chapter 7: Lagrange’s Equations\n\n\nOvercoming constraint forces and deriving the laws of motion from a single radical formula.\n\n\n\nclassical-mechanics\n\nmath\n\ntaylor\n\nnotes\n\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\nIgor\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "reference/vector-calculus-and-identities.html#dot-and-cross-products",
-    "href": "reference/vector-calculus-and-identities.html#dot-and-cross-products",
-    "title": "Vector Calculus & Identities",
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "Course Syllabus: PHY C54 - Classical Mechanics (Fall 2026)",
     "section": "",
-    "text": "\\[ \\mathbf{A} \\cdot \\mathbf{B} = A_x B_x + A_y B_y + A_z B_z = |\\mathbf{A}| |\\mathbf{B}| \\cos\\theta \\] \\[ \\mathbf{A} \\times \\mathbf{B} = \\det \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix} \\] \\[ |\\mathbf{A} \\times \\mathbf{B}| = |\\mathbf{A}| |\\mathbf{B}| \\sin\\theta \\]"
+    "text": "Lecture: Tuesday 12:00 pm - 2:00 pm (IA 2100)\nTutorial: Thursday 12:00 pm - 2:00 pm (SW 311)\nInstructor: Johann Bayer\nOffice: SW 503A | Phone: 416-287-7327 | Email: jbayer@utsc.utoronto.ca\nCourse Website: q.utoronto.ca\n\n\n\nTuesday: 2:30 pm - 3:30 pm (In-person)\nWednesday: 1:30 pm - 3:30 pm (In-person)\nThursday: 9:30 am - 11:30 am & 2:30 pm - 3:30 pm (In-person)"
   },
   {
-    "objectID": "reference/vector-calculus-and-identities.html#triple-products",
-    "href": "reference/vector-calculus-and-identities.html#triple-products",
-    "title": "Vector Calculus & Identities",
-    "section": "",
-    "text": "Scalar Triple Product (Volume of parallelepiped): \\[ \\mathbf{A} \\cdot (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B} \\cdot (\\mathbf{C} \\times \\mathbf{A}) = \\mathbf{C} \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\det \\begin{vmatrix} A_x & A_y & A_z \\\\ B_x & B_y & B_z \\\\ C_x & C_y & C_z \\end{vmatrix} \\]\nVector Triple Product (BAC-CAB Rule): \\[ \\mathbf{A} \\times (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B}(\\mathbf{A} \\cdot \\mathbf{C}) - \\mathbf{C}(\\mathbf{A} \\cdot \\mathbf{B}) \\]"
-  },
-  {
-    "objectID": "reference/vector-calculus-and-identities.html#operations",
-    "href": "reference/vector-calculus-and-identities.html#operations",
-    "title": "Vector Calculus & Identities",
-    "section": "Operations",
-    "text": "Operations\n\nGradient (Scalar \\(f \\to\\) Vector): \\[ \\nabla f = \\frac{\\partial f}{\\partial x}\\mathbf{\\hat{i}} + \\frac{\\partial f}{\\partial y}\\mathbf{\\hat{j}} + \\frac{\\partial f}{\\partial z}\\mathbf{\\hat{k}} \\]\nDivergence (Vector \\(\\mathbf{A} \\to\\) Scalar): \\[ \\nabla \\cdot \\mathbf{A} = \\frac{\\partial A_x}{\\partial x} + \\frac{\\partial A_y}{\\partial y} + \\frac{\\partial A_z}{\\partial z} \\]\nCurl (Vector \\(\\mathbf{A} \\to\\) Vector): \\[ \\nabla \\times \\mathbf{A} = \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ \\frac{\\partial}{\\partial x} & \\frac{\\partial}{\\partial y} & \\frac{\\partial}{\\partial z} \\\\ A_x & A_y & A_z \\end{vmatrix} \\]\nLaplacian (Scalar \\(f \\to\\) Scalar): \\[ \\nabla^2 f = \\nabla \\cdot (\\nabla f) = \\frac{\\partial^2 f}{\\partial x^2} + \\frac{\\partial^2 f}{\\partial y^2} + \\frac{\\partial^2 f}{\\partial z^2} \\]"
-  },
-  {
-    "objectID": "reference/vector-calculus-and-identities.html#product-rules",
-    "href": "reference/vector-calculus-and-identities.html#product-rules",
-    "title": "Vector Calculus & Identities",
-    "section": "Product Rules",
-    "text": "Product Rules\n\\[ \\nabla(fg) = f\\nabla g + g\\nabla f \\] \\[ \\nabla \\cdot (f\\mathbf{A}) = f(\\nabla \\cdot \\mathbf{A}) + \\mathbf{A} \\cdot (\\nabla f) \\] \\[ \\nabla \\times (f\\mathbf{A}) = f(\\nabla \\times \\mathbf{A}) + (\\nabla f) \\times \\mathbf{A} \\] \\[ \\nabla \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\mathbf{B} \\cdot (\\nabla \\times \\mathbf{A}) - \\mathbf{A} \\cdot (\\nabla \\times \\mathbf{B}) \\] \\[ \\nabla(\\mathbf{A} \\cdot \\mathbf{B}) = \\mathbf{A} \\times (\\nabla \\times \\mathbf{B}) + \\mathbf{B} \\times (\\nabla \\times \\mathbf{A}) + (\\mathbf{A} \\cdot \\nabla)\\mathbf{B} + (\\mathbf{B} \\cdot \\nabla)\\mathbf{A} \\]"
-  },
-  {
-    "objectID": "reference/vector-calculus-and-identities.html#second-derivatives",
-    "href": "reference/vector-calculus-and-identities.html#second-derivatives",
-    "title": "Vector Calculus & Identities",
-    "section": "Second Derivatives",
-    "text": "Second Derivatives\nCurl of a Gradient is zero: \\[ \\nabla \\times (\\nabla f) = 0 \\] (If \\(\\nabla \\times \\mathbf{F} = 0\\), then \\(\\mathbf{F}\\) is conservative and \\(\\mathbf{F} = -\\nabla U\\).)\nDivergence of a Curl is zero: \\[ \\nabla \\cdot (\\nabla \\times \\mathbf{A}) = 0 \\] (If \\(\\nabla \\cdot \\mathbf{B} = 0\\), then \\(\\mathbf{B}\\) can be written as the curl of a vector potential \\(\\mathbf{A}\\).)\nCurl of a Curl: \\[ \\nabla \\times (\\nabla \\times \\mathbf{A}) = \\nabla(\\nabla \\cdot \\mathbf{A}) - \\nabla^2\\mathbf{A} \\]"
-  },
-  {
-    "objectID": "reference/vector-calculus-and-identities.html#divergence-theorem-gausss-theorem",
-    "href": "reference/vector-calculus-and-identities.html#divergence-theorem-gausss-theorem",
-    "title": "Vector Calculus & Identities",
-    "section": "Divergence Theorem (Gauss’s Theorem)",
-    "text": "Divergence Theorem (Gauss’s Theorem)\nRelates a volume integral to a surface integral over the closed boundary \\(S\\): \\[ \\iiint_V (\\nabla \\cdot \\mathbf{A}) \\, dV = \\iint_S \\mathbf{A} \\cdot d\\mathbf{a} \\]"
-  },
-  {
-    "objectID": "reference/vector-calculus-and-identities.html#stokes-theorem",
-    "href": "reference/vector-calculus-and-identities.html#stokes-theorem",
-    "title": "Vector Calculus & Identities",
-    "section": "Stokes’ Theorem",
-    "text": "Stokes’ Theorem\nRelates a surface integral to a line integral around the closed bounding curve \\(C\\): \\[ \\iint_S (\\nabla \\times \\mathbf{A}) \\cdot d\\mathbf{a} = \\oint_C \\mathbf{A} \\cdot d\\mathbf{l} \\]"
-  },
-  {
-    "objectID": "reference/vector-calculus-and-identities.html#gradient-theorem-fundamental-theorem-of-calculus-for-line-integrals",
-    "href": "reference/vector-calculus-and-identities.html#gradient-theorem-fundamental-theorem-of-calculus-for-line-integrals",
-    "title": "Vector Calculus & Identities",
-    "section": "Gradient Theorem (Fundamental Theorem of Calculus for Line Integrals)",
-    "text": "Gradient Theorem (Fundamental Theorem of Calculus for Line Integrals)\n\\[ \\int_a^b (\\nabla f) \\cdot d\\mathbf{l} = f(b) - f(a) \\]"
-  },
-  {
-    "objectID": "reference/physical-constants-and-data.html",
-    "href": "reference/physical-constants-and-data.html",
-    "title": "Physical Constants & Astronomical Data",
-    "section": "",
-    "text": "Constant\nSymbol\nValue\nUnits (SI)\n\n\n\n\nSpeed of Light in Vacuum\n\\(c\\)\n\\(2.99792458 \\times 10^8\\)\n\\(\\text{m s}^{-1}\\)\n\n\nNewtonian Constant of Gravitation\n\\(G\\)\n\\(6.67430 \\times 10^{-11}\\)\n\\(\\text{m}^3 \\text{kg}^{-1} \\text{s}^{-2}\\)\n\n\nPlanck Constant\n\\(h\\)\n\\(6.62607015 \\times 10^{-34}\\)\n\\(\\text{J s}\\)\n\n\nReduced Planck Constant\n\\(\\hbar = h/2\\pi\\)\n\\(1.054571817 \\times 10^{-34}\\)\n\\(\\text{J s}\\)\n\n\nElementary Charge\n\\(e\\)\n\\(1.602176634 \\times 10^{-19}\\)\n\\(\\text{C}\\)\n\n\nBoltzmann Constant\n\\(k_B\\)\n\\(1.380649 \\times 10^{-23}\\)\n\\(\\text{J K}^{-1}\\)\n\n\nAvogadro Constant\n\\(N_A\\)\n\\(6.02214076 \\times 10^{23}\\)\n\\(\\text{mol}^{-1}\\)\n\n\nIdeal Gas Constant\n\\(R = N_A k_B\\)\n\\(8.314462618\\)\n\\(\\text{J mol}^{-1} \\text{K}^{-1}\\)\n\n\nVacuum Permittivity\n\\(\\epsilon_0\\)\n\\(8.85418781 \\times 10^{-12}\\)\n\\(\\text{F m}^{-1}\\)\n\n\nVacuum Permeability\n\\(\\mu_0\\)\n\\(1.25663706 \\times 10^{-6}\\)\n\\(\\text{N A}^{-2}\\)"
-  },
-  {
-    "objectID": "reference/physical-constants-and-data.html#energy",
-    "href": "reference/physical-constants-and-data.html#energy",
-    "title": "Physical Constants & Astronomical Data",
-    "section": "Energy",
-    "text": "Energy\n\n\\(1 \\text{ eV} = 1.602176634 \\times 10^{-19} \\text{ J}\\)\n\\(1 \\text{ erg} = 10^{-7} \\text{ J}\\)\n\\(1 \\text{ calorie} = 4.184 \\text{ J}\\)"
-  },
-  {
-    "objectID": "reference/physical-constants-and-data.html#distance",
-    "href": "reference/physical-constants-and-data.html#distance",
-    "title": "Physical Constants & Astronomical Data",
-    "section": "Distance",
-    "text": "Distance\n\n\\(1 \\text{ Angstrom (\\AA)} = 10^{-10} \\text{ m}\\)\n\\(1 \\text{ Astronomical Unit (AU)} = 1.495978707 \\times 10^{11} \\text{ m}\\)\n\\(1 \\text{ Light Year (ly)} = 9.4607 \\times 10^{15} \\text{ m}\\)\n\\(1 \\text{ Parsec (pc)} = 3.0857 \\times 10^{16} \\text{ m} = 3.26 \\text{ ly}\\)"
-  },
-  {
-    "objectID": "reference/physical-constants-and-data.html#pressure",
-    "href": "reference/physical-constants-and-data.html#pressure",
-    "title": "Physical Constants & Astronomical Data",
-    "section": "Pressure",
-    "text": "Pressure\n\n\\(1 \\text{ Atmosphere (atm)} = 101,325 \\text{ Pa}\\)\n\\(1 \\text{ bar} = 100,000 \\text{ Pa}\\)\n\\(1 \\text{ Torr (mmHg)} = 133.322 \\text{ Pa}\\)"
-  },
-  {
-    "objectID": "reference/computational-methods.html",
-    "href": "reference/computational-methods.html",
-    "title": "Computational Methods for Mechanics",
-    "section": "",
-    "text": "In classical mechanics, analytic solutions are often impossible for systems that exhibit nonlinear dynamics, chaos, or lack conservation laws (e.g., the double pendulum, the 3-body problem, or driven damped oscillators). For these, we rely on numerical integration of Ordinary Differential Equations (ODEs).\nAny \\(n\\)-th order ODE can be reduced to a system of \\(n\\) first-order ODEs. For Newton’s second law \\(\\ddot{\\mathbf{x}} = \\mathbf{F}(\\mathbf{x}, \\mathbf{v}, t)/m\\), we define the state vector \\(\\mathbf{Y} = [\\mathbf{x}, \\mathbf{v}]^T\\): \\[ \\frac{d\\mathbf{Y}}{dt} = \\begin{bmatrix} \\mathbf{v} \\\\ \\mathbf{a} \\end{bmatrix} = \\begin{bmatrix} \\mathbf{v} \\\\ \\mathbf{F}/m \\end{bmatrix} \\]"
-  },
-  {
-    "objectID": "reference/computational-methods.html#the-velocity-verlet-method",
-    "href": "reference/computational-methods.html#the-velocity-verlet-method",
-    "title": "Computational Methods for Mechanics",
-    "section": "The Velocity Verlet Method",
-    "text": "The Velocity Verlet Method\nUsed extensively in molecular dynamics and astrophysics: 1. Update position by a half-step and full-step acceleration: \\[ \\mathbf{x}_{n+1} = \\mathbf{x}_n + \\mathbf{v}_n \\Delta t + \\frac{1}{2}\\mathbf{a}_n \\Delta t^2 \\] 2. Calculate new forces/accelerations based on new position: \\[ \\mathbf{a}_{n+1} = \\frac{1}{m} \\mathbf{F}(\\mathbf{x}_{n+1}) \\] 3. Update velocity using the average of old and new accelerations: \\[ \\mathbf{v}_{n+1} = \\mathbf{v}_n + \\frac{1}{2}(\\mathbf{a}_n + \\mathbf{a}_{n+1}) \\Delta t \\]\n\n\nCode\nimport numpy as np\n\ndef velocity_verlet(x0, v0, force_func, m, dt, steps):\n    x = np.zeros(steps)\n    v = np.zeros(steps)\n    x[0], v[0] = x0, v0\n    \n    a = force_func(x0) / m\n    for i in range(steps - 1):\n        x[i+1] = x[i] + v[i]*dt + 0.5*a*dt**2\n        a_next = force_func(x[i+1]) / m\n        v[i+1] = v[i] + 0.5*(a + a_next)*dt\n        a = a_next\n        \n    return x, v"
-  },
-  {
-    "objectID": "reference/computational-methods.html#leetcode-mathematical-simulation-problems",
-    "href": "reference/computational-methods.html#leetcode-mathematical-simulation-problems",
-    "title": "Computational Methods for Mechanics",
-    "section": "LeetCode Mathematical & Simulation Problems",
-    "text": "LeetCode Mathematical & Simulation Problems\nWhile LeetCode primarily focuses on software engineering interviews, several hard problems test applied mathematics, geometry, and discrete simulations: * Max Points on a Line (149) - 2D geometry and precision issues. * Erect the Fence (587) - Convex hull algorithms (Monotone Chain / Graham Scan). * Water and Jug Problem (365) - Diophantine equations and state-space search. * Poor Pigs (458) - Information theory and states."
-  },
-  {
-    "objectID": "reference/computational-methods.html#codeforces-math-geometry-tags",
-    "href": "reference/computational-methods.html#codeforces-math-geometry-tags",
-    "title": "Computational Methods for Mechanics",
-    "section": "Codeforces Math & Geometry Tags",
-    "text": "Codeforces Math & Geometry Tags\nCodeforces features exceptionally difficult mathematical and geometric tasks that require deep knowledge of linear algebra, calculus, and discrete math. * Geometry: Problems tagged geometry often require implementing vector math (cross products, dot products) without floating-point errors. * Codeforces Problemset: Tag = geometry * Math & Matrices: Problems tagged math or matrices often require fast matrix exponentiation, linear recurrences, and modular arithmetic, highly relevant for discrete time steps and state space matrices in physics. * Codeforces Problemset: Tag = math * Codeforces Problemset: Tag = matrices"
-  },
-  {
-    "objectID": "simulations/interactive-pendulum-and-verlet.html",
-    "href": "simulations/interactive-pendulum-and-verlet.html",
-    "title": "Interactive Simulations & Multi-Language Integrators",
-    "section": "",
-    "text": "Quarto allows client-side interactive simulations using Observable JS ({ojs}). The simulation runs entirely within your browser via HTML5 Canvas—no Python or server backend required!\nUse the sliders below to adjust the physical parameters and observe the real-time dynamics:\n\n\nCode\nviewof length = Inputs.range([0.5, 3.0], {value: 1.5, step: 0.1, label: \"Pendulum Length (m)\"})\nviewof gravity = Inputs.range([1.0, 25.0], {value: 9.81, step: 0.1, label: \"Gravity g (m/s²)\"})\nviewof damping = Inputs.range([0.0, 0.5], {value: 0.05, step: 0.01, label: \"Damping Factor γ\"})\nviewof initialAngle = Inputs.range([-170, 170], {value: 60, step: 5, label: \"Initial Angle θ₀ (deg)\"})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\ncanvas = {\n  const width = 600;\n  const height = 350;\n  const ctx = DOM.context2d(width, height);\n  \n  let theta = initialAngle * Math.PI / 180;\n  let omega = 0.0;\n  let dt = 0.02;\n  const originX = width / 2;\n  const originY = 50;\n  const scale = 80;\n\n  function step() {\n    // Non-linear pendulum: d²θ/dt² = -(g/L) sin(θ) - γ dθ/dt\n    const alpha = -(gravity / length) * Math.sin(theta) - damping * omega;\n    omega += alpha * dt;\n    theta += omega * dt;\n\n    ctx.clearRect(0, 0, width, height);\n\n    // Pivot support\n    ctx.fillStyle = \"#333\";\n    ctx.fillRect(originX - 40, originY - 10, 80, 10);\n\n    const bobX = originX + length * scale * Math.sin(theta);\n    const bobY = originY + length * scale * Math.cos(theta);\n\n    // Rod\n    ctx.beginPath();\n    ctx.moveTo(originX, originY);\n    ctx.lineTo(bobX, bobY);\n    ctx.strokeStyle = \"#4f46e5\";\n    ctx.lineWidth = 3;\n    ctx.stroke();\n\n    // Pivot pin\n    ctx.beginPath();\n    ctx.arc(originX, originY, 5, 0, 2 * Math.PI);\n    ctx.fillStyle = \"#1e293b\";\n    ctx.fill();\n\n    // Bob\n    ctx.beginPath();\n    ctx.arc(bobX, bobY, 18, 0, 2 * Math.PI);\n    ctx.fillStyle = \"#ef4444\";\n    ctx.shadowColor = \"rgba(0,0,0,0.3)\";\n    ctx.shadowBlur = 8;\n    ctx.fill();\n    ctx.shadowBlur = 0;\n\n    // Display telemetry\n    ctx.fillStyle = \"#0f172a\";\n    ctx.font = \"14px monospace\";\n    ctx.fillText(`θ: ${(theta * 180 / Math.PI).toFixed(1)}°`, 20, 30);\n    ctx.fillText(`ω: ${omega.toFixed(2)} rad/s`, 20, 50);\n    ctx.fillText(`E_mech: ${(0.5 * length * length * omega * omega + gravity * length * (1 - Math.cos(theta))).toFixed(2)} J/kg`, 20, 70);\n  }\n\n  const timer = d3.interval(step, 20);\n  invalidation.then(() =&gt; timer.stop());\n\n  return ctx.canvas;\n}"
-  },
-  {
-    "objectID": "simulations/interactive-pendulum-and-verlet.html#live-in-browser-interactive-simulation-observable-js",
-    "href": "simulations/interactive-pendulum-and-verlet.html#live-in-browser-interactive-simulation-observable-js",
-    "title": "Interactive Simulations & Multi-Language Integrators",
-    "section": "",
-    "text": "Quarto allows client-side interactive simulations using Observable JS ({ojs}). The simulation runs entirely within your browser via HTML5 Canvas—no Python or server backend required!\nUse the sliders below to adjust the physical parameters and observe the real-time dynamics:\n\n\nCode\nviewof length = Inputs.range([0.5, 3.0], {value: 1.5, step: 0.1, label: \"Pendulum Length (m)\"})\nviewof gravity = Inputs.range([1.0, 25.0], {value: 9.81, step: 0.1, label: \"Gravity g (m/s²)\"})\nviewof damping = Inputs.range([0.0, 0.5], {value: 0.05, step: 0.01, label: \"Damping Factor γ\"})\nviewof initialAngle = Inputs.range([-170, 170], {value: 60, step: 5, label: \"Initial Angle θ₀ (deg)\"})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\ncanvas = {\n  const width = 600;\n  const height = 350;\n  const ctx = DOM.context2d(width, height);\n  \n  let theta = initialAngle * Math.PI / 180;\n  let omega = 0.0;\n  let dt = 0.02;\n  const originX = width / 2;\n  const originY = 50;\n  const scale = 80;\n\n  function step() {\n    // Non-linear pendulum: d²θ/dt² = -(g/L) sin(θ) - γ dθ/dt\n    const alpha = -(gravity / length) * Math.sin(theta) - damping * omega;\n    omega += alpha * dt;\n    theta += omega * dt;\n\n    ctx.clearRect(0, 0, width, height);\n\n    // Pivot support\n    ctx.fillStyle = \"#333\";\n    ctx.fillRect(originX - 40, originY - 10, 80, 10);\n\n    const bobX = originX + length * scale * Math.sin(theta);\n    const bobY = originY + length * scale * Math.cos(theta);\n\n    // Rod\n    ctx.beginPath();\n    ctx.moveTo(originX, originY);\n    ctx.lineTo(bobX, bobY);\n    ctx.strokeStyle = \"#4f46e5\";\n    ctx.lineWidth = 3;\n    ctx.stroke();\n\n    // Pivot pin\n    ctx.beginPath();\n    ctx.arc(originX, originY, 5, 0, 2 * Math.PI);\n    ctx.fillStyle = \"#1e293b\";\n    ctx.fill();\n\n    // Bob\n    ctx.beginPath();\n    ctx.arc(bobX, bobY, 18, 0, 2 * Math.PI);\n    ctx.fillStyle = \"#ef4444\";\n    ctx.shadowColor = \"rgba(0,0,0,0.3)\";\n    ctx.shadowBlur = 8;\n    ctx.fill();\n    ctx.shadowBlur = 0;\n\n    // Display telemetry\n    ctx.fillStyle = \"#0f172a\";\n    ctx.font = \"14px monospace\";\n    ctx.fillText(`θ: ${(theta * 180 / Math.PI).toFixed(1)}°`, 20, 30);\n    ctx.fillText(`ω: ${omega.toFixed(2)} rad/s`, 20, 50);\n    ctx.fillText(`E_mech: ${(0.5 * length * length * omega * omega + gravity * length * (1 - Math.cos(theta))).toFixed(2)} J/kg`, 20, 70);\n  }\n\n  const timer = d3.interval(step, 20);\n  invalidation.then(() =&gt; timer.stop());\n\n  return ctx.canvas;\n}"
-  },
-  {
-    "objectID": "simulations/interactive-pendulum-and-verlet.html#high-performance-symplectic-integrator-in-c",
-    "href": "simulations/interactive-pendulum-and-verlet.html#high-performance-symplectic-integrator-in-c",
-    "title": "Interactive Simulations & Multi-Language Integrators",
-    "section": "2. High-Performance Symplectic Integrator in C++",
-    "text": "2. High-Performance Symplectic Integrator in C++\nStandard integrators like Forward Euler or standard Runge-Kutta 4th order (RK4) do not conserve the symplectic 2-form \\(\\omega = \\sum dq_i \\wedge dp_i\\). Over long integration times, non-symplectic integrators suffer from artificial energy drift.\nBelow is a production-grade implementation of the Velocity Verlet (Symplectic Störmer-Verlet) algorithm in C++17:\n// verlet_integrator.cpp\n// Compile: g++ -O3 -std=c++17 verlet_integrator.cpp -o verlet_sim\n#include &lt;iostream&gt;\n#include &lt;vector&gt;\n#include &lt;cmath&gt;\n#include &lt;fstream&gt;\n#include &lt;iomanip&gt;\n\nstruct State {\n    double theta; // generalized coordinate\n    double omega; // generalized velocity\n    double t;\n};\n\nclass SymplecticPendulum {\nprivate:\n    double g;\n    double L;\n    double m;\n\npublic:\n    SymplecticPendulum(double gravity = 9.80665, double length = 1.0, double mass = 1.0)\n        : g(gravity), L(length), m(mass) {}\n\n    // Acceleration a(theta) = - (g / L) * sin(theta)\n    double acceleration(double theta) const {\n        return -(g / L) * std::sin(theta);\n    }\n\n    double totalEnergy(double theta, double omega) const {\n        double kinetic = 0.5 * m * (L * omega) * (L * omega);\n        double potential = m * g * L * (1.0 - std::cos(theta));\n        return kinetic + potential;\n    }\n\n    // Velocity Verlet Step\n    void step(State& s, double dt) const {\n        double a_current = acceleration(s.theta);\n        \n        // 1. Position update: q(t + dt) = q(t) + v(t)*dt + 0.5*a(t)*dt^2\n        s.theta += s.omega * dt + 0.5 * a_current * dt * dt;\n        \n        // 2. New acceleration: a(t + dt)\n        double a_next = acceleration(s.theta);\n        \n        // 3. Velocity update: v(t + dt) = v(t) + 0.5*(a(t) + a(t + dt))*dt\n        s.omega += 0.5 * (a_current + a_next) * dt;\n        s.t += dt;\n    }\n};\n\nint main() {\n    SymplecticPendulum sim(9.80665, 1.0, 1.0);\n    State state = {M_PI / 3.0, 0.0, 0.0}; // 60 degrees release from rest\n    double dt = 0.005;\n    double t_max = 50.0;\n\n    std::ofstream out(\"verlet_trajectory.csv\");\n    out &lt;&lt; \"time,theta,omega,energy\\n\";\n\n    double E0 = sim.totalEnergy(state.theta, state.omega);\n\n    while (state.t &lt;= t_max) {\n        double E = sim.totalEnergy(state.theta, state.omega);\n        out &lt;&lt; std::fixed &lt;&lt; std::setprecision(6)\n            &lt;&lt; state.t &lt;&lt; \",\" &lt;&lt; state.theta &lt;&lt; \",\" &lt;&lt; state.omega &lt;&lt; \",\" &lt;&lt; E &lt;&lt; \"\\n\";\n        sim.step(state, dt);\n    }\n\n    std::cout &lt;&lt; \"Simulation complete. Initial Energy: \" &lt;&lt; E0 \n              &lt;&lt; \" J | Final Energy: \" &lt;&lt; sim.totalEnergy(state.theta, state.omega) \n              &lt;&lt; \" J (Symplectic bound preserved).\" &lt;&lt; std::endl;\n    return 0;\n}"
-  },
-  {
-    "objectID": "simulations/interactive-pendulum-and-verlet.html#high-precision-python-integration-phase-portraits",
-    "href": "simulations/interactive-pendulum-and-verlet.html#high-precision-python-integration-phase-portraits",
-    "title": "Interactive Simulations & Multi-Language Integrators",
-    "section": "3. High-Precision Python Integration & Phase Portraits",
-    "text": "3. High-Precision Python Integration & Phase Portraits\nIn Python, we utilize scipy.integrate.solve_ivp with the Dormand-Prince 8th order (DOP853) method to integrate the non-linear pendulum and plot its phase portrait:\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom scipy.integrate import solve_ivp\n\ndef pendulum_deriv(t, y, g=9.81, L=1.0):\n    theta, omega = y\n    return [omega, -(g / L) * np.sin(theta)]\n\nt_span = (0, 20)\nt_eval = np.linspace(0, 20, 1000)\n\nplt.figure(figsize=(10, 5))\n\n# Plot trajectories for several initial angles\nfor theta0 in [np.pi/6, np.pi/3, np.pi/2, 2.5, 3.1]:\n    sol = solve_ivp(pendulum_deriv, t_span, [theta0, 0.0], t_eval=t_eval, method='DOP853')\n    plt.plot(sol.y[0], sol.y[1], label=f\"$\\\\theta_0 = {theta0:.2f}$ rad\")\n\nplt.title(\"Phase Space Trajectories ($\\\\theta$ vs $\\\\dot{\\\\theta}$)\")\nplt.xlabel(\"Angle $\\\\theta$ (rad)\")\nplt.ylabel(\"Angular Velocity $\\\\dot{\\\\theta}$ (rad/s)\")\nplt.grid(True, linestyle=\"--\", alpha=0.6)\nplt.axvline(x=np.pi, color='r', linestyle=':', label=\"Separatrix Saddle ($\\\\pm \\\\pi$)\")\nplt.axvline(x=-np.pi, color='r', linestyle=':')\nplt.legend(loc=\"upper right\")\nplt.show()"
-  },
-  {
-    "objectID": "simulations/interactive-pendulum-and-verlet.html#fortran-90-symplectic-orbit-integrator",
-    "href": "simulations/interactive-pendulum-and-verlet.html#fortran-90-symplectic-orbit-integrator",
-    "title": "Interactive Simulations & Multi-Language Integrators",
-    "section": "4. Fortran 90 Symplectic Orbit Integrator",
-    "text": "4. Fortran 90 Symplectic Orbit Integrator\nFor ultra-high-throughput orbital mechanics, Fortran remains an industry standard in celestial dynamics:\n! orbit_integrator.f90\n! Compile: gfortran -O3 -march=native orbit_integrator.f90 -o orbit_sim\nprogram kepler_verlet\n    implicit none\n    integer, parameter :: dp = kind(1.0d0)\n    real(dp) :: x, y, vx, vy, ax, ay, r, dt, t, t_end, GM\n    real(dp) :: ax_new, ay_new\n    integer :: step, n_steps\n\n    GM = 4.0_dp * 3.141592653589793_dp**2 ! AU^3 / yr^2\n    x = 1.0_dp; y = 0.0_dp               ! Initial position (1 AU)\n    vx = 0.0_dp; vy = 2.0_dp * 3.141592653589793_dp ! Circular velocity\n\n    dt = 0.001_dp\n    t_end = 10.0_dp\n    n_steps = int(t_end / dt)\n\n    do step = 1, n_steps\n        r = sqrt(x**2 + y**2)\n        ax = -GM * x / (r**3)\n        ay = -GM * y / (r**3)\n\n        x = x + vx * dt + 0.5_dp * ax * dt**2\n        y = y + vy * dt + 0.5_dp * ay * dt**2\n\n        r = sqrt(x**2 + y**2)\n        ax_new = -GM * x / (r**3)\n        ay_new = -GM * y / (r**3)\n\n        vx = vx + 0.5_dp * (ax + ax_new) * dt\n        vy = vy + 0.5_dp * (ay + ay_new) * dt\n    end do\n\n    print *, \"Completed 10 Earth orbits with zero secular energy drift.\"\nend program kepler_verlet"
-  },
-  {
-    "objectID": "solutions/taylor-chapter-6-problems.html",
-    "href": "solutions/taylor-chapter-6-problems.html",
-    "title": "Taylor Chapter 6 Problems: Calculus of Variations",
-    "section": "",
-    "text": "For a complete derivation of the theoretical concepts used to solve these problems, refer to the Chapter 6 Lecture Notes."
-  },
-  {
-    "objectID": "solutions/problem-set-1.html",
-    "href": "solutions/problem-set-1.html",
-    "title": "Problem Set 1: Bead on a Rotating Wire Hoop",
-    "section": "",
-    "text": "A bead of mass \\(m\\) slides without friction on a circular wire hoop of radius \\(R\\). The hoop rotates with a constant angular velocity \\(\\omega\\) about its vertical diameter.\n\nConstruct the Lagrangian \\(\\mathcal{L}(\\theta, \\dot{\\theta})\\).\nDerive the equation of motion for the polar angle \\(\\theta\\).\nDetermine the equilibrium positions and their stability as a function of rotation speed \\(\\omega\\).\nIdentify the pitchfork bifurcation threshold."
-  },
-  {
-    "objectID": "solutions/problem-set-1.html#problem-statement",
-    "href": "solutions/problem-set-1.html#problem-statement",
-    "title": "Problem Set 1: Bead on a Rotating Wire Hoop",
-    "section": "",
-    "text": "A bead of mass \\(m\\) slides without friction on a circular wire hoop of radius \\(R\\). The hoop rotates with a constant angular velocity \\(\\omega\\) about its vertical diameter.\n\nConstruct the Lagrangian \\(\\mathcal{L}(\\theta, \\dot{\\theta})\\).\nDerive the equation of motion for the polar angle \\(\\theta\\).\nDetermine the equilibrium positions and their stability as a function of rotation speed \\(\\omega\\).\nIdentify the pitchfork bifurcation threshold."
-  },
-  {
-    "objectID": "solutions/problem-set-1.html#solution",
-    "href": "solutions/problem-set-1.html#solution",
-    "title": "Problem Set 1: Bead on a Rotating Wire Hoop",
-    "section": "Solution",
-    "text": "Solution\n\n1. Constructing the Lagrangian\nLet \\(\\theta\\) be the angle of the bead measured from the lowest point of the hoop. In spherical coordinates with the origin at the center of the hoop: * \\(x = R \\sin\\theta \\cos(\\omega t)\\) * \\(y = R \\sin\\theta \\sin(\\omega t)\\) * \\(z = -R \\cos\\theta\\)\nTaking time derivatives: \\[\\dot{x} = R \\dot{\\theta} \\cos\\theta \\cos(\\omega t) - R \\omega \\sin\\theta \\sin(\\omega t)\\] \\[\\dot{y} = R \\dot{\\theta} \\cos\\theta \\sin(\\omega t) + R \\omega \\sin\\theta \\cos(\\omega t)\\] \\[\\dot{z} = R \\dot{\\theta} \\sin\\theta\\]\nCalculating \\(v^2 = \\dot{x}^2 + \\dot{y}^2 + \\dot{z}^2\\): \\[v^2 = R^2 \\dot{\\theta}^2 + R^2 \\omega^2 \\sin^2\\theta\\]\n\nKinetic Energy: \\(T = \\frac{1}{2} m R^2 (\\dot{\\theta}^2 + \\omega^2 \\sin^2\\theta)\\)\nPotential Energy: \\(V = mgz = -mgR \\cos\\theta\\)\n\nThe Lagrangian is: \\[\\boxed{\\mathcal{L} = T - V = \\frac{1}{2} m R^2 \\dot{\\theta}^2 + \\frac{1}{2} m R^2 \\omega^2 \\sin^2\\theta + mgR \\cos\\theta}\\]\n\n\n\n2. Equation of Motion\nCompute the Euler-Lagrange derivatives: \\[\\frac{\\partial \\mathcal{L}}{\\partial \\dot{\\theta}} = m R^2 \\dot{\\theta} \\implies \\frac{d}{dt}\\left(\\frac{\\partial \\mathcal{L}}{\\partial \\dot{\\theta}}\\right) = m R^2 \\ddot{\\theta}\\] \\[\\frac{\\partial \\mathcal{L}}{\\partial \\theta} = m R^2 \\omega^2 \\sin\\theta \\cos\\theta - mgR \\sin\\theta\\]\nApplying \\(\\frac{d}{dt}\\frac{\\partial \\mathcal{L}}{\\partial \\dot{\\theta}} - \\frac{\\partial \\mathcal{L}}{\\partial \\theta} = 0\\): \\[m R^2 \\ddot{\\theta} - m R^2 \\omega^2 \\sin\\theta \\cos\\theta + mgR \\sin\\theta = 0\\] \\[\\boxed{\\ddot{\\theta} = \\left( \\omega^2 \\cos\\theta - \\frac{g}{R} \\right) \\sin\\theta}\\]\n\n\n\n3. Equilibrium Positions and Stability Analysis\nEquilibrium occurs when \\(\\ddot{\\theta} = 0\\): \\[\\sin\\theta \\left( \\omega^2 \\cos\\theta - \\frac{g}{R} \\right) = 0\\]\nThis yields two distinct branches of equilibria: 1. \\(\\sin\\theta = 0 \\implies \\theta_0 = 0\\) (bottom) or \\(\\theta_0 = \\pi\\) (top). 2. \\(\\cos\\theta_0 = \\frac{g}{\\omega^2 R}\\) (lateral positions, existing only if \\(\\omega^2 \\ge g/R\\)).\n\nEffective Potential\nRewrite the equation of motion as \\(\\ddot{\\theta} = -\\frac{1}{mR^2} \\frac{dV_{\\text{eff}}}{d\\theta}\\): \\[V_{\\text{eff}}(\\theta) = -mgR \\cos\\theta - \\frac{1}{2} m R^2 \\omega^2 \\sin^2\\theta\\]\nEvaluate the second derivative \\(\\frac{d^2 V_{\\text{eff}}}{d\\theta^2}\\): \\[\\frac{d^2 V_{\\text{eff}}}{d\\theta^2} = mgR \\cos\\theta - m R^2 \\omega^2 \\cos(2\\theta)\\]\nAt the bottom (\\(\\theta = 0\\)): \\[\\left. \\frac{d^2 V_{\\text{eff}}}{d\\theta^2} \\right|_{\\theta=0} = mgR - m R^2 \\omega^2 = m R^2 \\left( \\frac{g}{R} - \\omega^2 \\right)\\]\n\nSubcritical (\\(\\omega &lt; \\sqrt{g/R}\\)): \\(V_{\\text{eff}}''(0) &gt; 0 \\implies\\) Stable minimum.\nSupercritical (\\(\\omega &gt; \\sqrt{g/R}\\)): \\(V_{\\text{eff}}''(0) &lt; 0 \\implies\\) Unstable maximum. The bottom position loses stability!\n\nAt the critical rotation speed \\(\\omega_c = \\sqrt{g/R}\\), the system undergoes a classic supercritical pitchfork bifurcation: the bottom point becomes unstable, and two symmetric stable equilibrium points emerge at: \\[\\boxed{\\theta_0 = \\pm \\arccos\\left(\\frac{g}{\\omega^2 R}\\right)}\\]"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PHYC54H3: Classical Mechanics",
-    "section": "",
-    "text": "Comprehensive course portal featuring interactive computational physics notebooks, Manim animations, lecture derivations, and problem set solutions."
-  },
-  {
-    "objectID": "index.html#course-roadmap",
-    "href": "index.html#course-roadmap",
-    "title": "PHYC54H3: Classical Mechanics",
-    "section": "Course Roadmap",
-    "text": "Course Roadmap\n\n\n\n\n\n\n\n\n\nWeek\nCore Topics\nKey Mathematical Tools\nStatus\n\n\n\n\n01 - 02\nReview of Newtonian Mechanics, Damped & Driven Oscillations\nComplex numbers, ODEs, Green’s functions\nAvailable\n\n\n03 - 04\nCalculus of Variations & Hamilton’s Principle\nFunctional differentiation, Euler-Lagrange, Constraints\nAvailable\n\n\n05 - 06\nCentral Forces, Kepler’s Laws & Orbital Scattering\nEffective potential, Binet equation, Rutherford cross-section\nIn Progress\n\n\n07 - 08\nNon-Inertial Reference Frames & Coriolis Effects\nRotating coordinates, Foucault pendulum, centrifugal potential\nUpcoming\n\n\n09 - 10\nRigid Body Dynamics & The Inertia Tensor\nPrincipal axes, Euler angles, Euler’s equations of motion\nUpcoming\n\n\n11 - 12\nHamiltonian Mechanics, Poisson Brackets & Chaos\nPhase space volume (Liouville’s theorem), Lyapunov exponents\nUpcoming"
-  },
-  {
-    "objectID": "solutions/index.html",
-    "href": "solutions/index.html",
-    "title": "Problem Sets & Solutions",
-    "section": "",
-    "text": "Problem Set 1: Bead on a Rotating Wire Hoop\n\n\nAnalytical solution using Lagrangian mechanics and phase portrait stability analysis.\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nTaylor Chapter 6 Problems: Calculus of Variations\n\n\n\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\nIgor\n\n\n\n\n\n\n\n\n\n\n\n\nTaylor Chapter 7 Problems: Lagrange’s Equations\n\n\n\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\nIgor\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "solutions/taylor-chapter-7-problems.html",
-    "href": "solutions/taylor-chapter-7-problems.html",
-    "title": "Taylor Chapter 7 Problems: Lagrange’s Equations",
-    "section": "",
-    "text": "This article contains problem statements and solution outlines for Chapter 7 of John R. Taylor’s Classical Mechanics. For a theoretical overview, see the Chapter 7 Lecture Notes.\n\n\n\n\nStatement: Write down the Lagrangian for a projectile (subject to no air resistance) in terms of its Cartesian coordinates \\((x, y, z)\\), with \\(z\\) measured vertically upward. Find the three Lagrange equations and show that they are exactly what you would expect.\n(See Section 7.1 Notes)\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m(\\dot{x}^2 + \\dot{y}^2 + \\dot{z}^2) - mgz\\). The equations are: - \\(x\\): \\(\\frac{d}{dt}(m\\dot{x}) = 0 \\implies \\ddot{x} = 0\\) - \\(y\\): \\(\\frac{d}{dt}(m\\dot{y}) = 0 \\implies \\ddot{y} = 0\\) - \\(z\\): \\(\\frac{d}{dt}(m\\dot{z}) = -mg \\implies \\ddot{z} = -g\\) These are the standard equations of motion for a projectile.\n\n\n\nStatement: Write down the Lagrangian for a one-dimensional particle moving along the \\(x\\) axis and subject to a force \\(F = -kx\\) (with \\(k\\) positive). Find the Lagrange equation of motion and solve it.\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m\\dot{x}^2 - \\frac{1}{2}kx^2\\). Equation: \\(-kx = m\\ddot{x} \\implies \\ddot{x} + \\omega^2 x = 0\\). Solution is simple harmonic motion \\(x(t) = A\\cos(\\omega t - \\delta)\\).\n\n\n\nStatement: Consider a mass \\(m\\) moving in two dimensions with potential energy \\(U(x, y) = \\frac{1}{2}kr^2\\), where \\(r^2 = x^2 + y^2\\). Write down the Lagrangian and find the two Lagrange equations of motion. Describe their solutions.\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m(\\dot{x}^2 + \\dot{y}^2) - \\frac{1}{2}k(x^2 + y^2)\\). Equations: \\(m\\ddot{x} = -kx\\) and \\(m\\ddot{y} = -ky\\). Both \\(x\\) and \\(y\\) undergo independent simple harmonic motion with the same frequency.\n\n\n\nStatement: Mass \\(m\\) moving in a frictionless plane that slopes at angle \\(\\alpha\\). Write down the Lagrangian in terms of \\(x\\) (horizontally across slope) and \\(y\\) (down slope).\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m(\\dot{x}^2 + \\dot{y}^2) + mgy\\sin\\alpha\\). Equations: \\(m\\ddot{x} = 0\\) and \\(m\\ddot{y} = mg\\sin\\alpha\\).\n\n\n\nStatement: Show that the \\(3N\\) Newtonian equations are exactly equivalent to the \\(3N\\) Lagrange equations in Cartesian coordinates, establishing Hamilton’s principle.\n\n\n\n\n\n\nStatement: Bead threaded on a rigid circular hoop of radius \\(R\\) in the \\(xy\\) plane. Use the angle \\(\\phi\\). Write equations giving \\((x, y)\\) in terms of \\(\\phi\\).\n(See Section 7.3 Notes)\nSolution: \\(x = R\\cos\\phi, \\quad y = R\\sin\\phi\\). Generalized coordinate is just \\(\\phi\\).\n\n\n\nStatement: Particle on the surface of a circular cone, axis on \\(z\\), half-angle \\(\\alpha\\).\nSolution: Using cylindrical \\(( \\rho, \\phi, z )\\): \\(z = \\rho \\cot \\alpha\\). The coordinates are \\((\\rho, \\phi)\\). \\(x = \\rho\\cos\\phi\\), \\(y = \\rho\\sin\\phi\\), \\(z = \\rho\\cot\\alpha\\).\n\n\n\n\n\n\nStatement: Modify Lagrange’s equations to include a nonconservative force \\(F_{\\text{fric}}\\).\n(See Section 7.4 Notes)\nSolution: \\(\\frac{\\partial \\mathcal{L}}{\\partial x} + F_{\\text{fric}} = \\frac{d}{dt} \\frac{\\partial \\mathcal{L}}{\\partial \\dot{x}}\\).\n\n\n\nStatement: Prove Lagrange’s equations for two particles subject to various constraints, using the property that constraint forces do zero net work.\n\n\n\n\n\n\nStatement: Massless string wrapped around a uniform cylinder (mass \\(m\\), radius \\(R\\)). Find acceleration.\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m\\dot{x}^2 + \\frac{1}{2}(\\frac{1}{2}mR^2)\\omega^2 - (-mgx)\\). Since \\(x = R\\phi\\), \\(\\omega = \\dot{x}/R\\). \\(\\mathcal{L} = \\frac{3}{4}m\\dot{x}^2 + mgx\\). Equation: \\(mg = \\frac{3}{2}m\\ddot{x} \\implies \\ddot{x} = \\frac{2}{3}g\\).\n\n\n\n(Standard problems: Mass on table attached to hanging mass, Cylinder rolling down incline, Atwood machine with massive pulley).\n\n\n\nStatement: Rod forced to rotate in horizontal plane at constant \\(\\omega\\). Bead on rod.\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m(\\dot{r}^2 + r^2\\omega^2)\\). Equation: \\(m\\ddot{r} = mr\\omega^2\\). Shows centrifugal force accelerating the bead exponentially.\n\n\n\n(Problems verifying stable/unstable equilibria and normal mode frequencies for rotating systems and pendulums attached to wheels.)\n\n\n\n\n\n\nStatement: Prove that rotational invariance of \\(\\mathcal{L}\\) implies conservation of total angular momentum.\n(See Section 7.8 Notes)\nSolution: Rotating by \\(\\epsilon\\) around the \\(z\\)-axis changes coordinates. If \\(\\delta \\mathcal{L} = 0\\), the sum of \\(\\frac{\\partial \\mathcal{L}}{\\partial \\phi_\\alpha} = 0 \\implies \\sum \\dot{p}_{\\phi_\\alpha} = 0 \\implies L_z\\) is conserved.\n\n\n\n\n\n\nStatement: Charge \\(q\\) in uniform magnetic field \\(B \\hat{z}\\). Prove \\(B = \\nabla \\times A\\) and find Lagrange equations.\n(See Section 7.9 Notes)\nSolution: \\(A = \\frac{1}{2} B \\times r\\). The Lagrangian involves the vector potential, leading directly to the Lorentz force equation.\n\n\n\n\n\n\nStatement: Atwood machine and pendulum solved using Lagrange multipliers \\(\\lambda\\) to find string tensions.\n(See Section 7.10 Notes)\nSolution: For the pendulum, constraint \\(f(x, y) = \\sqrt{x^2 + y^2} = l\\). The multiplier \\(\\lambda\\) represents the constraint force (tension), yielding equations that simultaneously solve the motion and the dynamic tension in the rod."
-  },
-  {
-    "objectID": "solutions/taylor-chapter-7-problems.html#section-7.1-lagranges-equations-for-unconstrained-motion",
-    "href": "solutions/taylor-chapter-7-problems.html#section-7.1-lagranges-equations-for-unconstrained-motion",
-    "title": "Taylor Chapter 7 Problems: Lagrange’s Equations",
-    "section": "",
-    "text": "Statement: Write down the Lagrangian for a projectile (subject to no air resistance) in terms of its Cartesian coordinates \\((x, y, z)\\), with \\(z\\) measured vertically upward. Find the three Lagrange equations and show that they are exactly what you would expect.\n(See Section 7.1 Notes)\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m(\\dot{x}^2 + \\dot{y}^2 + \\dot{z}^2) - mgz\\). The equations are: - \\(x\\): \\(\\frac{d}{dt}(m\\dot{x}) = 0 \\implies \\ddot{x} = 0\\) - \\(y\\): \\(\\frac{d}{dt}(m\\dot{y}) = 0 \\implies \\ddot{y} = 0\\) - \\(z\\): \\(\\frac{d}{dt}(m\\dot{z}) = -mg \\implies \\ddot{z} = -g\\) These are the standard equations of motion for a projectile.\n\n\n\nStatement: Write down the Lagrangian for a one-dimensional particle moving along the \\(x\\) axis and subject to a force \\(F = -kx\\) (with \\(k\\) positive). Find the Lagrange equation of motion and solve it.\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m\\dot{x}^2 - \\frac{1}{2}kx^2\\). Equation: \\(-kx = m\\ddot{x} \\implies \\ddot{x} + \\omega^2 x = 0\\). Solution is simple harmonic motion \\(x(t) = A\\cos(\\omega t - \\delta)\\).\n\n\n\nStatement: Consider a mass \\(m\\) moving in two dimensions with potential energy \\(U(x, y) = \\frac{1}{2}kr^2\\), where \\(r^2 = x^2 + y^2\\). Write down the Lagrangian and find the two Lagrange equations of motion. Describe their solutions.\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m(\\dot{x}^2 + \\dot{y}^2) - \\frac{1}{2}k(x^2 + y^2)\\). Equations: \\(m\\ddot{x} = -kx\\) and \\(m\\ddot{y} = -ky\\). Both \\(x\\) and \\(y\\) undergo independent simple harmonic motion with the same frequency.\n\n\n\nStatement: Mass \\(m\\) moving in a frictionless plane that slopes at angle \\(\\alpha\\). Write down the Lagrangian in terms of \\(x\\) (horizontally across slope) and \\(y\\) (down slope).\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m(\\dot{x}^2 + \\dot{y}^2) + mgy\\sin\\alpha\\). Equations: \\(m\\ddot{x} = 0\\) and \\(m\\ddot{y} = mg\\sin\\alpha\\).\n\n\n\nStatement: Show that the \\(3N\\) Newtonian equations are exactly equivalent to the \\(3N\\) Lagrange equations in Cartesian coordinates, establishing Hamilton’s principle."
-  },
-  {
-    "objectID": "solutions/taylor-chapter-7-problems.html#section-7.3-constrained-systems-in-general",
-    "href": "solutions/taylor-chapter-7-problems.html#section-7.3-constrained-systems-in-general",
-    "title": "Taylor Chapter 7 Problems: Lagrange’s Equations",
-    "section": "",
-    "text": "Statement: Bead threaded on a rigid circular hoop of radius \\(R\\) in the \\(xy\\) plane. Use the angle \\(\\phi\\). Write equations giving \\((x, y)\\) in terms of \\(\\phi\\).\n(See Section 7.3 Notes)\nSolution: \\(x = R\\cos\\phi, \\quad y = R\\sin\\phi\\). Generalized coordinate is just \\(\\phi\\).\n\n\n\nStatement: Particle on the surface of a circular cone, axis on \\(z\\), half-angle \\(\\alpha\\).\nSolution: Using cylindrical \\(( \\rho, \\phi, z )\\): \\(z = \\rho \\cot \\alpha\\). The coordinates are \\((\\rho, \\phi)\\). \\(x = \\rho\\cos\\phi\\), \\(y = \\rho\\sin\\phi\\), \\(z = \\rho\\cot\\alpha\\)."
-  },
-  {
-    "objectID": "solutions/taylor-chapter-7-problems.html#section-7.4-proof-of-lagranges-equations-with-constraints",
-    "href": "solutions/taylor-chapter-7-problems.html#section-7.4-proof-of-lagranges-equations-with-constraints",
-    "title": "Taylor Chapter 7 Problems: Lagrange’s Equations",
-    "section": "",
-    "text": "Statement: Modify Lagrange’s equations to include a nonconservative force \\(F_{\\text{fric}}\\).\n(See Section 7.4 Notes)\nSolution: \\(\\frac{\\partial \\mathcal{L}}{\\partial x} + F_{\\text{fric}} = \\frac{d}{dt} \\frac{\\partial \\mathcal{L}}{\\partial \\dot{x}}\\).\n\n\n\nStatement: Prove Lagrange’s equations for two particles subject to various constraints, using the property that constraint forces do zero net work."
-  },
-  {
-    "objectID": "solutions/taylor-chapter-7-problems.html#section-7.5-examples-of-lagranges-equations",
-    "href": "solutions/taylor-chapter-7-problems.html#section-7.5-examples-of-lagranges-equations",
-    "title": "Taylor Chapter 7 Problems: Lagrange’s Equations",
-    "section": "",
-    "text": "Statement: Massless string wrapped around a uniform cylinder (mass \\(m\\), radius \\(R\\)). Find acceleration.\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m\\dot{x}^2 + \\frac{1}{2}(\\frac{1}{2}mR^2)\\omega^2 - (-mgx)\\). Since \\(x = R\\phi\\), \\(\\omega = \\dot{x}/R\\). \\(\\mathcal{L} = \\frac{3}{4}m\\dot{x}^2 + mgx\\). Equation: \\(mg = \\frac{3}{2}m\\ddot{x} \\implies \\ddot{x} = \\frac{2}{3}g\\).\n\n\n\n(Standard problems: Mass on table attached to hanging mass, Cylinder rolling down incline, Atwood machine with massive pulley).\n\n\n\nStatement: Rod forced to rotate in horizontal plane at constant \\(\\omega\\). Bead on rod.\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m(\\dot{r}^2 + r^2\\omega^2)\\). Equation: \\(m\\ddot{r} = mr\\omega^2\\). Shows centrifugal force accelerating the bead exponentially.\n\n\n\n(Problems verifying stable/unstable equilibria and normal mode frequencies for rotating systems and pendulums attached to wheels.)"
-  },
-  {
-    "objectID": "solutions/taylor-chapter-7-problems.html#section-7.8-more-about-conservation-laws",
-    "href": "solutions/taylor-chapter-7-problems.html#section-7.8-more-about-conservation-laws",
-    "title": "Taylor Chapter 7 Problems: Lagrange’s Equations",
-    "section": "",
-    "text": "Statement: Prove that rotational invariance of \\(\\mathcal{L}\\) implies conservation of total angular momentum.\n(See Section 7.8 Notes)\nSolution: Rotating by \\(\\epsilon\\) around the \\(z\\)-axis changes coordinates. If \\(\\delta \\mathcal{L} = 0\\), the sum of \\(\\frac{\\partial \\mathcal{L}}{\\partial \\phi_\\alpha} = 0 \\implies \\sum \\dot{p}_{\\phi_\\alpha} = 0 \\implies L_z\\) is conserved."
-  },
-  {
-    "objectID": "solutions/taylor-chapter-7-problems.html#section-7.9-lagranges-equations-for-magnetic-forces",
-    "href": "solutions/taylor-chapter-7-problems.html#section-7.9-lagranges-equations-for-magnetic-forces",
-    "title": "Taylor Chapter 7 Problems: Lagrange’s Equations",
-    "section": "",
-    "text": "Statement: Charge \\(q\\) in uniform magnetic field \\(B \\hat{z}\\). Prove \\(B = \\nabla \\times A\\) and find Lagrange equations.\n(See Section 7.9 Notes)\nSolution: \\(A = \\frac{1}{2} B \\times r\\). The Lagrangian involves the vector potential, leading directly to the Lorentz force equation."
-  },
-  {
-    "objectID": "solutions/taylor-chapter-7-problems.html#section-7.10-lagrange-multipliers-and-constraint-forces",
-    "href": "solutions/taylor-chapter-7-problems.html#section-7.10-lagrange-multipliers-and-constraint-forces",
-    "title": "Taylor Chapter 7 Problems: Lagrange’s Equations",
-    "section": "",
-    "text": "Statement: Atwood machine and pendulum solved using Lagrange multipliers \\(\\lambda\\) to find string tensions.\n(See Section 7.10 Notes)\nSolution: For the pendulum, constraint \\(f(x, y) = \\sqrt{x^2 + y^2} = l\\). The multiplier \\(\\lambda\\) represents the constraint force (tension), yielding equations that simultaneously solve the motion and the dynamic tension in the rod."
-  },
-  {
-    "objectID": "simulations/index.html",
-    "href": "simulations/index.html",
-    "title": "Computational Physics & Simulations",
-    "section": "",
-    "text": "Interactive Simulations & Multi-Language Integrators\n\n\nReal-time browser dynamics (Observable JS), high-performance C++ Verlet integration, and Python phase portraits.\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "reference/index.html",
-    "href": "reference/index.html",
-    "title": "Reference & Mathematical Tools",
-    "section": "",
-    "text": "Welcome to the reference section for PHYC54H3 (Classical Mechanics). This section contains quick-reference articles covering the essential mathematical, physical, and computational tools used throughout the course.\n\nMathematical Identities & Calculus\nA comprehensive cheatsheet of trigonometric identities, hyperbolic functions, essential derivatives, common integrals (including Gaussian integrals), and Taylor/Maclaurin series expansions.\n\n\nVector Calculus & Identities\nFormulas for dot and cross products, scalar and vector triple products (BAC-CAB), the Del operator (\\(\\nabla\\)), divergence, gradient, curl, Laplacian, and the major integral theorems (Gauss’s and Stokes’s).\n\n\nPhysical Constants & Astronomical Data\nA reference table of fundamental physical constants (SI units), particle masses, solar system orbital and physical parameters, and common physics conversion factors. ### Sources & Bibliography A detailed list of the textbooks (Taylor, Morin, Riley, Arfken, Boas, Krane), online open courses (MIT OCW, Yale), and websites utilized as primary resources for this course’s material. ### Computational Methods for Mechanics An overview of the numerical integration techniques used to solve ODEs in classical mechanics, including the Euler method, 4th-Order Runge-Kutta (RK4), the symplectic Velocity Verlet method (critical for energy conservation in Hamiltonian systems), and SciPy’s solve_ivp."
-  },
-  {
-    "objectID": "reference/sources-and-bibliography.html",
-    "href": "reference/sources-and-bibliography.html",
-    "title": "Sources & Bibliography",
-    "section": "",
-    "text": "This repository references several classic and foundational textbooks for mathematical methods, classical mechanics, and general physics.\n\n\n\n\nAuthor: John R. Taylor Publisher: University Science Books Description: The primary textbook for PHYC54H3. Known for its conversational tone and extreme clarity, it builds from elementary Newtonian mechanics to advanced topics like the Lagrangian and Hamiltonian formalisms, central-force motion, and chaos theory. Link: University Science Books - Taylor\n\n\n\nAuthor: David Morin Publisher: Cambridge University Press Description: Highly regarded for its vast collection of very challenging problems, making it a staple for physics Olympiad preparation. The textbook emphasizes clever problem-solving techniques and covers the Lagrangian method extensively. Link: Cambridge University Press - Morin\n\n\n\nAuthors: Richard P. Feynman, Robert B. Leighton, and Matthew Sands Publisher: Basic Books (Online edition by Caltech) Description: The legendary lecture series by Nobel laureate Richard Feynman. It approaches classical mechanics with unmatched physical intuition, emphasizing deep conceptual understanding over rote mathematics. Link: Feynman Lectures Vol. I\n\n\n\nAuthors: L. D. Landau and E. M. Lifshitz Publisher: Elsevier (Butterworth-Heinemann) Description: A hallmark of Russian theoretical physics, this dense and mathematically elegant text begins directly with the principle of least action and develops the entirety of mechanics deductively. Ideal for advanced students. Link: Elsevier - Landau & Lifshitz\n\n\n\nAuthor: V. I. Arnold Publisher: Springer Description: A classic graduate-level textbook that provides a modern, geometric approach to classical mechanics. It builds mechanics from the ground up using the geometry of manifolds, symplectic geometry, and Lie groups. Link: Springer - Arnold\n\n\n\n\n\n\n\nAuthors: K. F. Riley, M. P. Hobson, and S. J. Bence Publisher: Cambridge University Press Description: An immensely practical guide covering all undergraduate mathematical requirements, from basic calculus and vectors to complex variables, tensors, and group theory. Link: Cambridge University Press - Riley\n\n\n\nAuthors: George B. Arfken and Hans J. Weber Publisher: Academic Press (Elsevier) Description: Known as the “bible” of mathematical physics, this comprehensive text goes extremely deep into vector analysis, differential equations, and special functions. Link: Elsevier - Arfken\n\n\n\nAuthor: Mary L. Boas Publisher: John Wiley & Sons Description: An approachable but rigorous text that bridges the gap between basic calculus and the advanced mathematics required in upper-level physics courses. Link: Wiley - Boas\n\n\n\n\n\n\n\nAuthors: Robert Resnick, David Halliday, Kenneth S. Krane Publisher: John Wiley & Sons Description: The definitive introductory calculus-based physics text. This classical tome is incredibly thorough on mechanics, thermodynamics, and waves. Link: Wiley - Krane"
-  },
-  {
-    "objectID": "reference/sources-and-bibliography.html#core-mechanics",
-    "href": "reference/sources-and-bibliography.html#core-mechanics",
-    "title": "Sources & Bibliography",
-    "section": "",
-    "text": "Author: John R. Taylor Publisher: University Science Books Description: The primary textbook for PHYC54H3. Known for its conversational tone and extreme clarity, it builds from elementary Newtonian mechanics to advanced topics like the Lagrangian and Hamiltonian formalisms, central-force motion, and chaos theory. Link: University Science Books - Taylor\n\n\n\nAuthor: David Morin Publisher: Cambridge University Press Description: Highly regarded for its vast collection of very challenging problems, making it a staple for physics Olympiad preparation. The textbook emphasizes clever problem-solving techniques and covers the Lagrangian method extensively. Link: Cambridge University Press - Morin\n\n\n\nAuthors: Richard P. Feynman, Robert B. Leighton, and Matthew Sands Publisher: Basic Books (Online edition by Caltech) Description: The legendary lecture series by Nobel laureate Richard Feynman. It approaches classical mechanics with unmatched physical intuition, emphasizing deep conceptual understanding over rote mathematics. Link: Feynman Lectures Vol. I\n\n\n\nAuthors: L. D. Landau and E. M. Lifshitz Publisher: Elsevier (Butterworth-Heinemann) Description: A hallmark of Russian theoretical physics, this dense and mathematically elegant text begins directly with the principle of least action and develops the entirety of mechanics deductively. Ideal for advanced students. Link: Elsevier - Landau & Lifshitz\n\n\n\nAuthor: V. I. Arnold Publisher: Springer Description: A classic graduate-level textbook that provides a modern, geometric approach to classical mechanics. It builds mechanics from the ground up using the geometry of manifolds, symplectic geometry, and Lie groups. Link: Springer - Arnold"
-  },
-  {
-    "objectID": "reference/sources-and-bibliography.html#mathematical-methods",
-    "href": "reference/sources-and-bibliography.html#mathematical-methods",
-    "title": "Sources & Bibliography",
-    "section": "",
-    "text": "Authors: K. F. Riley, M. P. Hobson, and S. J. Bence Publisher: Cambridge University Press Description: An immensely practical guide covering all undergraduate mathematical requirements, from basic calculus and vectors to complex variables, tensors, and group theory. Link: Cambridge University Press - Riley\n\n\n\nAuthors: George B. Arfken and Hans J. Weber Publisher: Academic Press (Elsevier) Description: Known as the “bible” of mathematical physics, this comprehensive text goes extremely deep into vector analysis, differential equations, and special functions. Link: Elsevier - Arfken\n\n\n\nAuthor: Mary L. Boas Publisher: John Wiley & Sons Description: An approachable but rigorous text that bridges the gap between basic calculus and the advanced mathematics required in upper-level physics courses. Link: Wiley - Boas"
-  },
-  {
-    "objectID": "reference/sources-and-bibliography.html#general-physics",
-    "href": "reference/sources-and-bibliography.html#general-physics",
-    "title": "Sources & Bibliography",
-    "section": "",
-    "text": "Authors: Robert Resnick, David Halliday, Kenneth S. Krane Publisher: John Wiley & Sons Description: The definitive introductory calculus-based physics text. This classical tome is incredibly thorough on mechanics, thermodynamics, and waves. Link: Wiley - Krane"
+    "objectID": "syllabus.html#required-materials",
+    "href": "syllabus.html#required-materials",
+    "title": "Course Syllabus: PHY C54 - Classical Mechanics (Fall 2026)",
+    "section": "Required Materials",
+    "text": "Required Materials\n\nTextbook: Classical Mechanics by John R. Taylor (University Science Books 2005)\nCalculator: A scientific, non-programmable, and non-graphing calculator."
   },
   {
     "objectID": "reference/math-identities-and-calculus.html",
@@ -462,11 +189,319 @@
     "text": "Binomial Expansion\nFor \\(|x| &lt; 1\\) and any real \\(n\\): \\[ (1+x)^n = 1 + nx + \\frac{n(n-1)}{2!}x^2 + \\frac{n(n-1)(n-2)}{3!}x^3 + \\dots \\] Useful small \\(x\\) approximations: \\[ (1+x)^n \\approx 1 + nx \\] \\[ (1-x)^{-1} \\approx 1 + x + x^2 + \\dots \\]"
   },
   {
-    "objectID": "notes/index.html",
-    "href": "notes/index.html",
-    "title": "PHYC54 Lecture Notes",
+    "objectID": "reference/sources-and-bibliography.html",
+    "href": "reference/sources-and-bibliography.html",
+    "title": "Sources & Bibliography",
     "section": "",
-    "text": "Taylor Chapter 6: Calculus of Variations\n\n\nSummary, Derivations, and Problems\n\n\n\nclassical-mechanics\n\nmath\n\ntaylor\n\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\nIgor\n\n\n\n\n\n\n\n\n\n\n\n\nTaylor Chapter 7: Lagrange’s Equations\n\n\nOvercoming constraint forces and deriving the laws of motion from a single radical formula.\n\n\n\nclassical-mechanics\n\nmath\n\ntaylor\n\nnotes\n\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\nIgor\n\n\n\n\n\nNo matching items"
+    "text": "This repository references several classic and foundational textbooks for mathematical methods, classical mechanics, and general physics.\n\n\n\n\nAuthor: John R. Taylor Publisher: University Science Books Description: The primary textbook for PHYC54H3. Known for its conversational tone and extreme clarity, it builds from elementary Newtonian mechanics to advanced topics like the Lagrangian and Hamiltonian formalisms, central-force motion, and chaos theory. Link: University Science Books - Taylor\n\n\n\nAuthor: David Morin Publisher: Cambridge University Press Description: Highly regarded for its vast collection of very challenging problems, making it a staple for physics Olympiad preparation. The textbook emphasizes clever problem-solving techniques and covers the Lagrangian method extensively. Link: Cambridge University Press - Morin\n\n\n\nAuthors: Richard P. Feynman, Robert B. Leighton, and Matthew Sands Publisher: Basic Books (Online edition by Caltech) Description: The legendary lecture series by Nobel laureate Richard Feynman. It approaches classical mechanics with unmatched physical intuition, emphasizing deep conceptual understanding over rote mathematics. Link: Feynman Lectures Vol. I\n\n\n\nAuthors: L. D. Landau and E. M. Lifshitz Publisher: Elsevier (Butterworth-Heinemann) Description: A hallmark of Russian theoretical physics, this dense and mathematically elegant text begins directly with the principle of least action and develops the entirety of mechanics deductively. Ideal for advanced students. Link: Elsevier - Landau & Lifshitz\n\n\n\nAuthor: V. I. Arnold Publisher: Springer Description: A classic graduate-level textbook that provides a modern, geometric approach to classical mechanics. It builds mechanics from the ground up using the geometry of manifolds, symplectic geometry, and Lie groups. Link: Springer - Arnold\n\n\n\n\n\n\n\nAuthors: K. F. Riley, M. P. Hobson, and S. J. Bence Publisher: Cambridge University Press Description: An immensely practical guide covering all undergraduate mathematical requirements, from basic calculus and vectors to complex variables, tensors, and group theory. Link: Cambridge University Press - Riley\n\n\n\nAuthors: George B. Arfken and Hans J. Weber Publisher: Academic Press (Elsevier) Description: Known as the “bible” of mathematical physics, this comprehensive text goes extremely deep into vector analysis, differential equations, and special functions. Link: Elsevier - Arfken\n\n\n\nAuthor: Mary L. Boas Publisher: John Wiley & Sons Description: An approachable but rigorous text that bridges the gap between basic calculus and the advanced mathematics required in upper-level physics courses. Link: Wiley - Boas\n\n\n\n\n\n\n\nAuthors: Robert Resnick, David Halliday, Kenneth S. Krane Publisher: John Wiley & Sons Description: The definitive introductory calculus-based physics text. This classical tome is incredibly thorough on mechanics, thermodynamics, and waves. Link: Wiley - Krane"
+  },
+  {
+    "objectID": "reference/sources-and-bibliography.html#core-mechanics",
+    "href": "reference/sources-and-bibliography.html#core-mechanics",
+    "title": "Sources & Bibliography",
+    "section": "",
+    "text": "Author: John R. Taylor Publisher: University Science Books Description: The primary textbook for PHYC54H3. Known for its conversational tone and extreme clarity, it builds from elementary Newtonian mechanics to advanced topics like the Lagrangian and Hamiltonian formalisms, central-force motion, and chaos theory. Link: University Science Books - Taylor\n\n\n\nAuthor: David Morin Publisher: Cambridge University Press Description: Highly regarded for its vast collection of very challenging problems, making it a staple for physics Olympiad preparation. The textbook emphasizes clever problem-solving techniques and covers the Lagrangian method extensively. Link: Cambridge University Press - Morin\n\n\n\nAuthors: Richard P. Feynman, Robert B. Leighton, and Matthew Sands Publisher: Basic Books (Online edition by Caltech) Description: The legendary lecture series by Nobel laureate Richard Feynman. It approaches classical mechanics with unmatched physical intuition, emphasizing deep conceptual understanding over rote mathematics. Link: Feynman Lectures Vol. I\n\n\n\nAuthors: L. D. Landau and E. M. Lifshitz Publisher: Elsevier (Butterworth-Heinemann) Description: A hallmark of Russian theoretical physics, this dense and mathematically elegant text begins directly with the principle of least action and develops the entirety of mechanics deductively. Ideal for advanced students. Link: Elsevier - Landau & Lifshitz\n\n\n\nAuthor: V. I. Arnold Publisher: Springer Description: A classic graduate-level textbook that provides a modern, geometric approach to classical mechanics. It builds mechanics from the ground up using the geometry of manifolds, symplectic geometry, and Lie groups. Link: Springer - Arnold"
+  },
+  {
+    "objectID": "reference/sources-and-bibliography.html#mathematical-methods",
+    "href": "reference/sources-and-bibliography.html#mathematical-methods",
+    "title": "Sources & Bibliography",
+    "section": "",
+    "text": "Authors: K. F. Riley, M. P. Hobson, and S. J. Bence Publisher: Cambridge University Press Description: An immensely practical guide covering all undergraduate mathematical requirements, from basic calculus and vectors to complex variables, tensors, and group theory. Link: Cambridge University Press - Riley\n\n\n\nAuthors: George B. Arfken and Hans J. Weber Publisher: Academic Press (Elsevier) Description: Known as the “bible” of mathematical physics, this comprehensive text goes extremely deep into vector analysis, differential equations, and special functions. Link: Elsevier - Arfken\n\n\n\nAuthor: Mary L. Boas Publisher: John Wiley & Sons Description: An approachable but rigorous text that bridges the gap between basic calculus and the advanced mathematics required in upper-level physics courses. Link: Wiley - Boas"
+  },
+  {
+    "objectID": "reference/sources-and-bibliography.html#general-physics",
+    "href": "reference/sources-and-bibliography.html#general-physics",
+    "title": "Sources & Bibliography",
+    "section": "",
+    "text": "Authors: Robert Resnick, David Halliday, Kenneth S. Krane Publisher: John Wiley & Sons Description: The definitive introductory calculus-based physics text. This classical tome is incredibly thorough on mechanics, thermodynamics, and waves. Link: Wiley - Krane"
+  },
+  {
+    "objectID": "reference/index.html",
+    "href": "reference/index.html",
+    "title": "Reference & Mathematical Tools",
+    "section": "",
+    "text": "Welcome to the reference section for PHYC54H3 (Classical Mechanics). This section contains quick-reference articles covering the essential mathematical, physical, and computational tools used throughout the course.\n\nMathematical Identities & Calculus\nA comprehensive cheatsheet of trigonometric identities, hyperbolic functions, essential derivatives, common integrals (including Gaussian integrals), and Taylor/Maclaurin series expansions.\n\n\nVector Calculus & Identities\nFormulas for dot and cross products, scalar and vector triple products (BAC-CAB), the Del operator (\\(\\nabla\\)), divergence, gradient, curl, Laplacian, and the major integral theorems (Gauss’s and Stokes’s).\n\n\nPhysical Constants & Astronomical Data\nA reference table of fundamental physical constants (SI units), particle masses, solar system orbital and physical parameters, and common physics conversion factors. ### Sources & Bibliography A detailed list of the textbooks (Taylor, Morin, Riley, Arfken, Boas, Krane), online open courses (MIT OCW, Yale), and websites utilized as primary resources for this course’s material. ### Computational Methods for Mechanics An overview of the numerical integration techniques used to solve ODEs in classical mechanics, including the Euler method, 4th-Order Runge-Kutta (RK4), the symplectic Velocity Verlet method (critical for energy conservation in Hamiltonian systems), and SciPy’s solve_ivp."
+  },
+  {
+    "objectID": "simulations/index.html",
+    "href": "simulations/index.html",
+    "title": "Computational Physics & Simulations",
+    "section": "",
+    "text": "Interactive Simulations & Multi-Language Integrators\n\n\nReal-time browser dynamics (Observable JS), high-performance C++ Verlet integration, and Python phase portraits.\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "solutions/taylor-chapter-7-problems.html",
+    "href": "solutions/taylor-chapter-7-problems.html",
+    "title": "Taylor Chapter 7 Problems: Lagrange’s Equations",
+    "section": "",
+    "text": "This article contains problem statements and solution outlines for Chapter 7 of John R. Taylor’s Classical Mechanics. For a theoretical overview, see the Chapter 7 Lecture Notes.\n\n\n\n\nStatement: Write down the Lagrangian for a projectile (subject to no air resistance) in terms of its Cartesian coordinates \\((x, y, z)\\), with \\(z\\) measured vertically upward. Find the three Lagrange equations and show that they are exactly what you would expect.\n(See Section 7.1 Notes)\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m(\\dot{x}^2 + \\dot{y}^2 + \\dot{z}^2) - mgz\\). The equations are: - \\(x\\): \\(\\frac{d}{dt}(m\\dot{x}) = 0 \\implies \\ddot{x} = 0\\) - \\(y\\): \\(\\frac{d}{dt}(m\\dot{y}) = 0 \\implies \\ddot{y} = 0\\) - \\(z\\): \\(\\frac{d}{dt}(m\\dot{z}) = -mg \\implies \\ddot{z} = -g\\) These are the standard equations of motion for a projectile.\n\n\n\nStatement: Write down the Lagrangian for a one-dimensional particle moving along the \\(x\\) axis and subject to a force \\(F = -kx\\) (with \\(k\\) positive). Find the Lagrange equation of motion and solve it.\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m\\dot{x}^2 - \\frac{1}{2}kx^2\\). Equation: \\(-kx = m\\ddot{x} \\implies \\ddot{x} + \\omega^2 x = 0\\). Solution is simple harmonic motion \\(x(t) = A\\cos(\\omega t - \\delta)\\).\n\n\n\nStatement: Consider a mass \\(m\\) moving in two dimensions with potential energy \\(U(x, y) = \\frac{1}{2}kr^2\\), where \\(r^2 = x^2 + y^2\\). Write down the Lagrangian and find the two Lagrange equations of motion. Describe their solutions.\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m(\\dot{x}^2 + \\dot{y}^2) - \\frac{1}{2}k(x^2 + y^2)\\). Equations: \\(m\\ddot{x} = -kx\\) and \\(m\\ddot{y} = -ky\\). Both \\(x\\) and \\(y\\) undergo independent simple harmonic motion with the same frequency.\n\n\n\nStatement: Mass \\(m\\) moving in a frictionless plane that slopes at angle \\(\\alpha\\). Write down the Lagrangian in terms of \\(x\\) (horizontally across slope) and \\(y\\) (down slope).\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m(\\dot{x}^2 + \\dot{y}^2) + mgy\\sin\\alpha\\). Equations: \\(m\\ddot{x} = 0\\) and \\(m\\ddot{y} = mg\\sin\\alpha\\).\n\n\n\nStatement: Show that the \\(3N\\) Newtonian equations are exactly equivalent to the \\(3N\\) Lagrange equations in Cartesian coordinates, establishing Hamilton’s principle.\n\n\n\n\n\n\nStatement: Bead threaded on a rigid circular hoop of radius \\(R\\) in the \\(xy\\) plane. Use the angle \\(\\phi\\). Write equations giving \\((x, y)\\) in terms of \\(\\phi\\).\n(See Section 7.3 Notes)\nSolution: \\(x = R\\cos\\phi, \\quad y = R\\sin\\phi\\). Generalized coordinate is just \\(\\phi\\).\n\n\n\nStatement: Particle on the surface of a circular cone, axis on \\(z\\), half-angle \\(\\alpha\\).\nSolution: Using cylindrical \\(( \\rho, \\phi, z )\\): \\(z = \\rho \\cot \\alpha\\). The coordinates are \\((\\rho, \\phi)\\). \\(x = \\rho\\cos\\phi\\), \\(y = \\rho\\sin\\phi\\), \\(z = \\rho\\cot\\alpha\\).\n\n\n\n\n\n\nStatement: Modify Lagrange’s equations to include a nonconservative force \\(F_{\\text{fric}}\\).\n(See Section 7.4 Notes)\nSolution: \\(\\frac{\\partial \\mathcal{L}}{\\partial x} + F_{\\text{fric}} = \\frac{d}{dt} \\frac{\\partial \\mathcal{L}}{\\partial \\dot{x}}\\).\n\n\n\nStatement: Prove Lagrange’s equations for two particles subject to various constraints, using the property that constraint forces do zero net work.\n\n\n\n\n\n\nStatement: Massless string wrapped around a uniform cylinder (mass \\(m\\), radius \\(R\\)). Find acceleration.\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m\\dot{x}^2 + \\frac{1}{2}(\\frac{1}{2}mR^2)\\omega^2 - (-mgx)\\). Since \\(x = R\\phi\\), \\(\\omega = \\dot{x}/R\\). \\(\\mathcal{L} = \\frac{3}{4}m\\dot{x}^2 + mgx\\). Equation: \\(mg = \\frac{3}{2}m\\ddot{x} \\implies \\ddot{x} = \\frac{2}{3}g\\).\n\n\n\n(Standard problems: Mass on table attached to hanging mass, Cylinder rolling down incline, Atwood machine with massive pulley).\n\n\n\nStatement: Rod forced to rotate in horizontal plane at constant \\(\\omega\\). Bead on rod.\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m(\\dot{r}^2 + r^2\\omega^2)\\). Equation: \\(m\\ddot{r} = mr\\omega^2\\). Shows centrifugal force accelerating the bead exponentially.\n\n\n\n(Problems verifying stable/unstable equilibria and normal mode frequencies for rotating systems and pendulums attached to wheels.)\n\n\n\n\n\n\nStatement: Prove that rotational invariance of \\(\\mathcal{L}\\) implies conservation of total angular momentum.\n(See Section 7.8 Notes)\nSolution: Rotating by \\(\\epsilon\\) around the \\(z\\)-axis changes coordinates. If \\(\\delta \\mathcal{L} = 0\\), the sum of \\(\\frac{\\partial \\mathcal{L}}{\\partial \\phi_\\alpha} = 0 \\implies \\sum \\dot{p}_{\\phi_\\alpha} = 0 \\implies L_z\\) is conserved.\n\n\n\n\n\n\nStatement: Charge \\(q\\) in uniform magnetic field \\(B \\hat{z}\\). Prove \\(B = \\nabla \\times A\\) and find Lagrange equations.\n(See Section 7.9 Notes)\nSolution: \\(A = \\frac{1}{2} B \\times r\\). The Lagrangian involves the vector potential, leading directly to the Lorentz force equation.\n\n\n\n\n\n\nStatement: Atwood machine and pendulum solved using Lagrange multipliers \\(\\lambda\\) to find string tensions.\n(See Section 7.10 Notes)\nSolution: For the pendulum, constraint \\(f(x, y) = \\sqrt{x^2 + y^2} = l\\). The multiplier \\(\\lambda\\) represents the constraint force (tension), yielding equations that simultaneously solve the motion and the dynamic tension in the rod."
+  },
+  {
+    "objectID": "solutions/taylor-chapter-7-problems.html#section-7.1-lagranges-equations-for-unconstrained-motion",
+    "href": "solutions/taylor-chapter-7-problems.html#section-7.1-lagranges-equations-for-unconstrained-motion",
+    "title": "Taylor Chapter 7 Problems: Lagrange’s Equations",
+    "section": "",
+    "text": "Statement: Write down the Lagrangian for a projectile (subject to no air resistance) in terms of its Cartesian coordinates \\((x, y, z)\\), with \\(z\\) measured vertically upward. Find the three Lagrange equations and show that they are exactly what you would expect.\n(See Section 7.1 Notes)\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m(\\dot{x}^2 + \\dot{y}^2 + \\dot{z}^2) - mgz\\). The equations are: - \\(x\\): \\(\\frac{d}{dt}(m\\dot{x}) = 0 \\implies \\ddot{x} = 0\\) - \\(y\\): \\(\\frac{d}{dt}(m\\dot{y}) = 0 \\implies \\ddot{y} = 0\\) - \\(z\\): \\(\\frac{d}{dt}(m\\dot{z}) = -mg \\implies \\ddot{z} = -g\\) These are the standard equations of motion for a projectile.\n\n\n\nStatement: Write down the Lagrangian for a one-dimensional particle moving along the \\(x\\) axis and subject to a force \\(F = -kx\\) (with \\(k\\) positive). Find the Lagrange equation of motion and solve it.\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m\\dot{x}^2 - \\frac{1}{2}kx^2\\). Equation: \\(-kx = m\\ddot{x} \\implies \\ddot{x} + \\omega^2 x = 0\\). Solution is simple harmonic motion \\(x(t) = A\\cos(\\omega t - \\delta)\\).\n\n\n\nStatement: Consider a mass \\(m\\) moving in two dimensions with potential energy \\(U(x, y) = \\frac{1}{2}kr^2\\), where \\(r^2 = x^2 + y^2\\). Write down the Lagrangian and find the two Lagrange equations of motion. Describe their solutions.\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m(\\dot{x}^2 + \\dot{y}^2) - \\frac{1}{2}k(x^2 + y^2)\\). Equations: \\(m\\ddot{x} = -kx\\) and \\(m\\ddot{y} = -ky\\). Both \\(x\\) and \\(y\\) undergo independent simple harmonic motion with the same frequency.\n\n\n\nStatement: Mass \\(m\\) moving in a frictionless plane that slopes at angle \\(\\alpha\\). Write down the Lagrangian in terms of \\(x\\) (horizontally across slope) and \\(y\\) (down slope).\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m(\\dot{x}^2 + \\dot{y}^2) + mgy\\sin\\alpha\\). Equations: \\(m\\ddot{x} = 0\\) and \\(m\\ddot{y} = mg\\sin\\alpha\\).\n\n\n\nStatement: Show that the \\(3N\\) Newtonian equations are exactly equivalent to the \\(3N\\) Lagrange equations in Cartesian coordinates, establishing Hamilton’s principle."
+  },
+  {
+    "objectID": "solutions/taylor-chapter-7-problems.html#section-7.3-constrained-systems-in-general",
+    "href": "solutions/taylor-chapter-7-problems.html#section-7.3-constrained-systems-in-general",
+    "title": "Taylor Chapter 7 Problems: Lagrange’s Equations",
+    "section": "",
+    "text": "Statement: Bead threaded on a rigid circular hoop of radius \\(R\\) in the \\(xy\\) plane. Use the angle \\(\\phi\\). Write equations giving \\((x, y)\\) in terms of \\(\\phi\\).\n(See Section 7.3 Notes)\nSolution: \\(x = R\\cos\\phi, \\quad y = R\\sin\\phi\\). Generalized coordinate is just \\(\\phi\\).\n\n\n\nStatement: Particle on the surface of a circular cone, axis on \\(z\\), half-angle \\(\\alpha\\).\nSolution: Using cylindrical \\(( \\rho, \\phi, z )\\): \\(z = \\rho \\cot \\alpha\\). The coordinates are \\((\\rho, \\phi)\\). \\(x = \\rho\\cos\\phi\\), \\(y = \\rho\\sin\\phi\\), \\(z = \\rho\\cot\\alpha\\)."
+  },
+  {
+    "objectID": "solutions/taylor-chapter-7-problems.html#section-7.4-proof-of-lagranges-equations-with-constraints",
+    "href": "solutions/taylor-chapter-7-problems.html#section-7.4-proof-of-lagranges-equations-with-constraints",
+    "title": "Taylor Chapter 7 Problems: Lagrange’s Equations",
+    "section": "",
+    "text": "Statement: Modify Lagrange’s equations to include a nonconservative force \\(F_{\\text{fric}}\\).\n(See Section 7.4 Notes)\nSolution: \\(\\frac{\\partial \\mathcal{L}}{\\partial x} + F_{\\text{fric}} = \\frac{d}{dt} \\frac{\\partial \\mathcal{L}}{\\partial \\dot{x}}\\).\n\n\n\nStatement: Prove Lagrange’s equations for two particles subject to various constraints, using the property that constraint forces do zero net work."
+  },
+  {
+    "objectID": "solutions/taylor-chapter-7-problems.html#section-7.5-examples-of-lagranges-equations",
+    "href": "solutions/taylor-chapter-7-problems.html#section-7.5-examples-of-lagranges-equations",
+    "title": "Taylor Chapter 7 Problems: Lagrange’s Equations",
+    "section": "",
+    "text": "Statement: Massless string wrapped around a uniform cylinder (mass \\(m\\), radius \\(R\\)). Find acceleration.\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m\\dot{x}^2 + \\frac{1}{2}(\\frac{1}{2}mR^2)\\omega^2 - (-mgx)\\). Since \\(x = R\\phi\\), \\(\\omega = \\dot{x}/R\\). \\(\\mathcal{L} = \\frac{3}{4}m\\dot{x}^2 + mgx\\). Equation: \\(mg = \\frac{3}{2}m\\ddot{x} \\implies \\ddot{x} = \\frac{2}{3}g\\).\n\n\n\n(Standard problems: Mass on table attached to hanging mass, Cylinder rolling down incline, Atwood machine with massive pulley).\n\n\n\nStatement: Rod forced to rotate in horizontal plane at constant \\(\\omega\\). Bead on rod.\nSolution: \\(\\mathcal{L} = \\frac{1}{2}m(\\dot{r}^2 + r^2\\omega^2)\\). Equation: \\(m\\ddot{r} = mr\\omega^2\\). Shows centrifugal force accelerating the bead exponentially.\n\n\n\n(Problems verifying stable/unstable equilibria and normal mode frequencies for rotating systems and pendulums attached to wheels.)"
+  },
+  {
+    "objectID": "solutions/taylor-chapter-7-problems.html#section-7.8-more-about-conservation-laws",
+    "href": "solutions/taylor-chapter-7-problems.html#section-7.8-more-about-conservation-laws",
+    "title": "Taylor Chapter 7 Problems: Lagrange’s Equations",
+    "section": "",
+    "text": "Statement: Prove that rotational invariance of \\(\\mathcal{L}\\) implies conservation of total angular momentum.\n(See Section 7.8 Notes)\nSolution: Rotating by \\(\\epsilon\\) around the \\(z\\)-axis changes coordinates. If \\(\\delta \\mathcal{L} = 0\\), the sum of \\(\\frac{\\partial \\mathcal{L}}{\\partial \\phi_\\alpha} = 0 \\implies \\sum \\dot{p}_{\\phi_\\alpha} = 0 \\implies L_z\\) is conserved."
+  },
+  {
+    "objectID": "solutions/taylor-chapter-7-problems.html#section-7.9-lagranges-equations-for-magnetic-forces",
+    "href": "solutions/taylor-chapter-7-problems.html#section-7.9-lagranges-equations-for-magnetic-forces",
+    "title": "Taylor Chapter 7 Problems: Lagrange’s Equations",
+    "section": "",
+    "text": "Statement: Charge \\(q\\) in uniform magnetic field \\(B \\hat{z}\\). Prove \\(B = \\nabla \\times A\\) and find Lagrange equations.\n(See Section 7.9 Notes)\nSolution: \\(A = \\frac{1}{2} B \\times r\\). The Lagrangian involves the vector potential, leading directly to the Lorentz force equation."
+  },
+  {
+    "objectID": "solutions/taylor-chapter-7-problems.html#section-7.10-lagrange-multipliers-and-constraint-forces",
+    "href": "solutions/taylor-chapter-7-problems.html#section-7.10-lagrange-multipliers-and-constraint-forces",
+    "title": "Taylor Chapter 7 Problems: Lagrange’s Equations",
+    "section": "",
+    "text": "Statement: Atwood machine and pendulum solved using Lagrange multipliers \\(\\lambda\\) to find string tensions.\n(See Section 7.10 Notes)\nSolution: For the pendulum, constraint \\(f(x, y) = \\sqrt{x^2 + y^2} = l\\). The multiplier \\(\\lambda\\) represents the constraint force (tension), yielding equations that simultaneously solve the motion and the dynamic tension in the rod."
+  },
+  {
+    "objectID": "solutions/index.html",
+    "href": "solutions/index.html",
+    "title": "Problem Sets & Solutions",
+    "section": "",
+    "text": "Problem Set 1: Bead on a Rotating Wire Hoop\n\n\nAnalytical solution using Lagrangian mechanics and phase portrait stability analysis.\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nTaylor Chapter 6 Problems: Calculus of Variations\n\n\n\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\nIgor\n\n\n\n\n\n\n\n\n\n\n\n\nTaylor Chapter 7 Problems: Lagrange’s Equations\n\n\n\n\n\n\n\n\n\n\n\nSep 8, 2026\n\n\nIgor\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PHYC54H3: Classical Mechanics",
+    "section": "",
+    "text": "Comprehensive course portal featuring interactive computational physics notebooks, Manim animations, lecture derivations, and problem set solutions."
+  },
+  {
+    "objectID": "index.html#course-roadmap",
+    "href": "index.html#course-roadmap",
+    "title": "PHYC54H3: Classical Mechanics",
+    "section": "Course Roadmap",
+    "text": "Course Roadmap\n\n\n\n\n\n\n\n\n\nWeek\nCore Topics\nKey Mathematical Tools\nStatus\n\n\n\n\n01 - 02\nReview of Newtonian Mechanics, Damped & Driven Oscillations\nComplex numbers, ODEs, Green’s functions\nAvailable\n\n\n03 - 04\nCalculus of Variations & Hamilton’s Principle\nFunctional differentiation, Euler-Lagrange, Constraints\nAvailable\n\n\n05 - 06\nCentral Forces, Kepler’s Laws & Orbital Scattering\nEffective potential, Binet equation, Rutherford cross-section\nIn Progress\n\n\n07 - 08\nNon-Inertial Reference Frames & Coriolis Effects\nRotating coordinates, Foucault pendulum, centrifugal potential\nUpcoming\n\n\n09 - 10\nRigid Body Dynamics & The Inertia Tensor\nPrincipal axes, Euler angles, Euler’s equations of motion\nUpcoming\n\n\n11 - 12\nHamiltonian Mechanics, Poisson Brackets & Chaos\nPhase space volume (Liouville’s theorem), Lyapunov exponents\nUpcoming"
+  },
+  {
+    "objectID": "solutions/problem-set-1.html",
+    "href": "solutions/problem-set-1.html",
+    "title": "Problem Set 1: Bead on a Rotating Wire Hoop",
+    "section": "",
+    "text": "A bead of mass \\(m\\) slides without friction on a circular wire hoop of radius \\(R\\). The hoop rotates with a constant angular velocity \\(\\omega\\) about its vertical diameter.\n\nConstruct the Lagrangian \\(\\mathcal{L}(\\theta, \\dot{\\theta})\\).\nDerive the equation of motion for the polar angle \\(\\theta\\).\nDetermine the equilibrium positions and their stability as a function of rotation speed \\(\\omega\\).\nIdentify the pitchfork bifurcation threshold."
+  },
+  {
+    "objectID": "solutions/problem-set-1.html#problem-statement",
+    "href": "solutions/problem-set-1.html#problem-statement",
+    "title": "Problem Set 1: Bead on a Rotating Wire Hoop",
+    "section": "",
+    "text": "A bead of mass \\(m\\) slides without friction on a circular wire hoop of radius \\(R\\). The hoop rotates with a constant angular velocity \\(\\omega\\) about its vertical diameter.\n\nConstruct the Lagrangian \\(\\mathcal{L}(\\theta, \\dot{\\theta})\\).\nDerive the equation of motion for the polar angle \\(\\theta\\).\nDetermine the equilibrium positions and their stability as a function of rotation speed \\(\\omega\\).\nIdentify the pitchfork bifurcation threshold."
+  },
+  {
+    "objectID": "solutions/problem-set-1.html#solution",
+    "href": "solutions/problem-set-1.html#solution",
+    "title": "Problem Set 1: Bead on a Rotating Wire Hoop",
+    "section": "Solution",
+    "text": "Solution\n\n1. Constructing the Lagrangian\nLet \\(\\theta\\) be the angle of the bead measured from the lowest point of the hoop. In spherical coordinates with the origin at the center of the hoop: * \\(x = R \\sin\\theta \\cos(\\omega t)\\) * \\(y = R \\sin\\theta \\sin(\\omega t)\\) * \\(z = -R \\cos\\theta\\)\nTaking time derivatives: \\[\\dot{x} = R \\dot{\\theta} \\cos\\theta \\cos(\\omega t) - R \\omega \\sin\\theta \\sin(\\omega t)\\] \\[\\dot{y} = R \\dot{\\theta} \\cos\\theta \\sin(\\omega t) + R \\omega \\sin\\theta \\cos(\\omega t)\\] \\[\\dot{z} = R \\dot{\\theta} \\sin\\theta\\]\nCalculating \\(v^2 = \\dot{x}^2 + \\dot{y}^2 + \\dot{z}^2\\): \\[v^2 = R^2 \\dot{\\theta}^2 + R^2 \\omega^2 \\sin^2\\theta\\]\n\nKinetic Energy: \\(T = \\frac{1}{2} m R^2 (\\dot{\\theta}^2 + \\omega^2 \\sin^2\\theta)\\)\nPotential Energy: \\(V = mgz = -mgR \\cos\\theta\\)\n\nThe Lagrangian is: \\[\\boxed{\\mathcal{L} = T - V = \\frac{1}{2} m R^2 \\dot{\\theta}^2 + \\frac{1}{2} m R^2 \\omega^2 \\sin^2\\theta + mgR \\cos\\theta}\\]\n\n\n\n2. Equation of Motion\nCompute the Euler-Lagrange derivatives: \\[\\frac{\\partial \\mathcal{L}}{\\partial \\dot{\\theta}} = m R^2 \\dot{\\theta} \\implies \\frac{d}{dt}\\left(\\frac{\\partial \\mathcal{L}}{\\partial \\dot{\\theta}}\\right) = m R^2 \\ddot{\\theta}\\] \\[\\frac{\\partial \\mathcal{L}}{\\partial \\theta} = m R^2 \\omega^2 \\sin\\theta \\cos\\theta - mgR \\sin\\theta\\]\nApplying \\(\\frac{d}{dt}\\frac{\\partial \\mathcal{L}}{\\partial \\dot{\\theta}} - \\frac{\\partial \\mathcal{L}}{\\partial \\theta} = 0\\): \\[m R^2 \\ddot{\\theta} - m R^2 \\omega^2 \\sin\\theta \\cos\\theta + mgR \\sin\\theta = 0\\] \\[\\boxed{\\ddot{\\theta} = \\left( \\omega^2 \\cos\\theta - \\frac{g}{R} \\right) \\sin\\theta}\\]\n\n\n\n3. Equilibrium Positions and Stability Analysis\nEquilibrium occurs when \\(\\ddot{\\theta} = 0\\): \\[\\sin\\theta \\left( \\omega^2 \\cos\\theta - \\frac{g}{R} \\right) = 0\\]\nThis yields two distinct branches of equilibria: 1. \\(\\sin\\theta = 0 \\implies \\theta_0 = 0\\) (bottom) or \\(\\theta_0 = \\pi\\) (top). 2. \\(\\cos\\theta_0 = \\frac{g}{\\omega^2 R}\\) (lateral positions, existing only if \\(\\omega^2 \\ge g/R\\)).\n\nEffective Potential\nRewrite the equation of motion as \\(\\ddot{\\theta} = -\\frac{1}{mR^2} \\frac{dV_{\\text{eff}}}{d\\theta}\\): \\[V_{\\text{eff}}(\\theta) = -mgR \\cos\\theta - \\frac{1}{2} m R^2 \\omega^2 \\sin^2\\theta\\]\nEvaluate the second derivative \\(\\frac{d^2 V_{\\text{eff}}}{d\\theta^2}\\): \\[\\frac{d^2 V_{\\text{eff}}}{d\\theta^2} = mgR \\cos\\theta - m R^2 \\omega^2 \\cos(2\\theta)\\]\nAt the bottom (\\(\\theta = 0\\)): \\[\\left. \\frac{d^2 V_{\\text{eff}}}{d\\theta^2} \\right|_{\\theta=0} = mgR - m R^2 \\omega^2 = m R^2 \\left( \\frac{g}{R} - \\omega^2 \\right)\\]\n\nSubcritical (\\(\\omega &lt; \\sqrt{g/R}\\)): \\(V_{\\text{eff}}''(0) &gt; 0 \\implies\\) Stable minimum.\nSupercritical (\\(\\omega &gt; \\sqrt{g/R}\\)): \\(V_{\\text{eff}}''(0) &lt; 0 \\implies\\) Unstable maximum. The bottom position loses stability!\n\nAt the critical rotation speed \\(\\omega_c = \\sqrt{g/R}\\), the system undergoes a classic supercritical pitchfork bifurcation: the bottom point becomes unstable, and two symmetric stable equilibrium points emerge at: \\[\\boxed{\\theta_0 = \\pm \\arccos\\left(\\frac{g}{\\omega^2 R}\\right)}\\]"
+  },
+  {
+    "objectID": "solutions/taylor-chapter-6-problems.html",
+    "href": "solutions/taylor-chapter-6-problems.html",
+    "title": "Taylor Chapter 6 Problems: Calculus of Variations",
+    "section": "",
+    "text": "For a complete derivation of the theoretical concepts used to solve these problems, refer to the Chapter 6 Lecture Notes."
+  },
+  {
+    "objectID": "simulations/interactive-pendulum-and-verlet.html",
+    "href": "simulations/interactive-pendulum-and-verlet.html",
+    "title": "Interactive Simulations & Multi-Language Integrators",
+    "section": "",
+    "text": "Quarto allows client-side interactive simulations using Observable JS ({ojs}). The simulation runs entirely within your browser via HTML5 Canvas—no Python or server backend required!\nUse the sliders below to adjust the physical parameters and observe the real-time dynamics:\n\n\nCode\nviewof length = Inputs.range([0.5, 3.0], {value: 1.5, step: 0.1, label: \"Pendulum Length (m)\"})\nviewof gravity = Inputs.range([1.0, 25.0], {value: 9.81, step: 0.1, label: \"Gravity g (m/s²)\"})\nviewof damping = Inputs.range([0.0, 0.5], {value: 0.05, step: 0.01, label: \"Damping Factor γ\"})\nviewof initialAngle = Inputs.range([-170, 170], {value: 60, step: 5, label: \"Initial Angle θ₀ (deg)\"})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\ncanvas = {\n  const width = 600;\n  const height = 350;\n  const ctx = DOM.context2d(width, height);\n  \n  let theta = initialAngle * Math.PI / 180;\n  let omega = 0.0;\n  let dt = 0.02;\n  const originX = width / 2;\n  const originY = 50;\n  const scale = 80;\n\n  function step() {\n    // Non-linear pendulum: d²θ/dt² = -(g/L) sin(θ) - γ dθ/dt\n    const alpha = -(gravity / length) * Math.sin(theta) - damping * omega;\n    omega += alpha * dt;\n    theta += omega * dt;\n\n    ctx.clearRect(0, 0, width, height);\n\n    // Pivot support\n    ctx.fillStyle = \"#333\";\n    ctx.fillRect(originX - 40, originY - 10, 80, 10);\n\n    const bobX = originX + length * scale * Math.sin(theta);\n    const bobY = originY + length * scale * Math.cos(theta);\n\n    // Rod\n    ctx.beginPath();\n    ctx.moveTo(originX, originY);\n    ctx.lineTo(bobX, bobY);\n    ctx.strokeStyle = \"#4f46e5\";\n    ctx.lineWidth = 3;\n    ctx.stroke();\n\n    // Pivot pin\n    ctx.beginPath();\n    ctx.arc(originX, originY, 5, 0, 2 * Math.PI);\n    ctx.fillStyle = \"#1e293b\";\n    ctx.fill();\n\n    // Bob\n    ctx.beginPath();\n    ctx.arc(bobX, bobY, 18, 0, 2 * Math.PI);\n    ctx.fillStyle = \"#ef4444\";\n    ctx.shadowColor = \"rgba(0,0,0,0.3)\";\n    ctx.shadowBlur = 8;\n    ctx.fill();\n    ctx.shadowBlur = 0;\n\n    // Display telemetry\n    ctx.fillStyle = \"#0f172a\";\n    ctx.font = \"14px monospace\";\n    ctx.fillText(`θ: ${(theta * 180 / Math.PI).toFixed(1)}°`, 20, 30);\n    ctx.fillText(`ω: ${omega.toFixed(2)} rad/s`, 20, 50);\n    ctx.fillText(`E_mech: ${(0.5 * length * length * omega * omega + gravity * length * (1 - Math.cos(theta))).toFixed(2)} J/kg`, 20, 70);\n  }\n\n  const timer = d3.interval(step, 20);\n  invalidation.then(() =&gt; timer.stop());\n\n  return ctx.canvas;\n}"
+  },
+  {
+    "objectID": "simulations/interactive-pendulum-and-verlet.html#live-in-browser-interactive-simulation-observable-js",
+    "href": "simulations/interactive-pendulum-and-verlet.html#live-in-browser-interactive-simulation-observable-js",
+    "title": "Interactive Simulations & Multi-Language Integrators",
+    "section": "",
+    "text": "Quarto allows client-side interactive simulations using Observable JS ({ojs}). The simulation runs entirely within your browser via HTML5 Canvas—no Python or server backend required!\nUse the sliders below to adjust the physical parameters and observe the real-time dynamics:\n\n\nCode\nviewof length = Inputs.range([0.5, 3.0], {value: 1.5, step: 0.1, label: \"Pendulum Length (m)\"})\nviewof gravity = Inputs.range([1.0, 25.0], {value: 9.81, step: 0.1, label: \"Gravity g (m/s²)\"})\nviewof damping = Inputs.range([0.0, 0.5], {value: 0.05, step: 0.01, label: \"Damping Factor γ\"})\nviewof initialAngle = Inputs.range([-170, 170], {value: 60, step: 5, label: \"Initial Angle θ₀ (deg)\"})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\ncanvas = {\n  const width = 600;\n  const height = 350;\n  const ctx = DOM.context2d(width, height);\n  \n  let theta = initialAngle * Math.PI / 180;\n  let omega = 0.0;\n  let dt = 0.02;\n  const originX = width / 2;\n  const originY = 50;\n  const scale = 80;\n\n  function step() {\n    // Non-linear pendulum: d²θ/dt² = -(g/L) sin(θ) - γ dθ/dt\n    const alpha = -(gravity / length) * Math.sin(theta) - damping * omega;\n    omega += alpha * dt;\n    theta += omega * dt;\n\n    ctx.clearRect(0, 0, width, height);\n\n    // Pivot support\n    ctx.fillStyle = \"#333\";\n    ctx.fillRect(originX - 40, originY - 10, 80, 10);\n\n    const bobX = originX + length * scale * Math.sin(theta);\n    const bobY = originY + length * scale * Math.cos(theta);\n\n    // Rod\n    ctx.beginPath();\n    ctx.moveTo(originX, originY);\n    ctx.lineTo(bobX, bobY);\n    ctx.strokeStyle = \"#4f46e5\";\n    ctx.lineWidth = 3;\n    ctx.stroke();\n\n    // Pivot pin\n    ctx.beginPath();\n    ctx.arc(originX, originY, 5, 0, 2 * Math.PI);\n    ctx.fillStyle = \"#1e293b\";\n    ctx.fill();\n\n    // Bob\n    ctx.beginPath();\n    ctx.arc(bobX, bobY, 18, 0, 2 * Math.PI);\n    ctx.fillStyle = \"#ef4444\";\n    ctx.shadowColor = \"rgba(0,0,0,0.3)\";\n    ctx.shadowBlur = 8;\n    ctx.fill();\n    ctx.shadowBlur = 0;\n\n    // Display telemetry\n    ctx.fillStyle = \"#0f172a\";\n    ctx.font = \"14px monospace\";\n    ctx.fillText(`θ: ${(theta * 180 / Math.PI).toFixed(1)}°`, 20, 30);\n    ctx.fillText(`ω: ${omega.toFixed(2)} rad/s`, 20, 50);\n    ctx.fillText(`E_mech: ${(0.5 * length * length * omega * omega + gravity * length * (1 - Math.cos(theta))).toFixed(2)} J/kg`, 20, 70);\n  }\n\n  const timer = d3.interval(step, 20);\n  invalidation.then(() =&gt; timer.stop());\n\n  return ctx.canvas;\n}"
+  },
+  {
+    "objectID": "simulations/interactive-pendulum-and-verlet.html#high-performance-symplectic-integrator-in-c",
+    "href": "simulations/interactive-pendulum-and-verlet.html#high-performance-symplectic-integrator-in-c",
+    "title": "Interactive Simulations & Multi-Language Integrators",
+    "section": "2. High-Performance Symplectic Integrator in C++",
+    "text": "2. High-Performance Symplectic Integrator in C++\nStandard integrators like Forward Euler or standard Runge-Kutta 4th order (RK4) do not conserve the symplectic 2-form \\(\\omega = \\sum dq_i \\wedge dp_i\\). Over long integration times, non-symplectic integrators suffer from artificial energy drift.\nBelow is a production-grade implementation of the Velocity Verlet (Symplectic Störmer-Verlet) algorithm in C++17:\n// verlet_integrator.cpp\n// Compile: g++ -O3 -std=c++17 verlet_integrator.cpp -o verlet_sim\n#include &lt;iostream&gt;\n#include &lt;vector&gt;\n#include &lt;cmath&gt;\n#include &lt;fstream&gt;\n#include &lt;iomanip&gt;\n\nstruct State {\n    double theta; // generalized coordinate\n    double omega; // generalized velocity\n    double t;\n};\n\nclass SymplecticPendulum {\nprivate:\n    double g;\n    double L;\n    double m;\n\npublic:\n    SymplecticPendulum(double gravity = 9.80665, double length = 1.0, double mass = 1.0)\n        : g(gravity), L(length), m(mass) {}\n\n    // Acceleration a(theta) = - (g / L) * sin(theta)\n    double acceleration(double theta) const {\n        return -(g / L) * std::sin(theta);\n    }\n\n    double totalEnergy(double theta, double omega) const {\n        double kinetic = 0.5 * m * (L * omega) * (L * omega);\n        double potential = m * g * L * (1.0 - std::cos(theta));\n        return kinetic + potential;\n    }\n\n    // Velocity Verlet Step\n    void step(State& s, double dt) const {\n        double a_current = acceleration(s.theta);\n        \n        // 1. Position update: q(t + dt) = q(t) + v(t)*dt + 0.5*a(t)*dt^2\n        s.theta += s.omega * dt + 0.5 * a_current * dt * dt;\n        \n        // 2. New acceleration: a(t + dt)\n        double a_next = acceleration(s.theta);\n        \n        // 3. Velocity update: v(t + dt) = v(t) + 0.5*(a(t) + a(t + dt))*dt\n        s.omega += 0.5 * (a_current + a_next) * dt;\n        s.t += dt;\n    }\n};\n\nint main() {\n    SymplecticPendulum sim(9.80665, 1.0, 1.0);\n    State state = {M_PI / 3.0, 0.0, 0.0}; // 60 degrees release from rest\n    double dt = 0.005;\n    double t_max = 50.0;\n\n    std::ofstream out(\"verlet_trajectory.csv\");\n    out &lt;&lt; \"time,theta,omega,energy\\n\";\n\n    double E0 = sim.totalEnergy(state.theta, state.omega);\n\n    while (state.t &lt;= t_max) {\n        double E = sim.totalEnergy(state.theta, state.omega);\n        out &lt;&lt; std::fixed &lt;&lt; std::setprecision(6)\n            &lt;&lt; state.t &lt;&lt; \",\" &lt;&lt; state.theta &lt;&lt; \",\" &lt;&lt; state.omega &lt;&lt; \",\" &lt;&lt; E &lt;&lt; \"\\n\";\n        sim.step(state, dt);\n    }\n\n    std::cout &lt;&lt; \"Simulation complete. Initial Energy: \" &lt;&lt; E0 \n              &lt;&lt; \" J | Final Energy: \" &lt;&lt; sim.totalEnergy(state.theta, state.omega) \n              &lt;&lt; \" J (Symplectic bound preserved).\" &lt;&lt; std::endl;\n    return 0;\n}"
+  },
+  {
+    "objectID": "simulations/interactive-pendulum-and-verlet.html#high-precision-python-integration-phase-portraits",
+    "href": "simulations/interactive-pendulum-and-verlet.html#high-precision-python-integration-phase-portraits",
+    "title": "Interactive Simulations & Multi-Language Integrators",
+    "section": "3. High-Precision Python Integration & Phase Portraits",
+    "text": "3. High-Precision Python Integration & Phase Portraits\nIn Python, we utilize scipy.integrate.solve_ivp with the Dormand-Prince 8th order (DOP853) method to integrate the non-linear pendulum and plot its phase portrait:\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom scipy.integrate import solve_ivp\n\ndef pendulum_deriv(t, y, g=9.81, L=1.0):\n    theta, omega = y\n    return [omega, -(g / L) * np.sin(theta)]\n\nt_span = (0, 20)\nt_eval = np.linspace(0, 20, 1000)\n\nplt.figure(figsize=(10, 5))\n\n# Plot trajectories for several initial angles\nfor theta0 in [np.pi/6, np.pi/3, np.pi/2, 2.5, 3.1]:\n    sol = solve_ivp(pendulum_deriv, t_span, [theta0, 0.0], t_eval=t_eval, method='DOP853')\n    plt.plot(sol.y[0], sol.y[1], label=f\"$\\\\theta_0 = {theta0:.2f}$ rad\")\n\nplt.title(\"Phase Space Trajectories ($\\\\theta$ vs $\\\\dot{\\\\theta}$)\")\nplt.xlabel(\"Angle $\\\\theta$ (rad)\")\nplt.ylabel(\"Angular Velocity $\\\\dot{\\\\theta}$ (rad/s)\")\nplt.grid(True, linestyle=\"--\", alpha=0.6)\nplt.axvline(x=np.pi, color='r', linestyle=':', label=\"Separatrix Saddle ($\\\\pm \\\\pi$)\")\nplt.axvline(x=-np.pi, color='r', linestyle=':')\nplt.legend(loc=\"upper right\")\nplt.show()"
+  },
+  {
+    "objectID": "simulations/interactive-pendulum-and-verlet.html#fortran-90-symplectic-orbit-integrator",
+    "href": "simulations/interactive-pendulum-and-verlet.html#fortran-90-symplectic-orbit-integrator",
+    "title": "Interactive Simulations & Multi-Language Integrators",
+    "section": "4. Fortran 90 Symplectic Orbit Integrator",
+    "text": "4. Fortran 90 Symplectic Orbit Integrator\nFor ultra-high-throughput orbital mechanics, Fortran remains an industry standard in celestial dynamics:\n! orbit_integrator.f90\n! Compile: gfortran -O3 -march=native orbit_integrator.f90 -o orbit_sim\nprogram kepler_verlet\n    implicit none\n    integer, parameter :: dp = kind(1.0d0)\n    real(dp) :: x, y, vx, vy, ax, ay, r, dt, t, t_end, GM\n    real(dp) :: ax_new, ay_new\n    integer :: step, n_steps\n\n    GM = 4.0_dp * 3.141592653589793_dp**2 ! AU^3 / yr^2\n    x = 1.0_dp; y = 0.0_dp               ! Initial position (1 AU)\n    vx = 0.0_dp; vy = 2.0_dp * 3.141592653589793_dp ! Circular velocity\n\n    dt = 0.001_dp\n    t_end = 10.0_dp\n    n_steps = int(t_end / dt)\n\n    do step = 1, n_steps\n        r = sqrt(x**2 + y**2)\n        ax = -GM * x / (r**3)\n        ay = -GM * y / (r**3)\n\n        x = x + vx * dt + 0.5_dp * ax * dt**2\n        y = y + vy * dt + 0.5_dp * ay * dt**2\n\n        r = sqrt(x**2 + y**2)\n        ax_new = -GM * x / (r**3)\n        ay_new = -GM * y / (r**3)\n\n        vx = vx + 0.5_dp * (ax + ax_new) * dt\n        vy = vy + 0.5_dp * (ay + ay_new) * dt\n    end do\n\n    print *, \"Completed 10 Earth orbits with zero secular energy drift.\"\nend program kepler_verlet"
+  },
+  {
+    "objectID": "reference/computational-methods.html",
+    "href": "reference/computational-methods.html",
+    "title": "Computational Methods for Mechanics",
+    "section": "",
+    "text": "In classical mechanics, analytic solutions are often impossible for systems that exhibit nonlinear dynamics, chaos, or lack conservation laws (e.g., the double pendulum, the 3-body problem, or driven damped oscillators). For these, we rely on numerical integration of Ordinary Differential Equations (ODEs).\nAny \\(n\\)-th order ODE can be reduced to a system of \\(n\\) first-order ODEs. For Newton’s second law \\(\\ddot{\\mathbf{x}} = \\mathbf{F}(\\mathbf{x}, \\mathbf{v}, t)/m\\), we define the state vector \\(\\mathbf{Y} = [\\mathbf{x}, \\mathbf{v}]^T\\): \\[ \\frac{d\\mathbf{Y}}{dt} = \\begin{bmatrix} \\mathbf{v} \\\\ \\mathbf{a} \\end{bmatrix} = \\begin{bmatrix} \\mathbf{v} \\\\ \\mathbf{F}/m \\end{bmatrix} \\]"
+  },
+  {
+    "objectID": "reference/computational-methods.html#the-velocity-verlet-method",
+    "href": "reference/computational-methods.html#the-velocity-verlet-method",
+    "title": "Computational Methods for Mechanics",
+    "section": "The Velocity Verlet Method",
+    "text": "The Velocity Verlet Method\nUsed extensively in molecular dynamics and astrophysics: 1. Update position by a half-step and full-step acceleration: \\[ \\mathbf{x}_{n+1} = \\mathbf{x}_n + \\mathbf{v}_n \\Delta t + \\frac{1}{2}\\mathbf{a}_n \\Delta t^2 \\] 2. Calculate new forces/accelerations based on new position: \\[ \\mathbf{a}_{n+1} = \\frac{1}{m} \\mathbf{F}(\\mathbf{x}_{n+1}) \\] 3. Update velocity using the average of old and new accelerations: \\[ \\mathbf{v}_{n+1} = \\mathbf{v}_n + \\frac{1}{2}(\\mathbf{a}_n + \\mathbf{a}_{n+1}) \\Delta t \\]\n\n\nCode\nimport numpy as np\n\ndef velocity_verlet(x0, v0, force_func, m, dt, steps):\n    x = np.zeros(steps)\n    v = np.zeros(steps)\n    x[0], v[0] = x0, v0\n    \n    a = force_func(x0) / m\n    for i in range(steps - 1):\n        x[i+1] = x[i] + v[i]*dt + 0.5*a*dt**2\n        a_next = force_func(x[i+1]) / m\n        v[i+1] = v[i] + 0.5*(a + a_next)*dt\n        a = a_next\n        \n    return x, v"
+  },
+  {
+    "objectID": "reference/computational-methods.html#leetcode-mathematical-simulation-problems",
+    "href": "reference/computational-methods.html#leetcode-mathematical-simulation-problems",
+    "title": "Computational Methods for Mechanics",
+    "section": "LeetCode Mathematical & Simulation Problems",
+    "text": "LeetCode Mathematical & Simulation Problems\nWhile LeetCode primarily focuses on software engineering interviews, several hard problems test applied mathematics, geometry, and discrete simulations: * Max Points on a Line (149) - 2D geometry and precision issues. * Erect the Fence (587) - Convex hull algorithms (Monotone Chain / Graham Scan). * Water and Jug Problem (365) - Diophantine equations and state-space search. * Poor Pigs (458) - Information theory and states."
+  },
+  {
+    "objectID": "reference/computational-methods.html#codeforces-math-geometry-tags",
+    "href": "reference/computational-methods.html#codeforces-math-geometry-tags",
+    "title": "Computational Methods for Mechanics",
+    "section": "Codeforces Math & Geometry Tags",
+    "text": "Codeforces Math & Geometry Tags\nCodeforces features exceptionally difficult mathematical and geometric tasks that require deep knowledge of linear algebra, calculus, and discrete math. * Geometry: Problems tagged geometry often require implementing vector math (cross products, dot products) without floating-point errors. * Codeforces Problemset: Tag = geometry * Math & Matrices: Problems tagged math or matrices often require fast matrix exponentiation, linear recurrences, and modular arithmetic, highly relevant for discrete time steps and state space matrices in physics. * Codeforces Problemset: Tag = math * Codeforces Problemset: Tag = matrices"
+  },
+  {
+    "objectID": "reference/physical-constants-and-data.html",
+    "href": "reference/physical-constants-and-data.html",
+    "title": "Physical Constants & Astronomical Data",
+    "section": "",
+    "text": "Constant\nSymbol\nValue\nUnits (SI)\n\n\n\n\nSpeed of Light in Vacuum\n\\(c\\)\n\\(2.99792458 \\times 10^8\\)\n\\(\\text{m s}^{-1}\\)\n\n\nNewtonian Constant of Gravitation\n\\(G\\)\n\\(6.67430 \\times 10^{-11}\\)\n\\(\\text{m}^3 \\text{kg}^{-1} \\text{s}^{-2}\\)\n\n\nPlanck Constant\n\\(h\\)\n\\(6.62607015 \\times 10^{-34}\\)\n\\(\\text{J s}\\)\n\n\nReduced Planck Constant\n\\(\\hbar = h/2\\pi\\)\n\\(1.054571817 \\times 10^{-34}\\)\n\\(\\text{J s}\\)\n\n\nElementary Charge\n\\(e\\)\n\\(1.602176634 \\times 10^{-19}\\)\n\\(\\text{C}\\)\n\n\nBoltzmann Constant\n\\(k_B\\)\n\\(1.380649 \\times 10^{-23}\\)\n\\(\\text{J K}^{-1}\\)\n\n\nAvogadro Constant\n\\(N_A\\)\n\\(6.02214076 \\times 10^{23}\\)\n\\(\\text{mol}^{-1}\\)\n\n\nIdeal Gas Constant\n\\(R = N_A k_B\\)\n\\(8.314462618\\)\n\\(\\text{J mol}^{-1} \\text{K}^{-1}\\)\n\n\nVacuum Permittivity\n\\(\\epsilon_0\\)\n\\(8.85418781 \\times 10^{-12}\\)\n\\(\\text{F m}^{-1}\\)\n\n\nVacuum Permeability\n\\(\\mu_0\\)\n\\(1.25663706 \\times 10^{-6}\\)\n\\(\\text{N A}^{-2}\\)"
+  },
+  {
+    "objectID": "reference/physical-constants-and-data.html#energy",
+    "href": "reference/physical-constants-and-data.html#energy",
+    "title": "Physical Constants & Astronomical Data",
+    "section": "Energy",
+    "text": "Energy\n\n\\(1 \\text{ eV} = 1.602176634 \\times 10^{-19} \\text{ J}\\)\n\\(1 \\text{ erg} = 10^{-7} \\text{ J}\\)\n\\(1 \\text{ calorie} = 4.184 \\text{ J}\\)"
+  },
+  {
+    "objectID": "reference/physical-constants-and-data.html#distance",
+    "href": "reference/physical-constants-and-data.html#distance",
+    "title": "Physical Constants & Astronomical Data",
+    "section": "Distance",
+    "text": "Distance\n\n\\(1 \\text{ Angstrom (\\AA)} = 10^{-10} \\text{ m}\\)\n\\(1 \\text{ Astronomical Unit (AU)} = 1.495978707 \\times 10^{11} \\text{ m}\\)\n\\(1 \\text{ Light Year (ly)} = 9.4607 \\times 10^{15} \\text{ m}\\)\n\\(1 \\text{ Parsec (pc)} = 3.0857 \\times 10^{16} \\text{ m} = 3.26 \\text{ ly}\\)"
+  },
+  {
+    "objectID": "reference/physical-constants-and-data.html#pressure",
+    "href": "reference/physical-constants-and-data.html#pressure",
+    "title": "Physical Constants & Astronomical Data",
+    "section": "Pressure",
+    "text": "Pressure\n\n\\(1 \\text{ Atmosphere (atm)} = 101,325 \\text{ Pa}\\)\n\\(1 \\text{ bar} = 100,000 \\text{ Pa}\\)\n\\(1 \\text{ Torr (mmHg)} = 133.322 \\text{ Pa}\\)"
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html",
+    "href": "reference/vector-calculus-and-identities.html",
+    "title": "Vector Calculus & Identities",
+    "section": "",
+    "text": "Let \\(\\mathbf{A}, \\mathbf{B}, \\mathbf{C}\\) be vectors in 3D space.\n\n\n\\[ \\mathbf{A} \\cdot \\mathbf{B} = A_x B_x + A_y B_y + A_z B_z = |\\mathbf{A}| |\\mathbf{B}| \\cos\\theta \\] \\[ \\mathbf{A} \\times \\mathbf{B} = \\det \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix} \\] \\[ |\\mathbf{A} \\times \\mathbf{B}| = |\\mathbf{A}| |\\mathbf{B}| \\sin\\theta \\]\n\n\n\nScalar Triple Product (Volume of parallelepiped): \\[ \\mathbf{A} \\cdot (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B} \\cdot (\\mathbf{C} \\times \\mathbf{A}) = \\mathbf{C} \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\det \\begin{vmatrix} A_x & A_y & A_z \\\\ B_x & B_y & B_z \\\\ C_x & C_y & C_z \\end{vmatrix} \\]\nVector Triple Product (BAC-CAB Rule): \\[ \\mathbf{A} \\times (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B}(\\mathbf{A} \\cdot \\mathbf{C}) - \\mathbf{C}(\\mathbf{A} \\cdot \\mathbf{B}) \\]"
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html#dot-and-cross-products",
+    "href": "reference/vector-calculus-and-identities.html#dot-and-cross-products",
+    "title": "Vector Calculus & Identities",
+    "section": "",
+    "text": "\\[ \\mathbf{A} \\cdot \\mathbf{B} = A_x B_x + A_y B_y + A_z B_z = |\\mathbf{A}| |\\mathbf{B}| \\cos\\theta \\] \\[ \\mathbf{A} \\times \\mathbf{B} = \\det \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix} \\] \\[ |\\mathbf{A} \\times \\mathbf{B}| = |\\mathbf{A}| |\\mathbf{B}| \\sin\\theta \\]"
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html#triple-products",
+    "href": "reference/vector-calculus-and-identities.html#triple-products",
+    "title": "Vector Calculus & Identities",
+    "section": "",
+    "text": "Scalar Triple Product (Volume of parallelepiped): \\[ \\mathbf{A} \\cdot (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B} \\cdot (\\mathbf{C} \\times \\mathbf{A}) = \\mathbf{C} \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\det \\begin{vmatrix} A_x & A_y & A_z \\\\ B_x & B_y & B_z \\\\ C_x & C_y & C_z \\end{vmatrix} \\]\nVector Triple Product (BAC-CAB Rule): \\[ \\mathbf{A} \\times (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B}(\\mathbf{A} \\cdot \\mathbf{C}) - \\mathbf{C}(\\mathbf{A} \\cdot \\mathbf{B}) \\]"
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html#operations",
+    "href": "reference/vector-calculus-and-identities.html#operations",
+    "title": "Vector Calculus & Identities",
+    "section": "Operations",
+    "text": "Operations\n\nGradient (Scalar \\(f \\to\\) Vector): \\[ \\nabla f = \\frac{\\partial f}{\\partial x}\\mathbf{\\hat{i}} + \\frac{\\partial f}{\\partial y}\\mathbf{\\hat{j}} + \\frac{\\partial f}{\\partial z}\\mathbf{\\hat{k}} \\]\nDivergence (Vector \\(\\mathbf{A} \\to\\) Scalar): \\[ \\nabla \\cdot \\mathbf{A} = \\frac{\\partial A_x}{\\partial x} + \\frac{\\partial A_y}{\\partial y} + \\frac{\\partial A_z}{\\partial z} \\]\nCurl (Vector \\(\\mathbf{A} \\to\\) Vector): \\[ \\nabla \\times \\mathbf{A} = \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ \\frac{\\partial}{\\partial x} & \\frac{\\partial}{\\partial y} & \\frac{\\partial}{\\partial z} \\\\ A_x & A_y & A_z \\end{vmatrix} \\]\nLaplacian (Scalar \\(f \\to\\) Scalar): \\[ \\nabla^2 f = \\nabla \\cdot (\\nabla f) = \\frac{\\partial^2 f}{\\partial x^2} + \\frac{\\partial^2 f}{\\partial y^2} + \\frac{\\partial^2 f}{\\partial z^2} \\]"
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html#product-rules",
+    "href": "reference/vector-calculus-and-identities.html#product-rules",
+    "title": "Vector Calculus & Identities",
+    "section": "Product Rules",
+    "text": "Product Rules\n\\[ \\nabla(fg) = f\\nabla g + g\\nabla f \\] \\[ \\nabla \\cdot (f\\mathbf{A}) = f(\\nabla \\cdot \\mathbf{A}) + \\mathbf{A} \\cdot (\\nabla f) \\] \\[ \\nabla \\times (f\\mathbf{A}) = f(\\nabla \\times \\mathbf{A}) + (\\nabla f) \\times \\mathbf{A} \\] \\[ \\nabla \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\mathbf{B} \\cdot (\\nabla \\times \\mathbf{A}) - \\mathbf{A} \\cdot (\\nabla \\times \\mathbf{B}) \\] \\[ \\nabla(\\mathbf{A} \\cdot \\mathbf{B}) = \\mathbf{A} \\times (\\nabla \\times \\mathbf{B}) + \\mathbf{B} \\times (\\nabla \\times \\mathbf{A}) + (\\mathbf{A} \\cdot \\nabla)\\mathbf{B} + (\\mathbf{B} \\cdot \\nabla)\\mathbf{A} \\]"
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html#second-derivatives",
+    "href": "reference/vector-calculus-and-identities.html#second-derivatives",
+    "title": "Vector Calculus & Identities",
+    "section": "Second Derivatives",
+    "text": "Second Derivatives\nCurl of a Gradient is zero: \\[ \\nabla \\times (\\nabla f) = 0 \\] (If \\(\\nabla \\times \\mathbf{F} = 0\\), then \\(\\mathbf{F}\\) is conservative and \\(\\mathbf{F} = -\\nabla U\\).)\nDivergence of a Curl is zero: \\[ \\nabla \\cdot (\\nabla \\times \\mathbf{A}) = 0 \\] (If \\(\\nabla \\cdot \\mathbf{B} = 0\\), then \\(\\mathbf{B}\\) can be written as the curl of a vector potential \\(\\mathbf{A}\\).)\nCurl of a Curl: \\[ \\nabla \\times (\\nabla \\times \\mathbf{A}) = \\nabla(\\nabla \\cdot \\mathbf{A}) - \\nabla^2\\mathbf{A} \\]"
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html#divergence-theorem-gausss-theorem",
+    "href": "reference/vector-calculus-and-identities.html#divergence-theorem-gausss-theorem",
+    "title": "Vector Calculus & Identities",
+    "section": "Divergence Theorem (Gauss’s Theorem)",
+    "text": "Divergence Theorem (Gauss’s Theorem)\nRelates a volume integral to a surface integral over the closed boundary \\(S\\): \\[ \\iiint_V (\\nabla \\cdot \\mathbf{A}) \\, dV = \\iint_S \\mathbf{A} \\cdot d\\mathbf{a} \\]"
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html#stokes-theorem",
+    "href": "reference/vector-calculus-and-identities.html#stokes-theorem",
+    "title": "Vector Calculus & Identities",
+    "section": "Stokes’ Theorem",
+    "text": "Stokes’ Theorem\nRelates a surface integral to a line integral around the closed bounding curve \\(C\\): \\[ \\iint_S (\\nabla \\times \\mathbf{A}) \\cdot d\\mathbf{a} = \\oint_C \\mathbf{A} \\cdot d\\mathbf{l} \\]"
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html#gradient-theorem-fundamental-theorem-of-calculus-for-line-integrals",
+    "href": "reference/vector-calculus-and-identities.html#gradient-theorem-fundamental-theorem-of-calculus-for-line-integrals",
+    "title": "Vector Calculus & Identities",
+    "section": "Gradient Theorem (Fundamental Theorem of Calculus for Line Integrals)",
+    "text": "Gradient Theorem (Fundamental Theorem of Calculus for Line Integrals)\n\\[ \\int_a^b (\\nabla f) \\cdot d\\mathbf{l} = f(b) - f(a) \\]"
+  },
+  {
+    "objectID": "notes/taylor-chapter-16-continuum-mechanics.html",
+    "href": "notes/taylor-chapter-16-continuum-mechanics.html",
+    "title": "Taylor Chapter 16: Continuum Mechanics",
+    "section": "",
+    "text": "(Content for this chapter to be written in Week 12 according to the syllabus.)"
+  },
+  {
+    "objectID": "notes/taylor-chapter-9-noninertial-frames.html",
+    "href": "notes/taylor-chapter-9-noninertial-frames.html",
+    "title": "Taylor Chapter 9: Mechanics in Noninertial Frames",
+    "section": "",
+    "text": "(Content for this chapter to be written in Weeks 6-8 according to the syllabus.)"
   },
   {
     "objectID": "notes/taylor-chapter-6-calculus-of-variations.html",
@@ -502,5 +537,12 @@
     "title": "Taylor Chapter 6: Calculus of Variations",
     "section": "",
     "text": "If the functional depends on multiple functions \\(y_1(x), y_2(x), \\dots, y_n(x)\\), \\[ S = \\int_{x_1}^{x_2} f(y_1, \\dots, y_n, y_1', \\dots, y_n', x) \\, dx \\] we can vary each function independently. This leads to a system of \\(n\\) independent Euler-Lagrange equations: \\[ \\frac{\\partial f}{\\partial y_i} - \\frac{d}{dx} \\frac{\\partial f}{\\partial y_i'} = 0 \\quad \\text{for } i = 1, 2, \\dots, n \\]\nThis extension is crucial for Lagrangian mechanics in 3D space, where we have coordinates \\(x(t), y(t), z(t)\\), and time \\(t\\) plays the role of the independent variable.\n\nProblem 6.22 (Fermat’s Principle): Fermat’s principle states that light travels between two points along the path that requires the least time. Show that this leads to Snell’s Law \\(n_1 \\sin\\theta_1 = n_2 \\sin\\theta_2\\) for light crossing a boundary between media with refractive indices \\(n_1\\) and \\(n_2\\). Hint: Time \\(t = \\int \\frac{ds}{v} = \\int \\frac{n(y)}{c} \\sqrt{1+y'^2} dx\\). Use the Beltrami identity since \\(f\\) doesn’t depend on \\(x\\).\n\n\nSummary The calculus of variations allows us to find stationary paths for functionals. The fundamental tool is the Euler-Lagrange equation, which converts a global variational problem into a local differential equation. This mathematical foundation is what allows us to formulate Lagrangian mechanics based on Hamilton’s Principle of stationary action."
+  },
+  {
+    "objectID": "notes/taylor-chapter-13-hamiltonian-mechanics.html",
+    "href": "notes/taylor-chapter-13-hamiltonian-mechanics.html",
+    "title": "Taylor Chapter 13: Hamiltonian Mechanics",
+    "section": "",
+    "text": "(Content for this chapter to be written in Weeks 4-5 according to the syllabus.)"
   }
 ]
