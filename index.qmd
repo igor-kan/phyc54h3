@@ -1,0 +1,46 @@
+---
+title: "PHYC54H3: Classical Mechanics"
+subtitle: "Analytical dynamics, variational principles, central force motion, rigid body rotations, and chaos."
+page-layout: full
+---
+
+::: {.hero-banner}
+# PHYC54H3: Advanced Classical Mechanics
+### University of Toronto Scarborough
+Comprehensive course portal featuring interactive computational physics notebooks, Manim animations, lecture derivations, and problem set solutions.
+:::
+
+::: {.card-grid}
+::: {.course-card}
+### 📚 [Lecture Notes](notes/index.qmd)
+Rigorous derivations of the Euler-Lagrange equations, Hamilton's canonical equations, Poisson brackets, and canonical transformations.
+:::
+
+::: {.course-card}
+### ✏️ [Problem Sets](solutions/index.qmd)
+Full step-by-step solutions to homework problem sets, midterm review problems, and textbook exercises.
+:::
+
+::: {.course-card}
+### 💻 [Simulations & Code](simulations/index.qmd)
+Numerical integration of the double pendulum, Runge-Kutta 4th-order (RK4) orbital mechanics, and phase-space attractors in Python.
+:::
+
+::: {.course-card}
+### 🎬 [Manim Visualizations](manim/index.qmd)
+Programmatically rendered mathematical animations showcasing brachistochrone trajectories, Keplerian precession, and normal modes.
+:::
+:::
+
+---
+
+## Course Roadmap
+
+| Week | Core Topics | Key Mathematical Tools | Status |
+| :--- | :--- | :--- | :--- |
+| **01 - 02** | Review of Newtonian Mechanics, Damped & Driven Oscillations | Complex numbers, ODEs, Green's functions | Available |
+| **03 - 04** | Calculus of Variations & Hamilton's Principle | Functional differentiation, Euler-Lagrange, Constraints | Available |
+| **05 - 06** | Central Forces, Kepler's Laws & Orbital Scattering | Effective potential, Binet equation, Rutherford cross-section | In Progress |
+| **07 - 08** | Non-Inertial Reference Frames & Coriolis Effects | Rotating coordinates, Foucault pendulum, centrifugal potential | Upcoming |
+| **09 - 10** | Rigid Body Dynamics & The Inertia Tensor | Principal axes, Euler angles, Euler's equations of motion | Upcoming |
+| **11 - 12** | Hamiltonian Mechanics, Poisson Brackets & Chaos | Phase space volume (Liouville's theorem), Lyapunov exponents | Upcoming |

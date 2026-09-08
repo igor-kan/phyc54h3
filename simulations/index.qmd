@@ -1,0 +1,9 @@
+---
+title: "Computational Physics & Simulations"
+description: "Interactive Python simulations, numerical integrators, and phase space plots."
+listing:
+  contents: "*.qmd"
+  sort: "date desc"
+  type: default
+page-layout: full
+---

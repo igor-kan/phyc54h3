@@ -1,0 +1,11 @@
+_site/
+.quarto/
+_freeze/
+*.pyc
+__pycache__/
+.venv/
+env/
+.DS_Store
+.ipynb_checkpoints/
+media/
+videos/

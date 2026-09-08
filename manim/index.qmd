@@ -1,0 +1,22 @@
+---
+title: "Manim Mathematical Animations"
+description: "Programmatically generated animations illustrating Classical Mechanics concepts."
+format:
+  html:
+    toc: true
+---
+
+## Visualizing Dynamics with Manim
+
+This section contains Python scripts using the **Manim** engine (developed by Grant Sanderson of 3Blue1Brown) to animate mathematical physics theorems.
+
+### Available Animations
+
+1. **`pendulum_scene.py`**: Animates the simple and double pendulum phase space and motion.
+2. **`brachistochrone_scene.py`**: Races three balls along a cycloid, straight line, and parabola to visually demonstrate the Euler-Lagrange time optimization.
+3. **`kepler_precession.py`**: Visualizes orbital precession under non-inverse-square perturbations ($V(r) \sim -1/r^{1+\epsilon}$).
+
+To render a scene locally:
+```bash
+manim -pql manim/pendulum_scene.py DoublePendulumScene
+```

@@ -1,0 +1,27 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "PHYC54H3: Classical Mechanics"
+  description: "Lecture notes, analytical derivations, Python simulations, Manim animations, and problem set solutions for UTSC PHYC54."
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: notes/index.qmd
+        text: Lecture Notes
+      - href: solutions/index.qmd
+        text: Problem Sets
+      - href: simulations/index.qmd
+        text: Simulations & Code
+      - href: manim/index.qmd
+        text: Manim Videos
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-depth: 3
+    math: true

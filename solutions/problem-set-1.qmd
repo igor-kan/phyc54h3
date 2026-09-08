@@ -1,0 +1,83 @@
+---
+title: "Problem Set 1: Bead on a Rotating Wire Hoop"
+subtitle: "Analytical solution using Lagrangian mechanics and phase portrait stability analysis."
+date: "2026-09-08"
+categories: ["Lagrangian Mechanics", "Bifurcations", "Phase Portrait"]
+format:
+  html:
+    math: true
+---
+
+## Problem Statement
+
+A bead of mass $m$ slides without friction on a circular wire hoop of radius $R$. The hoop rotates with a constant angular velocity $\omega$ about its vertical diameter. 
+
+1.  Construct the Lagrangian $\mathcal{L}(\theta, \dot{\theta})$.
+2.  Derive the equation of motion for the polar angle $\theta$.
+3.  Determine the equilibrium positions and their stability as a function of rotation speed $\omega$.
+4.  Identify the pitchfork bifurcation threshold.
+
+---
+
+## Solution
+
+### 1. Constructing the Lagrangian
+
+Let $\theta$ be the angle of the bead measured from the lowest point of the hoop.
+In spherical coordinates with the origin at the center of the hoop:
+*   $x = R \sin\theta \cos(\omega t)$
+*   $y = R \sin\theta \sin(\omega t)$
+*   $z = -R \cos\theta$
+
+Taking time derivatives:
+$$\dot{x} = R \dot{\theta} \cos\theta \cos(\omega t) - R \omega \sin\theta \sin(\omega t)$$
+$$\dot{y} = R \dot{\theta} \cos\theta \sin(\omega t) + R \omega \sin\theta \cos(\omega t)$$
+$$\dot{z} = R \dot{\theta} \sin\theta$$
+
+Calculating $v^2 = \dot{x}^2 + \dot{y}^2 + \dot{z}^2$:
+$$v^2 = R^2 \dot{\theta}^2 + R^2 \omega^2 \sin^2\theta$$
+
+*   Kinetic Energy: $T = \frac{1}{2} m R^2 (\dot{\theta}^2 + \omega^2 \sin^2\theta)$
+*   Potential Energy: $V = mgz = -mgR \cos\theta$
+
+The Lagrangian is:
+$$\boxed{\mathcal{L} = T - V = \frac{1}{2} m R^2 \dot{\theta}^2 + \frac{1}{2} m R^2 \omega^2 \sin^2\theta + mgR \cos\theta}$$
+
+---
+
+### 2. Equation of Motion
+
+Compute the Euler-Lagrange derivatives:
+$$\frac{\partial \mathcal{L}}{\partial \dot{\theta}} = m R^2 \dot{\theta} \implies \frac{d}{dt}\left(\frac{\partial \mathcal{L}}{\partial \dot{\theta}}\right) = m R^2 \ddot{\theta}$$
+$$\frac{\partial \mathcal{L}}{\partial \theta} = m R^2 \omega^2 \sin\theta \cos\theta - mgR \sin\theta$$
+
+Applying $\frac{d}{dt}\frac{\partial \mathcal{L}}{\partial \dot{\theta}} - \frac{\partial \mathcal{L}}{\partial \theta} = 0$:
+$$m R^2 \ddot{\theta} - m R^2 \omega^2 \sin\theta \cos\theta + mgR \sin\theta = 0$$
+$$\boxed{\ddot{\theta} = \left( \omega^2 \cos\theta - \frac{g}{R} \right) \sin\theta}$$
+
+---
+
+### 3. Equilibrium Positions and Stability Analysis
+
+Equilibrium occurs when $\ddot{\theta} = 0$:
+$$\sin\theta \left( \omega^2 \cos\theta - \frac{g}{R} \right) = 0$$
+
+This yields two distinct branches of equilibria:
+1.  $\sin\theta = 0 \implies \theta_0 = 0$ (bottom) or $\theta_0 = \pi$ (top).
+2.  $\cos\theta_0 = \frac{g}{\omega^2 R}$ (lateral positions, existing only if $\omega^2 \ge g/R$).
+
+#### Effective Potential
+Rewrite the equation of motion as $\ddot{\theta} = -\frac{1}{mR^2} \frac{dV_{\text{eff}}}{d\theta}$:
+$$V_{\text{eff}}(\theta) = -mgR \cos\theta - \frac{1}{2} m R^2 \omega^2 \sin^2\theta$$
+
+Evaluate the second derivative $\frac{d^2 V_{\text{eff}}}{d\theta^2}$:
+$$\frac{d^2 V_{\text{eff}}}{d\theta^2} = mgR \cos\theta - m R^2 \omega^2 \cos(2\theta)$$
+
+At the bottom ($\theta = 0$):
+$$\left. \frac{d^2 V_{\text{eff}}}{d\theta^2} \right|_{\theta=0} = mgR - m R^2 \omega^2 = m R^2 \left( \frac{g}{R} - \omega^2 \right)$$
+
+*   **Subcritical ($\omega < \sqrt{g/R}$):** $V_{\text{eff}}''(0) > 0 \implies$ **Stable minimum**.
+*   **Supercritical ($\omega > \sqrt{g/R}$):** $V_{\text{eff}}''(0) < 0 \implies$ **Unstable maximum**. The bottom position loses stability!
+
+At the critical rotation speed $\omega_c = \sqrt{g/R}$, the system undergoes a classic **supercritical pitchfork bifurcation**: the bottom point becomes unstable, and two symmetric stable equilibrium points emerge at:
+$$\boxed{\theta_0 = \pm \arccos\left(\frac{g}{\omega^2 R}\right)}$$

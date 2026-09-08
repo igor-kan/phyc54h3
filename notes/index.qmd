@@ -1,0 +1,10 @@
+---
+title: "PHYC54 Lecture Notes"
+description: "Theoretical frameworks, analytical mechanics, and mathematical physics."
+listing:
+  contents: "*.qmd"
+  sort: "date desc"
+  type: default
+  categories: true
+page-layout: full
+---
