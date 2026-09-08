@@ -1,7 +1,7 @@
 ---
 title: "Mathematical Identities & Calculus"
 subtitle: "Trigonometric and hyperbolic identities, common integrals, derivatives, and Taylor/Maclaurin series expansions."
-date: "2026-09-08"
+date: "2026-08-31"
 date-modified: last-modified
 categories: [math, reference, calculus]
 format:

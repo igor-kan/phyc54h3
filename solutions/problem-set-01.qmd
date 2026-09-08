@@ -1,0 +1,54 @@
+---
+title: "Problem Set #01"
+subtitle: "Calculus of Variations: Taylor Chapter 6 (Sections 1-4)"
+date: "2026-09-08T14:55:00"
+date-modified: last-modified
+categories: [problem-set, calculus-of-variations, tutorial]
+format:
+  html:
+    toc: true
+    math: true
+---
+
+::: {.callout-note}
+### Assignment Details
+**Due:** Sep 17 by 12:00 p.m.  
+**Points:** None (Preparation for Tutorial #01)  
+**Available:** Sep 8 at 2:55 p.m.  
+**Required Reading:** Chapter 6; Sections 1 - 4  
+
+*This is the material you must prepare for Tutorial #01.*
+:::
+
+## Exercises ★
+
+### Problem 6.1
+The shortest path between two points on a curved surface, such as the surface of a sphere, is called a geodesic. To find a geodesic, one has first to set up an integral that gives the length of a path on the surface in question. Use spherical polar coordinates $(r, \theta, \phi)$ to show that the length of a path joining two points on a sphere of radius $R$ is
+$$ L = R \int_{\theta_1}^{\theta_2} \sqrt{1 + \sin^2\theta \ (\phi')^2} \, d\theta $$
+if $(\theta_1, \phi_1)$ and $(\theta_2, \phi_2)$ specify the two points and we assume that the path is expressed as $\phi = \phi(\theta)$.
+
+### Problem 6.2
+Find the equation of the path $y(x)$ that makes the integral $\int_{x_1}^{x_2} \sqrt{x} \sqrt{1 + (y')^2} \, dx$ stationary.
+
+### Problem 6.7
+Verify that a straight line is the shortest distance between two points in a Euclidean plane. Set up the integral for the length of a path $y(x)$ between two points $(x_1, y_1)$ and $(x_2, y_2)$ and use the Euler-Lagrange equation to show that the minimizing path is $y(x) = mx + c$.
+
+---
+
+## Problems ★★
+
+### Problem 6.4
+Fermat's principle of least time states that light travels between two points along the path that requires the least time. Suppose light travels in a medium where the speed of light is $v(x, y)$. Set up the time integral and prove that if the medium is stratified such that $v$ only depends on $y$, Fermat's principle leads directly to Snell's law.
+
+### Problem 6.16
+Find the shape of a soap film stretched between two parallel circular rings (catenary). The soap film will naturally form the surface of revolution that minimizes the total surface area. Set up the integral for the area and use the Euler-Lagrange equation to find the functional form of the surface.
+
+### Problem 6.20
+Use the calculus of variations to find the surface of revolution with the minimum area connecting two points. Consider a curve $y(x)$ revolved around the $x$-axis. The area is $A = 2\pi \int y \sqrt{1 + (y')^2} dx$. Show that the solution is a catenary $y(x) = a \cosh(\frac{x - b}{a})$.
+
+---
+
+## Challenge ★★★
+
+### Problem 6.25
+A particle is restricted to move on the surface of a cylinder of radius $R$. Find the geodesic paths and discuss their geometric meaning. Write the line element in cylindrical coordinates $(\rho, \phi, z)$ with $\rho = R$ fixed. Use the Euler-Lagrange equations to find the shortest path between two points on the cylinder and show it is a helix.

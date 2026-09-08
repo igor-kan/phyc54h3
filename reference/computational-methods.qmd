@@ -1,7 +1,7 @@
 ---
 title: "Computational Methods for Mechanics"
 subtitle: "Numerical ODE integration (Euler, Verlet, RK4), SciPy solvers, and algorithmic math challenges."
-date: "2026-09-08"
+date: "2026-09-03"
 date-modified: last-modified
 categories: [computational, reference, python, solvers]
 format:

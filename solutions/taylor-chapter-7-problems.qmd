@@ -1,7 +1,7 @@
 ---
 title: "Taylor Chapter 7 Problems: Lagrange's Equations"
 subtitle: "Step-by-step analytical solutions to Chapter 7 exercises from John R. Taylor's Classical Mechanics."
-date: "2026-09-08"
+date: "2026-09-15"
 date-modified: last-modified
 categories: [classical-mechanics, math, taylor, solutions]
 format:
