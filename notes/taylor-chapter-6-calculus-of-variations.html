@@ -270,9 +270,7 @@ window.Quarto = {
 <p>What is the shortest path between two points <span class="math inline">\((x_1, y_1)\)</span> and <span class="math inline">\((x_2, y_2)\)</span> in a plane? Let the path be given by a function <span class="math inline">\(y = y(x)\)</span>. An infinitesimal element of length along the path is <span class="math inline">\(ds = \sqrt{dx^2 + dy^2} = \sqrt{1 + (y')^2} \, dx\)</span>, where <span class="math inline">\(y' = dy/dx\)</span>.</p>
 <p>The total length of the path is the integral: <span class="math display">\[ L = \int_{x_1}^{x_2} \sqrt{1 + [y'(x)]^2} \, dx \]</span></p>
 <p>The goal is to find the function <span class="math inline">\(y(x)\)</span> that minimizes <span class="math inline">\(L\)</span>.</p>
-<blockquote class="blockquote">
-<p><strong><a href="../solutions/taylor-chapter-6-problems.html#problem-61">Problem 6.1</a></strong> (Shortest path in a plane): Prove that the shortest path between two points in a 2D plane is a straight line. (We will solve this using the Euler-Lagrange equation later in this chapter.)</p>
-</blockquote>
+<p><em>(See <a href="../solutions/taylor-chapter-6-problems.html#problem-61">Problem 6.1</a>)</em></p>
 </section>
 <section id="example-2-the-brachistochrone-problem" class="level3">
 <h3 class="anchored" data-anchor-id="example-2-the-brachistochrone-problem">Example 2: The Brachistochrone Problem</h3>
@@ -280,9 +278,7 @@ window.Quarto = {
 <p>Let point 1 be the origin <span class="math inline">\((0,0)\)</span>. We take the <span class="math inline">\(y\)</span>-axis pointing <em>downward</em>. The speed of the bead is <span class="math inline">\(v = ds/dt\)</span>. By conservation of energy, <span class="math inline">\(E = T + U\)</span>. If released from rest at <span class="math inline">\((0,0)\)</span>, <span class="math inline">\(E = 0\)</span>. <span class="math display">\[ \frac{1}{2}mv^2 - mgy = 0 \implies v = \sqrt{2gy} \]</span></p>
 <p>The time to travel an infinitesimal distance <span class="math inline">\(ds\)</span> is <span class="math inline">\(dt = ds/v\)</span>. The total time is: <span class="math display">\[ t = \int_{1}^{2} \frac{ds}{v} = \int_{x_1}^{x_2} \frac{\sqrt{1 + (y')^2}}{\sqrt{2gy}} \, dx \]</span></p>
 <p>We need to find the function <span class="math inline">\(y(x)\)</span> that minimizes this time integral <span class="math inline">\(t\)</span>.</p>
-<blockquote class="blockquote">
-<p><strong><a href="../solutions/taylor-chapter-6-problems.html#problem-62-1">Problem 6.2</a></strong> (Brachistochrone coordinates): Write down the time integral if the <span class="math inline">\(y\)</span>-axis was defined pointing upwards instead. How does the energy conservation equation change? <em>Hint:</em> If <span class="math inline">\(y\)</span> points up, <span class="math inline">\(U = mgy\)</span>. <span class="math inline">\(E = 0 \implies \frac{1}{2}mv^2 + mgy = 0 \implies v = \sqrt{-2gy}\)</span> (since <span class="math inline">\(y\)</span> will be negative as the bead falls). The integral remains similar, just with <span class="math inline">\(-y\)</span> under the square root.</p>
-</blockquote>
+<p><em>(See <a href="../solutions/taylor-chapter-6-problems.html#problem-62">Problem 6.2</a>)</em></p>
 </section>
 </section>
 <section id="the-euler-lagrange-equation" class="level2">
@@ -299,9 +295,7 @@ window.Quarto = {
 <p>Since <span class="math inline">\(\eta(x_1) = \eta(x_2) = 0\)</span>, the boundary term vanishes. The condition becomes: <span class="math display">\[ \int_{x_1}^{x_2} \left[ \frac{\partial f}{\partial y} - \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) \right] \eta(x) \, dx = 0 \]</span></p>
 <p>For this to hold for <em>any</em> arbitrary variation <span class="math inline">\(\eta(x)\)</span>, the term in the brackets must be identically zero. This yields the <strong>Euler-Lagrange Equation</strong>:</p>
 <p><span class="math display">\[ \frac{\partial f}{\partial y} - \frac{d}{dx} \frac{\partial f}{\partial y'} = 0 \]</span></p>
-<blockquote class="blockquote">
-<p><strong><a href="../solutions/taylor-chapter-6-problems.html#problem-64">Problem 6.4</a>:</strong> Find the Euler-Lagrange equation for the functional <span class="math inline">\(S = \int (y'^2 + y^2) dx\)</span>. <em>Solution:</em> <span class="math inline">\(f = y'^2 + y^2\)</span>. <span class="math inline">\(\frac{\partial f}{\partial y} = 2y\)</span>, <span class="math inline">\(\frac{\partial f}{\partial y'} = 2y'\)</span>. <span class="math inline">\(\frac{d}{dx}(2y') = 2y''\)</span>. The E-L equation is <span class="math inline">\(2y - 2y'' = 0\)</span>, or <span class="math inline">\(y'' = y\)</span>.</p>
-</blockquote>
+<p><em>(See <a href="../solutions/taylor-chapter-6-problems.html#problem-64">Problem 6.4</a>)</em></p>
 </section>
 </section>
 <section id="applications-of-the-euler-lagrange-equation" class="level2">
@@ -351,18 +345,14 @@ Figure&nbsp;1: The Brachistochrone path is a cycloid, the curve traced by a poin
 </div>
 </div>
 </div>
-<blockquote class="blockquote">
-<p><strong><a href="../solutions/taylor-chapter-6-problems.html#problem-611">Problem 6.11</a></strong> (Geodesic on a cylinder): Find the equation for the shortest path (geodesic) between two points on the surface of a cylinder <span class="math inline">\(R = \text{const}\)</span>. <em>Hint:</em> Use cylindrical coordinates <span class="math inline">\((R, \phi, z)\)</span>. The arc length is <span class="math inline">\(ds^2 = dR^2 + R^2 d\phi^2 + dz^2 = R^2 d\phi^2 + dz^2\)</span>. Minimize the integral <span class="math inline">\(\int \sqrt{R^2 + (z')^2} d\phi\)</span>.</p>
-</blockquote>
+<p><em>(See <a href="../solutions/taylor-chapter-6-problems.html#problem-611">Problem 6.11</a>)</em></p>
 </section>
 </section>
 <section id="more-than-two-variables" class="level2">
 <h2 class="anchored" data-anchor-id="more-than-two-variables">6.4 More Than Two Variables</h2>
 <p>If the functional depends on multiple functions <span class="math inline">\(y_1(x), y_2(x), \dots, y_n(x)\)</span>, <span class="math display">\[ S = \int_{x_1}^{x_2} f(y_1, \dots, y_n, y_1', \dots, y_n', x) \, dx \]</span> we can vary each function independently. This leads to a system of <span class="math inline">\(n\)</span> independent Euler-Lagrange equations: <span class="math display">\[ \frac{\partial f}{\partial y_i} - \frac{d}{dx} \frac{\partial f}{\partial y_i'} = 0 \quad \text{for } i = 1, 2, \dots, n \]</span></p>
 <p>This extension is crucial for Lagrangian mechanics in 3D space, where we have coordinates <span class="math inline">\(x(t), y(t), z(t)\)</span>, and time <span class="math inline">\(t\)</span> plays the role of the independent variable.</p>
-<blockquote class="blockquote">
-<p><strong><a href="../solutions/taylor-chapter-6-problems.html#problem-622-fermat-s-principle">Problem 6.22</a></strong> (Fermat’s Principle): Fermat’s principle states that light travels between two points along the path that requires the least time. Show that this leads to Snell’s Law <span class="math inline">\(n_1 \sin\theta_1 = n_2 \sin\theta_2\)</span> for light crossing a boundary between media with refractive indices <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span>. <em>Hint:</em> Time <span class="math inline">\(t = \int \frac{ds}{v} = \int \frac{n(y)}{c} \sqrt{1+y'^2} dx\)</span>. Use the Beltrami identity since <span class="math inline">\(f\)</span> doesn’t depend on <span class="math inline">\(x\)</span>.</p>
-</blockquote>
+<p><em>(See <a href="../solutions/taylor-chapter-6-problems.html#problem-622">Problem 6.22</a>)</em></p>
 <hr>
 <p><strong>Summary</strong> The calculus of variations allows us to find stationary paths for functionals. The fundamental tool is the Euler-Lagrange equation, which converts a global variational problem into a local differential equation. This mathematical foundation is what allows us to formulate Lagrangian mechanics based on Hamilton’s Principle of stationary action.</p>
 
@@ -862,7 +852,7 @@ Figure&nbsp;1: The Brachistochrone path is a cycloid, the curve traced by a poin
 <span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>The goal is to find the function $y(x)$ that minimizes $L$.</span>
 <span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **[Problem 6.1](../solutions/taylor-chapter-6-problems.qmd#problem-61)** (Shortest path in a plane): Prove that the shortest path between two points in a 2D plane is a straight line. (We will solve this using the Euler-Lagrange equation later in this chapter.)</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.1](../solutions/taylor-chapter-6-problems.qmd#problem-61))*</span>
 <span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example 2: The Brachistochrone Problem</span></span>
 <span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
@@ -877,118 +867,114 @@ Figure&nbsp;1: The Brachistochrone path is a cycloid, the curve traced by a poin
 <span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>We need to find the function $y(x)$ that minimizes this time integral $t$.</span>
 <span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **[Problem 6.2](../solutions/taylor-chapter-6-problems.qmd#problem-62-1)** (Brachistochrone coordinates): Write down the time integral if the $y$-axis was defined pointing upwards instead. How does the energy conservation equation change?</span></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *Hint:* If $y$ points up, $U = mgy$. $E = 0 \implies \frac{1}{2}mv^2 + mgy = 0 \implies v = \sqrt{-2gy}$ (since $y$ will be negative as the bead falls). The integral remains similar, just with $-y$ under the square root.</span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.2 The Euler-Lagrange Equation</span></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>Both examples above involve an integral of the form:</span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>$$ S<span class="co">[</span><span class="ot">y</span><span class="co">]</span> = \int_{x_1}^{x_2} f(y, y', x) \, dx $$</span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>where $S$ is a functional. We want to find the path $y(x)$ that makes $S$ stationary (a minimum, maximum, or saddle point).</span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="fu">### Derivation</span></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>Let the actual path that extremizes the integral be $y(x)$. Consider a "wrong" path $Y(x)$ that is close to $y(x)$. We can parameterize this wrong path as:</span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>$$ Y(x) = y(x) + \alpha \eta(x) $$</span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>where $\alpha$ is a small parameter, and $\eta(x)$ is an arbitrary differentiable function representing the variation. Since all paths must start at $x_1$ and end at $x_2$, the variation must vanish at the endpoints:</span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>$$ \eta(x_1) = \eta(x_2) = 0 $$</span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>The integral evaluated along the varied path is a function of $\alpha$:</span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>$$ S(\alpha) = \int_{x_1}^{x_2} f(Y, Y', x) \, dx = \int_{x_1}^{x_2} f(y + \alpha \eta, y' + \alpha \eta', x) \, dx $$</span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>For the integral to be stationary at the correct path $y(x)$, the derivative of $S$ with respect to $\alpha$ must be zero when $\alpha = 0$:</span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>$$ \left. \frac{dS}{d\alpha} \right|_{\alpha=0} = 0 $$</span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>Using the chain rule to differentiate inside the integral:</span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>$$ \frac{dS}{d\alpha} = \int_{x_1}^{x_2} \left( \frac{\partial f}{\partial Y} \frac{\partial Y}{\partial \alpha} + \frac{\partial f}{\partial Y'} \frac{\partial Y'}{\partial \alpha} \right) dx = \int_{x_1}^{x_2} \left( \frac{\partial f}{\partial Y} \eta + \frac{\partial f}{\partial Y'} \eta' \right) dx $$</span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>Set $\alpha = 0$, so $Y \to y$ and $Y' \to y'$:</span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>$$ \int_{x_1}^{x_2} \left( \frac{\partial f}{\partial y} \eta(x) + \frac{\partial f}{\partial y'} \eta'(x) \right) dx = 0 $$</span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>We integrate the second term by parts:</span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>$$ \int_{x_1}^{x_2} \frac{\partial f}{\partial y'} \eta'(x) \, dx = \left<span class="co">[</span><span class="ot"> \frac{\partial f}{\partial y'} \eta(x) \right</span><span class="co">]</span>_{x_1}^{x_2} - \int_{x_1}^{x_2} \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) \eta(x) \, dx $$</span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>Since $\eta(x_1) = \eta(x_2) = 0$, the boundary term vanishes. The condition becomes:</span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>$$ \int_{x_1}^{x_2} \left<span class="co">[</span><span class="ot"> \frac{\partial f}{\partial y} - \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) \right</span><span class="co">]</span> \eta(x) \, dx = 0 $$</span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>For this to hold for *any* arbitrary variation $\eta(x)$, the term in the brackets must be identically zero. This yields the **Euler-Lagrange Equation**:</span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial f}{\partial y} - \frac{d}{dx} \frac{\partial f}{\partial y'} = 0 $$</span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **[Problem 6.4](../solutions/taylor-chapter-6-problems.qmd#problem-64):** Find the Euler-Lagrange equation for the functional $S = \int (y'^2 + y^2) dx$.</span></span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *Solution:* $f = y'^2 + y^2$. $\frac{\partial f}{\partial y} = 2y$, $\frac{\partial f}{\partial y'} = 2y'$. $\frac{d}{dx}(2y') = 2y''$. The E-L equation is $2y - 2y'' = 0$, or $y'' = y$.</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.2](../solutions/taylor-chapter-6-problems.qmd#problem-62))*</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.2 The Euler-Lagrange Equation</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>Both examples above involve an integral of the form:</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>$$ S<span class="co">[</span><span class="ot">y</span><span class="co">]</span> = \int_{x_1}^{x_2} f(y, y', x) \, dx $$</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>where $S$ is a functional. We want to find the path $y(x)$ that makes $S$ stationary (a minimum, maximum, or saddle point).</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="fu">### Derivation</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>Let the actual path that extremizes the integral be $y(x)$. Consider a "wrong" path $Y(x)$ that is close to $y(x)$. We can parameterize this wrong path as:</span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>$$ Y(x) = y(x) + \alpha \eta(x) $$</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>where $\alpha$ is a small parameter, and $\eta(x)$ is an arbitrary differentiable function representing the variation. Since all paths must start at $x_1$ and end at $x_2$, the variation must vanish at the endpoints:</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>$$ \eta(x_1) = \eta(x_2) = 0 $$</span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>The integral evaluated along the varied path is a function of $\alpha$:</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>$$ S(\alpha) = \int_{x_1}^{x_2} f(Y, Y', x) \, dx = \int_{x_1}^{x_2} f(y + \alpha \eta, y' + \alpha \eta', x) \, dx $$</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>For the integral to be stationary at the correct path $y(x)$, the derivative of $S$ with respect to $\alpha$ must be zero when $\alpha = 0$:</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>$$ \left. \frac{dS}{d\alpha} \right|_{\alpha=0} = 0 $$</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>Using the chain rule to differentiate inside the integral:</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>$$ \frac{dS}{d\alpha} = \int_{x_1}^{x_2} \left( \frac{\partial f}{\partial Y} \frac{\partial Y}{\partial \alpha} + \frac{\partial f}{\partial Y'} \frac{\partial Y'}{\partial \alpha} \right) dx = \int_{x_1}^{x_2} \left( \frac{\partial f}{\partial Y} \eta + \frac{\partial f}{\partial Y'} \eta' \right) dx $$</span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>Set $\alpha = 0$, so $Y \to y$ and $Y' \to y'$:</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>$$ \int_{x_1}^{x_2} \left( \frac{\partial f}{\partial y} \eta(x) + \frac{\partial f}{\partial y'} \eta'(x) \right) dx = 0 $$</span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>We integrate the second term by parts:</span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>$$ \int_{x_1}^{x_2} \frac{\partial f}{\partial y'} \eta'(x) \, dx = \left<span class="co">[</span><span class="ot"> \frac{\partial f}{\partial y'} \eta(x) \right</span><span class="co">]</span>_{x_1}^{x_2} - \int_{x_1}^{x_2} \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) \eta(x) \, dx $$</span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>Since $\eta(x_1) = \eta(x_2) = 0$, the boundary term vanishes. The condition becomes:</span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>$$ \int_{x_1}^{x_2} \left<span class="co">[</span><span class="ot"> \frac{\partial f}{\partial y} - \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) \right</span><span class="co">]</span> \eta(x) \, dx = 0 $$</span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>For this to hold for *any* arbitrary variation $\eta(x)$, the term in the brackets must be identically zero. This yields the **Euler-Lagrange Equation**:</span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial f}{\partial y} - \frac{d}{dx} \frac{\partial f}{\partial y'} = 0 $$</span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.4](../solutions/taylor-chapter-6-problems.qmd#problem-64))*</span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.3 Applications of the Euler-Lagrange Equation</span></span>
 <span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.3 Applications of the Euler-Lagrange Equation</span></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. Shortest Path Revisited</span></span>
 <span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. Shortest Path Revisited</span></span>
-<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>For the shortest path, $f(y, y', x) = \sqrt{1 + y'^2}$.</span>
-<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>Since $\partial f / \partial y = 0$, the E-L equation reduces to:</span>
-<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>$$ \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) = 0 \implies \frac{\partial f}{\partial y'} = C $$</span>
-<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>$$ \frac{y'}{\sqrt{1 + y'^2}} = C \implies y'^2 = C^2(1 + y'^2) \implies y'^2 = \frac{C^2}{1-C^2} = m^2 $$</span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>Thus, $y' = m$, meaning $y = mx + b$. The shortest path is a straight line.</span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>For the shortest path, $f(y, y', x) = \sqrt{1 + y'^2}$.</span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>Since $\partial f / \partial y = 0$, the E-L equation reduces to:</span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>$$ \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) = 0 \implies \frac{\partial f}{\partial y'} = C $$</span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>$$ \frac{y'}{\sqrt{1 + y'^2}} = C \implies y'^2 = C^2(1 + y'^2) \implies y'^2 = \frac{C^2}{1-C^2} = m^2 $$</span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>Thus, $y' = m$, meaning $y = mx + b$. The shortest path is a straight line.</span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. The Brachistochrone Solution</span></span>
 <span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. The Brachistochrone Solution</span></span>
-<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>For the Brachistochrone, $f = \sqrt{\frac{1+y'^2}{y}}$ (ignoring constants).</span>
-<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>Notice that $f$ does not depend explicitly on $x$. When $\partial f / \partial x = 0$, we can use the **Beltrami Identity** (a first integral of the E-L equation):</span>
-<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>$$ f - y' \frac{\partial f}{\partial y'} = C $$</span>
-<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>Substituting $f$:</span>
-<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>$$ \sqrt{\frac{1+y'^2}{y}} - y' \frac{y'}{\sqrt{y(1+y'^2)}} = C $$</span>
-<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>$$ \frac{1+y'^2 - y'^2}{\sqrt{y(1+y'^2)}} = C \implies \frac{1}{\sqrt{y(1+y'^2)}} = C \implies y(1+y'^2) = \frac{1}{C^2} = 2a $$</span>
-<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>Solving for $y'$:</span>
-<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>$$ y' = \frac{dy}{dx} = \sqrt{\frac{2a-y}{y}} \implies dx = \sqrt{\frac{y}{2a-y}} dy $$</span>
-<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>To integrate this, we use the substitution $y = a(1 - \cos\theta)$.</span>
-<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>Then $dy = a \sin\theta \, d\theta$.</span>
-<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>$$ dx = \sqrt{\frac{a(1-\cos\theta)}{a(1+\cos\theta)}} a \sin\theta \, d\theta = a (1-\cos\theta) d\theta $$</span>
-<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>Integrating gives the parametric equations for a **cycloid**:</span>
-<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>$$ x(\theta) = a(\theta - \sin\theta) $$</span>
-<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>$$ y(\theta) = a(1 - \cos\theta) $$</span>
-<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-cycloid</span></span>
-<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "The Brachistochrone path is a cycloid, the curve traced by a point on the rim of a rolling wheel."</span></span>
-<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">100</span>)</span>
-<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> a <span class="op">*</span> (theta <span class="op">-</span> np.sin(theta))</span>
-<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> a <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> np.cos(theta)) <span class="co"># Positive downwards</span></span>
-<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
-<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>ax.plot(x, <span class="op">-</span>y, label<span class="op">=</span><span class="st">'Brachistochrone (Cycloid)'</span>, color<span class="op">=</span><span class="st">'blue'</span>) <span class="co"># Negative to plot downwards intuitively</span></span>
-<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>, x[<span class="op">-</span><span class="dv">1</span>]], [<span class="dv">0</span>, <span class="op">-</span>y[<span class="op">-</span><span class="dv">1</span>]], <span class="st">'--'</span>, label<span class="op">=</span><span class="st">'Straight line'</span>, color<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>)</span>
-<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'x'</span>)</span>
-<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'y'</span>)</span>
-<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Path of Minimum Time (Brachistochrone)'</span>)</span>
-<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
-<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>For the Brachistochrone, $f = \sqrt{\frac{1+y'^2}{y}}$ (ignoring constants).</span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>Notice that $f$ does not depend explicitly on $x$. When $\partial f / \partial x = 0$, we can use the **Beltrami Identity** (a first integral of the E-L equation):</span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>$$ f - y' \frac{\partial f}{\partial y'} = C $$</span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>Substituting $f$:</span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>$$ \sqrt{\frac{1+y'^2}{y}} - y' \frac{y'}{\sqrt{y(1+y'^2)}} = C $$</span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>$$ \frac{1+y'^2 - y'^2}{\sqrt{y(1+y'^2)}} = C \implies \frac{1}{\sqrt{y(1+y'^2)}} = C \implies y(1+y'^2) = \frac{1}{C^2} = 2a $$</span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>Solving for $y'$:</span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>$$ y' = \frac{dy}{dx} = \sqrt{\frac{2a-y}{y}} \implies dx = \sqrt{\frac{y}{2a-y}} dy $$</span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>To integrate this, we use the substitution $y = a(1 - \cos\theta)$.</span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>Then $dy = a \sin\theta \, d\theta$.</span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>$$ dx = \sqrt{\frac{a(1-\cos\theta)}{a(1+\cos\theta)}} a \sin\theta \, d\theta = a (1-\cos\theta) d\theta $$</span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>Integrating gives the parametric equations for a **cycloid**:</span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>$$ x(\theta) = a(\theta - \sin\theta) $$</span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>$$ y(\theta) = a(1 - \cos\theta) $$</span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-cycloid</span></span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "The Brachistochrone path is a cycloid, the curve traced by a point on the rim of a rolling wheel."</span></span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">100</span>)</span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> a <span class="op">*</span> (theta <span class="op">-</span> np.sin(theta))</span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> a <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> np.cos(theta)) <span class="co"># Positive downwards</span></span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>ax.plot(x, <span class="op">-</span>y, label<span class="op">=</span><span class="st">'Brachistochrone (Cycloid)'</span>, color<span class="op">=</span><span class="st">'blue'</span>) <span class="co"># Negative to plot downwards intuitively</span></span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>, x[<span class="op">-</span><span class="dv">1</span>]], [<span class="dv">0</span>, <span class="op">-</span>y[<span class="op">-</span><span class="dv">1</span>]], <span class="st">'--'</span>, label<span class="op">=</span><span class="st">'Straight line'</span>, color<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'x'</span>)</span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'y'</span>)</span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Path of Minimum Time (Brachistochrone)'</span>)</span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.11](../solutions/taylor-chapter-6-problems.qmd#problem-611))*</span>
 <span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **[Problem 6.11](../solutions/taylor-chapter-6-problems.qmd#problem-611)** (Geodesic on a cylinder): Find the equation for the shortest path (geodesic) between two points on the surface of a cylinder $R = \text{const}$.</span></span>
-<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *Hint:* Use cylindrical coordinates $(R, \phi, z)$. The arc length is $ds^2 = dR^2 + R^2 d\phi^2 + dz^2 = R^2 d\phi^2 + dz^2$. Minimize the integral $\int \sqrt{R^2 + (z')^2} d\phi$.</span></span>
-<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.4 More Than Two Variables</span></span>
-<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>If the functional depends on multiple functions $y_1(x), y_2(x), \dots, y_n(x)$,</span>
-<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a>$$ S = \int_{x_1}^{x_2} f(y_1, \dots, y_n, y_1', \dots, y_n', x) \, dx $$</span>
-<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a>we can vary each function independently. This leads to a system of $n$ independent Euler-Lagrange equations:</span>
-<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial f}{\partial y_i} - \frac{d}{dx} \frac{\partial f}{\partial y_i'} = 0 \quad \text{for } i = 1, 2, \dots, n $$</span>
-<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a>This extension is crucial for Lagrangian mechanics in 3D space, where we have coordinates $x(t), y(t), z(t)$, and time $t$ plays the role of the independent variable.</span>
-<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **[Problem 6.22](../solutions/taylor-chapter-6-problems.qmd#problem-622-fermat-s-principle)** (Fermat's Principle): Fermat's principle states that light travels between two points along the path that requires the least time. Show that this leads to Snell's Law $n_1 \sin\theta_1 = n_2 \sin\theta_2$ for light crossing a boundary between media with refractive indices $n_1$ and $n_2$.</span></span>
-<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *Hint:* Time $t = \int \frac{ds}{v} = \int \frac{n(y)}{c} \sqrt{1+y'^2} dx$. Use the Beltrami identity since $f$ doesn't depend on $x$.</span></span>
-<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a>**Summary**</span>
-<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a>The calculus of variations allows us to find stationary paths for functionals. The fundamental tool is the Euler-Lagrange equation, which converts a global variational problem into a local differential equation. This mathematical foundation is what allows us to formulate Lagrangian mechanics based on Hamilton's Principle of stationary action.</span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.4 More Than Two Variables</span></span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>If the functional depends on multiple functions $y_1(x), y_2(x), \dots, y_n(x)$,</span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>$$ S = \int_{x_1}^{x_2} f(y_1, \dots, y_n, y_1', \dots, y_n', x) \, dx $$</span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a>we can vary each function independently. This leads to a system of $n$ independent Euler-Lagrange equations:</span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial f}{\partial y_i} - \frac{d}{dx} \frac{\partial f}{\partial y_i'} = 0 \quad \text{for } i = 1, 2, \dots, n $$</span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a>This extension is crucial for Lagrangian mechanics in 3D space, where we have coordinates $x(t), y(t), z(t)$, and time $t$ plays the role of the independent variable.</span>
+<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.22](../solutions/taylor-chapter-6-problems.qmd#problem-622))*</span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>**Summary**</span>
+<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a>The calculus of variations allows us to find stationary paths for functionals. The fundamental tool is the Euler-Lagrange equation, which converts a global variational problem into a local differential equation. This mathematical foundation is what allows us to formulate Lagrangian mechanics based on Hamilton's Principle of stationary action.</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
