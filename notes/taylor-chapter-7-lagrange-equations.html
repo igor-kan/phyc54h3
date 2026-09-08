@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Igor">
+<meta name="dcterms.date" content="2026-09-08">
+
+<title>Taylor Chapter 7: Lagrange’s Equations – PHYC54H3: Classical Mechanics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-89af0c2d685ccb09a4d7d65decb66752.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">PHYC54H3: Classical Mechanics</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../notes/index.html"> 
+<span class="menu-text">Lecture Notes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../solutions/index.html"> 
+<span class="menu-text">Problem Sets</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../simulations/index.html"> 
+<span class="menu-text">Simulations &amp; Code</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../manim/index.html"> 
+<span class="menu-text">Manim Videos</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-the-beauty-of-the-lagrangian-method" id="toc-introduction-the-beauty-of-the-lagrangian-method" class="nav-link active" data-scroll-target="#introduction-the-beauty-of-the-lagrangian-method">Introduction: The Beauty of the Lagrangian Method</a>
+  <ul class="collapse">
+  <li><a href="#lagranges-equations-for-unconstrained-motion" id="toc-lagranges-equations-for-unconstrained-motion" class="nav-link" data-scroll-target="#lagranges-equations-for-unconstrained-motion">7.1 Lagrange’s Equations for Unconstrained Motion</a>
+  <ul class="collapse">
+  <li><a href="#hamiltons-principle" id="toc-hamiltons-principle" class="nav-link" data-scroll-target="#hamiltons-principle">Hamilton’s Principle</a></li>
+  <li><a href="#example-polar-coordinates" id="toc-example-polar-coordinates" class="nav-link" data-scroll-target="#example-polar-coordinates">Example: Polar Coordinates</a></li>
+  </ul></li>
+  <li><a href="#constrained-systems-in-general" id="toc-constrained-systems-in-general" class="nav-link" data-scroll-target="#constrained-systems-in-general">7.3 Constrained Systems in General</a></li>
+  <li><a href="#proof-of-lagranges-equations-with-constraints" id="toc-proof-of-lagranges-equations-with-constraints" class="nav-link" data-scroll-target="#proof-of-lagranges-equations-with-constraints">7.4 Proof of Lagrange’s Equations with Constraints</a></li>
+  <li><a href="#examples-of-lagranges-equations" id="toc-examples-of-lagranges-equations" class="nav-link" data-scroll-target="#examples-of-lagranges-equations">7.5 Examples of Lagrange’s Equations</a>
+  <ul class="collapse">
+  <li><a href="#bead-on-a-spinning-wire-hoop-bifurcation-example" id="toc-bead-on-a-spinning-wire-hoop-bifurcation-example" class="nav-link" data-scroll-target="#bead-on-a-spinning-wire-hoop-bifurcation-example">Bead on a Spinning Wire Hoop (Bifurcation Example)</a></li>
+  </ul></li>
+  <li><a href="#generalized-momenta-ignorable-coordinates" id="toc-generalized-momenta-ignorable-coordinates" class="nav-link" data-scroll-target="#generalized-momenta-ignorable-coordinates">7.6 Generalized Momenta &amp; Ignorable Coordinates</a></li>
+  <li><a href="#conservation-laws-and-noethers-theorem" id="toc-conservation-laws-and-noethers-theorem" class="nav-link" data-scroll-target="#conservation-laws-and-noethers-theorem">7.8 Conservation Laws and Noether’s Theorem</a>
+  <ul class="collapse">
+  <li><a href="#total-momentum" id="toc-total-momentum" class="nav-link" data-scroll-target="#total-momentum">Total Momentum</a></li>
+  <li><a href="#conservation-of-energy-and-the-hamiltonian" id="toc-conservation-of-energy-and-the-hamiltonian" class="nav-link" data-scroll-target="#conservation-of-energy-and-the-hamiltonian">Conservation of Energy and The Hamiltonian</a></li>
+  </ul></li>
+  <li><a href="#lagranges-equations-for-magnetic-forces" id="toc-lagranges-equations-for-magnetic-forces" class="nav-link" data-scroll-target="#lagranges-equations-for-magnetic-forces">7.9 Lagrange’s Equations for Magnetic Forces</a></li>
+  <li><a href="#lagrange-multipliers-and-constraint-forces" id="toc-lagrange-multipliers-and-constraint-forces" class="nav-link" data-scroll-target="#lagrange-multipliers-and-constraint-forces">7.10 Lagrange Multipliers and Constraint Forces</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Taylor Chapter 7: Lagrange’s Equations</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<p class="subtitle lead">Overcoming constraint forces and deriving the laws of motion from a single radical formula.</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">classical-mechanics</div>
+    <div class="quarto-category">math</div>
+    <div class="quarto-category">taylor</div>
+    <div class="quarto-category">notes</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Igor </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 8, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction-the-beauty-of-the-lagrangian-method" class="level1">
+<h1>Introduction: The Beauty of the Lagrangian Method</h1>
+<p>The theoretical development of the laws of motion found its most poetic formulation in 1788 when the Italian-French mathematician Joseph-Louis Lagrange published <em>Mécanique Analytique</em>.</p>
+<p>The Lagrangian formulation holds <strong>two major advantages</strong> over Newtonian mechanics: 1. Lagrange’s equations take the <strong>same form in any coordinate system</strong> (Cartesian, spherical, non-inertial, etc.). 2. For constrained systems (like a bead on a wire), the Lagrangian approach naturally <strong>eliminates the forces of constraint</strong> (like normal forces), which are often unknown and uninteresting.</p>
+<hr>
+<section id="lagranges-equations-for-unconstrained-motion" class="level2">
+<h2 class="anchored" data-anchor-id="lagranges-equations-for-unconstrained-motion">7.1 Lagrange’s Equations for Unconstrained Motion</h2>
+<p>For a particle moving freely in 3D subject to a conservative force <span class="math inline">\(\mathbf{F} = -\nabla U\)</span>, the <strong>Lagrangian</strong> <span class="math inline">\(\mathcal{L}\)</span> is defined as the kinetic energy minus the potential energy: <span class="math display">\[ \mathcal{L} = T - U = \frac{1}{2}m(\dot{x}^2 + \dot{y}^2 + \dot{z}^2) - U(x, y, z) \]</span></p>
+<p>By checking the partial derivatives, we see that: <span class="math display">\[ \frac{\partial \mathcal{L}}{\partial x} = -\frac{\partial U}{\partial x} = F_x, \quad \text{and} \quad \frac{\partial \mathcal{L}}{\partial \dot{x}} = m\dot{x} = p_x \]</span> Newton’s second law (<span class="math inline">\(F_x = \dot{p}_x\)</span>) is therefore exactly equivalent to the <strong>Lagrange equation</strong> in Cartesian coordinates: <span class="math display">\[ \frac{\partial \mathcal{L}}{\partial x} - \frac{d}{dt}\frac{\partial \mathcal{L}}{\partial \dot{x}} = 0 \]</span></p>
+<section id="hamiltons-principle" class="level3">
+<h3 class="anchored" data-anchor-id="hamiltons-principle">Hamilton’s Principle</h3>
+<p>Because this has the exact form of the Euler-Lagrange equations, we can re-state Newton’s Second Law as an integral variational principle known as <strong>Hamilton’s Principle</strong>: &gt; <em>The actual path which a particle follows between two points 1 and 2 in a given time interval makes the action integral <span class="math inline">\(S = \int_{t_1}^{t_2} \mathcal{L} \, dt\)</span> stationary.</em></p>
+<p>Because Hamilton’s Principle applies globally to the action integral <span class="math inline">\(S\)</span>, the value of the integral is invariant under coordinate transformations. This proves that <strong>Lagrange’s equations are valid in any choice of generalized coordinates</strong> <span class="math inline">\(q_1, q_2, \dots, q_n\)</span>.</p>
+</section>
+<section id="example-polar-coordinates" class="level3">
+<h3 class="anchored" data-anchor-id="example-polar-coordinates">Example: Polar Coordinates</h3>
+<p>If we write <span class="math inline">\(\mathcal{L} = \frac{1}{2}m(\dot{r}^2 + r^2 \dot{\theta}^2) - U(r, \theta)\)</span>, the <span class="math inline">\(\theta\)</span> equation becomes: <span class="math display">\[ \frac{\partial \mathcal{L}}{\partial \theta} = \frac{d}{dt} \frac{\partial \mathcal{L}}{\partial \dot{\theta}} \implies -\frac{\partial U}{\partial \theta} = \frac{d}{dt} (mr^2 \dot{\theta}) \]</span> Since <span class="math inline">\(-\partial U/\partial \theta\)</span> is the torque <span class="math inline">\(\Gamma\)</span> and <span class="math inline">\(mr^2\dot{\theta}\)</span> is the angular momentum <span class="math inline">\(L\)</span>, this automatically yields <span class="math inline">\(\Gamma = \dot{L}\)</span>. The geometry of the coordinates naturally yields the appropriate mechanical theorem.</p>
+<hr>
+</section>
+</section>
+<section id="constrained-systems-in-general" class="level2">
+<h2 class="anchored" data-anchor-id="constrained-systems-in-general">7.3 Constrained Systems in General</h2>
+<p>A system of <span class="math inline">\(N\)</span> particles with positions <span class="math inline">\(\mathbf{r}_\alpha\)</span> is parametrized by <strong>generalized coordinates</strong> <span class="math inline">\(q_1, \dots, q_n\)</span>: <span class="math display">\[ \mathbf{r}_\alpha = \mathbf{r}_\alpha(q_1, \dots, q_n, t) \]</span></p>
+<ul>
+<li><strong>Degrees of Freedom:</strong> The number of independently variable coordinates <span class="math inline">\(n\)</span>. If <span class="math inline">\(n &lt; 3N\)</span>, the system is <strong>constrained</strong>.</li>
+<li><strong>Holonomic Systems:</strong> When the number of degrees of freedom exactly matches the number of generalized coordinates required to describe the configuration, the system is holonomic. (A rolling ball is non-holonomic, as it needs 5 coordinates but only has 2 translational degrees of freedom).</li>
+<li><strong>Natural Coordinates:</strong> If the transformation mapping <span class="math inline">\(\mathbf{r}_\alpha(q_1, \dots, q_n)\)</span> does not depend explicitly on time <span class="math inline">\(t\)</span>, the coordinates are called “natural”.</li>
+</ul>
+<hr>
+</section>
+<section id="proof-of-lagranges-equations-with-constraints" class="level2">
+<h2 class="anchored" data-anchor-id="proof-of-lagranges-equations-with-constraints">7.4 Proof of Lagrange’s Equations with Constraints</h2>
+<p>For a particle constrained to a surface (e.g., a bead on a wire), the total force is <span class="math inline">\(\mathbf{F}_{tot} = \mathbf{F}_{cstr} + \mathbf{F}\)</span>. The constraint force <span class="math inline">\(\mathbf{F}_{cstr}\)</span> acts normal to the surface, and any virtual displacement <span class="math inline">\(\epsilon\)</span> consistent with the constraint lies within the surface. Thus, <span class="math inline">\(\mathbf{F}_{cstr} \cdot \epsilon = 0\)</span>.</p>
+<p>This geometric fact means the constraint forces do zero virtual work, entirely vanishing from the variation of the action <span class="math inline">\(\delta S = 0\)</span>. The resulting path requires only the potential <span class="math inline">\(U\)</span> of the <em>non-constraint</em> forces: <span class="math display">\[ \mathcal{L}(q, \dot{q}, t) = T - U \]</span> yielding the <span class="math inline">\(n\)</span> equations of motion: <span class="math display">\[ \frac{\partial \mathcal{L}}{\partial q_i} - \frac{d}{dt}\frac{\partial \mathcal{L}}{\partial \dot{q}_i} = 0 \quad \text{for } i = 1, \dots, n \]</span></p>
+<hr>
+</section>
+<section id="examples-of-lagranges-equations" class="level2">
+<h2 class="anchored" data-anchor-id="examples-of-lagranges-equations">7.5 Examples of Lagrange’s Equations</h2>
+<p>The procedure is nearly infallible: 1. Choose <span class="math inline">\(n\)</span> generalized coordinates. 2. Write <span class="math inline">\(T\)</span> and <span class="math inline">\(U\)</span> in an inertial frame, then express them in terms of the <span class="math inline">\(q\)</span>’s and <span class="math inline">\(\dot{q}\)</span>’s. 3. Construct <span class="math inline">\(\mathcal{L} = T - U\)</span>. 4. Evaluate the Lagrange equations.</p>
+<section id="bead-on-a-spinning-wire-hoop-bifurcation-example" class="level3">
+<h3 class="anchored" data-anchor-id="bead-on-a-spinning-wire-hoop-bifurcation-example">Bead on a Spinning Wire Hoop (Bifurcation Example)</h3>
+<p>Consider a circular wire hoop of radius <span class="math inline">\(R\)</span> spinning at constant angular velocity <span class="math inline">\(\omega\)</span> about its vertical axis, with a bead of mass <span class="math inline">\(m\)</span> free to slide. The generalized coordinate is the angle <span class="math inline">\(\theta\)</span> from the bottom.</p>
+<p><span class="math display">\[ \mathcal{L} = \frac{1}{2}mR^2(\dot{\theta}^2 + \omega^2 \sin^2 \theta) - mgR(1 - \cos \theta) \]</span> The equation of motion is: <span class="math display">\[ R\ddot{\theta} = (\omega^2 R \cos \theta - g) \sin \theta \]</span></p>
+<p>When <span class="math inline">\(\omega^2 &lt; g/R\)</span>, the only stable equilibrium is at the bottom (<span class="math inline">\(\theta=0\)</span>). But when the hoop spins fast enough (<span class="math inline">\(\omega^2 &gt; g/R\)</span>), the bottom becomes an <em>unstable</em> equilibrium, and two new stable equilibria emerge at <span class="math inline">\(\theta = \pm \arccos(g / \omega^2 R)\)</span>. This emergence is known in chaos theory as a <strong>pitchfork bifurcation</strong>.</p>
+<div id="cell-fig-bifurcation" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> np.linspace(<span class="op">-</span>np.pi, np.pi, <span class="dv">200</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.81</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> w_sq <span class="kw">in</span> [<span class="dv">5</span>, <span class="fl">9.81</span>, <span class="dv">20</span>, <span class="dv">40</span>]:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    force <span class="op">=</span> (w_sq <span class="op">*</span> R <span class="op">*</span> np.cos(theta) <span class="op">-</span> g) <span class="op">*</span> np.sin(theta)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    plt.plot(theta, force, label<span class="op">=</span><span class="vs">rf'</span><span class="dv">$</span><span class="er">\</span><span class="vs">omega</span><span class="dv">^</span><span class="vs">2=</span><span class="sc">{</span>w_sq<span class="sc">}</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'k'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Restoring Force vs. Angle $</span><span class="ch">\\</span><span class="st">theta$"</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"$</span><span class="ch">\\</span><span class="st">theta$ (radians)"</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Normalized Force"</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-bifurcation" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bifurcation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="taylor-chapter-7-lagrange-equations_files/figure-html/fig-bifurcation-output-1.png" width="670" height="378" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bifurcation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: The effective restoring force on the spinning hoop bead. Note the stable equilibria moving away from the origin as rotation rate increases.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="generalized-momenta-ignorable-coordinates" class="level2">
+<h2 class="anchored" data-anchor-id="generalized-momenta-ignorable-coordinates">7.6 Generalized Momenta &amp; Ignorable Coordinates</h2>
+<p>We define the <strong>generalized force</strong> <span class="math inline">\(F_i\)</span> and <strong>generalized momentum</strong> <span class="math inline">\(p_i\)</span> as: <span class="math display">\[ F_i = \frac{\partial \mathcal{L}}{\partial q_i} \quad \text{and} \quad p_i = \frac{\partial \mathcal{L}}{\partial \dot{q}_i} \]</span> Lagrange’s equations become exactly <span class="math inline">\(F_i = \dot{p}_i\)</span>.</p>
+<p><strong>Ignorable Coordinates:</strong> If <span class="math inline">\(\mathcal{L}\)</span> is independent of a coordinate <span class="math inline">\(q_k\)</span>, we call <span class="math inline">\(q_k\)</span> <em>ignorable</em> or <em>cyclic</em>. Its generalized force <span class="math inline">\(F_k = 0\)</span>, meaning the conjugate momentum <span class="math inline">\(p_k\)</span> is strictly conserved! Every ignorable coordinate points to a conservation law.</p>
+<hr>
+</section>
+<section id="conservation-laws-and-noethers-theorem" class="level2">
+<h2 class="anchored" data-anchor-id="conservation-laws-and-noethers-theorem">7.8 Conservation Laws and Noether’s Theorem</h2>
+<section id="total-momentum" class="level3">
+<h3 class="anchored" data-anchor-id="total-momentum">Total Momentum</h3>
+<p>If an isolated system is <strong>translationally invariant</strong> (meaning <span class="math inline">\(\mathcal{L}\)</span> doesn’t change if we shift all particles by an infinitesimal vector <span class="math inline">\(\boldsymbol{\epsilon}\)</span>), it follows directly from Lagrange’s equations that the total linear momentum <span class="math inline">\(\mathbf{P} = \sum \mathbf{p}_\alpha\)</span> is conserved.</p>
+</section>
+<section id="conservation-of-energy-and-the-hamiltonian" class="level3">
+<h3 class="anchored" data-anchor-id="conservation-of-energy-and-the-hamiltonian">Conservation of Energy and The Hamiltonian</h3>
+<p>The total time derivative of <span class="math inline">\(\mathcal{L}\)</span> leads us to define the <strong>Hamiltonian</strong> <span class="math inline">\(\mathcal{H}\)</span>: <span class="math display">\[ \mathcal{H} = \sum_{i=1}^n p_i \dot{q}_i - \mathcal{L} \]</span></p>
+<p>If the Lagrangian has no explicit time dependence (<span class="math inline">\(\partial \mathcal{L} / \partial t = 0\)</span>), then <span class="math inline">\(d\mathcal{H}/dt = 0\)</span>, and the Hamiltonian is conserved. Furthermore, if the generalized coordinates are <em>natural</em> (time-independent transformations), Euler’s homogeneous function theorem guarantees that the kinetic energy <span class="math inline">\(T\)</span> is a homogeneous quadratic function of the velocities, which implies: <span class="math display">\[ \sum_{i} p_i \dot{q}_i = 2T \implies \mathcal{H} = 2T - (T - U) = T + U = E \]</span> Hence, time-translation invariance leads to <strong>Energy Conservation</strong>.</p>
+<hr>
+</section>
+</section>
+<section id="lagranges-equations-for-magnetic-forces" class="level2">
+<h2 class="anchored" data-anchor-id="lagranges-equations-for-magnetic-forces">7.9 Lagrange’s Equations for Magnetic Forces</h2>
+<p>For a charged particle <span class="math inline">\(q\)</span> in an electromagnetic field described by a scalar potential <span class="math inline">\(V\)</span> and vector potential <span class="math inline">\(\mathbf{A}\)</span>, the Lorentz force is velocity-dependent: <span class="math inline">\(\mathbf{F} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})\)</span>.</p>
+<p>The Lagrangian formulation still works if we adopt a <strong>generalized definition of the Lagrangian</strong>—a Lagrangian is simply <em>any</em> scalar function <span class="math inline">\(\mathcal{L}\)</span> that reproduces the correct equations of motion.</p>
+<p>For the electromagnetic case, the correct function is: <span class="math display">\[ \mathcal{L} = \frac{1}{2}m\dot{\mathbf{r}}^2 - q(V - \dot{\mathbf{r}} \cdot \mathbf{A}) \]</span> This Lagrangian is foundational to quantum mechanics, as it modifies the canonical generalized momentum of the particle: <span class="math display">\[ \mathbf{p} = \frac{\partial \mathcal{L}}{\partial \dot{\mathbf{r}}} = m\mathbf{v} + q\mathbf{A} \]</span> This shows that the momentum operator in quantum mechanics corresponds to <span class="math inline">\(m\mathbf{v} + q\mathbf{A}\)</span>, not just the mechanical momentum <span class="math inline">\(m\mathbf{v}\)</span>.</p>
+<hr>
+</section>
+<section id="lagrange-multipliers-and-constraint-forces" class="level2">
+<h2 class="anchored" data-anchor-id="lagrange-multipliers-and-constraint-forces">7.10 Lagrange Multipliers and Constraint Forces</h2>
+<p>If we <em>need</em> to determine a constraint force (e.g.&nbsp;tension in a string, or structural stress on a roller coaster track), we deliberately don’t use a minimal set of coordinates. Instead, we retain extra coordinates tied by a constraint equation <span class="math inline">\(f(q_1, q_2) = \text{const}\)</span>.</p>
+<p>We introduce a <strong>Lagrange multiplier</strong> <span class="math inline">\(\lambda(t)\)</span> to scale the constraint equation, modifying Hamilton’s principle: <span class="math display">\[ \frac{\partial \mathcal{L}}{\partial q_i} - \frac{d}{dt}\frac{\partial \mathcal{L}}{\partial \dot{q}_i} + \lambda \frac{\partial f}{\partial q_i} = 0 \]</span></p>
+<p>The extra term <span class="math inline">\(\lambda \frac{\partial f}{\partial q_i}\)</span> is precisely the <span class="math inline">\(i\)</span>-th component of the <strong>force of constraint</strong>. Solving this system of differential algebraic equations (DAEs) yields both the trajectory <span class="math inline">\(q_i(t)\)</span> and the dynamic magnitude of the constraint force via <span class="math inline">\(\lambda(t)\)</span>.</p>
+
+
+
+<!-- -->
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const cellDetails = window.document.querySelectorAll(".cell details.code-fold");
+        for (let i=0; i<cellDetails.length; i++) {
+          const details = cellDetails[i];
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell div.sourceCode.cell-code");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/igor-kan\.github\.io\/phyc54h3");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Taylor Chapter 7: Lagrange's Equations"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Overcoming constraint forces and deriving the laws of motion from a single radical formula."</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Igor"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-09-08"</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [classical-mechanics, math, taylor, notes]</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">    math: true</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction: The Beauty of the Lagrangian Method</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>The theoretical development of the laws of motion found its most poetic formulation in 1788 when the Italian-French mathematician Joseph-Louis Lagrange published *Mécanique Analytique*. </span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>The Lagrangian formulation holds **two major advantages** over Newtonian mechanics:</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Lagrange's equations take the **same form in any coordinate system** (Cartesian, spherical, non-inertial, etc.).</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>For constrained systems (like a bead on a wire), the Lagrangian approach naturally **eliminates the forces of constraint** (like normal forces), which are often unknown and uninteresting.</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.1 Lagrange's Equations for Unconstrained Motion</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>For a particle moving freely in 3D subject to a conservative force $\mathbf{F} = -\nabla U$, the **Lagrangian** $\mathcal{L}$ is defined as the kinetic energy minus the potential energy:</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>$$ \mathcal{L} = T - U = \frac{1}{2}m(\dot{x}^2 + \dot{y}^2 + \dot{z}^2) - U(x, y, z) $$</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>By checking the partial derivatives, we see that:</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial \mathcal{L}}{\partial x} = -\frac{\partial U}{\partial x} = F_x, \quad \text{and} \quad \frac{\partial \mathcal{L}}{\partial \dot{x}} = m\dot{x} = p_x $$</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>Newton's second law ($F_x = \dot{p}_x$) is therefore exactly equivalent to the **Lagrange equation** in Cartesian coordinates:</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial \mathcal{L}}{\partial x} - \frac{d}{dt}\frac{\partial \mathcal{L}}{\partial \dot{x}} = 0 $$</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="fu">### Hamilton's Principle</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>Because this has the exact form of the Euler-Lagrange equations, we can re-state Newton's Second Law as an integral variational principle known as **Hamilton's Principle**:</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *The actual path which a particle follows between two points 1 and 2 in a given time interval makes the action integral $S = \int_{t_1}^{t_2} \mathcal{L} \, dt$ stationary.*</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>Because Hamilton's Principle applies globally to the action integral $S$, the value of the integral is invariant under coordinate transformations. This proves that **Lagrange's equations are valid in any choice of generalized coordinates** $q_1, q_2, \dots, q_n$.</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example: Polar Coordinates</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>If we write $\mathcal{L} = \frac{1}{2}m(\dot{r}^2 + r^2 \dot{\theta}^2) - U(r, \theta)$, the $\theta$ equation becomes:</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial \mathcal{L}}{\partial \theta} = \frac{d}{dt} \frac{\partial \mathcal{L}}{\partial \dot{\theta}} \implies -\frac{\partial U}{\partial \theta} = \frac{d}{dt} (mr^2 \dot{\theta}) $$</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>Since $-\partial U/\partial \theta$ is the torque $\Gamma$ and $mr^2\dot{\theta}$ is the angular momentum $L$, this automatically yields $\Gamma = \dot{L}$. The geometry of the coordinates naturally yields the appropriate mechanical theorem.</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.3 Constrained Systems in General</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>A system of $N$ particles with positions $\mathbf{r}_\alpha$ is parametrized by **generalized coordinates** $q_1, \dots, q_n$:</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{r}_\alpha = \mathbf{r}_\alpha(q_1, \dots, q_n, t) $$</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Degrees of Freedom:** The number of independently variable coordinates $n$. If $n &lt; 3N$, the system is **constrained**.</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Holonomic Systems:** When the number of degrees of freedom exactly matches the number of generalized coordinates required to describe the configuration, the system is holonomic. (A rolling ball is non-holonomic, as it needs 5 coordinates but only has 2 translational degrees of freedom).</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Natural Coordinates:** If the transformation mapping $\mathbf{r}_\alpha(q_1, \dots, q_n)$ does not depend explicitly on time $t$, the coordinates are called "natural".</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.4 Proof of Lagrange's Equations with Constraints</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>For a particle constrained to a surface (e.g., a bead on a wire), the total force is $\mathbf{F}_{tot} = \mathbf{F}_{cstr} + \mathbf{F}$. </span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>The constraint force $\mathbf{F}_{cstr}$ acts normal to the surface, and any virtual displacement $\epsilon$ consistent with the constraint lies within the surface. Thus, $\mathbf{F}_{cstr} \cdot \epsilon = 0$.</span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>This geometric fact means the constraint forces do zero virtual work, entirely vanishing from the variation of the action $\delta S = 0$. The resulting path requires only the potential $U$ of the *non-constraint* forces:</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>$$ \mathcal{L}(q, \dot{q}, t) = T - U $$</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>yielding the $n$ equations of motion:</span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial \mathcal{L}}{\partial q_i} - \frac{d}{dt}\frac{\partial \mathcal{L}}{\partial \dot{q}_i} = 0 \quad \text{for } i = 1, \dots, n $$</span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.5 Examples of Lagrange's Equations</span></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>The procedure is nearly infallible:</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Choose $n$ generalized coordinates.</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Write $T$ and $U$ in an inertial frame, then express them in terms of the $q$'s and $\dot{q}$'s.</span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Construct $\mathcal{L} = T - U$.</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Evaluate the Lagrange equations.</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="fu">### Bead on a Spinning Wire Hoop (Bifurcation Example)</span></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>Consider a circular wire hoop of radius $R$ spinning at constant angular velocity $\omega$ about its vertical axis, with a bead of mass $m$ free to slide. The generalized coordinate is the angle $\theta$ from the bottom.</span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>$$ \mathcal{L} = \frac{1}{2}mR^2(\dot{\theta}^2 + \omega^2 \sin^2 \theta) - mgR(1 - \cos \theta) $$</span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>The equation of motion is:</span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>$$ R\ddot{\theta} = (\omega^2 R \cos \theta - g) \sin \theta $$</span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>When $\omega^2 &lt; g/R$, the only stable equilibrium is at the bottom ($\theta=0$). But when the hoop spins fast enough ($\omega^2 &gt; g/R$), the bottom becomes an *unstable* equilibrium, and two new stable equilibria emerge at $\theta = \pm \arccos(g / \omega^2 R)$. This emergence is known in chaos theory as a **pitchfork bifurcation**.</span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-bifurcation</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "The effective restoring force on the spinning hoop bead. Note the stable equilibria moving away from the origin as rotation rate increases."</span></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> np.linspace(<span class="op">-</span>np.pi, np.pi, <span class="dv">200</span>)</span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.81</span></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> w_sq <span class="kw">in</span> [<span class="dv">5</span>, <span class="fl">9.81</span>, <span class="dv">20</span>, <span class="dv">40</span>]:</span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>    force <span class="op">=</span> (w_sq <span class="op">*</span> R <span class="op">*</span> np.cos(theta) <span class="op">-</span> g) <span class="op">*</span> np.sin(theta)</span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>    plt.plot(theta, force, label<span class="op">=</span><span class="vs">rf'</span><span class="dv">$</span><span class="er">\</span><span class="vs">omega</span><span class="dv">^</span><span class="vs">2=</span><span class="sc">{</span>w_sq<span class="sc">}</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'k'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Restoring Force vs. Angle $</span><span class="ch">\\</span><span class="st">theta$"</span>)</span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"$</span><span class="ch">\\</span><span class="st">theta$ (radians)"</span>)</span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Normalized Force"</span>)</span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.6 Generalized Momenta &amp; Ignorable Coordinates</span></span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>We define the **generalized force** $F_i$ and **generalized momentum** $p_i$ as:</span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>$$ F_i = \frac{\partial \mathcal{L}}{\partial q_i} \quad \text{and} \quad p_i = \frac{\partial \mathcal{L}}{\partial \dot{q}_i} $$</span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>Lagrange's equations become exactly $F_i = \dot{p}_i$.</span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>**Ignorable Coordinates:** If $\mathcal{L}$ is independent of a coordinate $q_k$, we call $q_k$ *ignorable* or *cyclic*. Its generalized force $F_k = 0$, meaning the conjugate momentum $p_k$ is strictly conserved! Every ignorable coordinate points to a conservation law.</span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.8 Conservation Laws and Noether's Theorem</span></span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a><span class="fu">### Total Momentum</span></span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>If an isolated system is **translationally invariant** (meaning $\mathcal{L}$ doesn't change if we shift all particles by an infinitesimal vector $\boldsymbol{\epsilon}$), it follows directly from Lagrange's equations that the total linear momentum $\mathbf{P} = \sum \mathbf{p}_\alpha$ is conserved.</span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a><span class="fu">### Conservation of Energy and The Hamiltonian</span></span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>The total time derivative of $\mathcal{L}$ leads us to define the **Hamiltonian** $\mathcal{H}$:</span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>$$ \mathcal{H} = \sum_{i=1}^n p_i \dot{q}_i - \mathcal{L} $$</span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>If the Lagrangian has no explicit time dependence ($\partial \mathcal{L} / \partial t = 0$), then $d\mathcal{H}/dt = 0$, and the Hamiltonian is conserved.</span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>Furthermore, if the generalized coordinates are *natural* (time-independent transformations), Euler's homogeneous function theorem guarantees that the kinetic energy $T$ is a homogeneous quadratic function of the velocities, which implies:</span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>$$ \sum_{i} p_i \dot{q}_i = 2T \implies \mathcal{H} = 2T - (T - U) = T + U = E $$</span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>Hence, time-translation invariance leads to **Energy Conservation**.</span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.9 Lagrange's Equations for Magnetic Forces</span></span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>For a charged particle $q$ in an electromagnetic field described by a scalar potential $V$ and vector potential $\mathbf{A}$, the Lorentz force is velocity-dependent: $\mathbf{F} = q(\mathbf{E} + \mathbf{v} \times \mathbf{B})$.</span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>The Lagrangian formulation still works if we adopt a **generalized definition of the Lagrangian**—a Lagrangian is simply *any* scalar function $\mathcal{L}$ that reproduces the correct equations of motion.</span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a>For the electromagnetic case, the correct function is:</span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>$$ \mathcal{L} = \frac{1}{2}m\dot{\mathbf{r}}^2 - q(V - \dot{\mathbf{r}} \cdot \mathbf{A}) $$</span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a>This Lagrangian is foundational to quantum mechanics, as it modifies the canonical generalized momentum of the particle:</span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>$$ \mathbf{p} = \frac{\partial \mathcal{L}}{\partial \dot{\mathbf{r}}} = m\mathbf{v} + q\mathbf{A} $$</span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>This shows that the momentum operator in quantum mechanics corresponds to $m\mathbf{v} + q\mathbf{A}$, not just the mechanical momentum $m\mathbf{v}$.</span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7.10 Lagrange Multipliers and Constraint Forces</span></span>
+<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a>If we *need* to determine a constraint force (e.g. tension in a string, or structural stress on a roller coaster track), we deliberately don't use a minimal set of coordinates. Instead, we retain extra coordinates tied by a constraint equation $f(q_1, q_2) = \text{const}$.</span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>We introduce a **Lagrange multiplier** $\lambda(t)$ to scale the constraint equation, modifying Hamilton's principle:</span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial \mathcal{L}}{\partial q_i} - \frac{d}{dt}\frac{\partial \mathcal{L}}{\partial \dot{q}_i} + \lambda \frac{\partial f}{\partial q_i} = 0 $$</span>
+<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a>The extra term $\lambda \frac{\partial f}{\partial q_i}$ is precisely the $i$-th component of the **force of constraint**. Solving this system of differential algebraic equations (DAEs) yields both the trajectory $q_i(t)$ and the dynamic magnitude of the constraint force via $\lambda(t)$.</span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
