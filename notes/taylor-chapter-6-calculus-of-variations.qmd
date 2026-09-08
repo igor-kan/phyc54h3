@@ -316,6 +316,6 @@ This extension is crucial for Lagrangian mechanics in 3D space, where we have co
 
 *(See [Problem 6.22](../solutions/taylor-chapter-6-problems.qmd#problem-622))*
 
----
-**Summary**
+## Summary
+
 The calculus of variations allows us to find stationary paths for functionals. The fundamental tool is the Euler-Lagrange equation, which converts a global variational problem into a local differential equation. This mathematical foundation is what allows us to formulate Lagrangian mechanics based on Hamilton's Principle of stationary action.
