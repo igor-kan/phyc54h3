@@ -101,123 +101,97 @@ Thus, $y' = m$, meaning $y = mx + b$. The shortest path is a straight line.
 
 ### 2. The Brachistochrone Solution
 
-For the Brachistochrone, $f = \sqrt{\frac{1+y'^2}{y}}$ (ignoring constants).
-Notice that $f$ does not depend explicitly on $x$. When $\partial f / \partial x = 0$, we can use the **Beltrami Identity** (a first integral of the E-L equation):
+#### Problem Formulation & The Beltrami Identity
+For the Brachistochrone, the functional integrand is $f(y, y') = \sqrt{\frac{1 + (y')^2}{y}}$ (dropping overall constants $\sqrt{2g}$).  
+Because $f$ lacks explicit dependence on the independent variable $x$ ($\partial f / \partial x = 0$), the Euler-Lagrange equation possesses a first integral known as the **Beltrami Identity**:
 $$ f - y' \frac{\partial f}{\partial y'} = C $$
 
 Substituting $f$:
-$$ \sqrt{\frac{1+y'^2}{y}} - y' \frac{y'}{\sqrt{y(1+y'^2)}} = C $$
-$$ \frac{1+y'^2 - y'^2}{\sqrt{y(1+y'^2)}} = C \implies \frac{1}{\sqrt{y(1+y'^2)}} = C \implies y(1+y'^2) = \frac{1}{C^2} = 2a $$
+$$ \sqrt{\frac{1 + (y')^2}{y}} - y' \frac{y'}{\sqrt{y(1 + (y')^2)}} = C $$
+$$ \frac{1 + (y')^2 - (y')^2}{\sqrt{y(1 + (y')^2)}} = C \implies \frac{1}{\sqrt{y(1 + (y')^2)}} = C \implies y\big(1 + (y')^2\big) = \frac{1}{C^2} \equiv 2a $$
 
-Solving for $y'$:
-$$ y' = \frac{dy}{dx} = \sqrt{\frac{2a-y}{y}} \implies dx = \sqrt{\frac{y}{2a-y}} dy $$
+Solving for the derivative $y' = dy/dx$:
+$$ y' = \sqrt{\frac{2a - y}{y}} \implies dx = \sqrt{\frac{y}{2a - y}} \, dy $$
 
-The integral to evaluate is therefore:
+The total trajectory $x(y)$ is given by the integral:
 $$ x = \int \sqrt{\frac{y}{2a - y}} \, dy $$
 
 #### Step-by-Step Evaluation of Taylor's Cycloid Substitution
-
-Taylor introduces the substitution:
+Taylor introduces the parameterized substitution:
 $$ y = a(1 - \cos\theta) $$
 
 1. **Differential of the Substitution:**  
    Differentiating $y$ with respect to $\theta$:
-   $$ dy = \frac{d}{d\theta}\big[a(1 - \cos\theta)\big] d\theta = a\sin\theta \, d\theta $$
-   Using the double-angle identity $\sin\theta = 2\sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right)$:
-   $$ dy = 2a \sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right) d\theta $$
+   $$ dy = a\sin\theta \, d\theta = 2a \sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right) d\theta $$
 
 2. **Simplifying the Radicand:**  
-   Substitute $y = a(1 - \cos\theta)$ into the numerator and denominator under the radical:
-   - Numerator:
-     $$ y = a(1 - \cos\theta) = 2a\sin^2\left(\frac{\theta}{2}\right) $$
-   - Denominator:
-     $$ 2a - y = 2a - a(1 - \cos\theta) = a(1 + \cos\theta) = 2a\cos^2\left(\frac{\theta}{2}\right) $$
+   Substitute $y = a(1 - \cos\theta)$ into the numerator and denominator:
+   - Numerator: $y = a(1 - \cos\theta) = 2a\sin^2\left(\frac{\theta}{2}\right)$
+   - Denominator: $2a - y = 2a - a(1 - \cos\theta) = a(1 + \cos\theta) = 2a\cos^2\left(\frac{\theta}{2}\right)$
+
    Taking the ratio inside the square root:
-   $$ \frac{y}{2a - y} = \frac{2a\sin^2\left(\frac{\theta}{2}\right)}{2a\cos^2\left(\frac{\theta}{2}\right)} = \tan^2\left(\frac{\theta}{2}\right) $$
-   
-   **Why We Assume the First Arch ($\theta \in [0, 2\pi]$ and $\sin(\theta/2) \ge 0$):**  
-   The principal square root of any real square evaluates to its absolute value: $\sqrt{\tan^2(\theta/2)} = |\tan(\theta/2)| = \frac{|\sin(\theta/2)|}{|\cos(\theta/2)|}$.  
-   - In any single Brachistochrone descent starting from rest at the origin $(0,0)$, energy conservation dictates $v = \sqrt{2gy}$. The bead cannot ascend higher than its release height $y = 0$, meaning the curve terminates before or at the completion of a single revolution of the generating wheel ($\theta \le 2\pi$). Hence the relevant motion is strictly confined within the first arch: $\theta \in [0, 2\pi]$, giving $\frac{\theta}{2} \in [0, \pi]$.
-   - Across the entire half-angle domain $[0, \pi]$, the sine function is unconditionally non-negative ($\sin(\theta/2) \ge 0$). Therefore, the absolute value on the sine can be dropped without piecewise branching:
-     $$ \left|\sin\left(\frac{\theta}{2}\right)\right| = \sin\left(\frac{\theta}{2}\right) $$
-   - For the denominator, $\cos(\theta/2) > 0$ along the entire descending branch $\theta \in [0, \pi)$, where $y$ is increasing from $0$ to $2a$. When the particle crosses the trough at $\theta = \pi$, $\cos(\theta/2)$ changes sign as $y$ begins decreasing, while $dx/d\theta = a(1 - \cos\theta) \ge 0$ remains positive throughout. Thus, setting:
-     $$ \sqrt{\frac{y}{2a - y}} = \tan\left(\frac{\theta}{2}\right) = \frac{\sin\left(\frac{\theta}{2}\right)}{\cos\left(\frac{\theta}{2}\right)} $$
-     correctly captures the trajectory without extraneous signs.
+   $$ \frac{y}{2a - y} = \frac{2a\sin^2(\theta/2)}{2a\cos^2(\theta/2)} = \tan^2\left(\frac{\theta}{2}\right) $$
+   Assuming the motion stays within the first arch ($\theta \in [0, 2\pi]$ where $\theta/2 \in [0, \pi]$ and $\sin(\theta/2) \ge 0$):
+   $$ \sqrt{\frac{y}{2a - y}} = \tan\left(\frac{\theta}{2}\right) = \frac{\sin(\theta/2)}{\cos(\theta/2)} $$
 
 3. **Combining and Integrating:**  
-   Multiply the simplified radical by $dy$:
-   $$ \sqrt{\frac{y}{2a - y}} \, dy = \left(\frac{\sin\left(\frac{\theta}{2}\right)}{\cos\left(\frac{\theta}{2}\right)}\right) \cdot \left[2a \sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right) d\theta\right] = 2a \sin^2\left(\frac{\theta}{2}\right) d\theta $$
-   Recall the half-angle identity $2\sin^2\left(\frac{\theta}{2}\right) = 1 - \cos\theta$:
-   $$ x = \int a(1 - \cos\theta) \, d\theta = a(\theta - \sin\theta) + C $$
-   Applying the initial condition $x(0) = 0$ gives $C = 0$, recovering the cycloid parametric equations:
+   Multiplying the simplified radical by $dy$:
+   $$ dx = \left(\frac{\sin(\theta/2)}{\cos(\theta/2)}\right) \cdot \left[2a \sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right) d\theta\right] = 2a \sin^2\left(\frac{\theta}{2}\right) d\theta = a(1 - \cos\theta) \, d\theta $$
+   Integrating directly with initial condition $x(0) = 0$ gives:
    $$ x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta) $$
+   These are the parametric equations of a **cycloid**.
+
+#### Mathematical & Physical Rationale for the First Arch ($\theta \in [0, 2\pi]$)
+1. **Mathematical Reason (Principal Square Root):**  
+   The square root identity is $\sqrt{u^2} = |u|$. Thus:
+   $$ \sqrt{\tan^2(\theta/2)} = |\tan(\theta/2)| = \frac{|\sin(\theta/2)|}{|\cos(\theta/2)|} $$
+   Within the first arch ($\theta \in [0, 2\pi]$), the half-angle satisfies $\frac{\theta}{2} \in [0, \pi]$, where the sine function is unconditionally non-negative:
+   $$ \sin\left(\frac{\theta}{2}\right) \ge 0 \implies \left|\sin\left(\frac{\theta}{2}\right)\right| = \sin\left(\frac{\theta}{2}\right) $$
+   This eliminates piece-wise absolute value signs without ambiguity. Along the descending branch ($\theta < \pi$), $\cos(\theta/2) > 0$ and $dy > 0$. Past the trough ($\theta > \pi$), $\cos(\theta/2) < 0$ while the particle ascends ($dy < 0$), maintaining consistent directional progress $dx \ge 0$.
+
+2. **Physical Reason (Energy Bounds & Uniqueness):**  
+   - **Energy Ceiling:** By conservation of energy, $v = \sqrt{2gy}$. At $y = 0$, speed vanishes ($v = 0$). The bead cannot ascend into $y < 0$, ensuring the trajectory cannot continue past the cusp at $\theta = 2\pi$.
+   - **Path Uniqueness:** By scaling the radius $a$ and endpoint angle $\theta_2 \in (0, 2\pi]$, a unique single cycloid arch connects the origin $(0, 0)$ to any target point $(x_2, y_2)$ with $x_2 > 0, y_2 \ge 0$.
+   - **No Redundant Loops:** Any path spanning into subsequent arches would entail climbing to a cusp, arresting, and falling through extra dips, adding superfluous travel time and violating $\delta T = 0$.
 
 #### Why That Substitution Works: The Hidden Circle
-
-Taylor calls this an "unlikely looking substitution," but it is completely systematic.  
-Rationalize the numerator of the integrand:
+Taylor calls $y = a(1 - \cos\theta)$ an "unlikely looking substitution," but it is completely systematic.  
+Rationalizing the numerator:
 $$ \sqrt{\frac{y}{2a - y}} = \frac{y}{\sqrt{y(2a - y)}} = \frac{y}{\sqrt{2ay - y^2}} $$
-Complete the square in the denominator:
-$$ 2ay - y^2 = -(y^2 - 2ay + a^2) + a^2 = a^2 - (y - a)^2 $$
-Now the integral becomes:
-$$ \int \frac{y}{\sqrt{a^2 - (y - a)^2}} \, dy $$
+Completing the square in the denominator:
+$$ 2ay - y^2 = a^2 - (y - a)^2 \implies \int \frac{y}{\sqrt{a^2 - (y - a)^2}} \, dy $$
 
-**Why This Is a Circle:**  
-In the $(w, y)$ plane, the equation $w = \sqrt{a^2 - (y - a)^2}$ describes the boundary of a circle of radius $a$ centered at $(0, a)$:
-$$ w^2 + (y - a)^2 = a^2 $$
+**Geometric Origin:**  
+The expression $\sqrt{a^2 - (y - a)^2}$ describes a semicircle $(y - a)^2 + w^2 = a^2$ of radius $a$ centered at $(0, a)$.
 
-**Why Two Different Types of $u$ Can Be Substituted:**  
-Any expression involving $\sqrt{a^2 - u^2}$ naturally invites a circular parameterization, but we have two standard choices depending on the angle reference axis:
-1. **The Sine Substitution ($u = a\sin\phi$):**  
-   If we set $y - a = a\sin\phi$, then $y = a(1 + \sin\phi)$. Here the angle $\phi$ is measured relative to the horizontal diameter of the circle. At the release point ($y = 0$), this requires $\sin\phi = -1 \implies \phi = -\pi/2$. While mathematically valid, it introduces an awkward phase shift of $-\pi/2$ into the equations of motion.
-2. **The Inverted Cosine Substitution ($u = -a\cos\theta$):**  
-   If we instead set $y - a = -a\cos\theta$, then:
-   $$ y = a(1 - \cos\theta) $$
-   Here the angle $\theta$ is measured from the top apex of the circle. At $\theta = 0$, $\cos(0) = 1$, which gives $y = a(1 - 1) = 0$ automatically! Thus, the negative cosine choice is physically tailored to align $\theta = 0$ directly with the initial release point at the origin without requiring arbitrary phase angles.
+**Dual Circle Parameterizations:**  
+Any form $\sqrt{a^2 - u^2}$ permits two standard circular substitutions:
+1. **Sine substitution ($u = a\sin\phi$):** Setting $y - a = a\sin\phi \implies y = a(1 + \sin\phi)$. At the release point $y = 0$, $\sin\phi = -1 \implies \phi = -\pi/2$, imposing an unwanted phase shift.
+2. **Inverted cosine substitution ($u = -a\cos\theta$):** Setting $y - a = -a\cos\theta \implies y = a(1 - \cos\theta)$. At release ($y = 0$), $\cos(0) = 1 \implies \theta = 0$, matching initial rest conditions at the origin with zero phase offset!
 
-#### The Algebraic Alternative: Direct Root Substitution (With Both Integration by Parts and Trig Methods)
+#### The Algebraic Alternative: Direct Root Substitution
+Rather than guessing a trigonometric form, set the entire linear radical equal to an algebraic variable $u$:
+$$ u = \sqrt{\frac{y}{2a - y}} \implies y = \frac{2a u^2}{1 + u^2}, \quad dy = \frac{4a u}{(1 + u^2)^2} \, du $$
+The integral becomes:
+$$ x = \int u \, dy = 4a \int \frac{u^2}{(1 + u^2)^2} \, du $$
 
-You do not need to guess a trigonometric substitution. When faced with any rational function of a single linear radical $\sqrt{\frac{a y + b}{c y + d}}$, set the entire radical equal to a new algebraic variable $u$:
-$$ u = \sqrt{\frac{y}{2a - y}} $$
-Inverting for $y$:
-$$ u^2 = \frac{y}{2a - y} \implies u^2(2a - y) = y \implies 2a u^2 = y(1 + u^2) \implies y = \frac{2a u^2}{1 + u^2} $$
-Compute $dy$:
-$$ dy = 2a \frac{d}{du}\left[1 - \frac{1}{1 + u^2}\right] du = \frac{4a u}{(1 + u^2)^2} \, du $$
-Substitute into the integral $x = \int u \, dy$:
-$$ x = \int u \cdot \frac{4a u}{(1 + u^2)^2} \, du = 4a \int \frac{u^2}{(1 + u^2)^2} \, du $$
-
-We can solve this integral via two independent pathways:
+This can be evaluated via two direct methods:
 
 ##### Method A: Integration by Parts (Pure Algebraic Route)
-Split the numerator as $u \cdot \frac{u}{(1+u^2)^2}$:
-- Let $f = u \implies df = du$
-- Let $dg = \frac{u}{(1+u^2)^2} \, du \implies g = -\frac{1}{2(1+u^2)}$
-
-Applying $\int f \, dg = fg - \int g \, df$:
-$$ \int \frac{u^2}{(1+u^2)^2} \, du = -\frac{u}{2(1+u^2)} + \frac{1}{2}\int \frac{du}{1+u^2} = -\frac{u}{2(1+u^2)} + \frac{1}{2}\arctan(u) $$
-Multiplying by the overall factor $4a$:
-$$ x(u) = 2a \arctan(u) - \frac{2a u}{1 + u^2} + C $$
-Since $u = 0$ at $y = 0$, the boundary condition $x(0) = 0$ enforces $C = 0$.  
-To interpret this geometrically, let $u = \tan\left(\frac{\theta}{2}\right)$. Then:
-- $\arctan(u) = \frac{\theta}{2}$
-- $\frac{2u}{1+u^2} = \frac{2\tan(\theta/2)}{1+\tan^2(\theta/2)} = \sin\theta$ (the standard double-angle identity)
-
-Substituting these directly into $x(u)$:
-$$ x(\theta) = 2a\left(\frac{\theta}{2}\right) - a\sin\theta = a(\theta - \sin\theta) $$
-And for $y$:
-$$ y = \frac{2a u^2}{1+u^2} = 2a\sin^2\left(\frac{\theta}{2}\right) = a(1 - \cos\theta) $$
-This recovers the cycloid parametric equations without having to guess the substitution upfront!
+Decomposing as $u \cdot \frac{u}{(1 + u^2)^2}$ with $f = u$ and $dg = \frac{u}{(1 + u^2)^2}du \implies g = -\frac{1}{2(1 + u^2)}$:
+$$ \int \frac{u^2}{(1 + u^2)^2} \, du = -\frac{u}{2(1 + u^2)} + \frac{1}{2}\int \frac{du}{1 + u^2} = -\frac{u}{2(1 + u^2)} + \frac{1}{2}\arctan(u) $$
+Multiplying by $4a$ and enforcing $x(0) = 0$:
+$$ x(u) = 2a\arctan(u) - \frac{2a u}{1 + u^2} $$
+Setting $u = \tan(\theta/2)$, we find $\arctan(u) = \theta/2$ and $\frac{2u}{1 + u^2} = \sin\theta$, which directly recovers:
+$$ x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta) $$
 
 ##### Method B: Trigonometric Substitution
-Setting $u = \tan\phi$, so $du = \sec^2\phi \, d\phi$:
-$$ 4a \int \frac{\tan^2\phi}{(1+\tan^2\phi)^2} \sec^2\phi \, d\phi = 4a \int \frac{\tan^2\phi}{\sec^4\phi}\sec^2\phi \, d\phi = 4a \int \sin^2\phi \, d\phi $$
-Using $\sin^2\phi = \frac{1 - \cos 2\phi}{2}$:
-$$ 4a \int \left(\frac{1 - \cos 2\phi}{2}\right) d\phi = 2a\left(\phi - \frac{1}{2}\sin 2\phi\right) = 2a(\phi - \sin\phi\cos\phi) $$
-Setting $\theta = 2\phi$ (so $\phi = \theta/2$), this immediately yields $x(\theta) = a(\theta - \sin\theta)$.
+Substituting $u = \tan\phi$ with $du = \sec^2\phi \, d\phi$:
+$$ 4a \int \frac{\tan^2\phi}{\sec^4\phi}\sec^2\phi \, d\phi = 4a \int \sin^2\phi \, d\phi = 2a(\phi - \sin\phi\cos\phi) $$
+Setting $\theta = 2\phi$ immediately produces $x = a(\theta - \sin\theta)$.
 
 #### What $\theta$ Represents Physically
-
-The parameter $\theta$ is the cumulative rotation angle (in radians) of the rolling circle that generates the curve:
+The parameter $\theta$ is the cumulative rotation angle (in radians) of a wheel of radius $a$ rolling without slipping along the underside of the horizontal axis ($y = 0$):
 
 ```text
           x=0                         x = a*theta                      x = 2*pi*a
@@ -235,336 +209,35 @@ The parameter $\theta$ is the cumulative rotation angle (in radians) of the roll
            v y
 ```
 
-```{=html}
-<div style="background: #0f172a; color: #f8fafc; border-radius: 12px; padding: 18px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin: 20px 0;">
-  <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-    <div style="display: flex; gap: 10px;">
-      <button id="ch6-wheel-play-btn" style="background: #0284c7; color: white; border: none; padding: 6px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s;">❚❚ Pause</button>
-      <button id="ch6-wheel-reset-btn" style="background: #475569; color: white; border: none; padding: 6px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s;">↺ Reset</button>
-    </div>
-    <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center; font-size: 0.88em;">
-      <label>Wheel Radius <i>a</i>: 
-        <input type="range" id="ch6-wheel-radius-slider" min="20" max="55" step="1" value="38" style="vertical-align: middle;">
-        <span id="ch6-wheel-radius-val" style="font-weight: bold; color: #38bdf8;">38 px</span>
-      </label>
-      <label>Angle θ: 
-        <input type="range" id="ch6-wheel-theta-slider" min="0" max="1256" step="1" value="0" style="vertical-align: middle; width: 120px;">
-        <span id="ch6-wheel-theta-val" style="font-weight: bold; color: #a855f7;">0.00 rad</span>
-      </label>
-    </div>
-  </div>
-
-  <canvas id="ch6-wheel-canvas" width="720" height="300" style="width: 100%; height: auto; background: #1e293b; border-radius: 8px; border: 1px solid #334155; display: block;"></canvas>
-  <div style="font-size: 0.82em; color: #94a3b8; margin-top: 8px; text-align: center;">
-    <b>Interactive Demo:</b> Adjust radius <i>a</i> to observe how the cycloid arch scales proportionally with wheel size.
-  </div>
-</div>
-
-<script>
-(function() {
-  const canvas = document.getElementById('ch6-wheel-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-
-  let a = 38;
-  let theta = 0;
-  const maxTheta = 4 * Math.PI;
-  let running = true;
-  let animId = null;
-  let lastTs = 0;
-  const rollSpeed = 1.5;
-
-  const xOrigin = 45;
-  const yRail = 35;
-
-  function update() {
-    const rVal = document.getElementById('ch6-wheel-radius-val');
-    const thVal = document.getElementById('ch6-wheel-theta-val');
-    const thSlider = document.getElementById('ch6-wheel-theta-slider');
-    if (rVal) rVal.innerText = a + ' px';
-    if (thVal) thVal.innerText = theta.toFixed(2) + ' rad';
-    if (thSlider) thSlider.value = Math.round((theta / maxTheta) * 1256);
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = '#0f172a';
-    ctx.fillRect(0, 0, canvas.width, yRail);
-    ctx.strokeStyle = '#334155';
-    ctx.lineWidth = 1.5;
-    for (let hx = 10; hx < canvas.width; hx += 16) {
-      ctx.beginPath(); ctx.moveTo(hx, yRail - 12); ctx.lineTo(hx + 10, yRail); ctx.stroke();
-    }
-    ctx.strokeStyle = '#94a3b8';
-    ctx.lineWidth = 2.5;
-    ctx.beginPath(); ctx.moveTo(0, yRail); ctx.lineTo(canvas.width, yRail); ctx.stroke();
-
-    ctx.fillStyle = '#f8fafc';
-    ctx.font = 'bold 11px system-ui, sans-serif';
-    ctx.fillText('Underside Rail (y = 0)', 15, yRail - 12);
-
-    // Center of Mass trajectory line (y = yRail + a)
-    ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
-    ctx.lineWidth = 1.2;
-    ctx.setLineDash([4, 4]);
-    ctx.beginPath(); ctx.moveTo(0, yRail + a); ctx.lineTo(canvas.width, yRail + a); ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.fillStyle = '#38bdf8';
-    ctx.font = '10px system-ui, sans-serif';
-    ctx.fillText(`Center Path: y_c = a (${a}px)`, 20, yRail + a - 4);
-
-    // Trough depth boundary line (y = yRail + 2a)
-    ctx.strokeStyle = 'rgba(168, 85, 247, 0.4)';
-    ctx.lineWidth = 1.2;
-    ctx.setLineDash([4, 4]);
-    ctx.beginPath(); ctx.moveTo(0, yRail + 2*a); ctx.lineTo(canvas.width, yRail + 2*a); ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.fillStyle = '#c084fc';
-    ctx.fillText(`Trough Depth: y_max = 2a (${2*a}px)`, 20, yRail + 2*a + 12);
-
-    // Faint full cycloid path
-    ctx.strokeStyle = '#475569';
-    ctx.lineWidth = 1.5;
-    ctx.setLineDash([4, 4]);
-    ctx.beginPath();
-    const totalSteps = 300;
-    for (let i = 0; i <= totalSteps; i++) {
-      const th = (i / totalSteps) * maxTheta;
-      const x = xOrigin + a * (th - Math.sin(th));
-      const y = yRail + a * (1 - Math.cos(th));
-      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-    }
-    ctx.stroke();
-    ctx.setLineDash([]);
-
-    // Gradient fill under the active traced curve
-    const currentSteps = Math.min(totalSteps, Math.floor((theta / maxTheta) * totalSteps));
-    if (currentSteps > 1) {
-      const grad = ctx.createLinearGradient(0, yRail, 0, yRail + 2*a);
-      grad.addColorStop(0, 'rgba(192, 132, 252, 0.22)');
-      grad.addColorStop(1, 'rgba(168, 85, 247, 0.02)');
-      ctx.fillStyle = grad;
-      ctx.beginPath();
-      ctx.moveTo(xOrigin, yRail);
-      for (let i = 0; i <= currentSteps; i++) {
-        const th = (i / totalSteps) * maxTheta;
-        const x = xOrigin + a * (th - Math.sin(th));
-        const y = yRail + a * (1 - Math.cos(th));
-        ctx.lineTo(x, y);
-      }
-      const lastTh = (currentSteps / totalSteps) * maxTheta;
-      const lastX = xOrigin + a * (lastTh - Math.sin(lastTh));
-      ctx.lineTo(lastX, yRail);
-      ctx.closePath();
-      ctx.fill();
-    }
-
-    // Glowing active traced path up to theta
-    ctx.strokeStyle = '#c084fc';
-    ctx.lineWidth = 3.5;
-    ctx.shadowColor = '#a855f7';
-    ctx.shadowBlur = 10;
-    ctx.beginPath();
-    for (let i = 0; i <= currentSteps; i++) {
-      const th = (i / totalSteps) * maxTheta;
-      const x = xOrigin + a * (th - Math.sin(th));
-      const y = yRail + a * (1 - Math.cos(th));
-      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-    }
-    ctx.stroke();
-    ctx.shadowBlur = 0;
-
-    // Rolling Wheel
-    const xc = xOrigin + a * theta;
-    const yc = yRail + a;
-    const xp = xc - a * Math.sin(theta);
-    const yp = yc - a * Math.cos(theta);
-
-    // Instantaneous Center of Rotation (ICR)
-    ctx.fillStyle = '#f43f5e';
-    ctx.beginPath(); ctx.arc(xc, yRail, 4.5, 0, 2*Math.PI); ctx.fill();
-
-    // Normal line connecting Contact C to Marker P
-    ctx.strokeStyle = 'rgba(244, 63, 94, 0.4)';
-    ctx.lineWidth = 1.2;
-    ctx.setLineDash([3, 3]);
-    ctx.beginPath(); ctx.moveTo(xc, yRail); ctx.lineTo(xp, yp); ctx.stroke();
-    ctx.setLineDash([]);
-
-    const wheelGrad = ctx.createRadialGradient(xc, yc, 2, xc, yc, a);
-    wheelGrad.addColorStop(0, 'rgba(56, 189, 248, 0.35)');
-    wheelGrad.addColorStop(0.85, 'rgba(14, 116, 144, 0.2)');
-    wheelGrad.addColorStop(1, 'rgba(56, 189, 248, 0.55)');
-    ctx.fillStyle = wheelGrad;
-    ctx.strokeStyle = '#38bdf8';
-    ctx.lineWidth = 2.5;
-    ctx.beginPath();
-    ctx.arc(xc, yc, a, 0, 2*Math.PI);
-    ctx.fill();
-    ctx.stroke();
-
-    ctx.fillStyle = '#0284c7';
-    ctx.beginPath(); ctx.arc(xc, yc, 4.5, 0, 2*Math.PI); ctx.fill();
-    ctx.fillStyle = '#ffffff';
-    ctx.beginPath(); ctx.arc(xc, yc, 2, 0, 2*Math.PI); ctx.fill();
-
-    // Spokes
-    ctx.strokeStyle = 'rgba(56, 189, 248, 0.5)';
-    ctx.lineWidth = 1.5;
-    for (let i = 0; i < 6; i++) {
-      const spAng = theta + (i * Math.PI / 3) - Math.PI/2;
-      ctx.beginPath(); ctx.moveTo(xc, yc); ctx.lineTo(xc + a * Math.cos(spAng), yc + a * Math.sin(spAng)); ctx.stroke();
-    }
-
-    // Marker arm
-    ctx.strokeStyle = '#f43f5e';
-    ctx.lineWidth = 2.2;
-    ctx.beginPath(); ctx.moveTo(xc, yc); ctx.lineTo(xp, yp); ctx.stroke();
-
-    // Velocity vector
-    const vx = a * (1 - Math.cos(theta));
-    const vy = a * Math.sin(theta);
-    const vMag = Math.sqrt(vx*vx + vy*vy) || 1;
-    const arrowLen = 28;
-    const dirX = (vx / vMag) * arrowLen;
-    const dirY = (vy / vMag) * arrowLen;
-
-    ctx.strokeStyle = '#4ade80';
-    ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.moveTo(xp, yp); ctx.lineTo(xp + dirX, yp + dirY); ctx.stroke();
-
-    const arrHeadLen = 6;
-    const arrAng = Math.atan2(dirY, dirX);
-    ctx.fillStyle = '#4ade80';
-    ctx.beginPath();
-    ctx.moveTo(xp + dirX, yp + dirY);
-    ctx.lineTo(xp + dirX - arrHeadLen * Math.cos(arrAng - Math.PI/6), yp + dirY - arrHeadLen * Math.sin(arrAng - Math.PI/6));
-    ctx.lineTo(xp + dirX - arrHeadLen * Math.cos(arrAng + Math.PI/6), yp + dirY - arrHeadLen * Math.sin(arrAng + Math.PI/6));
-    ctx.closePath();
-    ctx.fill();
-
-    // Tracing Marker P
-    ctx.shadowColor = '#e879f9';
-    ctx.shadowBlur = 14;
-    ctx.fillStyle = '#f43f5e';
-    ctx.beginPath(); ctx.arc(xp, yp, 7.5, 0, 2*Math.PI); ctx.fill();
-    ctx.shadowBlur = 0;
-
-    ctx.fillStyle = '#ffffff';
-    ctx.beginPath(); ctx.arc(xp - 1.5, yp - 1.5, 2.5, 0, 2*Math.PI); ctx.fill();
-
-    ctx.fillStyle = '#fdf4ff';
-    ctx.font = 'bold 11px system-ui, sans-serif';
-    ctx.fillText('P(x,y)', xp + 8, yp + 14);
-  }
-
-  function step(ts) {
-    if (!lastTs) lastTs = ts;
-    const dt = Math.min((ts - lastTs) / 1000, 0.04);
-    lastTs = ts;
-
-    if (running) {
-      theta += rollSpeed * dt;
-      if (theta > maxTheta) theta = 0;
-      update();
-    }
-
-    draw();
-    animId = requestAnimationFrame(step);
-  }
-
-  const playBtn = document.getElementById('ch6-wheel-play-btn');
-  if (playBtn) {
-    playBtn.onclick = function() {
-      running = !running;
-      this.innerText = running ? '❚❚ Pause' : '▶ Play';
-    };
-  }
-
-  const resetBtn = document.getElementById('ch6-wheel-reset-btn');
-  if (resetBtn) {
-    resetBtn.onclick = function() {
-      theta = 0;
-      update();
-      draw();
-    };
-  }
-
-  const rSlider = document.getElementById('ch6-wheel-radius-slider');
-  if (rSlider) {
-    rSlider.oninput = function() {
-      a = parseInt(this.value);
-      update();
-      draw();
-    };
-  }
-
-  const thSlider = document.getElementById('ch6-wheel-theta-slider');
-  if (thSlider) {
-    thSlider.oninput = function() {
-      theta = (parseInt(this.value) / 1256) * maxTheta;
-      update();
-      draw();
-    };
-  }
-
-  update();
-  draw();
-  animId = requestAnimationFrame(step);
-})();
-</script>
-
-Imagine a circular disk of radius $a$ rolling without slipping along the underside of the horizontal axis ($y = 0$, pointing downward):
-- **Center of the wheel:** As the wheel rolls through an angle $\theta$, its contact point has rolled a distance $a\theta$ along the rail:
-  $$ (x_c, y_c) = (a\theta, a) $$
-- **Point on the perimeter ($P$):** A marker fixed to the rim starts at the origin $(0, 0)$ when $\theta = 0$. After rotating clockwise by $\theta$, the marker's relative displacement from the wheel's center is:
-  $$ \Delta x = -a\sin\theta, \quad \Delta y = -a\cos\theta $$
-- **Absolute coordinates:** Combining center translation and rim rotation yields:
-  $$ x(\theta) = x_c + \Delta x = a(\theta - \sin\theta) $$
-  $$ y(\theta) = y_c + \Delta y = a(1 - \cos\theta) $$
-
-$\theta$ also directly determines the local slope and launch angle of the path. Differentiating with respect to $\theta$:
-$$ \frac{dy}{dx} = \frac{dy/d\theta}{dx/d\theta} = \frac{a\sin\theta}{a(1 - \cos\theta)} = \frac{2\sin(\theta/2)\cos(\theta/2)}{2\sin^2(\theta/2)} = \cot\left(\frac{\theta}{2}\right) $$
-If $\psi$ is the inclination angle of the velocity vector relative to the horizontal ($\tan\psi = dy/dx$):
-$$ \psi = \frac{\pi - \theta}{2} $$
-- At $\theta \to 0$ (the start): $\psi = \pi/2$ (the path drops straight vertically).
-- At $\theta = \pi$ (the trough): $\psi = 0$ (the trajectory is completely horizontal).
-- At $\theta = 2\pi$ (the next cusp): $\psi = -\pi/2$ (the path rises back to vertical).
-
-#### Why Assume the First Arch ($\theta \in [0, 2\pi]$) and $\sin(\theta/2) \ge 0$?
-
-1. **The Mathematical Reason: Eliminating Absolute Value Signs**  
-   The principal square root satisfies $\sqrt{u^2} = |u|$. In simplifying the radical:
-   $$ \sqrt{\frac{y}{2a - y}} = \left| \tan\left(\frac{\theta}{2}\right) \right| = \frac{\left|\sin(\theta/2)\right|}{\left|\cos(\theta/2)\right|} $$
-   If $\theta \in [0, 2\pi]$, then $\frac{\theta}{2} \in [0, \pi]$. Since sine is strictly non-negative on $[0, \pi]$:
-   $$ \sin\left(\frac{\theta}{2}\right) \ge 0 \implies \left|\sin\left(\frac{\theta}{2}\right)\right| = \sin\left(\frac{\theta}{2}\right) $$
-   This avoids carrying piece-wise $\pm$ absolute value signs.
-
-2. **The Physical Reason: Geometry of the Fastest Path**  
-   - **Energy Bounds:** Conservation of mechanical energy gives $v = \sqrt{2gy}$. At $y = 0$, speed is zero ($v = 0$). The particle cannot rise above $y = 0$, so it cannot continue past a cusp into negative $y$.
-   - **Uniqueness:** A single arch ($\theta \in [0, 2\pi]$) starts at $(0, 0)$ and terminates at $(2\pi a, 0)$. By scaling the radius $a$, a single cycloid arch can pass through any target point $(x_2, y_2)$ in the lower half-plane ($x_2 > 0, y_2 \ge 0$).
-   - **No Redundant Loops:** Any path extending past $\theta = 2\pi$ into a second arch would involve rising up to a cusp, stopping, and dropping into a new dip. That would add unnecessary path length and travel time, violating the time-minimization condition $\delta T = 0$.
-
-#### Essential Mathematical Properties of Cycloids
-
-- **Parametric Form:** $x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta)$
-- **Differential Arc Length:**
-  $$ ds = \sqrt{\dot{x}^2 + \dot{y}^2}\, d\theta = a\sqrt{(1-\cos\theta)^2 + \sin^2\theta}\, d\theta = 2a\sin\left(\frac{\theta}{2}\right) d\theta $$
-- **Total Arc Length from Origin to $\theta$:**
-  $$ s(\theta) = \int_0^\theta 2a\sin\left(\frac{\theta'}{2}\right) d\theta' = 4a\left(1 - \cos\left(\frac{\theta}{2}\right)\right) = 8a\sin^2\left(\frac{\theta}{4}\right) $$
-  The total perimeter of one complete arch ($\theta = 2\pi$) is exactly $s_{\text{total}} = 8a$.
-- **Radius of Curvature:**
-  $$ \rho(\theta) = \frac{(\dot{x}^2 + \dot{y}^2)^{3/2}}{|\dot{x}\ddot{y} - \dot{y}\ddot{x}|} = 4a\sin\left(\frac{\theta}{2}\right) = \sqrt{8a y} $$
-- **Self-Evolute Property:** The evolute (locus of centers of curvature) of a cycloid is an identical cycloid, shifted horizontally by $\pi a$ and vertically downward by $2a$.
-
-*(For broader integration techniques and speed benchmarks, see [Integration Tricks and Substitution Techniques](../reference/integration-tricks-and-substitutions.qmd). For physical systems such as Huygens' isochronous pendulum, $E\times B$ drifts, and cycloidal gear drives, see [Physics and Engineering Applications of Cycloids](../reference/cycloid-physics-applications.qmd).)*
+- **Wheel Center Translation:** $(x_c, y_c) = (a\theta, a)$
+- **Rim Marker Relative Displacement:** $(\Delta x, \Delta y) = (-a\sin\theta, -a\cos\theta)$
+- **Absolute Coordinates:**
+  $$ x(\theta) = x_c + \Delta x = a(\theta - \sin\theta), \quad y(\theta) = y_c + \Delta y = a(1 - \cos\theta) $$
+- **Local Launch / Slope Angle:**
+  $$ \frac{dy}{dx} = \frac{a\sin\theta}{a(1 - \cos\theta)} = \cot\left(\frac{\theta}{2}\right) \implies \psi = \frac{\pi - \theta}{2} $$
+  - At release ($\theta \to 0$): $\psi = \pi/2$ (instantaneous vertical drop).
+  - At the trough ($\theta = \pi$): $\psi = 0$ (instantaneous horizontal flight).
+  - At the terminal cusp ($\theta = 2\pi$): $\psi = -\pi/2$ (instantaneous vertical rise).
 
 ::: {.callout-tip}
-### 🎮 Interactive Simulations
-Experience these phenomena live in your browser:  
-Launch the **[Interactive Cycloid Mechanics: Brachistochrone, Tautochrone & Huygens' Pendulum](../simulations/cycloid-mechanics-interactive.qmd)** to run the 4-track Brachistochrone race, test simultaneous Tautochrone arrivals, and compare Huygens' isochronous clock against ordinary circular pendulums!
+### 🎮 Interactive Simulation: Rolling Wheel
+To dynamically adjust the wheel radius $a$, scrub the rotation angle $\theta$, and visualize the instantaneous velocity vectors in real time, check out our **[Interactive Rolling Wheel Cycloid Generator](../simulations/cycloid-mechanics-interactive.qmd#sim-rolling-wheel)**!
 :::
+
+#### Essential Mathematical Properties of Cycloids
+- **Parametric Equations:** $x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta)$
+- **Differential Arc Length:**
+  $$ ds = \sqrt{\dot{x}^2 + \dot{y}^2} \, d\theta = 2a\sin\left(\frac{\theta}{2}\right) d\theta $$
+- **Cumulative Arc Length from Origin:**
+  $$ s(\theta) = \int_0^\theta 2a\sin\left(\frac{\theta'}{2}\right) d\theta' = 4a\left(1 - \cos\left(\frac{\theta}{2}\right)\right) = 8a\sin^2\left(\frac{\theta}{4}\right) $$
+  A full single arch ($\theta = 2\pi$) has total perimeter $s_{\text{total}} = 8a$.
+- **Radius of Curvature:**
+  $$ \rho(\theta) = 4a\sin\left(\frac{\theta}{2}\right) = \sqrt{8a y} $$
+- **Self-Evolute Property:** The evolute of a cycloid is an identical cycloid shifted horizontally by $\pi a$ and downward by $2a$.
+
+*(For additional substitution toolkits and speed benchmarks, see [Integration Tricks and Substitution Techniques](../reference/integration-tricks-and-substitutions.qmd). For physical systems such as charged particle drift in crossed $\mathbf{E}\times\mathbf{B}$ fields and cycloidal drives, see [Physics and Engineering Applications of Cycloids](../reference/cycloid-physics-applications.qmd).)*
+
+#### Trajectory Visualization & The Brachistochrone Race
 
 ```{python}
 #| label: fig-cycloid
@@ -588,6 +261,15 @@ ax.legend()
 plt.grid(True)
 plt.show()
 ```
+
+::: {.callout-tip}
+### 🎮 Live In-Browser Simulations
+Explore the complete interactive simulation suite on the **[Code & Simulations: Cycloid Mechanics](../simulations/cycloid-mechanics-interactive.qmd)** page:
+* **[Simulation 1: Rolling Wheel Cycloid Generator](../simulations/cycloid-mechanics-interactive.qmd#sim-rolling-wheel)** — Dynamic radius scaling, scrubbing, and velocity vectors.
+* **[Simulation 2: The Brachistochrone 4-Track Race](../simulations/cycloid-mechanics-interactive.qmd#sim-brachistochrone)** — Real-time race between Cycloid, Circular Arc, Parabola, and Straight Line with stopwatches.
+* **[Simulation 3: The Tautochrone Synchronous Arrival](../simulations/cycloid-mechanics-interactive.qmd#sim-tautochrone)** — Simultaneous descent of beads released from different heights.
+* **[Simulation 4: Huygens' Isochronous Pendulum](../simulations/cycloid-mechanics-interactive.qmd#sim-huygens)** — Cycloidal cheeks eliminating circular error at high amplitudes.
+:::
 
 *(See [Problem 6.11](../solutions/taylor-chapter-6-problems.qmd#problem-611))*
 

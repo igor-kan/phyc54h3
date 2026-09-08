@@ -23,7 +23,7 @@ Below are four live, interactive in-browser simulations demonstrating these prin
 
 ---
 
-# Simulation 1: Generating a Cycloid — Rolling Wheel Along Underside of Axis
+# Simulation 1: Generating a Cycloid — Rolling Wheel Along Underside of Axis {#sim-rolling-wheel}
 
 A cycloid is defined geometrically as the trajectory traced out by a fixed marker point on the rim of a wheel of radius $a$ rolling without slipping along a straight line. In the Brachistochrone problem, the rail is the horizontal ceiling axis $y = 0$, and the wheel rolls along its underside ($y$ increasing downward):
 
@@ -377,7 +377,7 @@ Use the **Wheel Radius Slider ($a$)** below to interactively scale the wheel and
 
 ---
 
-# Simulation 2: The Brachistochrone Race
+# Simulation 2: The Brachistochrone Race {#sim-brachistochrone}
 
 In 1696, Johann Bernoulli challenged mathematicians to find the shape of a wire connecting two points along which a bead will slide under gravity (without friction) in the shortest possible time.
 
@@ -701,7 +701,7 @@ The four competing trajectories below connect the origin $(0, 0)$ to a lower tar
 
 ---
 
-# Simulation 3: The Tautochrone (Isochrone) Property
+# Simulation 3: The Tautochrone (Isochrone) Property {#sim-tautochrone}
 
 Huygens discovered in 1659 that an inverted cycloid is **tautochronous**: a frictionless particle sliding down a cycloidal track to the lowest point takes the *exact same time* regardless of where on the arch it is released!
 
@@ -897,7 +897,7 @@ In the simulation below, four beads are placed at widely disparate initial relea
 
 ---
 
-# Simulation 4: Huygens' Isochronous Cycloidal Pendulum
+# Simulation 4: Huygens' Isochronous Cycloidal Pendulum {#sim-huygens}
 
 In a standard circular pendulum, the period increases with amplitude:
 $$ T \approx 2\pi\sqrt{\frac{L}{g}}\left(1 + \frac{1}{16}\theta_0^2 + \frac{11}{3072}\theta_0^4 + \dots\right) $$
