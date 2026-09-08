@@ -211,6 +211,14 @@ window.Quarto = {
   <li><a href="#the-weierstrass-tangent-half-angle-substitution" id="toc-the-weierstrass-tangent-half-angle-substitution" class="nav-link" data-scroll-target="#the-weierstrass-tangent-half-angle-substitution">2. The Weierstrass Tangent Half-Angle Substitution</a></li>
   <li><a href="#hyperbolic-conversions-for-catenaries-and-relativistic-rapidity" id="toc-hyperbolic-conversions-for-catenaries-and-relativistic-rapidity" class="nav-link" data-scroll-target="#hyperbolic-conversions-for-catenaries-and-relativistic-rapidity">3. Hyperbolic Conversions for Catenaries and Relativistic Rapidity</a></li>
   </ul></li>
+  <li><a href="#practice-problems-for-speed-integration" id="toc-practice-problems-for-speed-integration" class="nav-link" data-scroll-target="#practice-problems-for-speed-integration">Practice Problems for Speed Integration</a>
+  <ul class="collapse">
+  <li><a href="#problem-1-the-normalized-fractional-root" id="toc-problem-1-the-normalized-fractional-root" class="nav-link" data-scroll-target="#problem-1-the-normalized-fractional-root">Problem 1: The Normalized Fractional Root</a></li>
+  <li><a href="#problem-2-the-factored-quadratic-surd" id="toc-problem-2-the-factored-quadratic-surd" class="nav-link" data-scroll-target="#problem-2-the-factored-quadratic-surd">Problem 2: The Factored Quadratic Surd</a></li>
+  <li><a href="#problem-3-the-15-second-weierstrass-benchmark" id="toc-problem-3-the-15-second-weierstrass-benchmark" class="nav-link" data-scroll-target="#problem-3-the-15-second-weierstrass-benchmark">Problem 3: The 15-Second Weierstrass Benchmark</a></li>
+  <li><a href="#problem-4-inverse-factorization-on-sqrtx2---1" id="toc-problem-4-inverse-factorization-on-sqrtx2---1" class="nav-link" data-scroll-target="#problem-4-inverse-factorization-on-sqrtx2---1">Problem 4: Inverse Factorization on <span class="math inline">\(\sqrt{x^2 - 1}\)</span></a></li>
+  <li><a href="#problem-5-hyperbolic-shift-with-inversion" id="toc-problem-5-hyperbolic-shift-with-inversion" class="nav-link" data-scroll-target="#problem-5-hyperbolic-shift-with-inversion">Problem 5: Hyperbolic Shift with Inversion</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -355,6 +363,40 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="hyperbolic-conversions-for-catenaries-and-relativistic-rapidity">3. Hyperbolic Conversions for Catenaries and Relativistic Rapidity</h2>
 <p>Whenever you encounter forms like <span class="math inline">\(\int \frac{dy}{\sqrt{y^2 - y_0^2}}\)</span> (as in the soap-film catenoid problem 6.19):</p>
 <p>Instead of trigonometric secant substitution (<span class="math inline">\(y = y_0 \sec\theta\)</span>), use the hyperbolic cosine: <span class="math display">\[y = y_0 \cosh u \implies dy = y_0 \sinh u \, du\]</span> <span class="math display">\[\int \frac{y_0 \sinh u \, du}{\sqrt{y_0^2(\cosh^2 u - 1)}} = \int \frac{y_0 \sinh u}{y_0 \sinh u} \, du = \int du = u + C = \text{arcosh}\left(\frac{y}{y_0}\right) + C\]</span> Inverting this immediately gives <span class="math inline">\(y(x) = y_0 \cosh\left(\frac{x - x_0}{y_0}\right)\)</span> in one step without messy logarithms of absolute values.</p>
+<hr>
+</section>
+</section>
+<section id="practice-problems-for-speed-integration" class="level1">
+<h1>Practice Problems for Speed Integration</h1>
+<section id="problem-1-the-normalized-fractional-root" class="level2">
+<h2 class="anchored" data-anchor-id="problem-1-the-normalized-fractional-root">Problem 1: The Normalized Fractional Root</h2>
+<p><span class="math display">\[\int_0^1 \sqrt{\frac{x}{1-x}} \, dx\]</span></p>
+<p><strong>Target Trick:</strong> The half-angle cycloid substitution (<span class="math inline">\(x = \sin^2\theta\)</span>).</p>
+<p><strong>Speed-Round Solution:</strong> Let <span class="math inline">\(x = \sin^2\theta\)</span>, so <span class="math inline">\(dx = 2\sin\theta\cos\theta\, d\theta\)</span>. The bounds transform as <span class="math inline">\(0 \to 0\)</span> and <span class="math inline">\(1 \to \pi/2\)</span>: <span class="math display">\[\sqrt{\frac{x}{1-x}} = \sqrt{\frac{\sin^2\theta}{\cos^2\theta}} = \tan\theta\]</span> Substitute directly into the integral: <span class="math display">\[\int_0^{\pi/2} (\tan\theta) \cdot (2\sin\theta\cos\theta)\, d\theta = 2 \int_0^{\pi/2} \sin^2\theta\, d\theta\]</span> Using the average value of <span class="math inline">\(\sin^2\theta\)</span> over a quarter-period: <span class="math display">\[2 \left(\frac{1}{2} \cdot \frac{\pi}{2}\right) = \mathbf{\frac{\pi}{2}}\]</span></p>
+</section>
+<section id="problem-2-the-factored-quadratic-surd" class="level2">
+<h2 class="anchored" data-anchor-id="problem-2-the-factored-quadratic-surd">Problem 2: The Factored Quadratic Surd</h2>
+<p><span class="math display">\[\int_0^1 \frac{dx}{(x+1)\sqrt{x(1-x)}}\]</span></p>
+<p><strong>Target Trick:</strong> Euler’s third substitution / factored root normalization.</p>
+<p><strong>Speed-Round Solution:</strong> Substitute <span class="math inline">\(x = \sin^2\theta\)</span>, giving <span class="math inline">\(dx = 2\sin\theta\cos\theta\, d\theta\)</span> and <span class="math inline">\(\sqrt{x(1-x)} = \sin\theta\cos\theta\)</span>: <span class="math display">\[\int_0^{\pi/2} \frac{2\sin\theta\cos\theta\, d\theta}{(1 + \sin^2\theta)\sin\theta\cos\theta} = \int_0^{\pi/2} \frac{2\, d\theta}{1 + \sin^2\theta}\]</span> Divide numerator and denominator by <span class="math inline">\(\cos^2\theta\)</span> to prepare an algebraic substitution: <span class="math display">\[\int_0^{\pi/2} \frac{2\sec^2\theta}{\sec^2\theta + \tan^2\theta}\, d\theta = \int_0^{\pi/2} \frac{2\sec^2\theta}{1 + 2\tan^2\theta}\, d\theta\]</span> Substitute <span class="math inline">\(u = \sqrt{2}\tan\theta\)</span>, so <span class="math inline">\(du = \sqrt{2}\sec^2\theta\, d\theta\)</span>, with limits <span class="math inline">\(0 \to \infty\)</span>: <span class="math display">\[\int_0^\infty \frac{\sqrt{2}\, du}{1 + u^2} = \sqrt{2} \left[ \arctan(u) \right]_0^\infty = \sqrt{2}\left(\frac{\pi}{2}\right) = \mathbf{\frac{\pi}{\sqrt{2}}}\]</span></p>
+</section>
+<section id="problem-3-the-15-second-weierstrass-benchmark" class="level2">
+<h2 class="anchored" data-anchor-id="problem-3-the-15-second-weierstrass-benchmark">Problem 3: The 15-Second Weierstrass Benchmark</h2>
+<p><span class="math display">\[\int_0^{\pi/2} \frac{dx}{1 + \sin x + \cos x}\]</span></p>
+<p><strong>Target Trick:</strong> The classic half-angle substitution <span class="math inline">\(t = \tan(x/2)\)</span>.</p>
+<p><strong>Speed-Round Solution:</strong> Recall the rational identities: <span class="math display">\[\sin x = \frac{2t}{1+t^2}, \quad \cos x = \frac{1-t^2}{1+t^2}, \quad dx = \frac{2\, dt}{1+t^2}\]</span> Combine the denominator terms: <span class="math display">\[1 + \sin x + \cos x = \frac{(1+t^2) + 2t + (1-t^2)}{1+t^2} = \frac{2(1+t)}{1+t^2}\]</span> The <span class="math inline">\((1+t^2)\)</span> factors cancel against <span class="math inline">\(dx\)</span>: <span class="math display">\[\int_0^1 \frac{\frac{2\, dt}{1+t^2}}{\frac{2(1+t)}{1+t^2}} = \int_0^1 \frac{dt}{1+t} = \left[ \ln(1+t) \right]_0^1 = \mathbf{\ln 2}\]</span></p>
+</section>
+<section id="problem-4-inverse-factorization-on-sqrtx2---1" class="level2">
+<h2 class="anchored" data-anchor-id="problem-4-inverse-factorization-on-sqrtx2---1">Problem 4: Inverse Factorization on <span class="math inline">\(\sqrt{x^2 - 1}\)</span></h2>
+<p><span class="math display">\[\int_1^2 \frac{\sqrt{x^2 - 1}}{x^4}\, dx\]</span></p>
+<p><strong>Target Trick:</strong> Direct radical factoring <span class="math inline">\(u = \sqrt{1 - x^{-2}}\)</span> (bypassing trigonometric substitution).</p>
+<p><strong>Speed-Round Solution:</strong> Factor <span class="math inline">\(x\)</span> out of the radical in the numerator: <span class="math display">\[\frac{\sqrt{x^2-1}}{x^4} = \frac{x\sqrt{1 - x^{-2}}}{x^4} = \frac{\sqrt{1 - x^{-2}}}{x^3}\]</span> Set <span class="math inline">\(u = \sqrt{1 - x^{-2}}\)</span>. Then <span class="math inline">\(u^2 = 1 - x^{-2} \implies 2u\, du = 2x^{-3}\, dx\)</span>, so: <span class="math display">\[\frac{dx}{x^3} = u\, du\]</span> The bounds transform from <span class="math inline">\(x \in [1, 2]\)</span> to <span class="math inline">\(u \in \left[0, \frac{\sqrt{3}}{2}\right]\)</span>: <span class="math display">\[\int_0^{\sqrt{3}/2} u \cdot (u\, du) = \int_0^{\sqrt{3}/2} u^2\, du = \left[ \frac{u^3}{3} \right]_0^{\sqrt{3}/2} = \frac{1}{3}\left(\frac{3\sqrt{3}}{8}\right) = \mathbf{\frac{\sqrt{3}}{8}}\]</span></p>
+</section>
+<section id="problem-5-hyperbolic-shift-with-inversion" class="level2">
+<h2 class="anchored" data-anchor-id="problem-5-hyperbolic-shift-with-inversion">Problem 5: Hyperbolic Shift with Inversion</h2>
+<p><span class="math display">\[\int_0^1 \frac{dx}{(x+1)\sqrt{x^2 + 2x + 2}}\]</span></p>
+<p><strong>Target Trick:</strong> Completing the square followed by inversion substitution <span class="math inline">\(u = 1/t\)</span>.</p>
+<p><strong>Speed-Round Solution:</strong> Complete the square inside the radical: <span class="math inline">\(x^2 + 2x + 2 = (x+1)^2 + 1\)</span>. Shift variables with <span class="math inline">\(y = x+1\)</span>: <span class="math display">\[\int_1^2 \frac{dy}{y\sqrt{y^2 + 1}}\]</span> Apply the inversion substitution <span class="math inline">\(y = \frac{1}{t}\)</span>, which gives <span class="math inline">\(dy = -\frac{dt}{t^2}\)</span>: <span class="math display">\[\int_1^{1/2} \frac{-\frac{dt}{t^2}}{\frac{1}{t}\sqrt{\frac{1}{t^2} + 1}} = \int_{1/2}^1 \frac{dt}{\sqrt{1 + t^2}}\]</span> Using the standard anti-derivative <span class="math inline">\(\int \frac{dt}{\sqrt{1+t^2}} = \operatorname{arsinh}(t) = \ln(t + \sqrt{t^2+1})\)</span>: <span class="math display">\[\left[ \ln\left(t + \sqrt{t^2 + 1}\right) \right]_{1/2}^1 = \ln(1 + \sqrt{2}) - \ln\left(\frac{1 + \sqrt{5}}{2}\right) = \mathbf{\ln\left(\frac{2 + 2\sqrt{2}}{1 + \sqrt{5}}\right)}\]</span></p>
 
 
 
@@ -923,7 +965,76 @@ window.Quarto = {
 <span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>Instead of trigonometric secant substitution ($y = y_0 \sec\theta$), use the hyperbolic cosine:</span>
 <span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>$$y = y_0 \cosh u \implies dy = y_0 \sinh u \, du$$</span>
 <span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>$$\int \frac{y_0 \sinh u \, du}{\sqrt{y_0^2(\cosh^2 u - 1)}} = \int \frac{y_0 \sinh u}{y_0 \sinh u} \, du = \int du = u + C = \text{arcosh}\left(\frac{y}{y_0}\right) + C$$</span>
-<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>Inverting this immediately gives $y(x) = y_0 \cosh\left(\frac{x - x_0}{y_0}\right)$ in one step without messy logarithms of absolute values.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>Inverting this immediately gives $y(x) = y_0 \cosh\left(\frac{x - x_0}{y_0}\right)$ in one step without messy logarithms of absolute values.</span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a><span class="fu"># Practice Problems for Speed Integration</span></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a><span class="fu">## Problem 1: The Normalized Fractional Root</span></span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>$$\int_0^1 \sqrt{\frac{x}{1-x}} \, dx$$</span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>**Target Trick:** The half-angle cycloid substitution ($x = \sin^2\theta$).</span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>**Speed-Round Solution:**</span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a>Let $x = \sin^2\theta$, so $dx = 2\sin\theta\cos\theta\, d\theta$. The bounds transform as $0 \to 0$ and $1 \to \pi/2$:</span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a>$$\sqrt{\frac{x}{1-x}} = \sqrt{\frac{\sin^2\theta}{\cos^2\theta}} = \tan\theta$$</span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a>Substitute directly into the integral:</span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a>$$\int_0^{\pi/2} (\tan\theta) \cdot (2\sin\theta\cos\theta)\, d\theta = 2 \int_0^{\pi/2} \sin^2\theta\, d\theta$$</span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a>Using the average value of $\sin^2\theta$ over a quarter-period:</span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a>$$2 \left(\frac{1}{2} \cdot \frac{\pi}{2}\right) = \mathbf{\frac{\pi}{2}}$$</span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="fu">## Problem 2: The Factored Quadratic Surd</span></span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a>$$\int_0^1 \frac{dx}{(x+1)\sqrt{x(1-x)}}$$</span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a>**Target Trick:** Euler’s third substitution / factored root normalization.</span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a>**Speed-Round Solution:**</span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>Substitute $x = \sin^2\theta$, giving $dx = 2\sin\theta\cos\theta\, d\theta$ and $\sqrt{x(1-x)} = \sin\theta\cos\theta$:</span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>$$\int_0^{\pi/2} \frac{2\sin\theta\cos\theta\, d\theta}{(1 + \sin^2\theta)\sin\theta\cos\theta} = \int_0^{\pi/2} \frac{2\, d\theta}{1 + \sin^2\theta}$$</span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a>Divide numerator and denominator by $\cos^2\theta$ to prepare an algebraic substitution:</span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a>$$\int_0^{\pi/2} \frac{2\sec^2\theta}{\sec^2\theta + \tan^2\theta}\, d\theta = \int_0^{\pi/2} \frac{2\sec^2\theta}{1 + 2\tan^2\theta}\, d\theta$$</span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a>Substitute $u = \sqrt{2}\tan\theta$, so $du = \sqrt{2}\sec^2\theta\, d\theta$, with limits $0 \to \infty$:</span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a>$$\int_0^\infty \frac{\sqrt{2}\, du}{1 + u^2} = \sqrt{2} \left<span class="co">[</span><span class="ot"> \arctan(u) \right</span><span class="co">]</span>_0^\infty = \sqrt{2}\left(\frac{\pi}{2}\right) = \mathbf{\frac{\pi}{\sqrt{2}}}$$</span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a><span class="fu">## Problem 3: The 15-Second Weierstrass Benchmark</span></span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a>$$\int_0^{\pi/2} \frac{dx}{1 + \sin x + \cos x}$$</span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a>**Target Trick:** The classic half-angle substitution $t = \tan(x/2)$.</span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a>**Speed-Round Solution:**</span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a>Recall the rational identities:</span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a>$$\sin x = \frac{2t}{1+t^2}, \quad \cos x = \frac{1-t^2}{1+t^2}, \quad dx = \frac{2\, dt}{1+t^2}$$</span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a>Combine the denominator terms:</span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a>$$1 + \sin x + \cos x = \frac{(1+t^2) + 2t + (1-t^2)}{1+t^2} = \frac{2(1+t)}{1+t^2}$$</span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a>The $(1+t^2)$ factors cancel against $dx$:</span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a>$$\int_0^1 \frac{\frac{2\, dt}{1+t^2}}{\frac{2(1+t)}{1+t^2}} = \int_0^1 \frac{dt}{1+t} = \left<span class="co">[</span><span class="ot"> \ln(1+t) \right</span><span class="co">]</span>_0^1 = \mathbf{\ln 2}$$</span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a><span class="fu">## Problem 4: Inverse Factorization on $\sqrt{x^2 - 1}$</span></span>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a>$$\int_1^2 \frac{\sqrt{x^2 - 1}}{x^4}\, dx$$</span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a>**Target Trick:** Direct radical factoring $u = \sqrt{1 - x^{-2}}$ (bypassing trigonometric substitution).</span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a>**Speed-Round Solution:**</span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a>Factor $x$ out of the radical in the numerator:</span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a>$$\frac{\sqrt{x^2-1}}{x^4} = \frac{x\sqrt{1 - x^{-2}}}{x^4} = \frac{\sqrt{1 - x^{-2}}}{x^3}$$</span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a>Set $u = \sqrt{1 - x^{-2}}$. Then $u^2 = 1 - x^{-2} \implies 2u\, du = 2x^{-3}\, dx$, so:</span>
+<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a>$$\frac{dx}{x^3} = u\, du$$</span>
+<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a>The bounds transform from $x \in <span class="co">[</span><span class="ot">1, 2</span><span class="co">]</span>$ to $u \in \left<span class="co">[</span><span class="ot">0, \frac{\sqrt{3}}{2}\right</span><span class="co">]</span>$:</span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a>$$\int_0^{\sqrt{3}/2} u \cdot (u\, du) = \int_0^{\sqrt{3}/2} u^2\, du = \left<span class="co">[</span><span class="ot"> \frac{u^3}{3} \right</span><span class="co">]</span>_0^{\sqrt{3}/2} = \frac{1}{3}\left(\frac{3\sqrt{3}}{8}\right) = \mathbf{\frac{\sqrt{3}}{8}}$$</span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a><span class="fu">## Problem 5: Hyperbolic Shift with Inversion</span></span>
+<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a>$$\int_0^1 \frac{dx}{(x+1)\sqrt{x^2 + 2x + 2}}$$</span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a>**Target Trick:** Completing the square followed by inversion substitution $u = 1/t$.</span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a>**Speed-Round Solution:**</span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a>Complete the square inside the radical: $x^2 + 2x + 2 = (x+1)^2 + 1$. Shift variables with $y = x+1$:</span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a>$$\int_1^2 \frac{dy}{y\sqrt{y^2 + 1}}$$</span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a>Apply the inversion substitution $y = \frac{1}{t}$, which gives $dy = -\frac{dt}{t^2}$:</span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a>$$\int_1^{1/2} \frac{-\frac{dt}{t^2}}{\frac{1}{t}\sqrt{\frac{1}{t^2} + 1}} = \int_{1/2}^1 \frac{dt}{\sqrt{1 + t^2}}$$</span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a>Using the standard anti-derivative $\int \frac{dt}{\sqrt{1+t^2}} = \operatorname{arsinh}(t) = \ln(t + \sqrt{t^2+1})$:</span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a>$$\left<span class="co">[</span><span class="ot"> \ln\left(t + \sqrt{t^2 + 1}\right) \right</span><span class="co">]</span>_{1/2}^1 = \ln(1 + \sqrt{2}) - \ln\left(\frac{1 + \sqrt{5}}{2}\right) = \mathbf{\ln\left(\frac{2 + 2\sqrt{2}}{1 + \sqrt{5}}\right)}$$</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
