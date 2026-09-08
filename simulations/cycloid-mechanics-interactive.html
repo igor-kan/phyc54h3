@@ -197,9 +197,9 @@ window.Quarto = {
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#simulation-1-generating-a-cycloid-rolling-wheel-along-underside-of-axis" id="toc-simulation-1-generating-a-cycloid-rolling-wheel-along-underside-of-axis" class="nav-link" data-scroll-target="#simulation-1-generating-a-cycloid-rolling-wheel-along-underside-of-axis">Simulation 1: Generating a Cycloid — Rolling Wheel Along Underside of Axis</a></li>
-  <li><a href="#simulation-3-the-tautochrone-isochrone-property" id="toc-simulation-3-the-tautochrone-isochrone-property" class="nav-link" data-scroll-target="#simulation-3-the-tautochrone-isochrone-property">Simulation 3: The Tautochrone (Isochrone) Property</a></li>
-  <li><a href="#simulation-4-huygens-isochronous-cycloidal-pendulum" id="toc-simulation-4-huygens-isochronous-cycloidal-pendulum" class="nav-link" data-scroll-target="#simulation-4-huygens-isochronous-cycloidal-pendulum">Simulation 4: Huygens’ Isochronous Cycloidal Pendulum</a>
+  <li><a href="#sim-rolling-wheel" id="toc-sim-rolling-wheel" class="nav-link" data-scroll-target="#sim-rolling-wheel">Simulation 1: Generating a Cycloid — Rolling Wheel Along Underside of Axis</a></li>
+  <li><a href="#sim-tautochrone" id="toc-sim-tautochrone" class="nav-link" data-scroll-target="#sim-tautochrone">Simulation 3: The Tautochrone (Isochrone) Property</a></li>
+  <li><a href="#sim-huygens" id="toc-sim-huygens" class="nav-link" data-scroll-target="#sim-huygens">Simulation 4: Huygens’ Isochronous Cycloidal Pendulum</a>
   <ul class="collapse">
   <li><a href="#live-side-by-side-comparison" id="toc-live-side-by-side-comparison" class="nav-link" data-scroll-target="#live-side-by-side-comparison">Live Side-by-Side Comparison</a></li>
   </ul></li>
@@ -260,7 +260,7 @@ window.Quarto = {
 <p>Below are four live, interactive in-browser simulations demonstrating these principles.</p>
 <hr>
 </section>
-<section id="simulation-1-generating-a-cycloid-rolling-wheel-along-underside-of-axis" class="level1">
+<section id="sim-rolling-wheel" class="level1">
 <h1>Simulation 1: Generating a Cycloid — Rolling Wheel Along Underside of Axis</h1>
 <p>A cycloid is defined geometrically as the trajectory traced out by a fixed marker point on the rim of a wheel of radius <span class="math inline">\(a\)</span> rolling without slipping along a straight line. In the Brachistochrone problem, the rail is the horizontal ceiling axis <span class="math inline">\(y = 0\)</span>, and the wheel rolls along its underside (<span class="math inline">\(y\)</span> increasing downward):</p>
 <ul>
@@ -612,7 +612,7 @@ window.Quarto = {
 
 ---
 
-# Simulation 2: The Brachistochrone Race
+# Simulation 2: The Brachistochrone Race {#sim-brachistochrone}
 
 In 1696, Johann Bernoulli challenged mathematicians to find the shape of a wire connecting two points along which a bead will slide under gravity (without friction) in the shortest possible time.
 
@@ -934,7 +934,7 @@ The four competing trajectories below connect the origin $(0, 0)$ to a lower tar
 </script>
 <hr>
 </section>
-<section id="simulation-3-the-tautochrone-isochrone-property" class="level1">
+<section id="sim-tautochrone" class="level1">
 <h1>Simulation 3: The Tautochrone (Isochrone) Property</h1>
 <p>Huygens discovered in 1659 that an inverted cycloid is <strong>tautochronous</strong>: a frictionless particle sliding down a cycloidal track to the lowest point takes the <em>exact same time</em> regardless of where on the arch it is released!</p>
 <p>The equation of motion along the arc length <span class="math inline">\(s\)</span> (measured from the trough) is pure simple harmonic motion: <span class="math display">\[ \ddot{s} + \left(\frac{g}{4a}\right) s = 0 \]</span> All beads reach the trough <span class="math inline">\(s = 0\)</span> at the identical quarter-period mark: <span class="math display">\[ t_{\text{trough}} = \pi \sqrt{\frac{a}{g}} \]</span></p>
@@ -1121,7 +1121,7 @@ The four competing trajectories below connect the origin $(0, 0)$ to a lower tar
 </script>
 <hr>
 </section>
-<section id="simulation-4-huygens-isochronous-cycloidal-pendulum" class="level1">
+<section id="sim-huygens" class="level1">
 <h1>Simulation 4: Huygens’ Isochronous Cycloidal Pendulum</h1>
 <p>In a standard circular pendulum, the period increases with amplitude: <span class="math display">\[ T \approx 2\pi\sqrt{\frac{L}{g}}\left(1 + \frac{1}{16}\theta_0^2 + \frac{11}{3072}\theta_0^4 + \dots\right) \]</span> This <strong>circular error</strong> caused grandfather clocks to lose time whenever the drive spring wound down and the swing amplitude decreased.</p>
 <p>Christiaan Huygens eliminated this error in 1673 by flanking the suspension string with two curved metal guides shaped like cycloids (<strong>cycloidal cheeks</strong>). As the pendulum swings wide, the flexible string wraps against the cheek, shortening the effective radius of curvature and accelerating the bob just enough so that the trajectory of the bob is an exact evolute cycloid!</p>
@@ -1891,7 +1891,7 @@ Mastery toolkit for solving quadratic surds, Weierstrass half-angle transforms, 
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu"># Simulation 1: Generating a Cycloid — Rolling Wheel Along Underside of Axis</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu"># Simulation 1: Generating a Cycloid — Rolling Wheel Along Underside of Axis {#sim-rolling-wheel}</span></span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>A cycloid is defined geometrically as the trajectory traced out by a fixed marker point on the rim of a wheel of radius $a$ rolling without slipping along a straight line. In the Brachistochrone problem, the rail is the horizontal ceiling axis $y = 0$, and the wheel rolls along its underside ($y$ increasing downward):</span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
@@ -2245,7 +2245,7 @@ Mastery toolkit for solving quadratic surds, Weierstrass half-angle transforms, 
 <span id="cb1-377"><a href="#cb1-377" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-378"><a href="#cb1-378" aria-hidden="true" tabindex="-1"></a><span class="in">---</span></span>
 <span id="cb1-379"><a href="#cb1-379" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-380"><a href="#cb1-380" aria-hidden="true" tabindex="-1"></a><span class="in"># Simulation 2: The Brachistochrone Race</span></span>
+<span id="cb1-380"><a href="#cb1-380" aria-hidden="true" tabindex="-1"></a><span class="in"># Simulation 2: The Brachistochrone Race {#sim-brachistochrone}</span></span>
 <span id="cb1-381"><a href="#cb1-381" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-382"><a href="#cb1-382" aria-hidden="true" tabindex="-1"></a><span class="in">In 1696, Johann Bernoulli challenged mathematicians to find the shape of a wire connecting two points along which a bead will slide under gravity (without friction) in the shortest possible time.</span></span>
 <span id="cb1-383"><a href="#cb1-383" aria-hidden="true" tabindex="-1"></a></span>
@@ -2569,7 +2569,7 @@ Mastery toolkit for solving quadratic surds, Weierstrass half-angle transforms, 
 <span id="cb1-701"><a href="#cb1-701" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-702"><a href="#cb1-702" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb1-703"><a href="#cb1-703" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-704"><a href="#cb1-704" aria-hidden="true" tabindex="-1"></a><span class="fu"># Simulation 3: The Tautochrone (Isochrone) Property</span></span>
+<span id="cb1-704"><a href="#cb1-704" aria-hidden="true" tabindex="-1"></a><span class="fu"># Simulation 3: The Tautochrone (Isochrone) Property {#sim-tautochrone}</span></span>
 <span id="cb1-705"><a href="#cb1-705" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-706"><a href="#cb1-706" aria-hidden="true" tabindex="-1"></a>Huygens discovered in 1659 that an inverted cycloid is **tautochronous**: a frictionless particle sliding down a cycloidal track to the lowest point takes the *exact same time* regardless of where on the arch it is released!</span>
 <span id="cb1-707"><a href="#cb1-707" aria-hidden="true" tabindex="-1"></a></span>
@@ -2765,7 +2765,7 @@ Mastery toolkit for solving quadratic surds, Weierstrass half-angle transforms, 
 <span id="cb1-897"><a href="#cb1-897" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-898"><a href="#cb1-898" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb1-899"><a href="#cb1-899" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-900"><a href="#cb1-900" aria-hidden="true" tabindex="-1"></a><span class="fu"># Simulation 4: Huygens' Isochronous Cycloidal Pendulum</span></span>
+<span id="cb1-900"><a href="#cb1-900" aria-hidden="true" tabindex="-1"></a><span class="fu"># Simulation 4: Huygens' Isochronous Cycloidal Pendulum {#sim-huygens}</span></span>
 <span id="cb1-901"><a href="#cb1-901" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-902"><a href="#cb1-902" aria-hidden="true" tabindex="-1"></a>In a standard circular pendulum, the period increases with amplitude:</span>
 <span id="cb1-903"><a href="#cb1-903" aria-hidden="true" tabindex="-1"></a>$$ T \approx 2\pi\sqrt{\frac{L}{g}}\left(1 + \frac{1}{16}\theta_0^2 + \frac{11}{3072}\theta_0^4 + \dots\right) $$</span>

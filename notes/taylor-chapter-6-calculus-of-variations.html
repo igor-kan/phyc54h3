@@ -223,7 +223,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Taylor Chapter 6: Calculus of Variations</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Taylor Chapter 6: Calculus of Variations</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 <p class="subtitle lead">Summary, Derivations, and Problems</p>
   <div class="quarto-categories">
     <div class="quarto-category">classical-mechanics</div>
@@ -307,63 +307,69 @@ window.Quarto = {
 </section>
 <section id="the-brachistochrone-solution" class="level3">
 <h3 class="anchored" data-anchor-id="the-brachistochrone-solution">2. The Brachistochrone Solution</h3>
-<p>For the Brachistochrone, <span class="math inline">\(f = \sqrt{\frac{1+y'^2}{y}}\)</span> (ignoring constants). Notice that <span class="math inline">\(f\)</span> does not depend explicitly on <span class="math inline">\(x\)</span>. When <span class="math inline">\(\partial f / \partial x = 0\)</span>, we can use the <strong>Beltrami Identity</strong> (a first integral of the E-L equation): <span class="math display">\[ f - y' \frac{\partial f}{\partial y'} = C \]</span></p>
-<p>Substituting <span class="math inline">\(f\)</span>: <span class="math display">\[ \sqrt{\frac{1+y'^2}{y}} - y' \frac{y'}{\sqrt{y(1+y'^2)}} = C \]</span> <span class="math display">\[ \frac{1+y'^2 - y'^2}{\sqrt{y(1+y'^2)}} = C \implies \frac{1}{\sqrt{y(1+y'^2)}} = C \implies y(1+y'^2) = \frac{1}{C^2} = 2a \]</span></p>
-<p>Solving for <span class="math inline">\(y'\)</span>: <span class="math display">\[ y' = \frac{dy}{dx} = \sqrt{\frac{2a-y}{y}} \implies dx = \sqrt{\frac{y}{2a-y}} dy \]</span></p>
-<p>The integral to evaluate is therefore: <span class="math display">\[ x = \int \sqrt{\frac{y}{2a - y}} \, dy \]</span></p>
+<section id="problem-formulation-the-beltrami-identity" class="level4">
+<h4 class="anchored" data-anchor-id="problem-formulation-the-beltrami-identity">Problem Formulation &amp; The Beltrami Identity</h4>
+<p>For the Brachistochrone, the functional integrand is <span class="math inline">\(f(y, y') = \sqrt{\frac{1 + (y')^2}{y}}\)</span> (dropping overall constants <span class="math inline">\(\sqrt{2g}\)</span>).<br>
+Because <span class="math inline">\(f\)</span> lacks explicit dependence on the independent variable <span class="math inline">\(x\)</span> (<span class="math inline">\(\partial f / \partial x = 0\)</span>), the Euler-Lagrange equation possesses a first integral known as the <strong>Beltrami Identity</strong>: <span class="math display">\[ f - y' \frac{\partial f}{\partial y'} = C \]</span></p>
+<p>Substituting <span class="math inline">\(f\)</span>: <span class="math display">\[ \sqrt{\frac{1 + (y')^2}{y}} - y' \frac{y'}{\sqrt{y(1 + (y')^2)}} = C \]</span> <span class="math display">\[ \frac{1 + (y')^2 - (y')^2}{\sqrt{y(1 + (y')^2)}} = C \implies \frac{1}{\sqrt{y(1 + (y')^2)}} = C \implies y\big(1 + (y')^2\big) = \frac{1}{C^2} \equiv 2a \]</span></p>
+<p>Solving for the derivative <span class="math inline">\(y' = dy/dx\)</span>: <span class="math display">\[ y' = \sqrt{\frac{2a - y}{y}} \implies dx = \sqrt{\frac{y}{2a - y}} \, dy \]</span></p>
+<p>The total trajectory <span class="math inline">\(x(y)\)</span> is given by the integral: <span class="math display">\[ x = \int \sqrt{\frac{y}{2a - y}} \, dy \]</span></p>
+</section>
 <section id="step-by-step-evaluation-of-taylors-cycloid-substitution" class="level4">
 <h4 class="anchored" data-anchor-id="step-by-step-evaluation-of-taylors-cycloid-substitution">Step-by-Step Evaluation of Taylor’s Cycloid Substitution</h4>
-<p>Taylor introduces the substitution: <span class="math display">\[ y = a(1 - \cos\theta) \]</span></p>
+<p>Taylor introduces the parameterized substitution: <span class="math display">\[ y = a(1 - \cos\theta) \]</span></p>
 <ol type="1">
 <li><p><strong>Differential of the Substitution:</strong><br>
-Differentiating <span class="math inline">\(y\)</span> with respect to <span class="math inline">\(\theta\)</span>: <span class="math display">\[ dy = \frac{d}{d\theta}\big[a(1 - \cos\theta)\big] d\theta = a\sin\theta \, d\theta \]</span> Using the double-angle identity <span class="math inline">\(\sin\theta = 2\sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right)\)</span>: <span class="math display">\[ dy = 2a \sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right) d\theta \]</span></p></li>
+Differentiating <span class="math inline">\(y\)</span> with respect to <span class="math inline">\(\theta\)</span>: <span class="math display">\[ dy = a\sin\theta \, d\theta = 2a \sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right) d\theta \]</span></p></li>
 <li><p><strong>Simplifying the Radicand:</strong><br>
-Substitute <span class="math inline">\(y = a(1 - \cos\theta)\)</span> into the numerator and denominator under the radical:</p>
+Substitute <span class="math inline">\(y = a(1 - \cos\theta)\)</span> into the numerator and denominator:</p>
 <ul>
-<li>Numerator: <span class="math display">\[ y = a(1 - \cos\theta) = 2a\sin^2\left(\frac{\theta}{2}\right) \]</span></li>
-<li>Denominator: <span class="math display">\[ 2a - y = 2a - a(1 - \cos\theta) = a(1 + \cos\theta) = 2a\cos^2\left(\frac{\theta}{2}\right) \]</span> Taking the ratio inside the square root: <span class="math display">\[ \frac{y}{2a - y} = \frac{2a\sin^2\left(\frac{\theta}{2}\right)}{2a\cos^2\left(\frac{\theta}{2}\right)} = \tan^2\left(\frac{\theta}{2}\right) \]</span></li>
+<li>Numerator: <span class="math inline">\(y = a(1 - \cos\theta) = 2a\sin^2\left(\frac{\theta}{2}\right)\)</span></li>
+<li>Denominator: <span class="math inline">\(2a - y = 2a - a(1 - \cos\theta) = a(1 + \cos\theta) = 2a\cos^2\left(\frac{\theta}{2}\right)\)</span></li>
 </ul>
-<p><strong>Why We Assume the First Arch (<span class="math inline">\(\theta \in [0, 2\pi]\)</span> and <span class="math inline">\(\sin(\theta/2) \ge 0\)</span>):</strong><br>
-The principal square root of any real square evaluates to its absolute value: <span class="math inline">\(\sqrt{\tan^2(\theta/2)} = |\tan(\theta/2)| = \frac{|\sin(\theta/2)|}{|\cos(\theta/2)|}\)</span>.</p>
-<ul>
-<li>In any single Brachistochrone descent starting from rest at the origin <span class="math inline">\((0,0)\)</span>, energy conservation dictates <span class="math inline">\(v = \sqrt{2gy}\)</span>. The bead cannot ascend higher than its release height <span class="math inline">\(y = 0\)</span>, meaning the curve terminates before or at the completion of a single revolution of the generating wheel (<span class="math inline">\(\theta \le 2\pi\)</span>). Hence the relevant motion is strictly confined within the first arch: <span class="math inline">\(\theta \in [0, 2\pi]\)</span>, giving <span class="math inline">\(\frac{\theta}{2} \in [0, \pi]\)</span>.</li>
-<li>Across the entire half-angle domain <span class="math inline">\([0, \pi]\)</span>, the sine function is unconditionally non-negative (<span class="math inline">\(\sin(\theta/2) \ge 0\)</span>). Therefore, the absolute value on the sine can be dropped without piecewise branching: <span class="math display">\[ \left|\sin\left(\frac{\theta}{2}\right)\right| = \sin\left(\frac{\theta}{2}\right) \]</span></li>
-<li>For the denominator, <span class="math inline">\(\cos(\theta/2) &gt; 0\)</span> along the entire descending branch <span class="math inline">\(\theta \in [0, \pi)\)</span>, where <span class="math inline">\(y\)</span> is increasing from <span class="math inline">\(0\)</span> to <span class="math inline">\(2a\)</span>. When the particle crosses the trough at <span class="math inline">\(\theta = \pi\)</span>, <span class="math inline">\(\cos(\theta/2)\)</span> changes sign as <span class="math inline">\(y\)</span> begins decreasing, while <span class="math inline">\(dx/d\theta = a(1 - \cos\theta) \ge 0\)</span> remains positive throughout. Thus, setting: <span class="math display">\[ \sqrt{\frac{y}{2a - y}} = \tan\left(\frac{\theta}{2}\right) = \frac{\sin\left(\frac{\theta}{2}\right)}{\cos\left(\frac{\theta}{2}\right)} \]</span> correctly captures the trajectory without extraneous signs.</li>
-</ul></li>
+<p>Taking the ratio inside the square root: <span class="math display">\[ \frac{y}{2a - y} = \frac{2a\sin^2(\theta/2)}{2a\cos^2(\theta/2)} = \tan^2\left(\frac{\theta}{2}\right) \]</span> Assuming the motion stays within the first arch (<span class="math inline">\(\theta \in [0, 2\pi]\)</span> where <span class="math inline">\(\theta/2 \in [0, \pi]\)</span> and <span class="math inline">\(\sin(\theta/2) \ge 0\)</span>): <span class="math display">\[ \sqrt{\frac{y}{2a - y}} = \tan\left(\frac{\theta}{2}\right) = \frac{\sin(\theta/2)}{\cos(\theta/2)} \]</span></p></li>
 <li><p><strong>Combining and Integrating:</strong><br>
-Multiply the simplified radical by <span class="math inline">\(dy\)</span>: <span class="math display">\[ \sqrt{\frac{y}{2a - y}} \, dy = \left(\frac{\sin\left(\frac{\theta}{2}\right)}{\cos\left(\frac{\theta}{2}\right)}\right) \cdot \left[2a \sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right) d\theta\right] = 2a \sin^2\left(\frac{\theta}{2}\right) d\theta \]</span> Recall the half-angle identity <span class="math inline">\(2\sin^2\left(\frac{\theta}{2}\right) = 1 - \cos\theta\)</span>: <span class="math display">\[ x = \int a(1 - \cos\theta) \, d\theta = a(\theta - \sin\theta) + C \]</span> Applying the initial condition <span class="math inline">\(x(0) = 0\)</span> gives <span class="math inline">\(C = 0\)</span>, recovering the cycloid parametric equations: <span class="math display">\[ x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta) \]</span></p></li>
+Multiplying the simplified radical by <span class="math inline">\(dy\)</span>: <span class="math display">\[ dx = \left(\frac{\sin(\theta/2)}{\cos(\theta/2)}\right) \cdot \left[2a \sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right) d\theta\right] = 2a \sin^2\left(\frac{\theta}{2}\right) d\theta = a(1 - \cos\theta) \, d\theta \]</span> Integrating directly with initial condition <span class="math inline">\(x(0) = 0\)</span> gives: <span class="math display">\[ x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta) \]</span> These are the parametric equations of a <strong>cycloid</strong>.</p></li>
+</ol>
+</section>
+<section id="mathematical-physical-rationale-for-the-first-arch-theta-in-0-2pi" class="level4">
+<h4 class="anchored" data-anchor-id="mathematical-physical-rationale-for-the-first-arch-theta-in-0-2pi">Mathematical &amp; Physical Rationale for the First Arch (<span class="math inline">\(\theta \in [0, 2\pi]\)</span>)</h4>
+<ol type="1">
+<li><p><strong>Mathematical Reason (Principal Square Root):</strong><br>
+The square root identity is <span class="math inline">\(\sqrt{u^2} = |u|\)</span>. Thus: <span class="math display">\[ \sqrt{\tan^2(\theta/2)} = |\tan(\theta/2)| = \frac{|\sin(\theta/2)|}{|\cos(\theta/2)|} \]</span> Within the first arch (<span class="math inline">\(\theta \in [0, 2\pi]\)</span>), the half-angle satisfies <span class="math inline">\(\frac{\theta}{2} \in [0, \pi]\)</span>, where the sine function is unconditionally non-negative: <span class="math display">\[ \sin\left(\frac{\theta}{2}\right) \ge 0 \implies \left|\sin\left(\frac{\theta}{2}\right)\right| = \sin\left(\frac{\theta}{2}\right) \]</span> This eliminates piece-wise absolute value signs without ambiguity. Along the descending branch (<span class="math inline">\(\theta &lt; \pi\)</span>), <span class="math inline">\(\cos(\theta/2) &gt; 0\)</span> and <span class="math inline">\(dy &gt; 0\)</span>. Past the trough (<span class="math inline">\(\theta &gt; \pi\)</span>), <span class="math inline">\(\cos(\theta/2) &lt; 0\)</span> while the particle ascends (<span class="math inline">\(dy &lt; 0\)</span>), maintaining consistent directional progress <span class="math inline">\(dx \ge 0\)</span>.</p></li>
+<li><p><strong>Physical Reason (Energy Bounds &amp; Uniqueness):</strong></p>
+<ul>
+<li><strong>Energy Ceiling:</strong> By conservation of energy, <span class="math inline">\(v = \sqrt{2gy}\)</span>. At <span class="math inline">\(y = 0\)</span>, speed vanishes (<span class="math inline">\(v = 0\)</span>). The bead cannot ascend into <span class="math inline">\(y &lt; 0\)</span>, ensuring the trajectory cannot continue past the cusp at <span class="math inline">\(\theta = 2\pi\)</span>.</li>
+<li><strong>Path Uniqueness:</strong> By scaling the radius <span class="math inline">\(a\)</span> and endpoint angle <span class="math inline">\(\theta_2 \in (0, 2\pi]\)</span>, a unique single cycloid arch connects the origin <span class="math inline">\((0, 0)\)</span> to any target point <span class="math inline">\((x_2, y_2)\)</span> with <span class="math inline">\(x_2 &gt; 0, y_2 \ge 0\)</span>.</li>
+<li><strong>No Redundant Loops:</strong> Any path spanning into subsequent arches would entail climbing to a cusp, arresting, and falling through extra dips, adding superfluous travel time and violating <span class="math inline">\(\delta T = 0\)</span>.</li>
+</ul></li>
 </ol>
 </section>
 <section id="why-that-substitution-works-the-hidden-circle" class="level4">
 <h4 class="anchored" data-anchor-id="why-that-substitution-works-the-hidden-circle">Why That Substitution Works: The Hidden Circle</h4>
-<p>Taylor calls this an “unlikely looking substitution,” but it is completely systematic.<br>
-Rationalize the numerator of the integrand: <span class="math display">\[ \sqrt{\frac{y}{2a - y}} = \frac{y}{\sqrt{y(2a - y)}} = \frac{y}{\sqrt{2ay - y^2}} \]</span> Complete the square in the denominator: <span class="math display">\[ 2ay - y^2 = -(y^2 - 2ay + a^2) + a^2 = a^2 - (y - a)^2 \]</span> Now the integral becomes: <span class="math display">\[ \int \frac{y}{\sqrt{a^2 - (y - a)^2}} \, dy \]</span></p>
-<p><strong>Why This Is a Circle:</strong><br>
-In the <span class="math inline">\((w, y)\)</span> plane, the equation <span class="math inline">\(w = \sqrt{a^2 - (y - a)^2}\)</span> describes the boundary of a circle of radius <span class="math inline">\(a\)</span> centered at <span class="math inline">\((0, a)\)</span>: <span class="math display">\[ w^2 + (y - a)^2 = a^2 \]</span></p>
-<p><strong>Why Two Different Types of <span class="math inline">\(u\)</span> Can Be Substituted:</strong><br>
-Any expression involving <span class="math inline">\(\sqrt{a^2 - u^2}\)</span> naturally invites a circular parameterization, but we have two standard choices depending on the angle reference axis: 1. <strong>The Sine Substitution (<span class="math inline">\(u = a\sin\phi\)</span>):</strong><br>
-If we set <span class="math inline">\(y - a = a\sin\phi\)</span>, then <span class="math inline">\(y = a(1 + \sin\phi)\)</span>. Here the angle <span class="math inline">\(\phi\)</span> is measured relative to the horizontal diameter of the circle. At the release point (<span class="math inline">\(y = 0\)</span>), this requires <span class="math inline">\(\sin\phi = -1 \implies \phi = -\pi/2\)</span>. While mathematically valid, it introduces an awkward phase shift of <span class="math inline">\(-\pi/2\)</span> into the equations of motion. 2. <strong>The Inverted Cosine Substitution (<span class="math inline">\(u = -a\cos\theta\)</span>):</strong><br>
-If we instead set <span class="math inline">\(y - a = -a\cos\theta\)</span>, then: <span class="math display">\[ y = a(1 - \cos\theta) \]</span> Here the angle <span class="math inline">\(\theta\)</span> is measured from the top apex of the circle. At <span class="math inline">\(\theta = 0\)</span>, <span class="math inline">\(\cos(0) = 1\)</span>, which gives <span class="math inline">\(y = a(1 - 1) = 0\)</span> automatically! Thus, the negative cosine choice is physically tailored to align <span class="math inline">\(\theta = 0\)</span> directly with the initial release point at the origin without requiring arbitrary phase angles.</p>
+<p>Taylor calls <span class="math inline">\(y = a(1 - \cos\theta)\)</span> an “unlikely looking substitution,” but it is completely systematic.<br>
+Rationalizing the numerator: <span class="math display">\[ \sqrt{\frac{y}{2a - y}} = \frac{y}{\sqrt{y(2a - y)}} = \frac{y}{\sqrt{2ay - y^2}} \]</span> Completing the square in the denominator: <span class="math display">\[ 2ay - y^2 = a^2 - (y - a)^2 \implies \int \frac{y}{\sqrt{a^2 - (y - a)^2}} \, dy \]</span></p>
+<p><strong>Geometric Origin:</strong><br>
+The expression <span class="math inline">\(\sqrt{a^2 - (y - a)^2}\)</span> describes a semicircle <span class="math inline">\((y - a)^2 + w^2 = a^2\)</span> of radius <span class="math inline">\(a\)</span> centered at <span class="math inline">\((0, a)\)</span>.</p>
+<p><strong>Dual Circle Parameterizations:</strong><br>
+Any form <span class="math inline">\(\sqrt{a^2 - u^2}\)</span> permits two standard circular substitutions: 1. <strong>Sine substitution (<span class="math inline">\(u = a\sin\phi\)</span>):</strong> Setting <span class="math inline">\(y - a = a\sin\phi \implies y = a(1 + \sin\phi)\)</span>. At the release point <span class="math inline">\(y = 0\)</span>, <span class="math inline">\(\sin\phi = -1 \implies \phi = -\pi/2\)</span>, imposing an unwanted phase shift. 2. <strong>Inverted cosine substitution (<span class="math inline">\(u = -a\cos\theta\)</span>):</strong> Setting <span class="math inline">\(y - a = -a\cos\theta \implies y = a(1 - \cos\theta)\)</span>. At release (<span class="math inline">\(y = 0\)</span>), <span class="math inline">\(\cos(0) = 1 \implies \theta = 0\)</span>, matching initial rest conditions at the origin with zero phase offset!</p>
 </section>
-<section id="the-algebraic-alternative-direct-root-substitution-with-both-integration-by-parts-and-trig-methods" class="level4">
-<h4 class="anchored" data-anchor-id="the-algebraic-alternative-direct-root-substitution-with-both-integration-by-parts-and-trig-methods">The Algebraic Alternative: Direct Root Substitution (With Both Integration by Parts and Trig Methods)</h4>
-<p>You do not need to guess a trigonometric substitution. When faced with any rational function of a single linear radical <span class="math inline">\(\sqrt{\frac{a y + b}{c y + d}}\)</span>, set the entire radical equal to a new algebraic variable <span class="math inline">\(u\)</span>: <span class="math display">\[ u = \sqrt{\frac{y}{2a - y}} \]</span> Inverting for <span class="math inline">\(y\)</span>: <span class="math display">\[ u^2 = \frac{y}{2a - y} \implies u^2(2a - y) = y \implies 2a u^2 = y(1 + u^2) \implies y = \frac{2a u^2}{1 + u^2} \]</span> Compute <span class="math inline">\(dy\)</span>: <span class="math display">\[ dy = 2a \frac{d}{du}\left[1 - \frac{1}{1 + u^2}\right] du = \frac{4a u}{(1 + u^2)^2} \, du \]</span> Substitute into the integral <span class="math inline">\(x = \int u \, dy\)</span>: <span class="math display">\[ x = \int u \cdot \frac{4a u}{(1 + u^2)^2} \, du = 4a \int \frac{u^2}{(1 + u^2)^2} \, du \]</span></p>
-<p>We can solve this integral via two independent pathways:</p>
+<section id="the-algebraic-alternative-direct-root-substitution" class="level4">
+<h4 class="anchored" data-anchor-id="the-algebraic-alternative-direct-root-substitution">The Algebraic Alternative: Direct Root Substitution</h4>
+<p>Rather than guessing a trigonometric form, set the entire linear radical equal to an algebraic variable <span class="math inline">\(u\)</span>: <span class="math display">\[ u = \sqrt{\frac{y}{2a - y}} \implies y = \frac{2a u^2}{1 + u^2}, \quad dy = \frac{4a u}{(1 + u^2)^2} \, du \]</span> The integral becomes: <span class="math display">\[ x = \int u \, dy = 4a \int \frac{u^2}{(1 + u^2)^2} \, du \]</span></p>
+<p>This can be evaluated via two direct methods:</p>
 <section id="method-a-integration-by-parts-pure-algebraic-route" class="level5">
 <h5 class="anchored" data-anchor-id="method-a-integration-by-parts-pure-algebraic-route">Method A: Integration by Parts (Pure Algebraic Route)</h5>
-<p>Split the numerator as <span class="math inline">\(u \cdot \frac{u}{(1+u^2)^2}\)</span>: - Let <span class="math inline">\(f = u \implies df = du\)</span> - Let <span class="math inline">\(dg = \frac{u}{(1+u^2)^2} \, du \implies g = -\frac{1}{2(1+u^2)}\)</span></p>
-<p>Applying <span class="math inline">\(\int f \, dg = fg - \int g \, df\)</span>: <span class="math display">\[ \int \frac{u^2}{(1+u^2)^2} \, du = -\frac{u}{2(1+u^2)} + \frac{1}{2}\int \frac{du}{1+u^2} = -\frac{u}{2(1+u^2)} + \frac{1}{2}\arctan(u) \]</span> Multiplying by the overall factor <span class="math inline">\(4a\)</span>: <span class="math display">\[ x(u) = 2a \arctan(u) - \frac{2a u}{1 + u^2} + C \]</span> Since <span class="math inline">\(u = 0\)</span> at <span class="math inline">\(y = 0\)</span>, the boundary condition <span class="math inline">\(x(0) = 0\)</span> enforces <span class="math inline">\(C = 0\)</span>.<br>
-To interpret this geometrically, let <span class="math inline">\(u = \tan\left(\frac{\theta}{2}\right)\)</span>. Then: - <span class="math inline">\(\arctan(u) = \frac{\theta}{2}\)</span> - <span class="math inline">\(\frac{2u}{1+u^2} = \frac{2\tan(\theta/2)}{1+\tan^2(\theta/2)} = \sin\theta\)</span> (the standard double-angle identity)</p>
-<p>Substituting these directly into <span class="math inline">\(x(u)\)</span>: <span class="math display">\[ x(\theta) = 2a\left(\frac{\theta}{2}\right) - a\sin\theta = a(\theta - \sin\theta) \]</span> And for <span class="math inline">\(y\)</span>: <span class="math display">\[ y = \frac{2a u^2}{1+u^2} = 2a\sin^2\left(\frac{\theta}{2}\right) = a(1 - \cos\theta) \]</span> This recovers the cycloid parametric equations without having to guess the substitution upfront!</p>
+<p>Decomposing as <span class="math inline">\(u \cdot \frac{u}{(1 + u^2)^2}\)</span> with <span class="math inline">\(f = u\)</span> and <span class="math inline">\(dg = \frac{u}{(1 + u^2)^2}du \implies g = -\frac{1}{2(1 + u^2)}\)</span>: <span class="math display">\[ \int \frac{u^2}{(1 + u^2)^2} \, du = -\frac{u}{2(1 + u^2)} + \frac{1}{2}\int \frac{du}{1 + u^2} = -\frac{u}{2(1 + u^2)} + \frac{1}{2}\arctan(u) \]</span> Multiplying by <span class="math inline">\(4a\)</span> and enforcing <span class="math inline">\(x(0) = 0\)</span>: <span class="math display">\[ x(u) = 2a\arctan(u) - \frac{2a u}{1 + u^2} \]</span> Setting <span class="math inline">\(u = \tan(\theta/2)\)</span>, we find <span class="math inline">\(\arctan(u) = \theta/2\)</span> and <span class="math inline">\(\frac{2u}{1 + u^2} = \sin\theta\)</span>, which directly recovers: <span class="math display">\[ x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta) \]</span></p>
 </section>
 <section id="method-b-trigonometric-substitution" class="level5">
 <h5 class="anchored" data-anchor-id="method-b-trigonometric-substitution">Method B: Trigonometric Substitution</h5>
-<p>Setting <span class="math inline">\(u = \tan\phi\)</span>, so <span class="math inline">\(du = \sec^2\phi \, d\phi\)</span>: <span class="math display">\[ 4a \int \frac{\tan^2\phi}{(1+\tan^2\phi)^2} \sec^2\phi \, d\phi = 4a \int \frac{\tan^2\phi}{\sec^4\phi}\sec^2\phi \, d\phi = 4a \int \sin^2\phi \, d\phi \]</span> Using <span class="math inline">\(\sin^2\phi = \frac{1 - \cos 2\phi}{2}\)</span>: <span class="math display">\[ 4a \int \left(\frac{1 - \cos 2\phi}{2}\right) d\phi = 2a\left(\phi - \frac{1}{2}\sin 2\phi\right) = 2a(\phi - \sin\phi\cos\phi) \]</span> Setting <span class="math inline">\(\theta = 2\phi\)</span> (so <span class="math inline">\(\phi = \theta/2\)</span>), this immediately yields <span class="math inline">\(x(\theta) = a(\theta - \sin\theta)\)</span>.</p>
+<p>Substituting <span class="math inline">\(u = \tan\phi\)</span> with <span class="math inline">\(du = \sec^2\phi \, d\phi\)</span>: <span class="math display">\[ 4a \int \frac{\tan^2\phi}{\sec^4\phi}\sec^2\phi \, d\phi = 4a \int \sin^2\phi \, d\phi = 2a(\phi - \sin\phi\cos\phi) \]</span> Setting <span class="math inline">\(\theta = 2\phi\)</span> immediately produces <span class="math inline">\(x = a(\theta - \sin\theta)\)</span>.</p>
 </section>
 </section>
 <section id="what-theta-represents-physically" class="level4">
 <h4 class="anchored" data-anchor-id="what-theta-represents-physically">What <span class="math inline">\(\theta\)</span> Represents Physically</h4>
-<p>The parameter <span class="math inline">\(\theta\)</span> is the cumulative rotation angle (in radians) of the rolling circle that generates the curve:</p>
+<p>The parameter <span class="math inline">\(\theta\)</span> is the cumulative rotation angle (in radians) of a wheel of radius <span class="math inline">\(a\)</span> rolling without slipping along the underside of the horizontal axis (<span class="math inline">\(y = 0\)</span>):</p>
 <pre class="text"><code>          x=0                         x = a*theta                      x = 2*pi*a
    y=0 ----*-------------------------------O-------------------------------*----&gt; x
            |                              / \                              |
@@ -377,356 +383,66 @@ To interpret this geometrically, let <span class="math inline">\(u = \tan\left(\
            |                                                               |
            |                               . (Trough: theta = pi, y = 2a)  |
            v y</code></pre>
-<div style="background: #0f172a; color: #f8fafc; border-radius: 12px; padding: 18px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin: 20px 0;">
-  <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-    <div style="display: flex; gap: 10px;">
-      <button id="ch6-wheel-play-btn" style="background: #0284c7; color: white; border: none; padding: 6px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s;">❚❚ Pause</button>
-      <button id="ch6-wheel-reset-btn" style="background: #475569; color: white; border: none; padding: 6px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s;">↺ Reset</button>
-    </div>
-    <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center; font-size: 0.88em;">
-      <label>Wheel Radius <i>a</i>: 
-        <input type="range" id="ch6-wheel-radius-slider" min="20" max="55" step="1" value="38" style="vertical-align: middle;">
-        <span id="ch6-wheel-radius-val" style="font-weight: bold; color: #38bdf8;">38 px</span>
-      </label>
-      <label>Angle θ: 
-        <input type="range" id="ch6-wheel-theta-slider" min="0" max="1256" step="1" value="0" style="vertical-align: middle; width: 120px;">
-        <span id="ch6-wheel-theta-val" style="font-weight: bold; color: #a855f7;">0.00 rad</span>
-      </label>
-    </div>
-  </div>
-
-  <canvas id="ch6-wheel-canvas" width="720" height="300" style="width: 100%; height: auto; background: #1e293b; border-radius: 8px; border: 1px solid #334155; display: block;"></canvas>
-  <div style="font-size: 0.82em; color: #94a3b8; margin-top: 8px; text-align: center;">
-    <b>Interactive Demo:</b> Adjust radius <i>a</i> to observe how the cycloid arch scales proportionally with wheel size.
-  </div>
+<ul>
+<li><strong>Wheel Center Translation:</strong> <span class="math inline">\((x_c, y_c) = (a\theta, a)\)</span></li>
+<li><strong>Rim Marker Relative Displacement:</strong> <span class="math inline">\((\Delta x, \Delta y) = (-a\sin\theta, -a\cos\theta)\)</span></li>
+<li><strong>Absolute Coordinates:</strong> <span class="math display">\[ x(\theta) = x_c + \Delta x = a(\theta - \sin\theta), \quad y(\theta) = y_c + \Delta y = a(1 - \cos\theta) \]</span></li>
+<li><strong>Local Launch / Slope Angle:</strong> <span class="math display">\[ \frac{dy}{dx} = \frac{a\sin\theta}{a(1 - \cos\theta)} = \cot\left(\frac{\theta}{2}\right) \implies \psi = \frac{\pi - \theta}{2} \]</span>
+<ul>
+<li>At release (<span class="math inline">\(\theta \to 0\)</span>): <span class="math inline">\(\psi = \pi/2\)</span> (instantaneous vertical drop).</li>
+<li>At the trough (<span class="math inline">\(\theta = \pi\)</span>): <span class="math inline">\(\psi = 0\)</span> (instantaneous horizontal flight).</li>
+<li>At the terminal cusp (<span class="math inline">\(\theta = 2\pi\)</span>): <span class="math inline">\(\psi = -\pi/2\)</span> (instantaneous vertical rise).</li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-
-<script>
-(function() {
-  const canvas = document.getElementById('ch6-wheel-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-
-  let a = 38;
-  let theta = 0;
-  const maxTheta = 4 * Math.PI;
-  let running = true;
-  let animId = null;
-  let lastTs = 0;
-  const rollSpeed = 1.5;
-
-  const xOrigin = 45;
-  const yRail = 35;
-
-  function update() {
-    const rVal = document.getElementById('ch6-wheel-radius-val');
-    const thVal = document.getElementById('ch6-wheel-theta-val');
-    const thSlider = document.getElementById('ch6-wheel-theta-slider');
-    if (rVal) rVal.innerText = a + ' px';
-    if (thVal) thVal.innerText = theta.toFixed(2) + ' rad';
-    if (thSlider) thSlider.value = Math.round((theta / maxTheta) * 1256);
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = '#0f172a';
-    ctx.fillRect(0, 0, canvas.width, yRail);
-    ctx.strokeStyle = '#334155';
-    ctx.lineWidth = 1.5;
-    for (let hx = 10; hx < canvas.width; hx += 16) {
-      ctx.beginPath(); ctx.moveTo(hx, yRail - 12); ctx.lineTo(hx + 10, yRail); ctx.stroke();
-    }
-    ctx.strokeStyle = '#94a3b8';
-    ctx.lineWidth = 2.5;
-    ctx.beginPath(); ctx.moveTo(0, yRail); ctx.lineTo(canvas.width, yRail); ctx.stroke();
-
-    ctx.fillStyle = '#f8fafc';
-    ctx.font = 'bold 11px system-ui, sans-serif';
-    ctx.fillText('Underside Rail (y = 0)', 15, yRail - 12);
-
-    // Center of Mass trajectory line (y = yRail + a)
-    ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
-    ctx.lineWidth = 1.2;
-    ctx.setLineDash([4, 4]);
-    ctx.beginPath(); ctx.moveTo(0, yRail + a); ctx.lineTo(canvas.width, yRail + a); ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.fillStyle = '#38bdf8';
-    ctx.font = '10px system-ui, sans-serif';
-    ctx.fillText(`Center Path: y_c = a (${a}px)`, 20, yRail + a - 4);
-
-    // Trough depth boundary line (y = yRail + 2a)
-    ctx.strokeStyle = 'rgba(168, 85, 247, 0.4)';
-    ctx.lineWidth = 1.2;
-    ctx.setLineDash([4, 4]);
-    ctx.beginPath(); ctx.moveTo(0, yRail + 2*a); ctx.lineTo(canvas.width, yRail + 2*a); ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.fillStyle = '#c084fc';
-    ctx.fillText(`Trough Depth: y_max = 2a (${2*a}px)`, 20, yRail + 2*a + 12);
-
-    // Faint full cycloid path
-    ctx.strokeStyle = '#475569';
-    ctx.lineWidth = 1.5;
-    ctx.setLineDash([4, 4]);
-    ctx.beginPath();
-    const totalSteps = 300;
-    for (let i = 0; i <= totalSteps; i++) {
-      const th = (i / totalSteps) * maxTheta;
-      const x = xOrigin + a * (th - Math.sin(th));
-      const y = yRail + a * (1 - Math.cos(th));
-      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-    }
-    ctx.stroke();
-    ctx.setLineDash([]);
-
-    // Gradient fill under the active traced curve
-    const currentSteps = Math.min(totalSteps, Math.floor((theta / maxTheta) * totalSteps));
-    if (currentSteps > 1) {
-      const grad = ctx.createLinearGradient(0, yRail, 0, yRail + 2*a);
-      grad.addColorStop(0, 'rgba(192, 132, 252, 0.22)');
-      grad.addColorStop(1, 'rgba(168, 85, 247, 0.02)');
-      ctx.fillStyle = grad;
-      ctx.beginPath();
-      ctx.moveTo(xOrigin, yRail);
-      for (let i = 0; i <= currentSteps; i++) {
-        const th = (i / totalSteps) * maxTheta;
-        const x = xOrigin + a * (th - Math.sin(th));
-        const y = yRail + a * (1 - Math.cos(th));
-        ctx.lineTo(x, y);
-      }
-      const lastTh = (currentSteps / totalSteps) * maxTheta;
-      const lastX = xOrigin + a * (lastTh - Math.sin(lastTh));
-      ctx.lineTo(lastX, yRail);
-      ctx.closePath();
-      ctx.fill();
-    }
-
-    // Glowing active traced path up to theta
-    ctx.strokeStyle = '#c084fc';
-    ctx.lineWidth = 3.5;
-    ctx.shadowColor = '#a855f7';
-    ctx.shadowBlur = 10;
-    ctx.beginPath();
-    for (let i = 0; i <= currentSteps; i++) {
-      const th = (i / totalSteps) * maxTheta;
-      const x = xOrigin + a * (th - Math.sin(th));
-      const y = yRail + a * (1 - Math.cos(th));
-      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-    }
-    ctx.stroke();
-    ctx.shadowBlur = 0;
-
-    // Rolling Wheel
-    const xc = xOrigin + a * theta;
-    const yc = yRail + a;
-    const xp = xc - a * Math.sin(theta);
-    const yp = yc - a * Math.cos(theta);
-
-    // Instantaneous Center of Rotation (ICR)
-    ctx.fillStyle = '#f43f5e';
-    ctx.beginPath(); ctx.arc(xc, yRail, 4.5, 0, 2*Math.PI); ctx.fill();
-
-    // Normal line connecting Contact C to Marker P
-    ctx.strokeStyle = 'rgba(244, 63, 94, 0.4)';
-    ctx.lineWidth = 1.2;
-    ctx.setLineDash([3, 3]);
-    ctx.beginPath(); ctx.moveTo(xc, yRail); ctx.lineTo(xp, yp); ctx.stroke();
-    ctx.setLineDash([]);
-
-    const wheelGrad = ctx.createRadialGradient(xc, yc, 2, xc, yc, a);
-    wheelGrad.addColorStop(0, 'rgba(56, 189, 248, 0.35)');
-    wheelGrad.addColorStop(0.85, 'rgba(14, 116, 144, 0.2)');
-    wheelGrad.addColorStop(1, 'rgba(56, 189, 248, 0.55)');
-    ctx.fillStyle = wheelGrad;
-    ctx.strokeStyle = '#38bdf8';
-    ctx.lineWidth = 2.5;
-    ctx.beginPath();
-    ctx.arc(xc, yc, a, 0, 2*Math.PI);
-    ctx.fill();
-    ctx.stroke();
-
-    ctx.fillStyle = '#0284c7';
-    ctx.beginPath(); ctx.arc(xc, yc, 4.5, 0, 2*Math.PI); ctx.fill();
-    ctx.fillStyle = '#ffffff';
-    ctx.beginPath(); ctx.arc(xc, yc, 2, 0, 2*Math.PI); ctx.fill();
-
-    // Spokes
-    ctx.strokeStyle = 'rgba(56, 189, 248, 0.5)';
-    ctx.lineWidth = 1.5;
-    for (let i = 0; i < 6; i++) {
-      const spAng = theta + (i * Math.PI / 3) - Math.PI/2;
-      ctx.beginPath(); ctx.moveTo(xc, yc); ctx.lineTo(xc + a * Math.cos(spAng), yc + a * Math.sin(spAng)); ctx.stroke();
-    }
-
-    // Marker arm
-    ctx.strokeStyle = '#f43f5e';
-    ctx.lineWidth = 2.2;
-    ctx.beginPath(); ctx.moveTo(xc, yc); ctx.lineTo(xp, yp); ctx.stroke();
-
-    // Velocity vector
-    const vx = a * (1 - Math.cos(theta));
-    const vy = a * Math.sin(theta);
-    const vMag = Math.sqrt(vx*vx + vy*vy) || 1;
-    const arrowLen = 28;
-    const dirX = (vx / vMag) * arrowLen;
-    const dirY = (vy / vMag) * arrowLen;
-
-    ctx.strokeStyle = '#4ade80';
-    ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.moveTo(xp, yp); ctx.lineTo(xp + dirX, yp + dirY); ctx.stroke();
-
-    const arrHeadLen = 6;
-    const arrAng = Math.atan2(dirY, dirX);
-    ctx.fillStyle = '#4ade80';
-    ctx.beginPath();
-    ctx.moveTo(xp + dirX, yp + dirY);
-    ctx.lineTo(xp + dirX - arrHeadLen * Math.cos(arrAng - Math.PI/6), yp + dirY - arrHeadLen * Math.sin(arrAng - Math.PI/6));
-    ctx.lineTo(xp + dirX - arrHeadLen * Math.cos(arrAng + Math.PI/6), yp + dirY - arrHeadLen * Math.sin(arrAng + Math.PI/6));
-    ctx.closePath();
-    ctx.fill();
-
-    // Tracing Marker P
-    ctx.shadowColor = '#e879f9';
-    ctx.shadowBlur = 14;
-    ctx.fillStyle = '#f43f5e';
-    ctx.beginPath(); ctx.arc(xp, yp, 7.5, 0, 2*Math.PI); ctx.fill();
-    ctx.shadowBlur = 0;
-
-    ctx.fillStyle = '#ffffff';
-    ctx.beginPath(); ctx.arc(xp - 1.5, yp - 1.5, 2.5, 0, 2*Math.PI); ctx.fill();
-
-    ctx.fillStyle = '#fdf4ff';
-    ctx.font = 'bold 11px system-ui, sans-serif';
-    ctx.fillText('P(x,y)', xp + 8, yp + 14);
-  }
-
-  function step(ts) {
-    if (!lastTs) lastTs = ts;
-    const dt = Math.min((ts - lastTs) / 1000, 0.04);
-    lastTs = ts;
-
-    if (running) {
-      theta += rollSpeed * dt;
-      if (theta > maxTheta) theta = 0;
-      update();
-    }
-
-    draw();
-    animId = requestAnimationFrame(step);
-  }
-
-  const playBtn = document.getElementById('ch6-wheel-play-btn');
-  if (playBtn) {
-    playBtn.onclick = function() {
-      running = !running;
-      this.innerText = running ? '❚❚ Pause' : '▶ Play';
-    };
-  }
-
-  const resetBtn = document.getElementById('ch6-wheel-reset-btn');
-  if (resetBtn) {
-    resetBtn.onclick = function() {
-      theta = 0;
-      update();
-      draw();
-    };
-  }
-
-  const rSlider = document.getElementById('ch6-wheel-radius-slider');
-  if (rSlider) {
-    rSlider.oninput = function() {
-      a = parseInt(this.value);
-      update();
-      draw();
-    };
-  }
-
-  const thSlider = document.getElementById('ch6-wheel-theta-slider');
-  if (thSlider) {
-    thSlider.oninput = function() {
-      theta = (parseInt(this.value) / 1256) * maxTheta;
-      update();
-      draw();
-    };
-  }
-
-  update();
-  draw();
-  animId = requestAnimationFrame(step);
-})();
-</script>
-
-Imagine a circular disk of radius $a$ rolling without slipping along the underside of the horizontal axis ($y = 0$, pointing downward):
-- **Center of the wheel:** As the wheel rolls through an angle $\theta$, its contact point has rolled a distance $a\theta$ along the rail:
-  $$ (x_c, y_c) = (a\theta, a) $$
-- **Point on the perimeter ($P$):** A marker fixed to the rim starts at the origin $(0, 0)$ when $\theta = 0$. After rotating clockwise by $\theta$, the marker's relative displacement from the wheel's center is:
-  $$ \Delta x = -a\sin\theta, \quad \Delta y = -a\cos\theta $$
-- **Absolute coordinates:** Combining center translation and rim rotation yields:
-  $$ x(\theta) = x_c + \Delta x = a(\theta - \sin\theta) $$
-  $$ y(\theta) = y_c + \Delta y = a(1 - \cos\theta) $$
-
-$\theta$ also directly determines the local slope and launch angle of the path. Differentiating with respect to $\theta$:
-$$ \frac{dy}{dx} = \frac{dy/d\theta}{dx/d\theta} = \frac{a\sin\theta}{a(1 - \cos\theta)} = \frac{2\sin(\theta/2)\cos(\theta/2)}{2\sin^2(\theta/2)} = \cot\left(\frac{\theta}{2}\right) $$
-If $\psi$ is the inclination angle of the velocity vector relative to the horizontal ($\tan\psi = dy/dx$):
-$$ \psi = \frac{\pi - \theta}{2} $$
-- At $\theta \to 0$ (the start): $\psi = \pi/2$ (the path drops straight vertically).
-- At $\theta = \pi$ (the trough): $\psi = 0$ (the trajectory is completely horizontal).
-- At $\theta = 2\pi$ (the next cusp): $\psi = -\pi/2$ (the path rises back to vertical).
-
-#### Why Assume the First Arch ($\theta \in [0, 2\pi]$) and $\sin(\theta/2) \ge 0$?
-
-1. **The Mathematical Reason: Eliminating Absolute Value Signs**  
-   The principal square root satisfies $\sqrt{u^2} = |u|$. In simplifying the radical:
-   $$ \sqrt{\frac{y}{2a - y}} = \left| \tan\left(\frac{\theta}{2}\right) \right| = \frac{\left|\sin(\theta/2)\right|}{\left|\cos(\theta/2)\right|} $$
-   If $\theta \in [0, 2\pi]$, then $\frac{\theta}{2} \in [0, \pi]$. Since sine is strictly non-negative on $[0, \pi]$:
-   $$ \sin\left(\frac{\theta}{2}\right) \ge 0 \implies \left|\sin\left(\frac{\theta}{2}\right)\right| = \sin\left(\frac{\theta}{2}\right) $$
-   This avoids carrying piece-wise $\pm$ absolute value signs.
-
-2. **The Physical Reason: Geometry of the Fastest Path**  
-   - **Energy Bounds:** Conservation of mechanical energy gives $v = \sqrt{2gy}$. At $y = 0$, speed is zero ($v = 0$). The particle cannot rise above $y = 0$, so it cannot continue past a cusp into negative $y$.
-   - **Uniqueness:** A single arch ($\theta \in [0, 2\pi]$) starts at $(0, 0)$ and terminates at $(2\pi a, 0)$. By scaling the radius $a$, a single cycloid arch can pass through any target point $(x_2, y_2)$ in the lower half-plane ($x_2 &gt; 0, y_2 \ge 0$).
-   - **No Redundant Loops:** Any path extending past $\theta = 2\pi$ into a second arch would involve rising up to a cusp, stopping, and dropping into a new dip. That would add unnecessary path length and travel time, violating the time-minimization condition $\delta T = 0$.
-
-#### Essential Mathematical Properties of Cycloids
-
-- **Parametric Form:** $x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta)$
-- **Differential Arc Length:**
-  $$ ds = \sqrt{\dot{x}^2 + \dot{y}^2}\, d\theta = a\sqrt{(1-\cos\theta)^2 + \sin^2\theta}\, d\theta = 2a\sin\left(\frac{\theta}{2}\right) d\theta $$
-- **Total Arc Length from Origin to $\theta$:**
-  $$ s(\theta) = \int_0^\theta 2a\sin\left(\frac{\theta'}{2}\right) d\theta' = 4a\left(1 - \cos\left(\frac{\theta}{2}\right)\right) = 8a\sin^2\left(\frac{\theta}{4}\right) $$
-  The total perimeter of one complete arch ($\theta = 2\pi$) is exactly $s_{\text{total}} = 8a$.
-- **Radius of Curvature:**
-  $$ \rho(\theta) = \frac{(\dot{x}^2 + \dot{y}^2)^{3/2}}{|\dot{x}\ddot{y} - \dot{y}\ddot{x}|} = 4a\sin\left(\frac{\theta}{2}\right) = \sqrt{8a y} $$
-- **Self-Evolute Property:** The evolute (locus of centers of curvature) of a cycloid is an identical cycloid, shifted horizontally by $\pi a$ and vertically downward by $2a$.
-
-*(For broader integration techniques and speed benchmarks, see [Integration Tricks and Substitution Techniques](../reference/integration-tricks-and-substitutions.qmd). For physical systems such as Huygens' isochronous pendulum, $E\times B$ drifts, and cycloidal gear drives, see [Physics and Engineering Applications of Cycloids](../reference/cycloid-physics-applications.qmd).)*
-
-::: {.callout-tip}
-### 🎮 Interactive Simulations
-Experience these phenomena live in your browser:  
-Launch the **[Interactive Cycloid Mechanics: Brachistochrone, Tautochrone &amp; Huygens' Pendulum](../simulations/cycloid-mechanics-interactive.qmd)** to run the 4-track Brachistochrone race, test simultaneous Tautochrone arrivals, and compare Huygens' isochronous clock against ordinary circular pendulums!
-:::
-
-::: {#cell-fig-cycloid .cell execution_count=1}
-``` {.python .cell-code}
-import numpy as np
-import matplotlib.pyplot as plt
-
-theta = np.linspace(0, 2*np.pi, 100)
-a = 1
-x = a * (theta - np.sin(theta))
-y = a * (1 - np.cos(theta)) # Positive downwards
-
-fig, ax = plt.subplots(figsize=(8, 4))
-ax.plot(x, -y, label='Brachistochrone (Cycloid)', color='blue') # Negative to plot downwards intuitively
-ax.plot([0, x[-1]], [0, -y[-1]], '--', label='Straight line', color='gray')
-ax.set_aspect('equal')
-ax.set_xlabel('x')
-ax.set_ylabel('y')
-ax.set_title('Path of Minimum Time (Brachistochrone)')
-ax.legend()
-plt.grid(True)
-plt.show()
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>🎮 Interactive Simulation: Rolling Wheel
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To dynamically adjust the wheel radius <span class="math inline">\(a\)</span>, scrub the rotation angle <span class="math inline">\(\theta\)</span>, and visualize the instantaneous velocity vectors in real time, check out our <strong><a href="../simulations/cycloid-mechanics-interactive.html#sim-rolling-wheel">Interactive Rolling Wheel Cycloid Generator</a></strong>!</p>
+</div>
+</div>
+</section>
+<section id="essential-mathematical-properties-of-cycloids" class="level4">
+<h4 class="anchored" data-anchor-id="essential-mathematical-properties-of-cycloids">Essential Mathematical Properties of Cycloids</h4>
+<ul>
+<li><strong>Parametric Equations:</strong> <span class="math inline">\(x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta)\)</span></li>
+<li><strong>Differential Arc Length:</strong> <span class="math display">\[ ds = \sqrt{\dot{x}^2 + \dot{y}^2} \, d\theta = 2a\sin\left(\frac{\theta}{2}\right) d\theta \]</span></li>
+<li><strong>Cumulative Arc Length from Origin:</strong> <span class="math display">\[ s(\theta) = \int_0^\theta 2a\sin\left(\frac{\theta'}{2}\right) d\theta' = 4a\left(1 - \cos\left(\frac{\theta}{2}\right)\right) = 8a\sin^2\left(\frac{\theta}{4}\right) \]</span> A full single arch (<span class="math inline">\(\theta = 2\pi\)</span>) has total perimeter <span class="math inline">\(s_{\text{total}} = 8a\)</span>.</li>
+<li><strong>Radius of Curvature:</strong> <span class="math display">\[ \rho(\theta) = 4a\sin\left(\frac{\theta}{2}\right) = \sqrt{8a y} \]</span></li>
+<li><strong>Self-Evolute Property:</strong> The evolute of a cycloid is an identical cycloid shifted horizontally by <span class="math inline">\(\pi a\)</span> and downward by <span class="math inline">\(2a\)</span>.</li>
+</ul>
+<p><em>(For additional substitution toolkits and speed benchmarks, see <a href="../reference/integration-tricks-and-substitutions.html">Integration Tricks and Substitution Techniques</a>. For physical systems such as charged particle drift in crossed <span class="math inline">\(\mathbf{E}\times\mathbf{B}\)</span> fields and cycloidal drives, see <a href="../reference/cycloid-physics-applications.html">Physics and Engineering Applications of Cycloids</a>.)</em></p>
+</section>
+<section id="trajectory-visualization-the-brachistochrone-race" class="level4">
+<h4 class="anchored" data-anchor-id="trajectory-visualization-the-brachistochrone-race">Trajectory Visualization &amp; The Brachistochrone Race</h4>
+<div id="cell-fig-cycloid" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">100</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> a <span class="op">*</span> (theta <span class="op">-</span> np.sin(theta))</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> a <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> np.cos(theta)) <span class="co"># Positive downwards</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>ax.plot(x, <span class="op">-</span>y, label<span class="op">=</span><span class="st">'Brachistochrone (Cycloid)'</span>, color<span class="op">=</span><span class="st">'blue'</span>) <span class="co"># Negative to plot downwards intuitively</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>, x[<span class="op">-</span><span class="dv">1</span>]], [<span class="dv">0</span>, <span class="op">-</span>y[<span class="op">-</span><span class="dv">1</span>]], <span class="st">'--'</span>, label<span class="op">=</span><span class="st">'Straight line'</span>, color<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'x'</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'y'</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Path of Minimum Time (Brachistochrone)'</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-display">
 <div id="fig-cycloid" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -739,7 +455,20 @@ Figure&nbsp;1: The Brachistochrone path is a cycloid, the curve traced by a poin
 </figure>
 </div>
 </div>
-<p>:::</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>🎮 Live In-Browser Simulations
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Explore the complete interactive simulation suite on the <strong><a href="../simulations/cycloid-mechanics-interactive.html">Code &amp; Simulations: Cycloid Mechanics</a></strong> page: * <strong><a href="../simulations/cycloid-mechanics-interactive.html#sim-rolling-wheel">Simulation 1: Rolling Wheel Cycloid Generator</a></strong> — Dynamic radius scaling, scrubbing, and velocity vectors. * <strong><a href="../simulations/cycloid-mechanics-interactive.html#sim-brachistochrone">Simulation 2: The Brachistochrone 4-Track Race</a></strong> — Real-time race between Cycloid, Circular Arc, Parabola, and Straight Line with stopwatches. * <strong><a href="../simulations/cycloid-mechanics-interactive.html#sim-tautochrone">Simulation 3: The Tautochrone Synchronous Arrival</a></strong> — Simultaneous descent of beads released from different heights. * <strong><a href="../simulations/cycloid-mechanics-interactive.html#sim-huygens">Simulation 4: Huygens’ Isochronous Pendulum</a></strong> — Cycloidal cheeks eliminating circular error at high amplitudes.</p>
+</div>
+</div>
 <p><em>(See <a href="../solutions/taylor-chapter-6-problems.html#problem-611">Problem 6.11</a>)</em></p>
 </section>
 </section>
@@ -1213,613 +942,295 @@ Figure&nbsp;1: The Brachistochrone path is a cycloid, the curve traced by a poin
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Taylor Chapter 6: Calculus of Variations"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Summary, Derivations, and Problems"</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-09-08"</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="an">date-modified:</span><span class="co"> last-modified</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [classical-mechanics, math, taylor]</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">    math: true</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction to the Calculus of Variations</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>In classical mechanics, we often encounter problems where we need to find a path or a function that minimizes (or maximizes) a certain quantity. This is the domain of the **Calculus of Variations**. While ordinary calculus deals with finding points that extremize a function $y = f(x)$, the calculus of variations deals with finding *functions* $y(x)$ that extremize a *functional* (a function of a function), often expressed as an integral:</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>$$ S = \int_{x_1}^{x_2} f(y, y', x) \, dx $$</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>Two main classes of problems require this approach:</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Symmetries make non-Cartesian coordinates (spherical, cylindrical) advantageous.</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Constraints make it best to choose generalized coordinates (e.g., a particle on a sphere).</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>To transition to these generalized coordinates, Lagrangian mechanics provides a powerful framework built entirely on the calculus of variations and Hamilton's Principle of Least Action.</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.1 Two Examples</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example 1: The Shortest Path Between Two Points</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>What is the shortest path between two points $(x_1, y_1)$ and $(x_2, y_2)$ in a plane? Let the path be given by a function $y = y(x)$. An infinitesimal element of length along the path is $ds = \sqrt{dx^2 + dy^2} = \sqrt{1 + (y')^2} \, dx$, where $y' = dy/dx$.</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>The total length of the path is the integral:</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>$$ L = \int_{x_1}^{x_2} \sqrt{1 + <span class="co">[</span><span class="ot">y'(x)</span><span class="co">]</span>^2} \, dx $$</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>The goal is to find the function $y(x)$ that minimizes $L$.</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.1](../solutions/taylor-chapter-6-problems.qmd#problem-61))*</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example 2: The Brachistochrone Problem</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>First posed by Johann Bernoulli in 1696. Given two points 1 and 2, with 1 higher than 2, what is the shape of a frictionless wire connecting them such that a bead released from rest at 1 slides to 2 in the minimum possible time?</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>Let point 1 be the origin $(0,0)$. We take the $y$-axis pointing *downward*.</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>The speed of the bead is $v = ds/dt$. By conservation of energy, $E = T + U$. If released from rest at $(0,0)$, $E = 0$.</span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>$$ \frac{1}{2}mv^2 - mgy = 0 \implies v = \sqrt{2gy} $$</span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>The time to travel an infinitesimal distance $ds$ is $dt = ds/v$. The total time is:</span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>$$ t = \int_{1}^{2} \frac{ds}{v} = \int_{x_1}^{x_2} \frac{\sqrt{1 + (y')^2}}{\sqrt{2gy}} \, dx $$</span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>We need to find the function $y(x)$ that minimizes this time integral $t$.</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.2](../solutions/taylor-chapter-6-problems.qmd#problem-62))*</span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.2 The Euler-Lagrange Equation</span></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>Both examples above involve an integral of the form:</span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>$$ S<span class="co">[</span><span class="ot">y</span><span class="co">]</span> = \int_{x_1}^{x_2} f(y, y', x) \, dx $$</span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>where $S$ is a functional. We want to find the path $y(x)$ that makes $S$ stationary (a minimum, maximum, or saddle point).</span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="fu">### Derivation</span></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>Let the actual path that extremizes the integral be $y(x)$. Consider a "wrong" path $Y(x)$ that is close to $y(x)$. We can parameterize this wrong path as:</span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>$$ Y(x) = y(x) + \alpha \eta(x) $$</span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>where $\alpha$ is a small parameter, and $\eta(x)$ is an arbitrary differentiable function representing the variation. Since all paths must start at $x_1$ and end at $x_2$, the variation must vanish at the endpoints:</span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>$$ \eta(x_1) = \eta(x_2) = 0 $$</span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>The integral evaluated along the varied path is a function of $\alpha$:</span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>$$ S(\alpha) = \int_{x_1}^{x_2} f(Y, Y', x) \, dx = \int_{x_1}^{x_2} f(y + \alpha \eta, y' + \alpha \eta', x) \, dx $$</span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>For the integral to be stationary at the correct path $y(x)$, the derivative of $S$ with respect to $\alpha$ must be zero when $\alpha = 0$:</span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>$$ \left. \frac{dS}{d\alpha} \right|_{\alpha=0} = 0 $$</span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>Using the chain rule to differentiate inside the integral:</span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>$$ \frac{dS}{d\alpha} = \int_{x_1}^{x_2} \left( \frac{\partial f}{\partial Y} \frac{\partial Y}{\partial \alpha} + \frac{\partial f}{\partial Y'} \frac{\partial Y'}{\partial \alpha} \right) dx = \int_{x_1}^{x_2} \left( \frac{\partial f}{\partial Y} \eta + \frac{\partial f}{\partial Y'} \eta' \right) dx $$</span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>Set $\alpha = 0$, so $Y \to y$ and $Y' \to y'$:</span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>$$ \int_{x_1}^{x_2} \left( \frac{\partial f}{\partial y} \eta(x) + \frac{\partial f}{\partial y'} \eta'(x) \right) dx = 0 $$</span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>We integrate the second term by parts:</span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>$$ \int_{x_1}^{x_2} \frac{\partial f}{\partial y'} \eta'(x) \, dx = \left<span class="co">[</span><span class="ot"> \frac{\partial f}{\partial y'} \eta(x) \right</span><span class="co">]</span>_{x_1}^{x_2} - \int_{x_1}^{x_2} \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) \eta(x) \, dx $$</span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>Since $\eta(x_1) = \eta(x_2) = 0$, the boundary term vanishes. The condition becomes:</span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>$$ \int_{x_1}^{x_2} \left<span class="co">[</span><span class="ot"> \frac{\partial f}{\partial y} - \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) \right</span><span class="co">]</span> \eta(x) \, dx = 0 $$</span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>For this to hold for *any* arbitrary variation $\eta(x)$, the term in the brackets must be identically zero. This yields the **Euler-Lagrange Equation**:</span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial f}{\partial y} - \frac{d}{dx} \frac{\partial f}{\partial y'} = 0 $$</span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.4](../solutions/taylor-chapter-6-problems.qmd#problem-64))*</span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.3 Applications of the Euler-Lagrange Equation</span></span>
-<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. Shortest Path Revisited</span></span>
-<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>For the shortest path, $f(y, y', x) = \sqrt{1 + y'^2}$.</span>
-<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>Since $\partial f / \partial y = 0$, the E-L equation reduces to:</span>
-<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>$$ \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) = 0 \implies \frac{\partial f}{\partial y'} = C $$</span>
-<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>$$ \frac{y'}{\sqrt{1 + y'^2}} = C \implies y'^2 = C^2(1 + y'^2) \implies y'^2 = \frac{C^2}{1-C^2} = m^2 $$</span>
-<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>Thus, $y' = m$, meaning $y = mx + b$. The shortest path is a straight line.</span>
-<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. The Brachistochrone Solution</span></span>
-<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>For the Brachistochrone, $f = \sqrt{\frac{1+y'^2}{y}}$ (ignoring constants).</span>
-<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>Notice that $f$ does not depend explicitly on $x$. When $\partial f / \partial x = 0$, we can use the **Beltrami Identity** (a first integral of the E-L equation):</span>
-<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>$$ f - y' \frac{\partial f}{\partial y'} = C $$</span>
-<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>Substituting $f$:</span>
-<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>$$ \sqrt{\frac{1+y'^2}{y}} - y' \frac{y'}{\sqrt{y(1+y'^2)}} = C $$</span>
-<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>$$ \frac{1+y'^2 - y'^2}{\sqrt{y(1+y'^2)}} = C \implies \frac{1}{\sqrt{y(1+y'^2)}} = C \implies y(1+y'^2) = \frac{1}{C^2} = 2a $$</span>
-<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>Solving for $y'$:</span>
-<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>$$ y' = \frac{dy}{dx} = \sqrt{\frac{2a-y}{y}} \implies dx = \sqrt{\frac{y}{2a-y}} dy $$</span>
-<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>The integral to evaluate is therefore:</span>
-<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>$$ x = \int \sqrt{\frac{y}{2a - y}} \, dy $$</span>
-<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step-by-Step Evaluation of Taylor's Cycloid Substitution</span></span>
-<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>Taylor introduces the substitution:</span>
-<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>$$ y = a(1 - \cos\theta) $$</span>
-<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Differential of the Substitution:**  </span>
-<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>   Differentiating $y$ with respect to $\theta$:</span>
-<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>   $$ dy = \frac{d}{d\theta}\big<span class="co">[</span><span class="ot">a(1 - \cos\theta)\big</span><span class="co">]</span> d\theta = a\sin\theta \, d\theta $$</span>
-<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a>   Using the double-angle identity $\sin\theta = 2\sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right)$:</span>
-<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>   $$ dy = 2a \sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right) d\theta $$</span>
-<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Simplifying the Radicand:**  </span>
-<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>   Substitute $y = a(1 - \cos\theta)$ into the numerator and denominator under the radical:</span>
-<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Numerator:</span>
-<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>     $$ y = a(1 - \cos\theta) = 2a\sin^2\left(\frac{\theta}{2}\right) $$</span>
-<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Denominator:</span>
-<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>     $$ 2a - y = 2a - a(1 - \cos\theta) = a(1 + \cos\theta) = 2a\cos^2\left(\frac{\theta}{2}\right) $$</span>
-<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>   Taking the ratio inside the square root:</span>
-<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>   $$ \frac{y}{2a - y} = \frac{2a\sin^2\left(\frac{\theta}{2}\right)}{2a\cos^2\left(\frac{\theta}{2}\right)} = \tan^2\left(\frac{\theta}{2}\right) $$</span>
-<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>   **Why We Assume the First Arch ($\theta \in [0, 2\pi]$ and $\sin(\theta/2) \ge 0$):**  </span>
-<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>   The principal square root of any real square evaluates to its absolute value: $\sqrt{\tan^2(\theta/2)} = |\tan(\theta/2)| = \frac{|\sin(\theta/2)|}{|\cos(\theta/2)|}$.  </span>
-<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>In any single Brachistochrone descent starting from rest at the origin $(0,0)$, energy conservation dictates $v = \sqrt{2gy}$. The bead cannot ascend higher than its release height $y = 0$, meaning the curve terminates before or at the completion of a single revolution of the generating wheel ($\theta \le 2\pi$). Hence the relevant motion is strictly confined within the first arch: $\theta \in <span class="co">[</span><span class="ot">0, 2\pi</span><span class="co">]</span>$, giving $\frac{\theta}{2} \in <span class="co">[</span><span class="ot">0, \pi</span><span class="co">]</span>$.</span>
-<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Across the entire half-angle domain $<span class="co">[</span><span class="ot">0, \pi</span><span class="co">]</span>$, the sine function is unconditionally non-negative ($\sin(\theta/2) \ge 0$). Therefore, the absolute value on the sine can be dropped without piecewise branching:</span>
-<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>     $$ \left|\sin\left(\frac{\theta}{2}\right)\right| = \sin\left(\frac{\theta}{2}\right) $$</span>
-<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>For the denominator, $\cos(\theta/2) &gt; 0$ along the entire descending branch $\theta \in [0, \pi)$, where $y$ is increasing from $0$ to $2a$. When the particle crosses the trough at $\theta = \pi$, $\cos(\theta/2)$ changes sign as $y$ begins decreasing, while $dx/d\theta = a(1 - \cos\theta) \ge 0$ remains positive throughout. Thus, setting:</span>
-<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>     $$ \sqrt{\frac{y}{2a - y}} = \tan\left(\frac{\theta}{2}\right) = \frac{\sin\left(\frac{\theta}{2}\right)}{\cos\left(\frac{\theta}{2}\right)} $$</span>
-<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>     correctly captures the trajectory without extraneous signs.</span>
-<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Combining and Integrating:**  </span>
-<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a>   Multiply the simplified radical by $dy$:</span>
-<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>   $$ \sqrt{\frac{y}{2a - y}} \, dy = \left(\frac{\sin\left(\frac{\theta}{2}\right)}{\cos\left(\frac{\theta}{2}\right)}\right) \cdot \left<span class="co">[</span><span class="ot">2a \sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right) d\theta\right</span><span class="co">]</span> = 2a \sin^2\left(\frac{\theta}{2}\right) d\theta $$</span>
-<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a>   Recall the half-angle identity $2\sin^2\left(\frac{\theta}{2}\right) = 1 - \cos\theta$:</span>
-<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>   $$ x = \int a(1 - \cos\theta) \, d\theta = a(\theta - \sin\theta) + C $$</span>
-<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>   Applying the initial condition $x(0) = 0$ gives $C = 0$, recovering the cycloid parametric equations:</span>
-<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a>   $$ x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta) $$</span>
-<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Why That Substitution Works: The Hidden Circle</span></span>
-<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a>Taylor calls this an "unlikely looking substitution," but it is completely systematic.  </span>
-<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a>Rationalize the numerator of the integrand:</span>
-<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a>$$ \sqrt{\frac{y}{2a - y}} = \frac{y}{\sqrt{y(2a - y)}} = \frac{y}{\sqrt{2ay - y^2}} $$</span>
-<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>Complete the square in the denominator:</span>
-<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>$$ 2ay - y^2 = -(y^2 - 2ay + a^2) + a^2 = a^2 - (y - a)^2 $$</span>
-<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a>Now the integral becomes:</span>
-<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a>$$ \int \frac{y}{\sqrt{a^2 - (y - a)^2}} \, dy $$</span>
-<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a>**Why This Is a Circle:**  </span>
-<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a>In the $(w, y)$ plane, the equation $w = \sqrt{a^2 - (y - a)^2}$ describes the boundary of a circle of radius $a$ centered at $(0, a)$:</span>
-<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a>$$ w^2 + (y - a)^2 = a^2 $$</span>
-<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a>**Why Two Different Types of $u$ Can Be Substituted:**  </span>
-<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a>Any expression involving $\sqrt{a^2 - u^2}$ naturally invites a circular parameterization, but we have two standard choices depending on the angle reference axis:</span>
-<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**The Sine Substitution ($u = a\sin\phi$):**  </span>
-<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a>   If we set $y - a = a\sin\phi$, then $y = a(1 + \sin\phi)$. Here the angle $\phi$ is measured relative to the horizontal diameter of the circle. At the release point ($y = 0$), this requires $\sin\phi = -1 \implies \phi = -\pi/2$. While mathematically valid, it introduces an awkward phase shift of $-\pi/2$ into the equations of motion.</span>
-<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**The Inverted Cosine Substitution ($u = -a\cos\theta$):**  </span>
-<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a>   If we instead set $y - a = -a\cos\theta$, then:</span>
-<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a>   $$ y = a(1 - \cos\theta) $$</span>
-<span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a>   Here the angle $\theta$ is measured from the top apex of the circle. At $\theta = 0$, $\cos(0) = 1$, which gives $y = a(1 - 1) = 0$ automatically! Thus, the negative cosine choice is physically tailored to align $\theta = 0$ directly with the initial release point at the origin without requiring arbitrary phase angles.</span>
-<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-178"><a href="#cb2-178" aria-hidden="true" tabindex="-1"></a><span class="fu">#### The Algebraic Alternative: Direct Root Substitution (With Both Integration by Parts and Trig Methods)</span></span>
-<span id="cb2-179"><a href="#cb2-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-180"><a href="#cb2-180" aria-hidden="true" tabindex="-1"></a>You do not need to guess a trigonometric substitution. When faced with any rational function of a single linear radical $\sqrt{\frac{a y + b}{c y + d}}$, set the entire radical equal to a new algebraic variable $u$:</span>
-<span id="cb2-181"><a href="#cb2-181" aria-hidden="true" tabindex="-1"></a>$$ u = \sqrt{\frac{y}{2a - y}} $$</span>
-<span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a>Inverting for $y$:</span>
-<span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a>$$ u^2 = \frac{y}{2a - y} \implies u^2(2a - y) = y \implies 2a u^2 = y(1 + u^2) \implies y = \frac{2a u^2}{1 + u^2} $$</span>
-<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a>Compute $dy$:</span>
-<span id="cb2-185"><a href="#cb2-185" aria-hidden="true" tabindex="-1"></a>$$ dy = 2a \frac{d}{du}\left<span class="co">[</span><span class="ot">1 - \frac{1}{1 + u^2}\right</span><span class="co">]</span> du = \frac{4a u}{(1 + u^2)^2} \, du $$</span>
-<span id="cb2-186"><a href="#cb2-186" aria-hidden="true" tabindex="-1"></a>Substitute into the integral $x = \int u \, dy$:</span>
-<span id="cb2-187"><a href="#cb2-187" aria-hidden="true" tabindex="-1"></a>$$ x = \int u \cdot \frac{4a u}{(1 + u^2)^2} \, du = 4a \int \frac{u^2}{(1 + u^2)^2} \, du $$</span>
-<span id="cb2-188"><a href="#cb2-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-189"><a href="#cb2-189" aria-hidden="true" tabindex="-1"></a>We can solve this integral via two independent pathways:</span>
-<span id="cb2-190"><a href="#cb2-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-191"><a href="#cb2-191" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Method A: Integration by Parts (Pure Algebraic Route)</span></span>
-<span id="cb2-192"><a href="#cb2-192" aria-hidden="true" tabindex="-1"></a>Split the numerator as $u \cdot \frac{u}{(1+u^2)^2}$:</span>
-<span id="cb2-193"><a href="#cb2-193" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Let $f = u \implies df = du$</span>
-<span id="cb2-194"><a href="#cb2-194" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Let $dg = \frac{u}{(1+u^2)^2} \, du \implies g = -\frac{1}{2(1+u^2)}$</span>
-<span id="cb2-195"><a href="#cb2-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-196"><a href="#cb2-196" aria-hidden="true" tabindex="-1"></a>Applying $\int f \, dg = fg - \int g \, df$:</span>
-<span id="cb2-197"><a href="#cb2-197" aria-hidden="true" tabindex="-1"></a>$$ \int \frac{u^2}{(1+u^2)^2} \, du = -\frac{u}{2(1+u^2)} + \frac{1}{2}\int \frac{du}{1+u^2} = -\frac{u}{2(1+u^2)} + \frac{1}{2}\arctan(u) $$</span>
-<span id="cb2-198"><a href="#cb2-198" aria-hidden="true" tabindex="-1"></a>Multiplying by the overall factor $4a$:</span>
-<span id="cb2-199"><a href="#cb2-199" aria-hidden="true" tabindex="-1"></a>$$ x(u) = 2a \arctan(u) - \frac{2a u}{1 + u^2} + C $$</span>
-<span id="cb2-200"><a href="#cb2-200" aria-hidden="true" tabindex="-1"></a>Since $u = 0$ at $y = 0$, the boundary condition $x(0) = 0$ enforces $C = 0$.  </span>
-<span id="cb2-201"><a href="#cb2-201" aria-hidden="true" tabindex="-1"></a>To interpret this geometrically, let $u = \tan\left(\frac{\theta}{2}\right)$. Then:</span>
-<span id="cb2-202"><a href="#cb2-202" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\arctan(u) = \frac{\theta}{2}$</span>
-<span id="cb2-203"><a href="#cb2-203" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\frac{2u}{1+u^2} = \frac{2\tan(\theta/2)}{1+\tan^2(\theta/2)} = \sin\theta$ (the standard double-angle identity)</span>
-<span id="cb2-204"><a href="#cb2-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-205"><a href="#cb2-205" aria-hidden="true" tabindex="-1"></a>Substituting these directly into $x(u)$:</span>
-<span id="cb2-206"><a href="#cb2-206" aria-hidden="true" tabindex="-1"></a>$$ x(\theta) = 2a\left(\frac{\theta}{2}\right) - a\sin\theta = a(\theta - \sin\theta) $$</span>
-<span id="cb2-207"><a href="#cb2-207" aria-hidden="true" tabindex="-1"></a>And for $y$:</span>
-<span id="cb2-208"><a href="#cb2-208" aria-hidden="true" tabindex="-1"></a>$$ y = \frac{2a u^2}{1+u^2} = 2a\sin^2\left(\frac{\theta}{2}\right) = a(1 - \cos\theta) $$</span>
-<span id="cb2-209"><a href="#cb2-209" aria-hidden="true" tabindex="-1"></a>This recovers the cycloid parametric equations without having to guess the substitution upfront!</span>
-<span id="cb2-210"><a href="#cb2-210" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-211"><a href="#cb2-211" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Method B: Trigonometric Substitution</span></span>
-<span id="cb2-212"><a href="#cb2-212" aria-hidden="true" tabindex="-1"></a>Setting $u = \tan\phi$, so $du = \sec^2\phi \, d\phi$:</span>
-<span id="cb2-213"><a href="#cb2-213" aria-hidden="true" tabindex="-1"></a>$$ 4a \int \frac{\tan^2\phi}{(1+\tan^2\phi)^2} \sec^2\phi \, d\phi = 4a \int \frac{\tan^2\phi}{\sec^4\phi}\sec^2\phi \, d\phi = 4a \int \sin^2\phi \, d\phi $$</span>
-<span id="cb2-214"><a href="#cb2-214" aria-hidden="true" tabindex="-1"></a>Using $\sin^2\phi = \frac{1 - \cos 2\phi}{2}$:</span>
-<span id="cb2-215"><a href="#cb2-215" aria-hidden="true" tabindex="-1"></a>$$ 4a \int \left(\frac{1 - \cos 2\phi}{2}\right) d\phi = 2a\left(\phi - \frac{1}{2}\sin 2\phi\right) = 2a(\phi - \sin\phi\cos\phi) $$</span>
-<span id="cb2-216"><a href="#cb2-216" aria-hidden="true" tabindex="-1"></a>Setting $\theta = 2\phi$ (so $\phi = \theta/2$), this immediately yields $x(\theta) = a(\theta - \sin\theta)$.</span>
-<span id="cb2-217"><a href="#cb2-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-218"><a href="#cb2-218" aria-hidden="true" tabindex="-1"></a><span class="fu">#### What $\theta$ Represents Physically</span></span>
-<span id="cb2-219"><a href="#cb2-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-220"><a href="#cb2-220" aria-hidden="true" tabindex="-1"></a>The parameter $\theta$ is the cumulative rotation angle (in radians) of the rolling circle that generates the curve:</span>
-<span id="cb2-221"><a href="#cb2-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-222"><a href="#cb2-222" aria-hidden="true" tabindex="-1"></a><span class="in">```text</span></span>
-<span id="cb2-223"><a href="#cb2-223" aria-hidden="true" tabindex="-1"></a><span class="in">          x=0                         x = a*theta                      x = 2*pi*a</span></span>
-<span id="cb2-224"><a href="#cb2-224" aria-hidden="true" tabindex="-1"></a><span class="in">   y=0 ----*-------------------------------O-------------------------------*----&gt; x</span></span>
-<span id="cb2-225"><a href="#cb2-225" aria-hidden="true" tabindex="-1"></a><span class="in">           |                              / \                              |</span></span>
-<span id="cb2-226"><a href="#cb2-226" aria-hidden="true" tabindex="-1"></a><span class="in">           |                             /   \                             |</span></span>
-<span id="cb2-227"><a href="#cb2-227" aria-hidden="true" tabindex="-1"></a><span class="in">           |                            /  a  \                            |</span></span>
-<span id="cb2-228"><a href="#cb2-228" aria-hidden="true" tabindex="-1"></a><span class="in">           |                           O-------* P(x,y)                    |</span></span>
-<span id="cb2-229"><a href="#cb2-229" aria-hidden="true" tabindex="-1"></a><span class="in">           |                            \ theta/                           |</span></span>
-<span id="cb2-230"><a href="#cb2-230" aria-hidden="true" tabindex="-1"></a><span class="in">           |                             \    /                            |</span></span>
-<span id="cb2-231"><a href="#cb2-231" aria-hidden="true" tabindex="-1"></a><span class="in">           |                              \  /                             |</span></span>
-<span id="cb2-232"><a href="#cb2-232" aria-hidden="true" tabindex="-1"></a><span class="in">           |                               \/                              |</span></span>
-<span id="cb2-233"><a href="#cb2-233" aria-hidden="true" tabindex="-1"></a><span class="in">           |                                                               |</span></span>
-<span id="cb2-234"><a href="#cb2-234" aria-hidden="true" tabindex="-1"></a><span class="in">           |                               . (Trough: theta = pi, y = 2a)  |</span></span>
-<span id="cb2-235"><a href="#cb2-235" aria-hidden="true" tabindex="-1"></a><span class="in">           v y</span></span>
-<span id="cb2-236"><a href="#cb2-236" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-237"><a href="#cb2-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-238"><a href="#cb2-238" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
-<span id="cb2-239"><a href="#cb2-239" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div style="background: #0f172a; color: #f8fafc; border-radius: 12px; padding: 18px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin: 20px 0;"&gt;</span></span>
-<span id="cb2-240"><a href="#cb2-240" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 12px;"&gt;</span></span>
-<span id="cb2-241"><a href="#cb2-241" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;div style="display: flex; gap: 10px;"&gt;</span></span>
-<span id="cb2-242"><a href="#cb2-242" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;button id="ch6-wheel-play-btn" style="background: #0284c7; color: white; border: none; padding: 6px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s;"&gt;❚❚ Pause&lt;/button&gt;</span></span>
-<span id="cb2-243"><a href="#cb2-243" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;button id="ch6-wheel-reset-btn" style="background: #475569; color: white; border: none; padding: 6px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s;"&gt;↺ Reset&lt;/button&gt;</span></span>
-<span id="cb2-244"><a href="#cb2-244" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;/div&gt;</span></span>
-<span id="cb2-245"><a href="#cb2-245" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center; font-size: 0.88em;"&gt;</span></span>
-<span id="cb2-246"><a href="#cb2-246" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;label&gt;Wheel Radius &lt;i&gt;a&lt;/i&gt;: </span></span>
-<span id="cb2-247"><a href="#cb2-247" aria-hidden="true" tabindex="-1"></a><span class="in">        &lt;input type="range" id="ch6-wheel-radius-slider" min="20" max="55" step="1" value="38" style="vertical-align: middle;"&gt;</span></span>
-<span id="cb2-248"><a href="#cb2-248" aria-hidden="true" tabindex="-1"></a><span class="in">        &lt;span id="ch6-wheel-radius-val" style="font-weight: bold; color: #38bdf8;"&gt;38 px&lt;/span&gt;</span></span>
-<span id="cb2-249"><a href="#cb2-249" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;/label&gt;</span></span>
-<span id="cb2-250"><a href="#cb2-250" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;label&gt;Angle θ: </span></span>
-<span id="cb2-251"><a href="#cb2-251" aria-hidden="true" tabindex="-1"></a><span class="in">        &lt;input type="range" id="ch6-wheel-theta-slider" min="0" max="1256" step="1" value="0" style="vertical-align: middle; width: 120px;"&gt;</span></span>
-<span id="cb2-252"><a href="#cb2-252" aria-hidden="true" tabindex="-1"></a><span class="in">        &lt;span id="ch6-wheel-theta-val" style="font-weight: bold; color: #a855f7;"&gt;0.00 rad&lt;/span&gt;</span></span>
-<span id="cb2-253"><a href="#cb2-253" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;/label&gt;</span></span>
-<span id="cb2-254"><a href="#cb2-254" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;/div&gt;</span></span>
-<span id="cb2-255"><a href="#cb2-255" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;/div&gt;</span></span>
-<span id="cb2-256"><a href="#cb2-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-257"><a href="#cb2-257" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;canvas id="ch6-wheel-canvas" width="720" height="300" style="width: 100%; height: auto; background: #1e293b; border-radius: 8px; border: 1px solid #334155; display: block;"&gt;&lt;/canvas&gt;</span></span>
-<span id="cb2-258"><a href="#cb2-258" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div style="font-size: 0.82em; color: #94a3b8; margin-top: 8px; text-align: center;"&gt;</span></span>
-<span id="cb2-259"><a href="#cb2-259" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;b&gt;Interactive Demo:&lt;/b&gt; Adjust radius &lt;i&gt;a&lt;/i&gt; to observe how the cycloid arch scales proportionally with wheel size.</span></span>
-<span id="cb2-260"><a href="#cb2-260" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;/div&gt;</span></span>
-<span id="cb2-261"><a href="#cb2-261" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
-<span id="cb2-262"><a href="#cb2-262" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-263"><a href="#cb2-263" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;script&gt;</span></span>
-<span id="cb2-264"><a href="#cb2-264" aria-hidden="true" tabindex="-1"></a><span class="in">(function() {</span></span>
-<span id="cb2-265"><a href="#cb2-265" aria-hidden="true" tabindex="-1"></a><span class="in">  const canvas = document.getElementById('ch6-wheel-canvas');</span></span>
-<span id="cb2-266"><a href="#cb2-266" aria-hidden="true" tabindex="-1"></a><span class="in">  if (!canvas) return;</span></span>
-<span id="cb2-267"><a href="#cb2-267" aria-hidden="true" tabindex="-1"></a><span class="in">  const ctx = canvas.getContext('2d');</span></span>
-<span id="cb2-268"><a href="#cb2-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-269"><a href="#cb2-269" aria-hidden="true" tabindex="-1"></a><span class="in">  let a = 38;</span></span>
-<span id="cb2-270"><a href="#cb2-270" aria-hidden="true" tabindex="-1"></a><span class="in">  let theta = 0;</span></span>
-<span id="cb2-271"><a href="#cb2-271" aria-hidden="true" tabindex="-1"></a><span class="in">  const maxTheta = 4 * Math.PI;</span></span>
-<span id="cb2-272"><a href="#cb2-272" aria-hidden="true" tabindex="-1"></a><span class="in">  let running = true;</span></span>
-<span id="cb2-273"><a href="#cb2-273" aria-hidden="true" tabindex="-1"></a><span class="in">  let animId = null;</span></span>
-<span id="cb2-274"><a href="#cb2-274" aria-hidden="true" tabindex="-1"></a><span class="in">  let lastTs = 0;</span></span>
-<span id="cb2-275"><a href="#cb2-275" aria-hidden="true" tabindex="-1"></a><span class="in">  const rollSpeed = 1.5;</span></span>
-<span id="cb2-276"><a href="#cb2-276" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-277"><a href="#cb2-277" aria-hidden="true" tabindex="-1"></a><span class="in">  const xOrigin = 45;</span></span>
-<span id="cb2-278"><a href="#cb2-278" aria-hidden="true" tabindex="-1"></a><span class="in">  const yRail = 35;</span></span>
-<span id="cb2-279"><a href="#cb2-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-280"><a href="#cb2-280" aria-hidden="true" tabindex="-1"></a><span class="in">  function update() {</span></span>
-<span id="cb2-281"><a href="#cb2-281" aria-hidden="true" tabindex="-1"></a><span class="in">    const rVal = document.getElementById('ch6-wheel-radius-val');</span></span>
-<span id="cb2-282"><a href="#cb2-282" aria-hidden="true" tabindex="-1"></a><span class="in">    const thVal = document.getElementById('ch6-wheel-theta-val');</span></span>
-<span id="cb2-283"><a href="#cb2-283" aria-hidden="true" tabindex="-1"></a><span class="in">    const thSlider = document.getElementById('ch6-wheel-theta-slider');</span></span>
-<span id="cb2-284"><a href="#cb2-284" aria-hidden="true" tabindex="-1"></a><span class="in">    if (rVal) rVal.innerText = a + ' px';</span></span>
-<span id="cb2-285"><a href="#cb2-285" aria-hidden="true" tabindex="-1"></a><span class="in">    if (thVal) thVal.innerText = theta.toFixed(2) + ' rad';</span></span>
-<span id="cb2-286"><a href="#cb2-286" aria-hidden="true" tabindex="-1"></a><span class="in">    if (thSlider) thSlider.value = Math.round((theta / maxTheta) * 1256);</span></span>
-<span id="cb2-287"><a href="#cb2-287" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
-<span id="cb2-288"><a href="#cb2-288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-289"><a href="#cb2-289" aria-hidden="true" tabindex="-1"></a><span class="in">  function draw() {</span></span>
-<span id="cb2-290"><a href="#cb2-290" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.clearRect(0, 0, canvas.width, canvas.height);</span></span>
-<span id="cb2-291"><a href="#cb2-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-292"><a href="#cb2-292" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#0f172a';</span></span>
-<span id="cb2-293"><a href="#cb2-293" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillRect(0, 0, canvas.width, yRail);</span></span>
-<span id="cb2-294"><a href="#cb2-294" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = '#334155';</span></span>
-<span id="cb2-295"><a href="#cb2-295" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 1.5;</span></span>
-<span id="cb2-296"><a href="#cb2-296" aria-hidden="true" tabindex="-1"></a><span class="in">    for (let hx = 10; hx &lt; canvas.width; hx += 16) {</span></span>
-<span id="cb2-297"><a href="#cb2-297" aria-hidden="true" tabindex="-1"></a><span class="in">      ctx.beginPath(); ctx.moveTo(hx, yRail - 12); ctx.lineTo(hx + 10, yRail); ctx.stroke();</span></span>
-<span id="cb2-298"><a href="#cb2-298" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb2-299"><a href="#cb2-299" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = '#94a3b8';</span></span>
-<span id="cb2-300"><a href="#cb2-300" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 2.5;</span></span>
-<span id="cb2-301"><a href="#cb2-301" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.moveTo(0, yRail); ctx.lineTo(canvas.width, yRail); ctx.stroke();</span></span>
-<span id="cb2-302"><a href="#cb2-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-303"><a href="#cb2-303" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#f8fafc';</span></span>
-<span id="cb2-304"><a href="#cb2-304" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.font = 'bold 11px system-ui, sans-serif';</span></span>
-<span id="cb2-305"><a href="#cb2-305" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillText('Underside Rail (y = 0)', 15, yRail - 12);</span></span>
-<span id="cb2-306"><a href="#cb2-306" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-307"><a href="#cb2-307" aria-hidden="true" tabindex="-1"></a><span class="in">    // Center of Mass trajectory line (y = yRail + a)</span></span>
-<span id="cb2-308"><a href="#cb2-308" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';</span></span>
-<span id="cb2-309"><a href="#cb2-309" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 1.2;</span></span>
-<span id="cb2-310"><a href="#cb2-310" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.setLineDash([4, 4]);</span></span>
-<span id="cb2-311"><a href="#cb2-311" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.moveTo(0, yRail + a); ctx.lineTo(canvas.width, yRail + a); ctx.stroke();</span></span>
-<span id="cb2-312"><a href="#cb2-312" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.setLineDash([]);</span></span>
-<span id="cb2-313"><a href="#cb2-313" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#38bdf8';</span></span>
-<span id="cb2-314"><a href="#cb2-314" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.font = '10px system-ui, sans-serif';</span></span>
-<span id="cb2-315"><a href="#cb2-315" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillText(`Center Path: y_c = a (${a}px)`, 20, yRail + a - 4);</span></span>
-<span id="cb2-316"><a href="#cb2-316" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-317"><a href="#cb2-317" aria-hidden="true" tabindex="-1"></a><span class="in">    // Trough depth boundary line (y = yRail + 2a)</span></span>
-<span id="cb2-318"><a href="#cb2-318" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = 'rgba(168, 85, 247, 0.4)';</span></span>
-<span id="cb2-319"><a href="#cb2-319" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 1.2;</span></span>
-<span id="cb2-320"><a href="#cb2-320" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.setLineDash([4, 4]);</span></span>
-<span id="cb2-321"><a href="#cb2-321" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.moveTo(0, yRail + 2*a); ctx.lineTo(canvas.width, yRail + 2*a); ctx.stroke();</span></span>
-<span id="cb2-322"><a href="#cb2-322" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.setLineDash([]);</span></span>
-<span id="cb2-323"><a href="#cb2-323" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#c084fc';</span></span>
-<span id="cb2-324"><a href="#cb2-324" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillText(`Trough Depth: y_max = 2a (${2*a}px)`, 20, yRail + 2*a + 12);</span></span>
-<span id="cb2-325"><a href="#cb2-325" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-326"><a href="#cb2-326" aria-hidden="true" tabindex="-1"></a><span class="in">    // Faint full cycloid path</span></span>
-<span id="cb2-327"><a href="#cb2-327" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = '#475569';</span></span>
-<span id="cb2-328"><a href="#cb2-328" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 1.5;</span></span>
-<span id="cb2-329"><a href="#cb2-329" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.setLineDash([4, 4]);</span></span>
-<span id="cb2-330"><a href="#cb2-330" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath();</span></span>
-<span id="cb2-331"><a href="#cb2-331" aria-hidden="true" tabindex="-1"></a><span class="in">    const totalSteps = 300;</span></span>
-<span id="cb2-332"><a href="#cb2-332" aria-hidden="true" tabindex="-1"></a><span class="in">    for (let i = 0; i &lt;= totalSteps; i++) {</span></span>
-<span id="cb2-333"><a href="#cb2-333" aria-hidden="true" tabindex="-1"></a><span class="in">      const th = (i / totalSteps) * maxTheta;</span></span>
-<span id="cb2-334"><a href="#cb2-334" aria-hidden="true" tabindex="-1"></a><span class="in">      const x = xOrigin + a * (th - Math.sin(th));</span></span>
-<span id="cb2-335"><a href="#cb2-335" aria-hidden="true" tabindex="-1"></a><span class="in">      const y = yRail + a * (1 - Math.cos(th));</span></span>
-<span id="cb2-336"><a href="#cb2-336" aria-hidden="true" tabindex="-1"></a><span class="in">      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);</span></span>
-<span id="cb2-337"><a href="#cb2-337" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb2-338"><a href="#cb2-338" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.stroke();</span></span>
-<span id="cb2-339"><a href="#cb2-339" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.setLineDash([]);</span></span>
-<span id="cb2-340"><a href="#cb2-340" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-341"><a href="#cb2-341" aria-hidden="true" tabindex="-1"></a><span class="in">    // Gradient fill under the active traced curve</span></span>
-<span id="cb2-342"><a href="#cb2-342" aria-hidden="true" tabindex="-1"></a><span class="in">    const currentSteps = Math.min(totalSteps, Math.floor((theta / maxTheta) * totalSteps));</span></span>
-<span id="cb2-343"><a href="#cb2-343" aria-hidden="true" tabindex="-1"></a><span class="in">    if (currentSteps &gt; 1) {</span></span>
-<span id="cb2-344"><a href="#cb2-344" aria-hidden="true" tabindex="-1"></a><span class="in">      const grad = ctx.createLinearGradient(0, yRail, 0, yRail + 2*a);</span></span>
-<span id="cb2-345"><a href="#cb2-345" aria-hidden="true" tabindex="-1"></a><span class="in">      grad.addColorStop(0, 'rgba(192, 132, 252, 0.22)');</span></span>
-<span id="cb2-346"><a href="#cb2-346" aria-hidden="true" tabindex="-1"></a><span class="in">      grad.addColorStop(1, 'rgba(168, 85, 247, 0.02)');</span></span>
-<span id="cb2-347"><a href="#cb2-347" aria-hidden="true" tabindex="-1"></a><span class="in">      ctx.fillStyle = grad;</span></span>
-<span id="cb2-348"><a href="#cb2-348" aria-hidden="true" tabindex="-1"></a><span class="in">      ctx.beginPath();</span></span>
-<span id="cb2-349"><a href="#cb2-349" aria-hidden="true" tabindex="-1"></a><span class="in">      ctx.moveTo(xOrigin, yRail);</span></span>
-<span id="cb2-350"><a href="#cb2-350" aria-hidden="true" tabindex="-1"></a><span class="in">      for (let i = 0; i &lt;= currentSteps; i++) {</span></span>
-<span id="cb2-351"><a href="#cb2-351" aria-hidden="true" tabindex="-1"></a><span class="in">        const th = (i / totalSteps) * maxTheta;</span></span>
-<span id="cb2-352"><a href="#cb2-352" aria-hidden="true" tabindex="-1"></a><span class="in">        const x = xOrigin + a * (th - Math.sin(th));</span></span>
-<span id="cb2-353"><a href="#cb2-353" aria-hidden="true" tabindex="-1"></a><span class="in">        const y = yRail + a * (1 - Math.cos(th));</span></span>
-<span id="cb2-354"><a href="#cb2-354" aria-hidden="true" tabindex="-1"></a><span class="in">        ctx.lineTo(x, y);</span></span>
-<span id="cb2-355"><a href="#cb2-355" aria-hidden="true" tabindex="-1"></a><span class="in">      }</span></span>
-<span id="cb2-356"><a href="#cb2-356" aria-hidden="true" tabindex="-1"></a><span class="in">      const lastTh = (currentSteps / totalSteps) * maxTheta;</span></span>
-<span id="cb2-357"><a href="#cb2-357" aria-hidden="true" tabindex="-1"></a><span class="in">      const lastX = xOrigin + a * (lastTh - Math.sin(lastTh));</span></span>
-<span id="cb2-358"><a href="#cb2-358" aria-hidden="true" tabindex="-1"></a><span class="in">      ctx.lineTo(lastX, yRail);</span></span>
-<span id="cb2-359"><a href="#cb2-359" aria-hidden="true" tabindex="-1"></a><span class="in">      ctx.closePath();</span></span>
-<span id="cb2-360"><a href="#cb2-360" aria-hidden="true" tabindex="-1"></a><span class="in">      ctx.fill();</span></span>
-<span id="cb2-361"><a href="#cb2-361" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb2-362"><a href="#cb2-362" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-363"><a href="#cb2-363" aria-hidden="true" tabindex="-1"></a><span class="in">    // Glowing active traced path up to theta</span></span>
-<span id="cb2-364"><a href="#cb2-364" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = '#c084fc';</span></span>
-<span id="cb2-365"><a href="#cb2-365" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 3.5;</span></span>
-<span id="cb2-366"><a href="#cb2-366" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.shadowColor = '#a855f7';</span></span>
-<span id="cb2-367"><a href="#cb2-367" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.shadowBlur = 10;</span></span>
-<span id="cb2-368"><a href="#cb2-368" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath();</span></span>
-<span id="cb2-369"><a href="#cb2-369" aria-hidden="true" tabindex="-1"></a><span class="in">    for (let i = 0; i &lt;= currentSteps; i++) {</span></span>
-<span id="cb2-370"><a href="#cb2-370" aria-hidden="true" tabindex="-1"></a><span class="in">      const th = (i / totalSteps) * maxTheta;</span></span>
-<span id="cb2-371"><a href="#cb2-371" aria-hidden="true" tabindex="-1"></a><span class="in">      const x = xOrigin + a * (th - Math.sin(th));</span></span>
-<span id="cb2-372"><a href="#cb2-372" aria-hidden="true" tabindex="-1"></a><span class="in">      const y = yRail + a * (1 - Math.cos(th));</span></span>
-<span id="cb2-373"><a href="#cb2-373" aria-hidden="true" tabindex="-1"></a><span class="in">      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);</span></span>
-<span id="cb2-374"><a href="#cb2-374" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb2-375"><a href="#cb2-375" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.stroke();</span></span>
-<span id="cb2-376"><a href="#cb2-376" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.shadowBlur = 0;</span></span>
-<span id="cb2-377"><a href="#cb2-377" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-378"><a href="#cb2-378" aria-hidden="true" tabindex="-1"></a><span class="in">    // Rolling Wheel</span></span>
-<span id="cb2-379"><a href="#cb2-379" aria-hidden="true" tabindex="-1"></a><span class="in">    const xc = xOrigin + a * theta;</span></span>
-<span id="cb2-380"><a href="#cb2-380" aria-hidden="true" tabindex="-1"></a><span class="in">    const yc = yRail + a;</span></span>
-<span id="cb2-381"><a href="#cb2-381" aria-hidden="true" tabindex="-1"></a><span class="in">    const xp = xc - a * Math.sin(theta);</span></span>
-<span id="cb2-382"><a href="#cb2-382" aria-hidden="true" tabindex="-1"></a><span class="in">    const yp = yc - a * Math.cos(theta);</span></span>
-<span id="cb2-383"><a href="#cb2-383" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-384"><a href="#cb2-384" aria-hidden="true" tabindex="-1"></a><span class="in">    // Instantaneous Center of Rotation (ICR)</span></span>
-<span id="cb2-385"><a href="#cb2-385" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#f43f5e';</span></span>
-<span id="cb2-386"><a href="#cb2-386" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.arc(xc, yRail, 4.5, 0, 2*Math.PI); ctx.fill();</span></span>
-<span id="cb2-387"><a href="#cb2-387" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-388"><a href="#cb2-388" aria-hidden="true" tabindex="-1"></a><span class="in">    // Normal line connecting Contact C to Marker P</span></span>
-<span id="cb2-389"><a href="#cb2-389" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = 'rgba(244, 63, 94, 0.4)';</span></span>
-<span id="cb2-390"><a href="#cb2-390" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 1.2;</span></span>
-<span id="cb2-391"><a href="#cb2-391" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.setLineDash([3, 3]);</span></span>
-<span id="cb2-392"><a href="#cb2-392" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.moveTo(xc, yRail); ctx.lineTo(xp, yp); ctx.stroke();</span></span>
-<span id="cb2-393"><a href="#cb2-393" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.setLineDash([]);</span></span>
-<span id="cb2-394"><a href="#cb2-394" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-395"><a href="#cb2-395" aria-hidden="true" tabindex="-1"></a><span class="in">    const wheelGrad = ctx.createRadialGradient(xc, yc, 2, xc, yc, a);</span></span>
-<span id="cb2-396"><a href="#cb2-396" aria-hidden="true" tabindex="-1"></a><span class="in">    wheelGrad.addColorStop(0, 'rgba(56, 189, 248, 0.35)');</span></span>
-<span id="cb2-397"><a href="#cb2-397" aria-hidden="true" tabindex="-1"></a><span class="in">    wheelGrad.addColorStop(0.85, 'rgba(14, 116, 144, 0.2)');</span></span>
-<span id="cb2-398"><a href="#cb2-398" aria-hidden="true" tabindex="-1"></a><span class="in">    wheelGrad.addColorStop(1, 'rgba(56, 189, 248, 0.55)');</span></span>
-<span id="cb2-399"><a href="#cb2-399" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = wheelGrad;</span></span>
-<span id="cb2-400"><a href="#cb2-400" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = '#38bdf8';</span></span>
-<span id="cb2-401"><a href="#cb2-401" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 2.5;</span></span>
-<span id="cb2-402"><a href="#cb2-402" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath();</span></span>
-<span id="cb2-403"><a href="#cb2-403" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.arc(xc, yc, a, 0, 2*Math.PI);</span></span>
-<span id="cb2-404"><a href="#cb2-404" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fill();</span></span>
-<span id="cb2-405"><a href="#cb2-405" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.stroke();</span></span>
-<span id="cb2-406"><a href="#cb2-406" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-407"><a href="#cb2-407" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#0284c7';</span></span>
-<span id="cb2-408"><a href="#cb2-408" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.arc(xc, yc, 4.5, 0, 2*Math.PI); ctx.fill();</span></span>
-<span id="cb2-409"><a href="#cb2-409" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#ffffff';</span></span>
-<span id="cb2-410"><a href="#cb2-410" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.arc(xc, yc, 2, 0, 2*Math.PI); ctx.fill();</span></span>
-<span id="cb2-411"><a href="#cb2-411" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-412"><a href="#cb2-412" aria-hidden="true" tabindex="-1"></a><span class="in">    // Spokes</span></span>
-<span id="cb2-413"><a href="#cb2-413" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = 'rgba(56, 189, 248, 0.5)';</span></span>
-<span id="cb2-414"><a href="#cb2-414" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 1.5;</span></span>
-<span id="cb2-415"><a href="#cb2-415" aria-hidden="true" tabindex="-1"></a><span class="in">    for (let i = 0; i &lt; 6; i++) {</span></span>
-<span id="cb2-416"><a href="#cb2-416" aria-hidden="true" tabindex="-1"></a><span class="in">      const spAng = theta + (i * Math.PI / 3) - Math.PI/2;</span></span>
-<span id="cb2-417"><a href="#cb2-417" aria-hidden="true" tabindex="-1"></a><span class="in">      ctx.beginPath(); ctx.moveTo(xc, yc); ctx.lineTo(xc + a * Math.cos(spAng), yc + a * Math.sin(spAng)); ctx.stroke();</span></span>
-<span id="cb2-418"><a href="#cb2-418" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb2-419"><a href="#cb2-419" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-420"><a href="#cb2-420" aria-hidden="true" tabindex="-1"></a><span class="in">    // Marker arm</span></span>
-<span id="cb2-421"><a href="#cb2-421" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = '#f43f5e';</span></span>
-<span id="cb2-422"><a href="#cb2-422" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 2.2;</span></span>
-<span id="cb2-423"><a href="#cb2-423" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.moveTo(xc, yc); ctx.lineTo(xp, yp); ctx.stroke();</span></span>
-<span id="cb2-424"><a href="#cb2-424" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-425"><a href="#cb2-425" aria-hidden="true" tabindex="-1"></a><span class="in">    // Velocity vector</span></span>
-<span id="cb2-426"><a href="#cb2-426" aria-hidden="true" tabindex="-1"></a><span class="in">    const vx = a * (1 - Math.cos(theta));</span></span>
-<span id="cb2-427"><a href="#cb2-427" aria-hidden="true" tabindex="-1"></a><span class="in">    const vy = a * Math.sin(theta);</span></span>
-<span id="cb2-428"><a href="#cb2-428" aria-hidden="true" tabindex="-1"></a><span class="in">    const vMag = Math.sqrt(vx*vx + vy*vy) || 1;</span></span>
-<span id="cb2-429"><a href="#cb2-429" aria-hidden="true" tabindex="-1"></a><span class="in">    const arrowLen = 28;</span></span>
-<span id="cb2-430"><a href="#cb2-430" aria-hidden="true" tabindex="-1"></a><span class="in">    const dirX = (vx / vMag) * arrowLen;</span></span>
-<span id="cb2-431"><a href="#cb2-431" aria-hidden="true" tabindex="-1"></a><span class="in">    const dirY = (vy / vMag) * arrowLen;</span></span>
-<span id="cb2-432"><a href="#cb2-432" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-433"><a href="#cb2-433" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.strokeStyle = '#4ade80';</span></span>
-<span id="cb2-434"><a href="#cb2-434" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineWidth = 2;</span></span>
-<span id="cb2-435"><a href="#cb2-435" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.moveTo(xp, yp); ctx.lineTo(xp + dirX, yp + dirY); ctx.stroke();</span></span>
-<span id="cb2-436"><a href="#cb2-436" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-437"><a href="#cb2-437" aria-hidden="true" tabindex="-1"></a><span class="in">    const arrHeadLen = 6;</span></span>
-<span id="cb2-438"><a href="#cb2-438" aria-hidden="true" tabindex="-1"></a><span class="in">    const arrAng = Math.atan2(dirY, dirX);</span></span>
-<span id="cb2-439"><a href="#cb2-439" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#4ade80';</span></span>
-<span id="cb2-440"><a href="#cb2-440" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath();</span></span>
-<span id="cb2-441"><a href="#cb2-441" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.moveTo(xp + dirX, yp + dirY);</span></span>
-<span id="cb2-442"><a href="#cb2-442" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineTo(xp + dirX - arrHeadLen * Math.cos(arrAng - Math.PI/6), yp + dirY - arrHeadLen * Math.sin(arrAng - Math.PI/6));</span></span>
-<span id="cb2-443"><a href="#cb2-443" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.lineTo(xp + dirX - arrHeadLen * Math.cos(arrAng + Math.PI/6), yp + dirY - arrHeadLen * Math.sin(arrAng + Math.PI/6));</span></span>
-<span id="cb2-444"><a href="#cb2-444" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.closePath();</span></span>
-<span id="cb2-445"><a href="#cb2-445" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fill();</span></span>
-<span id="cb2-446"><a href="#cb2-446" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-447"><a href="#cb2-447" aria-hidden="true" tabindex="-1"></a><span class="in">    // Tracing Marker P</span></span>
-<span id="cb2-448"><a href="#cb2-448" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.shadowColor = '#e879f9';</span></span>
-<span id="cb2-449"><a href="#cb2-449" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.shadowBlur = 14;</span></span>
-<span id="cb2-450"><a href="#cb2-450" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#f43f5e';</span></span>
-<span id="cb2-451"><a href="#cb2-451" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.arc(xp, yp, 7.5, 0, 2*Math.PI); ctx.fill();</span></span>
-<span id="cb2-452"><a href="#cb2-452" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.shadowBlur = 0;</span></span>
-<span id="cb2-453"><a href="#cb2-453" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-454"><a href="#cb2-454" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#ffffff';</span></span>
-<span id="cb2-455"><a href="#cb2-455" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.beginPath(); ctx.arc(xp - 1.5, yp - 1.5, 2.5, 0, 2*Math.PI); ctx.fill();</span></span>
-<span id="cb2-456"><a href="#cb2-456" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-457"><a href="#cb2-457" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillStyle = '#fdf4ff';</span></span>
-<span id="cb2-458"><a href="#cb2-458" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.font = 'bold 11px system-ui, sans-serif';</span></span>
-<span id="cb2-459"><a href="#cb2-459" aria-hidden="true" tabindex="-1"></a><span class="in">    ctx.fillText('P(x,y)', xp + 8, yp + 14);</span></span>
-<span id="cb2-460"><a href="#cb2-460" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
-<span id="cb2-461"><a href="#cb2-461" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-462"><a href="#cb2-462" aria-hidden="true" tabindex="-1"></a><span class="in">  function step(ts) {</span></span>
-<span id="cb2-463"><a href="#cb2-463" aria-hidden="true" tabindex="-1"></a><span class="in">    if (!lastTs) lastTs = ts;</span></span>
-<span id="cb2-464"><a href="#cb2-464" aria-hidden="true" tabindex="-1"></a><span class="in">    const dt = Math.min((ts - lastTs) / 1000, 0.04);</span></span>
-<span id="cb2-465"><a href="#cb2-465" aria-hidden="true" tabindex="-1"></a><span class="in">    lastTs = ts;</span></span>
-<span id="cb2-466"><a href="#cb2-466" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-467"><a href="#cb2-467" aria-hidden="true" tabindex="-1"></a><span class="in">    if (running) {</span></span>
-<span id="cb2-468"><a href="#cb2-468" aria-hidden="true" tabindex="-1"></a><span class="in">      theta += rollSpeed * dt;</span></span>
-<span id="cb2-469"><a href="#cb2-469" aria-hidden="true" tabindex="-1"></a><span class="in">      if (theta &gt; maxTheta) theta = 0;</span></span>
-<span id="cb2-470"><a href="#cb2-470" aria-hidden="true" tabindex="-1"></a><span class="in">      update();</span></span>
-<span id="cb2-471"><a href="#cb2-471" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb2-472"><a href="#cb2-472" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-473"><a href="#cb2-473" aria-hidden="true" tabindex="-1"></a><span class="in">    draw();</span></span>
-<span id="cb2-474"><a href="#cb2-474" aria-hidden="true" tabindex="-1"></a><span class="in">    animId = requestAnimationFrame(step);</span></span>
-<span id="cb2-475"><a href="#cb2-475" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
-<span id="cb2-476"><a href="#cb2-476" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-477"><a href="#cb2-477" aria-hidden="true" tabindex="-1"></a><span class="in">  const playBtn = document.getElementById('ch6-wheel-play-btn');</span></span>
-<span id="cb2-478"><a href="#cb2-478" aria-hidden="true" tabindex="-1"></a><span class="in">  if (playBtn) {</span></span>
-<span id="cb2-479"><a href="#cb2-479" aria-hidden="true" tabindex="-1"></a><span class="in">    playBtn.onclick = function() {</span></span>
-<span id="cb2-480"><a href="#cb2-480" aria-hidden="true" tabindex="-1"></a><span class="in">      running = !running;</span></span>
-<span id="cb2-481"><a href="#cb2-481" aria-hidden="true" tabindex="-1"></a><span class="in">      this.innerText = running ? '❚❚ Pause' : '▶ Play';</span></span>
-<span id="cb2-482"><a href="#cb2-482" aria-hidden="true" tabindex="-1"></a><span class="in">    };</span></span>
-<span id="cb2-483"><a href="#cb2-483" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
-<span id="cb2-484"><a href="#cb2-484" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-485"><a href="#cb2-485" aria-hidden="true" tabindex="-1"></a><span class="in">  const resetBtn = document.getElementById('ch6-wheel-reset-btn');</span></span>
-<span id="cb2-486"><a href="#cb2-486" aria-hidden="true" tabindex="-1"></a><span class="in">  if (resetBtn) {</span></span>
-<span id="cb2-487"><a href="#cb2-487" aria-hidden="true" tabindex="-1"></a><span class="in">    resetBtn.onclick = function() {</span></span>
-<span id="cb2-488"><a href="#cb2-488" aria-hidden="true" tabindex="-1"></a><span class="in">      theta = 0;</span></span>
-<span id="cb2-489"><a href="#cb2-489" aria-hidden="true" tabindex="-1"></a><span class="in">      update();</span></span>
-<span id="cb2-490"><a href="#cb2-490" aria-hidden="true" tabindex="-1"></a><span class="in">      draw();</span></span>
-<span id="cb2-491"><a href="#cb2-491" aria-hidden="true" tabindex="-1"></a><span class="in">    };</span></span>
-<span id="cb2-492"><a href="#cb2-492" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
-<span id="cb2-493"><a href="#cb2-493" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-494"><a href="#cb2-494" aria-hidden="true" tabindex="-1"></a><span class="in">  const rSlider = document.getElementById('ch6-wheel-radius-slider');</span></span>
-<span id="cb2-495"><a href="#cb2-495" aria-hidden="true" tabindex="-1"></a><span class="in">  if (rSlider) {</span></span>
-<span id="cb2-496"><a href="#cb2-496" aria-hidden="true" tabindex="-1"></a><span class="in">    rSlider.oninput = function() {</span></span>
-<span id="cb2-497"><a href="#cb2-497" aria-hidden="true" tabindex="-1"></a><span class="in">      a = parseInt(this.value);</span></span>
-<span id="cb2-498"><a href="#cb2-498" aria-hidden="true" tabindex="-1"></a><span class="in">      update();</span></span>
-<span id="cb2-499"><a href="#cb2-499" aria-hidden="true" tabindex="-1"></a><span class="in">      draw();</span></span>
-<span id="cb2-500"><a href="#cb2-500" aria-hidden="true" tabindex="-1"></a><span class="in">    };</span></span>
-<span id="cb2-501"><a href="#cb2-501" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
-<span id="cb2-502"><a href="#cb2-502" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-503"><a href="#cb2-503" aria-hidden="true" tabindex="-1"></a><span class="in">  const thSlider = document.getElementById('ch6-wheel-theta-slider');</span></span>
-<span id="cb2-504"><a href="#cb2-504" aria-hidden="true" tabindex="-1"></a><span class="in">  if (thSlider) {</span></span>
-<span id="cb2-505"><a href="#cb2-505" aria-hidden="true" tabindex="-1"></a><span class="in">    thSlider.oninput = function() {</span></span>
-<span id="cb2-506"><a href="#cb2-506" aria-hidden="true" tabindex="-1"></a><span class="in">      theta = (parseInt(this.value) / 1256) * maxTheta;</span></span>
-<span id="cb2-507"><a href="#cb2-507" aria-hidden="true" tabindex="-1"></a><span class="in">      update();</span></span>
-<span id="cb2-508"><a href="#cb2-508" aria-hidden="true" tabindex="-1"></a><span class="in">      draw();</span></span>
-<span id="cb2-509"><a href="#cb2-509" aria-hidden="true" tabindex="-1"></a><span class="in">    };</span></span>
-<span id="cb2-510"><a href="#cb2-510" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
-<span id="cb2-511"><a href="#cb2-511" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-512"><a href="#cb2-512" aria-hidden="true" tabindex="-1"></a><span class="in">  update();</span></span>
-<span id="cb2-513"><a href="#cb2-513" aria-hidden="true" tabindex="-1"></a><span class="in">  draw();</span></span>
-<span id="cb2-514"><a href="#cb2-514" aria-hidden="true" tabindex="-1"></a><span class="in">  animId = requestAnimationFrame(step);</span></span>
-<span id="cb2-515"><a href="#cb2-515" aria-hidden="true" tabindex="-1"></a><span class="in">})();</span></span>
-<span id="cb2-516"><a href="#cb2-516" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/script&gt;</span></span>
-<span id="cb2-517"><a href="#cb2-517" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-518"><a href="#cb2-518" aria-hidden="true" tabindex="-1"></a><span class="in">Imagine a circular disk of radius $a$ rolling without slipping along the underside of the horizontal axis ($y = 0$, pointing downward):</span></span>
-<span id="cb2-519"><a href="#cb2-519" aria-hidden="true" tabindex="-1"></a><span class="in">- **Center of the wheel:** As the wheel rolls through an angle $\theta$, its contact point has rolled a distance $a\theta$ along the rail:</span></span>
-<span id="cb2-520"><a href="#cb2-520" aria-hidden="true" tabindex="-1"></a><span class="in">  $$ (x_c, y_c) = (a\theta, a) $$</span></span>
-<span id="cb2-521"><a href="#cb2-521" aria-hidden="true" tabindex="-1"></a><span class="in">- **Point on the perimeter ($P$):** A marker fixed to the rim starts at the origin $(0, 0)$ when $\theta = 0$. After rotating clockwise by $\theta$, the marker's relative displacement from the wheel's center is:</span></span>
-<span id="cb2-522"><a href="#cb2-522" aria-hidden="true" tabindex="-1"></a><span class="in">  $$ \Delta x = -a\sin\theta, \quad \Delta y = -a\cos\theta $$</span></span>
-<span id="cb2-523"><a href="#cb2-523" aria-hidden="true" tabindex="-1"></a><span class="in">- **Absolute coordinates:** Combining center translation and rim rotation yields:</span></span>
-<span id="cb2-524"><a href="#cb2-524" aria-hidden="true" tabindex="-1"></a><span class="in">  $$ x(\theta) = x_c + \Delta x = a(\theta - \sin\theta) $$</span></span>
-<span id="cb2-525"><a href="#cb2-525" aria-hidden="true" tabindex="-1"></a><span class="in">  $$ y(\theta) = y_c + \Delta y = a(1 - \cos\theta) $$</span></span>
-<span id="cb2-526"><a href="#cb2-526" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-527"><a href="#cb2-527" aria-hidden="true" tabindex="-1"></a><span class="in">$\theta$ also directly determines the local slope and launch angle of the path. Differentiating with respect to $\theta$:</span></span>
-<span id="cb2-528"><a href="#cb2-528" aria-hidden="true" tabindex="-1"></a><span class="in">$$ \frac{dy}{dx} = \frac{dy/d\theta}{dx/d\theta} = \frac{a\sin\theta}{a(1 - \cos\theta)} = \frac{2\sin(\theta/2)\cos(\theta/2)}{2\sin^2(\theta/2)} = \cot\left(\frac{\theta}{2}\right) $$</span></span>
-<span id="cb2-529"><a href="#cb2-529" aria-hidden="true" tabindex="-1"></a><span class="in">If $\psi$ is the inclination angle of the velocity vector relative to the horizontal ($\tan\psi = dy/dx$):</span></span>
-<span id="cb2-530"><a href="#cb2-530" aria-hidden="true" tabindex="-1"></a><span class="in">$$ \psi = \frac{\pi - \theta}{2} $$</span></span>
-<span id="cb2-531"><a href="#cb2-531" aria-hidden="true" tabindex="-1"></a><span class="in">- At $\theta \to 0$ (the start): $\psi = \pi/2$ (the path drops straight vertically).</span></span>
-<span id="cb2-532"><a href="#cb2-532" aria-hidden="true" tabindex="-1"></a><span class="in">- At $\theta = \pi$ (the trough): $\psi = 0$ (the trajectory is completely horizontal).</span></span>
-<span id="cb2-533"><a href="#cb2-533" aria-hidden="true" tabindex="-1"></a><span class="in">- At $\theta = 2\pi$ (the next cusp): $\psi = -\pi/2$ (the path rises back to vertical).</span></span>
-<span id="cb2-534"><a href="#cb2-534" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-535"><a href="#cb2-535" aria-hidden="true" tabindex="-1"></a><span class="in">#### Why Assume the First Arch ($\theta \in [0, 2\pi]$) and $\sin(\theta/2) \ge 0$?</span></span>
-<span id="cb2-536"><a href="#cb2-536" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-537"><a href="#cb2-537" aria-hidden="true" tabindex="-1"></a><span class="in">1. **The Mathematical Reason: Eliminating Absolute Value Signs**  </span></span>
-<span id="cb2-538"><a href="#cb2-538" aria-hidden="true" tabindex="-1"></a><span class="in">   The principal square root satisfies $\sqrt{u^2} = |u|$. In simplifying the radical:</span></span>
-<span id="cb2-539"><a href="#cb2-539" aria-hidden="true" tabindex="-1"></a><span class="in">   $$ \sqrt{\frac{y}{2a - y}} = \left| \tan\left(\frac{\theta}{2}\right) \right| = \frac{\left|\sin(\theta/2)\right|}{\left|\cos(\theta/2)\right|} $$</span></span>
-<span id="cb2-540"><a href="#cb2-540" aria-hidden="true" tabindex="-1"></a><span class="in">   If $\theta \in [0, 2\pi]$, then $\frac{\theta}{2} \in [0, \pi]$. Since sine is strictly non-negative on $[0, \pi]$:</span></span>
-<span id="cb2-541"><a href="#cb2-541" aria-hidden="true" tabindex="-1"></a><span class="in">   $$ \sin\left(\frac{\theta}{2}\right) \ge 0 \implies \left|\sin\left(\frac{\theta}{2}\right)\right| = \sin\left(\frac{\theta}{2}\right) $$</span></span>
-<span id="cb2-542"><a href="#cb2-542" aria-hidden="true" tabindex="-1"></a><span class="in">   This avoids carrying piece-wise $\pm$ absolute value signs.</span></span>
-<span id="cb2-543"><a href="#cb2-543" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-544"><a href="#cb2-544" aria-hidden="true" tabindex="-1"></a><span class="in">2. **The Physical Reason: Geometry of the Fastest Path**  </span></span>
-<span id="cb2-545"><a href="#cb2-545" aria-hidden="true" tabindex="-1"></a><span class="in">   - **Energy Bounds:** Conservation of mechanical energy gives $v = \sqrt{2gy}$. At $y = 0$, speed is zero ($v = 0$). The particle cannot rise above $y = 0$, so it cannot continue past a cusp into negative $y$.</span></span>
-<span id="cb2-546"><a href="#cb2-546" aria-hidden="true" tabindex="-1"></a><span class="in">   - **Uniqueness:** A single arch ($\theta \in [0, 2\pi]$) starts at $(0, 0)$ and terminates at $(2\pi a, 0)$. By scaling the radius $a$, a single cycloid arch can pass through any target point $(x_2, y_2)$ in the lower half-plane ($x_2 &gt; 0, y_2 \ge 0$).</span></span>
-<span id="cb2-547"><a href="#cb2-547" aria-hidden="true" tabindex="-1"></a><span class="in">   - **No Redundant Loops:** Any path extending past $\theta = 2\pi$ into a second arch would involve rising up to a cusp, stopping, and dropping into a new dip. That would add unnecessary path length and travel time, violating the time-minimization condition $\delta T = 0$.</span></span>
-<span id="cb2-548"><a href="#cb2-548" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-549"><a href="#cb2-549" aria-hidden="true" tabindex="-1"></a><span class="in">#### Essential Mathematical Properties of Cycloids</span></span>
-<span id="cb2-550"><a href="#cb2-550" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-551"><a href="#cb2-551" aria-hidden="true" tabindex="-1"></a><span class="in">- **Parametric Form:** $x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta)$</span></span>
-<span id="cb2-552"><a href="#cb2-552" aria-hidden="true" tabindex="-1"></a><span class="in">- **Differential Arc Length:**</span></span>
-<span id="cb2-553"><a href="#cb2-553" aria-hidden="true" tabindex="-1"></a><span class="in">  $$ ds = \sqrt{\dot{x}^2 + \dot{y}^2}\, d\theta = a\sqrt{(1-\cos\theta)^2 + \sin^2\theta}\, d\theta = 2a\sin\left(\frac{\theta}{2}\right) d\theta $$</span></span>
-<span id="cb2-554"><a href="#cb2-554" aria-hidden="true" tabindex="-1"></a><span class="in">- **Total Arc Length from Origin to $\theta$:**</span></span>
-<span id="cb2-555"><a href="#cb2-555" aria-hidden="true" tabindex="-1"></a><span class="in">  $$ s(\theta) = \int_0^\theta 2a\sin\left(\frac{\theta'}{2}\right) d\theta' = 4a\left(1 - \cos\left(\frac{\theta}{2}\right)\right) = 8a\sin^2\left(\frac{\theta}{4}\right) $$</span></span>
-<span id="cb2-556"><a href="#cb2-556" aria-hidden="true" tabindex="-1"></a><span class="in">  The total perimeter of one complete arch ($\theta = 2\pi$) is exactly $s_{\text{total}} = 8a$.</span></span>
-<span id="cb2-557"><a href="#cb2-557" aria-hidden="true" tabindex="-1"></a><span class="in">- **Radius of Curvature:**</span></span>
-<span id="cb2-558"><a href="#cb2-558" aria-hidden="true" tabindex="-1"></a><span class="in">  $$ \rho(\theta) = \frac{(\dot{x}^2 + \dot{y}^2)^{3/2}}{|\dot{x}\ddot{y} - \dot{y}\ddot{x}|} = 4a\sin\left(\frac{\theta}{2}\right) = \sqrt{8a y} $$</span></span>
-<span id="cb2-559"><a href="#cb2-559" aria-hidden="true" tabindex="-1"></a><span class="in">- **Self-Evolute Property:** The evolute (locus of centers of curvature) of a cycloid is an identical cycloid, shifted horizontally by $\pi a$ and vertically downward by $2a$.</span></span>
-<span id="cb2-560"><a href="#cb2-560" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-561"><a href="#cb2-561" aria-hidden="true" tabindex="-1"></a><span class="in">*(For broader integration techniques and speed benchmarks, see [Integration Tricks and Substitution Techniques](../reference/integration-tricks-and-substitutions.qmd). For physical systems such as Huygens' isochronous pendulum, $E\times B$ drifts, and cycloidal gear drives, see [Physics and Engineering Applications of Cycloids](../reference/cycloid-physics-applications.qmd).)*</span></span>
-<span id="cb2-562"><a href="#cb2-562" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-563"><a href="#cb2-563" aria-hidden="true" tabindex="-1"></a><span class="in">::: {.callout-tip}</span></span>
-<span id="cb2-564"><a href="#cb2-564" aria-hidden="true" tabindex="-1"></a><span class="in">### 🎮 Interactive Simulations</span></span>
-<span id="cb2-565"><a href="#cb2-565" aria-hidden="true" tabindex="-1"></a><span class="in">Experience these phenomena live in your browser:  </span></span>
-<span id="cb2-566"><a href="#cb2-566" aria-hidden="true" tabindex="-1"></a><span class="in">Launch the **[Interactive Cycloid Mechanics: Brachistochrone, Tautochrone &amp; Huygens' Pendulum](../simulations/cycloid-mechanics-interactive.qmd)** to run the 4-track Brachistochrone race, test simultaneous Tautochrone arrivals, and compare Huygens' isochronous clock against ordinary circular pendulums!</span></span>
-<span id="cb2-567"><a href="#cb2-567" aria-hidden="true" tabindex="-1"></a><span class="in">:::</span></span>
-<span id="cb2-568"><a href="#cb2-568" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-571"><a href="#cb2-571" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb2-572"><a href="#cb2-572" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-cycloid</span></span>
-<span id="cb2-573"><a href="#cb2-573" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: "The Brachistochrone path is a cycloid, the curve traced by a point on the rim of a rolling wheel."</span></span>
-<span id="cb2-574"><a href="#cb2-574" aria-hidden="true" tabindex="-1"></a><span class="in">import numpy as np</span></span>
-<span id="cb2-575"><a href="#cb2-575" aria-hidden="true" tabindex="-1"></a><span class="in">import matplotlib.pyplot as plt</span></span>
-<span id="cb2-576"><a href="#cb2-576" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-577"><a href="#cb2-577" aria-hidden="true" tabindex="-1"></a><span class="in">theta = np.linspace(0, 2*np.pi, 100)</span></span>
-<span id="cb2-578"><a href="#cb2-578" aria-hidden="true" tabindex="-1"></a><span class="in">a = 1</span></span>
-<span id="cb2-579"><a href="#cb2-579" aria-hidden="true" tabindex="-1"></a><span class="in">x = a * (theta - np.sin(theta))</span></span>
-<span id="cb2-580"><a href="#cb2-580" aria-hidden="true" tabindex="-1"></a><span class="in">y = a * (1 - np.cos(theta)) # Positive downwards</span></span>
-<span id="cb2-581"><a href="#cb2-581" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-582"><a href="#cb2-582" aria-hidden="true" tabindex="-1"></a><span class="in">fig, ax = plt.subplots(figsize=(8, 4))</span></span>
-<span id="cb2-583"><a href="#cb2-583" aria-hidden="true" tabindex="-1"></a><span class="in">ax.plot(x, -y, label='Brachistochrone (Cycloid)', color='blue') # Negative to plot downwards intuitively</span></span>
-<span id="cb2-584"><a href="#cb2-584" aria-hidden="true" tabindex="-1"></a><span class="in">ax.plot([0, x[-1]], [0, -y[-1]], '--', label='Straight line', color='gray')</span></span>
-<span id="cb2-585"><a href="#cb2-585" aria-hidden="true" tabindex="-1"></a><span class="in">ax.set_aspect('equal')</span></span>
-<span id="cb2-586"><a href="#cb2-586" aria-hidden="true" tabindex="-1"></a><span class="in">ax.set_xlabel('x')</span></span>
-<span id="cb2-587"><a href="#cb2-587" aria-hidden="true" tabindex="-1"></a><span class="in">ax.set_ylabel('y')</span></span>
-<span id="cb2-588"><a href="#cb2-588" aria-hidden="true" tabindex="-1"></a><span class="in">ax.set_title('Path of Minimum Time (Brachistochrone)')</span></span>
-<span id="cb2-589"><a href="#cb2-589" aria-hidden="true" tabindex="-1"></a><span class="in">ax.legend()</span></span>
-<span id="cb2-590"><a href="#cb2-590" aria-hidden="true" tabindex="-1"></a><span class="in">plt.grid(True)</span></span>
-<span id="cb2-591"><a href="#cb2-591" aria-hidden="true" tabindex="-1"></a><span class="in">plt.show()</span></span>
-<span id="cb2-592"><a href="#cb2-592" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-593"><a href="#cb2-593" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-594"><a href="#cb2-594" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.11](../solutions/taylor-chapter-6-problems.qmd#problem-611))*</span>
-<span id="cb2-595"><a href="#cb2-595" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-596"><a href="#cb2-596" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.4 More Than Two Variables</span></span>
-<span id="cb2-597"><a href="#cb2-597" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-598"><a href="#cb2-598" aria-hidden="true" tabindex="-1"></a>If the functional depends on multiple functions $y_1(x), y_2(x), \dots, y_n(x)$,</span>
-<span id="cb2-599"><a href="#cb2-599" aria-hidden="true" tabindex="-1"></a>$$ S = \int_{x_1}^{x_2} f(y_1, \dots, y_n, y_1', \dots, y_n', x) \, dx $$</span>
-<span id="cb2-600"><a href="#cb2-600" aria-hidden="true" tabindex="-1"></a>we can vary each function independently. This leads to a system of $n$ independent Euler-Lagrange equations:</span>
-<span id="cb2-601"><a href="#cb2-601" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial f}{\partial y_i} - \frac{d}{dx} \frac{\partial f}{\partial y_i'} = 0 \quad \text{for } i = 1, 2, \dots, n $$</span>
-<span id="cb2-602"><a href="#cb2-602" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-603"><a href="#cb2-603" aria-hidden="true" tabindex="-1"></a>This extension is crucial for Lagrangian mechanics in 3D space, where we have coordinates $x(t), y(t), z(t)$, and time $t$ plays the role of the independent variable.</span>
-<span id="cb2-604"><a href="#cb2-604" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-605"><a href="#cb2-605" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.22](../solutions/taylor-chapter-6-problems.qmd#problem-622))*</span>
-<span id="cb2-606"><a href="#cb2-606" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-607"><a href="#cb2-607" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary</span></span>
-<span id="cb2-608"><a href="#cb2-608" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-609"><a href="#cb2-609" aria-hidden="true" tabindex="-1"></a>The calculus of variations allows us to find stationary paths for functionals. The fundamental tool is the Euler-Lagrange equation, which converts a global variational problem into a local differential equation. This mathematical foundation is what allows us to formulate Lagrangian mechanics based on Hamilton's Principle of stationary action.</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Taylor Chapter 6: Calculus of Variations"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Summary, Derivations, and Problems"</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-09-08"</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="an">date-modified:</span><span class="co"> last-modified</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [classical-mechanics, math, taylor]</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">    math: true</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction to the Calculus of Variations</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>In classical mechanics, we often encounter problems where we need to find a path or a function that minimizes (or maximizes) a certain quantity. This is the domain of the **Calculus of Variations**. While ordinary calculus deals with finding points that extremize a function $y = f(x)$, the calculus of variations deals with finding *functions* $y(x)$ that extremize a *functional* (a function of a function), often expressed as an integral:</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>$$ S = \int_{x_1}^{x_2} f(y, y', x) \, dx $$</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>Two main classes of problems require this approach:</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Symmetries make non-Cartesian coordinates (spherical, cylindrical) advantageous.</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Constraints make it best to choose generalized coordinates (e.g., a particle on a sphere).</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>To transition to these generalized coordinates, Lagrangian mechanics provides a powerful framework built entirely on the calculus of variations and Hamilton's Principle of Least Action.</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.1 Two Examples</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example 1: The Shortest Path Between Two Points</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>What is the shortest path between two points $(x_1, y_1)$ and $(x_2, y_2)$ in a plane? Let the path be given by a function $y = y(x)$. An infinitesimal element of length along the path is $ds = \sqrt{dx^2 + dy^2} = \sqrt{1 + (y')^2} \, dx$, where $y' = dy/dx$.</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>The total length of the path is the integral:</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>$$ L = \int_{x_1}^{x_2} \sqrt{1 + <span class="co">[</span><span class="ot">y'(x)</span><span class="co">]</span>^2} \, dx $$</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>The goal is to find the function $y(x)$ that minimizes $L$.</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.1](../solutions/taylor-chapter-6-problems.qmd#problem-61))*</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example 2: The Brachistochrone Problem</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>First posed by Johann Bernoulli in 1696. Given two points 1 and 2, with 1 higher than 2, what is the shape of a frictionless wire connecting them such that a bead released from rest at 1 slides to 2 in the minimum possible time?</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>Let point 1 be the origin $(0,0)$. We take the $y$-axis pointing *downward*.</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>The speed of the bead is $v = ds/dt$. By conservation of energy, $E = T + U$. If released from rest at $(0,0)$, $E = 0$.</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>$$ \frac{1}{2}mv^2 - mgy = 0 \implies v = \sqrt{2gy} $$</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>The time to travel an infinitesimal distance $ds$ is $dt = ds/v$. The total time is:</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>$$ t = \int_{1}^{2} \frac{ds}{v} = \int_{x_1}^{x_2} \frac{\sqrt{1 + (y')^2}}{\sqrt{2gy}} \, dx $$</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>We need to find the function $y(x)$ that minimizes this time integral $t$.</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.2](../solutions/taylor-chapter-6-problems.qmd#problem-62))*</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.2 The Euler-Lagrange Equation</span></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>Both examples above involve an integral of the form:</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>$$ S<span class="co">[</span><span class="ot">y</span><span class="co">]</span> = \int_{x_1}^{x_2} f(y, y', x) \, dx $$</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>where $S$ is a functional. We want to find the path $y(x)$ that makes $S$ stationary (a minimum, maximum, or saddle point).</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a><span class="fu">### Derivation</span></span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>Let the actual path that extremizes the integral be $y(x)$. Consider a "wrong" path $Y(x)$ that is close to $y(x)$. We can parameterize this wrong path as:</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>$$ Y(x) = y(x) + \alpha \eta(x) $$</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>where $\alpha$ is a small parameter, and $\eta(x)$ is an arbitrary differentiable function representing the variation. Since all paths must start at $x_1$ and end at $x_2$, the variation must vanish at the endpoints:</span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>$$ \eta(x_1) = \eta(x_2) = 0 $$</span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>The integral evaluated along the varied path is a function of $\alpha$:</span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>$$ S(\alpha) = \int_{x_1}^{x_2} f(Y, Y', x) \, dx = \int_{x_1}^{x_2} f(y + \alpha \eta, y' + \alpha \eta', x) \, dx $$</span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>For the integral to be stationary at the correct path $y(x)$, the derivative of $S$ with respect to $\alpha$ must be zero when $\alpha = 0$:</span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>$$ \left. \frac{dS}{d\alpha} \right|_{\alpha=0} = 0 $$</span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>Using the chain rule to differentiate inside the integral:</span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>$$ \frac{dS}{d\alpha} = \int_{x_1}^{x_2} \left( \frac{\partial f}{\partial Y} \frac{\partial Y}{\partial \alpha} + \frac{\partial f}{\partial Y'} \frac{\partial Y'}{\partial \alpha} \right) dx = \int_{x_1}^{x_2} \left( \frac{\partial f}{\partial Y} \eta + \frac{\partial f}{\partial Y'} \eta' \right) dx $$</span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>Set $\alpha = 0$, so $Y \to y$ and $Y' \to y'$:</span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>$$ \int_{x_1}^{x_2} \left( \frac{\partial f}{\partial y} \eta(x) + \frac{\partial f}{\partial y'} \eta'(x) \right) dx = 0 $$</span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>We integrate the second term by parts:</span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>$$ \int_{x_1}^{x_2} \frac{\partial f}{\partial y'} \eta'(x) \, dx = \left<span class="co">[</span><span class="ot"> \frac{\partial f}{\partial y'} \eta(x) \right</span><span class="co">]</span>_{x_1}^{x_2} - \int_{x_1}^{x_2} \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) \eta(x) \, dx $$</span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>Since $\eta(x_1) = \eta(x_2) = 0$, the boundary term vanishes. The condition becomes:</span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>$$ \int_{x_1}^{x_2} \left<span class="co">[</span><span class="ot"> \frac{\partial f}{\partial y} - \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) \right</span><span class="co">]</span> \eta(x) \, dx = 0 $$</span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>For this to hold for *any* arbitrary variation $\eta(x)$, the term in the brackets must be identically zero. This yields the **Euler-Lagrange Equation**:</span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial f}{\partial y} - \frac{d}{dx} \frac{\partial f}{\partial y'} = 0 $$</span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.4](../solutions/taylor-chapter-6-problems.qmd#problem-64))*</span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.3 Applications of the Euler-Lagrange Equation</span></span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. Shortest Path Revisited</span></span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a>For the shortest path, $f(y, y', x) = \sqrt{1 + y'^2}$.</span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>Since $\partial f / \partial y = 0$, the E-L equation reduces to:</span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a>$$ \frac{d}{dx} \left( \frac{\partial f}{\partial y'} \right) = 0 \implies \frac{\partial f}{\partial y'} = C $$</span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>$$ \frac{y'}{\sqrt{1 + y'^2}} = C \implies y'^2 = C^2(1 + y'^2) \implies y'^2 = \frac{C^2}{1-C^2} = m^2 $$</span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>Thus, $y' = m$, meaning $y = mx + b$. The shortest path is a straight line.</span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. The Brachistochrone Solution</span></span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Problem Formulation &amp; The Beltrami Identity</span></span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a>For the Brachistochrone, the functional integrand is $f(y, y') = \sqrt{\frac{1 + (y')^2}{y}}$ (dropping overall constants $\sqrt{2g}$).  </span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a>Because $f$ lacks explicit dependence on the independent variable $x$ ($\partial f / \partial x = 0$), the Euler-Lagrange equation possesses a first integral known as the **Beltrami Identity**:</span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a>$$ f - y' \frac{\partial f}{\partial y'} = C $$</span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>Substituting $f$:</span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a>$$ \sqrt{\frac{1 + (y')^2}{y}} - y' \frac{y'}{\sqrt{y(1 + (y')^2)}} = C $$</span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a>$$ \frac{1 + (y')^2 - (y')^2}{\sqrt{y(1 + (y')^2)}} = C \implies \frac{1}{\sqrt{y(1 + (y')^2)}} = C \implies y\big(1 + (y')^2\big) = \frac{1}{C^2} \equiv 2a $$</span>
+<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a>Solving for the derivative $y' = dy/dx$:</span>
+<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a>$$ y' = \sqrt{\frac{2a - y}{y}} \implies dx = \sqrt{\frac{y}{2a - y}} \, dy $$</span>
+<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a>The total trajectory $x(y)$ is given by the integral:</span>
+<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a>$$ x = \int \sqrt{\frac{y}{2a - y}} \, dy $$</span>
+<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step-by-Step Evaluation of Taylor's Cycloid Substitution</span></span>
+<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a>Taylor introduces the parameterized substitution:</span>
+<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a>$$ y = a(1 - \cos\theta) $$</span>
+<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Differential of the Substitution:**  </span>
+<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a>   Differentiating $y$ with respect to $\theta$:</span>
+<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a>   $$ dy = a\sin\theta \, d\theta = 2a \sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right) d\theta $$</span>
+<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Simplifying the Radicand:**  </span>
+<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a>   Substitute $y = a(1 - \cos\theta)$ into the numerator and denominator:</span>
+<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Numerator: $y = a(1 - \cos\theta) = 2a\sin^2\left(\frac{\theta}{2}\right)$</span>
+<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Denominator: $2a - y = 2a - a(1 - \cos\theta) = a(1 + \cos\theta) = 2a\cos^2\left(\frac{\theta}{2}\right)$</span>
+<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a>   Taking the ratio inside the square root:</span>
+<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a>   $$ \frac{y}{2a - y} = \frac{2a\sin^2(\theta/2)}{2a\cos^2(\theta/2)} = \tan^2\left(\frac{\theta}{2}\right) $$</span>
+<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a>   Assuming the motion stays within the first arch ($\theta \in <span class="co">[</span><span class="ot">0, 2\pi</span><span class="co">]</span>$ where $\theta/2 \in <span class="co">[</span><span class="ot">0, \pi</span><span class="co">]</span>$ and $\sin(\theta/2) \ge 0$):</span>
+<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a>   $$ \sqrt{\frac{y}{2a - y}} = \tan\left(\frac{\theta}{2}\right) = \frac{\sin(\theta/2)}{\cos(\theta/2)} $$</span>
+<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Combining and Integrating:**  </span>
+<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a>   Multiplying the simplified radical by $dy$:</span>
+<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a>   $$ dx = \left(\frac{\sin(\theta/2)}{\cos(\theta/2)}\right) \cdot \left<span class="co">[</span><span class="ot">2a \sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right) d\theta\right</span><span class="co">]</span> = 2a \sin^2\left(\frac{\theta}{2}\right) d\theta = a(1 - \cos\theta) \, d\theta $$</span>
+<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a>   Integrating directly with initial condition $x(0) = 0$ gives:</span>
+<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a>   $$ x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta) $$</span>
+<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a>   These are the parametric equations of a **cycloid**.</span>
+<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Mathematical &amp; Physical Rationale for the First Arch ($\theta \in [0, 2\pi]$)</span></span>
+<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Mathematical Reason (Principal Square Root):**  </span>
+<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>   The square root identity is $\sqrt{u^2} = |u|$. Thus:</span>
+<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a>   $$ \sqrt{\tan^2(\theta/2)} = |\tan(\theta/2)| = \frac{|\sin(\theta/2)|}{|\cos(\theta/2)|} $$</span>
+<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a>   Within the first arch ($\theta \in <span class="co">[</span><span class="ot">0, 2\pi</span><span class="co">]</span>$), the half-angle satisfies $\frac{\theta}{2} \in <span class="co">[</span><span class="ot">0, \pi</span><span class="co">]</span>$, where the sine function is unconditionally non-negative:</span>
+<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a>   $$ \sin\left(\frac{\theta}{2}\right) \ge 0 \implies \left|\sin\left(\frac{\theta}{2}\right)\right| = \sin\left(\frac{\theta}{2}\right) $$</span>
+<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a>   This eliminates piece-wise absolute value signs without ambiguity. Along the descending branch ($\theta &lt; \pi$), $\cos(\theta/2) &gt; 0$ and $dy &gt; 0$. Past the trough ($\theta &gt; \pi$), $\cos(\theta/2) &lt; 0$ while the particle ascends ($dy &lt; 0$), maintaining consistent directional progress $dx \ge 0$.</span>
+<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Physical Reason (Energy Bounds &amp; Uniqueness):**  </span>
+<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>**Energy Ceiling:** By conservation of energy, $v = \sqrt{2gy}$. At $y = 0$, speed vanishes ($v = 0$). The bead cannot ascend into $y &lt; 0$, ensuring the trajectory cannot continue past the cusp at $\theta = 2\pi$.</span>
+<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>**Path Uniqueness:** By scaling the radius $a$ and endpoint angle $\theta_2 \in (0, 2\pi]$, a unique single cycloid arch connects the origin $(0, 0)$ to any target point $(x_2, y_2)$ with $x_2 &gt; 0, y_2 \ge 0$.</span>
+<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>**No Redundant Loops:** Any path spanning into subsequent arches would entail climbing to a cusp, arresting, and falling through extra dips, adding superfluous travel time and violating $\delta T = 0$.</span>
+<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Why That Substitution Works: The Hidden Circle</span></span>
+<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a>Taylor calls $y = a(1 - \cos\theta)$ an "unlikely looking substitution," but it is completely systematic.  </span>
+<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a>Rationalizing the numerator:</span>
+<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a>$$ \sqrt{\frac{y}{2a - y}} = \frac{y}{\sqrt{y(2a - y)}} = \frac{y}{\sqrt{2ay - y^2}} $$</span>
+<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a>Completing the square in the denominator:</span>
+<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a>$$ 2ay - y^2 = a^2 - (y - a)^2 \implies \int \frac{y}{\sqrt{a^2 - (y - a)^2}} \, dy $$</span>
+<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a>**Geometric Origin:**  </span>
+<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a>The expression $\sqrt{a^2 - (y - a)^2}$ describes a semicircle $(y - a)^2 + w^2 = a^2$ of radius $a$ centered at $(0, a)$.</span>
+<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a>**Dual Circle Parameterizations:**  </span>
+<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a>Any form $\sqrt{a^2 - u^2}$ permits two standard circular substitutions:</span>
+<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Sine substitution ($u = a\sin\phi$):** Setting $y - a = a\sin\phi \implies y = a(1 + \sin\phi)$. At the release point $y = 0$, $\sin\phi = -1 \implies \phi = -\pi/2$, imposing an unwanted phase shift.</span>
+<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Inverted cosine substitution ($u = -a\cos\theta$):** Setting $y - a = -a\cos\theta \implies y = a(1 - \cos\theta)$. At release ($y = 0$), $\cos(0) = 1 \implies \theta = 0$, matching initial rest conditions at the origin with zero phase offset!</span>
+<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a><span class="fu">#### The Algebraic Alternative: Direct Root Substitution</span></span>
+<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a>Rather than guessing a trigonometric form, set the entire linear radical equal to an algebraic variable $u$:</span>
+<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a>$$ u = \sqrt{\frac{y}{2a - y}} \implies y = \frac{2a u^2}{1 + u^2}, \quad dy = \frac{4a u}{(1 + u^2)^2} \, du $$</span>
+<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a>The integral becomes:</span>
+<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a>$$ x = \int u \, dy = 4a \int \frac{u^2}{(1 + u^2)^2} \, du $$</span>
+<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a>This can be evaluated via two direct methods:</span>
+<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Method A: Integration by Parts (Pure Algebraic Route)</span></span>
+<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a>Decomposing as $u \cdot \frac{u}{(1 + u^2)^2}$ with $f = u$ and $dg = \frac{u}{(1 + u^2)^2}du \implies g = -\frac{1}{2(1 + u^2)}$:</span>
+<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a>$$ \int \frac{u^2}{(1 + u^2)^2} \, du = -\frac{u}{2(1 + u^2)} + \frac{1}{2}\int \frac{du}{1 + u^2} = -\frac{u}{2(1 + u^2)} + \frac{1}{2}\arctan(u) $$</span>
+<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a>Multiplying by $4a$ and enforcing $x(0) = 0$:</span>
+<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a>$$ x(u) = 2a\arctan(u) - \frac{2a u}{1 + u^2} $$</span>
+<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a>Setting $u = \tan(\theta/2)$, we find $\arctan(u) = \theta/2$ and $\frac{2u}{1 + u^2} = \sin\theta$, which directly recovers:</span>
+<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a>$$ x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta) $$</span>
+<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Method B: Trigonometric Substitution</span></span>
+<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a>Substituting $u = \tan\phi$ with $du = \sec^2\phi \, d\phi$:</span>
+<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a>$$ 4a \int \frac{\tan^2\phi}{\sec^4\phi}\sec^2\phi \, d\phi = 4a \int \sin^2\phi \, d\phi = 2a(\phi - \sin\phi\cos\phi) $$</span>
+<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a>Setting $\theta = 2\phi$ immediately produces $x = a(\theta - \sin\theta)$.</span>
+<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a><span class="fu">#### What $\theta$ Represents Physically</span></span>
+<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a>The parameter $\theta$ is the cumulative rotation angle (in radians) of a wheel of radius $a$ rolling without slipping along the underside of the horizontal axis ($y = 0$):</span>
+<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a><span class="in">```text</span></span>
+<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a><span class="in">          x=0                         x = a*theta                      x = 2*pi*a</span></span>
+<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a><span class="in">   y=0 ----*-------------------------------O-------------------------------*----&gt; x</span></span>
+<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a><span class="in">           |                              / \                              |</span></span>
+<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a><span class="in">           |                             /   \                             |</span></span>
+<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a><span class="in">           |                            /  a  \                            |</span></span>
+<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a><span class="in">           |                           O-------* P(x,y)                    |</span></span>
+<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a><span class="in">           |                            \ theta/                           |</span></span>
+<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a><span class="in">           |                             \    /                            |</span></span>
+<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a><span class="in">           |                              \  /                             |</span></span>
+<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a><span class="in">           |                               \/                              |</span></span>
+<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a><span class="in">           |                                                               |</span></span>
+<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a><span class="in">           |                               . (Trough: theta = pi, y = 2a)  |</span></span>
+<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a><span class="in">           v y</span></span>
+<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Wheel Center Translation:** $(x_c, y_c) = (a\theta, a)$</span>
+<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Rim Marker Relative Displacement:** $(\Delta x, \Delta y) = (-a\sin\theta, -a\cos\theta)$</span>
+<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Absolute Coordinates:**</span>
+<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a>  $$ x(\theta) = x_c + \Delta x = a(\theta - \sin\theta), \quad y(\theta) = y_c + \Delta y = a(1 - \cos\theta) $$</span>
+<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Local Launch / Slope Angle:**</span>
+<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a>  $$ \frac{dy}{dx} = \frac{a\sin\theta}{a(1 - \cos\theta)} = \cot\left(\frac{\theta}{2}\right) \implies \psi = \frac{\pi - \theta}{2} $$</span>
+<span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>At release ($\theta \to 0$): $\psi = \pi/2$ (instantaneous vertical drop).</span>
+<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>At the trough ($\theta = \pi$): $\psi = 0$ (instantaneous horizontal flight).</span>
+<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>At the terminal cusp ($\theta = 2\pi$): $\psi = -\pi/2$ (instantaneous vertical rise).</span>
+<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎮 Interactive Simulation: Rolling Wheel</span></span>
+<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a>To dynamically adjust the wheel radius $a$, scrub the rotation angle $\theta$, and visualize the instantaneous velocity vectors in real time, check out our **[Interactive Rolling Wheel Cycloid Generator](../simulations/cycloid-mechanics-interactive.qmd#sim-rolling-wheel)**!</span>
+<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb3-226"><a href="#cb3-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Essential Mathematical Properties of Cycloids</span></span>
+<span id="cb3-228"><a href="#cb3-228" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Parametric Equations:** $x(\theta) = a(\theta - \sin\theta), \quad y(\theta) = a(1 - \cos\theta)$</span>
+<span id="cb3-229"><a href="#cb3-229" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Differential Arc Length:**</span>
+<span id="cb3-230"><a href="#cb3-230" aria-hidden="true" tabindex="-1"></a>  $$ ds = \sqrt{\dot{x}^2 + \dot{y}^2} \, d\theta = 2a\sin\left(\frac{\theta}{2}\right) d\theta $$</span>
+<span id="cb3-231"><a href="#cb3-231" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Cumulative Arc Length from Origin:**</span>
+<span id="cb3-232"><a href="#cb3-232" aria-hidden="true" tabindex="-1"></a>  $$ s(\theta) = \int_0^\theta 2a\sin\left(\frac{\theta'}{2}\right) d\theta' = 4a\left(1 - \cos\left(\frac{\theta}{2}\right)\right) = 8a\sin^2\left(\frac{\theta}{4}\right) $$</span>
+<span id="cb3-233"><a href="#cb3-233" aria-hidden="true" tabindex="-1"></a>  A full single arch ($\theta = 2\pi$) has total perimeter $s_{\text{total}} = 8a$.</span>
+<span id="cb3-234"><a href="#cb3-234" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Radius of Curvature:**</span>
+<span id="cb3-235"><a href="#cb3-235" aria-hidden="true" tabindex="-1"></a>  $$ \rho(\theta) = 4a\sin\left(\frac{\theta}{2}\right) = \sqrt{8a y} $$</span>
+<span id="cb3-236"><a href="#cb3-236" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Self-Evolute Property:** The evolute of a cycloid is an identical cycloid shifted horizontally by $\pi a$ and downward by $2a$.</span>
+<span id="cb3-237"><a href="#cb3-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-238"><a href="#cb3-238" aria-hidden="true" tabindex="-1"></a>*(For additional substitution toolkits and speed benchmarks, see [Integration Tricks and Substitution Techniques](../reference/integration-tricks-and-substitutions.qmd). For physical systems such as charged particle drift in crossed $\mathbf{E}\times\mathbf{B}$ fields and cycloidal drives, see [Physics and Engineering Applications of Cycloids](../reference/cycloid-physics-applications.qmd).)*</span>
+<span id="cb3-239"><a href="#cb3-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-240"><a href="#cb3-240" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Trajectory Visualization &amp; The Brachistochrone Race</span></span>
+<span id="cb3-241"><a href="#cb3-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-244"><a href="#cb3-244" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb3-245"><a href="#cb3-245" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-cycloid</span></span>
+<span id="cb3-246"><a href="#cb3-246" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "The Brachistochrone path is a cycloid, the curve traced by a point on the rim of a rolling wheel."</span></span>
+<span id="cb3-247"><a href="#cb3-247" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-248"><a href="#cb3-248" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-249"><a href="#cb3-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-250"><a href="#cb3-250" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">100</span>)</span>
+<span id="cb3-251"><a href="#cb3-251" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb3-252"><a href="#cb3-252" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> a <span class="op">*</span> (theta <span class="op">-</span> np.sin(theta))</span>
+<span id="cb3-253"><a href="#cb3-253" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> a <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> np.cos(theta)) <span class="co"># Positive downwards</span></span>
+<span id="cb3-254"><a href="#cb3-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-255"><a href="#cb3-255" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb3-256"><a href="#cb3-256" aria-hidden="true" tabindex="-1"></a>ax.plot(x, <span class="op">-</span>y, label<span class="op">=</span><span class="st">'Brachistochrone (Cycloid)'</span>, color<span class="op">=</span><span class="st">'blue'</span>) <span class="co"># Negative to plot downwards intuitively</span></span>
+<span id="cb3-257"><a href="#cb3-257" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>, x[<span class="op">-</span><span class="dv">1</span>]], [<span class="dv">0</span>, <span class="op">-</span>y[<span class="op">-</span><span class="dv">1</span>]], <span class="st">'--'</span>, label<span class="op">=</span><span class="st">'Straight line'</span>, color<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb3-258"><a href="#cb3-258" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb3-259"><a href="#cb3-259" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'x'</span>)</span>
+<span id="cb3-260"><a href="#cb3-260" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'y'</span>)</span>
+<span id="cb3-261"><a href="#cb3-261" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Path of Minimum Time (Brachistochrone)'</span>)</span>
+<span id="cb3-262"><a href="#cb3-262" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb3-263"><a href="#cb3-263" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb3-264"><a href="#cb3-264" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb3-265"><a href="#cb3-265" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-266"><a href="#cb3-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-267"><a href="#cb3-267" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb3-268"><a href="#cb3-268" aria-hidden="true" tabindex="-1"></a><span class="fu">### 🎮 Live In-Browser Simulations</span></span>
+<span id="cb3-269"><a href="#cb3-269" aria-hidden="true" tabindex="-1"></a>Explore the complete interactive simulation suite on the **[Code &amp; Simulations: Cycloid Mechanics](../simulations/cycloid-mechanics-interactive.qmd)** page:</span>
+<span id="cb3-270"><a href="#cb3-270" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**[Simulation 1: Rolling Wheel Cycloid Generator](../simulations/cycloid-mechanics-interactive.qmd#sim-rolling-wheel)** — Dynamic radius scaling, scrubbing, and velocity vectors.</span>
+<span id="cb3-271"><a href="#cb3-271" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**[Simulation 2: The Brachistochrone 4-Track Race](../simulations/cycloid-mechanics-interactive.qmd#sim-brachistochrone)** — Real-time race between Cycloid, Circular Arc, Parabola, and Straight Line with stopwatches.</span>
+<span id="cb3-272"><a href="#cb3-272" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**[Simulation 3: The Tautochrone Synchronous Arrival](../simulations/cycloid-mechanics-interactive.qmd#sim-tautochrone)** — Simultaneous descent of beads released from different heights.</span>
+<span id="cb3-273"><a href="#cb3-273" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**[Simulation 4: Huygens' Isochronous Pendulum](../simulations/cycloid-mechanics-interactive.qmd#sim-huygens)** — Cycloidal cheeks eliminating circular error at high amplitudes.</span>
+<span id="cb3-274"><a href="#cb3-274" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb3-275"><a href="#cb3-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-276"><a href="#cb3-276" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.11](../solutions/taylor-chapter-6-problems.qmd#problem-611))*</span>
+<span id="cb3-277"><a href="#cb3-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-278"><a href="#cb3-278" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6.4 More Than Two Variables</span></span>
+<span id="cb3-279"><a href="#cb3-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-280"><a href="#cb3-280" aria-hidden="true" tabindex="-1"></a>If the functional depends on multiple functions $y_1(x), y_2(x), \dots, y_n(x)$,</span>
+<span id="cb3-281"><a href="#cb3-281" aria-hidden="true" tabindex="-1"></a>$$ S = \int_{x_1}^{x_2} f(y_1, \dots, y_n, y_1', \dots, y_n', x) \, dx $$</span>
+<span id="cb3-282"><a href="#cb3-282" aria-hidden="true" tabindex="-1"></a>we can vary each function independently. This leads to a system of $n$ independent Euler-Lagrange equations:</span>
+<span id="cb3-283"><a href="#cb3-283" aria-hidden="true" tabindex="-1"></a>$$ \frac{\partial f}{\partial y_i} - \frac{d}{dx} \frac{\partial f}{\partial y_i'} = 0 \quad \text{for } i = 1, 2, \dots, n $$</span>
+<span id="cb3-284"><a href="#cb3-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-285"><a href="#cb3-285" aria-hidden="true" tabindex="-1"></a>This extension is crucial for Lagrangian mechanics in 3D space, where we have coordinates $x(t), y(t), z(t)$, and time $t$ plays the role of the independent variable.</span>
+<span id="cb3-286"><a href="#cb3-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-287"><a href="#cb3-287" aria-hidden="true" tabindex="-1"></a>*(See [Problem 6.22](../solutions/taylor-chapter-6-problems.qmd#problem-622))*</span>
+<span id="cb3-288"><a href="#cb3-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-289"><a href="#cb3-289" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary</span></span>
+<span id="cb3-290"><a href="#cb3-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-291"><a href="#cb3-291" aria-hidden="true" tabindex="-1"></a>The calculus of variations allows us to find stationary paths for functionals. The fundamental tool is the Euler-Lagrange equation, which converts a global variational problem into a local differential equation. This mathematical foundation is what allows us to formulate Lagrangian mechanics based on Hamilton's Principle of stationary action.</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
