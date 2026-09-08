@@ -1,7 +1,6 @@
 ---
 title: "Mathematical Identities & Calculus"
 subtitle: "Trigonometric and hyperbolic identities, common integrals, derivatives, and Taylor/Maclaurin series expansions."
-author: "Igor"
 date: "2026-09-08"
 date-modified: last-modified
 categories: [math, reference, calculus]

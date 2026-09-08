@@ -1,7 +1,6 @@
 ---
 title: "Taylor Chapter 9: Mechanics in Noninertial Frames"
 subtitle: "Linearly accelerating frames, rotating coordinate systems, centrifugal force, Coriolis force, and the Foucault pendulum."
-author: "Igor"
 date: "2026-10-13"
 date-modified: last-modified
 categories: [classical-mechanics, noninertial-frames, coriolis, notes]

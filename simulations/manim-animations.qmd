@@ -1,7 +1,6 @@
 ---
 title: "Manim Mathematical Animations & Code"
 subtitle: "Programmatic video rendering, 3Blue1Brown-style animations, and browser-native vector simulations."
-author: "Igor"
 date: "2026-09-08"
 date-modified: last-modified
 categories: [manim, python, animation, code, simulation]

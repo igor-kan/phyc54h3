@@ -19,6 +19,9 @@ website:
         text: Code & Simulations
       - href: reference/index.qmd
         text: Reference & Math
+  page-footer: 
+    left: "<span style='font-size: 0.8em;'>&copy; 2026 Igor Kan / Johann Bayer</span>"
+    right: "<span style='font-size: 0.8em;'>University of Toronto Scarborough &mdash; PHYC54H3 Classical Mechanics</span>"
 
 format:
   html:

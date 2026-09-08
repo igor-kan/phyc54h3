@@ -1,7 +1,6 @@
 ---
 title: "Physical Constants & Astronomical Data"
 subtitle: "SI physical constants, subatomic particle masses, planetary orbital parameters, and unit conversions."
-author: "Igor"
 date: "2026-09-08"
 date-modified: last-modified
 categories: [data, constants, reference]

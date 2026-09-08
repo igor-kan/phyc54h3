@@ -1,7 +1,6 @@
 ---
 title: "Sources & Bibliography"
 subtitle: "Primary textbooks, open courseware archives, literature links, and online computational guides."
-author: "Igor"
 date: "2026-09-08"
 date-modified: last-modified
 categories: [reference, bibliography, textbooks, courses]

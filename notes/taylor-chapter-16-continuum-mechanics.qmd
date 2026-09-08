@@ -1,7 +1,6 @@
 ---
 title: "Taylor Chapter 16: Continuum Mechanics"
 subtitle: "Continuous systems, wave equation for a stretched string, Lagrangian density, stress-energy, and field equations."
-author: "Igor"
 date: "2026-12-01"
 date-modified: last-modified
 categories: [classical-mechanics, continuum-mechanics, field-theory, notes]

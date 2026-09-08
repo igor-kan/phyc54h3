@@ -1,7 +1,6 @@
 ---
 title: "Taylor Chapter 10: Rotational Motion of Rigid Bodies"
 subtitle: "Inertia tensor, principal axes, Euler's equations of motion, precession, nutation, and Euler angles."
-author: "Igor"
 date: "2026-11-10"
 date-modified: last-modified
 categories: [classical-mechanics, rigid-bodies, rotation, notes]

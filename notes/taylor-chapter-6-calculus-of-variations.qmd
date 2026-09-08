@@ -1,7 +1,6 @@
 ---
 title: "Taylor Chapter 6: Calculus of Variations"
 subtitle: "Summary, Derivations, and Problems"
-author: "Igor"
 date: "2026-09-08"
 date-modified: last-modified
 categories: [classical-mechanics, math, taylor]

@@ -1,7 +1,6 @@
 ---
 title: "Taylor Chapter 13: Hamiltonian Mechanics"
 subtitle: "Canonical momentum, phase space flow, Hamilton's equations, Liouville's theorem, and Poisson brackets."
-author: "Igor"
 date: "2026-09-29"
 date-modified: last-modified
 categories: [classical-mechanics, hamiltonian, phase-space, notes]

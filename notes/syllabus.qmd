@@ -1,7 +1,6 @@
 ---
 title: "Course Syllabus: PHY C54 - Classical Mechanics"
 subtitle: "Course policies, marking scheme, autofail condition, and 12-week lecture schedule for Fall 2026."
-author: "Igor (Instructor: Johann Bayer)"
 date: "2026-09-08"
 date-modified: last-modified
 categories: [course, syllabus, administration]
