@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Code &amp; Simulations – PHYC54H3: Classical Mechanics</title>
+<title>Extra Notes &amp; Readings – PHYC54H3: Classical Mechanics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -120,9 +120,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
 
     const options = {
-      valueNames: ['listing-date','listing-date-modified','listing-title','listing-subtitle','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-subtitle','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-date","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -203,7 +203,7 @@ window.Quarto = {
 <span class="menu-text">Problem Sets</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../simulations/index.html" aria-current="page"> 
+    <a class="nav-link" href="../simulations/index.html"> 
 <span class="menu-text">Code &amp; Simulations</span></a>
   </li>  
   <li class="nav-item">
@@ -211,7 +211,7 @@ window.Quarto = {
 <span class="menu-text">Reference &amp; Math</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../extra/index.html"> 
+    <a class="nav-link active" href="../extra/index.html" aria-current="page"> 
 <span class="menu-text">Extra Notes</span></a>
   </li>  
 </ul>
@@ -222,24 +222,23 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="YW5pbWF0aW9u">animation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QyUyQiUyQg==">C++ <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q2FsY3VsdXMlMjBvZiUyMFZhcmlhdGlvbnM=">Calculus of Variations <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Q29kZQ==">Code <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29kZQ==">code <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q3ljbG9pZA==">Cycloid <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Rm9ybWFsJTIwVmVyaWZpY2F0aW9u">Formal Verification <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SW50ZXJhY3RpdmU=">Interactive <span class="quarto-category-count">(2)</span></div><div class="category" data-category="TGVhbiUyMDQ=">Lean 4 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWFuaW0=">manim <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TWVjaGFuaWNz">Mechanics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="T2JzZXJ2YWJsZSUyMEpT">Observable JS <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHl0aG9u">python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHl0aG9u">Python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2ltdWxhdGlvbg==">simulation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U2ltdWxhdGlvbnM=">Simulations <span class="quarto-category-count">(2)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGFuZGF1">landau <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWVjaGFuaWNz">mechanics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmVhZGluZw==">reading <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Code &amp; Simulations</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
-<p class="subtitle lead">Interactive in-browser simulations, symplectic numerical integrators, Python scripts, and Manim video animations.</p>
+<div class="quarto-title-block"><div><h1 class="title">Extra Notes &amp; Readings</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
     
   
@@ -251,12 +250,7 @@ window.Quarto = {
 </header>
 
 
-<p>This section hosts all computational tools, code notebooks, and programmatic visualizations for PHYC54:</p>
-<ul>
-<li><strong>Interactive Simulations:</strong> Live in-browser physics simulations running via Observable JS (OJS) and HTML5 Canvas.</li>
-<li><strong>Symplectic Integrators:</strong> Velocity Verlet and RK4 solvers implemented in Python, C++, and Fortran for energy-conserving Hamiltonian orbits.</li>
-<li><strong>Manim Mathematical Animations:</strong> Python scripts and rendering pipelines for 3Blue1Brown-style video demonstrations of chaos, phase trajectories, and coordinate transformations.</li>
-</ul>
+<p>This section contains extra materials, reading notes from other textbooks, and supplementary physical models outside of the standard curriculum.</p>
 
 
 
@@ -265,164 +259,36 @@ window.Quarto = {
 
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-title" data-direction="asc">
-        Title
-      </option>
-      <option value="listing-date-sort" data-direction="asc">
-        Created - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Created - Newest
-      </option>
-      <option value="listing-date-modified-sort" data-direction="asc">
-        Modified - Oldest
-      </option>
-      <option value="listing-date-modified-sort" data-direction="desc">
-        Modified - Newest
-      </option>
-    </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Rm9ybWFsJTIwVmVyaWZpY2F0aW9uJTJDTGVhbiUyMDQlMkNDYWxjdWx1cyUyMG9mJTIwVmFyaWF0aW9ucyUyQ0NvZGU=" data-listing-date-sort="1788825600000" data-listing-file-modified-sort="1788986384924" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="764">
+<div class="quarto-post image-right" data-index="0" data-categories="bGFuZGF1JTJDbWVjaGFuaWNzJTJDcmVhZGluZw==" data-listing-date-sort="1788912000000" data-listing-file-modified-sort="1788986384922" data-listing-date-modified-sort="1788986384000" data-listing-reading-time-sort="23" data-listing-word-count-sort="4488">
+<div class="thumbnail"><a href="../extra/landau-chapter-1.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../simulations/lean4-formalization.html" class="no-external">Formalizing Calculus of Variations in Lean 4</a>
+<a href="../extra/landau-chapter-1.html" class="no-external">Landau &amp; Lifshitz: Mechanics - Chapter I</a>
 </h3>
 <div class="listing-subtitle">
-<a href="../simulations/lean4-formalization.html" class="no-external"></a>
+<a href="../extra/landau-chapter-1.html" class="no-external">The Equations of Motion</a>
 </div>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('Rm9ybWFsJTIwVmVyaWZpY2F0aW9u'); return false;">Formal Verification</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bGFuZGF1'); return false;">landau</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('TGVhbiUyMDQ='); return false;">Lean 4</div>
+<div class="listing-category" onclick="window.quartoListingCategory('bWVjaGFuaWNz'); return false;">mechanics</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('Q2FsY3VsdXMlMjBvZiUyMFZhcmlhdGlvbnM='); return false;">Calculus of Variations</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q29kZQ=='); return false;">Code</div>
+<div class="listing-category" onclick="window.quartoListingCategory('cmVhZGluZw=='); return false;">reading</div>
 
 </div>
+<div class="delink listing-description"><a href="../extra/landau-chapter-1.html" class="no-external">
+ONE of the fundamental concepts of mechanics is that of a particle. By this we mean a body whose dimensions may be neglected in describing its motion. The possibility of so…
+</a></div>
 </div>
 <div class="metadata">
-<a href="../simulations/lean4-formalization.html" class="no-external">
+<a href="../extra/landau-chapter-1.html" class="no-external">
 <div class="listing-date">
-2026-09-08
-</div>
-<div class="listing-reading-time">4 min</div>
-<div class="metadata-value listing-date-modified">
-Invalid Date
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="U2ltdWxhdGlvbnMlMkNJbnRlcmFjdGl2ZSUyQ0NhbGN1bHVzJTIwb2YlMjBWYXJpYXRpb25zJTJDQ3ljbG9pZCUyQ01lY2hhbmljcw==" data-listing-date-sort="1788825600000" data-listing-file-modified-sort="1788986384923" data-listing-date-modified-sort="1788986384000" data-listing-reading-time-sort="43" data-listing-word-count-sort="8552">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../simulations/cycloid-mechanics-interactive.html" class="no-external">Interactive Cycloid Mechanics: Brachistochrone, Tautochrone &amp; Huygens’ Pendulum</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../simulations/cycloid-mechanics-interactive.html" class="no-external">Real-time HTML5 Canvas physics simulations: Curve of fastest descent, equal-time oscillations, and isochronous cycloidal clocks.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('U2ltdWxhdGlvbnM='); return false;">Simulations</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SW50ZXJhY3RpdmU='); return false;">Interactive</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q2FsY3VsdXMlMjBvZiUyMFZhcmlhdGlvbnM='); return false;">Calculus of Variations</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q3ljbG9pZA=='); return false;">Cycloid</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TWVjaGFuaWNz'); return false;">Mechanics</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../simulations/cycloid-mechanics-interactive.html" class="no-external">
-<div class="listing-date">
-2026-09-08
-</div>
-<div class="listing-reading-time">43 min</div>
-<div class="metadata-value listing-date-modified">
-2026-09-09
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="bWFuaW0lMkNweXRob24lMkNhbmltYXRpb24lMkNjb2RlJTJDc2ltdWxhdGlvbg==" data-listing-date-sort="1788652800000" data-listing-file-modified-sort="1788986384924" data-listing-date-modified-sort="1788986384000" data-listing-reading-time-sort="5" data-listing-word-count-sort="861">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../simulations/manim-animations.html" class="no-external">Manim Mathematical Animations &amp; Code</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../simulations/manim-animations.html" class="no-external">Programmatic video rendering, 3Blue1Brown-style animations, and browser-native vector simulations.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWFuaW0='); return false;">manim</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cHl0aG9u'); return false;">python</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('YW5pbWF0aW9u'); return false;">animation</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">code</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('c2ltdWxhdGlvbg=='); return false;">simulation</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../simulations/manim-animations.html" class="no-external">
-<div class="listing-date">
-2026-09-06
-</div>
-<div class="listing-reading-time">5 min</div>
-<div class="metadata-value listing-date-modified">
-2026-09-09
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="U2ltdWxhdGlvbnMlMkNDJTJCJTJCJTJDUHl0aG9uJTJDSW50ZXJhY3RpdmUlMkNPYnNlcnZhYmxlJTIwSlM=" data-listing-date-sort="1788566400000" data-listing-file-modified-sort="1788986384924" data-listing-date-modified-sort="1788986384000" data-listing-reading-time-sort="8" data-listing-word-count-sort="1487">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../simulations/interactive-pendulum-and-verlet.html" class="no-external">Interactive Simulations &amp; Multi-Language Integrators</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../simulations/interactive-pendulum-and-verlet.html" class="no-external">Real-time browser dynamics (Observable JS), high-performance C++ Verlet integration, and Python phase portraits.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('U2ltdWxhdGlvbnM='); return false;">Simulations</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QyUyQiUyQg=='); return false;">C++</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SW50ZXJhY3RpdmU='); return false;">Interactive</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('T2JzZXJ2YWJsZSUyMEpT'); return false;">Observable JS</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../simulations/interactive-pendulum-and-verlet.html" class="no-external">
-<div class="listing-date">
-2026-09-05
-</div>
-<div class="listing-reading-time">8 min</div>
-<div class="metadata-value listing-date-modified">
 2026-09-09
 </div>
 </a>
@@ -883,31 +749,17 @@ Invalid Date
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Code &amp; Simulations"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Interactive in-browser simulations, symplectic numerical integrators, Python scripts, and Manim video animations."</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">listing:</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">  contents: "*.qmd"</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  sort:</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    - "date desc"</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    - "title asc"</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  type: default</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">  categories: true</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">  sort-ui: [title, date, date-modified]</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">  filter-ui: [title, date, categories]</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">  fields: [date, date-modified, title, subtitle, categories, reading-time]</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">  field-display-names:</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">    date: "Created"</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">    date-modified: "Modified"</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">    reading-time: "Read Time"</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">  page-size: 15</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="an">page-layout:</span><span class="co"> full</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>This section hosts all computational tools, code notebooks, and programmatic visualizations for PHYC54:</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Interactive Simulations:** Live in-browser physics simulations running via Observable JS (OJS) and HTML5 Canvas.</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Symplectic Integrators:** Velocity Verlet and RK4 solvers implemented in Python, C++, and Fortran for energy-conserving Hamiltonian orbits.</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Manim Mathematical Animations:** Python scripts and rendering pipelines for 3Blue1Brown-style video demonstrations of chaos, phase trajectories, and coordinate transformations.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Extra Notes &amp; Readings"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">listing:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">  contents: "*.qmd"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">  type: default</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  sort: "date desc"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">  categories: true</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">  sort-ui: false</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  filter-ui: false</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>This section contains extra materials, reading notes from other textbooks, and supplementary physical models outside of the standard curriculum.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

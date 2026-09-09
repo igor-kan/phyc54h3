@@ -40,5 +40,11 @@
       "/reference/vector-calculus-and-identities.html",
       "/reference/math-identities-and-calculus.html"
     ]
+  },
+  {
+    "listing": "/extra/index.html",
+    "items": [
+      "/extra/landau-chapter-1.html"
+    ]
   }
 ]
