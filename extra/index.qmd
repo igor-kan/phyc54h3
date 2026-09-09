@@ -1,0 +1,12 @@
+---
+title: "Extra Notes & Readings"
+listing:
+  contents: "*.qmd"
+  type: default
+  sort: "date desc"
+  categories: true
+  sort-ui: false
+  filter-ui: false
+---
+
+This section contains extra materials, reading notes from other textbooks, and supplementary physical models outside of the standard curriculum.

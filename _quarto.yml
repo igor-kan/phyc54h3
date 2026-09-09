@@ -19,6 +19,8 @@ website:
         text: Code & Simulations
       - href: reference/index.qmd
         text: Reference & Math
+      - href: extra/index.qmd
+        text: Extra Notes
   page-footer: 
     left: "<span style='font-size: 0.8em;'>&copy; 2026 Igor Kan</span>"
 
