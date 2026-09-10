@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-09-10">
 
-<title>PHYC54 Lecture Notes &amp; Syllabus – PHYC54H3: Classical Mechanics</title>
+<title>Math Methods: Prerequisites &amp; Corequisites – PHYC54H3: Classical Mechanics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -71,8 +72,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -110,35 +109,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-date-modified','listing-title','listing-subtitle','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-date","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -195,7 +165,7 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../notes/index.html" aria-current="page"> 
+    <a class="nav-link" href="../notes/index.html"> 
 <span class="menu-text">Lecture Notes</span></a>
   </li>  
   <li class="nav-item">
@@ -222,26 +192,51 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(7)</span></div><div class="category" data-category="YWRtaW5pc3RyYXRpb24=">administration <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2xhc3NpY2FsLW1lY2hhbmljcw==">classical-mechanics <span class="quarto-category-count">(6)</span></div><div class="category" data-category="Y29udGludXVtLW1lY2hhbmljcw==">continuum-mechanics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29yaW9saXM=">coriolis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y291cnNl">course <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZmllbGQtdGhlb3J5">field-theory <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aGFtaWx0b25pYW4=">hamiltonian <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWF0aA==">math <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bm9uaW5lcnRpYWwtZnJhbWVz">noninertial-frames <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bm90ZXM=">notes <span class="quarto-category-count">(5)</span></div><div class="category" data-category="cGhhc2Utc3BhY2U=">phase-space <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmlnaWQtYm9kaWVz">rigid-bodies <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cm90YXRpb24=">rotation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3lsbGFidXM=">syllabus <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGF5bG9y">taylor <span class="quarto-category-count">(2)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#mathematical-foundations-for-calculus-of-variations" id="toc-mathematical-foundations-for-calculus-of-variations" class="nav-link active" data-scroll-target="#mathematical-foundations-for-calculus-of-variations">Mathematical Foundations for Calculus of Variations</a>
+  <ul class="collapse">
+  <li><a href="#mary-l.-boas-mathematical-methods-in-the-physical-sciences" id="toc-mary-l.-boas-mathematical-methods-in-the-physical-sciences" class="nav-link" data-scroll-target="#mary-l.-boas-mathematical-methods-in-the-physical-sciences">Mary L. Boas — Mathematical Methods in the Physical Sciences</a></li>
+  <li><a href="#rhb-mathematical-methods-for-physics-and-engineering" id="toc-rhb-mathematical-methods-for-physics-and-engineering" class="nav-link" data-scroll-target="#rhb-mathematical-methods-for-physics-and-engineering">RHB — Mathematical Methods for Physics and Engineering</a></li>
+  <li><a href="#arfken-weber-harris-mathematical-methods-for-physicists" id="toc-arfken-weber-harris-mathematical-methods-for-physicists" class="nav-link" data-scroll-target="#arfken-weber-harris-mathematical-methods-for-physicists">Arfken, Weber, Harris — Mathematical Methods for Physicists</a></li>
+  <li><a href="#landau-lifshitz-mechanics-vol.-1" id="toc-landau-lifshitz-mechanics-vol.-1" class="nav-link" data-scroll-target="#landau-lifshitz-mechanics-vol.-1">Landau &amp; Lifshitz — Mechanics (Vol. 1)</a></li>
+  <li><a href="#vladimir-arnold-mathematical-methods-of-classical-mechanics" id="toc-vladimir-arnold-mathematical-methods-of-classical-mechanics" class="nav-link" data-scroll-target="#vladimir-arnold-mathematical-methods-of-classical-mechanics">Vladimir Arnold — Mathematical Methods of Classical Mechanics</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">PHYC54 Lecture Notes &amp; Syllabus</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
-<p class="subtitle lead">Theoretical foundations, analytical dynamics, variational principles, and course documentation.</p>
-</div>
+<div class="quarto-title-block"><div><h1 class="title">Math Methods: Prerequisites &amp; Corequisites</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<p class="subtitle lead">Mapping mathematical concepts to Taylor’s Classical Mechanics (Chapter 6)</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">math-methods</div>
+    <div class="quarto-category">classical-mechanics</div>
+    <div class="quarto-category">extra</div>
+    <div class="quarto-category">calculus-of-variations</div>
+  </div>
+  </div>
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026-09-10</p>
+    </div>
+  </div>
   
     
   </div>
@@ -251,267 +246,98 @@ window.Quarto = {
 </header>
 
 
-<p>This section houses the course syllabus, analytical lecture notes, and theoretical derivations following John R. Taylor’s <em>Classical Mechanics</em> for PHYC54 at UTSC. Use the search bar and sorting filters below to quickly locate specific topics, reading chapters, or formulas.</p>
-
+<section id="mathematical-foundations-for-calculus-of-variations" class="level1">
+<h1>Mathematical Foundations for Calculus of Variations</h1>
+<p>The following is a curated reading list mapping specific mathematical methods topics from standard textbooks (Boas, RHB, Arfken, Landau, Arnold) directly to the problem solving techniques required for Chapter 6 of Taylor’s <em>Classical Mechanics</em>.</p>
+<section id="mary-l.-boas-mathematical-methods-in-the-physical-sciences" class="level2">
+<h2 class="anchored" data-anchor-id="mary-l.-boas-mathematical-methods-in-the-physical-sciences">Mary L. Boas — Mathematical Methods in the Physical Sciences</h2>
+<ul>
+<li><strong>Ch 4 (Sec 4.7): Differentiation of Integrals (Leibniz Rule)</strong>
+<ul>
+<li><em>Prerequisite:</em> Differentiating parameterized functionals <span class="math inline">\(\frac{d}{d\alpha} \int f \, dx\)</span> through the integral sign.</li>
+</ul></li>
+<li><strong>Ch 5 (Sec 5.4): Curvilinear Coordinates &amp; Scale Factors</strong>
+<ul>
+<li><em>Prerequisite:</em> Fast derivation of <span class="math inline">\(ds^2 = \sum h_i^2 dq_i^2\)</span> for the complete table of arc lengths (Problem 6.6).</li>
+</ul></li>
+<li><strong>Ch 8 (Sec 8.1 – 8.5): Ordinary Differential Equations</strong>
+<ul>
+<li><em>Prerequisite:</em> Separation of variables and 2nd-order characteristic equations (Problems 6.9, 6.11, 6.12, 6.17).</li>
+</ul></li>
+<li><strong>Ch 9 (Sec 9.1 – 9.3): Calculus of Variations &amp; First Integrals</strong>
+<ul>
+<li><em>Corequisite:</em> Read in parallel with Taylor. Directly covers first integrals for <span class="math inline">\(f(y', x)\)</span> (Problem 6.10) and the Beltrami identity (Problems 6.20, 6.21).</li>
+</ul></li>
+<li><strong>Ch 9 (Sec 9.4): Constrained Variation &amp; Isoperimetric Problems</strong>
+<ul>
+<li><em>Corequisite:</em> Mathematical formulation of Lagrange multipliers for Dido’s maximum enclosed area with fixed string length (Problem 6.22).</li>
+</ul></li>
+</ul>
+</section>
+<section id="rhb-mathematical-methods-for-physics-and-engineering" class="level2">
+<h2 class="anchored" data-anchor-id="rhb-mathematical-methods-for-physics-and-engineering">RHB — Mathematical Methods for Physics and Engineering</h2>
+<ul>
+<li><strong>Ch 10 (Sec 10.1 – 10.3): Vector Calculus &amp; Curvilinear Systems</strong>
+<ul>
+<li><em>Prerequisite:</em> Coordinate transformations between cylindrical, spherical, and conical metrics (Problems 6.1, 6.2, 6.16, 6.17).</li>
+</ul></li>
+<li><strong>Ch 22 (Sec 22.1 – 22.3): Variational Calculus &amp; Special Cases</strong>
+<ul>
+<li><em>Corequisite:</em> Systematic algebraic classification of Euler–Lagrange first integrals (Problems 6.10, 6.16, 6.20, 6.21).</li>
+</ul></li>
+<li><strong>Ch 22 (Sec 22.4): Constrained Variations</strong>
+<ul>
+<li><em>Corequisite:</em> Integral equality constraints <span class="math inline">\(\int \sqrt{1 + y'^2} \, ds = l\)</span> (Problem 6.22).</li>
+</ul></li>
+<li><strong>Ch 22 (Sec 22.5): Several Dependent / Independent Variables</strong>
+<ul>
+<li><em>Corequisite:</em> Formal derivation of coupled Euler–Lagrange equations and 3D straight line geodesics (Problems 6.26, 6.27).</li>
+</ul></li>
+</ul>
+</section>
+<section id="arfken-weber-harris-mathematical-methods-for-physicists" class="level2">
+<h2 class="anchored" data-anchor-id="arfken-weber-harris-mathematical-methods-for-physicists">Arfken, Weber, Harris — Mathematical Methods for Physicists</h2>
+<ul>
+<li><strong>Ch 3 (Sec 3.10): Curvilinear Coordinates and Metric Tensors</strong>
+<ul>
+<li><em>Corequisite:</em> General framework for non-Euclidean metrics such as the rapidity metric <span class="math inline">\(ds = \frac{2}{1-r^2}\sqrt{dr^2 + r^2 d\theta^2}\)</span> (Problem 6.13).</li>
+</ul></li>
+<li><strong>Ch 22 (Sec 22.1 – 22.2): Calculus of Variations &amp; Multi-Variable Systems</strong>
+<ul>
+<li><em>Corequisite:</em> Clean tensor/vector variation notation for problems with more than two variables (Problems 6.26, 6.27).</li>
+</ul></li>
+</ul>
+</section>
+<section id="landau-lifshitz-mechanics-vol.-1" class="level2">
+<h2 class="anchored" data-anchor-id="landau-lifshitz-mechanics-vol.-1">Landau &amp; Lifshitz — Mechanics (Vol. 1)</h2>
+<ul>
+<li><strong>Ch I (§2): The Principle of Least Action</strong>
+<ul>
+<li><em>Corequisite:</em> Physical perspective on how path stationarity (<span class="math inline">\(\delta S = 0\)</span>) works without coordinate artifacts.</li>
+</ul></li>
+<li><strong>Ch II (§6): Symmetries &amp; Conservation Laws</strong>
+<ul>
+<li><em>Corequisite:</em> Deepens the connection between coordinate independence (<span class="math inline">\(f\)</span> independent of <span class="math inline">\(q\)</span>) and conserved quantities (Problems 6.10, 6.16, 6.20).</li>
+</ul></li>
+</ul>
+</section>
+<section id="vladimir-arnold-mathematical-methods-of-classical-mechanics" class="level2">
+<h2 class="anchored" data-anchor-id="vladimir-arnold-mathematical-methods-of-classical-mechanics">Vladimir Arnold — Mathematical Methods of Classical Mechanics</h2>
+<ul>
+<li><strong>Ch 3 (§12): Extremals of Integrals on Manifolds</strong>
+<ul>
+<li><em>Advanced Corequisite:</em> Differential geometric perspective on geodesics as auto-parallel curves on embedded surfaces like cylinders, spheres, and cones (Problems 6.7, 6.16, 6.17).</li>
+</ul></li>
+</ul>
 
 
 
 <!-- -->
 
+</section>
+</section>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-title" data-direction="asc">
-        Title
-      </option>
-      <option value="listing-date-sort" data-direction="asc">
-        Created - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Created - Newest
-      </option>
-      <option value="listing-date-modified-sort" data-direction="asc">
-        Modified - Oldest
-      </option>
-      <option value="listing-date-modified-sort" data-direction="desc">
-        Modified - Newest
-      </option>
-    </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Y2xhc3NpY2FsLW1lY2hhbmljcyUyQ2NvbnRpbnV1bS1tZWNoYW5pY3MlMkNmaWVsZC10aGVvcnklMkNub3Rlcw==" data-listing-date-sort="1796083200000" data-listing-file-modified-sort="1789016567587" data-listing-date-modified-sort="1789016567000" data-listing-reading-time-sort="1" data-listing-word-count-sort="159">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../notes/taylor-chapter-16-continuum-mechanics.html" class="no-external">Taylor Chapter 16: Continuum Mechanics</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../notes/taylor-chapter-16-continuum-mechanics.html" class="no-external">Continuous systems, wave equation for a stretched string, Lagrangian density, stress-energy, and field equations.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y2xhc3NpY2FsLW1lY2hhbmljcw=='); return false;">classical-mechanics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29udGludXVtLW1lY2hhbmljcw=='); return false;">continuum-mechanics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZmllbGQtdGhlb3J5'); return false;">field-theory</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bm90ZXM='); return false;">notes</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../notes/taylor-chapter-16-continuum-mechanics.html" class="no-external">
-<div class="listing-date">
-2026-12-01
-</div>
-<div class="listing-reading-time">1 min</div>
-<div class="metadata-value listing-date-modified">
-2026-09-10
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="Y2xhc3NpY2FsLW1lY2hhbmljcyUyQ3JpZ2lkLWJvZGllcyUyQ3JvdGF0aW9uJTJDbm90ZXM=" data-listing-date-sort="1794268800000" data-listing-file-modified-sort="1789016567587" data-listing-date-modified-sort="1789016567000" data-listing-reading-time-sort="1" data-listing-word-count-sort="170">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../notes/taylor-chapter-10-rigid-bodies.html" class="no-external">Taylor Chapter 10: Rotational Motion of Rigid Bodies</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../notes/taylor-chapter-10-rigid-bodies.html" class="no-external">Inertia tensor, principal axes, Euler’s equations of motion, precession, nutation, and Euler angles.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y2xhc3NpY2FsLW1lY2hhbmljcw=='); return false;">classical-mechanics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cmlnaWQtYm9kaWVz'); return false;">rigid-bodies</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cm90YXRpb24='); return false;">rotation</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bm90ZXM='); return false;">notes</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../notes/taylor-chapter-10-rigid-bodies.html" class="no-external">
-<div class="listing-date">
-2026-11-10
-</div>
-<div class="listing-reading-time">1 min</div>
-<div class="metadata-value listing-date-modified">
-2026-09-10
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="Y2xhc3NpY2FsLW1lY2hhbmljcyUyQ25vbmluZXJ0aWFsLWZyYW1lcyUyQ2NvcmlvbGlzJTJDbm90ZXM=" data-listing-date-sort="1791849600000" data-listing-file-modified-sort="1789016567587" data-listing-date-modified-sort="1789016567000" data-listing-reading-time-sort="1" data-listing-word-count-sort="147">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../notes/taylor-chapter-9-noninertial-frames.html" class="no-external">Taylor Chapter 9: Mechanics in Noninertial Frames</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../notes/taylor-chapter-9-noninertial-frames.html" class="no-external">Linearly accelerating frames, rotating coordinate systems, centrifugal force, Coriolis force, and the Foucault pendulum.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y2xhc3NpY2FsLW1lY2hhbmljcw=='); return false;">classical-mechanics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bm9uaW5lcnRpYWwtZnJhbWVz'); return false;">noninertial-frames</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29yaW9saXM='); return false;">coriolis</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bm90ZXM='); return false;">notes</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../notes/taylor-chapter-9-noninertial-frames.html" class="no-external">
-<div class="listing-date">
-2026-10-13
-</div>
-<div class="listing-reading-time">1 min</div>
-<div class="metadata-value listing-date-modified">
-2026-09-10
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="Y2xhc3NpY2FsLW1lY2hhbmljcyUyQ2hhbWlsdG9uaWFuJTJDcGhhc2Utc3BhY2UlMkNub3Rlcw==" data-listing-date-sort="1790640000000" data-listing-file-modified-sort="1789016567587" data-listing-date-modified-sort="1789016567000" data-listing-reading-time-sort="1" data-listing-word-count-sort="142">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../notes/taylor-chapter-13-hamiltonian-mechanics.html" class="no-external">Taylor Chapter 13: Hamiltonian Mechanics</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../notes/taylor-chapter-13-hamiltonian-mechanics.html" class="no-external">Canonical momentum, phase space flow, Hamilton’s equations, Liouville’s theorem, and Poisson brackets.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y2xhc3NpY2FsLW1lY2hhbmljcw=='); return false;">classical-mechanics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('aGFtaWx0b25pYW4='); return false;">hamiltonian</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGhhc2Utc3BhY2U='); return false;">phase-space</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bm90ZXM='); return false;">notes</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../notes/taylor-chapter-13-hamiltonian-mechanics.html" class="no-external">
-<div class="listing-date">
-2026-09-29
-</div>
-<div class="listing-reading-time">1 min</div>
-<div class="metadata-value listing-date-modified">
-2026-09-10
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="Y2xhc3NpY2FsLW1lY2hhbmljcyUyQ21hdGglMkN0YXlsb3IlMkNub3Rlcw==" data-listing-date-sort="1789430400000" data-listing-file-modified-sort="1789016567587" data-listing-date-modified-sort="1789016567000" data-listing-reading-time-sort="7" data-listing-word-count-sort="1288">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../notes/taylor-chapter-7-lagrange-equations.html" class="no-external">Taylor Chapter 7: Lagrange’s Equations</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../notes/taylor-chapter-7-lagrange-equations.html" class="no-external">Overcoming constraint forces and deriving the laws of motion from a single radical formula.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y2xhc3NpY2FsLW1lY2hhbmljcw=='); return false;">classical-mechanics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWF0aA=='); return false;">math</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dGF5bG9y'); return false;">taylor</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bm90ZXM='); return false;">notes</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../notes/taylor-chapter-7-lagrange-equations.html" class="no-external">
-<div class="listing-date">
-2026-09-15
-</div>
-<div class="listing-reading-time">7 min</div>
-<div class="metadata-value listing-date-modified">
-2026-09-10
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="Y2xhc3NpY2FsLW1lY2hhbmljcyUyQ21hdGglMkN0YXlsb3I=" data-listing-date-sort="1788825600000" data-listing-file-modified-sort="1789016567587" data-listing-date-modified-sort="1789016567000" data-listing-reading-time-sort="23" data-listing-word-count-sort="4522">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../notes/taylor-chapter-6-calculus-of-variations.html" class="no-external">Taylor Chapter 6: Calculus of Variations</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../notes/taylor-chapter-6-calculus-of-variations.html" class="no-external">Summary, Derivations, and Problems</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y2xhc3NpY2FsLW1lY2hhbmljcw=='); return false;">classical-mechanics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWF0aA=='); return false;">math</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dGF5bG9y'); return false;">taylor</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../notes/taylor-chapter-6-calculus-of-variations.html" class="no-external">
-<div class="listing-date">
-2026-09-08
-</div>
-<div class="listing-reading-time">23 min</div>
-<div class="metadata-value listing-date-modified">
-2026-09-10
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="Y291cnNlJTJDc3lsbGFidXMlMkNhZG1pbmlzdHJhdGlvbg==" data-listing-date-sort="1788739200000" data-listing-file-modified-sort="1789016567587" data-listing-date-modified-sort="1789016567000" data-listing-reading-time-sort="5" data-listing-word-count-sort="912">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../notes/syllabus.html" class="no-external">Course Syllabus: PHY C54 - Classical Mechanics</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../notes/syllabus.html" class="no-external">Course policies, marking scheme, autofail condition, and 12-week lecture schedule for Fall 2026.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y291cnNl'); return false;">course</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('c3lsbGFidXM='); return false;">syllabus</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('YWRtaW5pc3RyYXRpb24='); return false;">administration</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../notes/syllabus.html" class="no-external">
-<div class="listing-date">
-2026-09-07
-</div>
-<div class="listing-reading-time">5 min</div>
-<div class="metadata-value listing-date-modified">
-2026-09-10
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -964,27 +790,62 @@ window.Quarto = {
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "PHYC54 Lecture Notes &amp; Syllabus"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Theoretical foundations, analytical dynamics, variational principles, and course documentation."</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">listing:</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">  contents: "*.qmd"</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  sort:</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    - "date desc"</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    - "title asc"</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  type: default</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">  categories: true</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">  sort-ui: [title, date, date-modified]</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">  filter-ui: [title, date, categories]</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">  fields: [date, date-modified, title, subtitle, categories, reading-time]</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">  field-display-names:</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">    date: "Created"</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">    date-modified: "Modified"</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">    reading-time: "Read Time"</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">  page-size: 15</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="an">page-layout:</span><span class="co"> full</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>This section houses the course syllabus, analytical lecture notes, and theoretical derivations following John R. Taylor's *Classical Mechanics* for PHYC54 at UTSC. Use the search bar and sorting filters below to quickly locate specific topics, reading chapters, or formulas.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Math Methods: Prerequisites &amp; Corequisites"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Mapping mathematical concepts to Taylor's Classical Mechanics (Chapter 6)"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-09-10"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [math-methods, classical-mechanics, extra, calculus-of-variations]</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">    math: true</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu"># Mathematical Foundations for Calculus of Variations</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>The following is a curated reading list mapping specific mathematical methods topics from standard textbooks (Boas, RHB, Arfken, Landau, Arnold) directly to the problem solving techniques required for Chapter 6 of Taylor's *Classical Mechanics*.</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Mary L. Boas — Mathematical Methods in the Physical Sciences</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Ch 4 (Sec 4.7): Differentiation of Integrals (Leibniz Rule)**</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>*Prerequisite:* Differentiating parameterized functionals $\frac{d}{d\alpha} \int f \, dx$ through the integral sign.</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Ch 5 (Sec 5.4): Curvilinear Coordinates &amp; Scale Factors**</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>*Prerequisite:* Fast derivation of $ds^2 = \sum h_i^2 dq_i^2$ for the complete table of arc lengths (Problem 6.6).</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Ch 8 (Sec 8.1 – 8.5): Ordinary Differential Equations**</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>*Prerequisite:* Separation of variables and 2nd-order characteristic equations (Problems 6.9, 6.11, 6.12, 6.17).</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Ch 9 (Sec 9.1 – 9.3): Calculus of Variations &amp; First Integrals**</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>*Corequisite:* Read in parallel with Taylor. Directly covers first integrals for $f(y', x)$ (Problem 6.10) and the Beltrami identity (Problems 6.20, 6.21).</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Ch 9 (Sec 9.4): Constrained Variation &amp; Isoperimetric Problems**</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>*Corequisite:* Mathematical formulation of Lagrange multipliers for Dido's maximum enclosed area with fixed string length (Problem 6.22).</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## RHB — Mathematical Methods for Physics and Engineering</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Ch 10 (Sec 10.1 – 10.3): Vector Calculus &amp; Curvilinear Systems**</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>*Prerequisite:* Coordinate transformations between cylindrical, spherical, and conical metrics (Problems 6.1, 6.2, 6.16, 6.17).</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Ch 22 (Sec 22.1 – 22.3): Variational Calculus &amp; Special Cases**</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>*Corequisite:* Systematic algebraic classification of Euler–Lagrange first integrals (Problems 6.10, 6.16, 6.20, 6.21).</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Ch 22 (Sec 22.4): Constrained Variations**</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>*Corequisite:* Integral equality constraints $\int \sqrt{1 + y'^2} \, ds = l$ (Problem 6.22).</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Ch 22 (Sec 22.5): Several Dependent / Independent Variables**</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>*Corequisite:* Formal derivation of coupled Euler–Lagrange equations and 3D straight line geodesics (Problems 6.26, 6.27).</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## Arfken, Weber, Harris — Mathematical Methods for Physicists</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Ch 3 (Sec 3.10): Curvilinear Coordinates and Metric Tensors**</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>*Corequisite:* General framework for non-Euclidean metrics such as the rapidity metric $ds = \frac{2}{1-r^2}\sqrt{dr^2 + r^2 d\theta^2}$ (Problem 6.13).</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Ch 22 (Sec 22.1 – 22.2): Calculus of Variations &amp; Multi-Variable Systems**</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>*Corequisite:* Clean tensor/vector variation notation for problems with more than two variables (Problems 6.26, 6.27).</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## Landau &amp; Lifshitz — Mechanics (Vol. 1)</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Ch I (§2): The Principle of Least Action**</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>*Corequisite:* Physical perspective on how path stationarity ($\delta S = 0$) works without coordinate artifacts.</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Ch II (§6): Symmetries &amp; Conservation Laws**</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>*Corequisite:* Deepens the connection between coordinate independence ($f$ independent of $q$) and conserved quantities (Problems 6.10, 6.16, 6.20).</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="fu">## Vladimir Arnold — Mathematical Methods of Classical Mechanics</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Ch 3 (§12): Extremals of Integrals on Manifolds**</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="ss">    *   </span>*Advanced Corequisite:* Differential geometric perspective on geodesics as auto-parallel curves on embedded surfaces like cylinders, spheres, and cones (Problems 6.7, 6.16, 6.17).</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
