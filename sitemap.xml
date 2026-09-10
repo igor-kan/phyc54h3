@@ -2,186 +2,178 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/notes/taylor-chapter-13-hamiltonian-mechanics.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
+    <lastmod>2026-09-10T13:05:19.608Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/notes/taylor-chapter-10-rigid-bodies.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
+    <lastmod>2026-09-10T13:05:19.608Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/notes/taylor-chapter-7-lagrange-equations.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
+    <lastmod>2026-09-10T13:05:19.608Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/notes/index.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
+    <lastmod>2026-09-10T13:05:19.607Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/extra/arnold-chapter-4.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
+    <lastmod>2026-09-10T13:05:19.606Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/extra/arfken-chapter-3.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
+    <lastmod>2026-09-10T13:05:19.606Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/extra/boas-chapter-4.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/extra/boas-chapter-8.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/extra/arnold-chapter-1.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/extra/landau-chapter-2.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/extra/arnold-chapter-3.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/extra/landau-chapter-1.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/extra/index.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/reference/math-identities-and-calculus.html</loc>
-    <lastmod>2026-09-10T05:04:29.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/reference/sources-and-bibliography.html</loc>
-    <lastmod>2026-09-10T05:04:29.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/reference/cycloid-physics-applications.html</loc>
-    <lastmod>2026-09-10T05:04:29.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/reference/index.html</loc>
-    <lastmod>2026-09-10T05:04:29.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/simulations/lean4-formalization.html</loc>
-    <lastmod>2026-09-10T05:04:29.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/simulations/jupyter-troubleshooting.html</loc>
-    <lastmod>2026-09-10T05:04:29.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/simulations/index.html</loc>
-    <lastmod>2026-09-10T05:04:29.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/solutions/taylor-chapter-6-problems.html</loc>
-    <lastmod>2026-09-10T05:04:29.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/solutions/taylor-chapter-7-problems.html</loc>
-    <lastmod>2026-09-10T05:04:29.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/solutions/index.html</loc>
-    <lastmod>2026-09-10T05:04:29.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/index.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/solutions/problem-set-01.html</loc>
-    <lastmod>2026-09-10T05:04:29.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/solutions/bead-on-rotating-wire-hoop.html</loc>
-    <lastmod>2026-09-10T05:04:29.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/solutions/taylor-chapter-6-interactive.html</loc>
-    <lastmod>2026-09-10T05:04:29.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/simulations/interactive-pendulum-and-verlet.html</loc>
-    <lastmod>2026-09-10T05:04:29.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/simulations/cycloid-mechanics-interactive.html</loc>
-    <lastmod>2026-09-10T05:04:29.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/simulations/manim-animations.html</loc>
-    <lastmod>2026-09-10T05:04:29.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/reference/integration-tricks-and-substitutions.html</loc>
-    <lastmod>2026-09-10T05:04:29.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/reference/computational-methods.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/reference/physical-constants-and-data.html</loc>
-    <lastmod>2026-09-10T05:04:29.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/reference/vector-calculus-and-identities.html</loc>
-    <lastmod>2026-09-10T05:04:29.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/extra/rhb-chapter-22.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/extra/boas-chapter-9.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/extra/arnold-chapter-2.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/extra/math-methods-taylor-ch6.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
+    <lastmod>2026-09-10T13:05:19.606Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/extra/rhb-chapter-10.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
+    <lastmod>2026-09-10T13:05:19.606Z</lastmod>
   </url>
   <url>
-    <loc>https://igor-kan.github.io/phyc54h3/extra/arnold-chapters-1-4.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
+    <loc>https://igor-kan.github.io/phyc54h3/extra/landau-chapter-2.html</loc>
+    <lastmod>2026-09-10T13:05:19.606Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/extra/arnold-chapter-3.html</loc>
+    <lastmod>2026-09-10T13:05:19.606Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/extra/landau-chapter-1.html</loc>
+    <lastmod>2026-09-10T13:05:19.606Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/extra/index.html</loc>
+    <lastmod>2026-09-10T13:05:19.606Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/reference/math-identities-and-calculus.html</loc>
+    <lastmod>2026-09-10T13:05:19.608Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/reference/sources-and-bibliography.html</loc>
+    <lastmod>2026-09-10T13:05:19.608Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/reference/cycloid-physics-applications.html</loc>
+    <lastmod>2026-09-10T13:05:19.608Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/reference/index.html</loc>
+    <lastmod>2026-09-10T13:05:19.608Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/simulations/lean4-formalization.html</loc>
+    <lastmod>2026-09-10T13:05:19.609Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/simulations/jupyter-troubleshooting.html</loc>
+    <lastmod>2026-09-10T13:05:19.609Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/simulations/index.html</loc>
+    <lastmod>2026-09-10T13:05:19.609Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/solutions/taylor-chapter-6-problems.html</loc>
+    <lastmod>2026-09-10T13:05:19.610Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/solutions/taylor-chapter-7-problems.html</loc>
+    <lastmod>2026-09-10T13:05:19.610Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/solutions/index.html</loc>
+    <lastmod>2026-09-10T13:05:19.610Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/index.html</loc>
+    <lastmod>2026-09-10T13:05:19.607Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/solutions/problem-set-01.html</loc>
+    <lastmod>2026-09-10T13:05:19.610Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/solutions/bead-on-rotating-wire-hoop.html</loc>
+    <lastmod>2026-09-10T13:05:19.609Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/solutions/taylor-chapter-6-interactive.html</loc>
+    <lastmod>2026-09-10T13:05:19.610Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/simulations/interactive-pendulum-and-verlet.html</loc>
+    <lastmod>2026-09-10T13:05:19.609Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/simulations/cycloid-mechanics-interactive.html</loc>
+    <lastmod>2026-09-10T13:05:19.608Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/simulations/manim-animations.html</loc>
+    <lastmod>2026-09-10T13:05:19.609Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/reference/integration-tricks-and-substitutions.html</loc>
+    <lastmod>2026-09-10T13:05:19.608Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/reference/computational-methods.html</loc>
+    <lastmod>2026-09-10T13:05:19.608Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/reference/physical-constants-and-data.html</loc>
+    <lastmod>2026-09-10T13:05:19.608Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/reference/vector-calculus-and-identities.html</loc>
+    <lastmod>2026-09-10T13:05:19.608Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/extra/rhb-chapter-22.html</loc>
+    <lastmod>2026-09-10T13:05:19.607Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/extra/boas-chapter-9.html</loc>
+    <lastmod>2026-09-10T13:05:19.606Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/extra/arnold-chapter-2.html</loc>
+    <lastmod>2026-09-10T13:05:19.606Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/extra/arnold-chapter-1.html</loc>
+    <lastmod>2026-09-10T13:05:19.606Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/extra/boas-chapter-8.html</loc>
+    <lastmod>2026-09-10T13:05:19.606Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/extra/arfken-chapter-22.html</loc>
-    <lastmod>2026-09-10T05:04:29.574Z</lastmod>
+    <lastmod>2026-09-10T13:05:19.606Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/extra/boas-chapter-5.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
+    <lastmod>2026-09-10T13:05:19.606Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/notes/taylor-chapter-16-continuum-mechanics.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
+    <lastmod>2026-09-10T13:05:19.608Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/notes/taylor-chapter-9-noninertial-frames.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
+    <lastmod>2026-09-10T13:05:19.608Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/notes/taylor-chapter-6-calculus-of-variations.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
+    <lastmod>2026-09-10T13:05:19.608Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/notes/syllabus.html</loc>
-    <lastmod>2026-09-10T05:04:29.575Z</lastmod>
+    <lastmod>2026-09-10T13:05:19.608Z</lastmod>
   </url>
 </urlset>
