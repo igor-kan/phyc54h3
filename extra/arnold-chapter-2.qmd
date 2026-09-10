@@ -1,0 +1,18 @@
+---
+title: "Arnold Chapter 2: Investigation of the Equations of Motion"
+subtitle: "Conservative Systems and the Two-Body Problem"
+date: "2026-09-10"
+categories: [arnold, classical-mechanics, math, extra]
+format:
+  html:
+    toc: true
+    math: true
+---
+
+# Overview
+
+This chapter investigates the behavior of solutions to Newton's equations, specifically focusing on conservative systems with one degree of freedom and the two-body problem.
+
+*   **Systems with One Degree of Freedom:** The phase space is a plane $(x, y)$ where $y = \dot{x}$. The energy $E = \frac{1}{2}\dot{x}^2 + U(x)$ is conserved, leading to the phase curves being the level sets of $E(x, y)$.
+*   **Central Force Fields:** The two-body problem is reduced to a one-body problem in a central field using the conservation of momentum and angular momentum.
+*   **Kepler's Problem:** Arnold derives Kepler's laws by analyzing the effective potential $U_{\text{eff}}(r) = U(r) + \frac{M^2}{2r^2}$, highlighting the role of the centrifugal barrier.

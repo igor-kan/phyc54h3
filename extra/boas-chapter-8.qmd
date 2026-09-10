@@ -1,0 +1,17 @@
+---
+title: "Boas Chapter 8: Ordinary Differential Equations"
+subtitle: "Focus on Sec 8.1 – 8.5"
+date: "2026-09-10"
+categories: [boas, math-methods, differential-equations, extra]
+format:
+  html:
+    toc: true
+    math: true
+---
+
+# Ordinary Differential Equations
+
+**Prerequisite for Taylor Chapter 6 (Problems 6.9, 6.11, 6.12, 6.17)**
+
+*   **Concept:** Separation of variables and solving 2nd-order characteristic equations.
+*   **Application:** Used to solve the resulting Euler-Lagrange differential equations analytically.

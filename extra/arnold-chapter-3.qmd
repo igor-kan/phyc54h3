@@ -1,0 +1,23 @@
+---
+title: "Arnold Chapter 3: The Principle of Least Action"
+subtitle: "Lagrangian Mechanics on Manifolds"
+date: "2026-09-10"
+categories: [arnold, classical-mechanics, math, extra, calculus-of-variations]
+format:
+  html:
+    toc: true
+    math: true
+---
+
+# Overview
+
+Arnold transitions from the Newtonian formulation in $\mathbb{R}^n$ to the Lagrangian formulation on smooth manifolds.
+
+*   **Calculus of Variations:** The action functional is defined as $\Phi[\gamma] = \int_{t_0}^{t_1} L(t, \gamma(t), \dot{\gamma}(t)) \, dt$.
+*   **Euler-Lagrange Equations:** The condition for stationarity ($\delta \Phi = 0$) yields the Euler-Lagrange equations $\frac{d}{dt} \frac{\partial L}{\partial \dot{q}} - \frac{\partial L}{\partial q} = 0$.
+
+## §12: Extremals of Integrals on Manifolds
+
+**Advanced Corequisite for Taylor Chapter 6 (Problems 6.7, 6.16, 6.17)**
+
+Provides a differential geometric perspective on geodesics as auto-parallel curves on embedded surfaces like cylinders, spheres, and cones. The calculus of variations is generalized to coordinate-free language on manifolds.

@@ -1,0 +1,20 @@
+---
+title: "Arnold Chapter 4: Conservation Laws"
+subtitle: "Symmetries and Noether's Theorem"
+date: "2026-09-10"
+categories: [arnold, classical-mechanics, math, extra]
+format:
+  html:
+    toc: true
+    math: true
+---
+
+# Overview
+
+This chapter introduces the fundamental connection between symmetries and conservation laws (Noether's Theorem) in the Lagrangian formalism.
+
+*   **Noether's Theorem:** If the Lagrangian is invariant under a one-parameter group of diffeomorphisms, there exists a corresponding first integral (conserved quantity).
+*   **Energy, Momentum, and Angular Momentum:**
+    *   Time translation invariance $\implies$ Conservation of Energy.
+    *   Spatial translation invariance $\implies$ Conservation of Linear Momentum.
+    *   Rotational invariance $\implies$ Conservation of Angular Momentum.

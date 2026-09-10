@@ -1,0 +1,17 @@
+---
+title: "Arfken Chapter 3: Vector Analysis"
+subtitle: "Focus on Sec 3.10: Curvilinear Coordinates and Metric Tensors"
+date: "2026-09-10"
+categories: [arfken, math-methods, tensors, extra]
+format:
+  html:
+    toc: true
+    math: true
+---
+
+# Curvilinear Coordinates and Metric Tensors
+
+**Corequisite for Taylor Chapter 6 (Problem 6.13)**
+
+*   **Concept:** General framework for non-Euclidean metrics.
+*   **Application:** Setting up the rapidity metric $ds = \frac{2}{1-r^2}\sqrt{dr^2 + r^2 d\theta^2}$.

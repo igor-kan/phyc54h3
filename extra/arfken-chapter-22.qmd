@@ -1,0 +1,16 @@
+---
+title: "Arfken Chapter 22: Calculus of Variations"
+subtitle: "Focus on Sec 22.1 – 22.2: Multi-Variable Systems"
+date: "2026-09-10"
+categories: [arfken, math-methods, calculus-of-variations, extra]
+format:
+  html:
+    toc: true
+    math: true
+---
+
+# Calculus of Variations & Multi-Variable Systems
+
+**Corequisite for Taylor Chapter 6 (Problems 6.26, 6.27)**
+
+*   **Concept:** Clean tensor/vector variation notation for problems with more than two variables.

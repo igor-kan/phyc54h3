@@ -1,0 +1,17 @@
+---
+title: "RHB Chapter 10: Vector Calculus"
+subtitle: "Focus on Sec 10.1 – 10.3: Curvilinear Systems"
+date: "2026-09-10"
+categories: [rhb, math-methods, vector-calculus, extra]
+format:
+  html:
+    toc: true
+    math: true
+---
+
+# Vector Calculus & Curvilinear Systems
+
+**Prerequisite for Taylor Chapter 6 (Problems 6.1, 6.2, 6.16, 6.17)**
+
+*   **Concept:** Coordinate transformations between cylindrical, spherical, and conical metrics.
+*   **Application:** Necessary for writing down the correct path length integrals $ds$ on curved surfaces.

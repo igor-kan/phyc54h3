@@ -1,0 +1,17 @@
+---
+title: "Boas Chapter 5: Multiple Integrals"
+subtitle: "Focus on Sec 5.4: Curvilinear Coordinates & Scale Factors"
+date: "2026-09-10"
+categories: [boas, math-methods, calculus, extra]
+format:
+  html:
+    toc: true
+    math: true
+---
+
+# Curvilinear Coordinates & Scale Factors
+
+**Prerequisite for Taylor Chapter 6 (Problem 6.6)**
+
+*   **Concept:** Fast derivation of the infinitesimal distance squared $ds^2 = \sum h_i^2 dq_i^2$.
+*   **Application:** Required for constructing the complete table of arc lengths in various coordinate systems.

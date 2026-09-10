@@ -1,0 +1,18 @@
+---
+title: "Arnold Chapter 1: Experimental Facts"
+subtitle: "Newtonian Mechanics and Galilean Spacetime"
+date: "2026-09-10"
+categories: [arnold, classical-mechanics, math, extra]
+format:
+  html:
+    toc: true
+    math: true
+---
+
+# Overview
+
+Arnold begins by establishing the fundamental principles (axioms) of Newtonian mechanics in a highly abstract manner.
+
+*   **Galilean Space and Time:** Space is an affine space $\mathbb{A}^3$ associated with the vector space $\mathbb{R}^3$, equipped with a Euclidean metric. Time is a one-dimensional affine space $\mathbb{A}^1$.
+*   **Galilean Group:** The group of affine transformations of Galilean space-time that preserve time intervals and spatial distances between simultaneous events.
+*   **Newton's Equation:** $\ddot{\mathbf{x}} = \mathbf{f}(\mathbf{x}, \dot{\mathbf{x}}, t)$. The fundamental experimental fact is that the initial state (position and velocity) completely determines the motion of a mechanical system.
