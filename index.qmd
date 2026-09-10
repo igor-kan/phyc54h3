@@ -17,7 +17,7 @@ Course syllabus and analytical derivations.
 
 ::: {.course-card}
 ### ✏️ [Problem Sets & Solutions](solutions/index.qmd)
-Homework exercises and step-by-step solutions.
+Homework exercises and solutions (I will consult the professor if and when solutions can be published).
 :::
 
 ::: {.course-card}
