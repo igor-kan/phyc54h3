@@ -11,7 +11,5 @@ format:
 
 # Vector Calculus & Curvilinear Systems
 
-**Prerequisite for Taylor Chapter 6 (Problems 6.1, 6.2, 6.16, 6.17)**
-
-*   **Concept:** Coordinate transformations between cylindrical, spherical, and conical metrics.
-*   **Application:** Necessary for writing down the correct path length integrals $ds$ on curved surfaces.
+*   Coordinate transformations between cylindrical, spherical, and conical metrics.
+*   Necessary for writing down the correct path length integrals $ds$ on curved surfaces.

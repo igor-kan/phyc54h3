@@ -11,7 +11,5 @@ format:
 
 # Differentiation of Integrals (Leibniz Rule)
 
-**Prerequisite for Taylor Chapter 6**
-
-*   **Concept:** Differentiating parameterized functionals $\frac{d}{d\alpha} \int f \, dx$ through the integral sign.
-*   **Application:** Crucial for understanding how to vary an integral path with respect to a parameter $\alpha$ when deriving the Euler-Lagrange equations.
+*   Differentiating parameterized functionals $\frac{d}{d\alpha} \int f \, dx$ through the integral sign.
+*   Crucial for understanding how to vary an integral path with respect to a parameter $\alpha$ when deriving the Euler-Lagrange equations.

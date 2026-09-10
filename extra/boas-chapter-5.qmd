@@ -11,7 +11,5 @@ format:
 
 # Curvilinear Coordinates & Scale Factors
 
-**Prerequisite for Taylor Chapter 6 (Problem 6.6)**
-
-*   **Concept:** Fast derivation of the infinitesimal distance squared $ds^2 = \sum h_i^2 dq_i^2$.
-*   **Application:** Required for constructing the complete table of arc lengths in various coordinate systems.
+*   Fast derivation of the infinitesimal distance squared $ds^2 = \sum h_i^2 dq_i^2$.
+*   Required for constructing the complete table of arc lengths in various coordinate systems.

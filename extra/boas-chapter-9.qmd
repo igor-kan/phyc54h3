@@ -11,13 +11,9 @@ format:
 
 # Calculus of Variations & First Integrals (Sec 9.1 – 9.3)
 
-**Corequisite for Taylor Chapter 6 (Problems 6.10, 6.20, 6.21)**
-
-*   **Concept:** Read in parallel with Taylor. Directly covers first integrals when the integrand is independent of the dependent variable $f(y', x)$ and the Beltrami identity when it's independent of the independent variable $f(y, y')$.
+*   Read in parallel with Taylor. Directly covers first integrals when the integrand is independent of the dependent variable $f(y', x)$ and the Beltrami identity when it's independent of the independent variable $f(y, y')$.
 
 # Constrained Variation & Isoperimetric Problems (Sec 9.4)
 
-**Corequisite for Taylor Chapter 6 (Problem 6.22)**
-
-*   **Concept:** Mathematical formulation of Lagrange multipliers.
-*   **Application:** Dido's problem of maximum enclosed area with a fixed string length.
+*   Mathematical formulation of Lagrange multipliers.
+*   Dido's problem of maximum enclosed area with a fixed string length.

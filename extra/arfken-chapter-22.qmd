@@ -11,6 +11,4 @@ format:
 
 # Calculus of Variations & Multi-Variable Systems
 
-**Corequisite for Taylor Chapter 6 (Problems 6.26, 6.27)**
-
-*   **Concept:** Clean tensor/vector variation notation for problems with more than two variables.
+*   Clean tensor/vector variation notation for problems with more than two variables.

@@ -18,6 +18,4 @@ Arnold transitions from the Newtonian formulation in $\mathbb{R}^n$ to the Lagra
 
 ## §12: Extremals of Integrals on Manifolds
 
-**Advanced Corequisite for Taylor Chapter 6 (Problems 6.7, 6.16, 6.17)**
-
 Provides a differential geometric perspective on geodesics as auto-parallel curves on embedded surfaces like cylinders, spheres, and cones. The calculus of variations is generalized to coordinate-free language on manifolds.

@@ -11,18 +11,12 @@ format:
 
 # Variational Calculus & Special Cases (Sec 22.1 – 22.3)
 
-**Corequisite for Taylor Chapter 6 (Problems 6.10, 6.16, 6.20, 6.21)**
-
-*   **Concept:** Systematic algebraic classification of Euler–Lagrange first integrals.
+*   Systematic algebraic classification of Euler–Lagrange first integrals.
 
 # Constrained Variations (Sec 22.4)
 
-**Corequisite for Taylor Chapter 6 (Problem 6.22)**
-
-*   **Concept:** Handling integral equality constraints like $\int \sqrt{1 + y'^2} \, ds = l$.
+*   Handling integral equality constraints like $\int \sqrt{1 + y'^2} \, ds = l$.
 
 # Several Dependent / Independent Variables (Sec 22.5)
 
-**Corequisite for Taylor Chapter 6 (Problems 6.26, 6.27)**
-
-*   **Concept:** Formal derivation of coupled Euler–Lagrange equations and 3D straight line geodesics.
+*   Formal derivation of coupled Euler–Lagrange equations and 3D straight line geodesics.

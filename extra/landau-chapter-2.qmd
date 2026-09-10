@@ -11,6 +11,4 @@ format:
 
 # Symmetries & Conservation Laws
 
-**Corequisite for Taylor Chapter 6 (Problems 6.10, 6.16, 6.20)**
-
-*   **Concept:** Deepens the connection between coordinate independence (when the integrand $f$ is independent of a generalized coordinate $q$) and conserved quantities. Provides the profound physical reasoning behind the mathematical "first integrals" of the Euler-Lagrange equations.
+*   Deepens the connection between coordinate independence (when the integrand $f$ is independent of a generalized coordinate $q$) and conserved quantities. Provides the profound physical reasoning behind the mathematical "first integrals" of the Euler-Lagrange equations.

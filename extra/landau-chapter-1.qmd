@@ -12,7 +12,6 @@ format:
 
 # CHAPTER I: THE EQUATIONS OF MOTION
 
-
 > [!NOTE]
 > ### Phase 1 Background Theory: Foundations
 > Before diving into the calculus of variations used in the text, it is essential to understand the difference between Newtonian and Lagrangian Mechanics.
@@ -64,7 +63,6 @@ takes the least possible value. The function $L$ is called the Lagrangian of the
 > 
 > The crucial point made in the footnote is this: the derivation of the equations of motion only uses the derivative condition $\delta S = 0$. They do not depend on the "second derivative test" (which determines if it is truly a max or min). Therefore, the Lagrange equations derived assuming $\delta S=0$ are mathematically correct for finding the equations of motion whether the path is a minimum or just stationary.
 
-
 The fact that the Lagrangian contains only $q$ and $\dot{q}$, but not the higher derivatives $\ddot{q}, \dddot{q}$, etc., expresses the result already mentioned, that the mechanical state of the system is completely defined when the co-ordinates and velocities are given.
 
 Let us now derive the differential equations which solve the problem of minimising the integral $S$. For simplicity, we shall at first assume that the system has only one degree of freedom, so that only one function $q(t)$ has to be determined.
@@ -94,7 +92,6 @@ $$ \delta q(t_1) = \delta q(t_2) = 0. $$
 > Since both paths must pass through the fixed initial point:
 > $$q^{(1)} = q^{(1)} + \delta q(t_1) \implies \delta q(t_1) = 0$$
 > The same logic holds for $t_2$. Therefore, the variation 'wiggle' must go to zero at the endpoints. The endpoints are 'pinned down'.
-
 
 The change in $S$ when $q$ is replaced by $q + \delta q$ is
 $$ \int_{t_1}^{t_2} L(q + \delta q, \dot{q} + \delta \dot{q}, t) dt - \int_{t_1}^{t_2} L(q, \dot{q}, t) dt. $$
@@ -162,7 +159,6 @@ $$ \lim L = L_A + L_B. $$
 > 
 > This additivity is a fundamental result: the Lagrangian of non-interacting systems must be extensive.
 
-
 This additivity of the Lagrangian expresses the fact that the equations of motion of either of the two non-interacting parts cannot involve quantities pertaining to the other part.
 
 It is evident that the multiplication of the Lagrangian of a mechanical system by an arbitrary constant has no effect on the equations of motion. From this, it might seem, the following important property of arbitrariness can be deduced: the Lagrangians of different isolated mechanical systems may be multiplied by different arbitrary constants. The additive property, however, removes this indefiniteness, since it admits only the simultaneous multiplication of the Lagrangians of all the systems by the same constant. This corresponds to the natural arbitrariness in the choice of the unit of measurement of the Lagrangian, a matter to which we shall return in §4.
@@ -181,7 +177,6 @@ It is evident that the multiplication of the Lagrangian of a mechanical system b
 > $$k \cdot [ \text{original correct equations} ] = 0$$
 > 
 > Since $k$ is non-zero (you cannot multiply by zero), the only way the entire expression is true is if the bracketed part is zero. Physically, this means your choice of units (Joules vs. calories, or kilograms vs. pounds) doesn't change the derived physical laws derived from $L=T-V$. Units just scale the entire equation by a constant factor. Action $S$ has units of Energy $\times$ Time (or Planck's constant $h$).
-
 
 One further general remark should be made. Let us consider two functions $L'(q, \dot{q}, t)$ and $L(q, \dot{q}, t)$, differing by the total derivative with respect to time of some function $f(q, t)$ of co-ordinates and time:
 $$ L'(q, \dot{q}, t) = L(q, \dot{q}, t) + \frac{d}{dt} f(q, t). $$
@@ -222,7 +217,6 @@ i.e. they differ by a quantity which gives zero on variation, so that the condit
 > $$\text{E-L LHS of added term} = 0 - 0 = 0$$
 > 
 > This means adding a total time derivative $\frac{df}{dt}$ contributes exactly zero to the equations of motion. It doesn't change them. This proves the highlighted statement. Physically, this is akin to how potential energy is only defined up to an added constant; the difference in reference level doesn't change the derived force $F = -\nabla V$. This property is fundamental to gauge theory in electrodynamics and quantum field theory.
-
 
 ## §3. Galileo's relativity principle
 
