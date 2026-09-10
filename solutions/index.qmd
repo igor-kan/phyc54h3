@@ -1,6 +1,5 @@
 ---
 title: "Problem Sets & Solutions"
-subtitle: "Comprehensive step-by-step solutions to textbook exercises, tutorial problems, and exam review."
 listing:
   contents: ["*.qmd", "*.ipynb"]
   sort:
@@ -10,13 +9,10 @@ listing:
   categories: true
   sort-ui: [title, date, date-modified]
   filter-ui: [title, date, categories]
-  fields: [date, date-modified, title, subtitle, categories, reading-time]
+  fields: [date, title, categories, reading-time]
   field-display-names:
-    date: "Created"
-    date-modified: "Modified"
+    date: "Date"
     reading-time: "Read Time"
   page-size: 15
 page-layout: full
 ---
-
-This section features comprehensive problem statements, analytical derivations, and computational checks for the homework and textbook exercises from John R. Taylor's *Classical Mechanics*. Use the search and category filters below to locate solutions by chapter or topic.

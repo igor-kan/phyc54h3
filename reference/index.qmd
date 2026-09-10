@@ -1,6 +1,5 @@
 ---
-title: "Reference & Mathematical Tools"
-subtitle: "Formulas, physical constants, vector identities, computational methods, and course bibliography."
+title: "Reference & Math"
 listing:
   contents: "*.qmd"
   sort:
@@ -10,13 +9,10 @@ listing:
   categories: true
   sort-ui: [title, date, date-modified]
   filter-ui: [title, date, categories]
-  fields: [date, date-modified, title, subtitle, categories, reading-time]
+  fields: [date, title, categories, reading-time]
   field-display-names:
-    date: "Created"
-    date-modified: "Modified"
+    date: "Date"
     reading-time: "Read Time"
   page-size: 15
 page-layout: full
 ---
-
-Quick-reference toolkits, cheatsheets, and comprehensive bibliographies supporting analytical derivations and computational physics in PHYC54. Filter by category or sort by topic below.

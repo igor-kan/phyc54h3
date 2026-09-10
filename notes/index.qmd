@@ -1,6 +1,5 @@
 ---
-title: "PHYC54 Lecture Notes & Syllabus"
-subtitle: "Theoretical foundations, analytical dynamics, variational principles, and course documentation."
+title: "Lecture Notes & Syllabus"
 listing:
   contents: "*.qmd"
   sort:
@@ -10,13 +9,10 @@ listing:
   categories: true
   sort-ui: [title, date, date-modified]
   filter-ui: [title, date, categories]
-  fields: [date, date-modified, title, subtitle, categories, reading-time]
+  fields: [date, title, categories, reading-time]
   field-display-names:
-    date: "Created"
-    date-modified: "Modified"
+    date: "Date"
     reading-time: "Read Time"
   page-size: 15
 page-layout: full
 ---
-
-This section houses the course syllabus, analytical lecture notes, and theoretical derivations following John R. Taylor's *Classical Mechanics* for PHYC54 at UTSC. Use the search bar and sorting filters below to quickly locate specific topics, reading chapters, or formulas.

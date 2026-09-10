@@ -5,30 +5,29 @@ page-layout: full
 ---
 
 ::: {.hero-banner}
-# PHYC54H3: Advanced Classical Mechanics
+# PHYC54H3: Classical Mechanics
 ### University of Toronto Scarborough · Fall 2026
-Comprehensive course portal featuring the course syllabus, lecture derivations, textbook problem sets, interactive physics simulations, Manim animations, and mathematical reference toolkits.
 :::
 
 ::: {.card-grid}
 ::: {.course-card}
 ### 📚 [Lecture Notes & Syllabus](notes/index.qmd)
-Official course syllabus, marking scheme, and rigorous derivations of the Euler-Lagrange equations, Hamilton's canonical equations, noninertial Coriolis forces, and rigid body dynamics.
+Course syllabus and analytical derivations.
 :::
 
 ::: {.course-card}
 ### ✏️ [Problem Sets & Solutions](solutions/index.qmd)
-Full step-by-step analytical solutions to homework problem sets, tutorial exercises, and end-of-chapter problems from John R. Taylor's *Classical Mechanics*.
+Homework exercises and step-by-step solutions.
 :::
 
 ::: {.course-card}
 ### 💻 [Code & Simulations](simulations/index.qmd)
-Interactive in-browser simulations (Observable JS Canvas), high-performance symplectic Velocity Verlet integrators (C++ / Python), and Manim mathematical video animations.
+Interactive physics simulations and numerical solvers.
 :::
 
 ::: {.course-card}
 ### 📐 [Reference & Math](reference/index.qmd)
-Mathematical cheatsheets (trigonometry, hyperbolic functions, vector calculus identities), physical/astronomical constants, numerical methods, and complete course bibliography.
+Mathematical toolkits and formulas.
 :::
 :::
 
