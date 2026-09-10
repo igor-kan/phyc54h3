@@ -350,98 +350,306 @@ window.Quarto = {
 <span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
+<div id="94ccf1e6-fab5-4260-88e0-03890b717f4d" class="cell" data-execution_count="8">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np  <span class="co"># Numerical computing library for trigonometry, arrays, and vector math</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt  <span class="co"># Plotting library for rendering 2D and 3D graphs</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sphere_point(radius, theta, phi):</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">    Converts spherical coordinates (radius, colatitude theta, azimuth phi)</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">    to standard 3D Cartesian coordinates [x, y, z].</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">    Arguments:</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">        radius (float): Distance from the origin to the surface of the sphere.</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">        theta (float): Colatitude/polar angle in radians, measured from the positive z-axis [0, pi].</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">        phi (float): Azimuthal angle in radians, measured counterclockwise from the positive x-axis [0, 2*pi).</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">        np.ndarray: 1D NumPy array representing [x, y, z] position vector in Cartesian space.</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> radius <span class="op">*</span> np.sin(theta) <span class="op">*</span> np.cos(phi)  <span class="co"># Projection onto the x-axis</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> radius <span class="op">*</span> np.sin(theta) <span class="op">*</span> np.sin(phi)  <span class="co"># Projection onto the y-axis</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> radius <span class="op">*</span> np.cos(theta)                <span class="co"># Projection onto the z-axis</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array([x, y, z])</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------------------</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Physical &amp; Differential Parameters</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------------------</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">1.0</span>                <span class="co"># Radius of the sphere (arbitrary units)</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>theta_0 <span class="op">=</span> np.pi <span class="op">/</span> <span class="dv">4</span>    <span class="co"># Base point colatitude: pi/4 rad = 45 degrees from the North Pole (+z)</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>phi_0 <span class="op">=</span> np.pi <span class="op">/</span> <span class="dv">4</span>      <span class="co"># Base point azimuth: pi/4 rad = 45 degrees from the +x axis in the xy-plane</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>d_theta <span class="op">=</span> <span class="fl">0.18</span>         <span class="co"># Finite differential step size along the meridian (colatitude direction)</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>d_phi <span class="op">=</span> <span class="fl">0.22</span>           <span class="co"># Finite differential step size along the parallel (azimuthal direction)</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------------------</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Reference Coordinate Points on the Spherical Surface</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------------------</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="co"># P0: The base evaluation point r(theta_0, phi_0)</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>P0 <span class="op">=</span> sphere_point(radius<span class="op">=</span>R, theta<span class="op">=</span>theta_0, phi<span class="op">=</span>phi_0)</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="co"># P_theta: The position reached by incrementing only theta: r(theta_0 + d_theta, phi_0)</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>P_theta <span class="op">=</span> sphere_point(radius<span class="op">=</span>R, theta<span class="op">=</span>theta_0 <span class="op">+</span> d_theta, phi<span class="op">=</span>phi_0)</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="co"># P_full: The position reached by incrementing both parameters: r(theta_0 + d_theta, phi_0 + d_phi)</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>P_full <span class="op">=</span> sphere_point(radius<span class="op">=</span>R, theta<span class="op">=</span>theta_0 <span class="op">+</span> d_theta, phi<span class="op">=</span>phi_0 <span class="op">+</span> d_phi)</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------------------</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Tangent Vectors and Incremental Displacements</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------------------</span></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="co"># dr/d_theta: Unscaled partial derivative vector with respect to theta:</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="co"># dr_dtheta = [R*cos(theta)*cos(phi), R*cos(theta)*sin(phi), -R*sin(theta)]</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiplying by d_theta yields delta_r_theta, the finite displacement vector along the meridian.</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>delta_r_theta <span class="op">=</span> np.array([</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>    R <span class="op">*</span> np.cos(theta_0) <span class="op">*</span> np.cos(phi_0),</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>    R <span class="op">*</span> np.cos(theta_0) <span class="op">*</span> np.sin(phi_0),</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span>R <span class="op">*</span> np.sin(theta_0)</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>]) <span class="op">*</span> d_theta</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="co"># dr/d_phi: Unscaled partial derivative vector with respect to phi:</span></span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a><span class="co"># dr_dphi = [-R*sin(theta)*sin(phi), R*sin(theta)*cos(phi), 0]</span></span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiplying by d_phi yields delta_r_phi, the finite displacement vector along the parallel of latitude.</span></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>delta_r_phi <span class="op">=</span> np.array([</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span>R <span class="op">*</span> np.sin(theta_0) <span class="op">*</span> np.sin(phi_0),</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>    R <span class="op">*</span> np.sin(theta_0) <span class="op">*</span> np.cos(phi_0),</span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.0</span></span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>]) <span class="op">*</span> d_phi</span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a><span class="co"># delta_r_ds: The total linear vector displacement (hypotenuse of the differential triangle)</span></span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Formally: dr = (dr/d_theta)*d_theta + (dr/d_phi)*d_phi</span></span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>delta_r_ds <span class="op">=</span> delta_r_theta <span class="op">+</span> delta_r_phi</span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------------------</span></span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a><span class="co"># Magnitude Calculations for Path Element ds</span></span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------------------</span></span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 1: Direct Euclidean norm of the composite displacement vector delta_r_ds</span></span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>ds_from_vector <span class="op">=</span> np.linalg.norm(delta_r_ds)</span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 2: Analytical metric formula (retained as required):</span></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a><span class="co"># ds_val = np.sqrt((R * d_theta)**2 + (R * np.sin(theta_0) * d_phi)**2)</span></span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------------------</span></span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a><span class="co"># Figure and 3D Axis Setup</span></span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------------------</span></span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.figure creates the top-level window/canvas.</span></span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a><span class="co"># 'figsize=(9, 8)' sets the figure dimensions to 9 inches wide by 8 inches tall.</span></span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">8</span>))</span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a><span class="co"># add_subplot(111, projection='3d') creates a single subplot (grid 1x1, position 1)</span></span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a><span class="co"># and initializes a 3D Cartesian viewing box (Axes3D).</span></span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">111</span>, projection<span class="op">=</span><span class="st">'3d'</span>)</span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------------------</span></span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Wireframe Background Sphere</span></span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------------------</span></span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a><span class="co"># np.linspace generates 36 evenly spaced azimuth angles from 0 to 2*pi</span></span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> np.linspace(<span class="fl">0.0</span>, <span class="fl">2.0</span> <span class="op">*</span> np.pi, <span class="dv">36</span>)</span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a><span class="co"># np.linspace generates 18 evenly spaced colatitude angles from 0 to pi</span></span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> np.linspace(<span class="fl">0.0</span>, np.pi, <span class="dv">18</span>)</span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a><span class="co"># np.outer calculates the outer product of two vectors to produce coordinate mesh grids:</span></span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>x_sphere <span class="op">=</span> R <span class="op">*</span> np.outer(np.cos(u), np.sin(v))</span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>y_sphere <span class="op">=</span> R <span class="op">*</span> np.outer(np.sin(u), np.sin(v))</span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>z_sphere <span class="op">=</span> R <span class="op">*</span> np.outer(np.ones(np.size(u)), np.cos(v))</span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a><span class="co"># plot_wireframe draws grid lines across the sphere surface:</span></span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a><span class="co"># 'color="gray"' sets neutral wire color.</span></span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a><span class="co"># 'alpha=0.18' makes the wireframe semi-transparent so vectors inside/outside are visible.</span></span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a><span class="co"># 'linewidth=0.6' sets the thickness of the grid lines.</span></span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>ax.plot_wireframe(x_sphere, y_sphere, z_sphere, color<span class="op">=</span><span class="st">'gray'</span>, alpha<span class="op">=</span><span class="fl">0.18</span>, linewidth<span class="op">=</span><span class="fl">0.6</span>)</span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------------------</span></span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Base Point Evaluation Marker</span></span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------------------</span></span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plots the reference point P0:</span></span>
+<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a><span class="co"># '*P0' unpacks the 3D coordinates [P0_x, P0_y, P0_z].</span></span>
+<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a><span class="co"># 'color="crimson"' highlights the point.</span></span>
+<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a><span class="co"># 's=45' specifies marker area in points squared.</span></span>
+<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a><span class="co"># 'label' sets the string displayed in the figure legend.</span></span>
+<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a>ax.scatter(<span class="op">*</span>P0, color<span class="op">=</span><span class="st">'crimson'</span>, s<span class="op">=</span><span class="dv">45</span>, label<span class="op">=</span><span class="vs">r'Base Point </span><span class="dv">$</span><span class="vs">P</span><span class="kw">(</span><span class="ch">\t</span><span class="vs">heta_0, </span><span class="er">\</span><span class="vs">phi_0</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------------------</span></span>
+<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Tangent Differential Triangle Vectors</span></span>
+<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------------------</span></span>
+<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a><span class="co"># Meridional component vector:</span></span>
+<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a><span class="co"># Originates at P0, points in direction of delta_r_theta:</span></span>
+<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a>ax.quiver(</span>
+<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a>    P0[<span class="dv">0</span>], P0[<span class="dv">1</span>], P0[<span class="dv">2</span>],                      <span class="co"># Starting point coordinates (x, y, z)</span></span>
+<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a>    delta_r_theta[<span class="dv">0</span>], delta_r_theta[<span class="dv">1</span>], delta_r_theta[<span class="dv">2</span>],  <span class="co"># Vector direction components (u, v, w)</span></span>
+<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'teal'</span>,                             <span class="co"># Line color</span></span>
+<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a>    linewidth<span class="op">=</span><span class="fl">2.4</span>,                            <span class="co"># Line thickness</span></span>
+<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a>    arrow_length_ratio<span class="op">=</span><span class="fl">0.15</span>,                  <span class="co"># Relative size of arrowhead compared to vector length</span></span>
+<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="vs">r'Meridional Displacement </span><span class="dv">$\D</span><span class="vs">elta</span><span class="dv">\m</span><span class="vs">athbf{r}_</span><span class="ch">\t</span><span class="vs">heta = R</span><span class="ch">\,</span><span class="vs">d</span><span class="ch">\t</span><span class="vs">heta</span><span class="ch">\,</span><span class="er">\</span><span class="vs">hat{</span><span class="ch">\t</span><span class="vs">heta}</span><span class="dv">$</span><span class="vs">'</span></span>
+<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a><span class="co"># Azimuthal component vector:</span></span>
+<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a><span class="co"># Originates at the tip of delta_r_theta (P0 + delta_r_theta), displaying vector addition tip-to-tail:</span></span>
+<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a>ax.quiver(</span>
+<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a>    P0[<span class="dv">0</span>] <span class="op">+</span> delta_r_theta[<span class="dv">0</span>],                 <span class="co"># Shifted start x</span></span>
+<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a>    P0[<span class="dv">1</span>] <span class="op">+</span> delta_r_theta[<span class="dv">1</span>],                 <span class="co"># Shifted start y</span></span>
+<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a>    P0[<span class="dv">2</span>] <span class="op">+</span> delta_r_theta[<span class="dv">2</span>],                 <span class="co"># Shifted start z</span></span>
+<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a>    delta_r_phi[<span class="dv">0</span>], delta_r_phi[<span class="dv">1</span>], delta_r_phi[<span class="dv">2</span>],  <span class="co"># Direction components along parallel</span></span>
+<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'darkorange'</span>,</span>
+<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a>    linewidth<span class="op">=</span><span class="fl">2.4</span>,</span>
+<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a>    arrow_length_ratio<span class="op">=</span><span class="fl">0.15</span>,</span>
+<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="vs">r'Azimuthal Displacement </span><span class="dv">$\D</span><span class="vs">elta</span><span class="dv">\m</span><span class="vs">athbf{r}_</span><span class="er">\</span><span class="vs">phi = R</span><span class="dv">\s</span><span class="vs">in</span><span class="ch">\t</span><span class="vs">heta</span><span class="ch">\,</span><span class="vs">d</span><span class="er">\</span><span class="vs">phi</span><span class="ch">\,</span><span class="er">\</span><span class="vs">hat{</span><span class="er">\</span><span class="vs">phi}</span><span class="dv">$</span><span class="vs">'</span></span>
+<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a><span class="co"># Total displacement vector (hypotenuse):</span></span>
+<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a><span class="co"># Originates at P0 and points directly to P0 + delta_r_ds:</span></span>
+<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a>ax.quiver(</span>
+<span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a>    P0[<span class="dv">0</span>], P0[<span class="dv">1</span>], P0[<span class="dv">2</span>],                      <span class="co"># Starting point coordinates</span></span>
+<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a>    delta_r_ds[<span class="dv">0</span>], delta_r_ds[<span class="dv">1</span>], delta_r_ds[<span class="dv">2</span>],  <span class="co"># Combined vector components</span></span>
+<span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'crimson'</span>,</span>
+<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a>    linewidth<span class="op">=</span><span class="fl">3.2</span>,</span>
+<span id="cb4-152"><a href="#cb4-152" aria-hidden="true" tabindex="-1"></a>    arrow_length_ratio<span class="op">=</span><span class="fl">0.12</span>,</span>
+<span id="cb4-153"><a href="#cb4-153" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="vs">rf'Hypotenuse </span><span class="dv">$</span><span class="vs">ds = </span><span class="ch">\|</span><span class="dv">\D</span><span class="vs">elta</span><span class="dv">\m</span><span class="vs">athbf</span><span class="ch">{{</span><span class="vs">r</span><span class="ch">}}\|</span><span class="vs"> = </span><span class="sc">{</span>ds_from_vector<span class="sc">:.3f}</span><span class="dv">$</span><span class="vs">'</span></span>
+<span id="cb4-154"><a href="#cb4-154" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-155"><a href="#cb4-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-156"><a href="#cb4-156" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------------------</span></span>
+<span id="cb4-157"><a href="#cb4-157" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. True Surface Arc on the Sphere</span></span>
+<span id="cb4-158"><a href="#cb4-158" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------------------</span></span>
+<span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameter t sweeps linearly from 0 to 1 in 30 increments</span></span>
+<span id="cb4-160"><a href="#cb4-160" aria-hidden="true" tabindex="-1"></a>t_arc <span class="op">=</span> np.linspace(<span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="dv">30</span>)</span>
+<span id="cb4-161"><a href="#cb4-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate the exact spherical positions along the parametric path theta(t), phi(t)</span></span>
+<span id="cb4-163"><a href="#cb4-163" aria-hidden="true" tabindex="-1"></a>surface_arc <span class="op">=</span> np.array([</span>
+<span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a>    sphere_point(R, theta_0 <span class="op">+</span> t <span class="op">*</span> d_theta, phi_0 <span class="op">+</span> t <span class="op">*</span> d_phi) <span class="cf">for</span> t <span class="kw">in</span> t_arc</span>
+<span id="cb4-165"><a href="#cb4-165" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb4-166"><a href="#cb4-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-167"><a href="#cb4-167" aria-hidden="true" tabindex="-1"></a><span class="co"># plot renders the curved path lying strictly on the sphere surface:</span></span>
+<span id="cb4-168"><a href="#cb4-168" aria-hidden="true" tabindex="-1"></a><span class="co"># '--' specifies a dashed line style to distinguish the surface path from the straight tangent vector ds.</span></span>
+<span id="cb4-169"><a href="#cb4-169" aria-hidden="true" tabindex="-1"></a>ax.plot(</span>
+<span id="cb4-170"><a href="#cb4-170" aria-hidden="true" tabindex="-1"></a>    surface_arc[:, <span class="dv">0</span>], surface_arc[:, <span class="dv">1</span>], surface_arc[:, <span class="dv">2</span>],</span>
+<span id="cb4-171"><a href="#cb4-171" aria-hidden="true" tabindex="-1"></a>    linestyle<span class="op">=</span><span class="st">'--'</span>,</span>
+<span id="cb4-172"><a href="#cb4-172" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'purple'</span>,</span>
+<span id="cb4-173"><a href="#cb4-173" aria-hidden="true" tabindex="-1"></a>    linewidth<span class="op">=</span><span class="fl">2.0</span>,</span>
+<span id="cb4-174"><a href="#cb4-174" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="st">'True Path on Curved Sphere Surface'</span></span>
+<span id="cb4-175"><a href="#cb4-175" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-176"><a href="#cb4-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-177"><a href="#cb4-177" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------------------</span></span>
+<span id="cb4-178"><a href="#cb4-178" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Scene Formatting, Viewing Angle &amp; Legend</span></span>
+<span id="cb4-179"><a href="#cb4-179" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------------------------------------------------</span></span>
+<span id="cb4-180"><a href="#cb4-180" aria-hidden="true" tabindex="-1"></a><span class="co"># set_box_aspect([1, 1, 1]) forces equal aspect ratio across x, y, and z axes</span></span>
+<span id="cb4-181"><a href="#cb4-181" aria-hidden="true" tabindex="-1"></a><span class="co"># to prevent the sphere from appearing squashed or distorted into an ellipsoid.</span></span>
+<span id="cb4-182"><a href="#cb4-182" aria-hidden="true" tabindex="-1"></a>ax.set_box_aspect([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>])</span>
+<span id="cb4-183"><a href="#cb4-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-184"><a href="#cb4-184" aria-hidden="true" tabindex="-1"></a><span class="co"># set_xlim/ylim/zlim enforce symmetrical bounding box dimensions around the unit sphere</span></span>
+<span id="cb4-185"><a href="#cb4-185" aria-hidden="true" tabindex="-1"></a>ax.set_xlim([<span class="op">-</span><span class="fl">1.1</span>, <span class="fl">1.1</span>])</span>
+<span id="cb4-186"><a href="#cb4-186" aria-hidden="true" tabindex="-1"></a>ax.set_ylim([<span class="op">-</span><span class="fl">1.1</span>, <span class="fl">1.1</span>])</span>
+<span id="cb4-187"><a href="#cb4-187" aria-hidden="true" tabindex="-1"></a>ax.set_zlim([<span class="op">-</span><span class="fl">1.1</span>, <span class="fl">1.1</span>])</span>
+<span id="cb4-188"><a href="#cb4-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-189"><a href="#cb4-189" aria-hidden="true" tabindex="-1"></a><span class="co"># view_init adjusts the virtual camera perspective:</span></span>
+<span id="cb4-190"><a href="#cb4-190" aria-hidden="true" tabindex="-1"></a><span class="co"># 'elev=28' sets the elevation angle 28 degrees above the xy-plane.</span></span>
+<span id="cb4-191"><a href="#cb4-191" aria-hidden="true" tabindex="-1"></a><span class="co"># 'azim=40' sets the azimuthal rotation 40 degrees counterclockwise from the x-axis.</span></span>
+<span id="cb4-192"><a href="#cb4-192" aria-hidden="true" tabindex="-1"></a>ax.view_init(elev<span class="op">=</span><span class="dv">28</span>, azim<span class="op">=</span><span class="dv">40</span>)</span>
+<span id="cb4-193"><a href="#cb4-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-194"><a href="#cb4-194" aria-hidden="true" tabindex="-1"></a><span class="co"># set_title sets the top label of the axes, with 'fontsize=13' specifying text height in points</span></span>
+<span id="cb4-195"><a href="#cb4-195" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="vs">r'Differential Path Element </span><span class="dv">$</span><span class="vs">ds</span><span class="dv">$</span><span class="vs"> on a 2-Sphere </span><span class="kw">(</span><span class="dv">$</span><span class="vs">S</span><span class="dv">^</span><span class="vs">2</span><span class="dv">$</span><span class="kw">)</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">13</span>)</span>
+<span id="cb4-196"><a href="#cb4-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-197"><a href="#cb4-197" aria-hidden="true" tabindex="-1"></a><span class="co"># legend generates the explanatory visual box:</span></span>
+<span id="cb4-198"><a href="#cb4-198" aria-hidden="true" tabindex="-1"></a><span class="co"># 'loc="upper left"' anchors the legend box in the top-left quadrant of the plot canvas.</span></span>
+<span id="cb4-199"><a href="#cb4-199" aria-hidden="true" tabindex="-1"></a><span class="co"># 'frameon=True' renders a background rectangle behind the text for contrast.</span></span>
+<span id="cb4-200"><a href="#cb4-200" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="st">'upper left'</span>, frameon<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-201"><a href="#cb4-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-202"><a href="#cb4-202" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.show renders the complete OpenGL/interactive canvas to the screen</span></span>
+<span id="cb4-203"><a href="#cb4-203" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
 <div id="734dd683-09b4-4631-88d4-1ff3367db3a6" class="cell" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib tk</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>theta_0, phi_0 <span class="op">=</span> np.pi <span class="op">/</span> <span class="dv">4</span>, np.pi <span class="op">/</span> <span class="dv">4</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>d_theta, d_phi <span class="op">=</span> <span class="fl">0.18</span>, <span class="fl">0.22</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sphere_point(r, theta, phi):</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array([r <span class="op">*</span> np.sin(theta) <span class="op">*</span> np.cos(phi),</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                     r <span class="op">*</span> np.sin(theta) <span class="op">*</span> np.sin(phi),</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                     r <span class="op">*</span> np.cos(theta)])</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>P0 <span class="op">=</span> sphere_point(R, theta_0, phi_0)</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>v_theta <span class="op">=</span> np.array([R<span class="op">*</span>np.cos(theta_0)<span class="op">*</span>np.cos(phi_0), R<span class="op">*</span>np.cos(theta_0)<span class="op">*</span>np.sin(phi_0), <span class="op">-</span>R<span class="op">*</span>np.sin(theta_0)]) <span class="op">*</span> d_theta</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>v_phi <span class="op">=</span> np.array([<span class="op">-</span>R<span class="op">*</span>np.sin(theta_0)<span class="op">*</span>np.sin(phi_0), R<span class="op">*</span>np.sin(theta_0)<span class="op">*</span>np.cos(phi_0), <span class="fl">0.0</span>]) <span class="op">*</span> d_phi</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>v_ds <span class="op">=</span> v_theta <span class="op">+</span> v_phi</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">6</span>))</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">111</span>, projection<span class="op">=</span><span class="st">'3d'</span>)</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Wireframe Sphere</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>u, v <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">30</span>), np.linspace(<span class="dv">0</span>, np.pi, <span class="dv">15</span>)</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>ax.plot_wireframe(R<span class="op">*</span>np.outer(np.cos(u), np.sin(v)),</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>                  R<span class="op">*</span>np.outer(np.sin(u), np.sin(v)),</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>                  R<span class="op">*</span>np.outer(np.ones(np.size(u)), np.cos(v)),</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>                  color<span class="op">=</span><span class="st">'gray'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, linewidth<span class="op">=</span><span class="fl">0.6</span>)</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Differential vectors</span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>ax.scatter(<span class="op">*</span>P0, color<span class="op">=</span><span class="st">'crimson'</span>, s<span class="op">=</span><span class="dv">40</span>, label<span class="op">=</span><span class="vs">r'</span><span class="dv">$</span><span class="vs">P</span><span class="kw">(</span><span class="ch">\t</span><span class="vs">heta, </span><span class="er">\</span><span class="vs">phi</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>ax.quiver(<span class="op">*</span>P0, <span class="op">*</span>v_theta, color<span class="op">=</span><span class="st">'teal'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="vs">r'</span><span class="dv">$</span><span class="vs">R</span><span class="ch">\,</span><span class="vs">d</span><span class="ch">\t</span><span class="vs">heta</span><span class="ch">\,</span><span class="er">\</span><span class="vs">hat{</span><span class="ch">\t</span><span class="vs">heta}</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>ax.quiver(<span class="op">*</span>(P0 <span class="op">+</span> v_theta), <span class="op">*</span>v_phi, color<span class="op">=</span><span class="st">'darkorange'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="vs">r'</span><span class="dv">$</span><span class="vs">R</span><span class="dv">\s</span><span class="vs">in</span><span class="ch">\t</span><span class="vs">heta</span><span class="ch">\,</span><span class="vs">d</span><span class="er">\</span><span class="vs">phi</span><span class="ch">\,</span><span class="er">\</span><span class="vs">hat{</span><span class="er">\</span><span class="vs">phi}</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>ax.quiver(<span class="op">*</span>P0, <span class="op">*</span>v_ds, color<span class="op">=</span><span class="st">'crimson'</span>, linewidth<span class="op">=</span><span class="dv">3</span>, label<span class="op">=</span><span class="vs">r'</span><span class="dv">$</span><span class="vs">ds</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>ax.set_box_aspect([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>])</span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="st">'upper left'</span>)</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib tk</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>theta_0, phi_0 <span class="op">=</span> np.pi <span class="op">/</span> <span class="dv">4</span>, np.pi <span class="op">/</span> <span class="dv">4</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>d_theta, d_phi <span class="op">=</span> <span class="fl">0.18</span>, <span class="fl">0.22</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sphere_point(r, theta, phi):</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array([r <span class="op">*</span> np.sin(theta) <span class="op">*</span> np.cos(phi),</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                     r <span class="op">*</span> np.sin(theta) <span class="op">*</span> np.sin(phi),</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                     r <span class="op">*</span> np.cos(theta)])</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>P0 <span class="op">=</span> sphere_point(R, theta_0, phi_0)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>v_theta <span class="op">=</span> np.array([R<span class="op">*</span>np.cos(theta_0)<span class="op">*</span>np.cos(phi_0), R<span class="op">*</span>np.cos(theta_0)<span class="op">*</span>np.sin(phi_0), <span class="op">-</span>R<span class="op">*</span>np.sin(theta_0)]) <span class="op">*</span> d_theta</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>v_phi <span class="op">=</span> np.array([<span class="op">-</span>R<span class="op">*</span>np.sin(theta_0)<span class="op">*</span>np.sin(phi_0), R<span class="op">*</span>np.sin(theta_0)<span class="op">*</span>np.cos(phi_0), <span class="fl">0.0</span>]) <span class="op">*</span> d_phi</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>v_ds <span class="op">=</span> v_theta <span class="op">+</span> v_phi</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">6</span>))</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">111</span>, projection<span class="op">=</span><span class="st">'3d'</span>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Wireframe Sphere</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>u, v <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">30</span>), np.linspace(<span class="dv">0</span>, np.pi, <span class="dv">15</span>)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>ax.plot_wireframe(R<span class="op">*</span>np.outer(np.cos(u), np.sin(v)),</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>                  R<span class="op">*</span>np.outer(np.sin(u), np.sin(v)),</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>                  R<span class="op">*</span>np.outer(np.ones(np.size(u)), np.cos(v)),</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>                  color<span class="op">=</span><span class="st">'gray'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, linewidth<span class="op">=</span><span class="fl">0.6</span>)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Differential vectors</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>ax.scatter(<span class="op">*</span>P0, color<span class="op">=</span><span class="st">'crimson'</span>, s<span class="op">=</span><span class="dv">40</span>, label<span class="op">=</span><span class="vs">r'</span><span class="dv">$</span><span class="vs">P</span><span class="kw">(</span><span class="ch">\t</span><span class="vs">heta, </span><span class="er">\</span><span class="vs">phi</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>ax.quiver(<span class="op">*</span>P0, <span class="op">*</span>v_theta, color<span class="op">=</span><span class="st">'teal'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="vs">r'</span><span class="dv">$</span><span class="vs">R</span><span class="ch">\,</span><span class="vs">d</span><span class="ch">\t</span><span class="vs">heta</span><span class="ch">\,</span><span class="er">\</span><span class="vs">hat{</span><span class="ch">\t</span><span class="vs">heta}</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>ax.quiver(<span class="op">*</span>(P0 <span class="op">+</span> v_theta), <span class="op">*</span>v_phi, color<span class="op">=</span><span class="st">'darkorange'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="vs">r'</span><span class="dv">$</span><span class="vs">R</span><span class="dv">\s</span><span class="vs">in</span><span class="ch">\t</span><span class="vs">heta</span><span class="ch">\,</span><span class="vs">d</span><span class="er">\</span><span class="vs">phi</span><span class="ch">\,</span><span class="er">\</span><span class="vs">hat{</span><span class="er">\</span><span class="vs">phi}</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>ax.quiver(<span class="op">*</span>P0, <span class="op">*</span>v_ds, color<span class="op">=</span><span class="st">'crimson'</span>, linewidth<span class="op">=</span><span class="dv">3</span>, label<span class="op">=</span><span class="vs">r'</span><span class="dv">$</span><span class="vs">ds</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>ax.set_box_aspect([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>])</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="st">'upper left'</span>)</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="ff400c50-f598-411c-b705-7081b9ec6865" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install if not already present:</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># !{sys.executable} -m pip install plotly</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>theta_0, phi_0 <span class="op">=</span> np.pi <span class="op">/</span> <span class="dv">4</span>, np.pi <span class="op">/</span> <span class="dv">4</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>d_theta, d_phi <span class="op">=</span> <span class="fl">0.18</span>, <span class="fl">0.22</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Sphere wireframe surface</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>theta_grid, phi_grid <span class="op">=</span> np.mgrid[<span class="dv">0</span>:np.pi:<span class="ot">30j</span>, <span class="dv">0</span>:<span class="dv">2</span><span class="op">*</span>np.pi:<span class="ot">60j</span>]</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>x_s <span class="op">=</span> R <span class="op">*</span> np.sin(theta_grid) <span class="op">*</span> np.cos(phi_grid)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>y_s <span class="op">=</span> R <span class="op">*</span> np.sin(theta_grid) <span class="op">*</span> np.sin(phi_grid)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>z_s <span class="op">=</span> R <span class="op">*</span> np.cos(theta_grid)</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Key points</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>P0 <span class="op">=</span> [R <span class="op">*</span> np.sin(theta_0) <span class="op">*</span> np.cos(phi_0),</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>      R <span class="op">*</span> np.sin(theta_0) <span class="op">*</span> np.sin(phi_0),</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>      R <span class="op">*</span> np.cos(theta_0)]</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>P_theta <span class="op">=</span> [R <span class="op">*</span> np.sin(theta_0 <span class="op">+</span> d_theta) <span class="op">*</span> np.cos(phi_0),</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>           R <span class="op">*</span> np.sin(theta_0 <span class="op">+</span> d_theta) <span class="op">*</span> np.sin(phi_0),</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>           R <span class="op">*</span> np.cos(theta_0 <span class="op">+</span> d_theta)]</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>P_final <span class="op">=</span> [R <span class="op">*</span> np.sin(theta_0 <span class="op">+</span> d_theta) <span class="op">*</span> np.cos(phi_0 <span class="op">+</span> d_phi),</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>           R <span class="op">*</span> np.sin(theta_0 <span class="op">+</span> d_theta) <span class="op">*</span> np.sin(phi_0 <span class="op">+</span> d_phi),</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>           R <span class="op">*</span> np.cos(theta_0 <span class="op">+</span> d_theta)]</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure()</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Sphere Surface</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Surface(x<span class="op">=</span>x_s, y<span class="op">=</span>y_s, z<span class="op">=</span>z_s, opacity<span class="op">=</span><span class="fl">0.25</span>, showscale<span class="op">=</span><span class="va">False</span>, colorscale<span class="op">=</span><span class="st">'Greys'</span>))</span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Vector legs &amp; ds Hypotenuse</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Scatter3d(x<span class="op">=</span>[P0[<span class="dv">0</span>], P_theta[<span class="dv">0</span>]], y<span class="op">=</span>[P0[<span class="dv">1</span>], P_theta[<span class="dv">1</span>]], z<span class="op">=</span>[P0[<span class="dv">2</span>], P_theta[<span class="dv">2</span>]],</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>                           mode<span class="op">=</span><span class="st">'lines'</span>, line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">'teal'</span>, width<span class="op">=</span><span class="dv">6</span>), name<span class="op">=</span><span class="st">'R dθ (Meridian)'</span>))</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Scatter3d(x<span class="op">=</span>[P_theta[<span class="dv">0</span>], P_final[<span class="dv">0</span>]], y<span class="op">=</span>[P_theta[<span class="dv">1</span>], P_final[<span class="dv">1</span>]], z<span class="op">=</span>[P_theta[<span class="dv">2</span>], P_final[<span class="dv">2</span>]],</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>                           mode<span class="op">=</span><span class="st">'lines'</span>, line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">'darkorange'</span>, width<span class="op">=</span><span class="dv">6</span>), name<span class="op">=</span><span class="st">'R sin(θ) dφ (Parallel)'</span>))</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Scatter3d(x<span class="op">=</span>[P0[<span class="dv">0</span>], P_final[<span class="dv">0</span>]], y<span class="op">=</span>[P0[<span class="dv">1</span>], P_final[<span class="dv">1</span>]], z<span class="op">=</span>[P0[<span class="dv">2</span>], P_final[<span class="dv">2</span>]],</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>                           mode<span class="op">=</span><span class="st">'lines'</span>, line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">'crimson'</span>, width<span class="op">=</span><span class="dv">8</span>), name<span class="op">=</span><span class="st">'ds (Hypotenuse)'</span>))</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Base Point</span></span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Scatter3d(x<span class="op">=</span>[P0[<span class="dv">0</span>]], y<span class="op">=</span>[P0[<span class="dv">1</span>]], z<span class="op">=</span>[P0[<span class="dv">2</span>]],</span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>                           mode<span class="op">=</span><span class="st">'markers'</span>, marker<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">5</span>, color<span class="op">=</span><span class="st">'black'</span>), name<span class="op">=</span><span class="st">'P(θ, φ)'</span>))</span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>fig.update_layout(scene<span class="op">=</span><span class="bu">dict</span>(aspectmode<span class="op">=</span><span class="st">'cube'</span>), margin<span class="op">=</span><span class="bu">dict</span>(l<span class="op">=</span><span class="dv">0</span>, r<span class="op">=</span><span class="dv">0</span>, b<span class="op">=</span><span class="dv">0</span>, t<span class="op">=</span><span class="dv">30</span>), height<span class="op">=</span><span class="dv">650</span>)</span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install if not already present:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># !{sys.executable} -m pip install plotly</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>theta_0, phi_0 <span class="op">=</span> np.pi <span class="op">/</span> <span class="dv">4</span>, np.pi <span class="op">/</span> <span class="dv">4</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>d_theta, d_phi <span class="op">=</span> <span class="fl">0.18</span>, <span class="fl">0.22</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Sphere wireframe surface</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>theta_grid, phi_grid <span class="op">=</span> np.mgrid[<span class="dv">0</span>:np.pi:<span class="ot">30j</span>, <span class="dv">0</span>:<span class="dv">2</span><span class="op">*</span>np.pi:<span class="ot">60j</span>]</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>x_s <span class="op">=</span> R <span class="op">*</span> np.sin(theta_grid) <span class="op">*</span> np.cos(phi_grid)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>y_s <span class="op">=</span> R <span class="op">*</span> np.sin(theta_grid) <span class="op">*</span> np.sin(phi_grid)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>z_s <span class="op">=</span> R <span class="op">*</span> np.cos(theta_grid)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Key points</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>P0 <span class="op">=</span> [R <span class="op">*</span> np.sin(theta_0) <span class="op">*</span> np.cos(phi_0),</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>      R <span class="op">*</span> np.sin(theta_0) <span class="op">*</span> np.sin(phi_0),</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>      R <span class="op">*</span> np.cos(theta_0)]</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>P_theta <span class="op">=</span> [R <span class="op">*</span> np.sin(theta_0 <span class="op">+</span> d_theta) <span class="op">*</span> np.cos(phi_0),</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>           R <span class="op">*</span> np.sin(theta_0 <span class="op">+</span> d_theta) <span class="op">*</span> np.sin(phi_0),</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>           R <span class="op">*</span> np.cos(theta_0 <span class="op">+</span> d_theta)]</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>P_final <span class="op">=</span> [R <span class="op">*</span> np.sin(theta_0 <span class="op">+</span> d_theta) <span class="op">*</span> np.cos(phi_0 <span class="op">+</span> d_phi),</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>           R <span class="op">*</span> np.sin(theta_0 <span class="op">+</span> d_theta) <span class="op">*</span> np.sin(phi_0 <span class="op">+</span> d_phi),</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>           R <span class="op">*</span> np.cos(theta_0 <span class="op">+</span> d_theta)]</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure()</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Sphere Surface</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Surface(x<span class="op">=</span>x_s, y<span class="op">=</span>y_s, z<span class="op">=</span>z_s, opacity<span class="op">=</span><span class="fl">0.25</span>, showscale<span class="op">=</span><span class="va">False</span>, colorscale<span class="op">=</span><span class="st">'Greys'</span>))</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Vector legs &amp; ds Hypotenuse</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Scatter3d(x<span class="op">=</span>[P0[<span class="dv">0</span>], P_theta[<span class="dv">0</span>]], y<span class="op">=</span>[P0[<span class="dv">1</span>], P_theta[<span class="dv">1</span>]], z<span class="op">=</span>[P0[<span class="dv">2</span>], P_theta[<span class="dv">2</span>]],</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>                           mode<span class="op">=</span><span class="st">'lines'</span>, line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">'teal'</span>, width<span class="op">=</span><span class="dv">6</span>), name<span class="op">=</span><span class="st">'R dθ (Meridian)'</span>))</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Scatter3d(x<span class="op">=</span>[P_theta[<span class="dv">0</span>], P_final[<span class="dv">0</span>]], y<span class="op">=</span>[P_theta[<span class="dv">1</span>], P_final[<span class="dv">1</span>]], z<span class="op">=</span>[P_theta[<span class="dv">2</span>], P_final[<span class="dv">2</span>]],</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>                           mode<span class="op">=</span><span class="st">'lines'</span>, line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">'darkorange'</span>, width<span class="op">=</span><span class="dv">6</span>), name<span class="op">=</span><span class="st">'R sin(θ) dφ (Parallel)'</span>))</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Scatter3d(x<span class="op">=</span>[P0[<span class="dv">0</span>], P_final[<span class="dv">0</span>]], y<span class="op">=</span>[P0[<span class="dv">1</span>], P_final[<span class="dv">1</span>]], z<span class="op">=</span>[P0[<span class="dv">2</span>], P_final[<span class="dv">2</span>]],</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>                           mode<span class="op">=</span><span class="st">'lines'</span>, line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">'crimson'</span>, width<span class="op">=</span><span class="dv">8</span>), name<span class="op">=</span><span class="st">'ds (Hypotenuse)'</span>))</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Base Point</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Scatter3d(x<span class="op">=</span>[P0[<span class="dv">0</span>]], y<span class="op">=</span>[P0[<span class="dv">1</span>]], z<span class="op">=</span>[P0[<span class="dv">2</span>]],</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>                           mode<span class="op">=</span><span class="st">'markers'</span>, marker<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">5</span>, color<span class="op">=</span><span class="st">'black'</span>), name<span class="op">=</span><span class="st">'P(θ, φ)'</span>))</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>fig.update_layout(scene<span class="op">=</span><span class="bu">dict</span>(aspectmode<span class="op">=</span><span class="st">'cube'</span>), margin<span class="op">=</span><span class="bu">dict</span>(l<span class="op">=</span><span class="dv">0</span>, r<span class="op">=</span><span class="dv">0</span>, b<span class="op">=</span><span class="dv">0</span>, t<span class="op">=</span><span class="dv">30</span>), height<span class="op">=</span><span class="dv">650</span>)</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
