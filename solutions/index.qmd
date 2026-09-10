@@ -2,7 +2,7 @@
 title: "Problem Sets & Solutions"
 subtitle: "Comprehensive step-by-step solutions to textbook exercises, tutorial problems, and exam review."
 listing:
-  contents: "*.qmd"
+  contents: ["*.qmd", "*.ipynb"]
   sort:
     - "date desc"
     - "title asc"
