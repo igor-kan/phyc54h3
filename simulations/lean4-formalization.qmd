@@ -3,6 +3,7 @@ title: "Formalizing Calculus of Variations in Lean 4"
 date: "2026-09-08"
 description: "An overview of how the principles of stationary action and the Euler-Lagrange equations are formally verified in the Lean 4 theorem prover using mathlib."
 categories: [Formal Verification, Lean 4, Calculus of Variations, Code]
+draft: true
 ---
 
 # Introduction to Lean 4 and Formal Verification

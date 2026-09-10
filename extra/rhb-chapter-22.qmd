@@ -7,6 +7,7 @@ format:
   html:
     toc: true
     math: true
+draft: true
 ---
 
 # Variational Calculus & Special Cases (Sec 22.1 – 22.3)

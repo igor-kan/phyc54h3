@@ -6,6 +6,7 @@ categories: ["Lagrangian Mechanics", "Bifurcations", "Phase Portrait"]
 format:
   html:
     math: true
+draft: true
 ---
 
 ## Problem Statement

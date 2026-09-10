@@ -10,6 +10,7 @@ format:
     math: true
     code-fold: true
 jupyter: python3
+draft: true
 ---
 
 # Lagrange's Equations: Problem Solutions

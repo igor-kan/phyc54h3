@@ -8,6 +8,7 @@ format:
   html:
     toc: true
     math: true
+draft: true
 ---
 
 # Major Physics and Engineering Applications of Cycloids

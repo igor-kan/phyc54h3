@@ -9,6 +9,7 @@ format:
     toc: true
     code-fold: show
     code-tools: true
+draft: true
 ---
 
 # Visualizing Classical Mechanics with Manim

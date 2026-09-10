@@ -1,4 +1,16 @@
----
+import re
+
+filepath = '/home/igorkan/repos/phyc54h3/solutions/taylor-chapter-6-problems.qmd'
+
+# Read the file
+with open(filepath, 'r') as f:
+    content = f.read()
+
+# Instead of doing complex string replacement, let's just write the exact file content requested by the user.
+# The user wants "a qmd article with probelm statemesn fo the ch 6 problem s taylro for phyc54"
+# I will use the exact text they provided to regenerate the .qmd.
+
+new_content = r"""---
 title: "Taylor Chapter 6 Problems: Calculus of Variations"
 subtitle: "Step-by-step analytical solutions to Chapter 6 exercises from John R. Taylor's Classical Mechanics."
 date: "2026-09-09"
@@ -8,7 +20,6 @@ format:
   html:
     toc: true
     math: true
-draft: true
 ---
 
 # Calculus of Variations: Problem Statements
@@ -16,7 +27,7 @@ draft: true
 Below are the exact problem statements from Chapter 6 of Taylor's *Classical Mechanics*.
 Stars indicate the approximate level of difficulty, from easiest (*) to most difficult (***).
 
-For interactive visual solutions and code, please see the [Jupyter Notebook Version](taylor-chapter-6-interactive.ipynb).
+For interactive visual solutions and code, please see the [Jupyter Notebook Version](taylor-chapter-6-problems.ipynb).
 
 ## SECTION 6.1 Two Examples
 
@@ -79,3 +90,8 @@ if $(\theta_1, \phi_1)$ and $(\theta_2, \phi_2)$ specify the two points and we a
 **6.26 \*\*** Give in detail the argument that leads from the stationary property of the integral to the two Euler—Lagrange equations.
 
 **6.27 \*\*** Prove that the shortest path between two points in three dimensions is a straight line. Write the path in the parametric form $x = x(u), y = y(u)$, and $z = z(u)$ and then use the three Euler—Lagrange equations.
+"""
+
+with open(filepath, 'w') as f:
+    f.write(new_content)
+

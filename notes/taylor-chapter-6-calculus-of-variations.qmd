@@ -10,6 +10,7 @@ format:
     math: true
     code-fold: true
 jupyter: python3
+draft: true
 ---
 
 # Introduction to the Calculus of Variations
