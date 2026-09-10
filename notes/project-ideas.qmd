@@ -1,0 +1,98 @@
+---
+title: "PHYC54 Project Ideas: Advanced Analytical & Computational Mechanics"
+subtitle: "Semester research project blueprints in symplectic geometric mechanics, non-inertial continuum dynamics, and non-holonomic variational systems."
+date: "2026-09-10"
+categories: ["Classical Mechanics", "PHYC54", "Research", "Symplectic Geometry", "Rigid Bodies", "Variational Principles"]
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    math: true
+    code-fold: false
+---
+
+## 🎯 Project Selection Framework & Evaluation Criteria
+
+Every project proposed below meets five mandatory criteria designed to build deep, enduring expertise in the age of generative AI:
+
+1. **Semester Feasibility:** Tailored to be independently built, mathematically derived, implemented, and verified within a 12-week undergraduate semester by a single motivated student.
+2. **Curricular Grounding:** Deeply integrated with the PHYC54 syllabus following John R. Taylor's *Classical Mechanics*—specifically touching the calculus of variations (Ch 6), generalized coordinates & constraints (Ch 7), non-inertial Coriolis/centrifugal dynamics (Ch 9), rigid body rotational dynamics & Euler equations (Ch 10), or Hamiltonian phase-space flows (Ch 13).
+3. **AI Automation Resilience:** Tackles non-linear mathematical structures where standard LLMs fail: preservation of symplectic 2-forms, non-holonomic constraint manifolds where variational stationarity diverges from physical dynamics, coordinate singularities in Euler angles (gimbal lock), and chaotic sensitivity to initial conditions.
+4. **Academic Leverage (Impressing Faculty):** Formulated to demonstrate advanced theoretical maturity that stands out to professors (e.g., Prof. Johann Bayer) and establishes strong candidacy for academic research positions, NSERC USRA grants, and physics graduate admissions.
+5. **Industry & Professional Value:** Imparts direct, high-value competency in geometric control, aerospace attitude guidance, robotic kinematics, and numerical simulation needed in autonomous vehicles, satellite mission design, defense, and quantitative modeling.
+
+---
+
+## 🌀 Project Option 1: Lie-Poisson Symplectic Integrator for the Dzhanibekov Effect & Asymmetric Top Chaos
+
+### 1. Context & Motivation (Taylor Chapter 10)
+In rigid body mechanics, Euler's equations for torque-free rotation along principal axes $(I_1 < I_2 < I_3)$ are:
+$$\begin{aligned}
+I_1 \dot{\omega}_1 &= (I_2 - I_3)\omega_2 \omega_3 \\
+I_2 \dot{\omega}_2 &= (I_3 - I_1)\omega_3 \omega_1 \\
+I_3 \dot{\omega}_3 &= (I_1 - I_2)\omega_1 \omega_2
+\end{aligned}$$
+Taylor §10.8 proves that rotation about the major ($I_3$) and minor ($I_1$) principal axes is stable, while rotation about the intermediate axis ($I_2$) is violently unstable—known empirically as the **Dzhanibekov Effect** (or tennis racket theorem). 
+
+Standard numerical integrators (Runge-Kutta, Euler) fail over long simulation times: they fail to preserve the intersection of the kinetic energy ellipsoid ($2E = \boldsymbol{\omega} \cdot \mathbf{I} \boldsymbol{\omega}$) and the angular momentum sphere ($\|\mathbf{L}\|^2 = \text{const}$), leading to artificial numerical dissipation and unphysical energy drift. Furthermore, Euler angles suffer from gimbal lock coordinate singularities at $\theta = 0, \pi$.
+
+### 2. Concrete Deliverables & Scope
+* **Hamiltonian Formulation on $\mathfrak{so}(3)^*$:** Formulate the system as a Lie-Poisson Hamiltonian system on the dual Lie algebra $\mathfrak{so}(3)^*$, where Casimir invariants $\|\mathbf{L}\|^2$ are preserved by construction.
+* **Symplectic Quaternion / Rotor Integrator:** Implement a geometric integrator in Python/C++ using unit quaternions (or Clifford algebra rotors) that updates orientation on the smooth manifold $\mathrm{SO}(3)$ without coordinate singularities.
+* **Analytical Jacobi Elliptic Solution:** Compute the closed-form analytical solutions using Jacobi elliptic functions ($\text{sn}, \text{cn}, \text{dn}$) and benchmark the numerical integrator's phase-space drift across $10^5$ flips.
+* **Lyapunov Exponent Analysis:** Map the separatrix in phase space dividing circulating orbits from librating orbits and compute the sensitivity to small initial perturbations near the intermediate axis saddle point.
+
+### 3. Why This Impresses Professors & Employers
+* Moving from naive Cartesian/angle coordinates to geometric mechanics on Lie groups ($\mathrm{SO}(3)$) demonstrates true graduate-level mathematical maturity.
+* Quaternion attitude kinematics and energy-momentum conserving integrators are the exact algorithms used in satellite attitude determination and control systems (ADCS) at NASA, ESA, and commercial space companies (SpaceX, MDA Space).
+
+---
+
+## 🌍 Project Option 2: Non-Inertial Geostrophic Dynamics & Rossby Wave Dispersion on a Rotating Sphere
+
+### 1. Context & Motivation (Taylor Chapters 9 & 16)
+Taylor Chapter 9 explores the equations of motion in a non-inertial reference frame rotating with angular velocity $\boldsymbol{\Omega}$:
+$$\mathbf{a}_{\text{inertial}} = \mathbf{a}_{\text{rot}} + 2(\boldsymbol{\Omega} \times \mathbf{v}_{\text{rot}}) + \boldsymbol{\Omega} \times (\boldsymbol{\Omega} \times \mathbf{r}) + \dot{\boldsymbol{\Omega}} \times \mathbf{r}$$
+While textbook exercises focus on point particles (deflection of falling objects, Foucault pendulum), the most profound physical manifestation of the Coriolis force occurs on fluid planetary atmospheres (Taylor Ch 16 continuum limit), where geostrophic balance governs the jet stream, trade winds, and hurricane rotation.
+
+### 2. Concrete Deliverables & Scope
+* **The $\beta$-Plane Approximation:** Derive the quasi-geostrophic potential vorticity (QG-PV) transport equation on a local tangent plane where the Coriolis parameter varies with latitude:
+  $$f(\phi) \approx f_0 + \beta y, \quad \beta = \frac{2\Omega \cos\phi_0}{R_{\text{Earth}}}$$
+* **Analytical Dispersion Relation:** Analytically derive the dispersion relation for planetary Rossby waves:
+  $$\omega(k_x, k_y) = U k_x - \frac{\beta k_x}{k_x^2 + k_y^2 + k_R^{-2}}$$
+  proving that Rossby waves always propagate westward relative to the mean zonal flow $U$.
+* **2D Pseudo-Spectral PDE Solver:** Implement a high-resolution 2D pseudo-spectral or Arakawa-C grid vorticity solver in Python/NumPy, enforcing conservation of total energy and enstrophy $\mathcal{E} = \frac{1}{2}\int \zeta^2 dx dy$.
+* **Atmospheric Simulation:** Simulate the spontaneous emergence of coherent zonal jet streams from isotropic geostrophic turbulence (Rhines scale transition) and the development of atmospheric blocking events.
+
+### 3. Why This Impresses Professors & Employers
+* Demonstrates mastery of both non-inertial classical dynamics and continuum mechanics (PDEs).
+* Direct application to numerical weather prediction (NWP), physical oceanography, climate modeling, and planetary atmospheric research.
+
+---
+
+## ⚙️ Project Option 3: Neuro-Symbolic & Variational Analysis of Non-Holonomic Constraints: The Rolling Disk Paradox
+
+### 1. Context & Motivation (Taylor Chapters 6 & 7)
+One of the subtlest conceptual subtleties in classical mechanics is the distinction between **holonomic constraints** ($f(\mathbf{q}, t) = 0$) and **non-holonomic constraints** (non-integrable differential relations $\sum A_i(\mathbf{q}) d q_i + B dt = 0$). 
+
+For holonomic constraints, Hamilton's variational principle $\delta S = 0$ is completely equivalent to Lagrange's equations with multipliers. However, for non-holonomic systems (such as a coin or heavy disk rolling on a plane without slipping), naively applying the calculus of variations ("vakonomic mechanics") produces **completely incorrect equations of motion** that violate Newton's laws! The correct physical dynamics requires the d'Alembert-Lagrange principle of virtual work.
+
+### 2. Concrete Deliverables & Scope
+* **Differential Geometric Formulation:** Formulate the non-holonomic rolling disk using the Frobenius Integrability Theorem, proving rigorously via Lie brackets of vector fields that the distribution is non-integrable (accessibility rank condition).
+* **Vakonomic vs. d'Alembert-Lagrange Derivation:** Construct a symbolic engine using SymPy to derive both the naive variational (vakonomic) and physical (d'Alembert-Lagrange / Kane's) equations of motion for the rolling disk and Chaplygin sleigh.
+* **BVP Phase Portrait Comparison:** Numerically integrate both sets of equations from identical initial conditions, producing phase portraits that illustrate the exact mathematical origin and physical manifestation of their divergence.
+* **Neuro-Symbolic Constraint Judge:** Build an automated verification harness that ingests submitted LaTeX derivations of constrained systems, classifies whether constraints are holonomic or non-holonomic via Lie bracket evaluation, and deterministically flags unphysical vakonomic derivations.
+
+### 3. Why This Impresses Professors & Employers
+* Addresses a profound, advanced theoretical physics paradox that confuses even graduate students and textbook authors.
+* Non-holonomic dynamics is the exact theoretical foundation of non-holonomic mobile robotics (wheeled rovers, steerable spacecraft, snake robots) and automated formal proof checking.
+
+---
+
+## 📋 Summary: How to Choose Your PHYC54 Project
+
+| Project | Primary Focus | Best Suited For | Key Tools |
+| :--- | :--- | :--- | :--- |
+| **Option 1: Dzhanibekov Chaos** | Rigid Body & Lie-Poisson Mechanics | Students aiming for aerospace, robotics & dynamics | Python/C++, Quaternions, Symplectic ODEs |
+| **Option 2: Geostrophic Rossby Waves** | Non-Inertial Frames & Continuum PDEs | Students aiming for climate physics, fluid dynamics & geophysics | Python, Pseudo-spectral FFT, Continuum Mechanics |
+| **Option 3: Non-Holonomic Paradox** | Variational Theory & Differential Geometry | Students aiming for theoretical physics, robotics & automated verification | SymPy, Differential Forms, Virtual Work |
