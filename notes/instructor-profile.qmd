@@ -1,0 +1,131 @@
+---
+title: "Instructor Profile: Prof. Johann Bayer Carpintero"
+subtitle: "Associate Professor, Teaching Stream at University of Toronto Scarborough — Biography, Astrophysics Research, Gravitational Lensing & Teaching"
+date: "2026-09-10"
+categories: ["Instructor", "Biography", "Research", "Astrophysics", "Classical Mechanics", "PHYC54"]
+draft: true
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    math: true
+---
+
+<div style="display: flex; align-items: center; gap: 28px; margin-bottom: 30px; flex-wrap: wrap;">
+  <img src="../assets/johann-bayer.jpg" alt="Prof. Johann Bayer Carpintero" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+  <div>
+    <h1 style="margin: 0 0 8px 0;">Johann Bayer Carpintero</h1>
+    <p style="font-size: 1.2em; color: #495057; margin: 0 0 12px 0;">
+      Associate Professor, Teaching Stream — Department of Physical and Environmental Sciences (DPES)
+    </p>
+    <p style="margin: 0; color: #6c757d;">
+      <strong>Institution:</strong> University of Toronto Scarborough (UTSC)
+    </p>
+    <p style="margin: 4px 0 0 0; color: #6c757d;">
+      <strong>Office:</strong> Physical & Environmental Sciences | <strong>Email:</strong> <a href="mailto:jbayer@utsc.utoronto.ca">jbayer@utsc.utoronto.ca</a> / <a href="mailto:j.bayer@utoronto.ca">j.bayer@utoronto.ca</a> | <strong>Tel:</strong> 416-287-7327
+    </p>
+    <div style="margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap;">
+      <a class="btn btn-outline-primary btn-sm" href="https://www.utsc.utoronto.ca/physsci/johann-bayer" target="_blank">UTSC Faculty Directory</a>
+      <a class="btn btn-outline-secondary btn-sm" href="https://discover.research.utoronto.ca/15132-johann-bayer-carpintero" target="_blank">U of T DiscoverResearch</a>
+      <a class="btn btn-outline-info btn-sm" href="https://www.researchgate.net/profile/Johann-Bayer" target="_blank">ResearchGate Profile</a>
+      <a class="btn btn-outline-dark btn-sm" href="https://www.linkedin.com/in/johann-bayer-carpintero" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+---
+
+## About & Academic Overview
+
+**Johann Bayer Carpintero** is an Associate Professor, Teaching Stream in the [Department of Physical and Environmental Sciences](https://www.utsc.utoronto.ca/physsci/) at the University of Toronto Scarborough. His academic and pedagogical career is dedicated to physics education, analytical classical mechanics, thermal physics, quantum theory, and relativistic astrophysics.
+
+### Academic Positions
+- **Associate Professor, Teaching Stream**: University of Toronto Scarborough, Department of Physical and Environmental Sciences (*Present*).
+- **Sessional Lecturer**: University of Toronto (*2005 – 2009*).
+
+### Academic Degrees
+- **Ph.D. in Astrophysics**: University of Toronto, Canada.
+- **M.Sc. in Astrophysics**: University of Toronto, Toronto, Canada.
+
+### Contact & Departmental Location
+- **Work Address**: University of Toronto Scarborough, Department of Physical and Environmental Sciences, 1265 Military Trail, Toronto, Ontario, M1C 1A4 (or M4C 1A4), Canada.
+- **Central Research Contact**: 27 King's College Circle, Toronto, ON, M5S 1A1, Canada | Tel: 416-978-2011 | Email: [discover.research@utoronto.ca](mailto:discover.research@utoronto.ca).
+- **Academic Tags & Availability**: Physical sciences, Theoretical and computational astrophysics, Industry Projects.
+
+---
+
+## Teaching & Supervision
+
+Professor Bayer has led core foundational and advanced undergraduate lecture courses across the physical sciences curriculum at UTSC:
+
+| Course Code | Course Title | Description & Curricular Role |
+| :--- | :--- | :--- |
+| **PHYC54H3** | **Classical Mechanics** | Intermediate analytical mechanics: Lagrangian and Hamiltonian formulations, calculus of variations, central force motion, non-inertial reference frames, rigid body rotation, and continuum mechanics. |
+| **PHYC56H3** | **Introduction to Quantum Physics / Quantum Mechanics I** | Quantum foundations: wave-particle duality, Schrödinger wave mechanics in one and three dimensions, operators, eigenfunctions, harmonic oscillator, and hydrogenic systems. |
+| **PHYB52H3** | **Thermal Physics** | Classical thermodynamics and introductory statistical mechanics: laws of thermodynamics, entropy, thermodynamic potentials, phase transitions, and canonical ensembles. |
+| **PHYA10H3** | **Physics I for Physical Sciences** | Introductory calculus-based mechanics: kinematics, dynamics, work-energy theorem, momentum conservation, rotational dynamics, and simple harmonic oscillations. |
+
+---
+
+## Research Interests & Scholarly Profile
+
+Professor Bayer's research focuses on **theoretical and computational astrophysics**, specifically **gravitational lensing in general relativity**, optical image singularities, and astrophysical mass constraints on multiple-star and planetary systems.
+
+### Skills and Expertise
+- **Gravitational Lensing & Micro-lensing**
+- **Astronomy & Theoretical Astrophysics**
+- **General Relativity & Relativistic Geometry**
+- **Special and General Relativity**
+- **Physics Education & Pedagogical Innovation**
+
+### Research Metrics (ResearchGate Profile)
+- **Publications**: 3 Major Refereed Articles in *General Relativity and Gravitation*
+- **Article Reads**: 370+ Reads
+- **Citations**: 11+ Citations by leading international general relativists and pure mathematicians
+
+---
+
+## Scholarly & Creative Works (Publications)
+
+### 1. Erratum: Maximal lensing: Mass constraints on point lens configurations
+- **Authors**: Johann Bayer and Charles C. Dyer
+- **Journal**: *General Relativity and Gravitation*, Vol. 39, pp. 1413–1418 (March 2009).
+- **DOI**: [10.1007/s10714-007-0463-x](https://doi.org/10.1007/s10714-007-0463-x)
+- **Abstract**: We set constraints and an upper bound on the masses required for a configuration of $n$ point lenses to produce the maximum of $5n - 5$ images of a distant source. We show how this result can be used to detect and constrain the mass of planets or brown dwarfs in multiple-star systems.
+
+### 2. Maximal lensing: Mass constraints on point lens configurations
+- **Authors**: Johann Bayer and Charles C. Dyer
+- **Journal**: *General Relativity and Gravitation*, Vol. 39, No. 9, pp. 1413–1418 (September 2007).
+- **Key Findings & Analysis**:
+  - Sets rigorous analytical constraints and mathematical bounds on the perturber masses required to realize maximal image topologies ($5n - 5$).
+  - **Figure 3.3**: Central mass perturbation of $m = 1/50$ on a symmetric lens configuration.
+  - **Figure 3.11 & 3.12**: Maximum mass for maximal lensing as a function of radial coordinate ($r = 1/2$ and $r = 1/10$).
+  - **Figure 5.1 & 5.4**: Fraction $f_1$ of the critical lens area under which caustics open, and fraction $f_4$ of deflector mass enabling planet and substellar detection.
+
+### 3. Gravitational lensing and the maximum number of images
+- **Authors**: Johann Bayer, Charles C. Dyer, and Dan Giang
+- **Journal**: *General Relativity and Gravitation*, Vol. 38, No. 9, pp. 1419–1428 (September 2006).
+- **Abstract**: We show that in a configuration of point masses, replacing one of the point deflectors by a spherically symmetric distributed mass only introduces one extra image. This extra image is located inside the radius of the distributed mass added. We extend a fundamental theorem available for a set of $n$ point masses, proving that the maximum number of images produced by distributed deflectors remains strictly bounded.
+
+---
+
+## Academic Network & Collaboration
+
+### Top Co-authors
+- **Charles C. Dyer**: Professor Emeritus, Department of Physical and Environmental Sciences & Department of Astronomy and Astrophysics, University of Toronto.
+- **Dan Giang**: Collaborator and researcher, University of Toronto.
+
+### Cited by Prominent Mathematicians & Relativists
+Professor Bayer's gravitational lensing theorems have been cited in landmark papers on algebraic geometry, rational functions, and gravitational caustics by:
+- **Dmitry Khavinson**: University of South Florida (renowned for solving the Rhie conjecture and Khavinson-Swiatek extremal image bounds).
+- **Erik Lundberg**: Florida Atlantic University (harmonic polynomials and gravitational lensing topology).
+- **Robert Luce**: Swiss Federal Institute of Technology in Lausanne (EPFL).
+- **Arlie O. Petters**: Duke University (pioneer of singularity theory and mathematical gravitational lensing).
+- **Jörg Liesen**: Technische Universität Berlin.
+
+### Research Community & Peers
+- **Emilio Falco**: Center for Astrophysics | Harvard & Smithsonian
+- **Joachim Wambsganss**: Heidelberg University
+- **Pierre Louis North**: Swiss Federal Institute of Technology in Lausanne (EPFL)
+- **Sun Hong Rhie**: University of Notre Dame
+- **Ronald Kantowski**: University of Oklahoma

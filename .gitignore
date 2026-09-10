@@ -9,3 +9,6 @@ env/
 .ipynb_checkpoints/
 media/
 videos/
+
+/.quarto/
+**/*.quarto_ipynb

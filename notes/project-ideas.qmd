@@ -3,6 +3,7 @@ title: "PHYC54 Project Ideas: Advanced Analytical & Computational Mechanics"
 subtitle: "Semester research project blueprints in symplectic geometric mechanics, non-inertial continuum dynamics, and non-holonomic variational systems."
 date: "2026-09-10"
 categories: ["Classical Mechanics", "PHYC54", "Research", "Symplectic Geometry", "Rigid Bodies", "Variational Principles"]
+draft: true
 format:
   html:
     toc: true
