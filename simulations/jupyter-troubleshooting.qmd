@@ -1,0 +1,179 @@
+---
+title: "Using Jupyter Notebooks in Quarto & Python Troubleshooting"
+subtitle: "A Guide to Interactive Physics Simulations on Arch Linux"
+date: "2026-09-09"
+categories: [jupyter, python, arch-linux, troubleshooting]
+format:
+  html:
+    toc: true
+    code-copy: true
+---
+
+# Integrating Jupyter Notebooks into Quarto
+
+Quarto has first-class, native support for Jupyter Notebooks (`.ipynb`). This means you do not need to convert your notebooks to markdown or HTML manually; you can simply place your `.ipynb` files directly into the repository (e.g., in the `simulations/` directory).
+
+## How It Works
+1. **Raw Notebooks:** Add your Jupyter notebook to the project structure.
+2. **YAML Frontmatter:** At the very top of your first Markdown cell in the notebook, you can include standard Quarto YAML metadata (just like in a `.qmd` file):
+   ```yaml
+   ---
+   title: "My Physics Simulation"
+   author: "Igor Kan"
+   date: "2026-09-09"
+   ---
+   ```
+3. **Rendering:** When you commit and push to GitHub, the Quarto Publish GitHub Action will automatically read the `.ipynb` file, execute its cells (or use the cached outputs if configured), and render the code, markdown, math, and interactive plots directly into the website's HTML layout.
+
+---
+
+# Common Python & Jupyter Errors (Especially on Arch Linux)
+
+When writing Python physics simulations locally on your Arch Linux machine, you may encounter environment and backend errors. Here are the most common issues and how to resolve them.
+
+## 1. `ModuleNotFoundError: No module named 'matplotlib'`
+
+### The Problem
+You try to import `numpy` or `matplotlib.pyplot` in your Jupyter notebook, but it fails. On Arch Linux, the system Python environment is strictly managed by `pacman` (enforcing PEP 668), meaning you cannot and should not use global `sudo pip install`.
+
+### The Solution
+
+**Option A: Using Arch System Python (Recommended)**
+If your Jupyter server is running on the system Python, install the packages natively using `pacman`:
+```bash
+sudo pacman -S python-matplotlib python-numpy python-scipy
+```
+Then, inside your notebook, go to **Kernel → Restart Kernel** and re-run your imports.
+
+**Option B: Using a Virtual Environment**
+If you are running Jupyter inside a virtual environment (`.venv`), you must install the packages directly into that environment. You can do this directly from a notebook cell using the `%pip` magic command, which guarantees installation into the active kernel:
+```python
+%pip install matplotlib numpy
+```
+
+*(To verify which Python environment your notebook is actually using, run: `import sys; print(sys.executable)`).*
+
+---
+
+## 2. Interactive 3D Plots: `RuntimeError: 'widget' is not a recognised backend name`
+
+### The Problem
+In physics, we often want to rotate 3D plots (like visualizing spherical coordinates or path lengths). A common approach is to use `%matplotlib widget` (the `ipympl` backend). However, running this might throw an error stating the backend is not recognized.
+
+### The Solution
+
+When running Jupyter locally on your Arch desktop, you actually have better options than the browser-based widget:
+
+**Option A: Native Desktop GUI (High Performance)**
+Tell Matplotlib to spawn a native window using the Tkinter or Qt backend. This yields high-framerate hardware acceleration.
+1. Install the backend on Arch:
+   ```bash
+   sudo pacman -S --needed tk python-pyqt6
+   ```
+2. In your notebook, replace `%matplotlib widget` with:
+   ```python
+   %matplotlib tk
+   # or %matplotlib qt
+   ```
+When you run the plot, a dedicated interactive window will pop up.
+
+**Option B: Switch to Plotly for In-Browser WebGL**
+If you want the interactive 3D plot embedded *inside* the notebook (and website), Plotly is vastly superior to Matplotlib's 3D engine. It uses WebGL for buttery-smooth 60 FPS rendering.
+1. Install Plotly:
+   ```bash
+   sudo pacman -S python-plotly
+   ```
+2. Use Plotly's `graph_objects` (No magic `%matplotlib` commands required).
+
+---
+
+# Example: Plotting a Differential Path Element on a Sphere
+
+Below is a complete, fully commented example of how to visualize the metric tensor and differential path length $ds$ on a 2-Sphere ($S^2$). 
+
+The total differential is:
+$$ d\mathbf{r} = \left(\frac{\partial \mathbf{r}}{\partial \theta}\right) d\theta + \left(\frac{\partial \mathbf{r}}{\partial \phi}\right) d\phi $$
+
+Because the basis vectors are orthogonal ($\frac{\partial \mathbf{r}}{\partial \theta} \cdot \frac{\partial \mathbf{r}}{\partial \phi} = 0$), the metric tensor is diagonal, yielding the famous line element:
+$$ ds^2 = R^2 d\theta^2 + R^2 \sin^2\theta d\phi^2 $$
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+def sphere_point(radius, theta, phi):
+    """
+    Converts spherical coordinates (radius, colatitude theta, azimuth phi)
+    to standard 3D Cartesian coordinates [x, y, z].
+    """
+    x = radius * np.sin(theta) * np.cos(phi)
+    y = radius * np.sin(theta) * np.sin(phi)
+    z = radius * np.cos(theta)
+    return np.array([x, y, z])
+
+# Parameters
+R = 1.0                # Radius of the sphere
+theta_0 = np.pi / 4    # Base point colatitude (45 deg)
+phi_0 = np.pi / 4      # Base point azimuth (45 deg)
+d_theta = 0.18         # Finite differential step size along meridian
+d_phi = 0.22           # Finite differential step size along parallel
+
+P0 = sphere_point(R, theta_0, phi_0)
+
+# Tangent Vectors (Incremental Displacements)
+# delta_r_theta: displacement along the meridian
+delta_r_theta = np.array([
+    R * np.cos(theta_0) * np.cos(phi_0),
+    R * np.cos(theta_0) * np.sin(phi_0),
+    -R * np.sin(theta_0)
+]) * d_theta
+
+# delta_r_phi: displacement along the parallel of latitude
+delta_r_phi = np.array([
+    -R * np.sin(theta_0) * np.sin(phi_0),
+    R * np.sin(theta_0) * np.cos(phi_0),
+    0.0
+]) * d_phi
+
+# delta_r_ds: The total linear vector displacement (hypotenuse)
+delta_r_ds = delta_r_theta + delta_r_phi
+
+# Calculate magnitude analytically
+ds_val = np.sqrt((R * d_theta)**2 + (R * np.sin(theta_0) * d_phi)**2)
+
+# Figure Setup
+# Use %matplotlib tk in Jupyter for native interactive rotation
+fig = plt.figure(figsize=(9, 8))
+ax = fig.add_subplot(111, projection='3d')
+
+# 1. Wireframe Background Sphere
+u = np.linspace(0.0, 2.0 * np.pi, 36)
+v = np.linspace(0.0, np.pi, 18)
+x_sphere = R * np.outer(np.cos(u), np.sin(v))
+y_sphere = R * np.outer(np.sin(u), np.sin(v))
+z_sphere = R * np.outer(np.ones(np.size(u)), np.cos(v))
+ax.plot_wireframe(x_sphere, y_sphere, z_sphere, color='gray', alpha=0.18, linewidth=0.6)
+
+# 2. Tangent Differential Triangle Vectors
+ax.scatter(*P0, color='crimson', s=45, label=r'Base Point $P(\theta_0, \phi_0)$')
+
+ax.quiver(*P0, *delta_r_theta, color='teal', linewidth=2.4, arrow_length_ratio=0.15,
+          label=r'Meridional Displacement $\Delta\mathbf{r}_\theta = R\,d\theta\,\hat{\theta}$')
+
+ax.quiver(*(P0 + delta_r_theta), *delta_r_phi, color='darkorange', linewidth=2.4, arrow_length_ratio=0.15,
+          label=r'Azimuthal Displacement $\Delta\mathbf{r}_\phi = R\sin\theta\,d\phi\,\hat{\phi}$')
+
+ax.quiver(*P0, *delta_r_ds, color='crimson', linewidth=3.2, arrow_length_ratio=0.12,
+          label=rf'Hypotenuse $ds = {ds_val:.3f}$')
+
+# 3. Scene Formatting
+ax.set_box_aspect([1, 1, 1])
+ax.set_xlim([-1.1, 1.1])
+ax.set_ylim([-1.1, 1.1])
+ax.set_zlim([-1.1, 1.1])
+ax.view_init(elev=28, azim=40)
+ax.set_title(r'Differential Path Element $ds$ on a 2-Sphere ($S^2$)', fontsize=13)
+ax.legend(loc='upper left', frameon=True)
+
+plt.show()
+```
