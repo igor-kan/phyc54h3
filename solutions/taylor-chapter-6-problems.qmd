@@ -15,7 +15,7 @@ format:
 Below are the exact problem statements from Chapter 6 of Taylor's *Classical Mechanics*.
 Stars indicate the approximate level of difficulty, from easiest (*) to most difficult (***).
 
-For interactive visual solutions and code, please see the [Jupyter Notebook Version](taylor-chapter-6-problems.ipynb).
+For interactive visual solutions and code, please see the [Jupyter Notebook Version](taylor-chapter-6-interactive.ipynb).
 
 ## SECTION 6.1 Two Examples
 
