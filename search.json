@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "notes/index.html",
-    "href": "notes/index.html",
-    "title": "PHYC54 Lecture Notes & Syllabus",
-    "section": "",
-    "text": "This section houses the course syllabus, analytical lecture notes, and theoretical derivations following John R. Taylor’s Classical Mechanics for PHYC54 at UTSC. Use the search bar and sorting filters below to quickly locate specific topics, reading chapters, or formulas.\n\n\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Created - Oldest\n      \n      \n        Created - Newest\n      \n      \n        Modified - Oldest\n      \n      \n        Modified - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "extra/index.html",
     "href": "extra/index.html",
     "title": "Extra Notes & Readings",
@@ -47,5 +40,12 @@
     "title": "PHYC54H3: Classical Mechanics",
     "section": "🗺️ Course Roadmap & 12-Week Syllabus",
     "text": "🗺️ Course Roadmap & 12-Week Syllabus\nFollows the official PHYC54 Fall 2026 syllabus taught by Prof. Johann Bayer. Weekly readings correspond to John R. Taylor’s Classical Mechanics (2005).\n\n\n\nWeek\nDates\nCore Topics & Taylor Readings\nAssociated Tutorials & Milestones\nStatus\n\n\n\n\n01\nSep. 08-10\nCalculus of Variations (Ch 6: 1–2)\nCalculus of Variations (Ch 6: 3–4)\nAvailable\n\n\n02\nSep. 15-17\nLagrange’s Equations (Ch 7: 1–4)\nProblem Set #01\nAvailable\n\n\n03\nSep. 22-24\nLagrange’s Equations (Ch 7: 5–8)\nProblem Set #02\nAvailable\n\n\n04\nSep. 29 - Oct. 01\nHamiltonian Mechanics (Ch 13: 1–4)\nProblem Set #03\nUpcoming\n\n\n05\nOct. 06-08\nHamiltonian Mechanics &amp; Phase Space (Ch 13: 5–7)\nProblem Set #04 (Test #1)\nUpcoming\n\n\n06\nOct. 13-15\nMechanics in Noninertial Frames (Ch 9: 1–3)\nProblem Set #05\nUpcoming\n\n\n07\nOct. 20-22\nMechanics in Noninertial Frames (Ch 9: 4–7)\nProblem Set #06\nUpcoming\n\n\nRW\nOct. 27-29\nReading Week (No classes)\nProblem Set #07 Review\nStudy Break\n\n\n08\nNov. 03-05\nMechanics in Noninertial Frames (Ch 9: 8–10)\nProblem Set #08\nUpcoming\n\n\n09\nNov. 10-12\nRotational Motion of Rigid Bodies (Ch 10: 1–3)\nProblem Set #09 (Test #2)\nUpcoming\n\n\n10\nNov. 17-19\nRotational Motion of Rigid Bodies (Ch 10: 4–7)\nProblem Set #10\nUpcoming\n\n\n11\nNov. 24-26\nRotational Motion of Rigid Bodies (Ch 10: 8–10)\nProblem Set #11\nUpcoming\n\n\n12\nDec. 01-03\nContinuum Mechanics (Ch 16: 1–4)\nProblem Set #12\nUpcoming\n\n\nFinal\nDec. 10-22\nComprehensive Final Examination\nDec. 10–22 Exam Period\nScheduled\n\n\n\n\n\n\n\n\n\nNoteCourse Schedule & Grading Notes\n\n\n\nDetailed policies on the Autofail rule (minimum 50% on test average or final exam), tutorial submission requirements, and academic integrity policies are detailed in the official Course Syllabus."
+  },
+  {
+    "objectID": "notes/index.html",
+    "href": "notes/index.html",
+    "title": "PHYC54 Lecture Notes & Syllabus",
+    "section": "",
+    "text": "This section houses the course syllabus, analytical lecture notes, and theoretical derivations following John R. Taylor’s Classical Mechanics for PHYC54 at UTSC. Use the search bar and sorting filters below to quickly locate specific topics, reading chapters, or formulas.\n\n\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Created - Oldest\n      \n      \n        Created - Newest\n      \n      \n        Modified - Oldest\n      \n      \n        Modified - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\nNo matching items"
   }
 ]

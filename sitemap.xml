@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://igor-kan.github.io/phyc54h3/notes/index.html</loc>
-    <lastmod>2026-09-10T14:50:53.379Z</lastmod>
-  </url>
-  <url>
     <loc>https://igor-kan.github.io/phyc54h3/extra/index.html</loc>
-    <lastmod>2026-09-10T14:50:53.379Z</lastmod>
+    <lastmod>2026-09-10T20:22:39.121Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/reference/index.html</loc>
-    <lastmod>2026-09-10T14:50:53.381Z</lastmod>
+    <lastmod>2026-09-10T20:22:39.123Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/simulations/index.html</loc>
-    <lastmod>2026-09-10T14:50:53.382Z</lastmod>
+    <lastmod>2026-09-10T20:22:39.124Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/solutions/index.html</loc>
-    <lastmod>2026-09-10T14:50:53.383Z</lastmod>
+    <lastmod>2026-09-10T20:22:39.124Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/index.html</loc>
-    <lastmod>2026-09-10T14:50:53.379Z</lastmod>
+    <lastmod>2026-09-10T20:22:39.121Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/notes/index.html</loc>
+    <lastmod>2026-09-10T20:22:39.121Z</lastmod>
   </url>
 </urlset>

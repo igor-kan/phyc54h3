@@ -1,9 +1,5 @@
 [
   {
-    "listing": "/notes/index.html",
-    "items": []
-  },
-  {
     "listing": "/extra/index.html",
     "items": []
   },
@@ -17,6 +13,10 @@
   },
   {
     "listing": "/solutions/index.html",
+    "items": []
+  },
+  {
+    "listing": "/notes/index.html",
     "items": []
   }
 ]
