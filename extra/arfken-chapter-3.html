@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-09-10">
 
-<title>Reference &amp; Mathematical Tools – PHYC54H3: Classical Mechanics</title>
+<title>Arfken Chapter 3: Vector Analysis – PHYC54H3: Classical Mechanics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -71,8 +72,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -110,35 +109,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-date-modified','listing-title','listing-subtitle','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-date","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -207,7 +177,7 @@ window.Quarto = {
 <span class="menu-text">Code &amp; Simulations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../reference/index.html" aria-current="page"> 
+    <a class="nav-link" href="../reference/index.html"> 
 <span class="menu-text">Reference &amp; Math</span></a>
   </li>  
   <li class="nav-item">
@@ -222,26 +192,44 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(7)</span></div><div class="category" data-category="YXBwbGljYXRpb25z">applications <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmlibGlvZ3JhcGh5">bibliography <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2FsY3VsdXM=">calculus <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Y29tcHV0YXRpb25hbA==">computational <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29uc3RhbnRz">constants <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y291cnNlcw==">courses <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y3ljbG9pZHM=">cycloids <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YQ==">data <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW50ZWdyYXRpb24=">integration <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWF0aA==">math <span class="quarto-category-count">(3)</span></div><div class="category" data-category="cGh5c2ljcw==">physics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHl0aG9u">python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmVmZXJlbmNl">reference <span class="quarto-category-count">(7)</span></div><div class="category" data-category="c29sdmVycw==">solvers <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGV4dGJvb2tz">textbooks <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dmVjdG9ycw==">vectors <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#curvilinear-coordinates-and-metric-tensors" id="toc-curvilinear-coordinates-and-metric-tensors" class="nav-link active" data-scroll-target="#curvilinear-coordinates-and-metric-tensors">Curvilinear Coordinates and Metric Tensors</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Reference &amp; Mathematical Tools</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
-<p class="subtitle lead">Formulas, physical constants, vector identities, computational methods, and course bibliography.</p>
-</div>
+<div class="quarto-title-block"><div><h1 class="title">Arfken Chapter 3: Vector Analysis</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<p class="subtitle lead">Focus on Sec 3.10: Curvilinear Coordinates and Metric Tensors</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">arfken</div>
+    <div class="quarto-category">math-methods</div>
+    <div class="quarto-category">tensors</div>
+    <div class="quarto-category">extra</div>
+  </div>
+  </div>
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026-09-10</p>
+    </div>
+  </div>
   
     
   </div>
@@ -251,265 +239,21 @@ window.Quarto = {
 </header>
 
 
-<p>Quick-reference toolkits, cheatsheets, and comprehensive bibliographies supporting analytical derivations and computational physics in PHYC54. Filter by category or sort by topic below.</p>
-
+<section id="curvilinear-coordinates-and-metric-tensors" class="level1">
+<h1>Curvilinear Coordinates and Metric Tensors</h1>
+<p><strong>Corequisite for Taylor Chapter 6 (Problem 6.13)</strong></p>
+<ul>
+<li><strong>Concept:</strong> General framework for non-Euclidean metrics.</li>
+<li><strong>Application:</strong> Setting up the rapidity metric <span class="math inline">\(ds = \frac{2}{1-r^2}\sqrt{dr^2 + r^2 d\theta^2}\)</span>.</li>
+</ul>
 
 
 
 <!-- -->
 
+</section>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-title" data-direction="asc">
-        Title
-      </option>
-      <option value="listing-date-sort" data-direction="asc">
-        Created - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Created - Newest
-      </option>
-      <option value="listing-date-modified-sort" data-direction="asc">
-        Modified - Oldest
-      </option>
-      <option value="listing-date-modified-sort" data-direction="desc">
-        Modified - Newest
-      </option>
-    </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="bWF0aCUyQ2NhbGN1bHVzJTJDcmVmZXJlbmNlJTJDaW50ZWdyYXRpb24=" data-listing-date-sort="1788825600000" data-listing-file-modified-sort="1789016669576" data-listing-date-modified-sort="1789016669000" data-listing-reading-time-sort="22" data-listing-word-count-sort="4276">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../reference/integration-tricks-and-substitutions.html" class="no-external">Integration Tricks and Substitution Techniques</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../reference/integration-tricks-and-substitutions.html" class="no-external">Algebraic rationales, cycloid parametrics, and advanced substitution tricks for variational physics.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWF0aA=='); return false;">math</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y2FsY3VsdXM='); return false;">calculus</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cmVmZXJlbmNl'); return false;">reference</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('aW50ZWdyYXRpb24='); return false;">integration</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../reference/integration-tricks-and-substitutions.html" class="no-external">
-<div class="listing-date">
-2026-09-08
-</div>
-<div class="listing-reading-time">22 min</div>
-<div class="metadata-value listing-date-modified">
-2026-09-10
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="cGh5c2ljcyUyQ3JlZmVyZW5jZSUyQ2FwcGxpY2F0aW9ucyUyQ2N5Y2xvaWRz" data-listing-date-sort="1788825600000" data-listing-file-modified-sort="1789016669576" data-listing-date-modified-sort="1789016669000" data-listing-reading-time-sort="5" data-listing-word-count-sort="817">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../reference/cycloid-physics-applications.html" class="no-external">Physics and Engineering Applications of Cycloids</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../reference/cycloid-physics-applications.html" class="no-external">From Brachistochrone and Tautochrone to gerstner waves and cycloidal drives.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGh5c2ljcw=='); return false;">physics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cmVmZXJlbmNl'); return false;">reference</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('YXBwbGljYXRpb25z'); return false;">applications</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y3ljbG9pZHM='); return false;">cycloids</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../reference/cycloid-physics-applications.html" class="no-external">
-<div class="listing-date">
-2026-09-08
-</div>
-<div class="listing-reading-time">5 min</div>
-<div class="metadata-value listing-date-modified">
-2026-09-10
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="cmVmZXJlbmNlJTJDYmlibGlvZ3JhcGh5JTJDdGV4dGJvb2tzJTJDY291cnNlcw==" data-listing-date-sort="1788480000000" data-listing-file-modified-sort="1789016669576" data-listing-date-modified-sort="1789016669000" data-listing-reading-time-sort="4" data-listing-word-count-sort="652">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../reference/sources-and-bibliography.html" class="no-external">Sources &amp; Bibliography</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../reference/sources-and-bibliography.html" class="no-external">Primary textbooks, open courseware archives, literature links, and online computational guides.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('cmVmZXJlbmNl'); return false;">reference</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('YmlibGlvZ3JhcGh5'); return false;">bibliography</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dGV4dGJvb2tz'); return false;">textbooks</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y291cnNlcw=='); return false;">courses</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../reference/sources-and-bibliography.html" class="no-external">
-<div class="listing-date">
-2026-09-04
-</div>
-<div class="listing-reading-time">4 min</div>
-<div class="metadata-value listing-date-modified">
-2026-09-10
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="Y29tcHV0YXRpb25hbCUyQ3JlZmVyZW5jZSUyQ3B5dGhvbiUyQ3NvbHZlcnM=" data-listing-date-sort="1788393600000" data-listing-file-modified-sort="1789016669575" data-listing-date-modified-sort="1789016669000" data-listing-reading-time-sort="5" data-listing-word-count-sort="825">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../reference/computational-methods.html" class="no-external">Computational Methods for Mechanics</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../reference/computational-methods.html" class="no-external">Numerical ODE integration (Euler, Verlet, RK4), SciPy solvers, and algorithmic math challenges.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29tcHV0YXRpb25hbA=='); return false;">computational</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cmVmZXJlbmNl'); return false;">reference</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cHl0aG9u'); return false;">python</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('c29sdmVycw=='); return false;">solvers</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../reference/computational-methods.html" class="no-external">
-<div class="listing-date">
-2026-09-03
-</div>
-<div class="listing-reading-time">5 min</div>
-<div class="metadata-value listing-date-modified">
-2026-09-10
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="ZGF0YSUyQ2NvbnN0YW50cyUyQ3JlZmVyZW5jZQ==" data-listing-date-sort="1788307200000" data-listing-file-modified-sort="1789016669576" data-listing-date-modified-sort="1789016669000" data-listing-reading-time-sort="3" data-listing-word-count-sort="472">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../reference/physical-constants-and-data.html" class="no-external">Physical Constants &amp; Astronomical Data</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../reference/physical-constants-and-data.html" class="no-external">SI physical constants, subatomic particle masses, planetary orbital parameters, and unit conversions.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YQ=='); return false;">data</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29uc3RhbnRz'); return false;">constants</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cmVmZXJlbmNl'); return false;">reference</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../reference/physical-constants-and-data.html" class="no-external">
-<div class="listing-date">
-2026-09-02
-</div>
-<div class="listing-reading-time">3 min</div>
-<div class="metadata-value listing-date-modified">
-2026-09-10
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="bWF0aCUyQ3JlZmVyZW5jZSUyQ3ZlY3RvcnM=" data-listing-date-sort="1788220800000" data-listing-file-modified-sort="1789016669576" data-listing-date-modified-sort="1789016669000" data-listing-reading-time-sort="3" data-listing-word-count-sort="490">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../reference/vector-calculus-and-identities.html" class="no-external">Vector Calculus &amp; Identities</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../reference/vector-calculus-and-identities.html" class="no-external">Nabla calculus, BAC-CAB triple product rules, differential operators, and integral theorems.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWF0aA=='); return false;">math</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cmVmZXJlbmNl'); return false;">reference</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dmVjdG9ycw=='); return false;">vectors</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../reference/vector-calculus-and-identities.html" class="no-external">
-<div class="listing-date">
-2026-09-01
-</div>
-<div class="listing-reading-time">3 min</div>
-<div class="metadata-value listing-date-modified">
-2026-09-10
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="bWF0aCUyQ3JlZmVyZW5jZSUyQ2NhbGN1bHVz" data-listing-date-sort="1788134400000" data-listing-file-modified-sort="1789016669576" data-listing-date-modified-sort="1789016669000" data-listing-reading-time-sort="2" data-listing-word-count-sort="387">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../reference/math-identities-and-calculus.html" class="no-external">Mathematical Identities &amp; Calculus</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../reference/math-identities-and-calculus.html" class="no-external">Trigonometric and hyperbolic identities, common integrals, derivatives, and Taylor/Maclaurin series expansions.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWF0aA=='); return false;">math</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cmVmZXJlbmNl'); return false;">reference</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y2FsY3VsdXM='); return false;">calculus</div>
-
-</div>
-</div>
-<div class="metadata">
-<a href="../reference/math-identities-and-calculus.html" class="no-external">
-<div class="listing-date">
-2026-08-31
-</div>
-<div class="listing-reading-time">2 min</div>
-<div class="metadata-value listing-date-modified">
-2026-09-10
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -962,27 +706,22 @@ window.Quarto = {
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Reference &amp; Mathematical Tools"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Formulas, physical constants, vector identities, computational methods, and course bibliography."</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">listing:</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">  contents: "*.qmd"</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  sort:</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    - "date desc"</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    - "title asc"</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  type: default</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">  categories: true</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">  sort-ui: [title, date, date-modified]</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">  filter-ui: [title, date, categories]</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">  fields: [date, date-modified, title, subtitle, categories, reading-time]</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">  field-display-names:</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">    date: "Created"</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">    date-modified: "Modified"</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">    reading-time: "Read Time"</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">  page-size: 15</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="an">page-layout:</span><span class="co"> full</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>Quick-reference toolkits, cheatsheets, and comprehensive bibliographies supporting analytical derivations and computational physics in PHYC54. Filter by category or sort by topic below.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Arfken Chapter 3: Vector Analysis"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Focus on Sec 3.10: Curvilinear Coordinates and Metric Tensors"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-09-10"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [arfken, math-methods, tensors, extra]</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">    math: true</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu"># Curvilinear Coordinates and Metric Tensors</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>**Corequisite for Taylor Chapter 6 (Problem 6.13)**</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Concept:** General framework for non-Euclidean metrics.</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">*   </span>**Application:** Setting up the rapidity metric $ds = \frac{2}{1-r^2}\sqrt{dr^2 + r^2 d\theta^2}$.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
