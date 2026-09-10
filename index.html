@@ -77,10 +77,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-89af0c2d685ccb09a4d7d65decb66752.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-89af0c2d685ccb09a4d7d65decb66752.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-34dbf897b697f50edbbc4554a08e61a3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-89af0c2d685ccb09a4d7d65decb66752.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -142,7 +146,169 @@ window.Quarto = {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -186,6 +352,7 @@ window.Quarto = {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -199,7 +366,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#phyc54h3-advanced-classical-mechanics" id="toc-phyc54h3-advanced-classical-mechanics" class="nav-link active" data-scroll-target="#phyc54h3-advanced-classical-mechanics">PHYC54H3: Advanced Classical Mechanics</a>
+  <li><a href="#phyc54h3-classical-mechanics" id="toc-phyc54h3-classical-mechanics" class="nav-link active" data-scroll-target="#phyc54h3-classical-mechanics">PHYC54H3: Classical Mechanics</a>
   <ul class="collapse">
   <li><a href="#university-of-toronto-scarborough-fall-2026" id="toc-university-of-toronto-scarborough-fall-2026" class="nav-link" data-scroll-target="#university-of-toronto-scarborough-fall-2026">University of Toronto Scarborough · Fall 2026</a></li>
   </ul></li>
@@ -209,6 +376,7 @@ window.Quarto = {
     </div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
+
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -230,29 +398,28 @@ window.Quarto = {
 </header>
 
 
-<section id="phyc54h3-advanced-classical-mechanics" class="level1 hero-banner">
-<h1>PHYC54H3: Advanced Classical Mechanics</h1>
+<section id="phyc54h3-classical-mechanics" class="level1 hero-banner">
+<h1>PHYC54H3: Classical Mechanics</h1>
 <section id="university-of-toronto-scarborough-fall-2026" class="level3">
 <h3 class="anchored" data-anchor-id="university-of-toronto-scarborough-fall-2026">University of Toronto Scarborough · Fall 2026</h3>
-<p>Comprehensive course portal featuring the course syllabus, lecture derivations, textbook problem sets, interactive physics simulations, Manim animations, and mathematical reference toolkits.</p>
 </section>
 </section>
 <div class="card-grid">
 <section id="lecture-notes-syllabus" class="level3 course-card">
 <h3 class="anchored" data-anchor-id="lecture-notes-syllabus">📚 <a href="./notes/index.html">Lecture Notes &amp; Syllabus</a></h3>
-<p>Official course syllabus, marking scheme, and rigorous derivations of the Euler-Lagrange equations, Hamilton’s canonical equations, noninertial Coriolis forces, and rigid body dynamics.</p>
+<p>Course syllabus and analytical derivations.</p>
 </section>
 <section id="problem-sets-solutions" class="level3 course-card">
 <h3 class="anchored" data-anchor-id="problem-sets-solutions">✏️ <a href="./solutions/index.html">Problem Sets &amp; Solutions</a></h3>
-<p>Full step-by-step analytical solutions to homework problem sets, tutorial exercises, and end-of-chapter problems from John R. Taylor’s <em>Classical Mechanics</em>.</p>
+<p>Homework exercises and step-by-step solutions.</p>
 </section>
 <section id="code-simulations" class="level3 course-card">
 <h3 class="anchored" data-anchor-id="code-simulations">💻 <a href="./simulations/index.html">Code &amp; Simulations</a></h3>
-<p>Interactive in-browser simulations (Observable JS Canvas), high-performance symplectic Velocity Verlet integrators (C++ / Python), and Manim mathematical video animations.</p>
+<p>Interactive physics simulations and numerical solvers.</p>
 </section>
 <section id="reference-math" class="level3 course-card">
 <h3 class="anchored" data-anchor-id="reference-math">📐 <a href="./reference/index.html">Reference &amp; Math</a></h3>
-<p>Mathematical cheatsheets (trigonometry, hyperbolic functions, vector calculus identities), physical/astronomical constants, numerical methods, and complete course bibliography.</p>
+<p>Mathematical toolkits and formulas.</p>
 </section>
 </div>
 <hr>
@@ -393,6 +560,19 @@ window.Quarto = {
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
@@ -849,70 +1029,69 @@ window.Quarto = {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>::: {.hero-banner}</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu"># PHYC54H3: Advanced Classical Mechanics</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu"># PHYC54H3: Classical Mechanics</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">### University of Toronto Scarborough · Fall 2026</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Comprehensive course portal featuring the course syllabus, lecture derivations, textbook problem sets, interactive physics simulations, Manim animations, and mathematical reference toolkits.</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>::: {.card-grid}</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>::: {.course-card}</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">### 📚 [Lecture Notes &amp; Syllabus](notes/index.qmd)</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>Official course syllabus, marking scheme, and rigorous derivations of the Euler-Lagrange equations, Hamilton's canonical equations, noninertial Coriolis forces, and rigid body dynamics.</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>::: {.course-card}</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">### ✏️ [Problem Sets &amp; Solutions](solutions/index.qmd)</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>Full step-by-step analytical solutions to homework problem sets, tutorial exercises, and end-of-chapter problems from John R. Taylor's *Classical Mechanics*.</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>::: {.course-card}</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">### 💻 [Code &amp; Simulations](simulations/index.qmd)</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>Interactive in-browser simulations (Observable JS Canvas), high-performance symplectic Velocity Verlet integrators (C++ / Python), and Manim mathematical video animations.</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>::: {.course-card}</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">### 📐 [Reference &amp; Math](reference/index.qmd)</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>Mathematical cheatsheets (trigonometry, hyperbolic functions, vector calculus identities), physical/astronomical constants, numerical methods, and complete course bibliography.</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>::: {.card-grid}</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>::: {.course-card}</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">### 📚 [Lecture Notes &amp; Syllabus](notes/index.qmd)</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>Course syllabus and analytical derivations.</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>::: {.course-card}</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">### ✏️ [Problem Sets &amp; Solutions](solutions/index.qmd)</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>Homework exercises and step-by-step solutions.</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>::: {.course-card}</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">### 💻 [Code &amp; Simulations](simulations/index.qmd)</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>Interactive physics simulations and numerical solvers.</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>::: {.course-card}</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">### 📐 [Reference &amp; Math](reference/index.qmd)</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>Mathematical toolkits and formulas.</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🗺️ Course Roadmap &amp; 12-Week Syllabus</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>Follows the official PHYC54 Fall 2026 syllabus taught by Prof. Johann Bayer. Weekly readings correspond to John R. Taylor's *Classical Mechanics* (2005).</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Week <span class="pp">|</span> Dates <span class="pp">|</span> Core Topics &amp; Taylor Readings <span class="pp">|</span> Associated Tutorials &amp; Milestones <span class="pp">|</span> Status <span class="pp">|</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="pp">| :---</span> <span class="pp">| :---</span> <span class="pp">| :---</span> <span class="pp">| :---</span> <span class="pp">| :---</span> <span class="pp">|</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **01** <span class="pp">|</span> Sep. 08-10 <span class="pp">|</span> <span class="co">[</span><span class="ot">Calculus of Variations</span><span class="co">](notes/taylor-chapter-6-calculus-of-variations.qmd)</span> (Ch 6: 1–2) <span class="pp">|</span> Calculus of Variations (Ch 6: 3–4) <span class="pp">|</span> Available <span class="pp">|</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **02** <span class="pp">|</span> Sep. 15-17 <span class="pp">|</span> <span class="co">[</span><span class="ot">Lagrange's Equations</span><span class="co">](notes/taylor-chapter-7-lagrange-equations.qmd)</span> (Ch 7: 1–4) <span class="pp">|</span> <span class="co">[</span><span class="ot">Problem Set #01</span><span class="co">](solutions/taylor-chapter-7-problems.qmd)</span> <span class="pp">|</span> Available <span class="pp">|</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **03** <span class="pp">|</span> Sep. 22-24 <span class="pp">|</span> <span class="co">[</span><span class="ot">Lagrange's Equations</span><span class="co">](notes/taylor-chapter-7-lagrange-equations.qmd)</span> (Ch 7: 5–8) <span class="pp">|</span> <span class="co">[</span><span class="ot">Problem Set #02</span><span class="co">](solutions/taylor-chapter-7-problems.qmd)</span> <span class="pp">|</span> Available <span class="pp">|</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **04** <span class="pp">|</span> Sep. 29 - Oct. 01 <span class="pp">|</span> <span class="co">[</span><span class="ot">Hamiltonian Mechanics</span><span class="co">](notes/taylor-chapter-13-hamiltonian-mechanics.qmd)</span> (Ch 13: 1–4) <span class="pp">|</span> Problem Set #03 <span class="pp">|</span> Upcoming <span class="pp">|</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **05** | Oct. 06-08 | [Hamiltonian Mechanics &amp; Phase Space](notes/taylor-chapter-13-hamiltonian-mechanics.qmd) (Ch 13: 5–7) | Problem Set #04 (**Test #1**) <span class="pp">|</span> Upcoming <span class="pp">|</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **06** <span class="pp">|</span> Oct. 13-15 <span class="pp">|</span> <span class="co">[</span><span class="ot">Mechanics in Noninertial Frames</span><span class="co">](notes/taylor-chapter-9-noninertial-frames.qmd)</span> (Ch 9: 1–3) <span class="pp">|</span> Problem Set #05 <span class="pp">|</span> Upcoming <span class="pp">|</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **07** <span class="pp">|</span> Oct. 20-22 <span class="pp">|</span> <span class="co">[</span><span class="ot">Mechanics in Noninertial Frames</span><span class="co">](notes/taylor-chapter-9-noninertial-frames.qmd)</span> (Ch 9: 4–7) <span class="pp">|</span> Problem Set #06 <span class="pp">|</span> Upcoming <span class="pp">|</span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **RW** | Oct. 27-29 | **Reading Week** (No classes) <span class="pp">|</span> Problem Set #07 Review <span class="pp">|</span> Study Break <span class="pp">|</span></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **08** <span class="pp">|</span> Nov. 03-05 <span class="pp">|</span> <span class="co">[</span><span class="ot">Mechanics in Noninertial Frames</span><span class="co">](notes/taylor-chapter-9-noninertial-frames.qmd)</span> (Ch 9: 8–10) <span class="pp">|</span> Problem Set #08 <span class="pp">|</span> Upcoming <span class="pp">|</span></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **09** | Nov. 10-12 | [Rotational Motion of Rigid Bodies](notes/taylor-chapter-10-rigid-bodies.qmd) (Ch 10: 1–3) | Problem Set #09 (**Test #2**) <span class="pp">|</span> Upcoming <span class="pp">|</span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **10** <span class="pp">|</span> Nov. 17-19 <span class="pp">|</span> <span class="co">[</span><span class="ot">Rotational Motion of Rigid Bodies</span><span class="co">](notes/taylor-chapter-10-rigid-bodies.qmd)</span> (Ch 10: 4–7) <span class="pp">|</span> Problem Set #10 <span class="pp">|</span> Upcoming <span class="pp">|</span></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **11** <span class="pp">|</span> Nov. 24-26 <span class="pp">|</span> <span class="co">[</span><span class="ot">Rotational Motion of Rigid Bodies</span><span class="co">](notes/taylor-chapter-10-rigid-bodies.qmd)</span> (Ch 10: 8–10) <span class="pp">|</span> Problem Set #11 <span class="pp">|</span> Upcoming <span class="pp">|</span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **12** <span class="pp">|</span> Dec. 01-03 <span class="pp">|</span> <span class="co">[</span><span class="ot">Continuum Mechanics</span><span class="co">](notes/taylor-chapter-16-continuum-mechanics.qmd)</span> (Ch 16: 1–4) <span class="pp">|</span> Problem Set #12 <span class="pp">|</span> Upcoming <span class="pp">|</span></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Final** | Dec. 10-22 | **Comprehensive Final Examination** <span class="pp">|</span> Dec. 10–22 Exam Period <span class="pp">|</span> Scheduled <span class="pp">|</span></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="fu">### Course Schedule &amp; Grading Notes</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>Detailed policies on the Autofail rule (minimum 50% on test average or final exam), tutorial submission requirements, and academic integrity policies are detailed in the official <span class="co">[</span><span class="ot">Course Syllabus</span><span class="co">](notes/syllabus.qmd)</span>.</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🗺️ Course Roadmap &amp; 12-Week Syllabus</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>Follows the official PHYC54 Fall 2026 syllabus taught by Prof. Johann Bayer. Weekly readings correspond to John R. Taylor's *Classical Mechanics* (2005).</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Week <span class="pp">|</span> Dates <span class="pp">|</span> Core Topics &amp; Taylor Readings <span class="pp">|</span> Associated Tutorials &amp; Milestones <span class="pp">|</span> Status <span class="pp">|</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="pp">| :---</span> <span class="pp">| :---</span> <span class="pp">| :---</span> <span class="pp">| :---</span> <span class="pp">| :---</span> <span class="pp">|</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **01** <span class="pp">|</span> Sep. 08-10 <span class="pp">|</span> <span class="co">[</span><span class="ot">Calculus of Variations</span><span class="co">](notes/taylor-chapter-6-calculus-of-variations.qmd)</span> (Ch 6: 1–2) <span class="pp">|</span> Calculus of Variations (Ch 6: 3–4) <span class="pp">|</span> Available <span class="pp">|</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **02** <span class="pp">|</span> Sep. 15-17 <span class="pp">|</span> <span class="co">[</span><span class="ot">Lagrange's Equations</span><span class="co">](notes/taylor-chapter-7-lagrange-equations.qmd)</span> (Ch 7: 1–4) <span class="pp">|</span> <span class="co">[</span><span class="ot">Problem Set #01</span><span class="co">](solutions/taylor-chapter-7-problems.qmd)</span> <span class="pp">|</span> Available <span class="pp">|</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **03** <span class="pp">|</span> Sep. 22-24 <span class="pp">|</span> <span class="co">[</span><span class="ot">Lagrange's Equations</span><span class="co">](notes/taylor-chapter-7-lagrange-equations.qmd)</span> (Ch 7: 5–8) <span class="pp">|</span> <span class="co">[</span><span class="ot">Problem Set #02</span><span class="co">](solutions/taylor-chapter-7-problems.qmd)</span> <span class="pp">|</span> Available <span class="pp">|</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **04** <span class="pp">|</span> Sep. 29 - Oct. 01 <span class="pp">|</span> <span class="co">[</span><span class="ot">Hamiltonian Mechanics</span><span class="co">](notes/taylor-chapter-13-hamiltonian-mechanics.qmd)</span> (Ch 13: 1–4) <span class="pp">|</span> Problem Set #03 <span class="pp">|</span> Upcoming <span class="pp">|</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **05** | Oct. 06-08 | [Hamiltonian Mechanics &amp; Phase Space](notes/taylor-chapter-13-hamiltonian-mechanics.qmd) (Ch 13: 5–7) | Problem Set #04 (**Test #1**) <span class="pp">|</span> Upcoming <span class="pp">|</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **06** <span class="pp">|</span> Oct. 13-15 <span class="pp">|</span> <span class="co">[</span><span class="ot">Mechanics in Noninertial Frames</span><span class="co">](notes/taylor-chapter-9-noninertial-frames.qmd)</span> (Ch 9: 1–3) <span class="pp">|</span> Problem Set #05 <span class="pp">|</span> Upcoming <span class="pp">|</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **07** <span class="pp">|</span> Oct. 20-22 <span class="pp">|</span> <span class="co">[</span><span class="ot">Mechanics in Noninertial Frames</span><span class="co">](notes/taylor-chapter-9-noninertial-frames.qmd)</span> (Ch 9: 4–7) <span class="pp">|</span> Problem Set #06 <span class="pp">|</span> Upcoming <span class="pp">|</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **RW** | Oct. 27-29 | **Reading Week** (No classes) <span class="pp">|</span> Problem Set #07 Review <span class="pp">|</span> Study Break <span class="pp">|</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **08** <span class="pp">|</span> Nov. 03-05 <span class="pp">|</span> <span class="co">[</span><span class="ot">Mechanics in Noninertial Frames</span><span class="co">](notes/taylor-chapter-9-noninertial-frames.qmd)</span> (Ch 9: 8–10) <span class="pp">|</span> Problem Set #08 <span class="pp">|</span> Upcoming <span class="pp">|</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **09** | Nov. 10-12 | [Rotational Motion of Rigid Bodies](notes/taylor-chapter-10-rigid-bodies.qmd) (Ch 10: 1–3) | Problem Set #09 (**Test #2**) <span class="pp">|</span> Upcoming <span class="pp">|</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **10** <span class="pp">|</span> Nov. 17-19 <span class="pp">|</span> <span class="co">[</span><span class="ot">Rotational Motion of Rigid Bodies</span><span class="co">](notes/taylor-chapter-10-rigid-bodies.qmd)</span> (Ch 10: 4–7) <span class="pp">|</span> Problem Set #10 <span class="pp">|</span> Upcoming <span class="pp">|</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **11** <span class="pp">|</span> Nov. 24-26 <span class="pp">|</span> <span class="co">[</span><span class="ot">Rotational Motion of Rigid Bodies</span><span class="co">](notes/taylor-chapter-10-rigid-bodies.qmd)</span> (Ch 10: 8–10) <span class="pp">|</span> Problem Set #11 <span class="pp">|</span> Upcoming <span class="pp">|</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **12** <span class="pp">|</span> Dec. 01-03 <span class="pp">|</span> <span class="co">[</span><span class="ot">Continuum Mechanics</span><span class="co">](notes/taylor-chapter-16-continuum-mechanics.qmd)</span> (Ch 16: 1–4) <span class="pp">|</span> Problem Set #12 <span class="pp">|</span> Upcoming <span class="pp">|</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Final** | Dec. 10-22 | **Comprehensive Final Examination** <span class="pp">|</span> Dec. 10–22 Exam Period <span class="pp">|</span> Scheduled <span class="pp">|</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="fu">### Course Schedule &amp; Grading Notes</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>Detailed policies on the Autofail rule (minimum 50% on test average or final exam), tutorial submission requirements, and academic integrity policies are detailed in the official <span class="co">[</span><span class="ot">Course Syllabus</span><span class="co">](notes/syllabus.qmd)</span>.</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><span style="font-size: 0.8em;">© 2026 Igor Kan</span></p>
-</div>   
-    <div class="nav-footer-center">
       &nbsp;
-    </div>
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 Igor Kan</p>
+</div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

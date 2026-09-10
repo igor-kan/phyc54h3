@@ -4,35 +4,28 @@
     "href": "extra/index.html",
     "title": "Extra Notes & Readings",
     "section": "",
-    "text": "This section contains extra materials, reading notes from other textbooks, and supplementary physical models outside of the standard curriculum.\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "No matching items"
   },
   {
     "objectID": "reference/index.html",
     "href": "reference/index.html",
-    "title": "Reference & Mathematical Tools",
+    "title": "Reference & Math",
     "section": "",
-    "text": "Quick-reference toolkits, cheatsheets, and comprehensive bibliographies supporting analytical derivations and computational physics in PHYC54. Filter by category or sort by topic below.\n\n\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Created - Oldest\n      \n      \n        Created - Newest\n      \n      \n        Modified - Oldest\n      \n      \n        Modified - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\nNo matching items"
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\nNo matching items"
   },
   {
     "objectID": "simulations/index.html",
     "href": "simulations/index.html",
     "title": "Code & Simulations",
     "section": "",
-    "text": "This section hosts all computational tools, code notebooks, and programmatic visualizations for PHYC54:\n\nInteractive Simulations: Live in-browser physics simulations running via Observable JS (OJS) and HTML5 Canvas.\nSymplectic Integrators: Velocity Verlet and RK4 solvers implemented in Python, C++, and Fortran for energy-conserving Hamiltonian orbits.\nManim Mathematical Animations: Python scripts and rendering pipelines for 3Blue1Brown-style video demonstrations of chaos, phase trajectories, and coordinate transformations.\n\n\n\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Created - Oldest\n      \n      \n        Created - Newest\n      \n      \n        Modified - Oldest\n      \n      \n        Modified - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\nNo matching items"
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\nNo matching items"
   },
   {
     "objectID": "solutions/index.html",
     "href": "solutions/index.html",
     "title": "Problem Sets & Solutions",
     "section": "",
-    "text": "This section features comprehensive problem statements, analytical derivations, and computational checks for the homework and textbook exercises from John R. Taylor’s Classical Mechanics. Use the search and category filters below to locate solutions by chapter or topic.\n\n\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Created - Oldest\n      \n      \n        Created - Newest\n      \n      \n        Modified - Oldest\n      \n      \n        Modified - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PHYC54H3: Classical Mechanics",
-    "section": "",
-    "text": "Comprehensive course portal featuring the course syllabus, lecture derivations, textbook problem sets, interactive physics simulations, Manim animations, and mathematical reference toolkits."
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#course-roadmap-12-week-syllabus",
@@ -44,8 +37,8 @@
   {
     "objectID": "notes/index.html",
     "href": "notes/index.html",
-    "title": "PHYC54 Lecture Notes & Syllabus",
+    "title": "Lecture Notes & Syllabus",
     "section": "",
-    "text": "This section houses the course syllabus, analytical lecture notes, and theoretical derivations following John R. Taylor’s Classical Mechanics for PHYC54 at UTSC. Use the search bar and sorting filters below to quickly locate specific topics, reading chapters, or formulas.\n\n\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Created - Oldest\n      \n      \n        Created - Newest\n      \n      \n        Modified - Oldest\n      \n      \n        Modified - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\nNo matching items"
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\nNo matching items"
   }
 ]
