@@ -5,7 +5,11 @@
   },
   {
     "listing": "/reference/index.html",
-    "items": []
+    "items": [
+      "/reference/integration-tricks-and-substitutions.html",
+      "/reference/vector-calculus-and-identities.html",
+      "/reference/math-identities-and-calculus.html"
+    ]
   },
   {
     "listing": "/simulations/index.html",

@@ -7,11 +7,81 @@
     "text": "No matching items"
   },
   {
+    "objectID": "reference/math-identities-and-calculus.html",
+    "href": "reference/math-identities-and-calculus.html",
+    "title": "Mathematical Identities & Calculus",
+    "section": "",
+    "text": "\\[ \\sin^2 \\theta + \\cos^2 \\theta = 1 \\] \\[ 1 + \\tan^2 \\theta = \\sec^2 \\theta \\] \\[ 1 + \\cot^2 \\theta = \\csc^2 \\theta \\]\n\n\n\n\\[ \\sin(\\alpha \\pm \\beta) = \\sin\\alpha \\cos\\beta \\pm \\cos\\alpha \\sin\\beta \\] \\[ \\cos(\\alpha \\pm \\beta) = \\cos\\alpha \\cos\\beta \\mp \\sin\\alpha \\sin\\beta \\] \\[ \\tan(\\alpha \\pm \\beta) = \\frac{\\tan\\alpha \\pm \\tan\\beta}{1 \\mp \\tan\\alpha \\tan\\beta} \\]\n\n\n\n\\[ \\sin(2\\theta) = 2\\sin\\theta \\cos\\theta \\] \\[ \\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta \\] \\[ \\sin^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 - \\cos\\theta}{2}, \\quad \\cos^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 + \\cos\\theta}{2} \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#pythagorean-identities",
+    "href": "reference/math-identities-and-calculus.html#pythagorean-identities",
+    "title": "Mathematical Identities & Calculus",
+    "section": "",
+    "text": "\\[ \\sin^2 \\theta + \\cos^2 \\theta = 1 \\] \\[ 1 + \\tan^2 \\theta = \\sec^2 \\theta \\] \\[ 1 + \\cot^2 \\theta = \\csc^2 \\theta \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#angle-addition-and-subtraction",
+    "href": "reference/math-identities-and-calculus.html#angle-addition-and-subtraction",
+    "title": "Mathematical Identities & Calculus",
+    "section": "",
+    "text": "\\[ \\sin(\\alpha \\pm \\beta) = \\sin\\alpha \\cos\\beta \\pm \\cos\\alpha \\sin\\beta \\] \\[ \\cos(\\alpha \\pm \\beta) = \\cos\\alpha \\cos\\beta \\mp \\sin\\alpha \\sin\\beta \\] \\[ \\tan(\\alpha \\pm \\beta) = \\frac{\\tan\\alpha \\pm \\tan\\beta}{1 \\mp \\tan\\alpha \\tan\\beta} \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#double-and-half-angle",
+    "href": "reference/math-identities-and-calculus.html#double-and-half-angle",
+    "title": "Mathematical Identities & Calculus",
+    "section": "",
+    "text": "\\[ \\sin(2\\theta) = 2\\sin\\theta \\cos\\theta \\] \\[ \\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta \\] \\[ \\sin^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 - \\cos\\theta}{2}, \\quad \\cos^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 + \\cos\\theta}{2} \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#core-identities",
+    "href": "reference/math-identities-and-calculus.html#core-identities",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Core Identities",
+    "text": "Core Identities\n\\[ \\cosh^2 x - \\sinh^2 x = 1 \\] \\[ 1 - \\tanh^2 x = \\text{sech}^2 x \\] \\[ \\sinh(2x) = 2\\sinh x \\cosh x \\] \\[ \\cosh(2x) = \\cosh^2 x + \\sinh^2 x \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#common-derivatives",
+    "href": "reference/math-identities-and-calculus.html#common-derivatives",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Common Derivatives",
+    "text": "Common Derivatives\n\\[ \\frac{d}{dx} \\sin x = \\cos x, \\quad \\frac{d}{dx} \\cos x = -\\sin x, \\quad \\frac{d}{dx} \\tan x = \\sec^2 x \\] \\[ \\frac{d}{dx} \\sinh x = \\cosh x, \\quad \\frac{d}{dx} \\cosh x = \\sinh x \\] \\[ \\frac{d}{dx} \\ln(x) = \\frac{1}{x} \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#common-integrals",
+    "href": "reference/math-identities-and-calculus.html#common-integrals",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Common Integrals",
+    "text": "Common Integrals\n\\[ \\int x^n \\, dx = \\frac{x^{n+1}}{n+1} \\quad (n \\neq -1) \\] \\[ \\int \\frac{1}{x} \\, dx = \\ln|x| \\] \\[ \\int e^{ax} \\, dx = \\frac{1}{a}e^{ax} \\] \\[ \\int \\frac{dx}{x^2 + a^2} = \\frac{1}{a} \\arctan\\left(\\frac{x}{a}\\right) \\] \\[ \\int \\frac{dx}{\\sqrt{a^2 - x^2}} = \\arcsin\\left(\\frac{x}{a}\\right) \\]\n\nGaussian Integrals (Crucial for Statistical Mechanics)\n\\[ \\int_{-\\infty}^{\\infty} e^{-ax^2} \\, dx = \\sqrt{\\frac{\\pi}{a}} \\] \\[ \\int_{-\\infty}^{\\infty} x^2 e^{-ax^2} \\, dx = \\frac{1}{2a} \\sqrt{\\frac{\\pi}{a}} \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#taylor-series-general",
+    "href": "reference/math-identities-and-calculus.html#taylor-series-general",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Taylor Series (General)",
+    "text": "Taylor Series (General)\n\\[ f(x) = f(a) + f'(a)(x-a) + \\frac{f''(a)}{2!}(x-a)^2 + \\frac{f'''(a)}{3!}(x-a)^3 + \\dots \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#maclaurin-series-around-x0",
+    "href": "reference/math-identities-and-calculus.html#maclaurin-series-around-x0",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Maclaurin Series (around \\(x=0\\))",
+    "text": "Maclaurin Series (around \\(x=0\\))\n\\[ e^x = 1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!} + \\dots = \\sum_{n=0}^{\\infty} \\frac{x^n}{n!} \\] \\[ \\sin x = x - \\frac{x^3}{3!} + \\frac{x^5}{5!} - \\dots = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n+1}}{(2n+1)!} \\] \\[ \\cos x = 1 - \\frac{x^2}{2!} + \\frac{x^4}{4!} - \\dots = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n}}{(2n)!} \\] \\[ \\ln(1+x) = x - \\frac{x^2}{2} + \\frac{x^3}{3} - \\dots \\quad (\\text{for } |x| &lt; 1) \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#binomial-expansion",
+    "href": "reference/math-identities-and-calculus.html#binomial-expansion",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Binomial Expansion",
+    "text": "Binomial Expansion\nFor \\(|x| &lt; 1\\) and any real \\(n\\): \\[ (1+x)^n = 1 + nx + \\frac{n(n-1)}{2!}x^2 + \\frac{n(n-1)(n-2)}{3!}x^3 + \\dots \\] Useful small \\(x\\) approximations: \\[ (1+x)^n \\approx 1 + nx \\] \\[ (1-x)^{-1} \\approx 1 + x + x^2 + \\dots \\]"
+  },
+  {
     "objectID": "reference/index.html",
     "href": "reference/index.html",
     "title": "Reference & Math",
     "section": "",
-    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\nNo matching items"
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\nIntegration Tricks and Substitution Techniques\n\n\n\nmath\n\ncalculus\n\nreference\n\nintegration\n\n\n\n\n\n\n2026-09-08\n\n22 min\n\n\n\n\n\n\nVector Calculus & Identities\n\n\n\nmath\n\nreference\n\nvectors\n\n\n\n\n\n\n2026-09-01\n\n3 min\n\n\n\n\n\n\nMathematical Identities & Calculus\n\n\n\nmath\n\nreference\n\ncalculus\n\n\n\n\n\n\n2026-08-31\n\n2 min\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "simulations/index.html",
@@ -33,6 +103,174 @@
     "title": "PHYC54H3: Classical Mechanics",
     "section": "🗺️ Course Roadmap & 12-Week Syllabus",
     "text": "🗺️ Course Roadmap & 12-Week Syllabus\nFollows the official PHYC54 Fall 2026 syllabus taught by Prof. Johann Bayer. Weekly readings correspond to John R. Taylor’s Classical Mechanics (2005).\n\n\n\nWeek\nDates\nCore Topics & Taylor Readings\nAssociated Tutorials & Milestones\nStatus\n\n\n\n\n01\nSep. 08-10\nCalculus of Variations (Ch 6: 1–2)\nCalculus of Variations (Ch 6: 3–4)\nAvailable\n\n\n02\nSep. 15-17\nLagrange’s Equations (Ch 7: 1–4)\nProblem Set #01\nAvailable\n\n\n03\nSep. 22-24\nLagrange’s Equations (Ch 7: 5–8)\nProblem Set #02\nAvailable\n\n\n04\nSep. 29 - Oct. 01\nHamiltonian Mechanics (Ch 13: 1–4)\nProblem Set #03\nUpcoming\n\n\n05\nOct. 06-08\nHamiltonian Mechanics &amp; Phase Space (Ch 13: 5–7)\nProblem Set #04 (Test #1)\nUpcoming\n\n\n06\nOct. 13-15\nMechanics in Noninertial Frames (Ch 9: 1–3)\nProblem Set #05\nUpcoming\n\n\n07\nOct. 20-22\nMechanics in Noninertial Frames (Ch 9: 4–7)\nProblem Set #06\nUpcoming\n\n\nRW\nOct. 27-29\nReading Week (No classes)\nProblem Set #07 Review\nStudy Break\n\n\n08\nNov. 03-05\nMechanics in Noninertial Frames (Ch 9: 8–10)\nProblem Set #08\nUpcoming\n\n\n09\nNov. 10-12\nRotational Motion of Rigid Bodies (Ch 10: 1–3)\nProblem Set #09 (Test #2)\nUpcoming\n\n\n10\nNov. 17-19\nRotational Motion of Rigid Bodies (Ch 10: 4–7)\nProblem Set #10\nUpcoming\n\n\n11\nNov. 24-26\nRotational Motion of Rigid Bodies (Ch 10: 8–10)\nProblem Set #11\nUpcoming\n\n\n12\nDec. 01-03\nContinuum Mechanics (Ch 16: 1–4)\nProblem Set #12\nUpcoming\n\n\nFinal\nDec. 10-22\nComprehensive Final Examination\nDec. 10–22 Exam Period\nScheduled\n\n\n\n\n\n\n\n\n\nNoteCourse Schedule & Grading Notes\n\n\n\nDetailed policies on the Autofail rule (minimum 50% on test average or final exam), tutorial submission requirements, and academic integrity policies are detailed in the official Course Syllabus."
+  },
+  {
+    "objectID": "reference/integration-tricks-and-substitutions.html",
+    "href": "reference/integration-tricks-and-substitutions.html",
+    "title": "Integration Tricks and Substitution Techniques",
+    "section": "",
+    "text": "The integral to evaluate from Equation (6.23) is: \\[x = \\int \\sqrt{\\frac{y}{2a - y}} \\, dy\\]\nTaylor introduces the substitution: \\[y = a(1 - \\cos\\theta)\\]\n\n\nDifferentiating \\(y\\) with respect to \\(\\theta\\): \\[dy = \\frac{d}{d\\theta}\\big[a(1 - \\cos\\theta)\\big] d\\theta = a\\sin\\theta \\, d\\theta\\] Using the double-angle identity \\(\\sin\\theta = 2\\sin\\left(\\frac{\\theta}{2}\\right)\\cos\\left(\\frac{\\theta}{2}\\right)\\): \\[dy = 2a \\sin\\left(\\frac{\\theta}{2}\\right)\\cos\\left(\\frac{\\theta}{2}\\right) d\\theta\\]\n\n\n\nSubstitute \\(y = a(1 - \\cos\\theta)\\) into the numerator and denominator under the radical: Numerator: \\[y = a(1 - \\cos\\theta) = 2a\\sin^2\\left(\\frac{\\theta}{2}\\right)\\] Denominator: \\[2a - y = 2a - a(1 - \\cos\\theta) = a(1 + \\cos\\theta) = 2a\\cos^2\\left(\\frac{\\theta}{2}\\right)\\] Taking the ratio inside the square root: \\[\\frac{y}{2a - y} = \\frac{2a\\sin^2\\left(\\frac{\\theta}{2}\\right)}{2a\\cos^2\\left(\\frac{\\theta}{2}\\right)} = \\tan^2\\left(\\frac{\\theta}{2}\\right)\\] Assuming the motion stays within the first arch (\\(\\theta \\in [0, 2\\pi]\\) where \\(\\theta/2 \\in [0, \\pi]\\) and \\(\\sin(\\theta/2) \\ge 0\\)): \\[\\sqrt{\\frac{y}{2a - y}} = \\tan\\left(\\frac{\\theta}{2}\\right) = \\frac{\\sin\\left(\\frac{\\theta}{2}\\right)}{\\cos\\left(\\frac{\\theta}{2}\\right)}\\]\n\n\n\nMultiply the simplified radical by \\(dy\\): \\[\\sqrt{\\frac{y}{2a - y}} \\, dy = \\left(\\frac{\\sin\\left(\\frac{\\theta}{2}\\right)}{\\cos\\left(\\frac{\\theta}{2}\\right)}\\right) \\cdot \\left[2a \\sin\\left(\\frac{\\theta}{2}\\right)\\cos\\left(\\frac{\\theta}{2}\\right) d\\theta\\right] = 2a \\sin^2\\left(\\frac{\\theta}{2}\\right) d\\theta\\] Recall the half-angle identity \\(2\\sin^2\\left(\\frac{\\theta}{2}\\right) = 1 - \\cos\\theta\\): \\[x = \\int a(1 - \\cos\\theta) \\, d\\theta = a(\\theta - \\sin\\theta) + C\\] Applying the initial condition \\(x(0) = 0\\) gives \\(C = 0\\), recovering the cycloid parametric equations: \\[x = a(\\theta - \\sin\\theta), \\quad y = a(1 - \\cos\\theta)\\]"
+  },
+  {
+    "objectID": "reference/integration-tricks-and-substitutions.html#differential-of-the-substitution",
+    "href": "reference/integration-tricks-and-substitutions.html#differential-of-the-substitution",
+    "title": "Integration Tricks and Substitution Techniques",
+    "section": "",
+    "text": "Differentiating \\(y\\) with respect to \\(\\theta\\): \\[dy = \\frac{d}{d\\theta}\\big[a(1 - \\cos\\theta)\\big] d\\theta = a\\sin\\theta \\, d\\theta\\] Using the double-angle identity \\(\\sin\\theta = 2\\sin\\left(\\frac{\\theta}{2}\\right)\\cos\\left(\\frac{\\theta}{2}\\right)\\): \\[dy = 2a \\sin\\left(\\frac{\\theta}{2}\\right)\\cos\\left(\\frac{\\theta}{2}\\right) d\\theta\\]"
+  },
+  {
+    "objectID": "reference/integration-tricks-and-substitutions.html#simplifying-the-radicand",
+    "href": "reference/integration-tricks-and-substitutions.html#simplifying-the-radicand",
+    "title": "Integration Tricks and Substitution Techniques",
+    "section": "",
+    "text": "Substitute \\(y = a(1 - \\cos\\theta)\\) into the numerator and denominator under the radical: Numerator: \\[y = a(1 - \\cos\\theta) = 2a\\sin^2\\left(\\frac{\\theta}{2}\\right)\\] Denominator: \\[2a - y = 2a - a(1 - \\cos\\theta) = a(1 + \\cos\\theta) = 2a\\cos^2\\left(\\frac{\\theta}{2}\\right)\\] Taking the ratio inside the square root: \\[\\frac{y}{2a - y} = \\frac{2a\\sin^2\\left(\\frac{\\theta}{2}\\right)}{2a\\cos^2\\left(\\frac{\\theta}{2}\\right)} = \\tan^2\\left(\\frac{\\theta}{2}\\right)\\] Assuming the motion stays within the first arch (\\(\\theta \\in [0, 2\\pi]\\) where \\(\\theta/2 \\in [0, \\pi]\\) and \\(\\sin(\\theta/2) \\ge 0\\)): \\[\\sqrt{\\frac{y}{2a - y}} = \\tan\\left(\\frac{\\theta}{2}\\right) = \\frac{\\sin\\left(\\frac{\\theta}{2}\\right)}{\\cos\\left(\\frac{\\theta}{2}\\right)}\\]"
+  },
+  {
+    "objectID": "reference/integration-tricks-and-substitutions.html#combining-and-integrating",
+    "href": "reference/integration-tricks-and-substitutions.html#combining-and-integrating",
+    "title": "Integration Tricks and Substitution Techniques",
+    "section": "",
+    "text": "Multiply the simplified radical by \\(dy\\): \\[\\sqrt{\\frac{y}{2a - y}} \\, dy = \\left(\\frac{\\sin\\left(\\frac{\\theta}{2}\\right)}{\\cos\\left(\\frac{\\theta}{2}\\right)}\\right) \\cdot \\left[2a \\sin\\left(\\frac{\\theta}{2}\\right)\\cos\\left(\\frac{\\theta}{2}\\right) d\\theta\\right] = 2a \\sin^2\\left(\\frac{\\theta}{2}\\right) d\\theta\\] Recall the half-angle identity \\(2\\sin^2\\left(\\frac{\\theta}{2}\\right) = 1 - \\cos\\theta\\): \\[x = \\int a(1 - \\cos\\theta) \\, d\\theta = a(\\theta - \\sin\\theta) + C\\] Applying the initial condition \\(x(0) = 0\\) gives \\(C = 0\\), recovering the cycloid parametric equations: \\[x = a(\\theta - \\sin\\theta), \\quad y = a(1 - \\cos\\theta)\\]"
+  },
+  {
+    "objectID": "reference/integration-tricks-and-substitutions.html#eulers-first-and-third-substitutions-for-sqrtax2-bx-c",
+    "href": "reference/integration-tricks-and-substitutions.html#eulers-first-and-third-substitutions-for-sqrtax2-bx-c",
+    "title": "Integration Tricks and Substitution Techniques",
+    "section": "1. Euler’s First and Third Substitutions for \\(\\sqrt{Ax^2 + Bx + C}\\)",
+    "text": "1. Euler’s First and Third Substitutions for \\(\\sqrt{Ax^2 + Bx + C}\\)\nWhen quadratic radicands cannot be cleanly solved by simple trigonometric substitution or completing the square, Euler’s algebraic substitutions rationalize the integral by establishing a birational map between the conic \\(Y^2 = Ax^2 + Bx + C\\) and a parameter \\(t\\):\n\nEuler’s First Substitution (\\(A &gt; 0\\))\n\nCondition: The leading coefficient \\(A\\) is positive.\nSubstitution: \\[ \\sqrt{Ax^2 + Bx + C} = \\pm \\sqrt{A}x + t \\]\nDerivation: Square both sides: \\[ Ax^2 + Bx + C = Ax^2 \\pm 2\\sqrt{A}xt + t^2 \\implies Bx + C = \\pm 2\\sqrt{A}xt + t^2 \\] Notice that \\(Ax^2\\) cancels completely! Solving for \\(x\\) yields a purely rational expression in \\(t\\): \\[ x = \\frac{t^2 - C}{B \\mp 2\\sqrt{A}t} \\] Both \\(x\\) and \\(dx = \\frac{d}{dt}\\left[\\frac{t^2 - C}{B \\mp 2\\sqrt{A}t}\\right]dt\\), as well as the radical itself, become rational functions of \\(t\\). The integral is completely solved by partial fractions.\n\n\n\nEuler’s Third Substitution (Real Roots \\(r_1, r_2\\))\n\nCondition: The quadratic factors over the reals as \\(Ax^2 + Bx + C = A(x - r_1)(x - r_2)\\).\nSubstitution: \\[ \\sqrt{A(x - r_1)(x - r_2)} = t(x - r_1) \\]\nDerivation: Square both sides: \\[ A(x - r_1)(x - r_2) = t^2(x - r_1)^2 \\] Divide by \\((x - r_1)\\): \\[ A(x - r_2) = t^2(x - r_1) \\implies Ax - A r_2 = t^2 x - t^2 r_1 \\implies x = \\frac{A r_2 - t^2 r_1}{A - t^2} \\] The radical simplifies to \\(t(x - r_1) = \\frac{A(r_2 - r_1)t}{A - t^2}\\), rendering the integrand completely rational in \\(t\\)."
+  },
+  {
+    "objectID": "reference/integration-tricks-and-substitutions.html#the-weierstrass-tangent-half-angle-substitution",
+    "href": "reference/integration-tricks-and-substitutions.html#the-weierstrass-tangent-half-angle-substitution",
+    "title": "Integration Tricks and Substitution Techniques",
+    "section": "2. The Weierstrass Tangent Half-Angle Substitution",
+    "text": "2. The Weierstrass Tangent Half-Angle Substitution\nThe Weierstrass substitution is known as the “universal trigonometric substitution.” It algebraically transforms any rational expression of \\(\\sin\\theta\\) and \\(\\cos\\theta\\) into a rational polynomial integral:\n\nGeometric Origin\nConsider the unit circle \\(X^2 + Y^2 = 1\\) parameterized by the angle \\(\\theta\\) where \\((X, Y) = (\\cos\\theta, \\sin\\theta)\\). Draw a secant line from the fixed point \\((-1, 0)\\) through \\((\\cos\\theta, \\sin\\theta)\\) to the vertical line \\(X = 0\\). The slope of this line is: \\[ t = \\tan\\left(\\frac{\\theta}{2}\\right) \\] By stereographic projection, every point on the unit circle corresponds to a unique real slope \\(t \\in (-\\infty, \\infty)\\).\n\n\nAlgebraic Formulas\nUsing standard double-angle formulas with \\(\\tan(\\theta/2) = t\\): \\[ \\cos\\theta = \\cos^2\\left(\\frac{\\theta}{2}\\right) - \\sin^2\\left(\\frac{\\theta}{2}\\right) = \\frac{\\cos^2(\\theta/2) - \\sin^2(\\theta/2)}{\\cos^2(\\theta/2) + \\sin^2(\\theta/2)} = \\frac{1 - t^2}{1 + t^2} \\] \\[ \\sin\\theta = 2\\sin\\left(\\frac{\\theta}{2}\\right)\\cos\\left(\\frac{\\theta}{2}\\right) = \\frac{2\\sin(\\theta/2)\\cos(\\theta/2)}{\\cos^2(\\theta/2) + \\sin^2(\\theta/2)} = \\frac{2t}{1 + t^2} \\] Differentiating \\(\\theta = 2\\arctan(t)\\): \\[ d\\theta = \\frac{2}{1 + t^2} \\, dt \\]\n\n\nExample\nTo evaluate \\(\\int \\frac{d\\theta}{2 + \\cos\\theta}\\): \\[ \\int \\frac{\\frac{2\\, dt}{1 + t^2}}{2 + \\frac{1 - t^2}{1 + t^2}} = \\int \\frac{2\\, dt}{2(1 + t^2) + (1 - t^2)} = \\int \\frac{2\\, dt}{3 + t^2} = \\frac{2}{\\sqrt{3}}\\arctan\\left(\\frac{t}{\\sqrt{3}}\\right) + C = \\frac{2}{\\sqrt{3}}\\arctan\\left(\\frac{\\tan(\\theta/2)}{\\sqrt{3}}\\right) + C \\]"
+  },
+  {
+    "objectID": "reference/integration-tricks-and-substitutions.html#hyperbolic-conversions-for-catenaries-and-relativistic-rapidity",
+    "href": "reference/integration-tricks-and-substitutions.html#hyperbolic-conversions-for-catenaries-and-relativistic-rapidity",
+    "title": "Integration Tricks and Substitution Techniques",
+    "section": "3. Hyperbolic Conversions for Catenaries and Relativistic Rapidity",
+    "text": "3. Hyperbolic Conversions for Catenaries and Relativistic Rapidity\nWhenever variational problems produce forms like \\(\\int \\frac{dy}{\\sqrt{y^2 - y_0^2}}\\):\n\nWhy Hyperbolic Beats Trigonometric Secant\n\nIf you use trigonometric secant \\(y = y_0\\sec\\theta\\): \\[ \\int \\frac{y_0\\sec\\theta\\tan\\theta}{\\sqrt{y_0^2(\\sec^2\\theta - 1)}} \\, d\\theta = \\int \\sec\\theta \\, d\\theta = \\ln|\\sec\\theta + \\tan\\theta| + C = \\ln\\left|\\frac{y + \\sqrt{y^2 - y_0^2}}{y_0}\\right| + C \\] Inverting this logarithm to isolate \\(y(x)\\) requires exponentiation and solving quadratic equations with annoying sign choices.\nUsing hyperbolic cosine \\(y = y_0\\cosh u \\implies dy = y_0\\sinh u \\, du\\): \\[ \\int \\frac{y_0\\sinh u}{\\sqrt{y_0^2(\\cosh^2 u - 1)}} \\, du = \\int \\frac{y_0\\sinh u}{y_0\\sinh u} \\, du = \\int du = u + C = \\operatorname{arcosh}\\left(\\frac{y}{y_0}\\right) + C \\] Inverting this immediately gives: \\[ y(x) = y_0\\cosh\\left(\\frac{x - x_0}{y_0}\\right) \\] in a single clean step, eliminating absolute values and logarithms.\n\n\n\nApplication to Relativistic Rapidity\nIn special relativity, velocity addition is non-linear: \\(v_{13} = \\frac{v_{12} + v_{23}}{1 + v_{12}v_{23}/c^2}\\).\nBy defining rapidity \\(\\eta = \\operatorname{artanh}(v/c)\\), velocity addition becomes strictly linear: \\[ \\eta_{13} = \\eta_{12} + \\eta_{23} \\] The Lorentz factor becomes \\(\\gamma = \\cosh\\eta\\), the momentum becomes \\(p = mc\\sinh\\eta\\), and the relativistic kinetic energy integral \\(\\int v\\, dp = mc^2\\int \\tanh\\eta\\cosh\\eta\\, d\\eta = mc^2\\int \\sinh\\eta\\, d\\eta = mc^2(\\cosh\\eta - 1) = (\\gamma - 1)mc^2\\) is evaluated instantly."
+  },
+  {
+    "objectID": "reference/integration-tricks-and-substitutions.html#problem-1-the-normalized-fractional-root",
+    "href": "reference/integration-tricks-and-substitutions.html#problem-1-the-normalized-fractional-root",
+    "title": "Integration Tricks and Substitution Techniques",
+    "section": "Problem 1: The Normalized Fractional Root",
+    "text": "Problem 1: The Normalized Fractional Root\n\\[\\int_0^1 \\sqrt{\\frac{x}{1-x}} \\, dx\\]\nTarget Trick: The half-angle cycloid substitution (\\(x = \\sin^2\\theta\\)).\nSpeed-Round Solution: Let \\(x = \\sin^2\\theta\\), so \\(dx = 2\\sin\\theta\\cos\\theta\\, d\\theta\\). The bounds transform as \\(0 \\to 0\\) and \\(1 \\to \\pi/2\\): \\[\\sqrt{\\frac{x}{1-x}} = \\sqrt{\\frac{\\sin^2\\theta}{\\cos^2\\theta}} = \\tan\\theta\\] Substitute directly into the integral: \\[\\int_0^{\\pi/2} (\\tan\\theta) \\cdot (2\\sin\\theta\\cos\\theta)\\, d\\theta = 2 \\int_0^{\\pi/2} \\sin^2\\theta\\, d\\theta\\] Using the average value of \\(\\sin^2\\theta\\) over a quarter-period: \\[2 \\left(\\frac{1}{2} \\cdot \\frac{\\pi}{2}\\right) = \\mathbf{\\frac{\\pi}{2}}\\]"
+  },
+  {
+    "objectID": "reference/integration-tricks-and-substitutions.html#problem-2-the-factored-quadratic-surd",
+    "href": "reference/integration-tricks-and-substitutions.html#problem-2-the-factored-quadratic-surd",
+    "title": "Integration Tricks and Substitution Techniques",
+    "section": "Problem 2: The Factored Quadratic Surd",
+    "text": "Problem 2: The Factored Quadratic Surd\n\\[\\int_0^1 \\frac{dx}{(x+1)\\sqrt{x(1-x)}}\\]\nTarget Trick: Euler’s third substitution / factored root normalization.\nSpeed-Round Solution: Substitute \\(x = \\sin^2\\theta\\), giving \\(dx = 2\\sin\\theta\\cos\\theta\\, d\\theta\\) and \\(\\sqrt{x(1-x)} = \\sin\\theta\\cos\\theta\\): \\[\\int_0^{\\pi/2} \\frac{2\\sin\\theta\\cos\\theta\\, d\\theta}{(1 + \\sin^2\\theta)\\sin\\theta\\cos\\theta} = \\int_0^{\\pi/2} \\frac{2\\, d\\theta}{1 + \\sin^2\\theta}\\] Divide numerator and denominator by \\(\\cos^2\\theta\\) to prepare an algebraic substitution: \\[\\int_0^{\\pi/2} \\frac{2\\sec^2\\theta}{\\sec^2\\theta + \\tan^2\\theta}\\, d\\theta = \\int_0^{\\pi/2} \\frac{2\\sec^2\\theta}{1 + 2\\tan^2\\theta}\\, d\\theta\\] Substitute \\(u = \\sqrt{2}\\tan\\theta\\), so \\(du = \\sqrt{2}\\sec^2\\theta\\, d\\theta\\), with limits \\(0 \\to \\infty\\): \\[\\int_0^\\infty \\frac{\\sqrt{2}\\, du}{1 + u^2} = \\sqrt{2} \\left[ \\arctan(u) \\right]_0^\\infty = \\sqrt{2}\\left(\\frac{\\pi}{2}\\right) = \\mathbf{\\frac{\\pi}{\\sqrt{2}}}\\]"
+  },
+  {
+    "objectID": "reference/integration-tricks-and-substitutions.html#problem-3-the-15-second-weierstrass-benchmark",
+    "href": "reference/integration-tricks-and-substitutions.html#problem-3-the-15-second-weierstrass-benchmark",
+    "title": "Integration Tricks and Substitution Techniques",
+    "section": "Problem 3: The 15-Second Weierstrass Benchmark",
+    "text": "Problem 3: The 15-Second Weierstrass Benchmark\n\\[\\int_0^{\\pi/2} \\frac{dx}{1 + \\sin x + \\cos x}\\]\nTarget Trick: The classic half-angle substitution \\(t = \\tan(x/2)\\).\nSpeed-Round Solution: Recall the rational identities: \\[\\sin x = \\frac{2t}{1+t^2}, \\quad \\cos x = \\frac{1-t^2}{1+t^2}, \\quad dx = \\frac{2\\, dt}{1+t^2}\\] Combine the denominator terms: \\[1 + \\sin x + \\cos x = \\frac{(1+t^2) + 2t + (1-t^2)}{1+t^2} = \\frac{2(1+t)}{1+t^2}\\] The \\((1+t^2)\\) factors cancel against \\(dx\\): \\[\\int_0^1 \\frac{\\frac{2\\, dt}{1+t^2}}{\\frac{2(1+t)}{1+t^2}} = \\int_0^1 \\frac{dt}{1+t} = \\left[ \\ln(1+t) \\right]_0^1 = \\mathbf{\\ln 2}\\]"
+  },
+  {
+    "objectID": "reference/integration-tricks-and-substitutions.html#problem-4-inverse-factorization-on-sqrtx2---1",
+    "href": "reference/integration-tricks-and-substitutions.html#problem-4-inverse-factorization-on-sqrtx2---1",
+    "title": "Integration Tricks and Substitution Techniques",
+    "section": "Problem 4: Inverse Factorization on \\(\\sqrt{x^2 - 1}\\)",
+    "text": "Problem 4: Inverse Factorization on \\(\\sqrt{x^2 - 1}\\)\n\\[\\int_1^2 \\frac{\\sqrt{x^2 - 1}}{x^4}\\, dx\\]\nTarget Trick: Direct radical factoring \\(u = \\sqrt{1 - x^{-2}}\\) (bypassing trigonometric substitution).\nSpeed-Round Solution: Factor \\(x\\) out of the radical in the numerator: \\[\\frac{\\sqrt{x^2-1}}{x^4} = \\frac{x\\sqrt{1 - x^{-2}}}{x^4} = \\frac{\\sqrt{1 - x^{-2}}}{x^3}\\] Set \\(u = \\sqrt{1 - x^{-2}}\\). Then \\(u^2 = 1 - x^{-2} \\implies 2u\\, du = 2x^{-3}\\, dx\\), so: \\[\\frac{dx}{x^3} = u\\, du\\] The bounds transform from \\(x \\in [1, 2]\\) to \\(u \\in \\left[0, \\frac{\\sqrt{3}}{2}\\right]\\): \\[\\int_0^{\\sqrt{3}/2} u \\cdot (u\\, du) = \\int_0^{\\sqrt{3}/2} u^2\\, du = \\left[ \\frac{u^3}{3} \\right]_0^{\\sqrt{3}/2} = \\frac{1}{3}\\left(\\frac{3\\sqrt{3}}{8}\\right) = \\mathbf{\\frac{\\sqrt{3}}{8}}\\]"
+  },
+  {
+    "objectID": "reference/integration-tricks-and-substitutions.html#problem-5-hyperbolic-shift-with-inversion",
+    "href": "reference/integration-tricks-and-substitutions.html#problem-5-hyperbolic-shift-with-inversion",
+    "title": "Integration Tricks and Substitution Techniques",
+    "section": "Problem 5: Hyperbolic Shift with Inversion",
+    "text": "Problem 5: Hyperbolic Shift with Inversion\n\\[\\int_0^1 \\frac{dx}{(x+1)\\sqrt{x^2 + 2x + 2}}\\]\nTarget Trick: Completing the square followed by inversion substitution \\(u = 1/t\\).\nSpeed-Round Solution: Complete the square inside the radical: \\(x^2 + 2x + 2 = (x+1)^2 + 1\\). Shift variables with \\(y = x+1\\): \\[\\int_1^2 \\frac{dy}{y\\sqrt{y^2 + 1}}\\] Apply the inversion substitution \\(y = \\frac{1}{t}\\), which gives \\(dy = -\\frac{dt}{t^2}\\): \\[\\int_1^{1/2} \\frac{-\\frac{dt}{t^2}}{\\frac{1}{t}\\sqrt{\\frac{1}{t^2} + 1}} = \\int_{1/2}^1 \\frac{dt}{\\sqrt{1 + t^2}}\\] Using the standard anti-derivative \\(\\int \\frac{dt}{\\sqrt{1+t^2}} = \\operatorname{arsinh}(t) = \\ln(t + \\sqrt{t^2+1})\\): \\[\\left[ \\ln\\left(t + \\sqrt{t^2 + 1}\\right) \\right]_{1/2}^1 = \\ln(1 + \\sqrt{2}) - \\ln\\left(\\frac{1 + \\sqrt{5}}{2}\\right) = \\mathbf{\\ln\\left(\\frac{2 + 2\\sqrt{2}}{1 + \\sqrt{5}}\\right)}\\]"
+  },
+  {
+    "objectID": "reference/integration-tricks-and-substitutions.html#what-theta-represents-physically",
+    "href": "reference/integration-tricks-and-substitutions.html#what-theta-represents-physically",
+    "title": "Integration Tricks and Substitution Techniques",
+    "section": "What \\(\\theta\\) Represents Physically",
+    "text": "What \\(\\theta\\) Represents Physically\nThe parameter \\(\\theta\\) is the cumulative rotation angle (in radians) of the rolling circle that generates the curve.\n          x=0                         x = a*theta                      x = 2*pi*a\n   y=0 ----*-------------------------------O-------------------------------*----&gt; x\n           |                              / \\                              |\n           |                             /   \\                             |\n           |                            /  a  \\                            |\n           |                           O-------* P(x,y)                    |\n           |                            \\ theta/                           |\n           |                             \\    /                            |\n           |                              \\  /                             |\n           |                               \\/                              |\n           |                                                               |\n           |                               . (Trough: theta = pi, y = 2a)  |\n           v y\nImagine a circular disk of radius \\(a\\) rolling without slipping along the underside of the horizontal axis (\\(y = 0\\), pointing downward):\nCenter of the wheel: As the wheel rolls through an angle \\(\\theta\\), its contact point has rolled a distance \\(a\\theta\\) along the rail. The center of the disk is located at: \\[(x_c, y_c) = (a\\theta, a)\\]\nPoint on the perimeter (\\(P\\)): A marker fixed to the rim starts at the origin \\((0, 0)\\) when \\(\\theta = 0\\). After rotating clockwise by \\(\\theta\\), the marker’s relative displacement from the wheel’s center is: \\[\\Delta x = -a\\sin\\theta, \\quad \\Delta y = -a\\cos\\theta\\]\nAbsolute coordinates: Combining center translation and rim rotation yields the parametric equations: \\[x(\\theta) = x_c + \\Delta x = a(\\theta - \\sin\\theta)\\] \\[y(\\theta) = y_c + \\Delta y = a(1 - \\cos\\theta)\\]\n\\(\\theta\\) also directly determines the local slope and launch angle of the path. Differentiating with respect to \\(\\theta\\): \\[\\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta} = \\frac{a\\sin\\theta}{a(1 - \\cos\\theta)} = \\frac{2\\sin(\\theta/2)\\cos(\\theta/2)}{2\\sin^2(\\theta/2)} = \\cot\\left(\\frac{\\theta}{2}\\right)\\]\nIf \\(\\psi\\) is the inclination angle of the velocity vector relative to the horizontal (\\(\\tan\\psi = dy/dx\\)): \\[\\psi = \\frac{\\pi - \\theta}{2}\\] - At \\(\\theta \\to 0\\) (the start): \\(\\psi = \\pi/2\\) (the path drops straight vertically). - At \\(\\theta = \\pi\\) (the trough): \\(\\psi = 0\\) (the trajectory is completely horizontal). - At \\(\\theta = 2\\pi\\) (the next cusp): \\(\\psi = -\\pi/2\\) (the path rises back to vertical)."
+  },
+  {
+    "objectID": "reference/integration-tricks-and-substitutions.html#why-assume-the-first-arch-theta-in-0-2pi-and-sintheta2-ge-0",
+    "href": "reference/integration-tricks-and-substitutions.html#why-assume-the-first-arch-theta-in-0-2pi-and-sintheta2-ge-0",
+    "title": "Integration Tricks and Substitution Techniques",
+    "section": "Why Assume the First Arch (\\(\\theta \\in [0, 2\\pi]\\)) and \\(\\sin(\\theta/2) \\ge 0\\)?",
+    "text": "Why Assume the First Arch (\\(\\theta \\in [0, 2\\pi]\\)) and \\(\\sin(\\theta/2) \\ge 0\\)?\n\n1. The Mathematical Reason: Eliminating Absolute Value Signs\nThe substitution replaces \\(\\sqrt{y / (2a - y)}\\) with trigonometric functions: \\[\\sqrt{\\frac{y}{2a - y}} = \\sqrt{\\frac{2a\\sin^2(\\theta/2)}{2a\\cos^2(\\theta/2)}} = \\sqrt{\\tan^2\\left(\\frac{\\theta}{2}\\right)} = \\left\\vert{} \\tan\\left(\\frac{\\theta}{2}\\right) \\right\\vert{} = \\frac{\\left\\vert{}\\sin(\\theta/2)\\right\\vert{}}{\\left\\vert{}\\cos(\\theta/2)\\right\\vert{}}\\] By definition, the principal square root \\(\\sqrt{u^2} = \\vert{}u\\vert{}\\). If \\(\\theta \\in [0, 2\\pi]\\), then the half-angle satisfies \\(\\frac{\\theta}{2} \\in [0, \\pi]\\). The sine function is strictly non-negative across the entire interval \\([0, \\pi]\\): \\[\\sin\\left(\\frac{\\theta}{2}\\right) \\ge 0 \\implies \\left\\vert{}\\sin\\left(\\frac{\\theta}{2}\\right)\\right\\vert{} = \\sin\\left(\\frac{\\theta}{2}\\right)\\] This ensures that the integrand evaluates to \\(\\sin(\\theta/2)\\) without carrying piece-wise \\(\\pm\\) absolute value signs.\n\n\n2. The Physical Reason: Geometry of the Fastest Path\n\nEnergy Bounds: Conservation of mechanical energy gives \\(v = \\sqrt{2gy}\\). At \\(y = 0\\), speed is zero (\\(v = 0\\)). The particle cannot rise above \\(y = 0\\), which means it cannot continue past a cusp into negative \\(y\\).\nUniqueness: A single arch (\\(\\theta \\in [0, 2\\pi]\\)) starts at \\((0, 0)\\) and terminates at \\((2\\pi a, 0)\\). By scaling the radius \\(a\\), a single cycloid arch can pass through any target point \\((x_2, y_2)\\) in the lower half-plane (\\(x_2 &gt; 0, y_2 \\ge 0\\)).\nNo Redundant Loops: Any path extending past \\(\\theta = 2\\pi\\) into a second arch would involve rising up to a cusp, stopping, and dropping into a new dip. That would add unnecessary path length and travel time, violating the time-minimization condition \\(\\delta T = 0\\)."
+  },
+  {
+    "objectID": "reference/integration-tricks-and-substitutions.html#essential-mathematical-properties-of-cycloids",
+    "href": "reference/integration-tricks-and-substitutions.html#essential-mathematical-properties-of-cycloids",
+    "title": "Integration Tricks and Substitution Techniques",
+    "section": "Essential Mathematical Properties of Cycloids",
+    "text": "Essential Mathematical Properties of Cycloids\nParametric Form: \\[x(\\theta) = a(\\theta - \\sin\\theta), \\quad y(\\theta) = a(1 - \\cos\\theta)\\]\nDifferential Arc Length: \\[ds = \\sqrt{\\dot{x}^2 + \\dot{y}^2}\\, d\\theta = a\\sqrt{(1-\\cos\\theta)^2 + \\sin^2\\theta}\\, d\\theta = 2a\\sin\\left(\\frac{\\theta}{2}\\right) d\\theta\\]\nTotal Arc Length from Origin to \\(\\theta\\): \\[s(\\theta) = \\int_0^\\theta 2a\\sin\\left(\\frac{\\theta'}{2}\\right) d\\theta' = 4a\\left(1 - \\cos\\left(\\frac{\\theta}{2}\\right)\\right) = 8a\\sin^2\\left(\\frac{\\theta}{4}\\right)\\]\nThe total perimeter of one complete arch (\\(\\theta = 2\\pi\\)) is exactly: \\[s_{\\text{total}} = 8a\\]\nRadius of Curvature: \\[\\rho(\\theta) = \\frac{(\\dot{x}^2 + \\dot{y}^2)^{3/2}}{\\vert{}\\dot{x}\\ddot{y} - \\dot{y}\\ddot{x}\\vert{}} = 4a\\sin\\left(\\frac{\\theta}{2}\\right) = \\sqrt{8a y}\\]\nSelf-Evolute Property: The evolute (locus of centers of curvature) of a cycloid is an identical cycloid, shifted horizontally by \\(\\pi a\\) and vertically downward by \\(2a\\)."
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html",
+    "href": "reference/vector-calculus-and-identities.html",
+    "title": "Vector Calculus & Identities",
+    "section": "",
+    "text": "Let \\(\\mathbf{A}, \\mathbf{B}, \\mathbf{C}\\) be vectors in 3D space.\n\n\n\\[ \\mathbf{A} \\cdot \\mathbf{B} = A_x B_x + A_y B_y + A_z B_z = |\\mathbf{A}| |\\mathbf{B}| \\cos\\theta \\] \\[ \\mathbf{A} \\times \\mathbf{B} = \\det \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix} \\] \\[ |\\mathbf{A} \\times \\mathbf{B}| = |\\mathbf{A}| |\\mathbf{B}| \\sin\\theta \\]\n\n\n\nScalar Triple Product (Volume of parallelepiped): \\[ \\mathbf{A} \\cdot (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B} \\cdot (\\mathbf{C} \\times \\mathbf{A}) = \\mathbf{C} \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\det \\begin{vmatrix} A_x & A_y & A_z \\\\ B_x & B_y & B_z \\\\ C_x & C_y & C_z \\end{vmatrix} \\]\nVector Triple Product (BAC-CAB Rule): \\[ \\mathbf{A} \\times (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B}(\\mathbf{A} \\cdot \\mathbf{C}) - \\mathbf{C}(\\mathbf{A} \\cdot \\mathbf{B}) \\]"
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html#dot-and-cross-products",
+    "href": "reference/vector-calculus-and-identities.html#dot-and-cross-products",
+    "title": "Vector Calculus & Identities",
+    "section": "",
+    "text": "\\[ \\mathbf{A} \\cdot \\mathbf{B} = A_x B_x + A_y B_y + A_z B_z = |\\mathbf{A}| |\\mathbf{B}| \\cos\\theta \\] \\[ \\mathbf{A} \\times \\mathbf{B} = \\det \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix} \\] \\[ |\\mathbf{A} \\times \\mathbf{B}| = |\\mathbf{A}| |\\mathbf{B}| \\sin\\theta \\]"
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html#triple-products",
+    "href": "reference/vector-calculus-and-identities.html#triple-products",
+    "title": "Vector Calculus & Identities",
+    "section": "",
+    "text": "Scalar Triple Product (Volume of parallelepiped): \\[ \\mathbf{A} \\cdot (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B} \\cdot (\\mathbf{C} \\times \\mathbf{A}) = \\mathbf{C} \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\det \\begin{vmatrix} A_x & A_y & A_z \\\\ B_x & B_y & B_z \\\\ C_x & C_y & C_z \\end{vmatrix} \\]\nVector Triple Product (BAC-CAB Rule): \\[ \\mathbf{A} \\times (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B}(\\mathbf{A} \\cdot \\mathbf{C}) - \\mathbf{C}(\\mathbf{A} \\cdot \\mathbf{B}) \\]"
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html#operations",
+    "href": "reference/vector-calculus-and-identities.html#operations",
+    "title": "Vector Calculus & Identities",
+    "section": "Operations",
+    "text": "Operations\n\nGradient (Scalar \\(f \\to\\) Vector): \\[ \\nabla f = \\frac{\\partial f}{\\partial x}\\mathbf{\\hat{i}} + \\frac{\\partial f}{\\partial y}\\mathbf{\\hat{j}} + \\frac{\\partial f}{\\partial z}\\mathbf{\\hat{k}} \\]\nDivergence (Vector \\(\\mathbf{A} \\to\\) Scalar): \\[ \\nabla \\cdot \\mathbf{A} = \\frac{\\partial A_x}{\\partial x} + \\frac{\\partial A_y}{\\partial y} + \\frac{\\partial A_z}{\\partial z} \\]\nCurl (Vector \\(\\mathbf{A} \\to\\) Vector): \\[ \\nabla \\times \\mathbf{A} = \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ \\frac{\\partial}{\\partial x} & \\frac{\\partial}{\\partial y} & \\frac{\\partial}{\\partial z} \\\\ A_x & A_y & A_z \\end{vmatrix} \\]\nLaplacian (Scalar \\(f \\to\\) Scalar): \\[ \\nabla^2 f = \\nabla \\cdot (\\nabla f) = \\frac{\\partial^2 f}{\\partial x^2} + \\frac{\\partial^2 f}{\\partial y^2} + \\frac{\\partial^2 f}{\\partial z^2} \\]"
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html#product-rules",
+    "href": "reference/vector-calculus-and-identities.html#product-rules",
+    "title": "Vector Calculus & Identities",
+    "section": "Product Rules",
+    "text": "Product Rules\n\\[ \\nabla(fg) = f\\nabla g + g\\nabla f \\] \\[ \\nabla \\cdot (f\\mathbf{A}) = f(\\nabla \\cdot \\mathbf{A}) + \\mathbf{A} \\cdot (\\nabla f) \\] \\[ \\nabla \\times (f\\mathbf{A}) = f(\\nabla \\times \\mathbf{A}) + (\\nabla f) \\times \\mathbf{A} \\] \\[ \\nabla \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\mathbf{B} \\cdot (\\nabla \\times \\mathbf{A}) - \\mathbf{A} \\cdot (\\nabla \\times \\mathbf{B}) \\] \\[ \\nabla(\\mathbf{A} \\cdot \\mathbf{B}) = \\mathbf{A} \\times (\\nabla \\times \\mathbf{B}) + \\mathbf{B} \\times (\\nabla \\times \\mathbf{A}) + (\\mathbf{A} \\cdot \\nabla)\\mathbf{B} + (\\mathbf{B} \\cdot \\nabla)\\mathbf{A} \\]"
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html#second-derivatives",
+    "href": "reference/vector-calculus-and-identities.html#second-derivatives",
+    "title": "Vector Calculus & Identities",
+    "section": "Second Derivatives",
+    "text": "Second Derivatives\nCurl of a Gradient is zero: \\[ \\nabla \\times (\\nabla f) = 0 \\] (If \\(\\nabla \\times \\mathbf{F} = 0\\), then \\(\\mathbf{F}\\) is conservative and \\(\\mathbf{F} = -\\nabla U\\).)\nDivergence of a Curl is zero: \\[ \\nabla \\cdot (\\nabla \\times \\mathbf{A}) = 0 \\] (If \\(\\nabla \\cdot \\mathbf{B} = 0\\), then \\(\\mathbf{B}\\) can be written as the curl of a vector potential \\(\\mathbf{A}\\).)\nCurl of a Curl: \\[ \\nabla \\times (\\nabla \\times \\mathbf{A}) = \\nabla(\\nabla \\cdot \\mathbf{A}) - \\nabla^2\\mathbf{A} \\]"
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html#divergence-theorem-gausss-theorem",
+    "href": "reference/vector-calculus-and-identities.html#divergence-theorem-gausss-theorem",
+    "title": "Vector Calculus & Identities",
+    "section": "Divergence Theorem (Gauss’s Theorem)",
+    "text": "Divergence Theorem (Gauss’s Theorem)\nRelates a volume integral to a surface integral over the closed boundary \\(S\\): \\[ \\iiint_V (\\nabla \\cdot \\mathbf{A}) \\, dV = \\iint_S \\mathbf{A} \\cdot d\\mathbf{a} \\]"
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html#stokes-theorem",
+    "href": "reference/vector-calculus-and-identities.html#stokes-theorem",
+    "title": "Vector Calculus & Identities",
+    "section": "Stokes’ Theorem",
+    "text": "Stokes’ Theorem\nRelates a surface integral to a line integral around the closed bounding curve \\(C\\): \\[ \\iint_S (\\nabla \\times \\mathbf{A}) \\cdot d\\mathbf{a} = \\oint_C \\mathbf{A} \\cdot d\\mathbf{l} \\]"
+  },
+  {
+    "objectID": "reference/vector-calculus-and-identities.html#gradient-theorem-fundamental-theorem-of-calculus-for-line-integrals",
+    "href": "reference/vector-calculus-and-identities.html#gradient-theorem-fundamental-theorem-of-calculus-for-line-integrals",
+    "title": "Vector Calculus & Identities",
+    "section": "Gradient Theorem (Fundamental Theorem of Calculus for Line Integrals)",
+    "text": "Gradient Theorem (Fundamental Theorem of Calculus for Line Integrals)\n\\[ \\int_a^b (\\nabla f) \\cdot d\\mathbf{l} = f(b) - f(a) \\]"
   },
   {
     "objectID": "notes/index.html",
