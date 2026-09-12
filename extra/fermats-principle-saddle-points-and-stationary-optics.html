@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-09-12">
+
+<title>Fermat’s Principle Beyond Least Time: Stationary Paths, Saddle Points, and Gravitational Lensing – PHYC54H3: Classical Mechanics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-89af0c2d685ccb09a4d7d65decb66752.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-34dbf897b697f50edbbc4554a08e61a3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-89af0c2d685ccb09a4d7d65decb66752.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">PHYC54H3: Classical Mechanics</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../notes/index.html"> 
+<span class="menu-text">Lecture Notes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../solutions/index.html"> 
+<span class="menu-text">Problem Sets</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../simulations/index.html"> 
+<span class="menu-text">Code &amp; Simulations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../reference/index.html"> 
+<span class="menu-text">Reference &amp; Math</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../extra/index.html"> 
+<span class="menu-text">Extra Notes</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#mathematical-formulation-of-fermats-principle" id="toc-mathematical-formulation-of-fermats-principle" class="nav-link active" data-scroll-target="#mathematical-formulation-of-fermats-principle">1. Mathematical Formulation of Fermat’s Principle</a></li>
+  <li><a href="#explicit-physical-and-mathematical-assumptions" id="toc-explicit-physical-and-mathematical-assumptions" class="nav-link" data-scroll-target="#explicit-physical-and-mathematical-assumptions">2. Explicit Physical and Mathematical Assumptions</a></li>
+  <li><a href="#first-and-second-variations-the-geometry-of-extrema" id="toc-first-and-second-variations-the-geometry-of-extrema" class="nav-link" data-scroll-target="#first-and-second-variations-the-geometry-of-extrema">3. First and Second Variations: The Geometry of Extrema</a>
+  <ul class="collapse">
+  <li><a href="#the-first-variation-delta-s-0" id="toc-the-first-variation-delta-s-0" class="nav-link" data-scroll-target="#the-first-variation-delta-s-0">The First Variation (<span class="math inline">\(\delta S = 0\)</span>)</a></li>
+  <li><a href="#the-second-variation-delta2-s-and-the-jacobi-equation" id="toc-the-second-variation-delta2-s-and-the-jacobi-equation" class="nav-link" data-scroll-target="#the-second-variation-delta2-s-and-the-jacobi-equation">The Second Variation (<span class="math inline">\(\delta^2 S\)</span>) and the Jacobi Equation</a></li>
+  </ul></li>
+  <li><a href="#physical-case-1-reflection-off-curved-mirrors-the-ellipsoidal-criterion" id="toc-physical-case-1-reflection-off-curved-mirrors-the-ellipsoidal-criterion" class="nav-link" data-scroll-target="#physical-case-1-reflection-off-curved-mirrors-the-ellipsoidal-criterion">4. Physical Case 1: Reflection Off Curved Mirrors (The Ellipsoidal Criterion)</a>
+  <ul class="collapse">
+  <li><a href="#the-reference-ellipsoid" id="toc-the-reference-ellipsoid" class="nav-link" data-scroll-target="#the-reference-ellipsoid">The Reference Ellipsoid</a></li>
+  <li><a href="#quantitative-mathematical-proof-of-a-reflection-saddle-point" id="toc-quantitative-mathematical-proof-of-a-reflection-saddle-point" class="nav-link" data-scroll-target="#quantitative-mathematical-proof-of-a-reflection-saddle-point">Quantitative Mathematical Proof of a Reflection Saddle Point</a></li>
+  </ul></li>
+  <li><a href="#physical-case-2-conjugate-points-and-caustic-crossings" id="toc-physical-case-2-conjugate-points-and-caustic-crossings" class="nav-link" data-scroll-target="#physical-case-2-conjugate-points-and-caustic-crossings">5. Physical Case 2: Conjugate Points and Caustic Crossings</a>
+  <ul class="collapse">
+  <li><a href="#the-morse-index-theorem-in-optics" id="toc-the-morse-index-theorem-in-optics" class="nav-link" data-scroll-target="#the-morse-index-theorem-in-optics">The Morse Index Theorem in Optics</a></li>
+  </ul></li>
+  <li><a href="#physical-case-3-gravitational-lensing-in-general-relativity" id="toc-physical-case-3-gravitational-lensing-in-general-relativity" class="nav-link" data-scroll-target="#physical-case-3-gravitational-lensing-in-general-relativity">6. Physical Case 3: Gravitational Lensing in General Relativity</a>
+  <ul class="collapse">
+  <li><a href="#the-relativistic-fermat-principle" id="toc-the-relativistic-fermat-principle" class="nav-link" data-scroll-target="#the-relativistic-fermat-principle">The Relativistic Fermat Principle</a></li>
+  <li><a href="#the-arrival-time-surface-tauboldsymboltheta" id="toc-the-arrival-time-surface-tauboldsymboltheta" class="nav-link" data-scroll-target="#the-arrival-time-surface-tauboldsymboltheta">The Arrival-Time Surface <span class="math inline">\(\tau(\boldsymbol{\theta})\)</span></a></li>
+  <li><a href="#image-classification-via-the-hessian-of-arrival-time" id="toc-image-classification-via-the-hessian-of-arrival-time" class="nav-link" data-scroll-target="#image-classification-via-the-hessian-of-arrival-time">Image Classification via the Hessian of Arrival Time</a></li>
+  </ul></li>
+  <li><a href="#wave-optics-and-quantum-foundations-the-gouy-phase-shift" id="toc-wave-optics-and-quantum-foundations-the-gouy-phase-shift" class="nav-link" data-scroll-target="#wave-optics-and-quantum-foundations-the-gouy-phase-shift">7. Wave Optics and Quantum Foundations: The Gouy Phase Shift</a></li>
+  <li><a href="#summary-comparison-matrix" id="toc-summary-comparison-matrix" class="nav-link" data-scroll-target="#summary-comparison-matrix">8. Summary Comparison Matrix</a></li>
+  <li><a href="#primary-literature-canonical-references" id="toc-primary-literature-canonical-references" class="nav-link" data-scroll-target="#primary-literature-canonical-references">9. Primary Literature &amp; Canonical References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Fermat’s Principle Beyond Least Time: Stationary Paths, Saddle Points, and Gravitational Lensing</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<p class="subtitle lead">A rigorous mathematical exploration of the second variation of optical path length, conjugate points, caustic phase shifts, and saddle-point images in astrophysics.</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">optics</div>
+    <div class="quarto-category">classical-mechanics</div>
+    <div class="quarto-category">calculus-of-variations</div>
+    <div class="quarto-category">general-relativity</div>
+    <div class="quarto-category">extra</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026-09-12</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Historical and Conceptual Context
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In introductory physics, <strong>Fermat’s Principle</strong> is almost universally christened the <em>“Principle of Least Time”</em>. While historically understandable—Pierre de Fermat formulated the hypothesis in 1662 to deduce Snell’s Law by asserting that nature always operates via the most economical path—the nomenclature is physically and mathematically misleading.</p>
+<p>The true physical law, rooted in the stationary phase approximation of the path integral, asserts that <strong>the optical path length is stationary (<span class="math inline">\(\delta S = 0\)</span>)</strong>, which admits not only local minima, but also <strong>local maxima</strong> and <strong>saddle points (minimax extrema)</strong>.</p>
+</div>
+</div>
+<hr>
+<section id="mathematical-formulation-of-fermats-principle" class="level2">
+<h2 class="anchored" data-anchor-id="mathematical-formulation-of-fermats-principle">1. Mathematical Formulation of Fermat’s Principle</h2>
+<p>Let physical 3-space be modeled as a Riemannian manifold <span class="math inline">\((\mathcal{M}, g)\)</span> with coordinate chart <span class="math inline">\(\mathbf{r}(u) = (x^1(u), x^2(u), x^3(u))\)</span> parameterized by an arbitrary monotonic curve parameter <span class="math inline">\(u \in [u_1, u_2]\)</span> connecting fixed endpoints <span class="math inline">\(A = \mathbf{r}(u_1)\)</span> and <span class="math inline">\(B = \mathbf{r}(u_2)\)</span>.</p>
+<p>Let <span class="math inline">\(n(\mathbf{r})\)</span> be the scalar refractive index of the isotropic, non-dispersive medium. The infinitesimal arc length is: <span class="math display">\[
+ds = \sqrt{g_{ij}(\mathbf{r}) \frac{dx^i}{du} \frac{dx^j}{du}} \, du = |\mathbf{\dot{r}}(u)| \, du
+\]</span></p>
+<p>The total travel time functional <span class="math inline">\(T[\mathbf{r}]\)</span> along a virtual path <span class="math inline">\(\gamma: A \to B\)</span> is given by: <span class="math display">\[
+T[\mathbf{r}] = \int_{\gamma} dt = \int_{\gamma} \frac{ds}{v(\mathbf{r})} = \frac{1}{c} \int_{u_1}^{u_2} n(\mathbf{r}(u)) |\mathbf{\dot{r}}(u)| \, du = \frac{1}{c} S[\mathbf{r}]
+\]</span> where <span class="math inline">\(S[\mathbf{r}] = \int n(\mathbf{r}) ds\)</span> is the <strong>Optical Path Length (OPL)</strong> functional, and <span class="math inline">\(c\)</span> is the speed of light in vacuum.</p>
+<pre><code>┌────────────────────────────────────────────────────────────────────────┐
+│                   FERMAT'S VARIATIONAL PRINCIPLE                       │
+│                                                                        │
+│   The physical trajectory taken by a light ray connecting two fixed   │
+│   points A and B is an extremal (stationary point) of the action:      │
+│                                                                        │
+│                 δS[r] = δ ∫ n(r(u)) |dr/du| du = 0                     │
+│                                                                        │
+│   subject to fixed boundary conditions: δr(u₁) = 0 and δr(u₂) = 0.     │
+└────────────────────────────────────────────────────────────────────────┘</code></pre>
+<hr>
+</section>
+<section id="explicit-physical-and-mathematical-assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="explicit-physical-and-mathematical-assumptions">2. Explicit Physical and Mathematical Assumptions</h2>
+<p>To analyze the character of the stationary points with mathematical rigor, we state our baseline assumptions:</p>
+<ol type="1">
+<li><strong>Geometric Optics Approximation (<span class="math inline">\(\lambda \to 0\)</span> / Eikonal Limit)</strong>: The wavelength of electromagnetic radiation <span class="math inline">\(\lambda\)</span> is negligible compared to the characteristic scale of spatial variations in the refractive index: <span class="math display">\[
+\frac{|\nabla n|}{n} \ll \frac{1}{\lambda} \quad \text{and} \quad \frac{|\nabla^2 n|}{|\nabla n|} \ll \frac{1}{\lambda}
+\]</span></li>
+<li><strong>Isotropy and Non-Dispersive Medium</strong>: <span class="math inline">\(n = n(\mathbf{r})\)</span> is a positive scalar function depending purely on position, independent of ray propagation direction <span class="math inline">\(\mathbf{\hat{k}}\)</span> or temporal frequency <span class="math inline">\(\omega\)</span>.</li>
+<li><strong>Smoothness and Differentiability</strong>: The boundary surfaces and the index profile <span class="math inline">\(n(\mathbf{r})\)</span> are at least <span class="math inline">\(C^2\)</span>-differentiable, ensuring that first and second functional variations are well-defined.</li>
+<li><strong>Boundary Constraint</strong>: Endpoints <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are held strictly fixed under all virtual variations (<span class="math inline">\(\delta \mathbf{r}(A) = \delta \mathbf{r}(B) = \mathbf{0}\)</span>).</li>
+<li><strong>Static Metric (in Gravitational Contexts)</strong>: When generalizing to curved spacetime, the background gravitational field admits a timelike Killing vector field <span class="math inline">\(\partial_t\)</span>, allowing an absolute time coordinate to parameterize null geodesics.</li>
+</ol>
+<hr>
+</section>
+<section id="first-and-second-variations-the-geometry-of-extrema" class="level2">
+<h2 class="anchored" data-anchor-id="first-and-second-variations-the-geometry-of-extrema">3. First and Second Variations: The Geometry of Extrema</h2>
+<p>To classify whether a stationary ray <span class="math inline">\(\mathbf{r}_0(u)\)</span> minimizes, maximizes, or creates a saddle point in travel time, we perform a Taylor expansion of the functional <span class="math inline">\(S[\mathbf{r}_0 + \epsilon \boldsymbol{\eta}]\)</span> in powers of the variation parameter <span class="math inline">\(\epsilon\)</span>, where <span class="math inline">\(\boldsymbol{\eta}(u_1) = \boldsymbol{\eta}(u_2) = \mathbf{0}\)</span>: <span class="math display">\[
+S[\mathbf{r}_0 + \epsilon \boldsymbol{\eta}] = S[\mathbf{r}_0] + \epsilon \, \delta S[\mathbf{r}_0; \boldsymbol{\eta}] + \frac{\epsilon^2}{2} \, \delta^2 S[\mathbf{r}_0; \boldsymbol{\eta}] + \mathcal{O}(\epsilon^3)
+\]</span></p>
+<section id="the-first-variation-delta-s-0" class="level3">
+<h3 class="anchored" data-anchor-id="the-first-variation-delta-s-0">The First Variation (<span class="math inline">\(\delta S = 0\)</span>)</h3>
+<p>Choosing the parameter <span class="math inline">\(u\)</span> to be the arc length along the unperturbed ray <span class="math inline">\(s \in [0, L]\)</span>, the Lagrangian is <span class="math inline">\(L(\mathbf{r}, \mathbf{r}') = n(\mathbf{r}) \sqrt{\mathbf{r}' \cdot \mathbf{r}'} = n(\mathbf{r})\)</span>, where <span class="math inline">\(\mathbf{r}' = \frac{d\mathbf{r}}{ds}\)</span> is the unit tangent vector <span class="math inline">\(\mathbf{\hat{t}}\)</span> (<span class="math inline">\(|\mathbf{r}'| = 1\)</span>).</p>
+<p>Applying the Euler-Lagrange equations: <span class="math display">\[
+\frac{d}{ds} \left( \frac{\partial L}{\partial \mathbf{r}'} \right) - \frac{\partial L}{\partial \mathbf{r}} = \mathbf{0} \implies \frac{d}{ds} \left( n(\mathbf{r}) \frac{d\mathbf{r}}{ds} \right) = \nabla n(\mathbf{r})
+\]</span> This is the canonical <strong>Ray Equation of Geometric Optics</strong>. Any path satisfying this differential equation is a stationary point of <span class="math inline">\(S[\mathbf{r}]\)</span>.</p>
+<hr>
+</section>
+<section id="the-second-variation-delta2-s-and-the-jacobi-equation" class="level3">
+<h3 class="anchored" data-anchor-id="the-second-variation-delta2-s-and-the-jacobi-equation">The Second Variation (<span class="math inline">\(\delta^2 S\)</span>) and the Jacobi Equation</h3>
+<p>The classification of the stationary point is governed entirely by the sign of the <strong>second variation</strong>: <span class="math display">\[
+\delta^2 S[\mathbf{r}_0; \boldsymbol{\eta}] = \int_0^L \left[ P_{ij}(s) \frac{d\eta^i}{ds} \frac{d\eta^j}{ds} + Q_{ij}(s) \eta^i \eta^j \right] ds
+\]</span> where <span class="math inline">\(\boldsymbol{\eta}(s)\)</span> represents a normal perturbation vector orthogonal to the ray trajectory (<span class="math inline">\(\boldsymbol{\eta} \cdot \mathbf{r}' = 0\)</span>).</p>
+<pre><code>                      ┌───────────────────────────────────────┐
+                      │    SPECTRUM OF SECOND VARIATION δ²S   │
+                      └──────────────────┬────────────────────┘
+                                         │
+                 ┌───────────────────────┼───────────────────────┐
+                 ▼                       ▼                       ▼
+      ┌─────────────────────┐ ┌─────────────────────┐ ┌─────────────────────┐
+      │   STRICT MINIMUM    │ │     SADDLE POINT    │ │   STRICT MAXIMUM    │
+      │ δ²S[η] &gt; 0 for all  │ │ δ²S[η₁] &gt; 0 along u │ │ δ²S[η] &lt; 0 for all  │
+      │ non-zero variations │ │ δ²S[η₂] &lt; 0 along v │ │ non-zero variations │
+      └─────────────────────┘ └─────────────────────┘ └─────────────────────┘</code></pre>
+<ol type="1">
+<li><strong>Local Minimum (<span class="math inline">\(\delta^2 S &gt; 0\)</span> for all <span class="math inline">\(\boldsymbol{\eta} \neq \mathbf{0}\)</span>)</strong>: Every adjacent virtual path takes <em>strictly longer</em> than the true ray.</li>
+<li><strong>Local Maximum (<span class="math inline">\(\delta^2 S &lt; 0\)</span> for all <span class="math inline">\(\boldsymbol{\eta} \neq \mathbf{0}\)</span>)</strong>: Every adjacent virtual path takes <em>strictly less</em> time than the true ray. <em>(Note: Over arbitrary variations without boundary constraints, an absolute maximum does not exist because a path can be zig-zagged infinitely to yield <span class="math inline">\(S \to \infty\)</span>. A local maximum occurs only when restricted to a finite-dimensional constraint manifold, such as reflection off a curved surface).</em></li>
+<li><strong>Saddle Point / Minimax (<span class="math inline">\(\delta^2 S &gt; 0\)</span> for some variations, <span class="math inline">\(\delta^2 S &lt; 0\)</span> for others)</strong>: Perturbing the path along one normal coordinate direction increases travel time, while perturbing along an orthogonal normal coordinate decreases travel time.</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="physical-case-1-reflection-off-curved-mirrors-the-ellipsoidal-criterion" class="level2">
+<h2 class="anchored" data-anchor-id="physical-case-1-reflection-off-curved-mirrors-the-ellipsoidal-criterion">4. Physical Case 1: Reflection Off Curved Mirrors (The Ellipsoidal Criterion)</h2>
+<p>The most intuitive realization of stationary points that are neither maxima nor minima occurs in catoptrics (reflection off curved surfaces).</p>
+<p>Consider light traveling in a homogeneous medium (<span class="math inline">\(n = 1\)</span>) from source <span class="math inline">\(A\)</span> to receiver <span class="math inline">\(B\)</span> via a single specular reflection at point <span class="math inline">\(P\)</span> on a reflecting boundary surface <span class="math inline">\(\Sigma\)</span>:</p>
+<pre><code>                                  Source A
+                                     \
+                                      \
+                                       \
+                          Reflecting    \
+                           Surface Σ     v
+             ────────────────────────────P────────────────────────────
+                                        /
+                                       /
+                                      v
+                                  Receiver B</code></pre>
+<section id="the-reference-ellipsoid" class="level3">
+<h3 class="anchored" data-anchor-id="the-reference-ellipsoid">The Reference Ellipsoid</h3>
+<p>Let <span class="math inline">\(\mathcal{E}\)</span> be a prolate spheroid (ellipsoid of revolution) with focal points at <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. By definition of an ellipse: <span class="math display">\[
+\text{For any point } Q \in \mathcal{E}: \quad |\mathbf{r}_A - \mathbf{r}_Q| + |\mathbf{r}_Q - \mathbf{r}_B| = L_0 = \text{constant}
+\]</span></p>
+<p>Let a real physical mirror <span class="math inline">\(\Sigma\)</span> be tangent to the ellipsoid <span class="math inline">\(\mathcal{E}\)</span> at point <span class="math inline">\(P\)</span>. The law of reflection (<span class="math inline">\(\theta_i = \theta_r\)</span>) ensures that the normal vector to <span class="math inline">\(\Sigma\)</span> at <span class="math inline">\(P\)</span> coincides with the normal to <span class="math inline">\(\mathcal{E}\)</span> at <span class="math inline">\(P\)</span>. Therefore, <span class="math inline">\(P\)</span> is rigorously a stationary point (<span class="math inline">\(\delta T = 0\)</span>).</p>
+<pre><code>┌────────────────────────────────────────────────────────────────────────┐
+│                     THE CURVATURE COMPARISON THEOREM                   │
+│                                                                        │
+│   Let κ_Σ be the principal curvatures of the mirror surface Σ at P,    │
+│   and κ_E be the principal curvatures of the confocal ellipsoid E:     │
+│                                                                        │
+│   1. PLANE OR CONVEX MIRROR (κ_Σ &lt; κ_E):                               │
+│      The mirror Σ lies completely outside the ellipsoid E.             │
+│      For any adjacent point Q ∈ Σ, OPL(Q) &gt; L₀.                        │
+│      ==&gt; STRICT LOCAL MINIMUM.                                         │
+│                                                                        │
+│   2. HIGHLY CONCAVE SPHERICAL MIRROR (κ_Σ &gt; κ_E in all directions):     │
+│      The mirror Σ curves inside the ellipsoid E.                       │
+│      For any adjacent point Q ∈ Σ, OPL(Q) &lt; L₀.                        │
+│      ==&gt; STRICT LOCAL MAXIMUM.                                         │
+│                                                                        │
+│   3. ASTIGMATIC / SADDLE MIRROR (κ_Σ,₁ &gt; κ_E,₁ and κ_Σ,₂ &lt; κ_E,₂):     │
+│      The mirror curves inside along axis 1, and outside along axis 2.  │
+│      ==&gt; SADDLE POINT (NEITHER MINIMUM NOR MAXIMUM).                   │
+└────────────────────────────────────────────────────────────────────────┘</code></pre>
+<hr>
+</section>
+<section id="quantitative-mathematical-proof-of-a-reflection-saddle-point" class="level3">
+<h3 class="anchored" data-anchor-id="quantitative-mathematical-proof-of-a-reflection-saddle-point">Quantitative Mathematical Proof of a Reflection Saddle Point</h3>
+<p>Let the reflection point be <span class="math inline">\(P = (0, 0, 0)\)</span> in Cartesian coordinates. Let the mirror surface <span class="math inline">\(\Sigma\)</span> be locally represented as a quadratic Monge patch: <span class="math display">\[
+z(x, y) = \frac{1}{2} \left( \kappa_x x^2 + \kappa_y y^2 \right) + \mathcal{O}(x^3, y^3)
+\]</span> where <span class="math inline">\(\kappa_x\)</span> and <span class="math inline">\(\kappa_y\)</span> are the principal curvatures of the mirror at the origin.</p>
+<p>Let source <span class="math inline">\(A = (-d \sin\theta, 0, d \cos\theta)\)</span> and receiver <span class="math inline">\(B = (d \sin\theta, 0, d \cos\theta)\)</span> lie symmetrically in the <span class="math inline">\(xz\)</span>-plane at distance <span class="math inline">\(d\)</span> and angle of incidence <span class="math inline">\(\theta\)</span>.</p>
+<p>The optical path length for reflection at an arbitrary adjacent point <span class="math inline">\(Q = (x, y, z(x, y))\)</span> on the mirror is: <span class="math display">\[
+D(x, y) = \sqrt{(x + d\sin\theta)^2 + y^2 + (z - d\cos\theta)^2} + \sqrt{(x - d\sin\theta)^2 + y^2 + (z - d\cos\theta)^2}
+\]</span></p>
+<p>Expanding <span class="math inline">\(D(x, y)\)</span> in a multi-variable Taylor series about <span class="math inline">\((x, y) = (0, 0)\)</span>: <span class="math display">\[
+D(x, y) = 2d + \left. \frac{\partial D}{\partial x} \right|_0 x + \left. \frac{\partial D}{\partial y} \right|_0 y + \frac{1}{2} \left[ D_{xx} x^2 + 2 D_{xy} xy + D_{yy} y^2 \right] + \dots
+\]</span></p>
+<section id="first-derivatives-stationary-condition" class="level4">
+<h4 class="anchored" data-anchor-id="first-derivatives-stationary-condition">1. First Derivatives (Stationary Condition)</h4>
+<p><span class="math display">\[
+\frac{\partial D}{\partial x}(0, 0) = \sin\theta - \sin\theta = 0, \quad \frac{\partial D}{\partial y}(0, 0) = 0
+\]</span> The first variation vanishes identically, confirming the specular law of reflection.</p>
+</section>
+<section id="second-derivatives-the-hessian-matrix" class="level4">
+<h4 class="anchored" data-anchor-id="second-derivatives-the-hessian-matrix">2. Second Derivatives (The Hessian Matrix)</h4>
+<p>Computing the second partial derivatives: <span class="math display">\[
+D_{xx} = \frac{2\cos^2\theta}{d} - 2\kappa_x \cos\theta = 2\cos\theta \left( \frac{\cos\theta}{d} - \kappa_x \right)
+\]</span> <span class="math display">\[
+D_{yy} = \frac{2}{d} - 2\kappa_y \cos\theta = 2 \left( \frac{1}{d} - \kappa_y \cos\theta \right)
+\]</span> <span class="math display">\[
+D_{xy} = 0
+\]</span></p>
+<p>The critical curvature thresholds for the reference ellipsoid are: <span class="math display">\[
+\kappa_{E, x} = \frac{\cos\theta}{d}, \quad \kappa_{E, y} = \frac{1}{d\cos\theta}
+\]</span></p>
+</section>
+<section id="classification-via-the-hessian-determinant" class="level4">
+<h4 class="anchored" data-anchor-id="classification-via-the-hessian-determinant">3. Classification via the Hessian Determinant</h4>
+<p>The Hessian matrix is diagonal: <span class="math display">\[
+\mathcal{H} = \begin{pmatrix} D_{xx} &amp; 0 \\ 0 &amp; D_{yy} \end{pmatrix} \implies \det(\mathcal{H}) = D_{xx} D_{yy}
+\]</span></p>
+<ul>
+<li><strong>Condition for a Saddle Point</strong>: A saddle point occurs when <span class="math inline">\(\det(\mathcal{H}) &lt; 0\)</span>, which requires <span class="math inline">\(D_{xx}\)</span> and <span class="math inline">\(D_{yy}\)</span> to have <strong>opposite signs</strong>: <span class="math display">\[
+\left( \kappa_x - \frac{\cos\theta}{d} \right) \left( \kappa_y - \frac{1}{d\cos\theta} \right) &lt; 0
+\]</span></li>
+</ul>
+<p><strong>Physical Realization</strong>: Construct a mirror with a cylindrical or hyperbolic paraboloid curvature such that: <span class="math display">\[
+\kappa_x &gt; \frac{\cos\theta}{d} \quad \text{and} \quad \kappa_y &lt; \frac{1}{d\cos\theta}
+\]</span> * Along the <span class="math inline">\(x\)</span>-displacement axis: <span class="math inline">\(D_{xx} &lt; 0\)</span>, meaning light traversing an adjacent point along the <span class="math inline">\(x\)</span>-axis arrives <strong>faster</strong> than the specular ray (local maximum along <span class="math inline">\(x\)</span>). * Along the <span class="math inline">\(y\)</span>-displacement axis: <span class="math inline">\(D_{yy} &gt; 0\)</span>, meaning light traversing an adjacent point along the <span class="math inline">\(y\)</span>-axis arrives <strong>slower</strong> than the specular ray (local minimum along <span class="math inline">\(y\)</span>). * <strong>Conclusion</strong>: The actual physical trajectory taken by the light ray is a <strong>rigorous saddle point</strong>.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="physical-case-2-conjugate-points-and-caustic-crossings" class="level2">
+<h2 class="anchored" data-anchor-id="physical-case-2-conjugate-points-and-caustic-crossings">5. Physical Case 2: Conjugate Points and Caustic Crossings</h2>
+<p>In refraction and focusing optics, stationary points transition from minima to saddles whenever a ray passes through a <strong>conjugate point (caustic focus)</strong>.</p>
+<pre><code>Source A ──────────────[ Converging Lens ]────────────── (Focal Point C) ────────────── Receiver B
+                                                               │
+                             Before C: Strict Minimum          │  After C: SADDLE POINT
+                             δ²S &gt; 0                           │  Morse Index μ = 1</code></pre>
+<section id="the-morse-index-theorem-in-optics" class="level3">
+<h3 class="anchored" data-anchor-id="the-morse-index-theorem-in-optics">The Morse Index Theorem in Optics</h3>
+<p>Let <span class="math inline">\(\gamma\)</span> be an unperturbed ray connecting <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. A point <span class="math inline">\(C \in \gamma\)</span> is defined as <strong>conjugate</strong> to <span class="math inline">\(A\)</span> if there exists a non-trivial Jacobi field <span class="math inline">\(\mathbf{J}(s)\)</span> along <span class="math inline">\(\gamma\)</span> that vanishes at both <span class="math inline">\(A\)</span> and <span class="math inline">\(C\)</span>: <span class="math display">\[
+\mathbf{J}(A) = \mathbf{0}, \quad \mathbf{J}(C) = \mathbf{0}, \quad \mathbf{J} \not\equiv \mathbf{0}
+\]</span></p>
+<p>According to the <strong>Morse Index Theorem</strong>: 1. If the trajectory from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span> contains <strong>no conjugate points</strong>, the second variation <span class="math inline">\(\delta^2 S\)</span> is strictly positive-definite. The path is a <strong>local minimum</strong>. 2. For every conjugate point <span class="math inline">\(C\)</span> crossed between <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, the quadratic form <span class="math inline">\(\delta^2 S\)</span> acquires an additional <strong>negative eigenvalue</strong>. 3. Therefore, if light passes through a focus or caustic before reaching receiver <span class="math inline">\(B\)</span>, the travel time functional along the ray is <strong>no longer a minimum</strong>, but a <strong>saddle point of Morse index <span class="math inline">\(\mu = 1\)</span> (or higher)</strong>.</p>
+<hr>
+</section>
+</section>
+<section id="physical-case-3-gravitational-lensing-in-general-relativity" class="level2">
+<h2 class="anchored" data-anchor-id="physical-case-3-gravitational-lensing-in-general-relativity">6. Physical Case 3: Gravitational Lensing in General Relativity</h2>
+<p>The most profound and astrophysically observable manifestation of stationary saddle points occurs in <strong>Gravitational Lensing</strong> governed by Einstein’s General Relativity.</p>
+<pre><code>┌────────────────────────────────────────────────────────────────────────┐
+│                  GRAVITATIONAL LENS ARRIVAL-TIME SURFACE               │
+│                                                                        │
+│                      Source S (at redshift z_S)                        │
+│                         /        |        \                            │
+│                        /         |         \                           │
+│                       v          v          v                          │
+│               [ Deflector Galaxy / Cluster L at z_L ]                  │
+│                       \          |          /                          │
+│                        \         |         /                           │
+│                         v        v        v                            │
+│                     Image 1   Image 2   Image 3                        │
+│                     (MINIMUM) (SADDLE)  (MAXIMUM)                      │
+│                         \        |        /                            │
+│                          \       |       /                             │
+│                           v      v      v                              │
+│                            Observer O                                  │
+└────────────────────────────────────────────────────────────────────────┘</code></pre>
+<section id="the-relativistic-fermat-principle" class="level3">
+<h3 class="anchored" data-anchor-id="the-relativistic-fermat-principle">The Relativistic Fermat Principle</h3>
+<p>In curved spacetime <span class="math inline">\((\mathcal{M}, g_{\mu\nu})\)</span>, light travels along null geodesics (<span class="math inline">\(ds^2 = g_{\mu\nu} dx^\mu dx^\nu = 0\)</span>). In a stationary, weak-field spacetime parameterized by the Newtonian gravitational potential <span class="math inline">\(\Phi(\mathbf{r}) \ll c^2\)</span>, the line element is: <span class="math display">\[
+ds^2 = -\left(1 + \frac{2\Phi}{c^2}\right) c^2 dt^2 + \left(1 - \frac{2\Phi}{c^2}\right) (dx^2 + dy^2 + dz^2) = 0
+\]</span></p>
+<p>Solving for the coordinate speed of light <span class="math inline">\(v = \frac{d\ell}{dt}\)</span> yields an effective refractive index: <span class="math display">\[
+n_{\text{eff}}(\mathbf{r}) = \frac{c}{v} \approx 1 - \frac{2\Phi(\mathbf{r})}{c^2} &gt; 1
+\]</span> Because <span class="math inline">\(\Phi \le 0\)</span>, the presence of mass <strong>slows coordinate light speed</strong>, creating the gravitational Shapiro time delay.</p>
+<hr>
+</section>
+<section id="the-arrival-time-surface-tauboldsymboltheta" class="level3">
+<h3 class="anchored" data-anchor-id="the-arrival-time-surface-tauboldsymboltheta">The Arrival-Time Surface <span class="math inline">\(\tau(\boldsymbol{\theta})\)</span></h3>
+<p>In the thin-lens approximation, let: * <span class="math inline">\(\boldsymbol{\beta} \in \mathbb{R}^2\)</span> be the true angular position of the source on the sky. * <span class="math inline">\(\boldsymbol{\theta} \in \mathbb{R}^2\)</span> be the observed angular position in the lens plane. * <span class="math inline">\(D_L, D_S, D_{LS}\)</span> be the angular diameter distances to the lens, to the source, and between lens and source.</p>
+<p>The total light travel time (arrival time) functional <span class="math inline">\(\tau(\boldsymbol{\theta})\)</span> is: <span class="math display">\[
+\tau(\boldsymbol{\theta}) = \frac{1 + z_L}{c} \frac{D_L D_S}{D_{LS}} \left[ \frac{1}{2} |\boldsymbol{\theta} - \boldsymbol{\beta}|^2 - \psi(\boldsymbol{\theta}) \right]
+\]</span> where: * <span class="math inline">\(\frac{1}{2} |\boldsymbol{\theta} - \boldsymbol{\beta}|^2\)</span> is the <strong>geometric time delay</strong> (deviation from a straight line). * <span class="math inline">\(\psi(\boldsymbol{\theta}) = \frac{2}{c^2} \frac{D_{LS}}{D_L D_S} \int \Phi \, dz\)</span> is the 2D <strong>effective gravitational deflection potential</strong> (the gravitational Shapiro delay).</p>
+<p>Fermat’s principle dictates that observable images form where the gradient of arrival time vanishes: <span class="math display">\[
+\nabla_{\boldsymbol{\theta}} \tau(\boldsymbol{\theta}) = \mathbf{0} \implies \boldsymbol{\theta} - \boldsymbol{\beta} = \nabla_{\boldsymbol{\theta}} \psi(\boldsymbol{\theta}) = \boldsymbol{\alpha}(\boldsymbol{\theta})
+\]</span> This reproduces the canonical <strong>Gravitational Lens Equation</strong>.</p>
+<hr>
+</section>
+<section id="image-classification-via-the-hessian-of-arrival-time" class="level3">
+<h3 class="anchored" data-anchor-id="image-classification-via-the-hessian-of-arrival-time">Image Classification via the Hessian of Arrival Time</h3>
+<p>The nature of each lensed image is classified by the <strong>Hessian matrix</strong> of the arrival time surface: <span class="math display">\[
+\mathcal{H}_{ij}(\boldsymbol{\theta}) = \frac{\partial^2 \tau}{\partial \theta_i \partial \theta_j} \propto \delta_{ij} - \frac{\partial^2 \psi}{\partial \theta_i \partial \theta_j} = \mathcal{A}_{ij}^{-1}
+\]</span> where <span class="math inline">\(\mathcal{A}(\boldsymbol{\theta})\)</span> is the <strong>Jacobian magnification tensor</strong> of the gravitational lens.</p>
+<p>The eigenvalues <span class="math inline">\(\lambda_1, \lambda_2\)</span> of the inverse magnification tensor <span class="math inline">\(\mathcal{A}^{-1}\)</span> categorize the images into three distinct topological types:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 18%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Image Type</th>
+<th style="text-align: center;">Eigenvalue Signs</th>
+<th style="text-align: center;">Hessian Determinant <span class="math inline">\(\det(\mathcal{H})\)</span></th>
+<th style="text-align: left;">Physical Character on Arrival-Time Surface <span class="math inline">\(\tau\)</span></th>
+<th style="text-align: left;">Parity &amp; Astrophysics</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Type I (Minimum)</strong></td>
+<td style="text-align: center;"><span class="math inline">\(\lambda_1 &gt; 0, \, \lambda_2 &gt; 0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\det(\mathcal{H}) &gt; 0\)</span></td>
+<td style="text-align: left;"><strong>Local Minimum</strong>. Light arrives along the quickest path among all local variations.</td>
+<td style="text-align: left;">Positive parity. Typically the outermost image; arrives <strong>first</strong> in time-domain astronomy (e.g., supernova / quasar flares).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Type II (Saddle Point)</strong></td>
+<td style="text-align: center;"><span class="math inline">\(\lambda_1 &gt; 0, \, \lambda_2 &lt; 0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\det(\mathcal{H}) &lt; 0\)</span></td>
+<td style="text-align: left;"><strong>Saddle Point</strong>. Path is a minimum along one axis and a maximum along the orthogonal axis.</td>
+<td style="text-align: left;">Negative parity (mirror-inverted). Forms intermediate-arrival images (e.g., secondary images in Einstein crosses).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Type III (Maximum)</strong></td>
+<td style="text-align: center;"><span class="math inline">\(\lambda_1 &lt; 0, \, \lambda_2 &lt; 0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\det(\mathcal{H}) &gt; 0\)</span></td>
+<td style="text-align: left;"><strong>Local Maximum</strong>. Trajectory takes strictly longer than all adjacent virtual paths.</td>
+<td style="text-align: left;">Positive parity. Located near the central core of the deflector; usually heavily demagnified and faint.</td>
+</tr>
+</tbody>
+</table>
+<pre><code>┌────────────────────────────────────────────────────────────────────────┐
+│                THE BLANDFORD-NARAYAN TOPOLOGY THEOREM                  │
+│                                                                        │
+│   For any non-singular, transparent gravitational potential with       │
+│   asymptotically flat boundary conditions:                             │
+│                                                                        │
+│       N_min - N_saddle + N_max = 1                                     │
+│                                                                        │
+│   Consequently, the total number of images N_total = N_min + N_saddle  │
+│   + N_max is ALWAYS ODD (1, 3, 5...).                                  │
+│                                                                        │
+│   Every multiply-imaged quasar (such as the Einstein Cross Q2237+0305) │
+│   rigorously contains at least TWO SADDLE-POINT IMAGES!                │
+└────────────────────────────────────────────────────────────────────────┘</code></pre>
+<hr>
+</section>
+</section>
+<section id="wave-optics-and-quantum-foundations-the-gouy-phase-shift" class="level2">
+<h2 class="anchored" data-anchor-id="wave-optics-and-quantum-foundations-the-gouy-phase-shift">7. Wave Optics and Quantum Foundations: The Gouy Phase Shift</h2>
+<p>Why does nature select saddle points and maxima if light is classically supposed to take the “shortest” path?</p>
+<p>The resolution is provided by Richard Feynman’s <strong>Path Integral Formulation of Quantum Electrodynamics (QED)</strong>:</p>
+<ol type="1">
+<li>A photon does not explore a single path; it explores <strong>all possible histories</strong> connecting <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.</li>
+<li>The total probability amplitude <span class="math inline">\(\Psi(B, A)\)</span> is the functional sum over all virtual paths <span class="math inline">\(\gamma\)</span>: <span class="math display">\[
+\Psi(B, A) = \int \mathcal{D}[\mathbf{r}(t)] \, \exp\left( \frac{i}{\hbar} S_{\text{QED}} \right) = \int \mathcal{D}[\mathbf{r}(t)] \, \exp\left( i \omega T[\mathbf{r}] \right)
+\]</span></li>
+<li>In the macroscopic limit (<span class="math inline">\(\omega \to \infty\)</span> or <span class="math inline">\(\lambda \to 0\)</span>), neighboring paths with differing arrival times interfere destructively because their phase factors <span class="math inline">\(e^{i \omega T}\)</span> oscillate rapidly: <span class="math display">\[
+\frac{d}{d\mathbf{r}} (\omega T) \neq 0 \implies \text{Phase cancellation} \to 0
+\]</span></li>
+<li><strong>Only where the first variation vanishes (<span class="math inline">\(\delta T = 0\)</span>) do adjacent paths have identical phases to first order</strong>, producing coherent constructive interference.</li>
+<li>Constructive interference requires <strong>stationarity</strong>, not minimality. The wave does not care whether the stationary plateau is a bowl (minimum), an inverted dome (maximum), or a mountain pass (saddle).</li>
+</ol>
+<pre><code>┌────────────────────────────────────────────────────────────────────────┐
+│                   THE ANOMALOUS GOUY PHASE SHIFT                       │
+│                                                                        │
+│   When light traverses a saddle point in a gravitational lens or       │
+│   passes through a focal caustic:                                      │
+│                                                                        │
+│   - The negative eigenvalue in the Hessian introduces a factor:        │
+│                                                                        │
+│               ∫ exp(-i ω u²) du = √(π / iω) = √(π/ω) exp(-i π/4)       │
+│                                                                        │
+│   - This produces a discrete π/2 (90°) PHASE ADVANCE in the wave       │
+│     pulse known as the GOUY PHASE SHIFT!                               │
+│                                                                        │
+│   - For a radio pulse passing through a saddle-point image, the pulse  │
+│     is the HILBERT TRANSFORM of the minimum-image pulse.               │
+└────────────────────────────────────────────────────────────────────────┘</code></pre>
+<hr>
+</section>
+<section id="summary-comparison-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="summary-comparison-matrix">8. Summary Comparison Matrix</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Physical System</th>
+<th style="text-align: left;">Stationary Condition (<span class="math inline">\(\delta T = 0\)</span>)</th>
+<th style="text-align: left;">Nature of Extremum (<span class="math inline">\(\delta^2 T\)</span>)</th>
+<th style="text-align: left;">Physical Criterion</th>
+<th style="text-align: left;">Observable Consequence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Flat Mirror Reflection</strong></td>
+<td style="text-align: left;"><span class="math inline">\(\theta_i = \theta_r\)</span></td>
+<td style="text-align: left;"><strong>Strict Minimum</strong> (<span class="math inline">\(\delta^2 T &gt; 0\)</span>)</td>
+<td style="text-align: left;">Surface curvature is zero (<span class="math inline">\(\kappa = 0 &lt; \kappa_E\)</span>).</td>
+<td style="text-align: left;">Standard law of reflection; shortest path.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Concave Mirror (Steep)</strong></td>
+<td style="text-align: left;"><span class="math inline">\(\theta_i = \theta_r\)</span></td>
+<td style="text-align: left;"><strong>Strict Maximum</strong> (<span class="math inline">\(\delta^2 T &lt; 0\)</span>)</td>
+<td style="text-align: left;">Mirror curvature exceeds ellipsoid (<span class="math inline">\(\kappa &gt; \kappa_E\)</span>).</td>
+<td style="text-align: left;">Real image formation; light takes the <em>longest</em> path among local surface variations.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Astigmatic / Saddle Mirror</strong></td>
+<td style="text-align: left;"><span class="math inline">\(\theta_i = \theta_r\)</span></td>
+<td style="text-align: left;"><strong>Saddle Point</strong> (Indefinite <span class="math inline">\(\delta^2 T\)</span>)</td>
+<td style="text-align: left;"><span class="math inline">\(\kappa_x &gt; \kappa_{E, x}\)</span> while <span class="math inline">\(\kappa_y &lt; \kappa_{E, y}\)</span>.</td>
+<td style="text-align: left;">Ray takes maximum along <span class="math inline">\(x\)</span>, minimum along <span class="math inline">\(y\)</span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Astrophysical Lens (Type I)</strong></td>
+<td style="text-align: left;"><span class="math inline">\(\nabla \tau = \mathbf{0}\)</span></td>
+<td style="text-align: left;"><strong>Local Minimum</strong> (<span class="math inline">\(\det \mathcal{H} &gt; 0, \, \text{tr} \mathcal{H} &gt; 0\)</span>)</td>
+<td style="text-align: left;">Outer regions of gravitational potential.</td>
+<td style="text-align: left;">First arriving image; positive parity; unshifted phase.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Astrophysical Lens (Type II)</strong></td>
+<td style="text-align: left;"><span class="math inline">\(\nabla \tau = \mathbf{0}\)</span></td>
+<td style="text-align: left;"><strong>Saddle Point</strong> (<span class="math inline">\(\det \mathcal{H} &lt; 0\)</span>)</td>
+<td style="text-align: left;">Intermediate shear zones near critical curves.</td>
+<td style="text-align: left;">Intermediate arrival; negative parity (inverted); <span class="math inline">\(\pi/2\)</span> Hilbert phase shift.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Astrophysical Lens (Type III)</strong></td>
+<td style="text-align: left;"><span class="math inline">\(\nabla \tau = \mathbf{0}\)</span></td>
+<td style="text-align: left;"><strong>Local Maximum</strong> (<span class="math inline">\(\det \mathcal{H} &gt; 0, \, \text{tr} \mathcal{H} &lt; 0\)</span>)</td>
+<td style="text-align: left;">Dense central galactic core.</td>
+<td style="text-align: left;">Latest arriving image; positive parity; highly demagnified.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="primary-literature-canonical-references" class="level2">
+<h2 class="anchored" data-anchor-id="primary-literature-canonical-references">9. Primary Literature &amp; Canonical References</h2>
+<ol type="1">
+<li><strong>Fermat, P. de</strong> (1662). <em>Analysis ad refractiones</em>. Oeuvres de Fermat (Tannery &amp; Henry, Eds., 1891–1912), Vol. 2, pp.&nbsp;457–458.</li>
+<li><strong>Feynman, R. P., Leighton, R. B., &amp; Sands, M.</strong> (1965). <em>The Feynman Lectures on Physics</em>, Volume I, Chapter 26: “Optics: The Principle of Least Time.” Addison-Wesley.</li>
+<li><strong>Blandford, R., &amp; Narayan, R.</strong> (1986). <em>Fermat’s principle, caustics, and the topology of gravitational lensing</em>. <strong>The Astrophysical Journal</strong>, 310, 568–582. <a href="https://doi.org/10.1086/164709">doi:10.1086/164709</a>.</li>
+<li><strong>Schneider, P., Ehlers, J., &amp; Falco, E. E.</strong> (1992). <em>Gravitational Lenses</em>. Astronomy and Astrophysics Library, Springer-Verlag Berlin Heidelberg. <a href="https://doi.org/10.1007/978-3-662-03758-4">doi:10.1007/978-3-662-03758-4</a>.</li>
+<li><strong>Rosu, H.</strong> (1986). <em>A closer look at Fermat’s principle</em>. <strong>Physics Education</strong>, 21(6), 365–368. <a href="https://doi.org/10.1088/0031-9120/21/6/005">doi:10.1088/0031-9120/21/6/005</a>.</li>
+<li><strong>Perlick, V.</strong> (1990). <em>On Fermat’s principle in general relativity: I. The general case</em>. <strong>Classical and Quantum Gravity</strong>, 7(8), 1319–1331. <a href="https://doi.org/10.1088/0264-9381/7/8/011">doi:10.1088/0264-9381/7/8/011</a>.</li>
+<li><strong>Born, M., &amp; Wolf, E.</strong> (1999). <em>Principles of Optics: Electromagnetic Theory of Propagation, Interference and Diffraction of Light</em> (7th ed.). Cambridge University Press. Section 3.3.2.</li>
+<li><strong>Stamnes, J. J.</strong> (1986). <em>Waves in Focal Regions: Propagation, Diffraction and Focusing of Light, Sound and Water Waves</em>. Adam Hilger.</li>
+</ol>
+
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const cellDetails = window.document.querySelectorAll(".cell details.code-fold");
+        for (let i=0; i<cellDetails.length; i++) {
+          const details = cellDetails[i];
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell div.sourceCode.cell-code");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/igor-kan\.github\.io\/phyc54h3");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Fermat's Principle Beyond Least Time: Stationary Paths, Saddle Points, and Gravitational Lensing"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "A rigorous mathematical exploration of the second variation of optical path length, conjugate points, caustic phase shifts, and saddle-point images in astrophysics."</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-09-12"</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">  - "optics"</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">  - "classical-mechanics"</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">  - "calculus-of-variations"</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">  - "general-relativity"</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">  - "extra"</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 3</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">    math: true</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="fu">### Historical and Conceptual Context</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>In introductory physics, **Fermat's Principle** is almost universally christened the *"Principle of Least Time"*. While historically understandable—Pierre de Fermat formulated the hypothesis in 1662 to deduce Snell's Law by asserting that nature always operates via the most economical path—the nomenclature is physically and mathematically misleading. </span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>The true physical law, rooted in the stationary phase approximation of the path integral, asserts that **the optical path length is stationary ($\delta S = 0$)**, which admits not only local minima, but also **local maxima** and **saddle points (minimax extrema)**.</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1. Mathematical Formulation of Fermat's Principle</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>Let physical 3-space be modeled as a Riemannian manifold $(\mathcal{M}, g)$ with coordinate chart $\mathbf{r}(u) = (x^1(u), x^2(u), x^3(u))$ parameterized by an arbitrary monotonic curve parameter $u \in <span class="co">[</span><span class="ot">u_1, u_2</span><span class="co">]</span>$ connecting fixed endpoints $A = \mathbf{r}(u_1)$ and $B = \mathbf{r}(u_2)$.</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>Let $n(\mathbf{r})$ be the scalar refractive index of the isotropic, non-dispersive medium. The infinitesimal arc length is:</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>ds = \sqrt{g_{ij}(\mathbf{r}) \frac{dx^i}{du} \frac{dx^j}{du}} \, du = |\mathbf{\dot{r}}(u)| \, du</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>The total travel time functional $T<span class="co">[</span><span class="ot">\mathbf{r}</span><span class="co">]</span>$ along a virtual path $\gamma: A \to B$ is given by:</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>T<span class="co">[</span><span class="ot">\mathbf{r}</span><span class="co">]</span> = \int_{\gamma} dt = \int_{\gamma} \frac{ds}{v(\mathbf{r})} = \frac{1}{c} \int_{u_1}^{u_2} n(\mathbf{r}(u)) |\mathbf{\dot{r}}(u)| \, du = \frac{1}{c} S<span class="co">[</span><span class="ot">\mathbf{r}</span><span class="co">]</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>where $S<span class="co">[</span><span class="ot">\mathbf{r}</span><span class="co">]</span> = \int n(\mathbf{r}) ds$ is the **Optical Path Length (OPL)** functional, and $c$ is the speed of light in vacuum.</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a><span class="in">┌────────────────────────────────────────────────────────────────────────┐</span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a><span class="in">│                   FERMAT'S VARIATIONAL PRINCIPLE                       │</span></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a><span class="in">│                                                                        │</span></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a><span class="in">│   The physical trajectory taken by a light ray connecting two fixed   │</span></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a><span class="in">│   points A and B is an extremal (stationary point) of the action:      │</span></span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a><span class="in">│                                                                        │</span></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a><span class="in">│                 δS[r] = δ ∫ n(r(u)) |dr/du| du = 0                     │</span></span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a><span class="in">│                                                                        │</span></span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a><span class="in">│   subject to fixed boundary conditions: δr(u₁) = 0 and δr(u₂) = 0.     │</span></span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a><span class="in">└────────────────────────────────────────────────────────────────────────┘</span></span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2. Explicit Physical and Mathematical Assumptions</span></span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>To analyze the character of the stationary points with mathematical rigor, we state our baseline assumptions:</span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Geometric Optics Approximation ($\lambda \to 0$ / Eikonal Limit)**: The wavelength of electromagnetic radiation $\lambda$ is negligible compared to the characteristic scale of spatial variations in the refractive index:</span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a>   $$</span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>   \frac{|\nabla n|}{n} \ll \frac{1}{\lambda} \quad \text{and} \quad \frac{|\nabla^2 n|}{|\nabla n|} \ll \frac{1}{\lambda}</span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>   $$</span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Isotropy and Non-Dispersive Medium**: $n = n(\mathbf{r})$ is a positive scalar function depending purely on position, independent of ray propagation direction $\mathbf{\hat{k}}$ or temporal frequency $\omega$.</span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Smoothness and Differentiability**: The boundary surfaces and the index profile $n(\mathbf{r})$ are at least $C^2$-differentiable, ensuring that first and second functional variations are well-defined.</span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Boundary Constraint**: Endpoints $A$ and $B$ are held strictly fixed under all virtual variations ($\delta \mathbf{r}(A) = \delta \mathbf{r}(B) = \mathbf{0}$).</span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>**Static Metric (in Gravitational Contexts)**: When generalizing to curved spacetime, the background gravitational field admits a timelike Killing vector field $\partial_t$, allowing an absolute time coordinate to parameterize null geodesics.</span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3. First and Second Variations: The Geometry of Extrema</span></span>
+<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a>To classify whether a stationary ray $\mathbf{r}_0(u)$ minimizes, maximizes, or creates a saddle point in travel time, we perform a Taylor expansion of the functional $S<span class="co">[</span><span class="ot">\mathbf{r}_0 + \epsilon \boldsymbol{\eta}</span><span class="co">]</span>$ in powers of the variation parameter $\epsilon$, where $\boldsymbol{\eta}(u_1) = \boldsymbol{\eta}(u_2) = \mathbf{0}$:</span>
+<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a>S<span class="co">[</span><span class="ot">\mathbf{r}_0 + \epsilon \boldsymbol{\eta}</span><span class="co">]</span> = S<span class="co">[</span><span class="ot">\mathbf{r}_0</span><span class="co">]</span> + \epsilon \, \delta S<span class="co">[</span><span class="ot">\mathbf{r}_0; \boldsymbol{\eta}</span><span class="co">]</span> + \frac{\epsilon^2}{2} \, \delta^2 S<span class="co">[</span><span class="ot">\mathbf{r}_0; \boldsymbol{\eta}</span><span class="co">]</span> + \mathcal{O}(\epsilon^3)</span>
+<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a><span class="fu">### The First Variation ($\delta S = 0$)</span></span>
+<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a>Choosing the parameter $u$ to be the arc length along the unperturbed ray $s \in <span class="co">[</span><span class="ot">0, L</span><span class="co">]</span>$, the Lagrangian is $L(\mathbf{r}, \mathbf{r}') = n(\mathbf{r}) \sqrt{\mathbf{r}' \cdot \mathbf{r}'} = n(\mathbf{r})$, where $\mathbf{r}' = \frac{d\mathbf{r}}{ds}$ is the unit tangent vector $\mathbf{\hat{t}}$ ($|\mathbf{r}'| = 1$).</span>
+<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a>Applying the Euler-Lagrange equations:</span>
+<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a>\frac{d}{ds} \left( \frac{\partial L}{\partial \mathbf{r}'} \right) - \frac{\partial L}{\partial \mathbf{r}} = \mathbf{0} \implies \frac{d}{ds} \left( n(\mathbf{r}) \frac{d\mathbf{r}}{ds} \right) = \nabla n(\mathbf{r})</span>
+<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a>This is the canonical **Ray Equation of Geometric Optics**. Any path satisfying this differential equation is a stationary point of $S<span class="co">[</span><span class="ot">\mathbf{r}</span><span class="co">]</span>$.</span>
+<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Second Variation ($\delta^2 S$) and the Jacobi Equation</span></span>
+<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a>The classification of the stationary point is governed entirely by the sign of the **second variation**:</span>
+<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a>\delta^2 S<span class="co">[</span><span class="ot">\mathbf{r}_0; \boldsymbol{\eta}</span><span class="co">]</span> = \int_0^L \left<span class="co">[</span><span class="ot"> P_{ij}(s) \frac{d\eta^i}{ds} \frac{d\eta^j}{ds} + Q_{ij}(s) \eta^i \eta^j \right</span><span class="co">]</span> ds</span>
+<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a>where $\boldsymbol{\eta}(s)$ represents a normal perturbation vector orthogonal to the ray trajectory ($\boldsymbol{\eta} \cdot \mathbf{r}' = 0$).</span>
+<span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a><span class="in">                      ┌───────────────────────────────────────┐</span></span>
+<span id="cb9-99"><a href="#cb9-99" aria-hidden="true" tabindex="-1"></a><span class="in">                      │    SPECTRUM OF SECOND VARIATION δ²S   │</span></span>
+<span id="cb9-100"><a href="#cb9-100" aria-hidden="true" tabindex="-1"></a><span class="in">                      └──────────────────┬────────────────────┘</span></span>
+<span id="cb9-101"><a href="#cb9-101" aria-hidden="true" tabindex="-1"></a><span class="in">                                         │</span></span>
+<span id="cb9-102"><a href="#cb9-102" aria-hidden="true" tabindex="-1"></a><span class="in">                 ┌───────────────────────┼───────────────────────┐</span></span>
+<span id="cb9-103"><a href="#cb9-103" aria-hidden="true" tabindex="-1"></a><span class="in">                 ▼                       ▼                       ▼</span></span>
+<span id="cb9-104"><a href="#cb9-104" aria-hidden="true" tabindex="-1"></a><span class="in">      ┌─────────────────────┐ ┌─────────────────────┐ ┌─────────────────────┐</span></span>
+<span id="cb9-105"><a href="#cb9-105" aria-hidden="true" tabindex="-1"></a><span class="in">      │   STRICT MINIMUM    │ │     SADDLE POINT    │ │   STRICT MAXIMUM    │</span></span>
+<span id="cb9-106"><a href="#cb9-106" aria-hidden="true" tabindex="-1"></a><span class="in">      │ δ²S[η] &gt; 0 for all  │ │ δ²S[η₁] &gt; 0 along u │ │ δ²S[η] &lt; 0 for all  │</span></span>
+<span id="cb9-107"><a href="#cb9-107" aria-hidden="true" tabindex="-1"></a><span class="in">      │ non-zero variations │ │ δ²S[η₂] &lt; 0 along v │ │ non-zero variations │</span></span>
+<span id="cb9-108"><a href="#cb9-108" aria-hidden="true" tabindex="-1"></a><span class="in">      └─────────────────────┘ └─────────────────────┘ └─────────────────────┘</span></span>
+<span id="cb9-109"><a href="#cb9-109" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-110"><a href="#cb9-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-111"><a href="#cb9-111" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Local Minimum ($\delta^2 S &gt; 0$ for all $\boldsymbol{\eta} \neq \mathbf{0}$)**: Every adjacent virtual path takes *strictly longer* than the true ray.</span>
+<span id="cb9-112"><a href="#cb9-112" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Local Maximum ($\delta^2 S &lt; 0$ for all $\boldsymbol{\eta} \neq \mathbf{0}$)**: Every adjacent virtual path takes *strictly less* time than the true ray. *(Note: Over arbitrary variations without boundary constraints, an absolute maximum does not exist because a path can be zig-zagged infinitely to yield $S \to \infty$. A local maximum occurs only when restricted to a finite-dimensional constraint manifold, such as reflection off a curved surface).*</span>
+<span id="cb9-113"><a href="#cb9-113" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Saddle Point / Minimax ($\delta^2 S &gt; 0$ for some variations, $\delta^2 S &lt; 0$ for others)**: Perturbing the path along one normal coordinate direction increases travel time, while perturbing along an orthogonal normal coordinate decreases travel time.</span>
+<span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-115"><a href="#cb9-115" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-116"><a href="#cb9-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-117"><a href="#cb9-117" aria-hidden="true" tabindex="-1"></a><span class="fu">## 4. Physical Case 1: Reflection Off Curved Mirrors (The Ellipsoidal Criterion)</span></span>
+<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-119"><a href="#cb9-119" aria-hidden="true" tabindex="-1"></a>The most intuitive realization of stationary points that are neither maxima nor minima occurs in catoptrics (reflection off curved surfaces).</span>
+<span id="cb9-120"><a href="#cb9-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a>Consider light traveling in a homogeneous medium ($n = 1$) from source $A$ to receiver $B$ via a single specular reflection at point $P$ on a reflecting boundary surface $\Sigma$:</span>
+<span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a><span class="in">                                  Source A</span></span>
+<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a><span class="in">                                     \</span></span>
+<span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a><span class="in">                                      \</span></span>
+<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a><span class="in">                                       \</span></span>
+<span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a><span class="in">                          Reflecting    \</span></span>
+<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a><span class="in">                           Surface Σ     v</span></span>
+<span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a><span class="in">             ────────────────────────────P────────────────────────────</span></span>
+<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a><span class="in">                                        /</span></span>
+<span id="cb9-132"><a href="#cb9-132" aria-hidden="true" tabindex="-1"></a><span class="in">                                       /</span></span>
+<span id="cb9-133"><a href="#cb9-133" aria-hidden="true" tabindex="-1"></a><span class="in">                                      v</span></span>
+<span id="cb9-134"><a href="#cb9-134" aria-hidden="true" tabindex="-1"></a><span class="in">                                  Receiver B</span></span>
+<span id="cb9-135"><a href="#cb9-135" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-136"><a href="#cb9-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-137"><a href="#cb9-137" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Reference Ellipsoid</span></span>
+<span id="cb9-138"><a href="#cb9-138" aria-hidden="true" tabindex="-1"></a>Let $\mathcal{E}$ be a prolate spheroid (ellipsoid of revolution) with focal points at $A$ and $B$. By definition of an ellipse:</span>
+<span id="cb9-139"><a href="#cb9-139" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-140"><a href="#cb9-140" aria-hidden="true" tabindex="-1"></a>\text{For any point } Q \in \mathcal{E}: \quad |\mathbf{r}_A - \mathbf{r}_Q| + |\mathbf{r}_Q - \mathbf{r}_B| = L_0 = \text{constant}</span>
+<span id="cb9-141"><a href="#cb9-141" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-142"><a href="#cb9-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-143"><a href="#cb9-143" aria-hidden="true" tabindex="-1"></a>Let a real physical mirror $\Sigma$ be tangent to the ellipsoid $\mathcal{E}$ at point $P$. The law of reflection ($\theta_i = \theta_r$) ensures that the normal vector to $\Sigma$ at $P$ coincides with the normal to $\mathcal{E}$ at $P$. Therefore, $P$ is rigorously a stationary point ($\delta T = 0$).</span>
+<span id="cb9-144"><a href="#cb9-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-145"><a href="#cb9-145" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-146"><a href="#cb9-146" aria-hidden="true" tabindex="-1"></a><span class="in">┌────────────────────────────────────────────────────────────────────────┐</span></span>
+<span id="cb9-147"><a href="#cb9-147" aria-hidden="true" tabindex="-1"></a><span class="in">│                     THE CURVATURE COMPARISON THEOREM                   │</span></span>
+<span id="cb9-148"><a href="#cb9-148" aria-hidden="true" tabindex="-1"></a><span class="in">│                                                                        │</span></span>
+<span id="cb9-149"><a href="#cb9-149" aria-hidden="true" tabindex="-1"></a><span class="in">│   Let κ_Σ be the principal curvatures of the mirror surface Σ at P,    │</span></span>
+<span id="cb9-150"><a href="#cb9-150" aria-hidden="true" tabindex="-1"></a><span class="in">│   and κ_E be the principal curvatures of the confocal ellipsoid E:     │</span></span>
+<span id="cb9-151"><a href="#cb9-151" aria-hidden="true" tabindex="-1"></a><span class="in">│                                                                        │</span></span>
+<span id="cb9-152"><a href="#cb9-152" aria-hidden="true" tabindex="-1"></a><span class="in">│   1. PLANE OR CONVEX MIRROR (κ_Σ &lt; κ_E):                               │</span></span>
+<span id="cb9-153"><a href="#cb9-153" aria-hidden="true" tabindex="-1"></a><span class="in">│      The mirror Σ lies completely outside the ellipsoid E.             │</span></span>
+<span id="cb9-154"><a href="#cb9-154" aria-hidden="true" tabindex="-1"></a><span class="in">│      For any adjacent point Q ∈ Σ, OPL(Q) &gt; L₀.                        │</span></span>
+<span id="cb9-155"><a href="#cb9-155" aria-hidden="true" tabindex="-1"></a><span class="in">│      ==&gt; STRICT LOCAL MINIMUM.                                         │</span></span>
+<span id="cb9-156"><a href="#cb9-156" aria-hidden="true" tabindex="-1"></a><span class="in">│                                                                        │</span></span>
+<span id="cb9-157"><a href="#cb9-157" aria-hidden="true" tabindex="-1"></a><span class="in">│   2. HIGHLY CONCAVE SPHERICAL MIRROR (κ_Σ &gt; κ_E in all directions):     │</span></span>
+<span id="cb9-158"><a href="#cb9-158" aria-hidden="true" tabindex="-1"></a><span class="in">│      The mirror Σ curves inside the ellipsoid E.                       │</span></span>
+<span id="cb9-159"><a href="#cb9-159" aria-hidden="true" tabindex="-1"></a><span class="in">│      For any adjacent point Q ∈ Σ, OPL(Q) &lt; L₀.                        │</span></span>
+<span id="cb9-160"><a href="#cb9-160" aria-hidden="true" tabindex="-1"></a><span class="in">│      ==&gt; STRICT LOCAL MAXIMUM.                                         │</span></span>
+<span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a><span class="in">│                                                                        │</span></span>
+<span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a><span class="in">│   3. ASTIGMATIC / SADDLE MIRROR (κ_Σ,₁ &gt; κ_E,₁ and κ_Σ,₂ &lt; κ_E,₂):     │</span></span>
+<span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a><span class="in">│      The mirror curves inside along axis 1, and outside along axis 2.  │</span></span>
+<span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a><span class="in">│      ==&gt; SADDLE POINT (NEITHER MINIMUM NOR MAXIMUM).                   │</span></span>
+<span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a><span class="in">└────────────────────────────────────────────────────────────────────────┘</span></span>
+<span id="cb9-166"><a href="#cb9-166" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-167"><a href="#cb9-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-168"><a href="#cb9-168" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-169"><a href="#cb9-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-170"><a href="#cb9-170" aria-hidden="true" tabindex="-1"></a><span class="fu">### Quantitative Mathematical Proof of a Reflection Saddle Point</span></span>
+<span id="cb9-171"><a href="#cb9-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-172"><a href="#cb9-172" aria-hidden="true" tabindex="-1"></a>Let the reflection point be $P = (0, 0, 0)$ in Cartesian coordinates. Let the mirror surface $\Sigma$ be locally represented as a quadratic Monge patch:</span>
+<span id="cb9-173"><a href="#cb9-173" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-174"><a href="#cb9-174" aria-hidden="true" tabindex="-1"></a>z(x, y) = \frac{1}{2} \left( \kappa_x x^2 + \kappa_y y^2 \right) + \mathcal{O}(x^3, y^3)</span>
+<span id="cb9-175"><a href="#cb9-175" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-176"><a href="#cb9-176" aria-hidden="true" tabindex="-1"></a>where $\kappa_x$ and $\kappa_y$ are the principal curvatures of the mirror at the origin.</span>
+<span id="cb9-177"><a href="#cb9-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-178"><a href="#cb9-178" aria-hidden="true" tabindex="-1"></a>Let source $A = (-d \sin\theta, 0, d \cos\theta)$ and receiver $B = (d \sin\theta, 0, d \cos\theta)$ lie symmetrically in the $xz$-plane at distance $d$ and angle of incidence $\theta$.</span>
+<span id="cb9-179"><a href="#cb9-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-180"><a href="#cb9-180" aria-hidden="true" tabindex="-1"></a>The optical path length for reflection at an arbitrary adjacent point $Q = (x, y, z(x, y))$ on the mirror is:</span>
+<span id="cb9-181"><a href="#cb9-181" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-182"><a href="#cb9-182" aria-hidden="true" tabindex="-1"></a>D(x, y) = \sqrt{(x + d\sin\theta)^2 + y^2 + (z - d\cos\theta)^2} + \sqrt{(x - d\sin\theta)^2 + y^2 + (z - d\cos\theta)^2}</span>
+<span id="cb9-183"><a href="#cb9-183" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-184"><a href="#cb9-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-185"><a href="#cb9-185" aria-hidden="true" tabindex="-1"></a>Expanding $D(x, y)$ in a multi-variable Taylor series about $(x, y) = (0, 0)$:</span>
+<span id="cb9-186"><a href="#cb9-186" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-187"><a href="#cb9-187" aria-hidden="true" tabindex="-1"></a>D(x, y) = 2d + \left. \frac{\partial D}{\partial x} \right|_0 x + \left. \frac{\partial D}{\partial y} \right|_0 y + \frac{1}{2} \left[ D_{xx} x^2 + 2 D_{xy} xy + D_{yy} y^2 \right] + \dots</span>
+<span id="cb9-188"><a href="#cb9-188" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-189"><a href="#cb9-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-190"><a href="#cb9-190" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 1. First Derivatives (Stationary Condition)</span></span>
+<span id="cb9-191"><a href="#cb9-191" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-192"><a href="#cb9-192" aria-hidden="true" tabindex="-1"></a>\frac{\partial D}{\partial x}(0, 0) = \sin\theta - \sin\theta = 0, \quad \frac{\partial D}{\partial y}(0, 0) = 0</span>
+<span id="cb9-193"><a href="#cb9-193" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-194"><a href="#cb9-194" aria-hidden="true" tabindex="-1"></a>The first variation vanishes identically, confirming the specular law of reflection.</span>
+<span id="cb9-195"><a href="#cb9-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-196"><a href="#cb9-196" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 2. Second Derivatives (The Hessian Matrix)</span></span>
+<span id="cb9-197"><a href="#cb9-197" aria-hidden="true" tabindex="-1"></a>Computing the second partial derivatives:</span>
+<span id="cb9-198"><a href="#cb9-198" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-199"><a href="#cb9-199" aria-hidden="true" tabindex="-1"></a>D_{xx} = \frac{2\cos^2\theta}{d} - 2\kappa_x \cos\theta = 2\cos\theta \left( \frac{\cos\theta}{d} - \kappa_x \right)</span>
+<span id="cb9-200"><a href="#cb9-200" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-201"><a href="#cb9-201" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-202"><a href="#cb9-202" aria-hidden="true" tabindex="-1"></a>D_{yy} = \frac{2}{d} - 2\kappa_y \cos\theta = 2 \left( \frac{1}{d} - \kappa_y \cos\theta \right)</span>
+<span id="cb9-203"><a href="#cb9-203" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-204"><a href="#cb9-204" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-205"><a href="#cb9-205" aria-hidden="true" tabindex="-1"></a>D_{xy} = 0</span>
+<span id="cb9-206"><a href="#cb9-206" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-207"><a href="#cb9-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-208"><a href="#cb9-208" aria-hidden="true" tabindex="-1"></a>The critical curvature thresholds for the reference ellipsoid are:</span>
+<span id="cb9-209"><a href="#cb9-209" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-210"><a href="#cb9-210" aria-hidden="true" tabindex="-1"></a>\kappa_{E, x} = \frac{\cos\theta}{d}, \quad \kappa_{E, y} = \frac{1}{d\cos\theta}</span>
+<span id="cb9-211"><a href="#cb9-211" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-212"><a href="#cb9-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-213"><a href="#cb9-213" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 3. Classification via the Hessian Determinant</span></span>
+<span id="cb9-214"><a href="#cb9-214" aria-hidden="true" tabindex="-1"></a>The Hessian matrix is diagonal:</span>
+<span id="cb9-215"><a href="#cb9-215" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-216"><a href="#cb9-216" aria-hidden="true" tabindex="-1"></a>\mathcal{H} = \begin{pmatrix} D_{xx} &amp; 0 <span class="sc">\\</span> 0 &amp; D_{yy} \end{pmatrix} \implies \det(\mathcal{H}) = D_{xx} D_{yy}</span>
+<span id="cb9-217"><a href="#cb9-217" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-218"><a href="#cb9-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-219"><a href="#cb9-219" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Condition for a Saddle Point**: A saddle point occurs when $\det(\mathcal{H}) &lt; 0$, which requires $D_{xx}$ and $D_{yy}$ to have **opposite signs**:</span>
+<span id="cb9-220"><a href="#cb9-220" aria-hidden="true" tabindex="-1"></a>  $$</span>
+<span id="cb9-221"><a href="#cb9-221" aria-hidden="true" tabindex="-1"></a>  \left( \kappa_x - \frac{\cos\theta}{d} \right) \left( \kappa_y - \frac{1}{d\cos\theta} \right) &lt; 0</span>
+<span id="cb9-222"><a href="#cb9-222" aria-hidden="true" tabindex="-1"></a>  $$</span>
+<span id="cb9-223"><a href="#cb9-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-224"><a href="#cb9-224" aria-hidden="true" tabindex="-1"></a>**Physical Realization**: Construct a mirror with a cylindrical or hyperbolic paraboloid curvature such that:</span>
+<span id="cb9-225"><a href="#cb9-225" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-226"><a href="#cb9-226" aria-hidden="true" tabindex="-1"></a>\kappa_x &gt; \frac{\cos\theta}{d} \quad \text{and} \quad \kappa_y &lt; \frac{1}{d\cos\theta}</span>
+<span id="cb9-227"><a href="#cb9-227" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-228"><a href="#cb9-228" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Along the $x$-displacement axis: $D_{xx} &lt; 0$, meaning light traversing an adjacent point along the $x$-axis arrives **faster** than the specular ray (local maximum along $x$).</span>
+<span id="cb9-229"><a href="#cb9-229" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Along the $y$-displacement axis: $D_{yy} &gt; 0$, meaning light traversing an adjacent point along the $y$-axis arrives **slower** than the specular ray (local minimum along $y$).</span>
+<span id="cb9-230"><a href="#cb9-230" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Conclusion**: The actual physical trajectory taken by the light ray is a **rigorous saddle point**.</span>
+<span id="cb9-231"><a href="#cb9-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-232"><a href="#cb9-232" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-233"><a href="#cb9-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-234"><a href="#cb9-234" aria-hidden="true" tabindex="-1"></a><span class="fu">## 5. Physical Case 2: Conjugate Points and Caustic Crossings</span></span>
+<span id="cb9-235"><a href="#cb9-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-236"><a href="#cb9-236" aria-hidden="true" tabindex="-1"></a>In refraction and focusing optics, stationary points transition from minima to saddles whenever a ray passes through a **conjugate point (caustic focus)**.</span>
+<span id="cb9-237"><a href="#cb9-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-238"><a href="#cb9-238" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-239"><a href="#cb9-239" aria-hidden="true" tabindex="-1"></a><span class="in">Source A ──────────────[ Converging Lens ]────────────── (Focal Point C) ────────────── Receiver B</span></span>
+<span id="cb9-240"><a href="#cb9-240" aria-hidden="true" tabindex="-1"></a><span class="in">                                                               │</span></span>
+<span id="cb9-241"><a href="#cb9-241" aria-hidden="true" tabindex="-1"></a><span class="in">                             Before C: Strict Minimum          │  After C: SADDLE POINT</span></span>
+<span id="cb9-242"><a href="#cb9-242" aria-hidden="true" tabindex="-1"></a><span class="in">                             δ²S &gt; 0                           │  Morse Index μ = 1</span></span>
+<span id="cb9-243"><a href="#cb9-243" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-244"><a href="#cb9-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-245"><a href="#cb9-245" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Morse Index Theorem in Optics</span></span>
+<span id="cb9-246"><a href="#cb9-246" aria-hidden="true" tabindex="-1"></a>Let $\gamma$ be an unperturbed ray connecting $A$ and $B$. A point $C \in \gamma$ is defined as **conjugate** to $A$ if there exists a non-trivial Jacobi field $\mathbf{J}(s)$ along $\gamma$ that vanishes at both $A$ and $C$:</span>
+<span id="cb9-247"><a href="#cb9-247" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-248"><a href="#cb9-248" aria-hidden="true" tabindex="-1"></a>\mathbf{J}(A) = \mathbf{0}, \quad \mathbf{J}(C) = \mathbf{0}, \quad \mathbf{J} \not\equiv \mathbf{0}</span>
+<span id="cb9-249"><a href="#cb9-249" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-250"><a href="#cb9-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-251"><a href="#cb9-251" aria-hidden="true" tabindex="-1"></a>According to the **Morse Index Theorem**:</span>
+<span id="cb9-252"><a href="#cb9-252" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>If the trajectory from $A$ to $B$ contains **no conjugate points**, the second variation $\delta^2 S$ is strictly positive-definite. The path is a **local minimum**.</span>
+<span id="cb9-253"><a href="#cb9-253" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>For every conjugate point $C$ crossed between $A$ and $B$, the quadratic form $\delta^2 S$ acquires an additional **negative eigenvalue**.</span>
+<span id="cb9-254"><a href="#cb9-254" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Therefore, if light passes through a focus or caustic before reaching receiver $B$, the travel time functional along the ray is **no longer a minimum**, but a **saddle point of Morse index $\mu = 1$ (or higher)**.</span>
+<span id="cb9-255"><a href="#cb9-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-256"><a href="#cb9-256" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-257"><a href="#cb9-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-258"><a href="#cb9-258" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6. Physical Case 3: Gravitational Lensing in General Relativity</span></span>
+<span id="cb9-259"><a href="#cb9-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-260"><a href="#cb9-260" aria-hidden="true" tabindex="-1"></a>The most profound and astrophysically observable manifestation of stationary saddle points occurs in **Gravitational Lensing** governed by Einstein's General Relativity.</span>
+<span id="cb9-261"><a href="#cb9-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-262"><a href="#cb9-262" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-263"><a href="#cb9-263" aria-hidden="true" tabindex="-1"></a><span class="in">┌────────────────────────────────────────────────────────────────────────┐</span></span>
+<span id="cb9-264"><a href="#cb9-264" aria-hidden="true" tabindex="-1"></a><span class="in">│                  GRAVITATIONAL LENS ARRIVAL-TIME SURFACE               │</span></span>
+<span id="cb9-265"><a href="#cb9-265" aria-hidden="true" tabindex="-1"></a><span class="in">│                                                                        │</span></span>
+<span id="cb9-266"><a href="#cb9-266" aria-hidden="true" tabindex="-1"></a><span class="in">│                      Source S (at redshift z_S)                        │</span></span>
+<span id="cb9-267"><a href="#cb9-267" aria-hidden="true" tabindex="-1"></a><span class="in">│                         /        |        \                            │</span></span>
+<span id="cb9-268"><a href="#cb9-268" aria-hidden="true" tabindex="-1"></a><span class="in">│                        /         |         \                           │</span></span>
+<span id="cb9-269"><a href="#cb9-269" aria-hidden="true" tabindex="-1"></a><span class="in">│                       v          v          v                          │</span></span>
+<span id="cb9-270"><a href="#cb9-270" aria-hidden="true" tabindex="-1"></a><span class="in">│               [ Deflector Galaxy / Cluster L at z_L ]                  │</span></span>
+<span id="cb9-271"><a href="#cb9-271" aria-hidden="true" tabindex="-1"></a><span class="in">│                       \          |          /                          │</span></span>
+<span id="cb9-272"><a href="#cb9-272" aria-hidden="true" tabindex="-1"></a><span class="in">│                        \         |         /                           │</span></span>
+<span id="cb9-273"><a href="#cb9-273" aria-hidden="true" tabindex="-1"></a><span class="in">│                         v        v        v                            │</span></span>
+<span id="cb9-274"><a href="#cb9-274" aria-hidden="true" tabindex="-1"></a><span class="in">│                     Image 1   Image 2   Image 3                        │</span></span>
+<span id="cb9-275"><a href="#cb9-275" aria-hidden="true" tabindex="-1"></a><span class="in">│                     (MINIMUM) (SADDLE)  (MAXIMUM)                      │</span></span>
+<span id="cb9-276"><a href="#cb9-276" aria-hidden="true" tabindex="-1"></a><span class="in">│                         \        |        /                            │</span></span>
+<span id="cb9-277"><a href="#cb9-277" aria-hidden="true" tabindex="-1"></a><span class="in">│                          \       |       /                             │</span></span>
+<span id="cb9-278"><a href="#cb9-278" aria-hidden="true" tabindex="-1"></a><span class="in">│                           v      v      v                              │</span></span>
+<span id="cb9-279"><a href="#cb9-279" aria-hidden="true" tabindex="-1"></a><span class="in">│                            Observer O                                  │</span></span>
+<span id="cb9-280"><a href="#cb9-280" aria-hidden="true" tabindex="-1"></a><span class="in">└────────────────────────────────────────────────────────────────────────┘</span></span>
+<span id="cb9-281"><a href="#cb9-281" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-282"><a href="#cb9-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-283"><a href="#cb9-283" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Relativistic Fermat Principle</span></span>
+<span id="cb9-284"><a href="#cb9-284" aria-hidden="true" tabindex="-1"></a>In curved spacetime $(\mathcal{M}, g_{\mu\nu})$, light travels along null geodesics ($ds^2 = g_{\mu\nu} dx^\mu dx^\nu = 0$). In a stationary, weak-field spacetime parameterized by the Newtonian gravitational potential $\Phi(\mathbf{r}) \ll c^2$, the line element is:</span>
+<span id="cb9-285"><a href="#cb9-285" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-286"><a href="#cb9-286" aria-hidden="true" tabindex="-1"></a>ds^2 = -\left(1 + \frac{2\Phi}{c^2}\right) c^2 dt^2 + \left(1 - \frac{2\Phi}{c^2}\right) (dx^2 + dy^2 + dz^2) = 0</span>
+<span id="cb9-287"><a href="#cb9-287" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-288"><a href="#cb9-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-289"><a href="#cb9-289" aria-hidden="true" tabindex="-1"></a>Solving for the coordinate speed of light $v = \frac{d\ell}{dt}$ yields an effective refractive index:</span>
+<span id="cb9-290"><a href="#cb9-290" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-291"><a href="#cb9-291" aria-hidden="true" tabindex="-1"></a>n_{\text{eff}}(\mathbf{r}) = \frac{c}{v} \approx 1 - \frac{2\Phi(\mathbf{r})}{c^2} &gt; 1</span>
+<span id="cb9-292"><a href="#cb9-292" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-293"><a href="#cb9-293" aria-hidden="true" tabindex="-1"></a>Because $\Phi \le 0$, the presence of mass **slows coordinate light speed**, creating the gravitational Shapiro time delay.</span>
+<span id="cb9-294"><a href="#cb9-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-295"><a href="#cb9-295" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-296"><a href="#cb9-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-297"><a href="#cb9-297" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Arrival-Time Surface $\tau(\boldsymbol{\theta})$</span></span>
+<span id="cb9-298"><a href="#cb9-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-299"><a href="#cb9-299" aria-hidden="true" tabindex="-1"></a>In the thin-lens approximation, let:</span>
+<span id="cb9-300"><a href="#cb9-300" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\boldsymbol{\beta} \in \mathbb{R}^2$ be the true angular position of the source on the sky.</span>
+<span id="cb9-301"><a href="#cb9-301" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\boldsymbol{\theta} \in \mathbb{R}^2$ be the observed angular position in the lens plane.</span>
+<span id="cb9-302"><a href="#cb9-302" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$D_L, D_S, D_{LS}$ be the angular diameter distances to the lens, to the source, and between lens and source.</span>
+<span id="cb9-303"><a href="#cb9-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-304"><a href="#cb9-304" aria-hidden="true" tabindex="-1"></a>The total light travel time (arrival time) functional $\tau(\boldsymbol{\theta})$ is:</span>
+<span id="cb9-305"><a href="#cb9-305" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-306"><a href="#cb9-306" aria-hidden="true" tabindex="-1"></a>\tau(\boldsymbol{\theta}) = \frac{1 + z_L}{c} \frac{D_L D_S}{D_{LS}} \left<span class="co">[</span><span class="ot"> \frac{1}{2} |\boldsymbol{\theta} - \boldsymbol{\beta}|^2 - \psi(\boldsymbol{\theta}) \right</span><span class="co">]</span></span>
+<span id="cb9-307"><a href="#cb9-307" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-308"><a href="#cb9-308" aria-hidden="true" tabindex="-1"></a>where:</span>
+<span id="cb9-309"><a href="#cb9-309" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\frac{1}{2} |\boldsymbol{\theta} - \boldsymbol{\beta}|^2$ is the **geometric time delay** (deviation from a straight line).</span>
+<span id="cb9-310"><a href="#cb9-310" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\psi(\boldsymbol{\theta}) = \frac{2}{c^2} \frac{D_{LS}}{D_L D_S} \int \Phi \, dz$ is the 2D **effective gravitational deflection potential** (the gravitational Shapiro delay).</span>
+<span id="cb9-311"><a href="#cb9-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-312"><a href="#cb9-312" aria-hidden="true" tabindex="-1"></a>Fermat's principle dictates that observable images form where the gradient of arrival time vanishes:</span>
+<span id="cb9-313"><a href="#cb9-313" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-314"><a href="#cb9-314" aria-hidden="true" tabindex="-1"></a>\nabla_{\boldsymbol{\theta}} \tau(\boldsymbol{\theta}) = \mathbf{0} \implies \boldsymbol{\theta} - \boldsymbol{\beta} = \nabla_{\boldsymbol{\theta}} \psi(\boldsymbol{\theta}) = \boldsymbol{\alpha}(\boldsymbol{\theta})</span>
+<span id="cb9-315"><a href="#cb9-315" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-316"><a href="#cb9-316" aria-hidden="true" tabindex="-1"></a>This reproduces the canonical **Gravitational Lens Equation**.</span>
+<span id="cb9-317"><a href="#cb9-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-318"><a href="#cb9-318" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-319"><a href="#cb9-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-320"><a href="#cb9-320" aria-hidden="true" tabindex="-1"></a><span class="fu">### Image Classification via the Hessian of Arrival Time</span></span>
+<span id="cb9-321"><a href="#cb9-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-322"><a href="#cb9-322" aria-hidden="true" tabindex="-1"></a>The nature of each lensed image is classified by the **Hessian matrix** of the arrival time surface:</span>
+<span id="cb9-323"><a href="#cb9-323" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-324"><a href="#cb9-324" aria-hidden="true" tabindex="-1"></a>\mathcal{H}_{ij}(\boldsymbol{\theta}) = \frac{\partial^2 \tau}{\partial \theta_i \partial \theta_j} \propto \delta_{ij} - \frac{\partial^2 \psi}{\partial \theta_i \partial \theta_j} = \mathcal{A}_{ij}^{-1}</span>
+<span id="cb9-325"><a href="#cb9-325" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-326"><a href="#cb9-326" aria-hidden="true" tabindex="-1"></a>where $\mathcal{A}(\boldsymbol{\theta})$ is the **Jacobian magnification tensor** of the gravitational lens.</span>
+<span id="cb9-327"><a href="#cb9-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-328"><a href="#cb9-328" aria-hidden="true" tabindex="-1"></a>The eigenvalues $\lambda_1, \lambda_2$ of the inverse magnification tensor $\mathcal{A}^{-1}$ categorize the images into three distinct topological types:</span>
+<span id="cb9-329"><a href="#cb9-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-330"><a href="#cb9-330" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Image Type <span class="pp">|</span> Eigenvalue Signs <span class="pp">|</span> Hessian Determinant $\det(\mathcal{H})$ <span class="pp">|</span> Physical Character on Arrival-Time Surface $\tau$ <span class="pp">|</span> Parity &amp; Astrophysics <span class="pp">|</span></span>
+<span id="cb9-331"><a href="#cb9-331" aria-hidden="true" tabindex="-1"></a><span class="pp">|:---|:---:|:---:|:---|:---|</span></span>
+<span id="cb9-332"><a href="#cb9-332" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Type I (Minimum)** | $\lambda_1 &gt; 0, \, \lambda_2 &gt; 0$ | $\det(\mathcal{H}) &gt; 0$ | **Local Minimum**. Light arrives along the quickest path among all local variations. | Positive parity. Typically the outermost image; arrives **first** in time-domain astronomy (e.g., supernova / quasar flares). <span class="pp">|</span></span>
+<span id="cb9-333"><a href="#cb9-333" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Type II (Saddle Point)** | $\lambda_1 &gt; 0, \, \lambda_2 &lt; 0$ | $\det(\mathcal{H}) &lt; 0$ | **Saddle Point**. Path is a minimum along one axis and a maximum along the orthogonal axis. <span class="pp">|</span> Negative parity (mirror-inverted). Forms intermediate-arrival images (e.g., secondary images in Einstein crosses). <span class="pp">|</span></span>
+<span id="cb9-334"><a href="#cb9-334" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Type III (Maximum)** | $\lambda_1 &lt; 0, \, \lambda_2 &lt; 0$ | $\det(\mathcal{H}) &gt; 0$ | **Local Maximum**. Trajectory takes strictly longer than all adjacent virtual paths. <span class="pp">|</span> Positive parity. Located near the central core of the deflector; usually heavily demagnified and faint. <span class="pp">|</span></span>
+<span id="cb9-335"><a href="#cb9-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-336"><a href="#cb9-336" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-337"><a href="#cb9-337" aria-hidden="true" tabindex="-1"></a><span class="in">┌────────────────────────────────────────────────────────────────────────┐</span></span>
+<span id="cb9-338"><a href="#cb9-338" aria-hidden="true" tabindex="-1"></a><span class="in">│                THE BLANDFORD-NARAYAN TOPOLOGY THEOREM                  │</span></span>
+<span id="cb9-339"><a href="#cb9-339" aria-hidden="true" tabindex="-1"></a><span class="in">│                                                                        │</span></span>
+<span id="cb9-340"><a href="#cb9-340" aria-hidden="true" tabindex="-1"></a><span class="in">│   For any non-singular, transparent gravitational potential with       │</span></span>
+<span id="cb9-341"><a href="#cb9-341" aria-hidden="true" tabindex="-1"></a><span class="in">│   asymptotically flat boundary conditions:                             │</span></span>
+<span id="cb9-342"><a href="#cb9-342" aria-hidden="true" tabindex="-1"></a><span class="in">│                                                                        │</span></span>
+<span id="cb9-343"><a href="#cb9-343" aria-hidden="true" tabindex="-1"></a><span class="in">│       N_min - N_saddle + N_max = 1                                     │</span></span>
+<span id="cb9-344"><a href="#cb9-344" aria-hidden="true" tabindex="-1"></a><span class="in">│                                                                        │</span></span>
+<span id="cb9-345"><a href="#cb9-345" aria-hidden="true" tabindex="-1"></a><span class="in">│   Consequently, the total number of images N_total = N_min + N_saddle  │</span></span>
+<span id="cb9-346"><a href="#cb9-346" aria-hidden="true" tabindex="-1"></a><span class="in">│   + N_max is ALWAYS ODD (1, 3, 5...).                                  │</span></span>
+<span id="cb9-347"><a href="#cb9-347" aria-hidden="true" tabindex="-1"></a><span class="in">│                                                                        │</span></span>
+<span id="cb9-348"><a href="#cb9-348" aria-hidden="true" tabindex="-1"></a><span class="in">│   Every multiply-imaged quasar (such as the Einstein Cross Q2237+0305) │</span></span>
+<span id="cb9-349"><a href="#cb9-349" aria-hidden="true" tabindex="-1"></a><span class="in">│   rigorously contains at least TWO SADDLE-POINT IMAGES!                │</span></span>
+<span id="cb9-350"><a href="#cb9-350" aria-hidden="true" tabindex="-1"></a><span class="in">└────────────────────────────────────────────────────────────────────────┘</span></span>
+<span id="cb9-351"><a href="#cb9-351" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-352"><a href="#cb9-352" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-353"><a href="#cb9-353" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-354"><a href="#cb9-354" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-355"><a href="#cb9-355" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7. Wave Optics and Quantum Foundations: The Gouy Phase Shift</span></span>
+<span id="cb9-356"><a href="#cb9-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-357"><a href="#cb9-357" aria-hidden="true" tabindex="-1"></a>Why does nature select saddle points and maxima if light is classically supposed to take the "shortest" path?</span>
+<span id="cb9-358"><a href="#cb9-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-359"><a href="#cb9-359" aria-hidden="true" tabindex="-1"></a>The resolution is provided by Richard Feynman's **Path Integral Formulation of Quantum Electrodynamics (QED)**:</span>
+<span id="cb9-360"><a href="#cb9-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-361"><a href="#cb9-361" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>A photon does not explore a single path; it explores **all possible histories** connecting $A$ and $B$.</span>
+<span id="cb9-362"><a href="#cb9-362" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>The total probability amplitude $\Psi(B, A)$ is the functional sum over all virtual paths $\gamma$:</span>
+<span id="cb9-363"><a href="#cb9-363" aria-hidden="true" tabindex="-1"></a>   $$</span>
+<span id="cb9-364"><a href="#cb9-364" aria-hidden="true" tabindex="-1"></a>   \Psi(B, A) = \int \mathcal{D}<span class="co">[</span><span class="ot">\mathbf{r}(t)</span><span class="co">]</span> \, \exp\left( \frac{i}{\hbar} S_{\text{QED}} \right) = \int \mathcal{D}<span class="co">[</span><span class="ot">\mathbf{r}(t)</span><span class="co">]</span> \, \exp\left( i \omega T<span class="co">[</span><span class="ot">\mathbf{r}</span><span class="co">]</span> \right)</span>
+<span id="cb9-365"><a href="#cb9-365" aria-hidden="true" tabindex="-1"></a>   $$</span>
+<span id="cb9-366"><a href="#cb9-366" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>In the macroscopic limit ($\omega \to \infty$ or $\lambda \to 0$), neighboring paths with differing arrival times interfere destructively because their phase factors $e^{i \omega T}$ oscillate rapidly:</span>
+<span id="cb9-367"><a href="#cb9-367" aria-hidden="true" tabindex="-1"></a>   $$</span>
+<span id="cb9-368"><a href="#cb9-368" aria-hidden="true" tabindex="-1"></a>   \frac{d}{d\mathbf{r}} (\omega T) \neq 0 \implies \text{Phase cancellation} \to 0</span>
+<span id="cb9-369"><a href="#cb9-369" aria-hidden="true" tabindex="-1"></a>   $$</span>
+<span id="cb9-370"><a href="#cb9-370" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Only where the first variation vanishes ($\delta T = 0$) do adjacent paths have identical phases to first order**, producing coherent constructive interference. </span>
+<span id="cb9-371"><a href="#cb9-371" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Constructive interference requires **stationarity**, not minimality. The wave does not care whether the stationary plateau is a bowl (minimum), an inverted dome (maximum), or a mountain pass (saddle).</span>
+<span id="cb9-372"><a href="#cb9-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-373"><a href="#cb9-373" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-374"><a href="#cb9-374" aria-hidden="true" tabindex="-1"></a><span class="in">┌────────────────────────────────────────────────────────────────────────┐</span></span>
+<span id="cb9-375"><a href="#cb9-375" aria-hidden="true" tabindex="-1"></a><span class="in">│                   THE ANOMALOUS GOUY PHASE SHIFT                       │</span></span>
+<span id="cb9-376"><a href="#cb9-376" aria-hidden="true" tabindex="-1"></a><span class="in">│                                                                        │</span></span>
+<span id="cb9-377"><a href="#cb9-377" aria-hidden="true" tabindex="-1"></a><span class="in">│   When light traverses a saddle point in a gravitational lens or       │</span></span>
+<span id="cb9-378"><a href="#cb9-378" aria-hidden="true" tabindex="-1"></a><span class="in">│   passes through a focal caustic:                                      │</span></span>
+<span id="cb9-379"><a href="#cb9-379" aria-hidden="true" tabindex="-1"></a><span class="in">│                                                                        │</span></span>
+<span id="cb9-380"><a href="#cb9-380" aria-hidden="true" tabindex="-1"></a><span class="in">│   - The negative eigenvalue in the Hessian introduces a factor:        │</span></span>
+<span id="cb9-381"><a href="#cb9-381" aria-hidden="true" tabindex="-1"></a><span class="in">│                                                                        │</span></span>
+<span id="cb9-382"><a href="#cb9-382" aria-hidden="true" tabindex="-1"></a><span class="in">│               ∫ exp(-i ω u²) du = √(π / iω) = √(π/ω) exp(-i π/4)       │</span></span>
+<span id="cb9-383"><a href="#cb9-383" aria-hidden="true" tabindex="-1"></a><span class="in">│                                                                        │</span></span>
+<span id="cb9-384"><a href="#cb9-384" aria-hidden="true" tabindex="-1"></a><span class="in">│   - This produces a discrete π/2 (90°) PHASE ADVANCE in the wave       │</span></span>
+<span id="cb9-385"><a href="#cb9-385" aria-hidden="true" tabindex="-1"></a><span class="in">│     pulse known as the GOUY PHASE SHIFT!                               │</span></span>
+<span id="cb9-386"><a href="#cb9-386" aria-hidden="true" tabindex="-1"></a><span class="in">│                                                                        │</span></span>
+<span id="cb9-387"><a href="#cb9-387" aria-hidden="true" tabindex="-1"></a><span class="in">│   - For a radio pulse passing through a saddle-point image, the pulse  │</span></span>
+<span id="cb9-388"><a href="#cb9-388" aria-hidden="true" tabindex="-1"></a><span class="in">│     is the HILBERT TRANSFORM of the minimum-image pulse.               │</span></span>
+<span id="cb9-389"><a href="#cb9-389" aria-hidden="true" tabindex="-1"></a><span class="in">└────────────────────────────────────────────────────────────────────────┘</span></span>
+<span id="cb9-390"><a href="#cb9-390" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-391"><a href="#cb9-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-392"><a href="#cb9-392" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-393"><a href="#cb9-393" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-394"><a href="#cb9-394" aria-hidden="true" tabindex="-1"></a><span class="fu">## 8. Summary Comparison Matrix</span></span>
+<span id="cb9-395"><a href="#cb9-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-396"><a href="#cb9-396" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Physical System <span class="pp">|</span> Stationary Condition ($\delta T = 0$) <span class="pp">|</span> Nature of Extremum ($\delta^2 T$) <span class="pp">|</span> Physical Criterion <span class="pp">|</span> Observable Consequence <span class="pp">|</span></span>
+<span id="cb9-397"><a href="#cb9-397" aria-hidden="true" tabindex="-1"></a><span class="pp">|:---|:---|:---|:---|:---|</span></span>
+<span id="cb9-398"><a href="#cb9-398" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Flat Mirror Reflection** | $\theta_i = \theta_r$ | **Strict Minimum** ($\delta^2 T &gt; 0$) <span class="pp">|</span> Surface curvature is zero ($\kappa = 0 &lt; \kappa_E$). <span class="pp">|</span> Standard law of reflection; shortest path. <span class="pp">|</span></span>
+<span id="cb9-399"><a href="#cb9-399" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Concave Mirror (Steep)** | $\theta_i = \theta_r$ | **Strict Maximum** ($\delta^2 T &lt; 0$) <span class="pp">|</span> Mirror curvature exceeds ellipsoid ($\kappa &gt; \kappa_E$). <span class="pp">|</span> Real image formation; light takes the *longest* path among local surface variations. <span class="pp">|</span></span>
+<span id="cb9-400"><a href="#cb9-400" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Astigmatic / Saddle Mirror**| $\theta_i = \theta_r$ | **Saddle Point** (Indefinite $\delta^2 T$) <span class="pp">|</span> $\kappa_x &gt; \kappa_{E, x}$ while $\kappa_y &lt; \kappa_{E, y}$. <span class="pp">|</span> Ray takes maximum along $x$, minimum along $y$. <span class="pp">|</span></span>
+<span id="cb9-401"><a href="#cb9-401" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Astrophysical Lens (Type I)**| $\nabla \tau = \mathbf{0}$ | **Local Minimum** ($\det \mathcal{H} &gt; 0, \, \text{tr} \mathcal{H} &gt; 0$) <span class="pp">|</span> Outer regions of gravitational potential. <span class="pp">|</span> First arriving image; positive parity; unshifted phase. <span class="pp">|</span></span>
+<span id="cb9-402"><a href="#cb9-402" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Astrophysical Lens (Type II)**| $\nabla \tau = \mathbf{0}$ | **Saddle Point** ($\det \mathcal{H} &lt; 0$) <span class="pp">|</span> Intermediate shear zones near critical curves. <span class="pp">|</span> Intermediate arrival; negative parity (inverted); $\pi/2$ Hilbert phase shift. <span class="pp">|</span></span>
+<span id="cb9-403"><a href="#cb9-403" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Astrophysical Lens (Type III)**| $\nabla \tau = \mathbf{0}$ | **Local Maximum** ($\det \mathcal{H} &gt; 0, \, \text{tr} \mathcal{H} &lt; 0$) <span class="pp">|</span> Dense central galactic core. <span class="pp">|</span> Latest arriving image; positive parity; highly demagnified. <span class="pp">|</span></span>
+<span id="cb9-404"><a href="#cb9-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-405"><a href="#cb9-405" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-406"><a href="#cb9-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-407"><a href="#cb9-407" aria-hidden="true" tabindex="-1"></a><span class="fu">## 9. Primary Literature &amp; Canonical References</span></span>
+<span id="cb9-408"><a href="#cb9-408" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-409"><a href="#cb9-409" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Fermat, P. de** (1662). *Analysis ad refractiones*. Oeuvres de Fermat (Tannery &amp; Henry, Eds., 1891–1912), Vol. 2, pp. 457–458.</span>
+<span id="cb9-410"><a href="#cb9-410" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Feynman, R. P., Leighton, R. B., &amp; Sands, M.** (1965). *The Feynman Lectures on Physics*, Volume I, Chapter 26: "Optics: The Principle of Least Time." Addison-Wesley.</span>
+<span id="cb9-411"><a href="#cb9-411" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Blandford, R., &amp; Narayan, R.** (1986). *Fermat's principle, caustics, and the topology of gravitational lensing*. **The Astrophysical Journal**, 310, 568–582. <span class="co">[</span><span class="ot">doi:10.1086/164709</span><span class="co">](https://doi.org/10.1086/164709)</span>.</span>
+<span id="cb9-412"><a href="#cb9-412" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Schneider, P., Ehlers, J., &amp; Falco, E. E.** (1992). *Gravitational Lenses*. Astronomy and Astrophysics Library, Springer-Verlag Berlin Heidelberg. <span class="co">[</span><span class="ot">doi:10.1007/978-3-662-03758-4</span><span class="co">](https://doi.org/10.1007/978-3-662-03758-4)</span>.</span>
+<span id="cb9-413"><a href="#cb9-413" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>**Rosu, H.** (1986). *A closer look at Fermat's principle*. **Physics Education**, 21(6), 365–368. <span class="co">[</span><span class="ot">doi:10.1088/0031-9120/21/6/005</span><span class="co">](https://doi.org/10.1088/0031-9120/21/6/005)</span>.</span>
+<span id="cb9-414"><a href="#cb9-414" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>**Perlick, V.** (1990). *On Fermat's principle in general relativity: I. The general case*. **Classical and Quantum Gravity**, 7(8), 1319–1331. <span class="co">[</span><span class="ot">doi:10.1088/0264-9381/7/8/011</span><span class="co">](https://doi.org/10.1088/0264-9381/7/8/011)</span>.</span>
+<span id="cb9-415"><a href="#cb9-415" aria-hidden="true" tabindex="-1"></a><span class="ss">7. </span>**Born, M., &amp; Wolf, E.** (1999). *Principles of Optics: Electromagnetic Theory of Propagation, Interference and Diffraction of Light* (7th ed.). Cambridge University Press. Section 3.3.2.</span>
+<span id="cb9-416"><a href="#cb9-416" aria-hidden="true" tabindex="-1"></a><span class="ss">8. </span>**Stamnes, J. J.** (1986). *Waves in Focal Regions: Propagation, Diffraction and Focusing of Light, Sound and Water Waves*. Adam Hilger.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 Igor Kan</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

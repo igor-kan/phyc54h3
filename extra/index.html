@@ -124,9 +124,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
 
     const options = {
-      valueNames: ['listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-subtitle','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -394,7 +394,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(0)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2FsY3VsdXMtb2YtdmFyaWF0aW9ucw==">calculus-of-variations <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2xhc3NpY2FsLW1lY2hhbmljcw==">classical-mechanics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZXh0cmE=">extra <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2VuZXJhbC1yZWxhdGl2aXR5">general-relativity <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b3B0aWNz">optics <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -427,13 +427,69 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-title" data-direction="asc">
+        Title
+      </option>
+      <option value="listing-date-sort" data-direction="asc">
+        Date - Oldest
+      </option>
+      <option value="listing-date-sort" data-direction="desc">
+        Date - Newest
+      </option>
+      <option value="listing-author" data-direction="asc">
+        Author
+      </option>
+    </select>
+  </div>
     <div class="input-group input-group-sm quarto-listing-filter">
       <span class="input-group-text"><i class="bi bi-search"></i></span>
       <input type="text" class="search form-control" placeholder="Filter">
     </div>
 </div>
 <div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="b3B0aWNzJTJDY2xhc3NpY2FsLW1lY2hhbmljcyUyQ2NhbGN1bHVzLW9mLXZhcmlhdGlvbnMlMkNnZW5lcmFsLXJlbGF0aXZpdHklMkNleHRyYQ==" data-listing-date-sort="1789171200000" data-listing-file-modified-sort="1789201516725" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="34" data-listing-word-count-sort="6629">
+<div class="thumbnail"><a href="../extra/fermats-principle-saddle-points-and-stationary-optics.html" class="no-external">
 
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../extra/fermats-principle-saddle-points-and-stationary-optics.html" class="no-external">Fermat’s Principle Beyond Least Time: Stationary Paths, Saddle Points, and Gravitational Lensing</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../extra/fermats-principle-saddle-points-and-stationary-optics.html" class="no-external">A rigorous mathematical exploration of the second variation of optical path length, conjugate points, caustic phase shifts, and saddle-point images in astrophysics.</a>
+</div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('b3B0aWNz'); return false;">optics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y2xhc3NpY2FsLW1lY2hhbmljcw=='); return false;">classical-mechanics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y2FsY3VsdXMtb2YtdmFyaWF0aW9ucw=='); return false;">calculus-of-variations</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2VuZXJhbC1yZWxhdGl2aXR5'); return false;">general-relativity</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZXh0cmE='); return false;">extra</div>
+
+</div>
+<div class="delink listing-description"><a href="../extra/fermats-principle-saddle-points-and-stationary-optics.html" class="no-external">
+In introductory physics, <strong>Fermat’s Principle</strong> is almost universally christened the <em>“Principle of Least Time”</em>. While historically understandable—Pierre de Fermat formulated the…
+</a></div>
+</div>
+<div class="metadata">
+<a href="../extra/fermats-principle-saddle-points-and-stationary-optics.html" class="no-external">
+<div class="listing-date">
+2026-09-12
+</div>
+</a>
+</div>
+</div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div></main> <!-- /main -->

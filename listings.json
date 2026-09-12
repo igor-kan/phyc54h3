@@ -1,6 +1,10 @@
 [
   {
-    "listing": "/extra/index.html",
+    "listing": "/solutions/index.html",
+    "items": []
+  },
+  {
+    "listing": "/simulations/index.html",
     "items": []
   },
   {
@@ -12,12 +16,10 @@
     ]
   },
   {
-    "listing": "/simulations/index.html",
-    "items": []
-  },
-  {
-    "listing": "/solutions/index.html",
-    "items": []
+    "listing": "/extra/index.html",
+    "items": [
+      "/extra/fermats-principle-saddle-points-and-stationary-optics.html"
+    ]
   },
   {
     "listing": "/notes/index.html",

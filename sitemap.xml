@@ -1,39 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://igor-kan.github.io/phyc54h3/extra/index.html</loc>
-    <lastmod>2026-09-11T00:07:16.712Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/reference/math-identities-and-calculus.html</loc>
-    <lastmod>2026-09-11T00:07:16.714Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/reference/index.html</loc>
-    <lastmod>2026-09-11T00:07:16.714Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/simulations/index.html</loc>
-    <lastmod>2026-09-11T00:07:16.715Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/solutions/index.html</loc>
-    <lastmod>2026-09-11T00:07:16.716Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/index.html</loc>
-    <lastmod>2026-09-11T00:07:16.712Z</lastmod>
+    <loc>https://igor-kan.github.io/phyc54h3/reference/vector-calculus-and-identities.html</loc>
+    <lastmod>2026-09-12T08:25:16.728Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/reference/integration-tricks-and-substitutions.html</loc>
-    <lastmod>2026-09-11T00:07:16.714Z</lastmod>
+    <lastmod>2026-09-12T08:25:16.728Z</lastmod>
   </url>
   <url>
-    <loc>https://igor-kan.github.io/phyc54h3/reference/vector-calculus-and-identities.html</loc>
-    <lastmod>2026-09-11T00:07:16.714Z</lastmod>
+    <loc>https://igor-kan.github.io/phyc54h3/index.html</loc>
+    <lastmod>2026-09-12T08:25:16.726Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/solutions/index.html</loc>
+    <lastmod>2026-09-12T08:25:16.730Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/simulations/index.html</loc>
+    <lastmod>2026-09-12T08:25:16.729Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/reference/index.html</loc>
+    <lastmod>2026-09-12T08:25:16.728Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/reference/math-identities-and-calculus.html</loc>
+    <lastmod>2026-09-12T08:25:16.728Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/extra/index.html</loc>
+    <lastmod>2026-09-12T08:25:16.725Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/extra/fermats-principle-saddle-points-and-stationary-optics.html</loc>
+    <lastmod>2026-09-12T08:25:16.725Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/notes/index.html</loc>
-    <lastmod>2026-09-11T00:07:16.713Z</lastmod>
+    <lastmod>2026-09-12T08:25:16.726Z</lastmod>
   </url>
 </urlset>

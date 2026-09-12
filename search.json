@@ -1,108 +1,66 @@
 [
   {
-    "objectID": "extra/index.html",
-    "href": "extra/index.html",
-    "title": "Extra Notes & Readings",
+    "objectID": "reference/vector-calculus-and-identities.html",
+    "href": "reference/vector-calculus-and-identities.html",
+    "title": "Vector Calculus & Identities",
     "section": "",
-    "text": "No matching items"
+    "text": "Let \\(\\mathbf{A}, \\mathbf{B}, \\mathbf{C}\\) be vectors in 3D space.\n\n\n\\[ \\mathbf{A} \\cdot \\mathbf{B} = A_x B_x + A_y B_y + A_z B_z = |\\mathbf{A}| |\\mathbf{B}| \\cos\\theta \\] \\[ \\mathbf{A} \\times \\mathbf{B} = \\det \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix} \\] \\[ |\\mathbf{A} \\times \\mathbf{B}| = |\\mathbf{A}| |\\mathbf{B}| \\sin\\theta \\]\n\n\n\nScalar Triple Product (Volume of parallelepiped): \\[ \\mathbf{A} \\cdot (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B} \\cdot (\\mathbf{C} \\times \\mathbf{A}) = \\mathbf{C} \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\det \\begin{vmatrix} A_x & A_y & A_z \\\\ B_x & B_y & B_z \\\\ C_x & C_y & C_z \\end{vmatrix} \\]\nVector Triple Product (BAC-CAB Rule): \\[ \\mathbf{A} \\times (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B}(\\mathbf{A} \\cdot \\mathbf{C}) - \\mathbf{C}(\\mathbf{A} \\cdot \\mathbf{B}) \\]"
   },
   {
-    "objectID": "reference/math-identities-and-calculus.html",
-    "href": "reference/math-identities-and-calculus.html",
-    "title": "Mathematical Identities & Calculus",
+    "objectID": "reference/vector-calculus-and-identities.html#dot-and-cross-products",
+    "href": "reference/vector-calculus-and-identities.html#dot-and-cross-products",
+    "title": "Vector Calculus & Identities",
     "section": "",
-    "text": "\\[ \\sin^2 \\theta + \\cos^2 \\theta = 1 \\] \\[ 1 + \\tan^2 \\theta = \\sec^2 \\theta \\] \\[ 1 + \\cot^2 \\theta = \\csc^2 \\theta \\]\n\n\n\n\\[ \\sin(\\alpha \\pm \\beta) = \\sin\\alpha \\cos\\beta \\pm \\cos\\alpha \\sin\\beta \\] \\[ \\cos(\\alpha \\pm \\beta) = \\cos\\alpha \\cos\\beta \\mp \\sin\\alpha \\sin\\beta \\] \\[ \\tan(\\alpha \\pm \\beta) = \\frac{\\tan\\alpha \\pm \\tan\\beta}{1 \\mp \\tan\\alpha \\tan\\beta} \\]\n\n\n\n\\[ \\sin(2\\theta) = 2\\sin\\theta \\cos\\theta \\] \\[ \\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta \\] \\[ \\sin^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 - \\cos\\theta}{2}, \\quad \\cos^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 + \\cos\\theta}{2} \\]"
+    "text": "\\[ \\mathbf{A} \\cdot \\mathbf{B} = A_x B_x + A_y B_y + A_z B_z = |\\mathbf{A}| |\\mathbf{B}| \\cos\\theta \\] \\[ \\mathbf{A} \\times \\mathbf{B} = \\det \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix} \\] \\[ |\\mathbf{A} \\times \\mathbf{B}| = |\\mathbf{A}| |\\mathbf{B}| \\sin\\theta \\]"
   },
   {
-    "objectID": "reference/math-identities-and-calculus.html#pythagorean-identities",
-    "href": "reference/math-identities-and-calculus.html#pythagorean-identities",
-    "title": "Mathematical Identities & Calculus",
+    "objectID": "reference/vector-calculus-and-identities.html#triple-products",
+    "href": "reference/vector-calculus-and-identities.html#triple-products",
+    "title": "Vector Calculus & Identities",
     "section": "",
-    "text": "\\[ \\sin^2 \\theta + \\cos^2 \\theta = 1 \\] \\[ 1 + \\tan^2 \\theta = \\sec^2 \\theta \\] \\[ 1 + \\cot^2 \\theta = \\csc^2 \\theta \\]"
+    "text": "Scalar Triple Product (Volume of parallelepiped): \\[ \\mathbf{A} \\cdot (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B} \\cdot (\\mathbf{C} \\times \\mathbf{A}) = \\mathbf{C} \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\det \\begin{vmatrix} A_x & A_y & A_z \\\\ B_x & B_y & B_z \\\\ C_x & C_y & C_z \\end{vmatrix} \\]\nVector Triple Product (BAC-CAB Rule): \\[ \\mathbf{A} \\times (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B}(\\mathbf{A} \\cdot \\mathbf{C}) - \\mathbf{C}(\\mathbf{A} \\cdot \\mathbf{B}) \\]"
   },
   {
-    "objectID": "reference/math-identities-and-calculus.html#angle-addition-and-subtraction",
-    "href": "reference/math-identities-and-calculus.html#angle-addition-and-subtraction",
-    "title": "Mathematical Identities & Calculus",
-    "section": "",
-    "text": "\\[ \\sin(\\alpha \\pm \\beta) = \\sin\\alpha \\cos\\beta \\pm \\cos\\alpha \\sin\\beta \\] \\[ \\cos(\\alpha \\pm \\beta) = \\cos\\alpha \\cos\\beta \\mp \\sin\\alpha \\sin\\beta \\] \\[ \\tan(\\alpha \\pm \\beta) = \\frac{\\tan\\alpha \\pm \\tan\\beta}{1 \\mp \\tan\\alpha \\tan\\beta} \\]"
+    "objectID": "reference/vector-calculus-and-identities.html#operations",
+    "href": "reference/vector-calculus-and-identities.html#operations",
+    "title": "Vector Calculus & Identities",
+    "section": "Operations",
+    "text": "Operations\n\nGradient (Scalar \\(f \\to\\) Vector): \\[ \\nabla f = \\frac{\\partial f}{\\partial x}\\mathbf{\\hat{i}} + \\frac{\\partial f}{\\partial y}\\mathbf{\\hat{j}} + \\frac{\\partial f}{\\partial z}\\mathbf{\\hat{k}} \\]\nDivergence (Vector \\(\\mathbf{A} \\to\\) Scalar): \\[ \\nabla \\cdot \\mathbf{A} = \\frac{\\partial A_x}{\\partial x} + \\frac{\\partial A_y}{\\partial y} + \\frac{\\partial A_z}{\\partial z} \\]\nCurl (Vector \\(\\mathbf{A} \\to\\) Vector): \\[ \\nabla \\times \\mathbf{A} = \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ \\frac{\\partial}{\\partial x} & \\frac{\\partial}{\\partial y} & \\frac{\\partial}{\\partial z} \\\\ A_x & A_y & A_z \\end{vmatrix} \\]\nLaplacian (Scalar \\(f \\to\\) Scalar): \\[ \\nabla^2 f = \\nabla \\cdot (\\nabla f) = \\frac{\\partial^2 f}{\\partial x^2} + \\frac{\\partial^2 f}{\\partial y^2} + \\frac{\\partial^2 f}{\\partial z^2} \\]"
   },
   {
-    "objectID": "reference/math-identities-and-calculus.html#double-and-half-angle",
-    "href": "reference/math-identities-and-calculus.html#double-and-half-angle",
-    "title": "Mathematical Identities & Calculus",
-    "section": "",
-    "text": "\\[ \\sin(2\\theta) = 2\\sin\\theta \\cos\\theta \\] \\[ \\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta \\] \\[ \\sin^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 - \\cos\\theta}{2}, \\quad \\cos^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 + \\cos\\theta}{2} \\]"
+    "objectID": "reference/vector-calculus-and-identities.html#product-rules",
+    "href": "reference/vector-calculus-and-identities.html#product-rules",
+    "title": "Vector Calculus & Identities",
+    "section": "Product Rules",
+    "text": "Product Rules\n\\[ \\nabla(fg) = f\\nabla g + g\\nabla f \\] \\[ \\nabla \\cdot (f\\mathbf{A}) = f(\\nabla \\cdot \\mathbf{A}) + \\mathbf{A} \\cdot (\\nabla f) \\] \\[ \\nabla \\times (f\\mathbf{A}) = f(\\nabla \\times \\mathbf{A}) + (\\nabla f) \\times \\mathbf{A} \\] \\[ \\nabla \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\mathbf{B} \\cdot (\\nabla \\times \\mathbf{A}) - \\mathbf{A} \\cdot (\\nabla \\times \\mathbf{B}) \\] \\[ \\nabla(\\mathbf{A} \\cdot \\mathbf{B}) = \\mathbf{A} \\times (\\nabla \\times \\mathbf{B}) + \\mathbf{B} \\times (\\nabla \\times \\mathbf{A}) + (\\mathbf{A} \\cdot \\nabla)\\mathbf{B} + (\\mathbf{B} \\cdot \\nabla)\\mathbf{A} \\]"
   },
   {
-    "objectID": "reference/math-identities-and-calculus.html#core-identities",
-    "href": "reference/math-identities-and-calculus.html#core-identities",
-    "title": "Mathematical Identities & Calculus",
-    "section": "Core Identities",
-    "text": "Core Identities\n\\[ \\cosh^2 x - \\sinh^2 x = 1 \\] \\[ 1 - \\tanh^2 x = \\text{sech}^2 x \\] \\[ \\sinh(2x) = 2\\sinh x \\cosh x \\] \\[ \\cosh(2x) = \\cosh^2 x + \\sinh^2 x \\]"
+    "objectID": "reference/vector-calculus-and-identities.html#second-derivatives",
+    "href": "reference/vector-calculus-and-identities.html#second-derivatives",
+    "title": "Vector Calculus & Identities",
+    "section": "Second Derivatives",
+    "text": "Second Derivatives\nCurl of a Gradient is zero: \\[ \\nabla \\times (\\nabla f) = 0 \\] (If \\(\\nabla \\times \\mathbf{F} = 0\\), then \\(\\mathbf{F}\\) is conservative and \\(\\mathbf{F} = -\\nabla U\\).)\nDivergence of a Curl is zero: \\[ \\nabla \\cdot (\\nabla \\times \\mathbf{A}) = 0 \\] (If \\(\\nabla \\cdot \\mathbf{B} = 0\\), then \\(\\mathbf{B}\\) can be written as the curl of a vector potential \\(\\mathbf{A}\\).)\nCurl of a Curl: \\[ \\nabla \\times (\\nabla \\times \\mathbf{A}) = \\nabla(\\nabla \\cdot \\mathbf{A}) - \\nabla^2\\mathbf{A} \\]"
   },
   {
-    "objectID": "reference/math-identities-and-calculus.html#common-derivatives",
-    "href": "reference/math-identities-and-calculus.html#common-derivatives",
-    "title": "Mathematical Identities & Calculus",
-    "section": "Common Derivatives",
-    "text": "Common Derivatives\n\\[ \\frac{d}{dx} \\sin x = \\cos x, \\quad \\frac{d}{dx} \\cos x = -\\sin x, \\quad \\frac{d}{dx} \\tan x = \\sec^2 x \\] \\[ \\frac{d}{dx} \\sinh x = \\cosh x, \\quad \\frac{d}{dx} \\cosh x = \\sinh x \\] \\[ \\frac{d}{dx} \\ln(x) = \\frac{1}{x} \\]"
+    "objectID": "reference/vector-calculus-and-identities.html#divergence-theorem-gausss-theorem",
+    "href": "reference/vector-calculus-and-identities.html#divergence-theorem-gausss-theorem",
+    "title": "Vector Calculus & Identities",
+    "section": "Divergence Theorem (Gauss’s Theorem)",
+    "text": "Divergence Theorem (Gauss’s Theorem)\nRelates a volume integral to a surface integral over the closed boundary \\(S\\): \\[ \\iiint_V (\\nabla \\cdot \\mathbf{A}) \\, dV = \\iint_S \\mathbf{A} \\cdot d\\mathbf{a} \\]"
   },
   {
-    "objectID": "reference/math-identities-and-calculus.html#common-integrals",
-    "href": "reference/math-identities-and-calculus.html#common-integrals",
-    "title": "Mathematical Identities & Calculus",
-    "section": "Common Integrals",
-    "text": "Common Integrals\n\\[ \\int x^n \\, dx = \\frac{x^{n+1}}{n+1} \\quad (n \\neq -1) \\] \\[ \\int \\frac{1}{x} \\, dx = \\ln|x| \\] \\[ \\int e^{ax} \\, dx = \\frac{1}{a}e^{ax} \\] \\[ \\int \\frac{dx}{x^2 + a^2} = \\frac{1}{a} \\arctan\\left(\\frac{x}{a}\\right) \\] \\[ \\int \\frac{dx}{\\sqrt{a^2 - x^2}} = \\arcsin\\left(\\frac{x}{a}\\right) \\]\n\nGaussian Integrals (Crucial for Statistical Mechanics)\n\\[ \\int_{-\\infty}^{\\infty} e^{-ax^2} \\, dx = \\sqrt{\\frac{\\pi}{a}} \\] \\[ \\int_{-\\infty}^{\\infty} x^2 e^{-ax^2} \\, dx = \\frac{1}{2a} \\sqrt{\\frac{\\pi}{a}} \\]"
+    "objectID": "reference/vector-calculus-and-identities.html#stokes-theorem",
+    "href": "reference/vector-calculus-and-identities.html#stokes-theorem",
+    "title": "Vector Calculus & Identities",
+    "section": "Stokes’ Theorem",
+    "text": "Stokes’ Theorem\nRelates a surface integral to a line integral around the closed bounding curve \\(C\\): \\[ \\iint_S (\\nabla \\times \\mathbf{A}) \\cdot d\\mathbf{a} = \\oint_C \\mathbf{A} \\cdot d\\mathbf{l} \\]"
   },
   {
-    "objectID": "reference/math-identities-and-calculus.html#taylor-series-general",
-    "href": "reference/math-identities-and-calculus.html#taylor-series-general",
-    "title": "Mathematical Identities & Calculus",
-    "section": "Taylor Series (General)",
-    "text": "Taylor Series (General)\n\\[ f(x) = f(a) + f'(a)(x-a) + \\frac{f''(a)}{2!}(x-a)^2 + \\frac{f'''(a)}{3!}(x-a)^3 + \\dots \\]"
-  },
-  {
-    "objectID": "reference/math-identities-and-calculus.html#maclaurin-series-around-x0",
-    "href": "reference/math-identities-and-calculus.html#maclaurin-series-around-x0",
-    "title": "Mathematical Identities & Calculus",
-    "section": "Maclaurin Series (around \\(x=0\\))",
-    "text": "Maclaurin Series (around \\(x=0\\))\n\\[ e^x = 1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!} + \\dots = \\sum_{n=0}^{\\infty} \\frac{x^n}{n!} \\] \\[ \\sin x = x - \\frac{x^3}{3!} + \\frac{x^5}{5!} - \\dots = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n+1}}{(2n+1)!} \\] \\[ \\cos x = 1 - \\frac{x^2}{2!} + \\frac{x^4}{4!} - \\dots = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n}}{(2n)!} \\] \\[ \\ln(1+x) = x - \\frac{x^2}{2} + \\frac{x^3}{3} - \\dots \\quad (\\text{for } |x| &lt; 1) \\]"
-  },
-  {
-    "objectID": "reference/math-identities-and-calculus.html#binomial-expansion",
-    "href": "reference/math-identities-and-calculus.html#binomial-expansion",
-    "title": "Mathematical Identities & Calculus",
-    "section": "Binomial Expansion",
-    "text": "Binomial Expansion\nFor \\(|x| &lt; 1\\) and any real \\(n\\): \\[ (1+x)^n = 1 + nx + \\frac{n(n-1)}{2!}x^2 + \\frac{n(n-1)(n-2)}{3!}x^3 + \\dots \\] Useful small \\(x\\) approximations: \\[ (1+x)^n \\approx 1 + nx \\] \\[ (1-x)^{-1} \\approx 1 + x + x^2 + \\dots \\]"
-  },
-  {
-    "objectID": "reference/index.html",
-    "href": "reference/index.html",
-    "title": "Reference & Math",
-    "section": "",
-    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\nIntegration Tricks and Substitution Techniques\n\n\n\nmath\n\ncalculus\n\nreference\n\nintegration\n\n\n\n\n\n\n2026-09-08\n\n22 min\n\n\n\n\n\n\nVector Calculus & Identities\n\n\n\nmath\n\nreference\n\nvectors\n\n\n\n\n\n\n2026-09-01\n\n3 min\n\n\n\n\n\n\nMathematical Identities & Calculus\n\n\n\nmath\n\nreference\n\ncalculus\n\n\n\n\n\n\n2026-08-31\n\n2 min\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "simulations/index.html",
-    "href": "simulations/index.html",
-    "title": "Code & Simulations",
-    "section": "",
-    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "solutions/index.html",
-    "href": "solutions/index.html",
-    "title": "Problem Sets & Solutions",
-    "section": "",
-    "text": "NotePublishing Notice\n\n\n\nI will consult with the professor regarding if and when I can publish solutions to textbook problems or problem sets. In the meantime, unreleased solutions remain in private drafts.\n\n\n\n\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html#course-roadmap-12-week-syllabus",
-    "href": "index.html#course-roadmap-12-week-syllabus",
-    "title": "PHYC54H3: Classical Mechanics",
-    "section": "🗺️ Course Roadmap & 12-Week Syllabus",
-    "text": "🗺️ Course Roadmap & 12-Week Syllabus\nFollows the official PHYC54 Fall 2026 syllabus taught by Prof. Johann Bayer. Weekly readings correspond to John R. Taylor’s Classical Mechanics (2005).\n\n\n\nWeek\nDates\nCore Topics & Taylor Readings\nAssociated Tutorials & Milestones\nStatus\n\n\n\n\n01\nSep. 08-10\nCalculus of Variations (Ch 6: 1–2)\nCalculus of Variations (Ch 6: 3–4)\nAvailable\n\n\n02\nSep. 15-17\nLagrange’s Equations (Ch 7: 1–4)\nProblem Set #01\nAvailable\n\n\n03\nSep. 22-24\nLagrange’s Equations (Ch 7: 5–8)\nProblem Set #02\nAvailable\n\n\n04\nSep. 29 - Oct. 01\nHamiltonian Mechanics (Ch 13: 1–4)\nProblem Set #03\nUpcoming\n\n\n05\nOct. 06-08\nHamiltonian Mechanics &amp; Phase Space (Ch 13: 5–7)\nProblem Set #04 (Test #1)\nUpcoming\n\n\n06\nOct. 13-15\nMechanics in Noninertial Frames (Ch 9: 1–3)\nProblem Set #05\nUpcoming\n\n\n07\nOct. 20-22\nMechanics in Noninertial Frames (Ch 9: 4–7)\nProblem Set #06\nUpcoming\n\n\nRW\nOct. 27-29\nReading Week (No classes)\nProblem Set #07 Review\nStudy Break\n\n\n08\nNov. 03-05\nMechanics in Noninertial Frames (Ch 9: 8–10)\nProblem Set #08\nUpcoming\n\n\n09\nNov. 10-12\nRotational Motion of Rigid Bodies (Ch 10: 1–3)\nProblem Set #09 (Test #2)\nUpcoming\n\n\n10\nNov. 17-19\nRotational Motion of Rigid Bodies (Ch 10: 4–7)\nProblem Set #10\nUpcoming\n\n\n11\nNov. 24-26\nRotational Motion of Rigid Bodies (Ch 10: 8–10)\nProblem Set #11\nUpcoming\n\n\n12\nDec. 01-03\nContinuum Mechanics (Ch 16: 1–4)\nProblem Set #12\nUpcoming\n\n\nFinal\nDec. 10-22\nComprehensive Final Examination\nDec. 10–22 Exam Period\nScheduled\n\n\n\n\n\n\n\n\n\nNoteCourse Schedule & Grading Notes\n\n\n\nDetailed policies on the Autofail rule (minimum 50% on test average or final exam), tutorial submission requirements, and academic integrity policies are detailed in the official Course Syllabus."
+    "objectID": "reference/vector-calculus-and-identities.html#gradient-theorem-fundamental-theorem-of-calculus-for-line-integrals",
+    "href": "reference/vector-calculus-and-identities.html#gradient-theorem-fundamental-theorem-of-calculus-for-line-integrals",
+    "title": "Vector Calculus & Identities",
+    "section": "Gradient Theorem (Fundamental Theorem of Calculus for Line Integrals)",
+    "text": "Gradient Theorem (Fundamental Theorem of Calculus for Line Integrals)\n\\[ \\int_a^b (\\nabla f) \\cdot d\\mathbf{l} = f(b) - f(a) \\]"
   },
   {
     "objectID": "reference/integration-tricks-and-substitutions.html",
@@ -210,67 +168,179 @@
     "text": "Essential Mathematical Properties of Cycloids\nParametric Form: \\[x(\\theta) = a(\\theta - \\sin\\theta), \\quad y(\\theta) = a(1 - \\cos\\theta)\\]\nDifferential Arc Length: \\[ds = \\sqrt{\\dot{x}^2 + \\dot{y}^2}\\, d\\theta = a\\sqrt{(1-\\cos\\theta)^2 + \\sin^2\\theta}\\, d\\theta = 2a\\sin\\left(\\frac{\\theta}{2}\\right) d\\theta\\]\nTotal Arc Length from Origin to \\(\\theta\\): \\[s(\\theta) = \\int_0^\\theta 2a\\sin\\left(\\frac{\\theta'}{2}\\right) d\\theta' = 4a\\left(1 - \\cos\\left(\\frac{\\theta}{2}\\right)\\right) = 8a\\sin^2\\left(\\frac{\\theta}{4}\\right)\\]\nThe total perimeter of one complete arch (\\(\\theta = 2\\pi\\)) is exactly: \\[s_{\\text{total}} = 8a\\]\nRadius of Curvature: \\[\\rho(\\theta) = \\frac{(\\dot{x}^2 + \\dot{y}^2)^{3/2}}{\\vert{}\\dot{x}\\ddot{y} - \\dot{y}\\ddot{x}\\vert{}} = 4a\\sin\\left(\\frac{\\theta}{2}\\right) = \\sqrt{8a y}\\]\nSelf-Evolute Property: The evolute (locus of centers of curvature) of a cycloid is an identical cycloid, shifted horizontally by \\(\\pi a\\) and vertically downward by \\(2a\\)."
   },
   {
-    "objectID": "reference/vector-calculus-and-identities.html",
-    "href": "reference/vector-calculus-and-identities.html",
-    "title": "Vector Calculus & Identities",
+    "objectID": "index.html#course-roadmap-12-week-syllabus",
+    "href": "index.html#course-roadmap-12-week-syllabus",
+    "title": "PHYC54H3: Classical Mechanics",
+    "section": "🗺️ Course Roadmap & 12-Week Syllabus",
+    "text": "🗺️ Course Roadmap & 12-Week Syllabus\nFollows the official PHYC54 Fall 2026 syllabus taught by Prof. Johann Bayer. Weekly readings correspond to John R. Taylor’s Classical Mechanics (2005).\n\n\n\nWeek\nDates\nCore Topics & Taylor Readings\nAssociated Tutorials & Milestones\nStatus\n\n\n\n\n01\nSep. 08-10\nCalculus of Variations (Ch 6: 1–2)\nCalculus of Variations (Ch 6: 3–4)\nAvailable\n\n\n02\nSep. 15-17\nLagrange’s Equations (Ch 7: 1–4)\nProblem Set #01\nAvailable\n\n\n03\nSep. 22-24\nLagrange’s Equations (Ch 7: 5–8)\nProblem Set #02\nAvailable\n\n\n04\nSep. 29 - Oct. 01\nHamiltonian Mechanics (Ch 13: 1–4)\nProblem Set #03\nUpcoming\n\n\n05\nOct. 06-08\nHamiltonian Mechanics &amp; Phase Space (Ch 13: 5–7)\nProblem Set #04 (Test #1)\nUpcoming\n\n\n06\nOct. 13-15\nMechanics in Noninertial Frames (Ch 9: 1–3)\nProblem Set #05\nUpcoming\n\n\n07\nOct. 20-22\nMechanics in Noninertial Frames (Ch 9: 4–7)\nProblem Set #06\nUpcoming\n\n\nRW\nOct. 27-29\nReading Week (No classes)\nProblem Set #07 Review\nStudy Break\n\n\n08\nNov. 03-05\nMechanics in Noninertial Frames (Ch 9: 8–10)\nProblem Set #08\nUpcoming\n\n\n09\nNov. 10-12\nRotational Motion of Rigid Bodies (Ch 10: 1–3)\nProblem Set #09 (Test #2)\nUpcoming\n\n\n10\nNov. 17-19\nRotational Motion of Rigid Bodies (Ch 10: 4–7)\nProblem Set #10\nUpcoming\n\n\n11\nNov. 24-26\nRotational Motion of Rigid Bodies (Ch 10: 8–10)\nProblem Set #11\nUpcoming\n\n\n12\nDec. 01-03\nContinuum Mechanics (Ch 16: 1–4)\nProblem Set #12\nUpcoming\n\n\nFinal\nDec. 10-22\nComprehensive Final Examination\nDec. 10–22 Exam Period\nScheduled\n\n\n\n\n\n\n\n\n\nNoteCourse Schedule & Grading Notes\n\n\n\nDetailed policies on the Autofail rule (minimum 50% on test average or final exam), tutorial submission requirements, and academic integrity policies are detailed in the official Course Syllabus."
+  },
+  {
+    "objectID": "solutions/index.html",
+    "href": "solutions/index.html",
+    "title": "Problem Sets & Solutions",
     "section": "",
-    "text": "Let \\(\\mathbf{A}, \\mathbf{B}, \\mathbf{C}\\) be vectors in 3D space.\n\n\n\\[ \\mathbf{A} \\cdot \\mathbf{B} = A_x B_x + A_y B_y + A_z B_z = |\\mathbf{A}| |\\mathbf{B}| \\cos\\theta \\] \\[ \\mathbf{A} \\times \\mathbf{B} = \\det \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix} \\] \\[ |\\mathbf{A} \\times \\mathbf{B}| = |\\mathbf{A}| |\\mathbf{B}| \\sin\\theta \\]\n\n\n\nScalar Triple Product (Volume of parallelepiped): \\[ \\mathbf{A} \\cdot (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B} \\cdot (\\mathbf{C} \\times \\mathbf{A}) = \\mathbf{C} \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\det \\begin{vmatrix} A_x & A_y & A_z \\\\ B_x & B_y & B_z \\\\ C_x & C_y & C_z \\end{vmatrix} \\]\nVector Triple Product (BAC-CAB Rule): \\[ \\mathbf{A} \\times (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B}(\\mathbf{A} \\cdot \\mathbf{C}) - \\mathbf{C}(\\mathbf{A} \\cdot \\mathbf{B}) \\]"
+    "text": "NotePublishing Notice\n\n\n\nI will consult with the professor regarding if and when I can publish solutions to textbook problems or problem sets. In the meantime, unreleased solutions remain in private drafts.\n\n\n\n\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "reference/vector-calculus-and-identities.html#dot-and-cross-products",
-    "href": "reference/vector-calculus-and-identities.html#dot-and-cross-products",
-    "title": "Vector Calculus & Identities",
+    "objectID": "simulations/index.html",
+    "href": "simulations/index.html",
+    "title": "Code & Simulations",
     "section": "",
-    "text": "\\[ \\mathbf{A} \\cdot \\mathbf{B} = A_x B_x + A_y B_y + A_z B_z = |\\mathbf{A}| |\\mathbf{B}| \\cos\\theta \\] \\[ \\mathbf{A} \\times \\mathbf{B} = \\det \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix} \\] \\[ |\\mathbf{A} \\times \\mathbf{B}| = |\\mathbf{A}| |\\mathbf{B}| \\sin\\theta \\]"
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "reference/vector-calculus-and-identities.html#triple-products",
-    "href": "reference/vector-calculus-and-identities.html#triple-products",
-    "title": "Vector Calculus & Identities",
+    "objectID": "reference/index.html",
+    "href": "reference/index.html",
+    "title": "Reference & Math",
     "section": "",
-    "text": "Scalar Triple Product (Volume of parallelepiped): \\[ \\mathbf{A} \\cdot (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B} \\cdot (\\mathbf{C} \\times \\mathbf{A}) = \\mathbf{C} \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\det \\begin{vmatrix} A_x & A_y & A_z \\\\ B_x & B_y & B_z \\\\ C_x & C_y & C_z \\end{vmatrix} \\]\nVector Triple Product (BAC-CAB Rule): \\[ \\mathbf{A} \\times (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B}(\\mathbf{A} \\cdot \\mathbf{C}) - \\mathbf{C}(\\mathbf{A} \\cdot \\mathbf{B}) \\]"
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\nIntegration Tricks and Substitution Techniques\n\n\n\nmath\n\ncalculus\n\nreference\n\nintegration\n\n\n\n\n\n\n2026-09-08\n\n22 min\n\n\n\n\n\n\nVector Calculus & Identities\n\n\n\nmath\n\nreference\n\nvectors\n\n\n\n\n\n\n2026-09-01\n\n3 min\n\n\n\n\n\n\nMathematical Identities & Calculus\n\n\n\nmath\n\nreference\n\ncalculus\n\n\n\n\n\n\n2026-08-31\n\n2 min\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "reference/vector-calculus-and-identities.html#operations",
-    "href": "reference/vector-calculus-and-identities.html#operations",
-    "title": "Vector Calculus & Identities",
-    "section": "Operations",
-    "text": "Operations\n\nGradient (Scalar \\(f \\to\\) Vector): \\[ \\nabla f = \\frac{\\partial f}{\\partial x}\\mathbf{\\hat{i}} + \\frac{\\partial f}{\\partial y}\\mathbf{\\hat{j}} + \\frac{\\partial f}{\\partial z}\\mathbf{\\hat{k}} \\]\nDivergence (Vector \\(\\mathbf{A} \\to\\) Scalar): \\[ \\nabla \\cdot \\mathbf{A} = \\frac{\\partial A_x}{\\partial x} + \\frac{\\partial A_y}{\\partial y} + \\frac{\\partial A_z}{\\partial z} \\]\nCurl (Vector \\(\\mathbf{A} \\to\\) Vector): \\[ \\nabla \\times \\mathbf{A} = \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ \\frac{\\partial}{\\partial x} & \\frac{\\partial}{\\partial y} & \\frac{\\partial}{\\partial z} \\\\ A_x & A_y & A_z \\end{vmatrix} \\]\nLaplacian (Scalar \\(f \\to\\) Scalar): \\[ \\nabla^2 f = \\nabla \\cdot (\\nabla f) = \\frac{\\partial^2 f}{\\partial x^2} + \\frac{\\partial^2 f}{\\partial y^2} + \\frac{\\partial^2 f}{\\partial z^2} \\]"
+    "objectID": "reference/math-identities-and-calculus.html",
+    "href": "reference/math-identities-and-calculus.html",
+    "title": "Mathematical Identities & Calculus",
+    "section": "",
+    "text": "\\[ \\sin^2 \\theta + \\cos^2 \\theta = 1 \\] \\[ 1 + \\tan^2 \\theta = \\sec^2 \\theta \\] \\[ 1 + \\cot^2 \\theta = \\csc^2 \\theta \\]\n\n\n\n\\[ \\sin(\\alpha \\pm \\beta) = \\sin\\alpha \\cos\\beta \\pm \\cos\\alpha \\sin\\beta \\] \\[ \\cos(\\alpha \\pm \\beta) = \\cos\\alpha \\cos\\beta \\mp \\sin\\alpha \\sin\\beta \\] \\[ \\tan(\\alpha \\pm \\beta) = \\frac{\\tan\\alpha \\pm \\tan\\beta}{1 \\mp \\tan\\alpha \\tan\\beta} \\]\n\n\n\n\\[ \\sin(2\\theta) = 2\\sin\\theta \\cos\\theta \\] \\[ \\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta \\] \\[ \\sin^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 - \\cos\\theta}{2}, \\quad \\cos^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 + \\cos\\theta}{2} \\]"
   },
   {
-    "objectID": "reference/vector-calculus-and-identities.html#product-rules",
-    "href": "reference/vector-calculus-and-identities.html#product-rules",
-    "title": "Vector Calculus & Identities",
-    "section": "Product Rules",
-    "text": "Product Rules\n\\[ \\nabla(fg) = f\\nabla g + g\\nabla f \\] \\[ \\nabla \\cdot (f\\mathbf{A}) = f(\\nabla \\cdot \\mathbf{A}) + \\mathbf{A} \\cdot (\\nabla f) \\] \\[ \\nabla \\times (f\\mathbf{A}) = f(\\nabla \\times \\mathbf{A}) + (\\nabla f) \\times \\mathbf{A} \\] \\[ \\nabla \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\mathbf{B} \\cdot (\\nabla \\times \\mathbf{A}) - \\mathbf{A} \\cdot (\\nabla \\times \\mathbf{B}) \\] \\[ \\nabla(\\mathbf{A} \\cdot \\mathbf{B}) = \\mathbf{A} \\times (\\nabla \\times \\mathbf{B}) + \\mathbf{B} \\times (\\nabla \\times \\mathbf{A}) + (\\mathbf{A} \\cdot \\nabla)\\mathbf{B} + (\\mathbf{B} \\cdot \\nabla)\\mathbf{A} \\]"
+    "objectID": "reference/math-identities-and-calculus.html#pythagorean-identities",
+    "href": "reference/math-identities-and-calculus.html#pythagorean-identities",
+    "title": "Mathematical Identities & Calculus",
+    "section": "",
+    "text": "\\[ \\sin^2 \\theta + \\cos^2 \\theta = 1 \\] \\[ 1 + \\tan^2 \\theta = \\sec^2 \\theta \\] \\[ 1 + \\cot^2 \\theta = \\csc^2 \\theta \\]"
   },
   {
-    "objectID": "reference/vector-calculus-and-identities.html#second-derivatives",
-    "href": "reference/vector-calculus-and-identities.html#second-derivatives",
-    "title": "Vector Calculus & Identities",
-    "section": "Second Derivatives",
-    "text": "Second Derivatives\nCurl of a Gradient is zero: \\[ \\nabla \\times (\\nabla f) = 0 \\] (If \\(\\nabla \\times \\mathbf{F} = 0\\), then \\(\\mathbf{F}\\) is conservative and \\(\\mathbf{F} = -\\nabla U\\).)\nDivergence of a Curl is zero: \\[ \\nabla \\cdot (\\nabla \\times \\mathbf{A}) = 0 \\] (If \\(\\nabla \\cdot \\mathbf{B} = 0\\), then \\(\\mathbf{B}\\) can be written as the curl of a vector potential \\(\\mathbf{A}\\).)\nCurl of a Curl: \\[ \\nabla \\times (\\nabla \\times \\mathbf{A}) = \\nabla(\\nabla \\cdot \\mathbf{A}) - \\nabla^2\\mathbf{A} \\]"
+    "objectID": "reference/math-identities-and-calculus.html#angle-addition-and-subtraction",
+    "href": "reference/math-identities-and-calculus.html#angle-addition-and-subtraction",
+    "title": "Mathematical Identities & Calculus",
+    "section": "",
+    "text": "\\[ \\sin(\\alpha \\pm \\beta) = \\sin\\alpha \\cos\\beta \\pm \\cos\\alpha \\sin\\beta \\] \\[ \\cos(\\alpha \\pm \\beta) = \\cos\\alpha \\cos\\beta \\mp \\sin\\alpha \\sin\\beta \\] \\[ \\tan(\\alpha \\pm \\beta) = \\frac{\\tan\\alpha \\pm \\tan\\beta}{1 \\mp \\tan\\alpha \\tan\\beta} \\]"
   },
   {
-    "objectID": "reference/vector-calculus-and-identities.html#divergence-theorem-gausss-theorem",
-    "href": "reference/vector-calculus-and-identities.html#divergence-theorem-gausss-theorem",
-    "title": "Vector Calculus & Identities",
-    "section": "Divergence Theorem (Gauss’s Theorem)",
-    "text": "Divergence Theorem (Gauss’s Theorem)\nRelates a volume integral to a surface integral over the closed boundary \\(S\\): \\[ \\iiint_V (\\nabla \\cdot \\mathbf{A}) \\, dV = \\iint_S \\mathbf{A} \\cdot d\\mathbf{a} \\]"
+    "objectID": "reference/math-identities-and-calculus.html#double-and-half-angle",
+    "href": "reference/math-identities-and-calculus.html#double-and-half-angle",
+    "title": "Mathematical Identities & Calculus",
+    "section": "",
+    "text": "\\[ \\sin(2\\theta) = 2\\sin\\theta \\cos\\theta \\] \\[ \\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta \\] \\[ \\sin^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 - \\cos\\theta}{2}, \\quad \\cos^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 + \\cos\\theta}{2} \\]"
   },
   {
-    "objectID": "reference/vector-calculus-and-identities.html#stokes-theorem",
-    "href": "reference/vector-calculus-and-identities.html#stokes-theorem",
-    "title": "Vector Calculus & Identities",
-    "section": "Stokes’ Theorem",
-    "text": "Stokes’ Theorem\nRelates a surface integral to a line integral around the closed bounding curve \\(C\\): \\[ \\iint_S (\\nabla \\times \\mathbf{A}) \\cdot d\\mathbf{a} = \\oint_C \\mathbf{A} \\cdot d\\mathbf{l} \\]"
+    "objectID": "reference/math-identities-and-calculus.html#core-identities",
+    "href": "reference/math-identities-and-calculus.html#core-identities",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Core Identities",
+    "text": "Core Identities\n\\[ \\cosh^2 x - \\sinh^2 x = 1 \\] \\[ 1 - \\tanh^2 x = \\text{sech}^2 x \\] \\[ \\sinh(2x) = 2\\sinh x \\cosh x \\] \\[ \\cosh(2x) = \\cosh^2 x + \\sinh^2 x \\]"
   },
   {
-    "objectID": "reference/vector-calculus-and-identities.html#gradient-theorem-fundamental-theorem-of-calculus-for-line-integrals",
-    "href": "reference/vector-calculus-and-identities.html#gradient-theorem-fundamental-theorem-of-calculus-for-line-integrals",
-    "title": "Vector Calculus & Identities",
-    "section": "Gradient Theorem (Fundamental Theorem of Calculus for Line Integrals)",
-    "text": "Gradient Theorem (Fundamental Theorem of Calculus for Line Integrals)\n\\[ \\int_a^b (\\nabla f) \\cdot d\\mathbf{l} = f(b) - f(a) \\]"
+    "objectID": "reference/math-identities-and-calculus.html#common-derivatives",
+    "href": "reference/math-identities-and-calculus.html#common-derivatives",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Common Derivatives",
+    "text": "Common Derivatives\n\\[ \\frac{d}{dx} \\sin x = \\cos x, \\quad \\frac{d}{dx} \\cos x = -\\sin x, \\quad \\frac{d}{dx} \\tan x = \\sec^2 x \\] \\[ \\frac{d}{dx} \\sinh x = \\cosh x, \\quad \\frac{d}{dx} \\cosh x = \\sinh x \\] \\[ \\frac{d}{dx} \\ln(x) = \\frac{1}{x} \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#common-integrals",
+    "href": "reference/math-identities-and-calculus.html#common-integrals",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Common Integrals",
+    "text": "Common Integrals\n\\[ \\int x^n \\, dx = \\frac{x^{n+1}}{n+1} \\quad (n \\neq -1) \\] \\[ \\int \\frac{1}{x} \\, dx = \\ln|x| \\] \\[ \\int e^{ax} \\, dx = \\frac{1}{a}e^{ax} \\] \\[ \\int \\frac{dx}{x^2 + a^2} = \\frac{1}{a} \\arctan\\left(\\frac{x}{a}\\right) \\] \\[ \\int \\frac{dx}{\\sqrt{a^2 - x^2}} = \\arcsin\\left(\\frac{x}{a}\\right) \\]\n\nGaussian Integrals (Crucial for Statistical Mechanics)\n\\[ \\int_{-\\infty}^{\\infty} e^{-ax^2} \\, dx = \\sqrt{\\frac{\\pi}{a}} \\] \\[ \\int_{-\\infty}^{\\infty} x^2 e^{-ax^2} \\, dx = \\frac{1}{2a} \\sqrt{\\frac{\\pi}{a}} \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#taylor-series-general",
+    "href": "reference/math-identities-and-calculus.html#taylor-series-general",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Taylor Series (General)",
+    "text": "Taylor Series (General)\n\\[ f(x) = f(a) + f'(a)(x-a) + \\frac{f''(a)}{2!}(x-a)^2 + \\frac{f'''(a)}{3!}(x-a)^3 + \\dots \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#maclaurin-series-around-x0",
+    "href": "reference/math-identities-and-calculus.html#maclaurin-series-around-x0",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Maclaurin Series (around \\(x=0\\))",
+    "text": "Maclaurin Series (around \\(x=0\\))\n\\[ e^x = 1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!} + \\dots = \\sum_{n=0}^{\\infty} \\frac{x^n}{n!} \\] \\[ \\sin x = x - \\frac{x^3}{3!} + \\frac{x^5}{5!} - \\dots = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n+1}}{(2n+1)!} \\] \\[ \\cos x = 1 - \\frac{x^2}{2!} + \\frac{x^4}{4!} - \\dots = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n}}{(2n)!} \\] \\[ \\ln(1+x) = x - \\frac{x^2}{2} + \\frac{x^3}{3} - \\dots \\quad (\\text{for } |x| &lt; 1) \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#binomial-expansion",
+    "href": "reference/math-identities-and-calculus.html#binomial-expansion",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Binomial Expansion",
+    "text": "Binomial Expansion\nFor \\(|x| &lt; 1\\) and any real \\(n\\): \\[ (1+x)^n = 1 + nx + \\frac{n(n-1)}{2!}x^2 + \\frac{n(n-1)(n-2)}{3!}x^3 + \\dots \\] Useful small \\(x\\) approximations: \\[ (1+x)^n \\approx 1 + nx \\] \\[ (1-x)^{-1} \\approx 1 + x + x^2 + \\dots \\]"
+  },
+  {
+    "objectID": "extra/index.html",
+    "href": "extra/index.html",
+    "title": "Extra Notes & Readings",
+    "section": "",
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nFermat’s Principle Beyond Least Time: Stationary Paths, Saddle Points, and Gravitational Lensing\n\n\nA rigorous mathematical exploration of the second variation of optical path length, conjugate points, caustic phase shifts, and saddle-point images in astrophysics.\n\n\n\noptics\n\nclassical-mechanics\n\ncalculus-of-variations\n\ngeneral-relativity\n\nextra\n\n\n\n\n\n\n\n\n\n2026-09-12\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "extra/fermats-principle-saddle-points-and-stationary-optics.html",
+    "href": "extra/fermats-principle-saddle-points-and-stationary-optics.html",
+    "title": "Fermat’s Principle Beyond Least Time: Stationary Paths, Saddle Points, and Gravitational Lensing",
+    "section": "",
+    "text": "NoteHistorical and Conceptual Context\n\n\n\nIn introductory physics, Fermat’s Principle is almost universally christened the “Principle of Least Time”. While historically understandable—Pierre de Fermat formulated the hypothesis in 1662 to deduce Snell’s Law by asserting that nature always operates via the most economical path—the nomenclature is physically and mathematically misleading.\nThe true physical law, rooted in the stationary phase approximation of the path integral, asserts that the optical path length is stationary (\\(\\delta S = 0\\)), which admits not only local minima, but also local maxima and saddle points (minimax extrema)."
+  },
+  {
+    "objectID": "extra/fermats-principle-saddle-points-and-stationary-optics.html#mathematical-formulation-of-fermats-principle",
+    "href": "extra/fermats-principle-saddle-points-and-stationary-optics.html#mathematical-formulation-of-fermats-principle",
+    "title": "Fermat’s Principle Beyond Least Time: Stationary Paths, Saddle Points, and Gravitational Lensing",
+    "section": "1. Mathematical Formulation of Fermat’s Principle",
+    "text": "1. Mathematical Formulation of Fermat’s Principle\nLet physical 3-space be modeled as a Riemannian manifold \\((\\mathcal{M}, g)\\) with coordinate chart \\(\\mathbf{r}(u) = (x^1(u), x^2(u), x^3(u))\\) parameterized by an arbitrary monotonic curve parameter \\(u \\in [u_1, u_2]\\) connecting fixed endpoints \\(A = \\mathbf{r}(u_1)\\) and \\(B = \\mathbf{r}(u_2)\\).\nLet \\(n(\\mathbf{r})\\) be the scalar refractive index of the isotropic, non-dispersive medium. The infinitesimal arc length is: \\[\nds = \\sqrt{g_{ij}(\\mathbf{r}) \\frac{dx^i}{du} \\frac{dx^j}{du}} \\, du = |\\mathbf{\\dot{r}}(u)| \\, du\n\\]\nThe total travel time functional \\(T[\\mathbf{r}]\\) along a virtual path \\(\\gamma: A \\to B\\) is given by: \\[\nT[\\mathbf{r}] = \\int_{\\gamma} dt = \\int_{\\gamma} \\frac{ds}{v(\\mathbf{r})} = \\frac{1}{c} \\int_{u_1}^{u_2} n(\\mathbf{r}(u)) |\\mathbf{\\dot{r}}(u)| \\, du = \\frac{1}{c} S[\\mathbf{r}]\n\\] where \\(S[\\mathbf{r}] = \\int n(\\mathbf{r}) ds\\) is the Optical Path Length (OPL) functional, and \\(c\\) is the speed of light in vacuum.\n┌────────────────────────────────────────────────────────────────────────┐\n│                   FERMAT'S VARIATIONAL PRINCIPLE                       │\n│                                                                        │\n│   The physical trajectory taken by a light ray connecting two fixed   │\n│   points A and B is an extremal (stationary point) of the action:      │\n│                                                                        │\n│                 δS[r] = δ ∫ n(r(u)) |dr/du| du = 0                     │\n│                                                                        │\n│   subject to fixed boundary conditions: δr(u₁) = 0 and δr(u₂) = 0.     │\n└────────────────────────────────────────────────────────────────────────┘"
+  },
+  {
+    "objectID": "extra/fermats-principle-saddle-points-and-stationary-optics.html#explicit-physical-and-mathematical-assumptions",
+    "href": "extra/fermats-principle-saddle-points-and-stationary-optics.html#explicit-physical-and-mathematical-assumptions",
+    "title": "Fermat’s Principle Beyond Least Time: Stationary Paths, Saddle Points, and Gravitational Lensing",
+    "section": "2. Explicit Physical and Mathematical Assumptions",
+    "text": "2. Explicit Physical and Mathematical Assumptions\nTo analyze the character of the stationary points with mathematical rigor, we state our baseline assumptions:\n\nGeometric Optics Approximation (\\(\\lambda \\to 0\\) / Eikonal Limit): The wavelength of electromagnetic radiation \\(\\lambda\\) is negligible compared to the characteristic scale of spatial variations in the refractive index: \\[\n\\frac{|\\nabla n|}{n} \\ll \\frac{1}{\\lambda} \\quad \\text{and} \\quad \\frac{|\\nabla^2 n|}{|\\nabla n|} \\ll \\frac{1}{\\lambda}\n\\]\nIsotropy and Non-Dispersive Medium: \\(n = n(\\mathbf{r})\\) is a positive scalar function depending purely on position, independent of ray propagation direction \\(\\mathbf{\\hat{k}}\\) or temporal frequency \\(\\omega\\).\nSmoothness and Differentiability: The boundary surfaces and the index profile \\(n(\\mathbf{r})\\) are at least \\(C^2\\)-differentiable, ensuring that first and second functional variations are well-defined.\nBoundary Constraint: Endpoints \\(A\\) and \\(B\\) are held strictly fixed under all virtual variations (\\(\\delta \\mathbf{r}(A) = \\delta \\mathbf{r}(B) = \\mathbf{0}\\)).\nStatic Metric (in Gravitational Contexts): When generalizing to curved spacetime, the background gravitational field admits a timelike Killing vector field \\(\\partial_t\\), allowing an absolute time coordinate to parameterize null geodesics."
+  },
+  {
+    "objectID": "extra/fermats-principle-saddle-points-and-stationary-optics.html#first-and-second-variations-the-geometry-of-extrema",
+    "href": "extra/fermats-principle-saddle-points-and-stationary-optics.html#first-and-second-variations-the-geometry-of-extrema",
+    "title": "Fermat’s Principle Beyond Least Time: Stationary Paths, Saddle Points, and Gravitational Lensing",
+    "section": "3. First and Second Variations: The Geometry of Extrema",
+    "text": "3. First and Second Variations: The Geometry of Extrema\nTo classify whether a stationary ray \\(\\mathbf{r}_0(u)\\) minimizes, maximizes, or creates a saddle point in travel time, we perform a Taylor expansion of the functional \\(S[\\mathbf{r}_0 + \\epsilon \\boldsymbol{\\eta}]\\) in powers of the variation parameter \\(\\epsilon\\), where \\(\\boldsymbol{\\eta}(u_1) = \\boldsymbol{\\eta}(u_2) = \\mathbf{0}\\): \\[\nS[\\mathbf{r}_0 + \\epsilon \\boldsymbol{\\eta}] = S[\\mathbf{r}_0] + \\epsilon \\, \\delta S[\\mathbf{r}_0; \\boldsymbol{\\eta}] + \\frac{\\epsilon^2}{2} \\, \\delta^2 S[\\mathbf{r}_0; \\boldsymbol{\\eta}] + \\mathcal{O}(\\epsilon^3)\n\\]\n\nThe First Variation (\\(\\delta S = 0\\))\nChoosing the parameter \\(u\\) to be the arc length along the unperturbed ray \\(s \\in [0, L]\\), the Lagrangian is \\(L(\\mathbf{r}, \\mathbf{r}') = n(\\mathbf{r}) \\sqrt{\\mathbf{r}' \\cdot \\mathbf{r}'} = n(\\mathbf{r})\\), where \\(\\mathbf{r}' = \\frac{d\\mathbf{r}}{ds}\\) is the unit tangent vector \\(\\mathbf{\\hat{t}}\\) (\\(|\\mathbf{r}'| = 1\\)).\nApplying the Euler-Lagrange equations: \\[\n\\frac{d}{ds} \\left( \\frac{\\partial L}{\\partial \\mathbf{r}'} \\right) - \\frac{\\partial L}{\\partial \\mathbf{r}} = \\mathbf{0} \\implies \\frac{d}{ds} \\left( n(\\mathbf{r}) \\frac{d\\mathbf{r}}{ds} \\right) = \\nabla n(\\mathbf{r})\n\\] This is the canonical Ray Equation of Geometric Optics. Any path satisfying this differential equation is a stationary point of \\(S[\\mathbf{r}]\\).\n\n\n\nThe Second Variation (\\(\\delta^2 S\\)) and the Jacobi Equation\nThe classification of the stationary point is governed entirely by the sign of the second variation: \\[\n\\delta^2 S[\\mathbf{r}_0; \\boldsymbol{\\eta}] = \\int_0^L \\left[ P_{ij}(s) \\frac{d\\eta^i}{ds} \\frac{d\\eta^j}{ds} + Q_{ij}(s) \\eta^i \\eta^j \\right] ds\n\\] where \\(\\boldsymbol{\\eta}(s)\\) represents a normal perturbation vector orthogonal to the ray trajectory (\\(\\boldsymbol{\\eta} \\cdot \\mathbf{r}' = 0\\)).\n                      ┌───────────────────────────────────────┐\n                      │    SPECTRUM OF SECOND VARIATION δ²S   │\n                      └──────────────────┬────────────────────┘\n                                         │\n                 ┌───────────────────────┼───────────────────────┐\n                 ▼                       ▼                       ▼\n      ┌─────────────────────┐ ┌─────────────────────┐ ┌─────────────────────┐\n      │   STRICT MINIMUM    │ │     SADDLE POINT    │ │   STRICT MAXIMUM    │\n      │ δ²S[η] &gt; 0 for all  │ │ δ²S[η₁] &gt; 0 along u │ │ δ²S[η] &lt; 0 for all  │\n      │ non-zero variations │ │ δ²S[η₂] &lt; 0 along v │ │ non-zero variations │\n      └─────────────────────┘ └─────────────────────┘ └─────────────────────┘\n\nLocal Minimum (\\(\\delta^2 S &gt; 0\\) for all \\(\\boldsymbol{\\eta} \\neq \\mathbf{0}\\)): Every adjacent virtual path takes strictly longer than the true ray.\nLocal Maximum (\\(\\delta^2 S &lt; 0\\) for all \\(\\boldsymbol{\\eta} \\neq \\mathbf{0}\\)): Every adjacent virtual path takes strictly less time than the true ray. (Note: Over arbitrary variations without boundary constraints, an absolute maximum does not exist because a path can be zig-zagged infinitely to yield \\(S \\to \\infty\\). A local maximum occurs only when restricted to a finite-dimensional constraint manifold, such as reflection off a curved surface).\nSaddle Point / Minimax (\\(\\delta^2 S &gt; 0\\) for some variations, \\(\\delta^2 S &lt; 0\\) for others): Perturbing the path along one normal coordinate direction increases travel time, while perturbing along an orthogonal normal coordinate decreases travel time."
+  },
+  {
+    "objectID": "extra/fermats-principle-saddle-points-and-stationary-optics.html#physical-case-1-reflection-off-curved-mirrors-the-ellipsoidal-criterion",
+    "href": "extra/fermats-principle-saddle-points-and-stationary-optics.html#physical-case-1-reflection-off-curved-mirrors-the-ellipsoidal-criterion",
+    "title": "Fermat’s Principle Beyond Least Time: Stationary Paths, Saddle Points, and Gravitational Lensing",
+    "section": "4. Physical Case 1: Reflection Off Curved Mirrors (The Ellipsoidal Criterion)",
+    "text": "4. Physical Case 1: Reflection Off Curved Mirrors (The Ellipsoidal Criterion)\nThe most intuitive realization of stationary points that are neither maxima nor minima occurs in catoptrics (reflection off curved surfaces).\nConsider light traveling in a homogeneous medium (\\(n = 1\\)) from source \\(A\\) to receiver \\(B\\) via a single specular reflection at point \\(P\\) on a reflecting boundary surface \\(\\Sigma\\):\n                                  Source A\n                                     \\\n                                      \\\n                                       \\\n                          Reflecting    \\\n                           Surface Σ     v\n             ────────────────────────────P────────────────────────────\n                                        /\n                                       /\n                                      v\n                                  Receiver B\n\nThe Reference Ellipsoid\nLet \\(\\mathcal{E}\\) be a prolate spheroid (ellipsoid of revolution) with focal points at \\(A\\) and \\(B\\). By definition of an ellipse: \\[\n\\text{For any point } Q \\in \\mathcal{E}: \\quad |\\mathbf{r}_A - \\mathbf{r}_Q| + |\\mathbf{r}_Q - \\mathbf{r}_B| = L_0 = \\text{constant}\n\\]\nLet a real physical mirror \\(\\Sigma\\) be tangent to the ellipsoid \\(\\mathcal{E}\\) at point \\(P\\). The law of reflection (\\(\\theta_i = \\theta_r\\)) ensures that the normal vector to \\(\\Sigma\\) at \\(P\\) coincides with the normal to \\(\\mathcal{E}\\) at \\(P\\). Therefore, \\(P\\) is rigorously a stationary point (\\(\\delta T = 0\\)).\n┌────────────────────────────────────────────────────────────────────────┐\n│                     THE CURVATURE COMPARISON THEOREM                   │\n│                                                                        │\n│   Let κ_Σ be the principal curvatures of the mirror surface Σ at P,    │\n│   and κ_E be the principal curvatures of the confocal ellipsoid E:     │\n│                                                                        │\n│   1. PLANE OR CONVEX MIRROR (κ_Σ &lt; κ_E):                               │\n│      The mirror Σ lies completely outside the ellipsoid E.             │\n│      For any adjacent point Q ∈ Σ, OPL(Q) &gt; L₀.                        │\n│      ==&gt; STRICT LOCAL MINIMUM.                                         │\n│                                                                        │\n│   2. HIGHLY CONCAVE SPHERICAL MIRROR (κ_Σ &gt; κ_E in all directions):     │\n│      The mirror Σ curves inside the ellipsoid E.                       │\n│      For any adjacent point Q ∈ Σ, OPL(Q) &lt; L₀.                        │\n│      ==&gt; STRICT LOCAL MAXIMUM.                                         │\n│                                                                        │\n│   3. ASTIGMATIC / SADDLE MIRROR (κ_Σ,₁ &gt; κ_E,₁ and κ_Σ,₂ &lt; κ_E,₂):     │\n│      The mirror curves inside along axis 1, and outside along axis 2.  │\n│      ==&gt; SADDLE POINT (NEITHER MINIMUM NOR MAXIMUM).                   │\n└────────────────────────────────────────────────────────────────────────┘\n\n\n\nQuantitative Mathematical Proof of a Reflection Saddle Point\nLet the reflection point be \\(P = (0, 0, 0)\\) in Cartesian coordinates. Let the mirror surface \\(\\Sigma\\) be locally represented as a quadratic Monge patch: \\[\nz(x, y) = \\frac{1}{2} \\left( \\kappa_x x^2 + \\kappa_y y^2 \\right) + \\mathcal{O}(x^3, y^3)\n\\] where \\(\\kappa_x\\) and \\(\\kappa_y\\) are the principal curvatures of the mirror at the origin.\nLet source \\(A = (-d \\sin\\theta, 0, d \\cos\\theta)\\) and receiver \\(B = (d \\sin\\theta, 0, d \\cos\\theta)\\) lie symmetrically in the \\(xz\\)-plane at distance \\(d\\) and angle of incidence \\(\\theta\\).\nThe optical path length for reflection at an arbitrary adjacent point \\(Q = (x, y, z(x, y))\\) on the mirror is: \\[\nD(x, y) = \\sqrt{(x + d\\sin\\theta)^2 + y^2 + (z - d\\cos\\theta)^2} + \\sqrt{(x - d\\sin\\theta)^2 + y^2 + (z - d\\cos\\theta)^2}\n\\]\nExpanding \\(D(x, y)\\) in a multi-variable Taylor series about \\((x, y) = (0, 0)\\): \\[\nD(x, y) = 2d + \\left. \\frac{\\partial D}{\\partial x} \\right|_0 x + \\left. \\frac{\\partial D}{\\partial y} \\right|_0 y + \\frac{1}{2} \\left[ D_{xx} x^2 + 2 D_{xy} xy + D_{yy} y^2 \\right] + \\dots\n\\]\n\n1. First Derivatives (Stationary Condition)\n\\[\n\\frac{\\partial D}{\\partial x}(0, 0) = \\sin\\theta - \\sin\\theta = 0, \\quad \\frac{\\partial D}{\\partial y}(0, 0) = 0\n\\] The first variation vanishes identically, confirming the specular law of reflection.\n\n\n2. Second Derivatives (The Hessian Matrix)\nComputing the second partial derivatives: \\[\nD_{xx} = \\frac{2\\cos^2\\theta}{d} - 2\\kappa_x \\cos\\theta = 2\\cos\\theta \\left( \\frac{\\cos\\theta}{d} - \\kappa_x \\right)\n\\] \\[\nD_{yy} = \\frac{2}{d} - 2\\kappa_y \\cos\\theta = 2 \\left( \\frac{1}{d} - \\kappa_y \\cos\\theta \\right)\n\\] \\[\nD_{xy} = 0\n\\]\nThe critical curvature thresholds for the reference ellipsoid are: \\[\n\\kappa_{E, x} = \\frac{\\cos\\theta}{d}, \\quad \\kappa_{E, y} = \\frac{1}{d\\cos\\theta}\n\\]\n\n\n3. Classification via the Hessian Determinant\nThe Hessian matrix is diagonal: \\[\n\\mathcal{H} = \\begin{pmatrix} D_{xx} & 0 \\\\ 0 & D_{yy} \\end{pmatrix} \\implies \\det(\\mathcal{H}) = D_{xx} D_{yy}\n\\]\n\nCondition for a Saddle Point: A saddle point occurs when \\(\\det(\\mathcal{H}) &lt; 0\\), which requires \\(D_{xx}\\) and \\(D_{yy}\\) to have opposite signs: \\[\n\\left( \\kappa_x - \\frac{\\cos\\theta}{d} \\right) \\left( \\kappa_y - \\frac{1}{d\\cos\\theta} \\right) &lt; 0\n\\]\n\nPhysical Realization: Construct a mirror with a cylindrical or hyperbolic paraboloid curvature such that: \\[\n\\kappa_x &gt; \\frac{\\cos\\theta}{d} \\quad \\text{and} \\quad \\kappa_y &lt; \\frac{1}{d\\cos\\theta}\n\\] * Along the \\(x\\)-displacement axis: \\(D_{xx} &lt; 0\\), meaning light traversing an adjacent point along the \\(x\\)-axis arrives faster than the specular ray (local maximum along \\(x\\)). * Along the \\(y\\)-displacement axis: \\(D_{yy} &gt; 0\\), meaning light traversing an adjacent point along the \\(y\\)-axis arrives slower than the specular ray (local minimum along \\(y\\)). * Conclusion: The actual physical trajectory taken by the light ray is a rigorous saddle point."
+  },
+  {
+    "objectID": "extra/fermats-principle-saddle-points-and-stationary-optics.html#physical-case-2-conjugate-points-and-caustic-crossings",
+    "href": "extra/fermats-principle-saddle-points-and-stationary-optics.html#physical-case-2-conjugate-points-and-caustic-crossings",
+    "title": "Fermat’s Principle Beyond Least Time: Stationary Paths, Saddle Points, and Gravitational Lensing",
+    "section": "5. Physical Case 2: Conjugate Points and Caustic Crossings",
+    "text": "5. Physical Case 2: Conjugate Points and Caustic Crossings\nIn refraction and focusing optics, stationary points transition from minima to saddles whenever a ray passes through a conjugate point (caustic focus).\nSource A ──────────────[ Converging Lens ]────────────── (Focal Point C) ────────────── Receiver B\n                                                               │\n                             Before C: Strict Minimum          │  After C: SADDLE POINT\n                             δ²S &gt; 0                           │  Morse Index μ = 1\n\nThe Morse Index Theorem in Optics\nLet \\(\\gamma\\) be an unperturbed ray connecting \\(A\\) and \\(B\\). A point \\(C \\in \\gamma\\) is defined as conjugate to \\(A\\) if there exists a non-trivial Jacobi field \\(\\mathbf{J}(s)\\) along \\(\\gamma\\) that vanishes at both \\(A\\) and \\(C\\): \\[\n\\mathbf{J}(A) = \\mathbf{0}, \\quad \\mathbf{J}(C) = \\mathbf{0}, \\quad \\mathbf{J} \\not\\equiv \\mathbf{0}\n\\]\nAccording to the Morse Index Theorem: 1. If the trajectory from \\(A\\) to \\(B\\) contains no conjugate points, the second variation \\(\\delta^2 S\\) is strictly positive-definite. The path is a local minimum. 2. For every conjugate point \\(C\\) crossed between \\(A\\) and \\(B\\), the quadratic form \\(\\delta^2 S\\) acquires an additional negative eigenvalue. 3. Therefore, if light passes through a focus or caustic before reaching receiver \\(B\\), the travel time functional along the ray is no longer a minimum, but a saddle point of Morse index \\(\\mu = 1\\) (or higher)."
+  },
+  {
+    "objectID": "extra/fermats-principle-saddle-points-and-stationary-optics.html#physical-case-3-gravitational-lensing-in-general-relativity",
+    "href": "extra/fermats-principle-saddle-points-and-stationary-optics.html#physical-case-3-gravitational-lensing-in-general-relativity",
+    "title": "Fermat’s Principle Beyond Least Time: Stationary Paths, Saddle Points, and Gravitational Lensing",
+    "section": "6. Physical Case 3: Gravitational Lensing in General Relativity",
+    "text": "6. Physical Case 3: Gravitational Lensing in General Relativity\nThe most profound and astrophysically observable manifestation of stationary saddle points occurs in Gravitational Lensing governed by Einstein’s General Relativity.\n┌────────────────────────────────────────────────────────────────────────┐\n│                  GRAVITATIONAL LENS ARRIVAL-TIME SURFACE               │\n│                                                                        │\n│                      Source S (at redshift z_S)                        │\n│                         /        |        \\                            │\n│                        /         |         \\                           │\n│                       v          v          v                          │\n│               [ Deflector Galaxy / Cluster L at z_L ]                  │\n│                       \\          |          /                          │\n│                        \\         |         /                           │\n│                         v        v        v                            │\n│                     Image 1   Image 2   Image 3                        │\n│                     (MINIMUM) (SADDLE)  (MAXIMUM)                      │\n│                         \\        |        /                            │\n│                          \\       |       /                             │\n│                           v      v      v                              │\n│                            Observer O                                  │\n└────────────────────────────────────────────────────────────────────────┘\n\nThe Relativistic Fermat Principle\nIn curved spacetime \\((\\mathcal{M}, g_{\\mu\\nu})\\), light travels along null geodesics (\\(ds^2 = g_{\\mu\\nu} dx^\\mu dx^\\nu = 0\\)). In a stationary, weak-field spacetime parameterized by the Newtonian gravitational potential \\(\\Phi(\\mathbf{r}) \\ll c^2\\), the line element is: \\[\nds^2 = -\\left(1 + \\frac{2\\Phi}{c^2}\\right) c^2 dt^2 + \\left(1 - \\frac{2\\Phi}{c^2}\\right) (dx^2 + dy^2 + dz^2) = 0\n\\]\nSolving for the coordinate speed of light \\(v = \\frac{d\\ell}{dt}\\) yields an effective refractive index: \\[\nn_{\\text{eff}}(\\mathbf{r}) = \\frac{c}{v} \\approx 1 - \\frac{2\\Phi(\\mathbf{r})}{c^2} &gt; 1\n\\] Because \\(\\Phi \\le 0\\), the presence of mass slows coordinate light speed, creating the gravitational Shapiro time delay.\n\n\n\nThe Arrival-Time Surface \\(\\tau(\\boldsymbol{\\theta})\\)\nIn the thin-lens approximation, let: * \\(\\boldsymbol{\\beta} \\in \\mathbb{R}^2\\) be the true angular position of the source on the sky. * \\(\\boldsymbol{\\theta} \\in \\mathbb{R}^2\\) be the observed angular position in the lens plane. * \\(D_L, D_S, D_{LS}\\) be the angular diameter distances to the lens, to the source, and between lens and source.\nThe total light travel time (arrival time) functional \\(\\tau(\\boldsymbol{\\theta})\\) is: \\[\n\\tau(\\boldsymbol{\\theta}) = \\frac{1 + z_L}{c} \\frac{D_L D_S}{D_{LS}} \\left[ \\frac{1}{2} |\\boldsymbol{\\theta} - \\boldsymbol{\\beta}|^2 - \\psi(\\boldsymbol{\\theta}) \\right]\n\\] where: * \\(\\frac{1}{2} |\\boldsymbol{\\theta} - \\boldsymbol{\\beta}|^2\\) is the geometric time delay (deviation from a straight line). * \\(\\psi(\\boldsymbol{\\theta}) = \\frac{2}{c^2} \\frac{D_{LS}}{D_L D_S} \\int \\Phi \\, dz\\) is the 2D effective gravitational deflection potential (the gravitational Shapiro delay).\nFermat’s principle dictates that observable images form where the gradient of arrival time vanishes: \\[\n\\nabla_{\\boldsymbol{\\theta}} \\tau(\\boldsymbol{\\theta}) = \\mathbf{0} \\implies \\boldsymbol{\\theta} - \\boldsymbol{\\beta} = \\nabla_{\\boldsymbol{\\theta}} \\psi(\\boldsymbol{\\theta}) = \\boldsymbol{\\alpha}(\\boldsymbol{\\theta})\n\\] This reproduces the canonical Gravitational Lens Equation.\n\n\n\nImage Classification via the Hessian of Arrival Time\nThe nature of each lensed image is classified by the Hessian matrix of the arrival time surface: \\[\n\\mathcal{H}_{ij}(\\boldsymbol{\\theta}) = \\frac{\\partial^2 \\tau}{\\partial \\theta_i \\partial \\theta_j} \\propto \\delta_{ij} - \\frac{\\partial^2 \\psi}{\\partial \\theta_i \\partial \\theta_j} = \\mathcal{A}_{ij}^{-1}\n\\] where \\(\\mathcal{A}(\\boldsymbol{\\theta})\\) is the Jacobian magnification tensor of the gravitational lens.\nThe eigenvalues \\(\\lambda_1, \\lambda_2\\) of the inverse magnification tensor \\(\\mathcal{A}^{-1}\\) categorize the images into three distinct topological types:\n\n\n\n\n\n\n\n\n\n\nImage Type\nEigenvalue Signs\nHessian Determinant \\(\\det(\\mathcal{H})\\)\nPhysical Character on Arrival-Time Surface \\(\\tau\\)\nParity & Astrophysics\n\n\n\n\nType I (Minimum)\n\\(\\lambda_1 &gt; 0, \\, \\lambda_2 &gt; 0\\)\n\\(\\det(\\mathcal{H}) &gt; 0\\)\nLocal Minimum. Light arrives along the quickest path among all local variations.\nPositive parity. Typically the outermost image; arrives first in time-domain astronomy (e.g., supernova / quasar flares).\n\n\nType II (Saddle Point)\n\\(\\lambda_1 &gt; 0, \\, \\lambda_2 &lt; 0\\)\n\\(\\det(\\mathcal{H}) &lt; 0\\)\nSaddle Point. Path is a minimum along one axis and a maximum along the orthogonal axis.\nNegative parity (mirror-inverted). Forms intermediate-arrival images (e.g., secondary images in Einstein crosses).\n\n\nType III (Maximum)\n\\(\\lambda_1 &lt; 0, \\, \\lambda_2 &lt; 0\\)\n\\(\\det(\\mathcal{H}) &gt; 0\\)\nLocal Maximum. Trajectory takes strictly longer than all adjacent virtual paths.\nPositive parity. Located near the central core of the deflector; usually heavily demagnified and faint.\n\n\n\n┌────────────────────────────────────────────────────────────────────────┐\n│                THE BLANDFORD-NARAYAN TOPOLOGY THEOREM                  │\n│                                                                        │\n│   For any non-singular, transparent gravitational potential with       │\n│   asymptotically flat boundary conditions:                             │\n│                                                                        │\n│       N_min - N_saddle + N_max = 1                                     │\n│                                                                        │\n│   Consequently, the total number of images N_total = N_min + N_saddle  │\n│   + N_max is ALWAYS ODD (1, 3, 5...).                                  │\n│                                                                        │\n│   Every multiply-imaged quasar (such as the Einstein Cross Q2237+0305) │\n│   rigorously contains at least TWO SADDLE-POINT IMAGES!                │\n└────────────────────────────────────────────────────────────────────────┘"
+  },
+  {
+    "objectID": "extra/fermats-principle-saddle-points-and-stationary-optics.html#wave-optics-and-quantum-foundations-the-gouy-phase-shift",
+    "href": "extra/fermats-principle-saddle-points-and-stationary-optics.html#wave-optics-and-quantum-foundations-the-gouy-phase-shift",
+    "title": "Fermat’s Principle Beyond Least Time: Stationary Paths, Saddle Points, and Gravitational Lensing",
+    "section": "7. Wave Optics and Quantum Foundations: The Gouy Phase Shift",
+    "text": "7. Wave Optics and Quantum Foundations: The Gouy Phase Shift\nWhy does nature select saddle points and maxima if light is classically supposed to take the “shortest” path?\nThe resolution is provided by Richard Feynman’s Path Integral Formulation of Quantum Electrodynamics (QED):\n\nA photon does not explore a single path; it explores all possible histories connecting \\(A\\) and \\(B\\).\nThe total probability amplitude \\(\\Psi(B, A)\\) is the functional sum over all virtual paths \\(\\gamma\\): \\[\n\\Psi(B, A) = \\int \\mathcal{D}[\\mathbf{r}(t)] \\, \\exp\\left( \\frac{i}{\\hbar} S_{\\text{QED}} \\right) = \\int \\mathcal{D}[\\mathbf{r}(t)] \\, \\exp\\left( i \\omega T[\\mathbf{r}] \\right)\n\\]\nIn the macroscopic limit (\\(\\omega \\to \\infty\\) or \\(\\lambda \\to 0\\)), neighboring paths with differing arrival times interfere destructively because their phase factors \\(e^{i \\omega T}\\) oscillate rapidly: \\[\n\\frac{d}{d\\mathbf{r}} (\\omega T) \\neq 0 \\implies \\text{Phase cancellation} \\to 0\n\\]\nOnly where the first variation vanishes (\\(\\delta T = 0\\)) do adjacent paths have identical phases to first order, producing coherent constructive interference.\nConstructive interference requires stationarity, not minimality. The wave does not care whether the stationary plateau is a bowl (minimum), an inverted dome (maximum), or a mountain pass (saddle).\n\n┌────────────────────────────────────────────────────────────────────────┐\n│                   THE ANOMALOUS GOUY PHASE SHIFT                       │\n│                                                                        │\n│   When light traverses a saddle point in a gravitational lens or       │\n│   passes through a focal caustic:                                      │\n│                                                                        │\n│   - The negative eigenvalue in the Hessian introduces a factor:        │\n│                                                                        │\n│               ∫ exp(-i ω u²) du = √(π / iω) = √(π/ω) exp(-i π/4)       │\n│                                                                        │\n│   - This produces a discrete π/2 (90°) PHASE ADVANCE in the wave       │\n│     pulse known as the GOUY PHASE SHIFT!                               │\n│                                                                        │\n│   - For a radio pulse passing through a saddle-point image, the pulse  │\n│     is the HILBERT TRANSFORM of the minimum-image pulse.               │\n└────────────────────────────────────────────────────────────────────────┘"
+  },
+  {
+    "objectID": "extra/fermats-principle-saddle-points-and-stationary-optics.html#summary-comparison-matrix",
+    "href": "extra/fermats-principle-saddle-points-and-stationary-optics.html#summary-comparison-matrix",
+    "title": "Fermat’s Principle Beyond Least Time: Stationary Paths, Saddle Points, and Gravitational Lensing",
+    "section": "8. Summary Comparison Matrix",
+    "text": "8. Summary Comparison Matrix\n\n\n\n\n\n\n\n\n\n\nPhysical System\nStationary Condition (\\(\\delta T = 0\\))\nNature of Extremum (\\(\\delta^2 T\\))\nPhysical Criterion\nObservable Consequence\n\n\n\n\nFlat Mirror Reflection\n\\(\\theta_i = \\theta_r\\)\nStrict Minimum (\\(\\delta^2 T &gt; 0\\))\nSurface curvature is zero (\\(\\kappa = 0 &lt; \\kappa_E\\)).\nStandard law of reflection; shortest path.\n\n\nConcave Mirror (Steep)\n\\(\\theta_i = \\theta_r\\)\nStrict Maximum (\\(\\delta^2 T &lt; 0\\))\nMirror curvature exceeds ellipsoid (\\(\\kappa &gt; \\kappa_E\\)).\nReal image formation; light takes the longest path among local surface variations.\n\n\nAstigmatic / Saddle Mirror\n\\(\\theta_i = \\theta_r\\)\nSaddle Point (Indefinite \\(\\delta^2 T\\))\n\\(\\kappa_x &gt; \\kappa_{E, x}\\) while \\(\\kappa_y &lt; \\kappa_{E, y}\\).\nRay takes maximum along \\(x\\), minimum along \\(y\\).\n\n\nAstrophysical Lens (Type I)\n\\(\\nabla \\tau = \\mathbf{0}\\)\nLocal Minimum (\\(\\det \\mathcal{H} &gt; 0, \\, \\text{tr} \\mathcal{H} &gt; 0\\))\nOuter regions of gravitational potential.\nFirst arriving image; positive parity; unshifted phase.\n\n\nAstrophysical Lens (Type II)\n\\(\\nabla \\tau = \\mathbf{0}\\)\nSaddle Point (\\(\\det \\mathcal{H} &lt; 0\\))\nIntermediate shear zones near critical curves.\nIntermediate arrival; negative parity (inverted); \\(\\pi/2\\) Hilbert phase shift.\n\n\nAstrophysical Lens (Type III)\n\\(\\nabla \\tau = \\mathbf{0}\\)\nLocal Maximum (\\(\\det \\mathcal{H} &gt; 0, \\, \\text{tr} \\mathcal{H} &lt; 0\\))\nDense central galactic core.\nLatest arriving image; positive parity; highly demagnified."
+  },
+  {
+    "objectID": "extra/fermats-principle-saddle-points-and-stationary-optics.html#primary-literature-canonical-references",
+    "href": "extra/fermats-principle-saddle-points-and-stationary-optics.html#primary-literature-canonical-references",
+    "title": "Fermat’s Principle Beyond Least Time: Stationary Paths, Saddle Points, and Gravitational Lensing",
+    "section": "9. Primary Literature & Canonical References",
+    "text": "9. Primary Literature & Canonical References\n\nFermat, P. de (1662). Analysis ad refractiones. Oeuvres de Fermat (Tannery & Henry, Eds., 1891–1912), Vol. 2, pp. 457–458.\nFeynman, R. P., Leighton, R. B., & Sands, M. (1965). The Feynman Lectures on Physics, Volume I, Chapter 26: “Optics: The Principle of Least Time.” Addison-Wesley.\nBlandford, R., & Narayan, R. (1986). Fermat’s principle, caustics, and the topology of gravitational lensing. The Astrophysical Journal, 310, 568–582. doi:10.1086/164709.\nSchneider, P., Ehlers, J., & Falco, E. E. (1992). Gravitational Lenses. Astronomy and Astrophysics Library, Springer-Verlag Berlin Heidelberg. doi:10.1007/978-3-662-03758-4.\nRosu, H. (1986). A closer look at Fermat’s principle. Physics Education, 21(6), 365–368. doi:10.1088/0031-9120/21/6/005.\nPerlick, V. (1990). On Fermat’s principle in general relativity: I. The general case. Classical and Quantum Gravity, 7(8), 1319–1331. doi:10.1088/0264-9381/7/8/011.\nBorn, M., & Wolf, E. (1999). Principles of Optics: Electromagnetic Theory of Propagation, Interference and Diffraction of Light (7th ed.). Cambridge University Press. Section 3.3.2.\nStamnes, J. J. (1986). Waves in Focal Regions: Propagation, Diffraction and Focusing of Light, Sound and Water Waves. Adam Hilger."
   },
   {
     "objectID": "notes/index.html",
