@@ -8,7 +8,6 @@ format:
   html:
     toc: true
     math: true
-draft: true
 ---
 
 # Overview & Syllabus Context
@@ -28,3 +27,50 @@ According to the [PHY C54 Syllabus](syllabus.qmd), Rigid Body Dynamics is studie
 5. **Euler Angles & Symmetric Tops:** Description of nutation and precession ($\phi, \theta, \psi$) using Lagrangian mechanics.
 
 *(Detailed analytical lecture derivations and worked examples will be added here during Weeks 9, 10 & 11).*
+
+
+---
+
+# 1. The Inertia Tensor: Multilinear and Index Formulation
+
+In rotational dynamics, mass is no longer a simple scalar constant; rather, an object's resistance to rotational acceleration depends sensitively on the orientation of the rotation axis relative to the mass distribution.
+
+### 1.1 Derivation from Angular Momentum
+
+Consider a rigid collection of particles with masses $m_\alpha$ at positions $\mathbf{r}_\alpha$ rotating about a fixed origin with instantaneous angular velocity $\boldsymbol{\omega}$. The velocity of particle $\alpha$ is:
+$$\mathbf{v}_\alpha = \boldsymbol{\omega} \times \mathbf{r}_\alpha$$
+
+The total angular momentum about the origin is:
+$$\mathbf{L} = \sum_\alpha \mathbf{r}_\alpha \times \mathbf{p}_\alpha = \sum_\alpha m_\alpha \, \mathbf{r}_\alpha \times (\boldsymbol{\omega} \times \mathbf{r}_\alpha)$$
+
+Using the vector identity $\mathbf{A} \times (\mathbf{B} \times \mathbf{C}) = (\mathbf{A} \cdot \mathbf{C})\mathbf{B} - (\mathbf{A} \cdot \mathbf{B})\mathbf{C}$:
+$$\mathbf{r}_\alpha \times (\boldsymbol{\omega} \times \mathbf{r}_\alpha) = r_\alpha^2 \boldsymbol{\omega} - (\mathbf{r}_\alpha \cdot \boldsymbol{\omega}) \mathbf{r}_\alpha$$
+
+In component form with the Kronecker delta $\delta_{ij}$:
+$$[\mathbf{r}_\alpha \times (\boldsymbol{\omega} \times \mathbf{r}_\alpha)]_i = r_\alpha^2 \omega_i - r_{\alpha, i} (r_{\alpha, j} \omega_j) = \left( r_\alpha^2 \delta_{ij} - r_{\alpha, i} r_{\alpha, j} \right) \omega_j$$
+
+Summing over all particles:
+$$L_i = \left[ \sum_\alpha m_\alpha \left( r_\alpha^2 \delta_{ij} - r_{\alpha, i} r_{\alpha, j} \right) \right] \omega_j = I_{ij} \omega^j$$
+
+::: {.callout-note}
+### Definition: The Inertia Tensor
+The **inertia tensor** is a symmetric rank-2 covariant tensor $I_{ij} \in T^0_2(V)$:
+- **Discrete Formulation**:
+  $$I_{ij} = \sum_\alpha m_\alpha \left( \delta_{ij} r_\alpha^2 - r_{\alpha, i} r_{\alpha, j} \right)$$
+- **Continuous Formulation**:
+  $$I_{ij} = \int_V \rho(\mathbf{r}) \left( \delta_{ij} r_k r^k - r_i r_j \right) d^3 r$$
+:::
+
+### 1.2 Matrix Representation and Non-Collinearity
+
+In Cartesian coordinates, $\mathbf{I}$ takes the $3 \times 3$ matrix form:
+$$\mathbf{I} = \begin{pmatrix} I_{xx} & I_{xy} & I_{xz} \\ I_{yx} & I_{yy} & I_{yz} \\ I_{zx} & I_{zy} & I_{zz} \end{pmatrix} = \begin{pmatrix} \int \rho (y^2 + z^2) dV & -\int \rho x y \, dV & -\int \rho x z \, dV \\ -\int \rho y x \, dV & \int \rho (x^2 + z^2) dV & -\int \rho y z \, dV \\ -\int \rho z x \, dV & -\int \rho z y \, dV & \int \rho (x^2 + y^2) dV \end{pmatrix}$$
+
+- **Diagonal terms ($I_{ii}$)**: **Moments of Inertia** about the coordinate axes (strictly positive).
+- **Off-diagonal terms ($I_{ij}, i \neq j$)**: **Products of Inertia** (can be positive, negative, or zero).
+- **Symmetry**: Because $r_i r_j = r_j r_i$, $I_{ij} = I_{ji}$ ($\mathbf{I} = \mathbf{I}^T$).
+
+::: {.callout-warning}
+### Non-Collinearity of $\mathbf{L}$ and $\boldsymbol{\omega}$
+Because $\mathbf{L} = \mathbf{I} \boldsymbol{\omega}$ is a tensor contraction ($L_i = I_{ij} \omega^j$), **the angular momentum vector $\mathbf{L}$ is generally NOT parallel to the angular velocity vector $\boldsymbol{\omega}$**. They are parallel if and only if $\boldsymbol{\omega}$ is an eigenvector of $\mathbf{I}$.
+:::
