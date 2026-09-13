@@ -71,3 +71,19 @@ $$\frac{\partial L}{\partial q_k} = 0 \implies p_k \equiv \frac{\partial L}{\par
 ```
 
 A theoretical compiler reading the Lagrangian analyzes its Lie algebra of symmetries and automatically substitutes constant charges $p_k = C$, reducing the dimension of the differential phase space without integrating a single differential equation!
+
+---
+
+## 4. Gauge Invariance as Type Quotienting
+
+In programming languages, two representations that describe identical observable data are abstracted via **quotient types** ($A / \sim$).
+
+In classical electrodynamics, the magnetic vector potential $\\mathbf{A}$ and electric scalar potential $\\Phi$ satisfy:
+$$\\mathbf{B} = \\nabla \\times \\mathbf{A}, \quad \mathbf{E} = -\\nabla \Phi - \frac{\partial \mathbf{A}}{\partial t}$$
+Under an arbitrary scalar field transformation $\\lambda(\mathbf{r}, t)$:
+$$\\mathbf{A} \to \mathbf{A} + \nabla \lambda, \quad \Phi \to \Phi - \frac{\partial \lambda}{\partial t}$$
+The fields $\\mathbf{E}$ and $\\mathbf{B}$ remain identical.
+
+In modern dependent type theory (such as **Lean 4** and Homotopy Type Theory):
+* The physical state space is not the raw space of 1-forms $\\Omega^1(M)$, but the **quotient space** $\\Omega^1(M) / \\mathrm{Im}(d)$.
+* By working on the quotient type, the compiler guarantees that any expression that depends on the choice of gauge parameter $\\lambda$ is automatically rejected as ill-typed!
