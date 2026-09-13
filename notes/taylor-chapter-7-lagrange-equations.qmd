@@ -17,7 +17,7 @@ draft: true
 
 The theoretical development of the laws of motion found its most poetic formulation in 1788 when the Italian-French mathematician Joseph-Louis Lagrange published *Mécanique Analytique*. 
 
-The Lagrangian formulation holds **two major advantages** over Newtonian mechanics:
+The Lagrangian formulation holds **two major advantages** over Newtonian mechanics (see our detailed computational treatise: [**Variational Mechanics as High-Level Declarative Software**](../extra/variational-mechanics-as-high-level-programming.qmd)):
 1. Lagrange's equations take the **same form in any coordinate system** (Cartesian, spherical, non-inertial, etc.).
 2. For constrained systems (like a bead on a wire), the Lagrangian approach naturally **eliminates the forces of constraint** (like normal forces), which are often unknown and uninteresting.
 
