@@ -12,7 +12,7 @@ In Chapter 6, we derived the Euler-Lagrange equations using the calculus of vari
 
 [Lean 4](https://leanprover.github.io/) is a dependently typed functional programming language and interactive theorem prover. In recent years, it has gained immense popularity in academia (e.g., the Fields Medalist Peter Scholze's Liquid Tensor Experiment, and Terrence Tao's recent work) for formalizing complex mathematics. 
 
-In this article, we explore how the calculus of variations and the principle of stationary action can be formalized in Lean 4 using its mathematics library, `mathlib`.
+In this article, we explore how the calculus of variations and the principle of stationary action can be formalized in Lean 4 using its mathematics library, `mathlib` (for the broader epistemological connection between classical mechanics and high-level programming language compilation, see [**Variational Mechanics as High-Level Declarative Software**](../extra/variational-mechanics-as-high-level-programming.qmd)).
 
 ## Functional Analysis in `mathlib`
 
