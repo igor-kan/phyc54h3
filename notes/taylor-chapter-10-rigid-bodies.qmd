@@ -120,3 +120,48 @@ $$\mathbf{I} \succ 0 \iff \boldsymbol{\omega}^T \mathbf{I} \boldsymbol{\omega} >
 - $\det(\mathbf{I}) = I_1 I_2 I_3 > 0$.
 - The inertia tensor is always strictly invertible: $\mathbf{I}^{-1}$ exists.
 - $\mathbf{I}$ admits a unique Cholesky factorization $\mathbf{I} = \mathbf{L} \mathbf{L}^T$.
+
+
+---
+
+# 3. Spectral Decomposition, Principal Axes, and Triangle Inequalities
+
+### 3.1 Spectral Decomposition and Principal Axes
+
+By the **Spectral Theorem for real symmetric operators**, the inertia tensor $\mathbf{I} = \mathbf{I}^T$ can always be diagonalized by an orthogonal coordinate transformation $\mathbf{R} \in \mathrm{SO}(3)$:
+$$\mathbf{I}_{\text{principal}} = \mathbf{R}^T \mathbf{I} \mathbf{R} = \begin{pmatrix} I_1 & 0 & 0 \\ 0 & I_2 & 0 \\ 0 & 0 & I_3 \end{pmatrix}$$
+
+The orthonormal columns $\{\mathbf{\hat{e}}_1, \mathbf{\hat{e}}_2, \mathbf{\hat{e}}_3\}$ of $\mathbf{R}$ are the **principal axes of inertia**, and the eigenvalues $\{I_1, I_2, I_3\}$ are the **principal moments of inertia**.
+
+In the principal body frame, the multilinear expressions simplify dramatically:
+- Angular Momentum:
+  $$\mathbf{L} = I_1 \omega_1 \mathbf{\hat{e}}_1 + I_2 \omega_2 \mathbf{\hat{e}}_2 + I_3 \omega_3 \mathbf{\hat{e}}_3$$
+- Rotational Kinetic Energy:
+  $$T_{\text{rot}} = \frac{1}{2}\left(I_1 \omega_1^2 + I_2 \omega_2^2 + I_3 \omega_3^2\right)$$
+
+### 3.2 The Triangle Inequalities for Principal Moments
+
+Because each principal moment is an integral of squared coordinates over the mass distribution:
+$$I_1 = \int \rho \left(x_2^2 + x_3^2\right) dV, \quad I_2 = \int \rho \left(x_1^2 + x_3^2\right) dV, \quad I_3 = \int \rho \left(x_1^2 + x_2^2\right) dV$$
+
+Summing any two principal moments reveals an intrinsic geometric bound:
+$$I_1 + I_2 = \int \rho \left(x_1^2 + x_2^2 + 2x_3^2\right) dV = \int \rho \left(x_1^2 + x_2^2\right) dV + 2\int \rho x_3^2 dV = I_3 + 2\int \rho x_3^2 dV$$
+
+Since $\int \rho x_3^2 dV \ge 0$, we establish the **Triangle Inequalities of Inertia**:
+$$\boxed{I_1 + I_2 \ge I_3, \qquad I_2 + I_3 \ge I_1, \qquad I_1 + I_3 \ge I_2}$$
+
+::: {.callout-note}
+### Planar Laminar Limit
+The equality $I_1 + I_2 = I_3$ holds if and only if $x_3 = 0$ everywhere—meaning the body is a flat 2D lamina lying strictly in the $x_1 x_2$-plane (the classical Perpendicular Axis Theorem).
+:::
+
+### 3.3 Poinsot's Inertia Ellipsoid
+
+Consider the locus of angular velocities $\boldsymbol{\omega}$ that possess a constant rotational kinetic energy $E$:
+$$\boldsymbol{\omega}^T \mathbf{I} \boldsymbol{\omega} = 2E \iff \frac{\omega_1^2}{(2E/I_1)} + \frac{\omega_2^2}{(2E/I_2)} + \frac{\omega_3^2}{(2E/I_3)} = 1$$
+
+Because $\mathbf{I} \succ 0$ (all $I_i > 0$), this quadric is a **compact ellipsoid** in $\boldsymbol{\omega}$-space:
+- Semi-axis lengths are $\sqrt{2E / I_i}$. The longest axis corresponds to the smallest moment of inertia ($I_1$), and the shortest axis corresponds to the largest moment of inertia ($I_3$).
+- The normal to the ellipsoid at point $\boldsymbol{\omega}$ is:
+  $$\nabla_{\boldsymbol{\omega}} T_{\text{rot}} = \mathbf{I} \boldsymbol{\omega} = \mathbf{L}$$
+- In torque-free motion ($\boldsymbol{\Gamma} = \mathbf{0}$), angular momentum $\mathbf{L}$ is conserved in the inertial frame. Consequently, **Poinsot's ellipsoid rolls without slipping on a fixed spatial plane** (the *invariable plane* perpendicular to $\mathbf{L}$).
