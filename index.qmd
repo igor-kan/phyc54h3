@@ -22,7 +22,7 @@ Homework exercises and solutions (I will consult the professor if and when solut
 
 ::: {.course-card}
 ### 💻 [Code & Simulations](simulations/index.qmd)
-Interactive physics simulations and numerical solvers.
+Interactive physics simulations, [Symbolic Variational Compiler](simulations/variational-mechanics-symbolic-compiler.qmd), and numerical solvers.
 :::
 
 ::: {.course-card}
