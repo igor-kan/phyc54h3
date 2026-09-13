@@ -49,3 +49,25 @@ Because $\mathcal{E}_i(L_q) = 0$, it immediately follows that $\mathcal{E}_j(L_Q
 This means the Euler-Lagrange equations are **manifestly coordinate-free**:
 * The programmer/physicist can change coordinates from Cartesian to spherical, parabolic, or cylindrical without modifying the underlying compiler logic.
 * Invariance under coordinate changes is the exact physical equivalent of architecture-independent bytecode (such as Java JVM bytecode or LLVM IR).
+
+---
+
+## 3. Noether's Theorem: Compile-Time Invariant Synthesis
+
+In optimizing compilers, **Loop Invariant Code Motion (LICM)** and dead code elimination extract constants out of loops so that the CPU never repeats unnecessary work.
+
+**Emmy Noether's Theorem (1918)** is the ultimate physical optimization theorem:
+Every continuous global symmetry of the action functional generates an exact conservation law (a first integral of motion):
+
+$$\frac{\partial L}{\partial q_k} = 0 \implies p_k \equiv \frac{\partial L}{\partial \dot{q}_k} = \text{constant in time}$$
+
+```
+    CONTINUOUS SYMMETRY               CONSERVED NOETHER CHARGE
+    ───────────────────               ────────────────────────
+    Time Translation       ───►       Energy E = ∑ p_i q̇_i - L
+    Spatial Translation    ───►       Linear Momentum p = ∑ m_i v_i
+    Rotational Invariance  ───►       Angular Momentum L = r × p
+    Gauge Invariance (U(1))───►       Electric Charge Q
+```
+
+A theoretical compiler reading the Lagrangian analyzes its Lie algebra of symmetries and automatically substitutes constant charges $p_k = C$, reducing the dimension of the differential phase space without integrating a single differential equation!
