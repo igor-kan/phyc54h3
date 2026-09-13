@@ -30,3 +30,22 @@ $$S[q] = \int_{t_1}^{t_2} L(q, \dot{q}, t) \, dt, \quad \delta S = 0$$
 The physicist does not worry about constraint forces or vector projections. They declare a single scalar energy budget:
 $$L = T - V$$
 and the variational "compiler" automatically synthesizes the exact equations of motion!
+
+---
+
+## 2. Point Transformations as Compiler Source-to-Source Rewrites
+
+In compiler theory, **Intermediate Representation (IR)** allows a program to be transformed from one form to another while preserving its semantics.
+
+In classical mechanics, generalized coordinates $q = (q_1, \dots, q_n)$ form an arbitrary coordinate chart on the configuration manifold $Q$. If we apply an invertible coordinate transformation:
+$$Q_i = Q_i(q_1, \dots, q_n, t)$$
+
+The Euler-Lagrange operator:
+$$\mathcal{E}_i(L) \equiv \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}_i}\right) - \frac{\partial L}{\partial q_i} = 0$$
+transforms covariantly:
+$$\mathcal{E}_j(L_Q) = \sum_{i=1}^n \frac{\partial q_i}{\partial Q_j} \mathcal{E}_i(L_q)$$
+Because $\mathcal{E}_i(L_q) = 0$, it immediately follows that $\mathcal{E}_j(L_Q) = 0$!
+
+This means the Euler-Lagrange equations are **manifestly coordinate-free**:
+* The programmer/physicist can change coordinates from Cartesian to spherical, parabolic, or cylindrical without modifying the underlying compiler logic.
+* Invariance under coordinate changes is the exact physical equivalent of architecture-independent bytecode (such as Java JVM bytecode or LLVM IR).
