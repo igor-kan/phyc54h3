@@ -1,0 +1,32 @@
+---
+title: "Variational Mechanics as High-Level Declarative Software"
+subtitle: "Deconstructing the Principle of Stationary Action as an algorithmic compiler lowering scalar Lagrangians to vector equations of motion."
+author: "Igor Kan"
+date: "2026-09-13"
+categories: ["Classical Mechanics", "Calculus of Variations", "Computer Science", "Formal Verification", "Taylor"]
+format:
+  html:
+    toc: true
+    toc-depth: 4
+    code-fold: show
+    code-tools: true
+    math: true
+---
+
+## 1. The Imperative vs. Declarative Paradigm in Physics
+
+In computer science, software engineering underwent a profound revolution when moving from **imperative programming** (specifying step-by-step memory instructions: "move pointer, branch if zero") to **declarative programming** (specifying the desired goal or constraint: "select all records where age > 21", SQL, functional Haskell).
+
+Newtonian mechanics is inherently **imperative**:
+$$\mathbf{F}_{\text{net}} = m \ddot{\mathbf{r}}$$
+To solve a constrained physical system (such as a bead on a rotating parabolic wire), a Newtonian physicist must:
+1. Identify all active applied forces (gravity, friction).
+2. Manually deduce constraint forces (normal forces, tension) that do no work.
+3. Project vectors onto non-inertial curvilinear axes, dealing with centrifugal and Coriolis terms.
+4. Solve a system of coupled vector differential equations.
+
+By contrast, Lagrangian mechanics (Hamilton's Principle of Stationary Action) is the world's first **high-level declarative programming language**:
+$$S[q] = \int_{t_1}^{t_2} L(q, \dot{q}, t) \, dt, \quad \delta S = 0$$
+The physicist does not worry about constraint forces or vector projections. They declare a single scalar energy budget:
+$$L = T - V$$
+and the variational "compiler" automatically synthesizes the exact equations of motion!
