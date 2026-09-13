@@ -74,3 +74,49 @@ $$\mathbf{I} = \begin{pmatrix} I_{xx} & I_{xy} & I_{xz} \\ I_{yx} & I_{yy} & I_{
 ### Non-Collinearity of $\mathbf{L}$ and $\boldsymbol{\omega}$
 Because $\mathbf{L} = \mathbf{I} \boldsymbol{\omega}$ is a tensor contraction ($L_i = I_{ij} \omega^j$), **the angular momentum vector $\mathbf{L}$ is generally NOT parallel to the angular velocity vector $\boldsymbol{\omega}$**. They are parallel if and only if $\boldsymbol{\omega}$ is an eigenvector of $\mathbf{I}$.
 :::
+
+
+---
+
+# 2. Rotational Kinetic Energy as a Quadratic Form and Positive Definiteness
+
+### 2.1 Derivation of the Quadratic Form
+
+The total rotational kinetic energy of the rigid body is the sum of particle kinetic energies:
+$$T_{\text{rot}} = \frac{1}{2} \sum_\alpha m_\alpha \mathbf{v}_\alpha \cdot \mathbf{v}_\alpha = \frac{1}{2} \sum_\alpha m_\alpha (\boldsymbol{\omega} \times \mathbf{r}_\alpha) \cdot (\boldsymbol{\omega} \times \mathbf{r}_\alpha)$$
+
+Using the vector triple product identity $(\mathbf{A} \times \mathbf{B}) \cdot \mathbf{C} = \mathbf{A} \cdot (\mathbf{B} \times \mathbf{C})$:
+$$(\boldsymbol{\omega} \times \mathbf{r}_\alpha) \cdot (\boldsymbol{\omega} \times \mathbf{r}_\alpha) = \boldsymbol{\omega} \cdot \left[ \mathbf{r}_\alpha \times (\boldsymbol{\omega} \times \mathbf{r}_\alpha) \right]$$
+
+Summing over all particles and substituting the definition of angular momentum $\mathbf{L}$:
+$$T_{\text{rot}} = \frac{1}{2} \boldsymbol{\omega} \cdot \left[ \sum_\alpha m_\alpha \mathbf{r}_\alpha \times (\boldsymbol{\omega} \times \mathbf{r}_\alpha) \right] = \frac{1}{2} \boldsymbol{\omega} \cdot \mathbf{L}$$
+
+Substituting $\mathbf{L} = \mathbf{I} \boldsymbol{\omega}$:
+$$\boxed{T_{\text{rot}} = \frac{1}{2} \boldsymbol{\omega}^T \mathbf{I} \boldsymbol{\omega} = \frac{1}{2} I_{ij} \omega^i \omega^j}$$
+
+The kinetic energy is therefore a **symmetric quadratic form** evaluated on the angular velocity vector $\boldsymbol{\omega}$.
+
+### 2.2 Proof of Strict Positive Definiteness ($\mathbf{I} \succ 0$)
+
+::: {.callout-important}
+### Theorem: Positive Definiteness of the Inertia Tensor
+For any non-degenerate three-dimensional rigid body (a body whose mass is not concentrated entirely along a single mathematical line), the inertia tensor $\mathbf{I}$ is **strictly positive definite**:
+$$\mathbf{I} \succ 0 \iff \boldsymbol{\omega}^T \mathbf{I} \boldsymbol{\omega} > 0, \quad \forall \, \boldsymbol{\omega} \neq \mathbf{0}$$
+:::
+
+#### Proof:
+1. Express the quadratic form directly through physical particle velocities:
+   $$\boldsymbol{\omega}^T \mathbf{I} \boldsymbol{\omega} = 2 T_{\text{rot}} = \sum_\alpha m_\alpha \|\boldsymbol{\omega} \times \mathbf{r}_\alpha\|^2$$
+2. Because each particle mass $m_\alpha > 0$ and the squared norm $\|\boldsymbol{\omega} \times \mathbf{r}_\alpha\|^2 \ge 0$, the sum is non-negative: $\boldsymbol{\omega}^T \mathbf{I} \boldsymbol{\omega} \ge 0$.
+3. Suppose $\boldsymbol{\omega}^T \mathbf{I} \boldsymbol{\omega} = 0$ for some non-zero $\boldsymbol{\omega} \neq \mathbf{0}$. This requires:
+   $$\|\boldsymbol{\omega} \times \mathbf{r}_\alpha\|^2 = 0 \implies \boldsymbol{\omega} \times \mathbf{r}_\alpha = \mathbf{0}, \quad \forall \, \alpha$$
+4. The cross product $\boldsymbol{\omega} \times \mathbf{r}_\alpha = \mathbf{0}$ holds if and only if $\mathbf{r}_\alpha$ is parallel to $\boldsymbol{\omega}$.
+5. This would mean that every single mass element lies precisely on the line through the origin parallel to $\boldsymbol{\omega}$ (an idealized 1D thin wire).
+6. For any real 2D or 3D rigid body, there exists at least one mass element not on this line. For that element, $\|\boldsymbol{\omega} \times \mathbf{r}_\alpha\|^2 > 0$.
+7. Therefore, $\boldsymbol{\omega}^T \mathbf{I} \boldsymbol{\omega} > 0$ for all $\boldsymbol{\omega} \neq \mathbf{0}$. $\blacksquare$
+
+**Immediate Corollaries**:
+- All three eigenvalues (principal moments of inertia) are strictly positive: $I_1, I_2, I_3 > 0$.
+- $\det(\mathbf{I}) = I_1 I_2 I_3 > 0$.
+- The inertia tensor is always strictly invertible: $\mathbf{I}^{-1}$ exists.
+- $\mathbf{I}$ admits a unique Cholesky factorization $\mathbf{I} = \mathbf{L} \mathbf{L}^T$.
