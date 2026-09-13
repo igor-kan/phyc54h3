@@ -1,43 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://igor-kan.github.io/phyc54h3/reference/vector-calculus-and-identities.html</loc>
-    <lastmod>2026-09-12T08:25:16.728Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/reference/integration-tricks-and-substitutions.html</loc>
-    <lastmod>2026-09-12T08:25:16.728Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/index.html</loc>
-    <lastmod>2026-09-12T08:25:16.726Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/solutions/index.html</loc>
-    <lastmod>2026-09-12T08:25:16.730Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/simulations/index.html</loc>
-    <lastmod>2026-09-12T08:25:16.729Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/reference/index.html</loc>
-    <lastmod>2026-09-12T08:25:16.728Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/reference/math-identities-and-calculus.html</loc>
-    <lastmod>2026-09-12T08:25:16.728Z</lastmod>
+    <loc>https://igor-kan.github.io/phyc54h3/extra/variational-mechanics-as-high-level-programming.html</loc>
+    <lastmod>2026-09-13T20:12:30.804Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/extra/index.html</loc>
-    <lastmod>2026-09-12T08:25:16.725Z</lastmod>
+    <lastmod>2026-09-13T20:12:30.803Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/reference/math-identities-and-calculus.html</loc>
+    <lastmod>2026-09-13T20:12:30.806Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/reference/index.html</loc>
+    <lastmod>2026-09-13T20:12:30.806Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/simulations/variational-mechanics-symbolic-compiler.html</loc>
+    <lastmod>2026-09-13T20:12:30.807Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/index.html</loc>
+    <lastmod>2026-09-13T20:12:30.804Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/solutions/index.html</loc>
+    <lastmod>2026-09-13T20:12:30.808Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/simulations/index.html</loc>
+    <lastmod>2026-09-13T20:12:30.807Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/reference/integration-tricks-and-substitutions.html</loc>
+    <lastmod>2026-09-13T20:12:30.806Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/reference/vector-calculus-and-identities.html</loc>
+    <lastmod>2026-09-13T20:12:30.806Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/extra/fermats-principle-saddle-points-and-stationary-optics.html</loc>
-    <lastmod>2026-09-12T08:25:16.725Z</lastmod>
+    <lastmod>2026-09-13T20:12:30.803Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/notes/index.html</loc>
-    <lastmod>2026-09-12T08:25:16.726Z</lastmod>
+    <lastmod>2026-09-13T20:12:30.804Z</lastmod>
   </url>
 </urlset>

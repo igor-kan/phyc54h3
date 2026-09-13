@@ -1,11 +1,10 @@
 [
   {
-    "listing": "/solutions/index.html",
-    "items": []
-  },
-  {
-    "listing": "/simulations/index.html",
-    "items": []
+    "listing": "/extra/index.html",
+    "items": [
+      "/extra/variational-mechanics-as-high-level-programming.html",
+      "/extra/fermats-principle-saddle-points-and-stationary-optics.html"
+    ]
   },
   {
     "listing": "/reference/index.html",
@@ -16,9 +15,13 @@
     ]
   },
   {
-    "listing": "/extra/index.html",
+    "listing": "/solutions/index.html",
+    "items": []
+  },
+  {
+    "listing": "/simulations/index.html",
     "items": [
-      "/extra/fermats-principle-saddle-points-and-stationary-optics.html"
+      "/simulations/variational-mechanics-symbolic-compiler.html"
     ]
   },
   {

@@ -1,66 +1,164 @@
 [
   {
-    "objectID": "reference/vector-calculus-and-identities.html",
-    "href": "reference/vector-calculus-and-identities.html",
-    "title": "Vector Calculus & Identities",
+    "objectID": "extra/variational-mechanics-as-high-level-programming.html",
+    "href": "extra/variational-mechanics-as-high-level-programming.html",
+    "title": "Variational Mechanics as High-Level Declarative Software",
     "section": "",
-    "text": "Let \\(\\mathbf{A}, \\mathbf{B}, \\mathbf{C}\\) be vectors in 3D space.\n\n\n\\[ \\mathbf{A} \\cdot \\mathbf{B} = A_x B_x + A_y B_y + A_z B_z = |\\mathbf{A}| |\\mathbf{B}| \\cos\\theta \\] \\[ \\mathbf{A} \\times \\mathbf{B} = \\det \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix} \\] \\[ |\\mathbf{A} \\times \\mathbf{B}| = |\\mathbf{A}| |\\mathbf{B}| \\sin\\theta \\]\n\n\n\nScalar Triple Product (Volume of parallelepiped): \\[ \\mathbf{A} \\cdot (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B} \\cdot (\\mathbf{C} \\times \\mathbf{A}) = \\mathbf{C} \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\det \\begin{vmatrix} A_x & A_y & A_z \\\\ B_x & B_y & B_z \\\\ C_x & C_y & C_z \\end{vmatrix} \\]\nVector Triple Product (BAC-CAB Rule): \\[ \\mathbf{A} \\times (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B}(\\mathbf{A} \\cdot \\mathbf{C}) - \\mathbf{C}(\\mathbf{A} \\cdot \\mathbf{B}) \\]"
+    "text": "In computer science, software engineering underwent a profound revolution when moving from imperative programming (specifying step-by-step memory instructions: “move pointer, branch if zero”) to declarative programming (specifying the desired goal or constraint: “select all records where age &gt; 21”, SQL, functional Haskell).\nNewtonian mechanics is inherently imperative: \\[\\mathbf{F}_{\\text{net}} = m \\ddot{\\mathbf{r}}\\] To solve a constrained physical system (such as a bead on a rotating parabolic wire), a Newtonian physicist must: 1. Identify all active applied forces (gravity, friction). 2. Manually deduce constraint forces (normal forces, tension) that do no work. 3. Project vectors onto non-inertial curvilinear axes, dealing with centrifugal and Coriolis terms. 4. Solve a system of coupled vector differential equations.\nBy contrast, Lagrangian mechanics (Hamilton’s Principle of Stationary Action) is the world’s first high-level declarative programming language: \\[S[q] = \\int_{t_1}^{t_2} L(q, \\dot{q}, t) \\, dt, \\quad \\delta S = 0\\] The physicist does not worry about constraint forces or vector projections. They declare a single scalar energy budget: \\[L = T - V\\] and the variational “compiler” automatically synthesizes the exact equations of motion!"
   },
   {
-    "objectID": "reference/vector-calculus-and-identities.html#dot-and-cross-products",
-    "href": "reference/vector-calculus-and-identities.html#dot-and-cross-products",
-    "title": "Vector Calculus & Identities",
+    "objectID": "extra/variational-mechanics-as-high-level-programming.html#the-imperative-vs.-declarative-paradigm-in-physics",
+    "href": "extra/variational-mechanics-as-high-level-programming.html#the-imperative-vs.-declarative-paradigm-in-physics",
+    "title": "Variational Mechanics as High-Level Declarative Software",
     "section": "",
-    "text": "\\[ \\mathbf{A} \\cdot \\mathbf{B} = A_x B_x + A_y B_y + A_z B_z = |\\mathbf{A}| |\\mathbf{B}| \\cos\\theta \\] \\[ \\mathbf{A} \\times \\mathbf{B} = \\det \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix} \\] \\[ |\\mathbf{A} \\times \\mathbf{B}| = |\\mathbf{A}| |\\mathbf{B}| \\sin\\theta \\]"
+    "text": "In computer science, software engineering underwent a profound revolution when moving from imperative programming (specifying step-by-step memory instructions: “move pointer, branch if zero”) to declarative programming (specifying the desired goal or constraint: “select all records where age &gt; 21”, SQL, functional Haskell).\nNewtonian mechanics is inherently imperative: \\[\\mathbf{F}_{\\text{net}} = m \\ddot{\\mathbf{r}}\\] To solve a constrained physical system (such as a bead on a rotating parabolic wire), a Newtonian physicist must: 1. Identify all active applied forces (gravity, friction). 2. Manually deduce constraint forces (normal forces, tension) that do no work. 3. Project vectors onto non-inertial curvilinear axes, dealing with centrifugal and Coriolis terms. 4. Solve a system of coupled vector differential equations.\nBy contrast, Lagrangian mechanics (Hamilton’s Principle of Stationary Action) is the world’s first high-level declarative programming language: \\[S[q] = \\int_{t_1}^{t_2} L(q, \\dot{q}, t) \\, dt, \\quad \\delta S = 0\\] The physicist does not worry about constraint forces or vector projections. They declare a single scalar energy budget: \\[L = T - V\\] and the variational “compiler” automatically synthesizes the exact equations of motion!"
   },
   {
-    "objectID": "reference/vector-calculus-and-identities.html#triple-products",
-    "href": "reference/vector-calculus-and-identities.html#triple-products",
-    "title": "Vector Calculus & Identities",
+    "objectID": "extra/variational-mechanics-as-high-level-programming.html#point-transformations-as-compiler-source-to-source-rewrites",
+    "href": "extra/variational-mechanics-as-high-level-programming.html#point-transformations-as-compiler-source-to-source-rewrites",
+    "title": "Variational Mechanics as High-Level Declarative Software",
+    "section": "2. Point Transformations as Compiler Source-to-Source Rewrites",
+    "text": "2. Point Transformations as Compiler Source-to-Source Rewrites\nIn compiler theory, Intermediate Representation (IR) allows a program to be transformed from one form to another while preserving its semantics.\nIn classical mechanics, generalized coordinates \\(q = (q_1, \\dots, q_n)\\) form an arbitrary coordinate chart on the configuration manifold \\(Q\\). If we apply an invertible coordinate transformation: \\[Q_i = Q_i(q_1, \\dots, q_n, t)\\]\nThe Euler-Lagrange operator: \\[\\mathcal{E}_i(L) \\equiv \\frac{d}{dt}\\left(\\frac{\\partial L}{\\partial \\dot{q}_i}\\right) - \\frac{\\partial L}{\\partial q_i} = 0\\] transforms covariantly: \\[\\mathcal{E}_j(L_Q) = \\sum_{i=1}^n \\frac{\\partial q_i}{\\partial Q_j} \\mathcal{E}_i(L_q)\\] Because \\(\\mathcal{E}_i(L_q) = 0\\), it immediately follows that \\(\\mathcal{E}_j(L_Q) = 0\\)!\nThis means the Euler-Lagrange equations are manifestly coordinate-free: * The programmer/physicist can change coordinates from Cartesian to spherical, parabolic, or cylindrical without modifying the underlying compiler logic. * Invariance under coordinate changes is the exact physical equivalent of architecture-independent bytecode (such as Java JVM bytecode or LLVM IR)."
+  },
+  {
+    "objectID": "extra/variational-mechanics-as-high-level-programming.html#noethers-theorem-compile-time-invariant-synthesis",
+    "href": "extra/variational-mechanics-as-high-level-programming.html#noethers-theorem-compile-time-invariant-synthesis",
+    "title": "Variational Mechanics as High-Level Declarative Software",
+    "section": "3. Noether’s Theorem: Compile-Time Invariant Synthesis",
+    "text": "3. Noether’s Theorem: Compile-Time Invariant Synthesis\nIn optimizing compilers, Loop Invariant Code Motion (LICM) and dead code elimination extract constants out of loops so that the CPU never repeats unnecessary work.\nEmmy Noether’s Theorem (1918) is the ultimate physical optimization theorem: Every continuous global symmetry of the action functional generates an exact conservation law (a first integral of motion):\n\\[\\frac{\\partial L}{\\partial q_k} = 0 \\implies p_k \\equiv \\frac{\\partial L}{\\partial \\dot{q}_k} = \\text{constant in time}\\]\n    CONTINUOUS SYMMETRY               CONSERVED NOETHER CHARGE\n    ───────────────────               ────────────────────────\n    Time Translation       ───►       Energy E = ∑ p_i q̇_i - L\n    Spatial Translation    ───►       Linear Momentum p = ∑ m_i v_i\n    Rotational Invariance  ───►       Angular Momentum L = r × p\n    Gauge Invariance (U(1))───►       Electric Charge Q\nA theoretical compiler reading the Lagrangian analyzes its Lie algebra of symmetries and automatically substitutes constant charges \\(p_k = C\\), reducing the dimension of the differential phase space without integrating a single differential equation!"
+  },
+  {
+    "objectID": "extra/variational-mechanics-as-high-level-programming.html#gauge-invariance-as-type-quotienting",
+    "href": "extra/variational-mechanics-as-high-level-programming.html#gauge-invariance-as-type-quotienting",
+    "title": "Variational Mechanics as High-Level Declarative Software",
+    "section": "4. Gauge Invariance as Type Quotienting",
+    "text": "4. Gauge Invariance as Type Quotienting\nIn programming languages, two representations that describe identical observable data are abstracted via quotient types (\\(A / \\sim\\)).\nIn classical electrodynamics, the magnetic vector potential \\(\\\\mathbf{A}\\) and electric scalar potential \\(\\\\Phi\\) satisfy: \\[\\\\mathbf{B} = \\\\nabla \\\\times \\\\mathbf{A}, \\quad \\mathbf{E} = -\\\\nabla \\Phi - \\frac{\\partial \\mathbf{A}}{\\partial t}\\] Under an arbitrary scalar field transformation \\(\\\\lambda(\\mathbf{r}, t)\\): \\[\\\\mathbf{A} \\to \\mathbf{A} + \\nabla \\lambda, \\quad \\Phi \\to \\Phi - \\frac{\\partial \\lambda}{\\partial t}\\] The fields \\(\\\\mathbf{E}\\) and \\(\\\\mathbf{B}\\) remain identical.\nIn modern dependent type theory (such as Lean 4 and Homotopy Type Theory): * The physical state space is not the raw space of 1-forms \\(\\\\Omega^1(M)\\), but the quotient space \\(\\\\Omega^1(M) / \\\\mathrm{Im}(d)\\). * By working on the quotient type, the compiler guarantees that any expression that depends on the choice of gauge parameter \\(\\\\lambda\\) is automatically rejected as ill-typed!"
+  },
+  {
+    "objectID": "extra/index.html",
+    "href": "extra/index.html",
+    "title": "Extra Notes & Readings",
     "section": "",
-    "text": "Scalar Triple Product (Volume of parallelepiped): \\[ \\mathbf{A} \\cdot (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B} \\cdot (\\mathbf{C} \\times \\mathbf{A}) = \\mathbf{C} \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\det \\begin{vmatrix} A_x & A_y & A_z \\\\ B_x & B_y & B_z \\\\ C_x & C_y & C_z \\end{vmatrix} \\]\nVector Triple Product (BAC-CAB Rule): \\[ \\mathbf{A} \\times (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B}(\\mathbf{A} \\cdot \\mathbf{C}) - \\mathbf{C}(\\mathbf{A} \\cdot \\mathbf{B}) \\]"
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nVariational Mechanics as High-Level Declarative Software\n\n\nDeconstructing the Principle of Stationary Action as an algorithmic compiler lowering scalar Lagrangians to vector equations of motion.\n\n\n\nClassical Mechanics\n\nCalculus of Variations\n\nComputer Science\n\nFormal Verification\n\nTaylor\n\n\n\n\n\n\n\n\n\n2026-09-13\n\n\nIgor Kan\n\n\n\n\n\n\n\n\n\n\n\n\nFermat’s Principle Beyond Least Time: Stationary Paths, Saddle Points, and Gravitational Lensing\n\n\nA rigorous mathematical exploration of the second variation of optical path length, conjugate points, caustic phase shifts, and saddle-point images in astrophysics.\n\n\n\noptics\n\nclassical-mechanics\n\ncalculus-of-variations\n\ngeneral-relativity\n\nextra\n\n\n\n\n\n\n\n\n\n2026-09-12\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "reference/vector-calculus-and-identities.html#operations",
-    "href": "reference/vector-calculus-and-identities.html#operations",
-    "title": "Vector Calculus & Identities",
-    "section": "Operations",
-    "text": "Operations\n\nGradient (Scalar \\(f \\to\\) Vector): \\[ \\nabla f = \\frac{\\partial f}{\\partial x}\\mathbf{\\hat{i}} + \\frac{\\partial f}{\\partial y}\\mathbf{\\hat{j}} + \\frac{\\partial f}{\\partial z}\\mathbf{\\hat{k}} \\]\nDivergence (Vector \\(\\mathbf{A} \\to\\) Scalar): \\[ \\nabla \\cdot \\mathbf{A} = \\frac{\\partial A_x}{\\partial x} + \\frac{\\partial A_y}{\\partial y} + \\frac{\\partial A_z}{\\partial z} \\]\nCurl (Vector \\(\\mathbf{A} \\to\\) Vector): \\[ \\nabla \\times \\mathbf{A} = \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ \\frac{\\partial}{\\partial x} & \\frac{\\partial}{\\partial y} & \\frac{\\partial}{\\partial z} \\\\ A_x & A_y & A_z \\end{vmatrix} \\]\nLaplacian (Scalar \\(f \\to\\) Scalar): \\[ \\nabla^2 f = \\nabla \\cdot (\\nabla f) = \\frac{\\partial^2 f}{\\partial x^2} + \\frac{\\partial^2 f}{\\partial y^2} + \\frac{\\partial^2 f}{\\partial z^2} \\]"
+    "objectID": "reference/math-identities-and-calculus.html",
+    "href": "reference/math-identities-and-calculus.html",
+    "title": "Mathematical Identities & Calculus",
+    "section": "",
+    "text": "\\[ \\sin^2 \\theta + \\cos^2 \\theta = 1 \\] \\[ 1 + \\tan^2 \\theta = \\sec^2 \\theta \\] \\[ 1 + \\cot^2 \\theta = \\csc^2 \\theta \\]\n\n\n\n\\[ \\sin(\\alpha \\pm \\beta) = \\sin\\alpha \\cos\\beta \\pm \\cos\\alpha \\sin\\beta \\] \\[ \\cos(\\alpha \\pm \\beta) = \\cos\\alpha \\cos\\beta \\mp \\sin\\alpha \\sin\\beta \\] \\[ \\tan(\\alpha \\pm \\beta) = \\frac{\\tan\\alpha \\pm \\tan\\beta}{1 \\mp \\tan\\alpha \\tan\\beta} \\]\n\n\n\n\\[ \\sin(2\\theta) = 2\\sin\\theta \\cos\\theta \\] \\[ \\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta \\] \\[ \\sin^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 - \\cos\\theta}{2}, \\quad \\cos^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 + \\cos\\theta}{2} \\]"
   },
   {
-    "objectID": "reference/vector-calculus-and-identities.html#product-rules",
-    "href": "reference/vector-calculus-and-identities.html#product-rules",
-    "title": "Vector Calculus & Identities",
-    "section": "Product Rules",
-    "text": "Product Rules\n\\[ \\nabla(fg) = f\\nabla g + g\\nabla f \\] \\[ \\nabla \\cdot (f\\mathbf{A}) = f(\\nabla \\cdot \\mathbf{A}) + \\mathbf{A} \\cdot (\\nabla f) \\] \\[ \\nabla \\times (f\\mathbf{A}) = f(\\nabla \\times \\mathbf{A}) + (\\nabla f) \\times \\mathbf{A} \\] \\[ \\nabla \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\mathbf{B} \\cdot (\\nabla \\times \\mathbf{A}) - \\mathbf{A} \\cdot (\\nabla \\times \\mathbf{B}) \\] \\[ \\nabla(\\mathbf{A} \\cdot \\mathbf{B}) = \\mathbf{A} \\times (\\nabla \\times \\mathbf{B}) + \\mathbf{B} \\times (\\nabla \\times \\mathbf{A}) + (\\mathbf{A} \\cdot \\nabla)\\mathbf{B} + (\\mathbf{B} \\cdot \\nabla)\\mathbf{A} \\]"
+    "objectID": "reference/math-identities-and-calculus.html#pythagorean-identities",
+    "href": "reference/math-identities-and-calculus.html#pythagorean-identities",
+    "title": "Mathematical Identities & Calculus",
+    "section": "",
+    "text": "\\[ \\sin^2 \\theta + \\cos^2 \\theta = 1 \\] \\[ 1 + \\tan^2 \\theta = \\sec^2 \\theta \\] \\[ 1 + \\cot^2 \\theta = \\csc^2 \\theta \\]"
   },
   {
-    "objectID": "reference/vector-calculus-and-identities.html#second-derivatives",
-    "href": "reference/vector-calculus-and-identities.html#second-derivatives",
-    "title": "Vector Calculus & Identities",
-    "section": "Second Derivatives",
-    "text": "Second Derivatives\nCurl of a Gradient is zero: \\[ \\nabla \\times (\\nabla f) = 0 \\] (If \\(\\nabla \\times \\mathbf{F} = 0\\), then \\(\\mathbf{F}\\) is conservative and \\(\\mathbf{F} = -\\nabla U\\).)\nDivergence of a Curl is zero: \\[ \\nabla \\cdot (\\nabla \\times \\mathbf{A}) = 0 \\] (If \\(\\nabla \\cdot \\mathbf{B} = 0\\), then \\(\\mathbf{B}\\) can be written as the curl of a vector potential \\(\\mathbf{A}\\).)\nCurl of a Curl: \\[ \\nabla \\times (\\nabla \\times \\mathbf{A}) = \\nabla(\\nabla \\cdot \\mathbf{A}) - \\nabla^2\\mathbf{A} \\]"
+    "objectID": "reference/math-identities-and-calculus.html#angle-addition-and-subtraction",
+    "href": "reference/math-identities-and-calculus.html#angle-addition-and-subtraction",
+    "title": "Mathematical Identities & Calculus",
+    "section": "",
+    "text": "\\[ \\sin(\\alpha \\pm \\beta) = \\sin\\alpha \\cos\\beta \\pm \\cos\\alpha \\sin\\beta \\] \\[ \\cos(\\alpha \\pm \\beta) = \\cos\\alpha \\cos\\beta \\mp \\sin\\alpha \\sin\\beta \\] \\[ \\tan(\\alpha \\pm \\beta) = \\frac{\\tan\\alpha \\pm \\tan\\beta}{1 \\mp \\tan\\alpha \\tan\\beta} \\]"
   },
   {
-    "objectID": "reference/vector-calculus-and-identities.html#divergence-theorem-gausss-theorem",
-    "href": "reference/vector-calculus-and-identities.html#divergence-theorem-gausss-theorem",
-    "title": "Vector Calculus & Identities",
-    "section": "Divergence Theorem (Gauss’s Theorem)",
-    "text": "Divergence Theorem (Gauss’s Theorem)\nRelates a volume integral to a surface integral over the closed boundary \\(S\\): \\[ \\iiint_V (\\nabla \\cdot \\mathbf{A}) \\, dV = \\iint_S \\mathbf{A} \\cdot d\\mathbf{a} \\]"
+    "objectID": "reference/math-identities-and-calculus.html#double-and-half-angle",
+    "href": "reference/math-identities-and-calculus.html#double-and-half-angle",
+    "title": "Mathematical Identities & Calculus",
+    "section": "",
+    "text": "\\[ \\sin(2\\theta) = 2\\sin\\theta \\cos\\theta \\] \\[ \\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta \\] \\[ \\sin^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 - \\cos\\theta}{2}, \\quad \\cos^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 + \\cos\\theta}{2} \\]"
   },
   {
-    "objectID": "reference/vector-calculus-and-identities.html#stokes-theorem",
-    "href": "reference/vector-calculus-and-identities.html#stokes-theorem",
-    "title": "Vector Calculus & Identities",
-    "section": "Stokes’ Theorem",
-    "text": "Stokes’ Theorem\nRelates a surface integral to a line integral around the closed bounding curve \\(C\\): \\[ \\iint_S (\\nabla \\times \\mathbf{A}) \\cdot d\\mathbf{a} = \\oint_C \\mathbf{A} \\cdot d\\mathbf{l} \\]"
+    "objectID": "reference/math-identities-and-calculus.html#core-identities",
+    "href": "reference/math-identities-and-calculus.html#core-identities",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Core Identities",
+    "text": "Core Identities\n\\[ \\cosh^2 x - \\sinh^2 x = 1 \\] \\[ 1 - \\tanh^2 x = \\text{sech}^2 x \\] \\[ \\sinh(2x) = 2\\sinh x \\cosh x \\] \\[ \\cosh(2x) = \\cosh^2 x + \\sinh^2 x \\]"
   },
   {
-    "objectID": "reference/vector-calculus-and-identities.html#gradient-theorem-fundamental-theorem-of-calculus-for-line-integrals",
-    "href": "reference/vector-calculus-and-identities.html#gradient-theorem-fundamental-theorem-of-calculus-for-line-integrals",
-    "title": "Vector Calculus & Identities",
-    "section": "Gradient Theorem (Fundamental Theorem of Calculus for Line Integrals)",
-    "text": "Gradient Theorem (Fundamental Theorem of Calculus for Line Integrals)\n\\[ \\int_a^b (\\nabla f) \\cdot d\\mathbf{l} = f(b) - f(a) \\]"
+    "objectID": "reference/math-identities-and-calculus.html#common-derivatives",
+    "href": "reference/math-identities-and-calculus.html#common-derivatives",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Common Derivatives",
+    "text": "Common Derivatives\n\\[ \\frac{d}{dx} \\sin x = \\cos x, \\quad \\frac{d}{dx} \\cos x = -\\sin x, \\quad \\frac{d}{dx} \\tan x = \\sec^2 x \\] \\[ \\frac{d}{dx} \\sinh x = \\cosh x, \\quad \\frac{d}{dx} \\cosh x = \\sinh x \\] \\[ \\frac{d}{dx} \\ln(x) = \\frac{1}{x} \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#common-integrals",
+    "href": "reference/math-identities-and-calculus.html#common-integrals",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Common Integrals",
+    "text": "Common Integrals\n\\[ \\int x^n \\, dx = \\frac{x^{n+1}}{n+1} \\quad (n \\neq -1) \\] \\[ \\int \\frac{1}{x} \\, dx = \\ln|x| \\] \\[ \\int e^{ax} \\, dx = \\frac{1}{a}e^{ax} \\] \\[ \\int \\frac{dx}{x^2 + a^2} = \\frac{1}{a} \\arctan\\left(\\frac{x}{a}\\right) \\] \\[ \\int \\frac{dx}{\\sqrt{a^2 - x^2}} = \\arcsin\\left(\\frac{x}{a}\\right) \\]\n\nGaussian Integrals (Crucial for Statistical Mechanics)\n\\[ \\int_{-\\infty}^{\\infty} e^{-ax^2} \\, dx = \\sqrt{\\frac{\\pi}{a}} \\] \\[ \\int_{-\\infty}^{\\infty} x^2 e^{-ax^2} \\, dx = \\frac{1}{2a} \\sqrt{\\frac{\\pi}{a}} \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#taylor-series-general",
+    "href": "reference/math-identities-and-calculus.html#taylor-series-general",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Taylor Series (General)",
+    "text": "Taylor Series (General)\n\\[ f(x) = f(a) + f'(a)(x-a) + \\frac{f''(a)}{2!}(x-a)^2 + \\frac{f'''(a)}{3!}(x-a)^3 + \\dots \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#maclaurin-series-around-x0",
+    "href": "reference/math-identities-and-calculus.html#maclaurin-series-around-x0",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Maclaurin Series (around \\(x=0\\))",
+    "text": "Maclaurin Series (around \\(x=0\\))\n\\[ e^x = 1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!} + \\dots = \\sum_{n=0}^{\\infty} \\frac{x^n}{n!} \\] \\[ \\sin x = x - \\frac{x^3}{3!} + \\frac{x^5}{5!} - \\dots = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n+1}}{(2n+1)!} \\] \\[ \\cos x = 1 - \\frac{x^2}{2!} + \\frac{x^4}{4!} - \\dots = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n}}{(2n)!} \\] \\[ \\ln(1+x) = x - \\frac{x^2}{2} + \\frac{x^3}{3} - \\dots \\quad (\\text{for } |x| &lt; 1) \\]"
+  },
+  {
+    "objectID": "reference/math-identities-and-calculus.html#binomial-expansion",
+    "href": "reference/math-identities-and-calculus.html#binomial-expansion",
+    "title": "Mathematical Identities & Calculus",
+    "section": "Binomial Expansion",
+    "text": "Binomial Expansion\nFor \\(|x| &lt; 1\\) and any real \\(n\\): \\[ (1+x)^n = 1 + nx + \\frac{n(n-1)}{2!}x^2 + \\frac{n(n-1)(n-2)}{3!}x^3 + \\dots \\] Useful small \\(x\\) approximations: \\[ (1+x)^n \\approx 1 + nx \\] \\[ (1-x)^{-1} \\approx 1 + x + x^2 + \\dots \\]"
+  },
+  {
+    "objectID": "reference/index.html",
+    "href": "reference/index.html",
+    "title": "Reference & Math",
+    "section": "",
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\nIntegration Tricks and Substitution Techniques\n\n\n\nmath\n\ncalculus\n\nreference\n\nintegration\n\n\n\n\n\n\n2026-09-08\n\n22 min\n\n\n\n\n\n\nVector Calculus & Identities\n\n\n\nmath\n\nreference\n\nvectors\n\n\n\n\n\n\n2026-09-01\n\n3 min\n\n\n\n\n\n\nMathematical Identities & Calculus\n\n\n\nmath\n\nreference\n\ncalculus\n\n\n\n\n\n\n2026-08-31\n\n2 min\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "simulations/variational-mechanics-symbolic-compiler.html",
+    "href": "simulations/variational-mechanics-symbolic-compiler.html",
+    "title": "Interactive Symbolic Euler-Lagrange Compiler",
+    "section": "",
+    "text": "To simulate a classical physical system in Python, students frequently attempt to hand-derive Cartesian accelerations. This simulator demonstrates how symbolic computing tools (such as Python’s SymPy or Julia’s ModelingToolkit) allow students to declare the kinetic and potential energy scalars \\(T\\) and \\(V\\), automatically compiling the exact Euler-Lagrange equations of motion:\n\\[\\frac{d}{dt}\\left(\\frac{\\partial L}{\\partial \\dot{q}_i}\\right) - \\frac{\\partial L}{\\partial q_i} = 0\\]"
+  },
+  {
+    "objectID": "simulations/variational-mechanics-symbolic-compiler.html#declarative-action-vs.-imperative-forces",
+    "href": "simulations/variational-mechanics-symbolic-compiler.html#declarative-action-vs.-imperative-forces",
+    "title": "Interactive Symbolic Euler-Lagrange Compiler",
+    "section": "",
+    "text": "To simulate a classical physical system in Python, students frequently attempt to hand-derive Cartesian accelerations. This simulator demonstrates how symbolic computing tools (such as Python’s SymPy or Julia’s ModelingToolkit) allow students to declare the kinetic and potential energy scalars \\(T\\) and \\(V\\), automatically compiling the exact Euler-Lagrange equations of motion:\n\\[\\frac{d}{dt}\\left(\\frac{\\partial L}{\\partial \\dot{q}_i}\\right) - \\frac{\\partial L}{\\partial q_i} = 0\\]"
+  },
+  {
+    "objectID": "simulations/variational-mechanics-symbolic-compiler.html#interactive-python-symbolic-derivation",
+    "href": "simulations/variational-mechanics-symbolic-compiler.html#interactive-python-symbolic-derivation",
+    "title": "Interactive Symbolic Euler-Lagrange Compiler",
+    "section": "2. Interactive Python Symbolic Derivation",
+    "text": "2. Interactive Python Symbolic Derivation\nimport sympy as sp\nfrom symbolic_euler_lagrange_compiler import compile_euler_lagrange\n\nt = sp.Symbol(\"t\")\nm, k = sp.symbols(\"m k\", positive=True)\nx = sp.Function(\"x\")(t)\n\n# Declare Lagrangian\nL = sp.Rational(1, 2) * m * x.diff(t)**2 - sp.Rational(1, 2) * k * x**2\neq = compile_euler_lagrange(L, [x], t)[0]\n\nprint(f\"Lagrangian: L = {L}\")\nprint(f\"Compiled Equation: {eq} = 0\")"
+  },
+  {
+    "objectID": "index.html#course-roadmap-12-week-syllabus",
+    "href": "index.html#course-roadmap-12-week-syllabus",
+    "title": "PHYC54H3: Classical Mechanics",
+    "section": "🗺️ Course Roadmap & 12-Week Syllabus",
+    "text": "🗺️ Course Roadmap & 12-Week Syllabus\nFollows the official PHYC54 Fall 2026 syllabus taught by Prof. Johann Bayer. Weekly readings correspond to John R. Taylor’s Classical Mechanics (2005).\n\n\n\nWeek\nDates\nCore Topics & Taylor Readings\nAssociated Tutorials & Milestones\nStatus\n\n\n\n\n01\nSep. 08-10\nCalculus of Variations (Ch 6: 1–2)\nCalculus of Variations (Ch 6: 3–4)\nAvailable\n\n\n02\nSep. 15-17\nLagrange’s Equations (Ch 7: 1–4)\nProblem Set #01\nAvailable\n\n\n03\nSep. 22-24\nLagrange’s Equations (Ch 7: 5–8)\nProblem Set #02\nAvailable\n\n\n04\nSep. 29 - Oct. 01\nHamiltonian Mechanics (Ch 13: 1–4)\nProblem Set #03\nUpcoming\n\n\n05\nOct. 06-08\nHamiltonian Mechanics &amp; Phase Space (Ch 13: 5–7)\nProblem Set #04 (Test #1)\nUpcoming\n\n\n06\nOct. 13-15\nMechanics in Noninertial Frames (Ch 9: 1–3)\nProblem Set #05\nUpcoming\n\n\n07\nOct. 20-22\nMechanics in Noninertial Frames (Ch 9: 4–7)\nProblem Set #06\nUpcoming\n\n\nRW\nOct. 27-29\nReading Week (No classes)\nProblem Set #07 Review\nStudy Break\n\n\n08\nNov. 03-05\nMechanics in Noninertial Frames (Ch 9: 8–10)\nProblem Set #08\nUpcoming\n\n\n09\nNov. 10-12\nRotational Motion of Rigid Bodies (Ch 10: 1–3)\nProblem Set #09 (Test #2)\nUpcoming\n\n\n10\nNov. 17-19\nRotational Motion of Rigid Bodies (Ch 10: 4–7)\nProblem Set #10\nUpcoming\n\n\n11\nNov. 24-26\nRotational Motion of Rigid Bodies (Ch 10: 8–10)\nProblem Set #11\nUpcoming\n\n\n12\nDec. 01-03\nContinuum Mechanics (Ch 16: 1–4)\nProblem Set #12\nUpcoming\n\n\nFinal\nDec. 10-22\nComprehensive Final Examination\nDec. 10–22 Exam Period\nScheduled\n\n\n\n\n\n\n\n\n\nNoteCourse Schedule & Grading Notes\n\n\n\nDetailed policies on the Autofail rule (minimum 50% on test average or final exam), tutorial submission requirements, and academic integrity policies are detailed in the official Course Syllabus."
+  },
+  {
+    "objectID": "solutions/index.html",
+    "href": "solutions/index.html",
+    "title": "Problem Sets & Solutions",
+    "section": "",
+    "text": "NotePublishing Notice\n\n\n\nI will consult with the professor regarding if and when I can publish solutions to textbook problems or problem sets. In the meantime, unreleased solutions remain in private drafts.\n\n\n\n\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "simulations/index.html",
+    "href": "simulations/index.html",
+    "title": "Code & Simulations",
+    "section": "",
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\nInteractive Symbolic Euler-Lagrange Compiler\n\n\n\nSimulations\n\nCalculus of Variations\n\nSymPy\n\nTaylor\n\nPython\n\n\n\n\n\n\n2026-09-13\n\n1 min\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "reference/integration-tricks-and-substitutions.html",
@@ -168,109 +266,67 @@
     "text": "Essential Mathematical Properties of Cycloids\nParametric Form: \\[x(\\theta) = a(\\theta - \\sin\\theta), \\quad y(\\theta) = a(1 - \\cos\\theta)\\]\nDifferential Arc Length: \\[ds = \\sqrt{\\dot{x}^2 + \\dot{y}^2}\\, d\\theta = a\\sqrt{(1-\\cos\\theta)^2 + \\sin^2\\theta}\\, d\\theta = 2a\\sin\\left(\\frac{\\theta}{2}\\right) d\\theta\\]\nTotal Arc Length from Origin to \\(\\theta\\): \\[s(\\theta) = \\int_0^\\theta 2a\\sin\\left(\\frac{\\theta'}{2}\\right) d\\theta' = 4a\\left(1 - \\cos\\left(\\frac{\\theta}{2}\\right)\\right) = 8a\\sin^2\\left(\\frac{\\theta}{4}\\right)\\]\nThe total perimeter of one complete arch (\\(\\theta = 2\\pi\\)) is exactly: \\[s_{\\text{total}} = 8a\\]\nRadius of Curvature: \\[\\rho(\\theta) = \\frac{(\\dot{x}^2 + \\dot{y}^2)^{3/2}}{\\vert{}\\dot{x}\\ddot{y} - \\dot{y}\\ddot{x}\\vert{}} = 4a\\sin\\left(\\frac{\\theta}{2}\\right) = \\sqrt{8a y}\\]\nSelf-Evolute Property: The evolute (locus of centers of curvature) of a cycloid is an identical cycloid, shifted horizontally by \\(\\pi a\\) and vertically downward by \\(2a\\)."
   },
   {
-    "objectID": "index.html#course-roadmap-12-week-syllabus",
-    "href": "index.html#course-roadmap-12-week-syllabus",
-    "title": "PHYC54H3: Classical Mechanics",
-    "section": "🗺️ Course Roadmap & 12-Week Syllabus",
-    "text": "🗺️ Course Roadmap & 12-Week Syllabus\nFollows the official PHYC54 Fall 2026 syllabus taught by Prof. Johann Bayer. Weekly readings correspond to John R. Taylor’s Classical Mechanics (2005).\n\n\n\nWeek\nDates\nCore Topics & Taylor Readings\nAssociated Tutorials & Milestones\nStatus\n\n\n\n\n01\nSep. 08-10\nCalculus of Variations (Ch 6: 1–2)\nCalculus of Variations (Ch 6: 3–4)\nAvailable\n\n\n02\nSep. 15-17\nLagrange’s Equations (Ch 7: 1–4)\nProblem Set #01\nAvailable\n\n\n03\nSep. 22-24\nLagrange’s Equations (Ch 7: 5–8)\nProblem Set #02\nAvailable\n\n\n04\nSep. 29 - Oct. 01\nHamiltonian Mechanics (Ch 13: 1–4)\nProblem Set #03\nUpcoming\n\n\n05\nOct. 06-08\nHamiltonian Mechanics &amp; Phase Space (Ch 13: 5–7)\nProblem Set #04 (Test #1)\nUpcoming\n\n\n06\nOct. 13-15\nMechanics in Noninertial Frames (Ch 9: 1–3)\nProblem Set #05\nUpcoming\n\n\n07\nOct. 20-22\nMechanics in Noninertial Frames (Ch 9: 4–7)\nProblem Set #06\nUpcoming\n\n\nRW\nOct. 27-29\nReading Week (No classes)\nProblem Set #07 Review\nStudy Break\n\n\n08\nNov. 03-05\nMechanics in Noninertial Frames (Ch 9: 8–10)\nProblem Set #08\nUpcoming\n\n\n09\nNov. 10-12\nRotational Motion of Rigid Bodies (Ch 10: 1–3)\nProblem Set #09 (Test #2)\nUpcoming\n\n\n10\nNov. 17-19\nRotational Motion of Rigid Bodies (Ch 10: 4–7)\nProblem Set #10\nUpcoming\n\n\n11\nNov. 24-26\nRotational Motion of Rigid Bodies (Ch 10: 8–10)\nProblem Set #11\nUpcoming\n\n\n12\nDec. 01-03\nContinuum Mechanics (Ch 16: 1–4)\nProblem Set #12\nUpcoming\n\n\nFinal\nDec. 10-22\nComprehensive Final Examination\nDec. 10–22 Exam Period\nScheduled\n\n\n\n\n\n\n\n\n\nNoteCourse Schedule & Grading Notes\n\n\n\nDetailed policies on the Autofail rule (minimum 50% on test average or final exam), tutorial submission requirements, and academic integrity policies are detailed in the official Course Syllabus."
-  },
-  {
-    "objectID": "solutions/index.html",
-    "href": "solutions/index.html",
-    "title": "Problem Sets & Solutions",
+    "objectID": "reference/vector-calculus-and-identities.html",
+    "href": "reference/vector-calculus-and-identities.html",
+    "title": "Vector Calculus & Identities",
     "section": "",
-    "text": "NotePublishing Notice\n\n\n\nI will consult with the professor regarding if and when I can publish solutions to textbook problems or problem sets. In the meantime, unreleased solutions remain in private drafts.\n\n\n\n\n\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\nNo matching items"
+    "text": "Let \\(\\mathbf{A}, \\mathbf{B}, \\mathbf{C}\\) be vectors in 3D space.\n\n\n\\[ \\mathbf{A} \\cdot \\mathbf{B} = A_x B_x + A_y B_y + A_z B_z = |\\mathbf{A}| |\\mathbf{B}| \\cos\\theta \\] \\[ \\mathbf{A} \\times \\mathbf{B} = \\det \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix} \\] \\[ |\\mathbf{A} \\times \\mathbf{B}| = |\\mathbf{A}| |\\mathbf{B}| \\sin\\theta \\]\n\n\n\nScalar Triple Product (Volume of parallelepiped): \\[ \\mathbf{A} \\cdot (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B} \\cdot (\\mathbf{C} \\times \\mathbf{A}) = \\mathbf{C} \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\det \\begin{vmatrix} A_x & A_y & A_z \\\\ B_x & B_y & B_z \\\\ C_x & C_y & C_z \\end{vmatrix} \\]\nVector Triple Product (BAC-CAB Rule): \\[ \\mathbf{A} \\times (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B}(\\mathbf{A} \\cdot \\mathbf{C}) - \\mathbf{C}(\\mathbf{A} \\cdot \\mathbf{B}) \\]"
   },
   {
-    "objectID": "simulations/index.html",
-    "href": "simulations/index.html",
-    "title": "Code & Simulations",
+    "objectID": "reference/vector-calculus-and-identities.html#dot-and-cross-products",
+    "href": "reference/vector-calculus-and-identities.html#dot-and-cross-products",
+    "title": "Vector Calculus & Identities",
     "section": "",
-    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\nNo matching items"
+    "text": "\\[ \\mathbf{A} \\cdot \\mathbf{B} = A_x B_x + A_y B_y + A_z B_z = |\\mathbf{A}| |\\mathbf{B}| \\cos\\theta \\] \\[ \\mathbf{A} \\times \\mathbf{B} = \\det \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix} \\] \\[ |\\mathbf{A} \\times \\mathbf{B}| = |\\mathbf{A}| |\\mathbf{B}| \\sin\\theta \\]"
   },
   {
-    "objectID": "reference/index.html",
-    "href": "reference/index.html",
-    "title": "Reference & Math",
+    "objectID": "reference/vector-calculus-and-identities.html#triple-products",
+    "href": "reference/vector-calculus-and-identities.html#triple-products",
+    "title": "Vector Calculus & Identities",
     "section": "",
-    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\nIntegration Tricks and Substitution Techniques\n\n\n\nmath\n\ncalculus\n\nreference\n\nintegration\n\n\n\n\n\n\n2026-09-08\n\n22 min\n\n\n\n\n\n\nVector Calculus & Identities\n\n\n\nmath\n\nreference\n\nvectors\n\n\n\n\n\n\n2026-09-01\n\n3 min\n\n\n\n\n\n\nMathematical Identities & Calculus\n\n\n\nmath\n\nreference\n\ncalculus\n\n\n\n\n\n\n2026-08-31\n\n2 min\n\n\n\n\nNo matching items"
+    "text": "Scalar Triple Product (Volume of parallelepiped): \\[ \\mathbf{A} \\cdot (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B} \\cdot (\\mathbf{C} \\times \\mathbf{A}) = \\mathbf{C} \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\det \\begin{vmatrix} A_x & A_y & A_z \\\\ B_x & B_y & B_z \\\\ C_x & C_y & C_z \\end{vmatrix} \\]\nVector Triple Product (BAC-CAB Rule): \\[ \\mathbf{A} \\times (\\mathbf{B} \\times \\mathbf{C}) = \\mathbf{B}(\\mathbf{A} \\cdot \\mathbf{C}) - \\mathbf{C}(\\mathbf{A} \\cdot \\mathbf{B}) \\]"
   },
   {
-    "objectID": "reference/math-identities-and-calculus.html",
-    "href": "reference/math-identities-and-calculus.html",
-    "title": "Mathematical Identities & Calculus",
-    "section": "",
-    "text": "\\[ \\sin^2 \\theta + \\cos^2 \\theta = 1 \\] \\[ 1 + \\tan^2 \\theta = \\sec^2 \\theta \\] \\[ 1 + \\cot^2 \\theta = \\csc^2 \\theta \\]\n\n\n\n\\[ \\sin(\\alpha \\pm \\beta) = \\sin\\alpha \\cos\\beta \\pm \\cos\\alpha \\sin\\beta \\] \\[ \\cos(\\alpha \\pm \\beta) = \\cos\\alpha \\cos\\beta \\mp \\sin\\alpha \\sin\\beta \\] \\[ \\tan(\\alpha \\pm \\beta) = \\frac{\\tan\\alpha \\pm \\tan\\beta}{1 \\mp \\tan\\alpha \\tan\\beta} \\]\n\n\n\n\\[ \\sin(2\\theta) = 2\\sin\\theta \\cos\\theta \\] \\[ \\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta \\] \\[ \\sin^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 - \\cos\\theta}{2}, \\quad \\cos^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 + \\cos\\theta}{2} \\]"
+    "objectID": "reference/vector-calculus-and-identities.html#operations",
+    "href": "reference/vector-calculus-and-identities.html#operations",
+    "title": "Vector Calculus & Identities",
+    "section": "Operations",
+    "text": "Operations\n\nGradient (Scalar \\(f \\to\\) Vector): \\[ \\nabla f = \\frac{\\partial f}{\\partial x}\\mathbf{\\hat{i}} + \\frac{\\partial f}{\\partial y}\\mathbf{\\hat{j}} + \\frac{\\partial f}{\\partial z}\\mathbf{\\hat{k}} \\]\nDivergence (Vector \\(\\mathbf{A} \\to\\) Scalar): \\[ \\nabla \\cdot \\mathbf{A} = \\frac{\\partial A_x}{\\partial x} + \\frac{\\partial A_y}{\\partial y} + \\frac{\\partial A_z}{\\partial z} \\]\nCurl (Vector \\(\\mathbf{A} \\to\\) Vector): \\[ \\nabla \\times \\mathbf{A} = \\begin{vmatrix} \\mathbf{\\hat{i}} & \\mathbf{\\hat{j}} & \\mathbf{\\hat{k}} \\\\ \\frac{\\partial}{\\partial x} & \\frac{\\partial}{\\partial y} & \\frac{\\partial}{\\partial z} \\\\ A_x & A_y & A_z \\end{vmatrix} \\]\nLaplacian (Scalar \\(f \\to\\) Scalar): \\[ \\nabla^2 f = \\nabla \\cdot (\\nabla f) = \\frac{\\partial^2 f}{\\partial x^2} + \\frac{\\partial^2 f}{\\partial y^2} + \\frac{\\partial^2 f}{\\partial z^2} \\]"
   },
   {
-    "objectID": "reference/math-identities-and-calculus.html#pythagorean-identities",
-    "href": "reference/math-identities-and-calculus.html#pythagorean-identities",
-    "title": "Mathematical Identities & Calculus",
-    "section": "",
-    "text": "\\[ \\sin^2 \\theta + \\cos^2 \\theta = 1 \\] \\[ 1 + \\tan^2 \\theta = \\sec^2 \\theta \\] \\[ 1 + \\cot^2 \\theta = \\csc^2 \\theta \\]"
+    "objectID": "reference/vector-calculus-and-identities.html#product-rules",
+    "href": "reference/vector-calculus-and-identities.html#product-rules",
+    "title": "Vector Calculus & Identities",
+    "section": "Product Rules",
+    "text": "Product Rules\n\\[ \\nabla(fg) = f\\nabla g + g\\nabla f \\] \\[ \\nabla \\cdot (f\\mathbf{A}) = f(\\nabla \\cdot \\mathbf{A}) + \\mathbf{A} \\cdot (\\nabla f) \\] \\[ \\nabla \\times (f\\mathbf{A}) = f(\\nabla \\times \\mathbf{A}) + (\\nabla f) \\times \\mathbf{A} \\] \\[ \\nabla \\cdot (\\mathbf{A} \\times \\mathbf{B}) = \\mathbf{B} \\cdot (\\nabla \\times \\mathbf{A}) - \\mathbf{A} \\cdot (\\nabla \\times \\mathbf{B}) \\] \\[ \\nabla(\\mathbf{A} \\cdot \\mathbf{B}) = \\mathbf{A} \\times (\\nabla \\times \\mathbf{B}) + \\mathbf{B} \\times (\\nabla \\times \\mathbf{A}) + (\\mathbf{A} \\cdot \\nabla)\\mathbf{B} + (\\mathbf{B} \\cdot \\nabla)\\mathbf{A} \\]"
   },
   {
-    "objectID": "reference/math-identities-and-calculus.html#angle-addition-and-subtraction",
-    "href": "reference/math-identities-and-calculus.html#angle-addition-and-subtraction",
-    "title": "Mathematical Identities & Calculus",
-    "section": "",
-    "text": "\\[ \\sin(\\alpha \\pm \\beta) = \\sin\\alpha \\cos\\beta \\pm \\cos\\alpha \\sin\\beta \\] \\[ \\cos(\\alpha \\pm \\beta) = \\cos\\alpha \\cos\\beta \\mp \\sin\\alpha \\sin\\beta \\] \\[ \\tan(\\alpha \\pm \\beta) = \\frac{\\tan\\alpha \\pm \\tan\\beta}{1 \\mp \\tan\\alpha \\tan\\beta} \\]"
+    "objectID": "reference/vector-calculus-and-identities.html#second-derivatives",
+    "href": "reference/vector-calculus-and-identities.html#second-derivatives",
+    "title": "Vector Calculus & Identities",
+    "section": "Second Derivatives",
+    "text": "Second Derivatives\nCurl of a Gradient is zero: \\[ \\nabla \\times (\\nabla f) = 0 \\] (If \\(\\nabla \\times \\mathbf{F} = 0\\), then \\(\\mathbf{F}\\) is conservative and \\(\\mathbf{F} = -\\nabla U\\).)\nDivergence of a Curl is zero: \\[ \\nabla \\cdot (\\nabla \\times \\mathbf{A}) = 0 \\] (If \\(\\nabla \\cdot \\mathbf{B} = 0\\), then \\(\\mathbf{B}\\) can be written as the curl of a vector potential \\(\\mathbf{A}\\).)\nCurl of a Curl: \\[ \\nabla \\times (\\nabla \\times \\mathbf{A}) = \\nabla(\\nabla \\cdot \\mathbf{A}) - \\nabla^2\\mathbf{A} \\]"
   },
   {
-    "objectID": "reference/math-identities-and-calculus.html#double-and-half-angle",
-    "href": "reference/math-identities-and-calculus.html#double-and-half-angle",
-    "title": "Mathematical Identities & Calculus",
-    "section": "",
-    "text": "\\[ \\sin(2\\theta) = 2\\sin\\theta \\cos\\theta \\] \\[ \\cos(2\\theta) = \\cos^2\\theta - \\sin^2\\theta = 2\\cos^2\\theta - 1 = 1 - 2\\sin^2\\theta \\] \\[ \\sin^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 - \\cos\\theta}{2}, \\quad \\cos^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 + \\cos\\theta}{2} \\]"
+    "objectID": "reference/vector-calculus-and-identities.html#divergence-theorem-gausss-theorem",
+    "href": "reference/vector-calculus-and-identities.html#divergence-theorem-gausss-theorem",
+    "title": "Vector Calculus & Identities",
+    "section": "Divergence Theorem (Gauss’s Theorem)",
+    "text": "Divergence Theorem (Gauss’s Theorem)\nRelates a volume integral to a surface integral over the closed boundary \\(S\\): \\[ \\iiint_V (\\nabla \\cdot \\mathbf{A}) \\, dV = \\iint_S \\mathbf{A} \\cdot d\\mathbf{a} \\]"
   },
   {
-    "objectID": "reference/math-identities-and-calculus.html#core-identities",
-    "href": "reference/math-identities-and-calculus.html#core-identities",
-    "title": "Mathematical Identities & Calculus",
-    "section": "Core Identities",
-    "text": "Core Identities\n\\[ \\cosh^2 x - \\sinh^2 x = 1 \\] \\[ 1 - \\tanh^2 x = \\text{sech}^2 x \\] \\[ \\sinh(2x) = 2\\sinh x \\cosh x \\] \\[ \\cosh(2x) = \\cosh^2 x + \\sinh^2 x \\]"
+    "objectID": "reference/vector-calculus-and-identities.html#stokes-theorem",
+    "href": "reference/vector-calculus-and-identities.html#stokes-theorem",
+    "title": "Vector Calculus & Identities",
+    "section": "Stokes’ Theorem",
+    "text": "Stokes’ Theorem\nRelates a surface integral to a line integral around the closed bounding curve \\(C\\): \\[ \\iint_S (\\nabla \\times \\mathbf{A}) \\cdot d\\mathbf{a} = \\oint_C \\mathbf{A} \\cdot d\\mathbf{l} \\]"
   },
   {
-    "objectID": "reference/math-identities-and-calculus.html#common-derivatives",
-    "href": "reference/math-identities-and-calculus.html#common-derivatives",
-    "title": "Mathematical Identities & Calculus",
-    "section": "Common Derivatives",
-    "text": "Common Derivatives\n\\[ \\frac{d}{dx} \\sin x = \\cos x, \\quad \\frac{d}{dx} \\cos x = -\\sin x, \\quad \\frac{d}{dx} \\tan x = \\sec^2 x \\] \\[ \\frac{d}{dx} \\sinh x = \\cosh x, \\quad \\frac{d}{dx} \\cosh x = \\sinh x \\] \\[ \\frac{d}{dx} \\ln(x) = \\frac{1}{x} \\]"
-  },
-  {
-    "objectID": "reference/math-identities-and-calculus.html#common-integrals",
-    "href": "reference/math-identities-and-calculus.html#common-integrals",
-    "title": "Mathematical Identities & Calculus",
-    "section": "Common Integrals",
-    "text": "Common Integrals\n\\[ \\int x^n \\, dx = \\frac{x^{n+1}}{n+1} \\quad (n \\neq -1) \\] \\[ \\int \\frac{1}{x} \\, dx = \\ln|x| \\] \\[ \\int e^{ax} \\, dx = \\frac{1}{a}e^{ax} \\] \\[ \\int \\frac{dx}{x^2 + a^2} = \\frac{1}{a} \\arctan\\left(\\frac{x}{a}\\right) \\] \\[ \\int \\frac{dx}{\\sqrt{a^2 - x^2}} = \\arcsin\\left(\\frac{x}{a}\\right) \\]\n\nGaussian Integrals (Crucial for Statistical Mechanics)\n\\[ \\int_{-\\infty}^{\\infty} e^{-ax^2} \\, dx = \\sqrt{\\frac{\\pi}{a}} \\] \\[ \\int_{-\\infty}^{\\infty} x^2 e^{-ax^2} \\, dx = \\frac{1}{2a} \\sqrt{\\frac{\\pi}{a}} \\]"
-  },
-  {
-    "objectID": "reference/math-identities-and-calculus.html#taylor-series-general",
-    "href": "reference/math-identities-and-calculus.html#taylor-series-general",
-    "title": "Mathematical Identities & Calculus",
-    "section": "Taylor Series (General)",
-    "text": "Taylor Series (General)\n\\[ f(x) = f(a) + f'(a)(x-a) + \\frac{f''(a)}{2!}(x-a)^2 + \\frac{f'''(a)}{3!}(x-a)^3 + \\dots \\]"
-  },
-  {
-    "objectID": "reference/math-identities-and-calculus.html#maclaurin-series-around-x0",
-    "href": "reference/math-identities-and-calculus.html#maclaurin-series-around-x0",
-    "title": "Mathematical Identities & Calculus",
-    "section": "Maclaurin Series (around \\(x=0\\))",
-    "text": "Maclaurin Series (around \\(x=0\\))\n\\[ e^x = 1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!} + \\dots = \\sum_{n=0}^{\\infty} \\frac{x^n}{n!} \\] \\[ \\sin x = x - \\frac{x^3}{3!} + \\frac{x^5}{5!} - \\dots = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n+1}}{(2n+1)!} \\] \\[ \\cos x = 1 - \\frac{x^2}{2!} + \\frac{x^4}{4!} - \\dots = \\sum_{n=0}^{\\infty} \\frac{(-1)^n x^{2n}}{(2n)!} \\] \\[ \\ln(1+x) = x - \\frac{x^2}{2} + \\frac{x^3}{3} - \\dots \\quad (\\text{for } |x| &lt; 1) \\]"
-  },
-  {
-    "objectID": "reference/math-identities-and-calculus.html#binomial-expansion",
-    "href": "reference/math-identities-and-calculus.html#binomial-expansion",
-    "title": "Mathematical Identities & Calculus",
-    "section": "Binomial Expansion",
-    "text": "Binomial Expansion\nFor \\(|x| &lt; 1\\) and any real \\(n\\): \\[ (1+x)^n = 1 + nx + \\frac{n(n-1)}{2!}x^2 + \\frac{n(n-1)(n-2)}{3!}x^3 + \\dots \\] Useful small \\(x\\) approximations: \\[ (1+x)^n \\approx 1 + nx \\] \\[ (1-x)^{-1} \\approx 1 + x + x^2 + \\dots \\]"
-  },
-  {
-    "objectID": "extra/index.html",
-    "href": "extra/index.html",
-    "title": "Extra Notes & Readings",
-    "section": "",
-    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nFermat’s Principle Beyond Least Time: Stationary Paths, Saddle Points, and Gravitational Lensing\n\n\nA rigorous mathematical exploration of the second variation of optical path length, conjugate points, caustic phase shifts, and saddle-point images in astrophysics.\n\n\n\noptics\n\nclassical-mechanics\n\ncalculus-of-variations\n\ngeneral-relativity\n\nextra\n\n\n\n\n\n\n\n\n\n2026-09-12\n\n\n\n\n\nNo matching items"
+    "objectID": "reference/vector-calculus-and-identities.html#gradient-theorem-fundamental-theorem-of-calculus-for-line-integrals",
+    "href": "reference/vector-calculus-and-identities.html#gradient-theorem-fundamental-theorem-of-calculus-for-line-integrals",
+    "title": "Vector Calculus & Identities",
+    "section": "Gradient Theorem (Fundamental Theorem of Calculus for Line Integrals)",
+    "text": "Gradient Theorem (Fundamental Theorem of Calculus for Line Integrals)\n\\[ \\int_a^b (\\nabla f) \\cdot d\\mathbf{l} = f(b) - f(a) \\]"
   },
   {
     "objectID": "extra/fermats-principle-saddle-points-and-stationary-optics.html",
