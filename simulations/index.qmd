@@ -16,3 +16,8 @@ listing:
   page-size: 15
 page-layout: full
 ---
+
+::: {.callout-note}
+### Computational Lab Archive
+Physics simulation codes, interactive Jupyter notebooks, and Manim animation scripts are maintained in the private course repository.
+:::

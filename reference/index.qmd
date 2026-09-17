@@ -16,3 +16,8 @@ listing:
   page-size: 15
 page-layout: full
 ---
+
+::: {.callout-note}
+### Reference Materials Archive
+Formula sheets, physical constants, and mathematical reference materials are maintained in the private course repository.
+:::

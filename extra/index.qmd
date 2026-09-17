@@ -8,3 +8,8 @@ listing:
   sort-ui: true
   filter-ui: true
 ---
+
+::: {.callout-note}
+### Supplementary Notes Archive
+Supplementary readings and advanced analytical mechanics notes (Landau, Arnold, Boas, Arfken, RHB) are archived in the private course repository.
+:::

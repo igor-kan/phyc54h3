@@ -22,7 +22,7 @@ Homework exercises and solutions (I will consult the professor if and when solut
 
 ::: {.course-card}
 ### 💻 [Code & Simulations](simulations/index.qmd)
-Interactive physics simulations, [Symbolic Variational Compiler](simulations/variational-mechanics-symbolic-compiler.qmd), and numerical solvers.
+Interactive physics simulations, variational mechanics compilers, and numerical solvers.
 :::
 
 ::: {.course-card}
@@ -39,22 +39,22 @@ Follows the official PHYC54 Fall 2026 syllabus taught by Prof. Johann Bayer. Wee
 
 | Week | Dates | Core Topics & Taylor Readings | Associated Tutorials & Milestones | Status |
 | :--- | :--- | :--- | :--- | :--- |
-| **01** | Sep. 08-10 | [Calculus of Variations](notes/taylor-chapter-6-calculus-of-variations.qmd) (Ch 6: 1–2) | Calculus of Variations (Ch 6: 3–4) | Available |
-| **02** | Sep. 15-17 | [Lagrange's Equations](notes/taylor-chapter-7-lagrange-equations.qmd) (Ch 7: 1–4) | [Problem Set #01](solutions/taylor-chapter-7-problems.qmd) | Available |
-| **03** | Sep. 22-24 | [Lagrange's Equations](notes/taylor-chapter-7-lagrange-equations.qmd) (Ch 7: 5–8) | [Problem Set #02](solutions/taylor-chapter-7-problems.qmd) | Available |
-| **04** | Sep. 29 - Oct. 01 | [Hamiltonian Mechanics](notes/taylor-chapter-13-hamiltonian-mechanics.qmd) (Ch 13: 1–4) | Problem Set #03 | Upcoming |
-| **05** | Oct. 06-08 | [Hamiltonian Mechanics & Phase Space](notes/taylor-chapter-13-hamiltonian-mechanics.qmd) (Ch 13: 5–7) | Problem Set #04 (**Test #1**) | Upcoming |
-| **06** | Oct. 13-15 | [Mechanics in Noninertial Frames](notes/taylor-chapter-9-noninertial-frames.qmd) (Ch 9: 1–3) | Problem Set #05 | Upcoming |
-| **07** | Oct. 20-22 | [Mechanics in Noninertial Frames](notes/taylor-chapter-9-noninertial-frames.qmd) (Ch 9: 4–7) | Problem Set #06 | Upcoming |
+| **01** | Sep. 08-10 | Calculus of Variations (Ch 6: 1–2) | Calculus of Variations (Ch 6: 3–4) | Complete |
+| **02** | Sep. 15-17 | Lagrange's Equations (Ch 7: 1–4) | Problem Set #01 | In Progress |
+| **03** | Sep. 22-24 | Lagrange's Equations (Ch 7: 5–8) | Problem Set #02 | Available |
+| **04** | Sep. 29 - Oct. 01 | Hamiltonian Mechanics (Ch 13: 1–4) | Problem Set #03 | Upcoming |
+| **05** | Oct. 06-08 | Hamiltonian Mechanics & Phase Space (Ch 13: 5–7) | Problem Set #04 (**Test #1**) | Upcoming |
+| **06** | Oct. 13-15 | Mechanics in Noninertial Frames (Ch 9: 1–3) | Problem Set #05 | Upcoming |
+| **07** | Oct. 20-22 | Mechanics in Noninertial Frames (Ch 9: 4–7) | Problem Set #06 | Upcoming |
 | **RW** | Oct. 27-29 | **Reading Week** (No classes) | Problem Set #07 Review | Study Break |
-| **08** | Nov. 03-05 | [Mechanics in Noninertial Frames](notes/taylor-chapter-9-noninertial-frames.qmd) (Ch 9: 8–10) | Problem Set #08 | Upcoming |
-| **09** | Nov. 10-12 | [Rotational Motion of Rigid Bodies](notes/taylor-chapter-10-rigid-bodies.qmd) (Ch 10: 1–3) | Problem Set #09 (**Test #2**) | Upcoming |
-| **10** | Nov. 17-19 | [Rotational Motion of Rigid Bodies](notes/taylor-chapter-10-rigid-bodies.qmd) (Ch 10: 4–7) | Problem Set #10 | Upcoming |
-| **11** | Nov. 24-26 | [Rotational Motion of Rigid Bodies](notes/taylor-chapter-10-rigid-bodies.qmd) (Ch 10: 8–10) | Problem Set #11 | Upcoming |
-| **12** | Dec. 01-03 | [Continuum Mechanics](notes/taylor-chapter-16-continuum-mechanics.qmd) (Ch 16: 1–4) | Problem Set #12 | Upcoming |
+| **08** | Nov. 03-05 | Mechanics in Noninertial Frames (Ch 9: 8–10) | Problem Set #08 | Upcoming |
+| **09** | Nov. 10-12 | Rotational Motion of Rigid Bodies (Ch 10: 1–3) | Problem Set #09 (**Test #2**) | Upcoming |
+| **10** | Nov. 17-19 | Rotational Motion of Rigid Bodies (Ch 10: 4–7) | Problem Set #10 | Upcoming |
+| **11** | Nov. 24-26 | Rotational Motion of Rigid Bodies (Ch 10: 8–10) | Problem Set #11 | Upcoming |
+| **12** | Dec. 01-03 | Continuum Mechanics (Ch 16: 1–4) | Problem Set #12 | Upcoming |
 | **Final** | Dec. 10-22 | **Comprehensive Final Examination** | Dec. 10–22 Exam Period | Scheduled |
 
 ::: {.callout-note}
 ### Course Schedule & Grading Notes
-Detailed policies on the Autofail rule (minimum 50% on test average or final exam), tutorial submission requirements, and academic integrity policies are detailed in the official [Course Syllabus](notes/syllabus.qmd).
+Detailed policies on the Autofail rule (minimum 50% on test average or final exam), tutorial submission requirements, and academic integrity policies are detailed in the official course syllabus on Quercus and in private course materials.
 :::
