@@ -1,55 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://igor-kan.github.io/phyc54h3/extra/variational-mechanics-as-high-level-programming.html</loc>
-    <lastmod>2026-09-13T20:44:39.646Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/extra/index.html</loc>
-    <lastmod>2026-09-13T20:44:39.646Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/reference/math-identities-and-calculus.html</loc>
-    <lastmod>2026-09-13T20:44:39.649Z</lastmod>
+    <loc>https://igor-kan.github.io/phyc54h3/notes/index.html</loc>
+    <lastmod>2026-09-17T14:26:29.615Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/reference/index.html</loc>
-    <lastmod>2026-09-13T20:44:39.649Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/simulations/variational-mechanics-symbolic-compiler.html</loc>
-    <lastmod>2026-09-13T20:44:39.650Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/index.html</loc>
-    <lastmod>2026-09-13T20:44:39.646Z</lastmod>
+    <lastmod>2026-09-17T14:26:29.615Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/solutions/index.html</loc>
-    <lastmod>2026-09-13T20:44:39.651Z</lastmod>
+    <lastmod>2026-09-17T14:26:29.615Z</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-kan.github.io/phyc54h3/index.html</loc>
+    <lastmod>2026-09-17T14:26:29.614Z</lastmod>
   </url>
   <url>
     <loc>https://igor-kan.github.io/phyc54h3/simulations/index.html</loc>
-    <lastmod>2026-09-13T20:44:39.650Z</lastmod>
+    <lastmod>2026-09-17T14:26:29.615Z</lastmod>
   </url>
   <url>
-    <loc>https://igor-kan.github.io/phyc54h3/reference/integration-tricks-and-substitutions.html</loc>
-    <lastmod>2026-09-13T20:44:39.649Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/reference/vector-calculus-and-identities.html</loc>
-    <lastmod>2026-09-13T20:44:39.649Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/extra/fermats-principle-saddle-points-and-stationary-optics.html</loc>
-    <lastmod>2026-09-13T20:44:39.646Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/notes/index.html</loc>
-    <lastmod>2026-09-13T20:44:39.646Z</lastmod>
-  </url>
-  <url>
-    <loc>https://igor-kan.github.io/phyc54h3/notes/taylor-chapter-10-rigid-bodies.html</loc>
-    <lastmod>2026-09-13T20:44:39.648Z</lastmod>
+    <loc>https://igor-kan.github.io/phyc54h3/extra/index.html</loc>
+    <lastmod>2026-09-17T14:26:29.614Z</lastmod>
   </url>
 </urlset>

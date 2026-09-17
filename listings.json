@@ -1,18 +1,11 @@
 [
   {
-    "listing": "/extra/index.html",
-    "items": [
-      "/extra/variational-mechanics-as-high-level-programming.html",
-      "/extra/fermats-principle-saddle-points-and-stationary-optics.html"
-    ]
+    "listing": "/notes/index.html",
+    "items": []
   },
   {
     "listing": "/reference/index.html",
-    "items": [
-      "/reference/integration-tricks-and-substitutions.html",
-      "/reference/vector-calculus-and-identities.html",
-      "/reference/math-identities-and-calculus.html"
-    ]
+    "items": []
   },
   {
     "listing": "/solutions/index.html",
@@ -20,14 +13,10 @@
   },
   {
     "listing": "/simulations/index.html",
-    "items": [
-      "/simulations/variational-mechanics-symbolic-compiler.html"
-    ]
+    "items": []
   },
   {
-    "listing": "/notes/index.html",
-    "items": [
-      "/notes/taylor-chapter-10-rigid-bodies.html"
-    ]
+    "listing": "/extra/index.html",
+    "items": []
   }
 ]

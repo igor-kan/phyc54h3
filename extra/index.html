@@ -124,9 +124,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-subtitle','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -394,7 +394,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Q2FsY3VsdXMlMjBvZiUyMFZhcmlhdGlvbnM=">Calculus of Variations <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2FsY3VsdXMtb2YtdmFyaWF0aW9ucw==">calculus-of-variations <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q2xhc3NpY2FsJTIwTWVjaGFuaWNz">Classical Mechanics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2xhc3NpY2FsLW1lY2hhbmljcw==">classical-mechanics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q29tcHV0ZXIlMjBTY2llbmNl">Computer Science <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZXh0cmE=">extra <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Rm9ybWFsJTIwVmVyaWZpY2F0aW9u">Formal Verification <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2VuZXJhbC1yZWxhdGl2aXR5">general-relativity <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b3B0aWNz">optics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VGF5bG9y">Taylor <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(0)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -418,6 +418,19 @@ window.Quarto = {
 </header>
 
 
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Supplementary Notes Archive
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Supplementary readings and advanced analytical mechanics notes (Landau, Arnold, Boas, Arfken, RHB) are archived in the private course repository.</p>
+</div>
+</div>
 
 
 
@@ -427,110 +440,13 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-title" data-direction="asc">
-        Title
-      </option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
-      </option>
-      <option value="listing-author" data-direction="asc">
-        Author
-      </option>
-    </select>
-  </div>
     <div class="input-group input-group-sm quarto-listing-filter">
       <span class="input-group-text"><i class="bi bi-search"></i></span>
       <input type="text" class="search form-control" placeholder="Filter">
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Q2xhc3NpY2FsJTIwTWVjaGFuaWNzJTJDQ2FsY3VsdXMlMjBvZiUyMFZhcmlhdGlvbnMlMkNDb21wdXRlciUyMFNjaWVuY2UlMkNGb3JtYWwlMjBWZXJpZmljYXRpb24lMkNUYXlsb3I=" data-listing-date-sort="1789257600000" data-listing-file-modified-sort="1789332279646" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="655">
-<div class="thumbnail"><a href="../extra/variational-mechanics-as-high-level-programming.html" class="no-external">
 
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../extra/variational-mechanics-as-high-level-programming.html" class="no-external">Variational Mechanics as High-Level Declarative Software</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../extra/variational-mechanics-as-high-level-programming.html" class="no-external">Deconstructing the Principle of Stationary Action as an algorithmic compiler lowering scalar Lagrangians to vector equations of motion.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q2xhc3NpY2FsJTIwTWVjaGFuaWNz'); return false;">Classical Mechanics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q2FsY3VsdXMlMjBvZiUyMFZhcmlhdGlvbnM='); return false;">Calculus of Variations</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q29tcHV0ZXIlMjBTY2llbmNl'); return false;">Computer Science</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Rm9ybWFsJTIwVmVyaWZpY2F0aW9u'); return false;">Formal Verification</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGF5bG9y'); return false;">Taylor</div>
-
-</div>
-<div class="delink listing-description"><a href="../extra/variational-mechanics-as-high-level-programming.html" class="no-external">
-In computer science, software engineering underwent a profound revolution when moving from <strong>imperative programming</strong> (specifying step-by-step memory instructions: “move…<strong></strong>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../extra/variational-mechanics-as-high-level-programming.html" class="no-external">
-<div class="listing-date">
-2026-09-13
-</div>
-<div class="listing-author">
-Igor Kan
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="b3B0aWNzJTJDY2xhc3NpY2FsLW1lY2hhbmljcyUyQ2NhbGN1bHVzLW9mLXZhcmlhdGlvbnMlMkNnZW5lcmFsLXJlbGF0aXZpdHklMkNleHRyYQ==" data-listing-date-sort="1789171200000" data-listing-file-modified-sort="1789332279646" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="34" data-listing-word-count-sort="6629">
-<div class="thumbnail"><a href="../extra/fermats-principle-saddle-points-and-stationary-optics.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../extra/fermats-principle-saddle-points-and-stationary-optics.html" class="no-external">Fermat’s Principle Beyond Least Time: Stationary Paths, Saddle Points, and Gravitational Lensing</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../extra/fermats-principle-saddle-points-and-stationary-optics.html" class="no-external">A rigorous mathematical exploration of the second variation of optical path length, conjugate points, caustic phase shifts, and saddle-point images in astrophysics.</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('b3B0aWNz'); return false;">optics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y2xhc3NpY2FsLW1lY2hhbmljcw=='); return false;">classical-mechanics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y2FsY3VsdXMtb2YtdmFyaWF0aW9ucw=='); return false;">calculus-of-variations</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Z2VuZXJhbC1yZWxhdGl2aXR5'); return false;">general-relativity</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZXh0cmE='); return false;">extra</div>
-
-</div>
-<div class="delink listing-description"><a href="../extra/fermats-principle-saddle-points-and-stationary-optics.html" class="no-external">
-In introductory physics, <strong>Fermat’s Principle</strong> is almost universally christened the <em>“Principle of Least Time”</em>. While historically understandable—Pierre de Fermat formulated the…
-</a></div>
-</div>
-<div class="metadata">
-<a href="../extra/fermats-principle-saddle-points-and-stationary-optics.html" class="no-external">
-<div class="listing-date">
-2026-09-12
-</div>
-</a>
-</div>
-</div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div></main> <!-- /main -->
@@ -1007,7 +923,12 @@ In introductory physics, <strong>Fermat’s Principle</strong> is almost univers
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">  categories: true</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">  sort-ui: true</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  filter-ui: true</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">### Supplementary Notes Archive</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>Supplementary readings and advanced analytical mechanics notes (Landau, Arnold, Boas, Arfken, RHB) are archived in the private course repository.</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
